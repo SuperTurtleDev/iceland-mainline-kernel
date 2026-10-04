@@ -111,7 +111,7 @@ python3 "${SRC}/scripts/module-order.py" "${ROOT}/${KMODDIR}/modules.dep" \
 n_order="$(grep -c -v '^[[:space:]]*$' "${ROOT}/etc/modules.order" || true)"
 log "modules.order: ${n_order} entries"
 
-# --- pack (deterministic ordering) ---------------------------------------------------
+# --- pack (deterministic entry ordering) ---------------------------------------------
 log "packing initrd_debug.cpio.zst"
 (
     cd "${ROOT}"

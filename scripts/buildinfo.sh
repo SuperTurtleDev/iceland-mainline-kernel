@@ -6,8 +6,9 @@
 # per-artifact hashes.  Host-side work only (git + file reads).
 set -euo pipefail
 
-META="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUT="${OUT:-/home/wyb/Documents/mainline/build/kernel}"
+SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+META="$(cd "${SCRIPTDIR}/.." && pwd)"
+OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
 PCONT="$(cd "${META}/.." && pwd)/podman_container"
 DATA="${OUT}/podman-data"
 KVER="7.2.0-sm8850"

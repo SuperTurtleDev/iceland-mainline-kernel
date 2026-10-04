@@ -23,8 +23,9 @@
 # Usage: ./build.sh [OUT_DIR]      (or OUT_DIR=... ./build.sh)
 set -euo pipefail
 
-META="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OUT="${OUT:-/home/wyb/Documents/mainline/build/kernel}"
+SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+META="${SCRIPTDIR}"
+OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
 RUNIN="${META}/../podman_container/runin.sh"
 DATA="${OUT}/podman-data"
 

@@ -15,8 +15,9 @@
 #  8) buildinfo.txt contains the four repository hashes
 set -euo pipefail
 
-META="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUT="${OUT:-/home/wyb/Documents/mainline/build/kernel}"
+SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+META="$(cd "${SCRIPTDIR}/.." && pwd)"
+OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
 
 [ -d "${OUT}" ] || { echo "verify: OUT dir ${OUT} does not exist" >&2; exit 1; }
 command -v zstd >/dev/null 2>&1 || { echo "verify: zstd not found on host" >&2; exit 1; }

@@ -15,3 +15,5 @@
 # local override files, if ever needed
 *.local
 .local/
+# python bytecode from local tooling
+__pycache__/
