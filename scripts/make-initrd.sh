@@ -134,7 +134,7 @@ log "packing initrd_debug.cpio.zst"
 (
     cd "${ROOT}"
     find . | LC_ALL=C sort | cpio -o -H newc --owner=0:0 2>"${OUT}/logs/initrd-cpio.log"
-) | cat "${OUT}/staging/initrd-nodes.cpio" - \
+) | cat - "${OUT}/staging/initrd-nodes.cpio" \
     | zstd -q -19 -T0 > "${OUT}/staging/initrd_debug.cpio.zst"
 
 log "initrd: $(du -h "${OUT}/staging/initrd_debug.cpio.zst" | cut -f1)"
