@@ -45,6 +45,15 @@ RUN set -eux; \
     cd /tmp/busybox-dl; \
     apt-get download busybox-static:arm64; \
     dpkg -x busybox-static_*_arm64.deb /opt/busybox-arm64; \
+    # Ubuntu 26.04's busybox-static is a merged-usr package: the binary
+    # unpacks to usr/bin/busybox, not bin/busybox. Normalize so that
+    # /opt/busybox-arm64/bin/busybox always exists (symlink to the real file).
+    if [ ! -e /opt/busybox-arm64/bin/busybox ]; then \
+        bb="$(find /opt/busybox-arm64 -type f -name busybox -print -quit)"; \
+        [ -n "${bb}" ] || { echo "ERROR: no busybox binary found in deb" >&2; exit 1; }; \
+        mkdir -p /opt/busybox-arm64/bin; \
+        ln -s "${bb}" /opt/busybox-arm64/bin/busybox; \
+    fi; \
     file /opt/busybox-arm64/bin/busybox; \
     file /opt/busybox-arm64/bin/busybox | grep -q 'aarch64'; \
     file /opt/busybox-arm64/bin/busybox | grep -q 'statically linked'; \
@@ -54,6 +63,7 @@ RUN set -eux; \
     echo "base-image: docker.io/library/ubuntu:26.04" >> /opt/build-env.txt; \
     echo "toolchain-choice: $(cat /opt/toolchain-choice.txt)" >> /opt/build-env.txt; \
     echo "busybox-arm64-deb: $(cd /tmp/busybox-dl && ls busybox-static_*_arm64.deb)" >> /opt/build-env.txt; \
+    echo "busybox-arm64-path: $(readlink -f /opt/busybox-arm64/bin/busybox)" >> /opt/build-env.txt; \
     echo >> /opt/build-env.txt; \
     echo "clang: $(clang --version | head -1)" >> /opt/build-env.txt; \
     echo "ld.lld: $(ld.lld --version | head -1)" >> /opt/build-env.txt; \
