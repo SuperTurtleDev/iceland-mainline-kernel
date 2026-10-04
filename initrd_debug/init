@@ -25,6 +25,9 @@ $BB mkdir -p /proc /sys /dev /dev/pts /tmp /run \
 grep -q ' /proc ' /proc/mounts 2>/dev/null || $BB mount -t proc proc /proc || log "mount /proc failed"
 grep -q ' /sys ' /proc/mounts 2>/dev/null || $BB mount -t sysfs sysfs /sys || log "mount /sys failed"
 grep -q ' /dev ' /proc/mounts 2>/dev/null || $BB mount -t devtmpfs devtmpfs /dev || log "mount /dev failed"
+# devtmpfs shadows the cpio's /dev, so /dev/pts must be recreated inside it
+# (telnetd needs a pty; without devpts its connections hang with no shell)
+$BB mkdir -p /dev/pts
 grep -q ' /dev/pts ' /proc/mounts 2>/dev/null || $BB mount -t devpts devpts /dev/pts || log "mount /dev/pts failed"
 
 # attach init's own stdio to the console selected by the bootloader cmdline
