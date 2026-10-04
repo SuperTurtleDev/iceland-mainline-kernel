@@ -142,13 +142,18 @@ deploy_steps() {
     n0="$(read_u32 0 "$idev")"
     case "$n0" in ''|*[!0-9]*) log "ERROR: bad blob header on initrd partition"; return ;; esac
     cursor=$((4 + n0))
+    # walk EXACTLY the expected blob count: the partition tail beyond the
+    # chain holds stale bytes from earlier flashes, so an end-of-chain
+    # scan would misread residue as a corrupt header
+    expected="$(cat /etc/deploy-blobcount 2>/dev/null || echo 4)"
     mkdir -p /tmp/debs
     idx=0
-    while :; do
+    while [ "$idx" -lt "$expected" ]; do
         sz="$(read_u32 "$cursor" "$idev")"
-        case "$sz" in ''|*[!0-9]*) break ;; esac
-        [ "$sz" -gt 0 ] 2>/dev/null || break
-        [ "$sz" -lt $((400 * 1024 * 1024)) ] 2>/dev/null || { log "ERROR: blob $idx size $sz insane"; return; }
+        case "$sz" in ''|*[!0-9]*) log "ERROR: blob $idx header unreadable at byte $cursor"; return ;; esac
+        [ "$sz" -gt 0 ] 2>/dev/null || { log "ERROR: blob $idx zero size"; return; }
+        [ "$sz" -lt $((400 * 1024 * 1024)) ] 2>/dev/null \
+            || { log "ERROR: blob $idx size $sz insane (corrupt header?)"; return; }
         cursor=$((cursor + 4))
         blk=$((cursor / 4096)); into=$((cursor % 4096))
         nblk=$(((sz + into + 4095) / 4096))
@@ -165,10 +170,7 @@ deploy_steps() {
     # dpkg's initramfs trigger REFLASHES the initrd partition (that is what
     # boots the new system), destroying the container.  The install may
     # therefore only start once every deb is fully materialised in tmpfs
-    # and validated: exact expected count + ar magic per blob.
-    expected="$(cat /etc/deploy-blobcount 2>/dev/null || echo 4)"
-    [ "$idx" = "$expected" ] \
-        || { log "ERROR: read $idx debs from the partition, expected $expected"; return; }
+    # and validated (the loop above guarantees the exact count).
     for f in /tmp/debs/blob-*.deb; do
         [ "$(head -c 8 "$f" 2>/dev/null)" = '!<arch>' ] \
             || { log "ERROR: $f is not a valid deb (ar magic missing)"; return; }
