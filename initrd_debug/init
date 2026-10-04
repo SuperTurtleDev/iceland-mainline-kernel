@@ -37,6 +37,31 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
 hostname sm8850 || log "hostname failed"
 
+# --- 1.5 kernel modules --------------------------------------------------------
+# /etc/modules.order lists every initrd module with its dependencies first
+# (topological sort of modules.dep, built at packaging time by
+# scripts/module-order.py).  busybox modprobe resolves the dependencies via
+# /lib/modules/<kver>/modules.dep itself; the fixed order guarantees an
+# insmod-only fallback would also load correctly.  Modules already built
+# into the kernel fail to load and are simply not counted.
+KVER="$(ls /lib/modules 2>/dev/null | head -1)"
+if [ -n "${KVER}" ] && [ -f /etc/modules.order ]; then
+    total=0; loaded=0
+    while IFS= read -r mod; do
+        case "$mod" in ''|'#'*) continue ;; esac
+        total=$((total + 1))
+        m="${mod##*/}"
+        m="${m%.ko}"
+        if modprobe "$m" >/dev/null 2>&1 \
+           || insmod "/lib/modules/${KVER}/${mod}" >/dev/null 2>&1; then
+            loaded=$((loaded + 1))
+        fi
+    done < /etc/modules.order
+    log "modules: ${loaded}/${total} loaded from /etc/modules.order"
+else
+    log "no /etc/modules.order or no /lib/modules; skipping module loading"
+fi
+
 # --- 2. usb gadget network (configfs) -----------------------------------------
 mkdir -p /sys/kernel/config || true
 grep -q ' /sys/kernel/config ' /proc/mounts 2>/dev/null || \

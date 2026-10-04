@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
-# In-container step 4: build the debug initrd.
+# In-container stage: assemble the debug initrd.
 #
 # Tree assembled at /work/out/staging/initrd-root:
-#   /bin/busybox            (arm64 static, from /opt/busybox-arm64)
-#   /init, /etc/udhcpd.conf (from the metarepo initrd_debug/ directory)
-#   /lib/modules/7.2.0-sm8850/...  subset listed in initrd-modules.txt
-#   /lib/firmware/...               subset listed in initrd-modules.txt
+#   /bin/busybox                    arm64 static (from /opt/busybox-arm64)
+#   /init, /etc/udhcpd.conf         from the metarepo initrd_debug/ skeleton
+#   /etc/modules.order              load order built by module-order.py
+#   /lib/modules/<kver>/...         module subset, as BARE .ko files
+#   /lib/firmware/...               firmware subset
 #
-# Missing module/firmware entries are recorded in
+# busybox insmod/modprobe only support uncompressed modules, so every module
+# entering the initrd is decompressed (zstd -d) from the modroot .ko.zst; the
+# compressed .ko.zst copies remain exclusive to modules.tar.gz (the rootfs
+# side has kmod).  After the subset copy, depmod -b regenerates modules.dep
+# & friends for exactly the modules present, and scripts/module-order.py
+# topologically sorts modules.dep (dependencies first) into /etc/modules.order
+# which /init follows with busybox modprobe.
+#
+# List entries missing from modroot are recorded in
 # /work/out/staging/initrd-missing.txt and only produce a warning.
 #
 # Output: /work/out/staging/initrd_debug.cpio.zst
@@ -20,19 +29,21 @@ MODROOT="${OUT}/staging/modroot"
 ROOT="${OUT}/staging/initrd-root"
 LIST="${SRC}/initrd-modules.txt"
 MISSING="${OUT}/staging/initrd-missing.txt"
+KMODDIR="lib/modules/${KVER}"
 
 log() { printf '[make-initrd] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }
 
-[ -x /opt/busybox-arm64/bin/busybox ] || die "/opt/busybox-arm64/bin/busybox missing"
-[ -f "${LIST}" ]                     || die "${LIST} missing"
-[ -d "${MODROOT}/lib/modules/${KVER}" ] || die "modroot missing; run build-kernel.sh first"
-[ -f "${SRC}/initrd_debug/init" ]    || die "${SRC}/initrd_debug/init missing"
+[ -x /opt/busybox-arm64/bin/busybox ]          || die "/opt/busybox-arm64/bin/busybox missing"
+[ -f "${LIST}" ]                               || die "${LIST} missing"
+[ -d "${MODROOT}/lib/modules/${KVER}" ]        || die "modroot missing; run build-kernel.sh first"
+[ -f "${SRC}/initrd_debug/init" ]              || die "${SRC}/initrd_debug/init missing"
+[ -f "${SRC}/scripts/module-order.py" ]        || die "${SRC}/scripts/module-order.py missing"
 
 # --- assemble the tree ---------------------------------------------------------
 rm -rf "${ROOT}"
 mkdir -p "${ROOT}"/{bin,sbin,usr/bin,usr/sbin,etc,tmp,proc,sys,dev/pts,run,root,lib}
-mkdir -p "${ROOT}/lib/modules/${KVER}" "${ROOT}/lib/firmware"
+mkdir -p "${ROOT}/${KMODDIR}" "${ROOT}/lib/firmware"
 
 cp /opt/busybox-arm64/bin/busybox "${ROOT}/bin/busybox"
 chmod 0755 "${ROOT}/bin/busybox"
@@ -46,16 +57,17 @@ chmod 0755 "${ROOT}/init"
 : > "${MISSING}"
 n_mod=0; n_mod_miss=0; n_fw=0; n_fw_miss=0
 
-# --- module subset ---------------------------------------------------------------
+# --- module subset: decompress .ko.zst -> bare .ko -------------------------------
 while IFS= read -r line; do
     case "$line" in
-        "/usr/lib/modules/${KVER}/"*)
+        "/usr/lib/modules/${KVER}/"*.ko.zst)
             rel="${line#/usr/lib/modules/${KVER}/}"
             src="${MODROOT}/lib/modules/${KVER}/${rel}"
             if [ -f "${src}" ]; then
-                dst="${ROOT}/lib/modules/${KVER}/${rel}"
+                # strip the .zst suffix: initrd modules are bare .ko
+                dst="${ROOT}/${KMODDIR}/${rel%.zst}"
                 mkdir -p "$(dirname "${dst}")"
-                cp -a "${src}" "${dst}"
+                zstd -q -d -f "${src}" -o "${dst}"
                 n_mod=$((n_mod + 1))
             else
                 printf 'module  %s\n' "${line}" >> "${MISSING}"
@@ -84,15 +96,20 @@ while IFS= read -r line; do
     esac
 done < "${LIST}"
 
-log "modules: ${n_mod} copied, ${n_mod_miss} missing"
+log "modules: ${n_mod} copied (bare .ko), ${n_mod_miss} missing"
 log "firmware: ${n_fw} copied, ${n_fw_miss} missing"
 if [ -s "${MISSING}" ]; then
-    log "WARNING: missing entries recorded in staging/initrd-missing.txt:"
-    cat "${MISSING}" >&2 || true
+    log "WARNING: missing entries recorded in staging/initrd-missing.txt"
 fi
 
-# --- module dependency metadata ------------------------------------------------------
+# --- dependency metadata for exactly the subset present ---------------------------
 depmod -b "${ROOT}" "${KVER}"
+
+# --- module load order: topological sort of modules.dep ---------------------------
+python3 "${SRC}/scripts/module-order.py" "${ROOT}/${KMODDIR}/modules.dep" \
+    > "${ROOT}/etc/modules.order"
+n_order="$(grep -c -v '^[[:space:]]*$' "${ROOT}/etc/modules.order" || true)"
+log "modules.order: ${n_order} entries"
 
 # --- pack (deterministic ordering) ---------------------------------------------------
 log "packing initrd_debug.cpio.zst"

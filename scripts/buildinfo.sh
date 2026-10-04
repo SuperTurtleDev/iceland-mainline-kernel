@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 # Host-side step: generate OUT/buildinfo.txt describing the exact inputs and
-# outputs of a build (revision state of all three repositories, container
-# image details, toolchain versions from inside the image, config drift and
-# per-artifact hashes).
+# outputs of a build: revision state of the four repositories (metarepo,
+# linux, firmware, podman_container), the provisioned container data
+# (identity + package versions), the reproducibility epoch, config drift and
+# per-artifact hashes.  Host-side work only (git + file reads).
 set -euo pipefail
 
 META="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT="${OUT:-/home/wyb/Documents/mainline/build/kernel}"
-IMAGE="sm8850-kbuild:iceland-7.2"
+PCONT="$(cd "${META}/.." && pwd)/podman_container"
+DATA="${OUT}/podman-data"
 KVER="7.2.0-sm8850"
 
 log() { printf '[buildinfo] %s\n' "$*" >&2; }
-
 line() { printf '%s: %s\n' "$1" "$2"; }
 
 # repo_state <path> <label> <diff-file>
-# Prints commit/branch/dirty; writes a diff file when dirty.
+# Prints commit/branch/dirty; writes a text diff file when dirty.
 repo_state() {
     local path="$1" label="$2" difffile="$3"
     local commit branch dirty
@@ -27,12 +28,12 @@ repo_state() {
     else
         dirty=no
     fi
-    line "${label}-commit"  "${commit}"
-    line "${label}-branch"  "${branch}"
-    line "${label}-dirty"   "${dirty}"
+    line "${label}-commit" "${commit}"
+    line "${label}-branch" "${branch}"
+    line "${label}-dirty"  "${dirty}"
     if [ "${dirty}" = yes ]; then
-        git -C "${path}" diff > "${OUT}/${difffile}" 2>/dev/null || \
-            echo "(git diff failed)" > "${OUT}/${difffile}"
+        git -C "${path}" diff > "${OUT}/${difffile}" 2>/dev/null \
+            || echo "(git diff failed)" > "${OUT}/${difffile}"
         line "${label}-diff-file" "${difffile}"
     fi
 }
@@ -40,14 +41,12 @@ repo_state() {
 {
     line "build-time-utc" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
-    # kernel release actually built (falls back to the expected constant)
     if [ -f "${OUT}/kbuild/include/config/kernel.release" ]; then
         line "kernel-version" "$(cat "${OUT}/kbuild/include/config/kernel.release")"
     else
         line "kernel-version" "${KVER} (expected; kbuild release file not found)"
     fi
 
-    # reproducibility stamp
     if [ -f "${OUT}/staging/source-date-epoch" ]; then
         line "source-date-epoch" "$(cat "${OUT}/staging/source-date-epoch")"
     else
@@ -56,8 +55,8 @@ repo_state() {
 
     echo
     echo "# repository state"
-    repo_state "${META}"          "metarepo"  "buildinfo-meta.diff"
-    repo_state "${META}/linux"    "linux"     "buildinfo-linux.diff"
+    repo_state "${META}"   "metarepo"         "buildinfo-meta.diff"
+    repo_state "${META}/linux" "linux"        "buildinfo-linux.diff"
     # firmware carries uncommitted binary blobs: stat-only diff
     fw_commit="$(git -C "${META}/firmware" rev-parse HEAD 2>/dev/null || echo unknown)"
     fw_branch="$(git -C "${META}/firmware" branch --show-current 2>/dev/null || true)"
@@ -74,54 +73,32 @@ repo_state() {
     else
         line "firmware-dirty" "no"
     fi
+    # podman_container: an independent repository (like firmware), not a gitlink
+    repo_state "${PCONT}" "podman_container" "buildinfo-podman_container.diff"
 
     echo
-    echo "# container images"
-    line "container-image" "${IMAGE}"
-    if command -v podman >/dev/null 2>&1 && podman image exists "${IMAGE}" 2>/dev/null; then
-        line "container-image-digest" \
-            "$(podman image inspect "${IMAGE}" --format '{{.Digest}}' 2>/dev/null || echo unavailable)"
-        line "container-image-id" \
-            "$(podman image inspect "${IMAGE}" --format '{{.Id}}' 2>/dev/null || echo unavailable)"
-        line "container-base-image" \
-            "$(podman image inspect "${IMAGE}" --format '{{index .Labels "org.opencontainers.image.base.name"}}' 2>/dev/null || echo unavailable)"
+    echo "# container data (provisioned by src/podman_container)"
+    line "container-data" "${DATA}"
+    if [ -f "${DATA}/commit" ]; then
+        line "container-data-commit" "$(cat "${DATA}/commit")"
     else
-        line "container-image-digest" "unavailable (image not present)"
-        line "container-image-id" "unavailable (image not present)"
-        line "container-base-image" "docker.io/library/ubuntu:26.04 (from Containerfile)"
-    fi
-    line "base-image" "docker.io/library/ubuntu:26.04"
-    if command -v podman >/dev/null 2>&1 \
-        && podman image exists docker.io/library/ubuntu:26.04 2>/dev/null; then
-        line "base-image-digest" \
-            "$(podman image inspect docker.io/library/ubuntu:26.04 --format '{{.Digest}}' 2>/dev/null || echo unavailable)"
-    else
-        line "base-image-digest" "unavailable (image not present)"
+        line "container-data-commit" "(missing)"
     fi
 
     echo
-    echo "# podman image cache archives (OUT/podman-cache)"
-    found_cache=no
-    for c in "${OUT}"/podman-cache/*.tar.zst; do
-        [ -f "$c" ] || continue
-        found_cache=yes
-        line "image-cache-sha256-$(basename "$c")" "$(sha256sum "$c" | cut -d' ' -f1)"
-        line "image-cache-size-$(basename "$c")" "$(stat -c %s "$c")"
-    done
-    [ "${found_cache}" = yes ] || echo "(no cache archives)"
+    echo "# CONTAINER_DATA/build-env.txt (package versions of the provisioned container)"
+    if [ -f "${DATA}/build-env.txt" ]; then
+        sed 's/^/build-env: /' "${DATA}/build-env.txt"
+    else
+        echo "build-env: (missing)"
+    fi
 
     echo
-    echo "# incremental stages: SKIP/RUN of the last run and fingerprints"
-    if [ -f "${OUT}/staging/stamps/last-run.txt" ]; then
-        sed 's/^/last-run: /' "${OUT}/staging/stamps/last-run.txt"
+    echo "# stage timings of the last run (see also staging/last-run.txt)"
+    if [ -f "${OUT}/staging/last-run.txt" ]; then
+        sed 's/^/last-run: /' "${OUT}/staging/last-run.txt"
     else
-        echo "(staging/stamps/last-run.txt not found)"
-    fi
-    if [ -d "${OUT}/staging/stamps" ]; then
-        for s in "${OUT}/staging/stamps"/*.stamp; do
-            [ -f "$s" ] || continue
-            line "stage-fingerprint-$(basename "$s" .stamp)" "$(cat "$s")"
-        done
+        echo "(staging/last-run.txt not found)"
     fi
 
     echo
@@ -137,6 +114,16 @@ repo_state() {
     fi
 
     echo
+    echo "# initrd module/firmware subset stats"
+    if [ -f "${OUT}/staging/initrd-missing.txt" ]; then
+        line "initrd-missing-entries" "$(grep -c . "${OUT}/staging/initrd-missing.txt" || true)"
+    fi
+    if [ -f "${OUT}/staging/initrd-root/etc/modules.order" ]; then
+        line "initrd-modules-order-entries" \
+            "$(grep -c -v '^[[:space:]]*$' "${OUT}/staging/initrd-root/etc/modules.order" || true)"
+    fi
+
+    echo
     echo "# artifacts"
     for f in \
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
@@ -148,19 +135,7 @@ repo_state() {
         else
             line "artifact-sha256-${f}" "(missing)"
         fi
-done
+    done
 } > "${OUT}/buildinfo.txt"
-
-# append the in-image build environment (package versions)
-{
-    echo
-    echo "# container /opt/build-env.txt"
-    if command -v podman >/dev/null 2>&1 && podman image exists "${IMAGE}" 2>/dev/null; then
-        podman run --rm "${IMAGE}" cat /opt/build-env.txt 2>/dev/null \
-            || echo "(failed to read /opt/build-env.txt from image)"
-    else
-        echo "(image not present)"
-    fi
-} >> "${OUT}/buildinfo.txt"
 
 log "wrote ${OUT}/buildinfo.txt"
