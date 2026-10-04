@@ -39,7 +39,7 @@ mkdir -p "${O}"
 cp "${SRC}/config" "${O}/.config"
 
 log "running olddefconfig"
-make ARCH=arm64 LLVM=1 O="${O}" olddefconfig >"${OUT}/logs/kernel-olddefconfig.log" 2>&1 \
+make -C "${SRC}/linux" ARCH=arm64 LLVM=1 O="${O}" olddefconfig >"${OUT}/logs/kernel-olddefconfig.log" 2>&1 \
     || { tail -50 "${OUT}/logs/kernel-olddefconfig.log" >&2; die "olddefconfig failed"; }
 
 # record config drift introduced by olddefconfig (expected to be empty)
@@ -53,7 +53,7 @@ fi
 
 # --- build -------------------------------------------------------------------
 log "building Image dtbs modules with -j$(nproc) (log: kernel-build.log)"
-if ! make -j"$(nproc)" ARCH=arm64 LLVM=1 O="${O}" Image dtbs modules \
+if ! make -C "${SRC}/linux" -j"$(nproc)" ARCH=arm64 LLVM=1 O="${O}" Image dtbs modules \
         >"${OUT}/logs/kernel-build.log" 2>&1; then
     tail -80 "${OUT}/logs/kernel-build.log" >&2
     die "kernel build failed"
@@ -68,7 +68,7 @@ DTB_BIN="${O}/${DTB_REL}"
 log "running modules_install into staging/modroot"
 MODROOT="${OUT}/staging/modroot"
 rm -rf "${MODROOT}"
-make ARCH=arm64 LLVM=1 O="${O}" INSTALL_MOD_PATH="${MODROOT}" modules_install \
+make -C "${SRC}/linux" ARCH=arm64 LLVM=1 O="${O}" INSTALL_MOD_PATH="${MODROOT}" modules_install \
     >"${OUT}/logs/kernel-modules-install.log" 2>&1 \
     || { tail -50 "${OUT}/logs/kernel-modules-install.log" >&2; die "modules_install failed"; }
 
