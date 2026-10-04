@@ -43,6 +43,10 @@ build_initrd() { # build_initrd <release|debug>
     chmod 0755 "${ROOT}/init"
     cp "${SRC}/initrd_debug/etc/udhcpd.conf" "${ROOT}/etc/udhcpd.conf"
     printf '%s\n' "${mode}" > "${ROOT}/etc/deploy-mode"
+    # the init verifies the blob count against this before starting dpkg:
+    # the install's initramfs trigger reflashes the initrd partition, so
+    # every deb must be read out and validated first
+    printf '4\n' > "${ROOT}/etc/deploy-blobcount"
 
     # device nodes the kernel opens before devtmpfs is mounted (mknod is not
     # permitted in the rootless container; see make-initrd.sh)

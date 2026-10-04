@@ -24,7 +24,11 @@ MODE=release
 [ -f /etc/deploy-mode ] && MODE="$($BB cat /etc/deploy-mode 2>/dev/null)"
 [ "$MODE" = debug ] || MODE=release
 
-log() { echo "[deploy] $*" >/dev/console 2>&1 || echo "[deploy] $*" 2>/dev/null || true; }
+log() {
+    echo "[deploy] $*" >/dev/console 2>&1 || echo "[deploy] $*" 2>/dev/null || true
+    # failures must be visible in the on-rootfs log, not only on the console
+    [ -n "${LOG:-}" ] && [ -f "${LOG}" ] && echo "[deploy] $*" >> "${LOG}" 2>/dev/null || true
+}
 
 # --- base filesystems --------------------------------------------------------
 $BB mkdir -p /proc /sys /dev /dev/pts /tmp /run /etc /bin /sbin \
@@ -157,8 +161,19 @@ deploy_steps() {
         cursor=$((cursor + sz))
         idx=$((idx + 1))
     done
-    [ "$idx" -ge 3 ] || { log "ERROR: expected at least 3 debs, got $idx"; return; }
-    log "loaded $idx debs from the initrd partition into tmpfs"
+
+    # dpkg's initramfs trigger REFLASHES the initrd partition (that is what
+    # boots the new system), destroying the container.  The install may
+    # therefore only start once every deb is fully materialised in tmpfs
+    # and validated: exact expected count + ar magic per blob.
+    expected="$(cat /etc/deploy-blobcount 2>/dev/null || echo 4)"
+    [ "$idx" = "$expected" ] \
+        || { log "ERROR: read $idx debs from the partition, expected $expected"; return; }
+    for f in /tmp/debs/blob-*.deb; do
+        [ "$(head -c 8 "$f" 2>/dev/null)" = '!<arch>' ] \
+            || { log "ERROR: $f is not a valid deb (ar magic missing)"; return; }
+    done
+    log "loaded $idx debs into tmpfs, all valid -- partition copy is now expendable"
 
     [ -n "$rdev" ] || { log "ERROR: rootfs not mounted"; return; }
     log "rootfs: $rdev at /rootfs"
