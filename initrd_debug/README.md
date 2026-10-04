@@ -37,6 +37,16 @@ manually, e.g. `sudo ip addr add 192.168.42.100/24 dev <usb-iface>`.
 Nothing in `/init` panics on failure; every step logs a `[init] ...`
 line to the console and the boot continues.
 
+## Modules
+
+The initrd carries its module subset as bare `.ko` files (busybox
+insmod/modprobe cannot load compressed modules) with matching
+`modules.dep` metadata, plus `/etc/modules.order` generated at packaging
+time (`scripts/module-order.py`, a dependency-first topological sort of
+`modules.dep`). `/init` walks that file with busybox modprobe (insmod
+fallback); modules already built into the kernel simply fail to load and
+are not counted.
+
 ## Layout in this repository
 
 - `init` - the initramfs `/init`
