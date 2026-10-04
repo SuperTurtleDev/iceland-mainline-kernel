@@ -282,13 +282,21 @@ log "meta-state=${META_STATE}"
 log "linux-state=${LINUX_STATE}"
 log "firmware-state=${FIRM_STATE}"
 
-IMAGE_DIGEST=""
-for stage in "${STAGES[@]}"; do
-    if [ "${stage}" = "kernel" ] && [ -z "${IMAGE_DIGEST}" ]; then
-        # image stage SKIPped: pick up the digest of the existing image
-        ensure_build_image_available || die "build image ${IMAGE} unavailable"
-        IMAGE_DIGEST="$(image_digest "${IMAGE}")"
+# Make the build image available BEFORE any stage decision: local store
+# first, then the OUT cache archive (podman load).  Otherwise a missing
+# local image would make the image stage RUN (full podman build) even
+# though the cache archive could restore it in a fraction of the time.
+# With --rebuild-image we skip the restore on purpose.
+if [ "${REBUILD_IMAGE}" -eq 0 ]; then
+    if ! ensure_build_image_available; then
+        log "build image ${IMAGE} not in store and no cache archive; the image stage will build it"
     fi
+fi
+IMAGE_DIGEST=""
+image_exists "${IMAGE}" && IMAGE_DIGEST="$(image_digest "${IMAGE}")"
+[ -n "${IMAGE_DIGEST}" ] && log "build image digest: ${IMAGE_DIGEST}"
+
+for stage in "${STAGES[@]}"; do
     fp="$(fingerprint "${stage}")"
     FP[${stage}]="${fp}"
     stamp="${STAMPS}/${stage}.stamp"
@@ -313,12 +321,6 @@ for stage in "${STAGES[@]}"; do
         mkdir -p "${STAMPS}"
         printf '%s\n' "${fp}" > "${stamp}"
         STATE[${stage}]=RUN
-    fi
-
-    if [ "${stage}" = "image" ] && [ -z "${IMAGE_DIGEST}" ]; then
-        # image stage SKIPped
-        ensure_build_image_available || die "build image ${IMAGE} unavailable"
-        IMAGE_DIGEST="$(image_digest "${IMAGE}")"
     fi
 done
 
