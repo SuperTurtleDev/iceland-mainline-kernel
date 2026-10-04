@@ -20,6 +20,7 @@ META="$(cd "${SCRIPTDIR}/.." && pwd)"
 OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
 
 [ -d "${OUT}" ] || { echo "verify: OUT dir ${OUT} does not exist" >&2; exit 1; }
+OUT="$(cd "${OUT}" && pwd)"
 command -v zstd >/dev/null 2>&1 || { echo "verify: zstd not found on host" >&2; exit 1; }
 
 python3 - "${META}" "${OUT}" <<'PYEOF'

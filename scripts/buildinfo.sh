@@ -9,6 +9,8 @@ set -euo pipefail
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 META="$(cd "${SCRIPTDIR}/.." && pwd)"
 OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
+mkdir -p "${OUT}"
+OUT="$(cd "${OUT}" && pwd)"
 PCONT="$(cd "${META}/.." && pwd)/podman_container"
 DATA="${OUT}/podman-data"
 KVER="7.2.0-sm8850"

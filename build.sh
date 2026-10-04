@@ -26,6 +26,9 @@ set -euo pipefail
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 META="${SCRIPTDIR}"
 OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
+# podman (SecureJoin) rejects paths that still contain '..' components
+mkdir -p "${OUT}"
+OUT="$(cd "${OUT}" && pwd)"
 RUNIN="${META}/../podman_container/runin.sh"
 DATA="${OUT}/podman-data"
 
