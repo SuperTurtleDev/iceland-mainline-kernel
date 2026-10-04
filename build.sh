@@ -118,6 +118,10 @@ repo_state() {
 
 image_exists() { podman image exists "$1" >/dev/null 2>&1; }
 
+# manifest digest: stable for pulled images (registry manifest), recorded in
+# buildinfo.  NOT stable for locally built ones across podman save/load (the
+# store synthesizes a different manifest on load), so fingerprints must not
+# use it for the build image.
 image_digest() {
     local d
     d="$(podman image inspect "$1" --format '{{.Digest}}' 2>/dev/null || true)"
@@ -125,6 +129,13 @@ image_digest() {
         d="$(podman image inspect "$1" --format '{{.Id}}' 2>/dev/null || echo unavailable)"
     fi
     printf '%s' "${d}"
+}
+
+# image identity for fingerprinting: the config digest (podman .Id) is
+# content-addressed and survives podman save | zstd | podman load unchanged,
+# whether the image entered the store via build or via load.
+image_identity() {
+    podman image inspect "$1" --format '{{.Id}}' 2>/dev/null || echo unavailable
 }
 
 save_image_cache() { # $1=image $2=archive path
@@ -173,6 +184,10 @@ ensure_build_image_available() {
 declare -A FP      # stage -> fingerprint of this run
 declare -A STATE   # stage -> SKIP | RUN
 
+# identity of the build image used by the container stages (.Id based, see
+# image_identity): goes into the kernel/initrd fingerprints
+IMAGE_ID=""
+
 STAGES=(image kernel headers oot initrd pack-images)
 
 stage_outputs_ok() {
@@ -206,7 +221,7 @@ fingerprint() { # $1=stage; prints the sha256 fingerprint
             ;;
         kernel)
             script="script=$(hash_file "${META}/scripts/build-kernel.sh")"
-            inputs="config=$(hash_file "${META}/config") image-digest=${IMAGE_DIGEST}"
+            inputs="config=$(hash_file "${META}/config") image-id=${IMAGE_ID}"
             upstream="${FP[image]:-}"
             ;;
         headers)
@@ -222,7 +237,7 @@ fingerprint() { # $1=stage; prints the sha256 fingerprint
             script="script=$(hash_file "${META}/scripts/make-initrd.sh")"
             inputs="initrd-modules=$(hash_file "${META}/initrd-modules.txt")"
             inputs="${inputs} initrd-debug-tree=$(hash_tree "${META}/initrd_debug")"
-            inputs="${inputs} busybox=image:${IMAGE_DIGEST}"
+            inputs="${inputs} busybox=image:${IMAGE_ID}"
             upstream="${FP[oot]:-}"
             ;;
         pack-images)
@@ -245,8 +260,8 @@ run_stage_command() {
                 | tee "${OUT}/logs/container-build.log"
             image_exists "${IMAGE}" || die "podman build did not produce ${IMAGE}"
             save_image_cache "${IMAGE}" "${CACHE_BUILD}"
-            IMAGE_DIGEST="$(image_digest "${IMAGE}")"
-            log "build image digest: ${IMAGE_DIGEST}"
+            IMAGE_ID="$(image_identity "${IMAGE}")"
+            log "build image id: ${IMAGE_ID} (digest $(image_digest "${IMAGE}"))"
             ;;
         *)
             script="$(stage_script_name "${stage}")"
@@ -294,7 +309,9 @@ if [ "${REBUILD_IMAGE}" -eq 0 ]; then
 fi
 IMAGE_DIGEST=""
 image_exists "${IMAGE}" && IMAGE_DIGEST="$(image_digest "${IMAGE}")"
-[ -n "${IMAGE_DIGEST}" ] && log "build image digest: ${IMAGE_DIGEST}"
+IMAGE_ID=""
+image_exists "${IMAGE}" && IMAGE_ID="$(image_identity "${IMAGE}")"
+[ -n "${IMAGE_ID}" ] && log "build image id: ${IMAGE_ID} (digest ${IMAGE_DIGEST})"
 
 for stage in "${STAGES[@]}"; do
     fp="$(fingerprint "${stage}")"

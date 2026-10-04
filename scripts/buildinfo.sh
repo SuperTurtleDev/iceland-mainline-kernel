@@ -81,10 +81,13 @@ repo_state() {
     if command -v podman >/dev/null 2>&1 && podman image exists "${IMAGE}" 2>/dev/null; then
         line "container-image-digest" \
             "$(podman image inspect "${IMAGE}" --format '{{.Digest}}' 2>/dev/null || echo unavailable)"
+        line "container-image-id" \
+            "$(podman image inspect "${IMAGE}" --format '{{.Id}}' 2>/dev/null || echo unavailable)"
         line "container-base-image" \
             "$(podman image inspect "${IMAGE}" --format '{{index .Labels "org.opencontainers.image.base.name"}}' 2>/dev/null || echo unavailable)"
     else
         line "container-image-digest" "unavailable (image not present)"
+        line "container-image-id" "unavailable (image not present)"
         line "container-base-image" "docker.io/library/ubuntu:26.04 (from Containerfile)"
     fi
     line "base-image" "docker.io/library/ubuntu:26.04"
