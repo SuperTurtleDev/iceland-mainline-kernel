@@ -31,6 +31,10 @@ export SOURCE_DATE_EPOCH
 export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH}"
 export KBUILD_BUILD_USER=builder
 export KBUILD_BUILD_HOST=mainline-build
+# setlocalversion appends "+" when the git HEAD is not exactly the tagged
+# kernel version and CONFIG_LOCALVERSION_AUTO is unset; setting LOCALVERSION
+# (even empty) suppresses that so the release is exactly ${KVER}
+export LOCALVERSION=""
 export LC_ALL=C TZ=UTC
 log "SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH}"
 
@@ -50,6 +54,13 @@ if diff -u "${O}/.config.before" "${O}/.config.after" > "${OUT}/staging/config-d
 else
     log "WARNING: olddefconfig changed the config, see staging/config-drift.diff"
 fi
+
+# the release must be exactly KVER: everything downstream (modules_install,
+# depmod, initrd, modules.tar.gz layout) keys off it
+KREL="$(cat "${O}/include/config/kernel.release" 2>/dev/null || true)"
+[ -n "${KREL}" ] || die "include/config/kernel.release missing after olddefconfig"
+[ "${KREL}" = "${KVER}" ] \
+    || die "kernel release is '${KREL}', expected '${KVER}' (setlocalversion suffix?)"
 
 # --- build -------------------------------------------------------------------
 log "building Image dtbs modules with -j$(nproc) (log: kernel-build.log)"
