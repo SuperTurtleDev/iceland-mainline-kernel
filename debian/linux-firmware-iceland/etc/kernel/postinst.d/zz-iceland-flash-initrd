@@ -1,0 +1,33 @@
+#!/bin/sh
+# /etc/kernel/postinst.d hook: flash the freshly generated initramfs to the
+# GPT initrd partition with the BootApp 4-byte LE size prefix.  Named zz-* so
+# it sorts after initramfs-tools, which regenerates initrd.img-$1 first.
+# A failure here fails the kernel postinst, which the deploy bootstrap
+# treats as "do not reboot".
+set -e
+
+version="${1:-}"
+bootsrc="${2:-/boot}"
+img="$bootsrc/initrd.img-$version"
+[ -n "$version" ] && [ -f "$img" ] || exit 0
+
+part_dev() {
+    for u in /sys/class/block/*/uevent; do
+        grep -q "^PARTNAME=$1\$" "$u" 2>/dev/null || continue
+        d="$(sed -n 's/^DEVNAME=//p' "$u")"
+        [ -n "$d" ] && { echo "/dev/$d"; return 0; }
+    done
+    return 1
+}
+
+dev="$(part_dev initrd)" || { echo "iceland: GPT partition 'initrd' not found" >&2; exit 1; }
+size="$(stat -c %s "$img")"
+b0=$((size & 255)); b1=$(((size >> 8) & 255))
+b2=$(((size >> 16) & 255)); b3=$(((size >> 24) & 255))
+hdr="$(printf '\\%03o\\%03o\\%03o\\%03o' "$b0" "$b1" "$b2" "$b3")"
+if ! { printf '%b' "$hdr"; cat "$img"; } | dd of="$dev" bs=1M conv=fsync 2>/dev/null; then
+    echo "iceland: flashing the initrd partition failed" >&2
+    exit 1
+fi
+echo "iceland: initrd.img-$version flashed to partition 'initrd' ($size bytes)"
+exit 0

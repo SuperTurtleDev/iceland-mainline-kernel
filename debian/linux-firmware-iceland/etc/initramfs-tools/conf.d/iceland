@@ -1,0 +1,6 @@
+# initramfs-tools configuration for the iceland (SM8850) boot module set.
+# The curated module list is added by the /etc/initramfs-tools/hooks/iceland
+# hook (generated from the kernel metarepo initrd-modules.txt); MODULES=list
+# keeps everything else out of the image.
+MODULES=list
+COMPRESS=zstd

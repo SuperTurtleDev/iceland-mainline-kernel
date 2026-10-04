@@ -84,20 +84,34 @@ tar --sort=name --owner=0 --group=0 --numeric-owner \
     -C "${MODROOT}" -c lib \
     | gzip -n > "${OUT}/modules.tar.gz"
 
+# --- deploy containers ------------------------------------------------------------
+# Already self-describing blob chains ([u32]initrd[u32]deb...): no extra
+# prefix here, only presence + checksums
+for f in initrd_deploy_release.img initrd_deploy_debug.img; do
+    [ -f "${OUT}/$f" ] || die "missing $f (run make-deploy-initrd first)"
+done
+
 # --- checksums ----------------------------------------------------------------------------
 (
     cd "${OUT}"
     sha256sum \
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
-        headers.tar.gz modules.tar.gz > SHA256SUMS
+        headers.tar.gz modules.tar.gz \
+        initrd_deploy_release.img initrd_deploy_debug.img \
+        debs/*.deb > SHA256SUMS
 )
 
 log "artifacts:"
 for f in \
     kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
     bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
-    headers.tar.gz modules.tar.gz SHA256SUMS; do
+    headers.tar.gz modules.tar.gz \
+    initrd_deploy_release.img initrd_deploy_debug.img SHA256SUMS; do
     log "  $(ls -l "${OUT}/${f}")"
+done
+log "debs:"
+for f in "${OUT}"/debs/*.deb; do
+    log "  $(ls -l "$f")"
 done
 log "done"

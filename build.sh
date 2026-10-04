@@ -6,11 +6,15 @@
 # file-level work only).
 #
 # Stages (in order, always executed):
-#   scripts/build-kernel.sh   Image + dtbs + modules_install + depmod
-#   scripts/pack-headers.sh   headers.tar.gz (OOT dev package)
-#   scripts/build-oot.sh      charge_boost against headers.tar.gz + depmod
-#   scripts/make-initrd.sh    debug initrd (bare .ko subset, modules.order)
-#   scripts/pack-images.sh    .img/.tar.gz/SHA256SUMS artifacts
+#   scripts/build-kernel.sh        Image + dtbs + modules_install + depmod
+#   scripts/pack-headers.sh        headers.tar.gz (OOT dev package)
+#   scripts/build-oot.sh           charge_boost against headers.tar.gz + depmod
+#   scripts/build-debs.sh          4 debian packages (image/modules/headers/fw)
+#   scripts/make-initrd.sh         debug initrd (bare .ko subset, modules.order)
+#   scripts/make-deploy-initrd.sh  deploy initrds + initrd-partition containers
+#                                  ([size]initrd[size]deb..., debs loaded off
+#                                  the partition at runtime to save BL memory)
+#   scripts/pack-images.sh         .img/.tar.gz/SHA256SUMS artifacts
 #
 # Incrementality -- by design, no extra fingerprint machinery:
 #   * container data: runin.sh reprovisions OUT/podman-data only when the
@@ -32,7 +36,7 @@ OUT="$(cd "${OUT}" && pwd)"
 RUNIN="${META}/../podman_container/runin.sh"
 DATA="${OUT}/podman-data"
 
-STAGES=(build-kernel pack-headers build-oot make-initrd pack-images)
+STAGES=(build-kernel pack-headers build-oot build-debs make-initrd make-deploy-initrd pack-images)
 
 log() { printf '[build.sh] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }

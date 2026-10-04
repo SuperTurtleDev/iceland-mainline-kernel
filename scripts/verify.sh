@@ -13,6 +13,9 @@
 #  6) bootcfg/kernel.img and bootcfg_debug/kernel_debug.img match kernel.img
 #  7) headers.tar.gz / modules.tar.gz list, required members present
 #  8) buildinfo.txt contains the four repository hashes
+#  9) debs/ contains the four packages, dpkg-deb --info clean
+# 10) deploy containers: [u32]initrd[u32]deb... chain consumes the file
+#     exactly; inner initrd lists init/busybox/sh/udhcpd.conf/deploy-mode
 set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -260,6 +263,84 @@ else:
     detail.append("buildinfo.txt missing")
 check(8, "buildinfo.txt contains metarepo/linux/firmware/podman_container hashes",
       ok, "; ".join(detail) or "all four hashes found")
+
+# ---- 9) debian packages --------------------------------------------------------------
+KVER_FULL = "7.2.0-sm8850"
+VER = "7.2.0-sm8850-1"
+deb_names = [f"linux-modules-{KVER_FULL}_{VER}_arm64.deb",
+             f"linux-headers-{KVER_FULL}_{VER}_arm64.deb",
+             f"linux-image-{KVER_FULL}_{VER}_arm64.deb",
+             f"linux-firmware-iceland_{VER}_arm64.deb"]
+detail = []
+ok = True
+for n in deb_names:
+    p = os.path.join(OUT, "debs", n)
+    if not os.path.isfile(p):
+        ok = False
+        detail.append(f"missing debs/{n}")
+        continue
+    r = subprocess.run(["dpkg-deb", "--info", p], capture_output=True, text=True)
+    if r.returncode != 0:
+        ok = False
+        detail.append(f"{n}: dpkg-deb --info rc={r.returncode}")
+if ok:
+    detail.append(f"{len(deb_names)} debs ok")
+check(9, "debs present and dpkg-deb --info clean", ok, "; ".join(detail))
+
+# ---- 10) deploy containers ------------------------------------------------------------
+# [u32]initrd[u32]deb...: chain must consume the file exactly, blob 0 must be
+# a valid zstd cpio with the bootstrap init, the debs ride along as blobs
+detail = []
+ok = True
+for rel in ("initrd_deploy_release.img", "initrd_deploy_debug.img"):
+    path = os.path.join(OUT, rel)
+    if not os.path.isfile(path):
+        ok = False
+        detail.append(f"{rel}: missing")
+        continue
+    with open(path, "rb") as f:
+        data = f.read()
+    blobs, pos = [], 0
+    while pos + 4 <= len(data):
+        (n,) = struct.unpack_from("<I", data, pos)
+        blobs.append((pos + 4, n))
+        pos += 4 + n
+    if pos != len(data):
+        ok = False
+        detail.append(f"{rel}: chain over/under-run {pos}/{len(data)}")
+        continue
+    if len(blobs) != 5:
+        ok = False
+        detail.append(f"{rel}: {len(blobs)} blobs, expected 5 (initrd + 4 debs)")
+        continue
+    off, n = blobs[0]
+    with tempfile.TemporaryDirectory() as td:
+        zst, cpio = os.path.join(td, "d.cpio.zst"), os.path.join(td, "d.cpio")
+        with open(zst, "wb") as f:
+            f.write(data[off:off + n])
+        r = subprocess.run(["zstd", "-q", "-d", "-T0", zst, "-o", cpio],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            ok = False
+            detail.append(f"{rel}: initrd zstd -d failed")
+            continue
+        with open(cpio, "rb") as f:
+            entries = parse_cpio_newc(f.read())
+        for need in ("init", "bin/busybox", "bin/sh", "etc/udhcpd.conf", "etc/deploy-mode"):
+            if need not in entries:
+                ok = False
+                detail.append(f"{rel}: cpio missing {need}")
+        mode_name = "debug" if "debug" in rel else "release"
+        off2, n2 = entries.get("etc/deploy-mode", (0, 0))
+        with open(cpio, "rb") as f:
+            f.seek(off2)
+            if f.read(n2).decode("utf-8", "replace").strip() != mode_name:
+                ok = False
+                detail.append(f"{rel}: deploy-mode mismatch")
+    if ok and not any(rel in d for d in detail):
+        detail.append(f"{rel}: chain ok, initrd {blobs[0][1]}B + {len(blobs) - 1} debs")
+check(10, "deploy containers: blob chain + inner initrd (init/busybox/deploy-mode)",
+      ok, "; ".join(detail))
 
 # ---- summary ----------------------------------------------------------------------------
 npass = sum(1 for r in results if r)

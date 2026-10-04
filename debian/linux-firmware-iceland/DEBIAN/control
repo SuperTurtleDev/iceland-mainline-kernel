@@ -1,0 +1,18 @@
+Package: linux-firmware-iceland
+Version: 7.2.0-sm8850-1
+Architecture: arm64
+Section: kernel
+Priority: optional
+Maintainer: iceland mainline <iceland@localhost>
+Description: Firmware, DTB and initramfs configuration for OnePlus Pad 4 (SM8850)
+ The iceland device firmware tree (ath12k, qca, qcom, novatek) and the
+ kaanapali-oneplus-iceland DTB.
+ .
+ Registers the initial initramfs-tools configuration for the device:
+ /etc/initramfs-tools/conf.d/iceland (MODULES=list, zstd) plus the
+ /etc/initramfs-tools/hooks/iceland hook carrying the curated boot
+ module set (generated from the kernel metarepo initrd-modules.txt).
+ Also ships /etc/kernel/postinst.d/zz-iceland-flash-initrd, which
+ flashes every regenerated initramfs to the GPT initrd partition with
+ the BootApp size prefix.  postinst flashes the DTB to the GPT dtb
+ partition.

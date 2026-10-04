@@ -1,0 +1,38 @@
+#!/bin/sh
+# Flash the device DTB to its GPT partition (BootApp payload format:
+# [UINT32 LE size][payload]).  A failure here fails the dpkg run, which
+# the deploy bootstrap treats as "do not reboot".
+set -e
+
+KVER=7.2.0-sm8850
+DTB="/usr/lib/linux-image-$KVER/kaanapali-oneplus-iceland.dtb"
+
+part_dev() {
+    for u in /sys/class/block/*/uevent; do
+        grep -q "^PARTNAME=$1\$" "$u" 2>/dev/null || continue
+        d="$(sed -n 's/^DEVNAME=//p' "$u")"
+        [ -n "$d" ] && { echo "/dev/$d"; return 0; }
+    done
+    return 1
+}
+
+flash_partition() {
+    dev="$(part_dev "$1")" || { echo "iceland: GPT partition '$1' not found" >&2; return 1; }
+    size="$(stat -c %s "$2")"
+    b0=$((size & 255)); b1=$(((size >> 8) & 255))
+    b2=$(((size >> 16) & 255)); b3=$(((size >> 24) & 255))
+    hdr="$(printf '\\%03o\\%03o\\%03o\\%03o' "$b0" "$b1" "$b2" "$b3")"
+    { printf '%b' "$hdr"; cat "$2"; } | dd of="$dev" bs=1M conv=fsync 2>/dev/null
+}
+
+case "$1" in
+    configure)
+        [ -f "$DTB" ] || { echo "iceland: $DTB missing" >&2; exit 1; }
+        if ! flash_partition dtb "$DTB"; then
+            echo "iceland: flashing the dtb partition failed" >&2
+            exit 1
+        fi
+        ;;
+esac
+
+exit 0

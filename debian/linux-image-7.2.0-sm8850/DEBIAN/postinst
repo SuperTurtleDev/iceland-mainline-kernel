@@ -1,0 +1,60 @@
+#!/bin/sh
+# Flash the kernel Image and the bootcfg cmdline to their GPT partitions
+# (BootApp payload format: [UINT32 LE size][payload]), then regenerate the
+# initramfs through /etc/kernel/postinst.d.  A failure here fails the dpkg
+# run, which the deploy bootstrap treats as "do not reboot".
+set -e
+
+KVER=7.2.0-sm8850
+
+# Resolve a GPT partition node by its label without udev: the kernel
+# exports PARTNAME (the GPT partition name) in each block device's uevent.
+# Works inside the deploy chroot, where /sys and /dev are bind-mounted.
+part_dev() {
+    for u in /sys/class/block/*/uevent; do
+        grep -q "^PARTNAME=$1\$" "$u" 2>/dev/null || continue
+        d="$(sed -n 's/^DEVNAME=//p' "$u")"
+        [ -n "$d" ] && { echo "/dev/$d"; return 0; }
+    done
+    return 1
+}
+
+# flash_partition <GPT label> <payload file>
+flash_partition() {
+    dev="$(part_dev "$1")" || { echo "iceland: GPT partition '$1' not found" >&2; return 1; }
+    size="$(stat -c %s "$2")"
+    b0=$((size & 255)); b1=$(((size >> 8) & 255))
+    b2=$(((size >> 16) & 255)); b3=$(((size >> 24) & 255))
+    hdr="$(printf '\\%03o\\%03o\\%03o\\%03o' "$b0" "$b1" "$b2" "$b3")"
+    { printf '%b' "$hdr"; cat "$2"; } | dd of="$dev" bs=1M conv=fsync 2>/dev/null
+}
+
+case "$1" in
+    configure)
+        img="/boot/vmlinuz-$KVER"
+        [ -f "$img" ] || { echo "iceland: $img missing" >&2; exit 1; }
+        if ! flash_partition kernel "$img"; then
+            echo "iceland: flashing the kernel partition failed" >&2
+            exit 1
+        fi
+
+        # cmdline for booting the Ubuntu rootfs; the Ubuntu initramfs has a
+        # full udev, so by-partlabel is resolvable there
+        cfg="$(mktemp)"
+        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0 console=ttyMSM0,115200n8\n' > "$cfg"
+        if ! flash_partition bootcfg "$cfg"; then
+            rm -f "$cfg"
+            echo "iceland: flashing the bootcfg partition failed" >&2
+            exit 1
+        fi
+        rm -f "$cfg"
+
+        # initramfs-tools (sorted first) rebuilds initrd.img-$KVER, then
+        # zz-iceland-flash-initrd flashes it to the GPT initrd partition
+        if [ -d /etc/kernel/postinst.d ]; then
+            run-parts --exit-on-error --arg="$KVER" --arg=/boot /etc/kernel/postinst.d
+        fi
+        ;;
+esac
+
+exit 0

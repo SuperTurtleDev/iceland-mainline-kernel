@@ -131,13 +131,19 @@ repo_state() {
     for f in \
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
-        headers.tar.gz modules.tar.gz SHA256SUMS; do
+        headers.tar.gz modules.tar.gz \
+        initrd_deploy_release.img initrd_deploy_debug.img SHA256SUMS; do
         if [ -f "${OUT}/${f}" ]; then
             line "artifact-sha256-${f}" "$(sha256sum "${OUT}/${f}" | cut -d' ' -f1)"
             line "artifact-size-${f}" "$(stat -c %s "${OUT}/${f}")"
         else
             line "artifact-sha256-${f}" "(missing)"
         fi
+    done
+    for f in "${OUT}"/debs/*.deb; do
+        [ -f "$f" ] || continue
+        line "artifact-sha256-debs/$(basename "$f")" "$(sha256sum "$f" | cut -d' ' -f1)"
+        line "artifact-size-debs/$(basename "$f")" "$(stat -c %s "$f")"
     done
 } > "${OUT}/buildinfo.txt"
 

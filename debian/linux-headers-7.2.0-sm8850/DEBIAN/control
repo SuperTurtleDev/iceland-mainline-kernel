@@ -1,0 +1,11 @@
+Package: linux-headers-7.2.0-sm8850
+Version: 7.2.0-sm8850-1
+Architecture: arm64
+Section: kernel
+Priority: optional
+Maintainer: iceland mainline <iceland@localhost>
+Description: Header files for Linux 7.2.0-sm8850 (OOT module development)
+ Kernel headers and Kbuild infrastructure for building out-of-tree
+ modules against 7.2.0-sm8850: prepared source headers, generated
+ include files, host tool binaries, .config, Module.symvers and
+ System.map, under /usr/src/linux-headers-7.2.0-sm8850.
