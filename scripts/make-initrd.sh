@@ -50,10 +50,17 @@ chmod 0755 "${ROOT}/bin/busybox"
 # the kernel resolves /init's "#!/bin/sh" shebang BEFORE /init can run
 # busybox --install: the interpreter symlink must exist in the cpio itself
 ln -sf busybox "${ROOT}/bin/sh"
-# the kernel opens /dev/console for init's stdio before devtmpfs is mounted
-# (we run as root in the container, so mknod works)
-mknod -m 600 "${ROOT}/dev/console" c 5 1
-mknod -m 666 "${ROOT}/dev/null"    c 1 3
+
+# /dev/console and /dev/null as device nodes: the kernel opens /dev/console
+# for init's stdio before devtmpfs is mounted.  mknod is not permitted inside
+# the rootless container, so the kernel's own gen_init_cpio emits them from a
+# description file; the small archive is concatenated onto the main cpio
+# (initramfs unpacks concatenated archives in order).
+GIC="${OUT}/kbuild/usr/gen_init_cpio"
+[ -x "${GIC}" ] || die "gen_init_cpio missing at ${GIC}"
+printf 'nod /dev/console 0600 0 0 c 5 1\nnod /dev/null 0666 0 0 c 1 3\n' \
+    > "${OUT}/staging/initrd-nodes.desc"
+"${GIC}" "${OUT}/staging/initrd-nodes.desc" > "${OUT}/staging/initrd-nodes.cpio"
 
 # initrd_debug/ skeleton (init, etc/udhcpd.conf, ...); README.md is
 # repository documentation, not initrd content
@@ -126,9 +133,9 @@ log "modules.order: ${n_order} entries"
 log "packing initrd_debug.cpio.zst"
 (
     cd "${ROOT}"
-    find . | LC_ALL=C sort | cpio -o -H newc --owner=0:0 2>"${OUT}/logs/initrd-cpio.log" \
-        | zstd -q -19 -T0 > "${OUT}/staging/initrd_debug.cpio.zst"
-)
+    find . | LC_ALL=C sort | cpio -o -H newc --owner=0:0 2>"${OUT}/logs/initrd-cpio.log"
+) | cat "${OUT}/staging/initrd-nodes.cpio" - \
+    | zstd -q -19 -T0 > "${OUT}/staging/initrd_debug.cpio.zst"
 
 log "initrd: $(du -h "${OUT}/staging/initrd_debug.cpio.zst" | cut -f1)"
 log "done"
