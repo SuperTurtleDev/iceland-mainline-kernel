@@ -47,6 +47,13 @@ mkdir -p "${ROOT}/${KMODDIR}" "${ROOT}/lib/firmware"
 
 cp /opt/busybox-arm64/bin/busybox "${ROOT}/bin/busybox"
 chmod 0755 "${ROOT}/bin/busybox"
+# the kernel resolves /init's "#!/bin/sh" shebang BEFORE /init can run
+# busybox --install: the interpreter symlink must exist in the cpio itself
+ln -sf busybox "${ROOT}/bin/sh"
+# the kernel opens /dev/console for init's stdio before devtmpfs is mounted
+# (we run as root in the container, so mknod works)
+mknod -m 600 "${ROOT}/dev/console" c 5 1
+mknod -m 666 "${ROOT}/dev/null"    c 1 3
 
 # initrd_debug/ skeleton (init, etc/udhcpd.conf, ...); README.md is
 # repository documentation, not initrd content
@@ -101,6 +108,10 @@ log "firmware: ${n_fw} copied, ${n_fw_miss} missing"
 if [ -s "${MISSING}" ]; then
     log "WARNING: missing entries recorded in staging/initrd-missing.txt"
 fi
+
+# modules.builtin lets busybox modprobe skip modules built into the kernel
+# (also silences depmod's warning about it being absent)
+cp "${MODROOT}/lib/modules/${KVER}/modules.builtin" "${ROOT}/${KMODDIR}/modules.builtin" 2>/dev/null || true
 
 # --- dependency metadata for exactly the subset present ---------------------------
 depmod -b "${ROOT}" "${KVER}"
