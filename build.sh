@@ -149,6 +149,10 @@ ensure_base_image() {
     else
         log "pulling base image ${BASE}"
         podman pull "${BASE}"
+    fi
+    # the cache archive is part of the deliverables: backfill it whenever it
+    # is missing, also when the image was already present locally
+    if [ ! -f "${CACHE_BASE}" ]; then
         save_image_cache "${BASE}" "${CACHE_BASE}"
     fi
     BASE_DIGEST="$(image_digest "${BASE}")"
