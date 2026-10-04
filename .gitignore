@@ -1,0 +1,17 @@
+# editor / OS temp files
+*~
+*.swp
+*.swo
+*.sow
+*.bak
+*.orig
+*.rej
+.session.vim
+.netrwhist
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+# local override files, if ever needed
+*.local
+.local/

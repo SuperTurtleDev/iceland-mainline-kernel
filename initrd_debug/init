@@ -1,0 +1,149 @@
+#!/bin/sh
+# sm8850 debug initrd /init (busybox ash)
+#
+# Purpose: bring up a USB gadget network (default NCM, switchable to RNDIS
+# via "usbnet=rndis" on the kernel cmdline), run udhcpd + telnetd for
+# no-authentication debugging from the host, and keep interactive shells
+# on the serial (ttyMSM0) and framebuffer (tty0) consoles alive.
+#
+# Nothing here is allowed to panic: every step logs to the console and the
+# init keeps running.
+
+BB=/bin/busybox
+
+# --- console logging (usable after devtmpfs is up) ---------------------------
+log() {
+    echo "[init] $*" >/dev/console 2>&1 \
+        || echo "[init] $*" 2>/dev/null \
+        || true
+}
+
+# --- 1. base filesystems ------------------------------------------------------
+$BB mkdir -p /proc /sys /dev /dev/pts /tmp /run \
+    /bin /sbin /usr/bin /usr/sbin /etc /lib /root
+
+grep -q ' /proc ' /proc/mounts 2>/dev/null || $BB mount -t proc proc /proc || log "mount /proc failed"
+grep -q ' /sys ' /proc/mounts 2>/dev/null || $BB mount -t sysfs sysfs /sys || log "mount /sys failed"
+grep -q ' /dev ' /proc/mounts 2>/dev/null || $BB mount -t devtmpfs devtmpfs /dev || log "mount /dev failed"
+grep -q ' /dev/pts ' /proc/mounts 2>/dev/null || $BB mount -t devpts devpts /dev/pts || log "mount /dev/pts failed"
+
+# attach init's own stdio to the console selected by the bootloader cmdline
+if [ -c /dev/console ]; then
+    exec 0</dev/console 1>/dev/console 2>&1 || true
+fi
+
+$BB --install -s || log "busybox --install failed"
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+hostname sm8850 || log "hostname failed"
+
+# --- 2. usb gadget network (configfs) -----------------------------------------
+mkdir -p /sys/kernel/config || true
+grep -q ' /sys/kernel/config ' /proc/mounts 2>/dev/null || \
+    mount -t configfs configfs /sys/kernel/config || log "mount configfs failed"
+
+# usbnet=<ncm|ecm|rndis> on the kernel cmdline, default ncm
+usbnet=ncm
+for arg in $(cat /proc/cmdline 2>/dev/null); do
+    case "$arg" in
+        usbnet=*) usbnet="${arg#usbnet=}" ;;
+    esac
+done
+case "$usbnet" in
+    ncm|ecm|rndis) ;;
+    *) log "unknown usbnet='$usbnet', falling back to ncm"; usbnet=ncm ;;
+esac
+log "usb gadget network function: ${usbnet}.usb0"
+
+setup_gadget() {
+    G=/sys/kernel/config/usb_gadget/g1
+    mkdir -p "$G" 2>/dev/null || { log "cannot create usb_gadget/g1"; return 1; }
+    echo 0x18d1 > "$G/idVendor" || return 1
+    echo 0xd001 > "$G/idProduct" || return 1
+    mkdir -p "$G/strings/0x409"
+    echo "Oneplus Pad 4 mainline" > "$G/strings/0x409/manufacturer" || true
+    echo "sm8850 debug"           > "$G/strings/0x409/product"      || true
+    echo "iceland-debug"          > "$G/strings/0x409/serialnumber" || true
+    mkdir -p "$G/functions/${usbnet}.usb0" || return 1
+    mkdir -p "$G/configs/c.1/strings/0x409"
+    echo "debug" > "$G/configs/c.1/strings/0x409/configuration" || true
+    ln -sf "$G/functions/${usbnet}.usb0" "$G/configs/c.1/${usbnet}.usb0" || return 1
+    return 0
+}
+
+setup_gadget || log "gadget configfs setup incomplete (continuing anyway)"
+
+# wait for the UDC to appear, then bind
+udc=""
+i=0
+while [ $i -lt 20 ]; do
+    udc=$(ls /sys/class/udc 2>/dev/null | head -1)
+    [ -n "$udc" ] && break
+    sleep 0.5
+    i=$((i + 1))
+done
+if [ -n "$udc" ]; then
+    echo "$udc" > /sys/kernel/config/usb_gadget/g1/UDC \
+        && log "bound gadget g1 to UDC $udc" \
+        || log "failed to bind UDC $udc"
+else
+    log "no UDC found in /sys/class/udc; usb network will not come up"
+fi
+
+# wait for usb0, then configure our end of the link
+i=0
+while [ $i -lt 20 ]; do
+    [ -d /sys/class/net/usb0 ] && break
+    sleep 0.5
+    i=$((i + 1))
+done
+ifconfig usb0 192.168.42.42 netmask 255.255.255.0 up \
+    && log "usb0 up at 192.168.42.42/24" \
+    || log "ifconfig usb0 failed"
+
+# --- 3. dhcp server + telnetd --------------------------------------------------
+touch /tmp/udhcpd.leases 2>/dev/null || log "cannot touch lease file"
+if [ -f /etc/udhcpd.conf ]; then
+    udhcpd /etc/udhcpd.conf && log "udhcpd started" || log "udhcpd failed to start"
+else
+    log "/etc/udhcpd.conf missing"
+fi
+
+start_telnetd() {
+    telnetd -p 23 -l /bin/sh && log "telnetd started on :23" || log "telnetd failed to start"
+}
+start_telnetd
+
+# --- 4. interactive shells on serial + framebuffer console ---------------------
+respawn_shell() {
+    con="$1"
+    # wait for the tty device
+    i=0
+    while [ $i -lt 20 ] && [ ! -c "$con" ]; do
+        sleep 0.5
+        i=$((i + 1))
+    done
+    if [ ! -c "$con" ]; then
+        log "console $con not available, no shell on it"
+        return
+    fi
+    log "starting shell on $con"
+    while :; do
+        setsid cttyhack /bin/sh < "$con" > "$con" 2>&1
+        sleep 1
+    done
+}
+
+respawn_shell /dev/ttyMSM0 &
+respawn_shell /dev/tty0 &
+
+log "initrd up: dhcp range 192.168.42.100-200, telnet 192.168.42.42:23"
+
+# --- 5. supervisor loop ---------------------------------------------------------
+while :; do
+    sleep 10
+    if ! pidof telnetd >/dev/null 2>&1; then
+        log "telnetd died, restarting"
+        start_telnetd
+    fi
+done

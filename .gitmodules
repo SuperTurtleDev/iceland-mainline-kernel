@@ -1,0 +1,8 @@
+[submodule "linux"]
+	path = linux
+	url = https://github.com/map220v/sm8850-mainline
+	branch = iceland-7.2
+[submodule "firmware"]
+	path = firmware
+	url = /home/wyb/Documents/mainline/repos/iceland-firmware.git
+	ignore = dirty

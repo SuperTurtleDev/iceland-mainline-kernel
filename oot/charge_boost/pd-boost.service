@@ -1,0 +1,12 @@
+[Unit]
+Description=USB PD fast-charge boost, event-driven (qcom-battmgr)
+# started by the udev rule on charger add/change; stopped on remove
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/pd-boost.sh
+ExecStop=/bin/sh -c 'rmmod charge_boost_lite 2>/dev/null || true'
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

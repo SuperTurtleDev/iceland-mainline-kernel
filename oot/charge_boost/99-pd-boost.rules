@@ -1,0 +1,6 @@
+# pd-boost: event-driven wake/sleep for the PD boost service.
+# Charger appears/changes -> run the state machine; charger removed -> stop.
+ACTION=="add|change", SUBSYSTEM=="power_supply", KERNEL=="qcom-battmgr-usb", \
+    ATTR{online}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}+="pd-boost.service"
+ACTION=="remove", SUBSYSTEM=="power_supply", KERNEL=="qcom-battmgr-usb", \
+    RUN+="/bin/systemctl stop pd-boost.service"
