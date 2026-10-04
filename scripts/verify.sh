@@ -133,10 +133,13 @@ if fails:
     sys.exit(1)
 
 # ---- 2) arm64 Image magic -----------------------------------------------------
+# ARM64_IMAGE_MAGIC from linux/arch/arm64/include/asm/image.h: the 7.x tree
+# defines "ARM\x64" (older kernels used "ARM\x50"); it sits at header offset
+# 0x38 (struct arm64_image_header.magic).
 _, kpayload = read_payload(os.path.join(OUT, "kernel.img"))
 magic = kpayload[0x38:0x3C]
-check(2, "kernel.img arm64 Image magic b'ARM\\x50' (header offset 0x38)",
-      magic == b"ARM\x50", f"got {magic!r}")
+check(2, "kernel.img arm64 Image magic b'ARM\\x64' (header offset 0x38)",
+      magic == b"ARM\x64", f"got {magic!r}")
 
 # ---- 3) FDT magic --------------------------------------------------------------
 _, dpayload = read_payload(os.path.join(OUT, "dtb.img"))
@@ -177,16 +180,25 @@ if initrd_ok:
                 if not busy_ok:
                     initrd_ok = False
                     initrd_detail.append(f"busybox: {busy_reason}")
-            # 5 sampled modules from the manifest
+            # 5 sampled modules from the manifest.  The manifest uses the
+            # distro /usr/lib/modules paths, while make-initrd.sh installs
+            # them into the busybox layout /lib/modules: map accordingly.
             manifest = os.path.join(META, "initrd-modules.txt")
             with open(manifest, "r", encoding="utf-8") as f:
                 mod_paths = [l.strip() for l in f
                              if l.startswith(f"/usr/lib/modules/{KVER}/")]
+
+            def cpio_name(manifest_path):
+                name = manifest_path.lstrip("/")
+                if name.startswith("usr/lib/"):
+                    name = name[len("usr/"):]
+                return name
+
             sample = random.Random(20261004).sample(
                 mod_paths, min(5, len(mod_paths)))
             mod_total = len(sample)
             for p in sample:
-                if p.lstrip("/") in entries:
+                if cpio_name(p) in entries:
                     mod_hits += 1
                 else:
                     initrd_ok = False
