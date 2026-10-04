@@ -76,7 +76,7 @@ repo_state() {
     fi
 
     echo
-    echo "# container image"
+    echo "# container images"
     line "container-image" "${IMAGE}"
     if command -v podman >/dev/null 2>&1 && podman image exists "${IMAGE}" 2>/dev/null; then
         line "container-image-digest" \
@@ -86,6 +86,39 @@ repo_state() {
     else
         line "container-image-digest" "unavailable (image not present)"
         line "container-base-image" "docker.io/library/ubuntu:26.04 (from Containerfile)"
+    fi
+    line "base-image" "docker.io/library/ubuntu:26.04"
+    if command -v podman >/dev/null 2>&1 \
+        && podman image exists docker.io/library/ubuntu:26.04 2>/dev/null; then
+        line "base-image-digest" \
+            "$(podman image inspect docker.io/library/ubuntu:26.04 --format '{{.Digest}}' 2>/dev/null || echo unavailable)"
+    else
+        line "base-image-digest" "unavailable (image not present)"
+    fi
+
+    echo
+    echo "# podman image cache archives (OUT/podman-cache)"
+    found_cache=no
+    for c in "${OUT}"/podman-cache/*.tar.zst; do
+        [ -f "$c" ] || continue
+        found_cache=yes
+        line "image-cache-sha256-$(basename "$c")" "$(sha256sum "$c" | cut -d' ' -f1)"
+        line "image-cache-size-$(basename "$c")" "$(stat -c %s "$c")"
+    done
+    [ "${found_cache}" = yes ] || echo "(no cache archives)"
+
+    echo
+    echo "# incremental stages: SKIP/RUN of the last run and fingerprints"
+    if [ -f "${OUT}/staging/stamps/last-run.txt" ]; then
+        sed 's/^/last-run: /' "${OUT}/staging/stamps/last-run.txt"
+    else
+        echo "(staging/stamps/last-run.txt not found)"
+    fi
+    if [ -d "${OUT}/staging/stamps" ]; then
+        for s in "${OUT}/staging/stamps"/*.stamp; do
+            [ -f "$s" ] || continue
+            line "stage-fingerprint-$(basename "$s" .stamp)" "$(cat "$s")"
+        done
     fi
 
     echo
