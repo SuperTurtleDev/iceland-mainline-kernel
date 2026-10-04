@@ -54,9 +54,12 @@ RUN set -eux; \
         mkdir -p /opt/busybox-arm64/bin; \
         ln -s "${bb}" /opt/busybox-arm64/bin/busybox; \
     fi; \
-    file /opt/busybox-arm64/bin/busybox; \
-    file /opt/busybox-arm64/bin/busybox | grep -q 'aarch64'; \
-    file /opt/busybox-arm64/bin/busybox | grep -q 'statically linked'; \
+    # file(1) does not follow symlinks: on the normalized path it would
+    # report "symbolic link to ..." and the arch/linkage checks would fail.
+    # -L makes it dereference to the real ELF.
+    file -L /opt/busybox-arm64/bin/busybox; \
+    file -L /opt/busybox-arm64/bin/busybox | grep -q 'aarch64'; \
+    file -L /opt/busybox-arm64/bin/busybox | grep -q 'statically linked'; \
     #
     # --- record the build environment (key package versions) ---
     : > /opt/build-env.txt; \
