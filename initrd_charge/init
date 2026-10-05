@@ -186,8 +186,23 @@ respawn_shell /dev/tty0 &
 log "charge initrd up: 9 V/2 A PD session, telnet 192.168.42.42:23 (when on a host)"
 
 # --- 5. supervisor: charge telemetry + safety gates + telnetd keepalive -------
+# Power-supply properties flicker while the PD contract renegotiates
+# (online/status briefly drop, voltage_now reads 0 before the first
+# refresh), so every gate is DEBOUNCED: 3 consecutive violating samples
+# (15 s) before acting, unreadable/0 values skip the cycle, and recovery
+# re-engages the boost with hysteresis instead of staying on 5 V forever.
 STOP_SOC=90
 STOP_TEMP=430
+RESUME_SOC=85
+RESUME_TEMP=400
+DEBOUNCE=3
+
+engaged=0
+if [ -d "$P" ]; then
+    engaged=1
+fi
+bad=0
+bad_charger=0
 tick=0
 
 while :; do
@@ -198,32 +213,73 @@ while :; do
 
     [ -d "$BAT" ] || continue
 
-    on=$($BB cat "$USB/online" 2>/dev/null || echo 0)
+    # unreadable properties are a skip, not a violation
+    on=$($BB cat "$USB/online" 2>/dev/null || echo "")
+    [ -n "$on" ] || { report; continue; }
+
     if [ "$on" != 1 ]; then
-        boost_off "charger gone"
-        while [ "$($BB cat "$USB/online" 2>/dev/null || echo 0)" != 1 ]; do
-            sleep 5
-            pidof telnetd >/dev/null 2>&1 || start_telnetd
-        done
-        engage_boost && log "charger reattached: 9 V/2 A boost re-engaged"
-        sleep 3
+        bad_charger=$((bad_charger + 1))
+        if [ "$bad_charger" -ge "$DEBOUNCE" ]; then
+            boost_off "charger gone"
+            engaged=0
+            bad_charger=0
+            while [ "$($BB cat "$USB/online" 2>/dev/null || echo 0)" != 1 ]; do
+                sleep 5
+                pidof telnetd >/dev/null 2>&1 || start_telnetd
+            done
+            if engage_boost; then
+                engaged=1
+                log "charger reattached: 9 V/2 A boost re-engaged"
+                sleep 3
+            fi
+            report
+            continue
+        fi
+        report
+        continue
+    fi
+    bad_charger=0
+
+    soc=$($BB cat "$BAT/capacity" 2>/dev/null || echo "")
+    t=$($BB cat "$BAT/temp" 2>/dev/null || echo "")
+    st=$($BB cat "$BAT/status" 2>/dev/null || echo "")
+    v=$($BB cat "$USB/voltage_now" 2>/dev/null || echo "")
+    # skip the cycle on any unreadable value (psy refresh in flight)
+    if [ -z "$soc" ] || [ -z "$t" ] || [ -z "$st" ] || [ -z "$v" ] || [ "$v" = 0 ]; then
         report
         continue
     fi
 
-    soc=$($BB cat "$BAT/capacity" 2>/dev/null || echo 0)
-    t=$($BB cat "$BAT/temp" 2>/dev/null || echo 0)
-    st=$($BB cat "$BAT/status" 2>/dev/null)
-    v=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
-
+    violation=""
     if [ "$soc" -ge "$STOP_SOC" ]; then
-        boost_off "SOC ${soc}% >= ${STOP_SOC}%"
+        violation="SOC ${soc}% >= ${STOP_SOC}%"
     elif [ "$t" -ge "$STOP_TEMP" ] 2>/dev/null; then
-        boost_off "battery temp high ($(tdeg "$t")C)"
-    elif [ "$st" != "Charging" ] && [ "$st" != "Full" ]; then
-        boost_off "status=${st}"
+        violation="battery temp high ($(tdeg "$t")C)"
+    elif [ "$st" != "Charging" ] && [ "$st" != "Full" ] && [ "$st" != "Not charging" ]; then
+        violation="status=${st}"
     elif [ "$v" -lt 4500000 ] || [ "$v" -gt 12000000 ] 2>/dev/null; then
-        boost_off "vbus out of range ($(fmt "$v")V)"
+        violation="vbus out of range ($(fmt "$v")V)"
+    fi
+
+    if [ -n "$violation" ]; then
+        bad=$((bad + 1))
+        if [ "$bad" -ge "$DEBOUNCE" ]; then
+            boost_off "$violation (debounced ${bad} samples)"
+            engaged=0
+            bad=0
+        fi
+    else
+        bad=0
+        if [ "$engaged" = 0 ]; then
+            # resume only with margin (hysteresis), charger healthy
+            if [ "$soc" -le "$RESUME_SOC" ] && [ "$t" -le "$RESUME_TEMP" ] 2>/dev/null; then
+                if engage_boost; then
+                    engaged=1
+                    log "conditions recovered (SOC=${soc}% T=$(tdeg "$t")C): 9 V/2 A boost re-engaged"
+                    sleep 3
+                fi
+            fi
+        fi
     fi
 
     report
