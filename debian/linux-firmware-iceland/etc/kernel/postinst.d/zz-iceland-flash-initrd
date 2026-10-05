@@ -7,12 +7,16 @@
 set -e
 
 version="${1:-}"
-bootsrc="${2:-/boot}"
-img="$bootsrc/initrd.img-$version"
-# some rootfs images run mkinitramfs with an empty BOOTDIR and drop the
-# image at the filesystem root instead of /boot
-[ -f "$img" ] || img="/initrd.img-$version"
-[ -n "$version" ] && [ -f "$img" ] || exit 0
+[ -n "$version" ] || exit 0
+# kernel postinst.d convention: $2 is the kernel image path (the
+# initramfs-tools hook derives BOOTDIR with dirname "$2" and writes
+# initrd.img-$1 next to it); accept a bare directory for manual runs
+bootdir="${2:-/boot}"
+[ -d "$bootdir" ] || bootdir="$(dirname "$bootdir")"
+img="$bootdir/initrd.img-$version"
+# a missing image means initramfs-tools did not run or wrote elsewhere;
+# flashing nothing would silently boot the previous initrd, so fail
+[ -f "$img" ] || { echo "iceland: $img missing -- not flashing" >&2; exit 1; }
 
 part_dev() {
     for u in /sys/class/block/*/uevent; do

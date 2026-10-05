@@ -50,9 +50,13 @@ case "$1" in
         rm -f "$cfg"
 
         # initramfs-tools (sorted first) rebuilds initrd.img-$KVER, then
-        # zz-iceland-flash-initrd flashes it to the GPT initrd partition
+        # zz-iceland-flash-initrd flashes it to the GPT initrd partition.
+        # Kernel postinst.d convention: $1 = version, $2 = path of the
+        # kernel IMAGE -- the hooks derive the boot directory with
+        # dirname "$2" (passing /boot made them resolve "/" and generate
+        # //initrd.img-$KVER instead of /boot/initrd.img-$KVER)
         if [ -d /etc/kernel/postinst.d ]; then
-            run-parts --exit-on-error --arg="$KVER" --arg=/boot /etc/kernel/postinst.d
+            run-parts --exit-on-error --arg="$KVER" --arg="$img" /etc/kernel/postinst.d
         fi
         ;;
 esac

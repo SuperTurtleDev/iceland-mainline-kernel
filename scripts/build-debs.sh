@@ -93,15 +93,19 @@ mkdir -p "${T}/etc/initramfs-tools/hooks"
     printf '\n'
     echo 'echo "I: iceland hook: module set marked for install" >&2'
     echo '# dracut-install only includes firmware referenced by the modinfo of'
-    echo '# installed modules -- copy the curated boot set unconditionally'
+    echo '# installed modules -- copy the curated boot set unconditionally.'
+    echo '# DESTDIR is usr-merged (lib -> usr/lib), so use the canonical path.'
+    echo '# NOTE: mkinitramfs packs a 2-segment archive (uncompressed cpio with'
+    echo '# the .ko.zst files, then a zstd cpio with everything else, firmware'
+    echo '# included): verify with "3cpio --list", not grep or busybox cpio.'
     printf 'for f in'
     grep -E '^/usr/lib/firmware/' "${LIST}" \
         | sed 's|^/usr/lib/firmware/||' \
         | while IFS= read -r f; do printf ' \\\n    %s' "${f}"; done
     printf ';\ndo\n'
     printf '    if [ -f "/usr/lib/firmware/$f" ]; then\n'
-    printf '        mkdir -p "${DESTDIR}/lib/firmware/$(dirname "$f")"\n'
-    printf '        cp "/usr/lib/firmware/$f" "${DESTDIR}/lib/firmware/$f"\n'
+    printf '        mkdir -p "${DESTDIR}/usr/lib/firmware/$(dirname "$f")"\n'
+    printf '        cp "/usr/lib/firmware/$f" "${DESTDIR}/usr/lib/firmware/$f"\n'
     printf '    else\n'
     printf '        echo "W: iceland hook: firmware missing: $f" >&2\n'
     printf '    fi\ndone\n'
