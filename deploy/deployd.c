@@ -207,8 +207,9 @@ static int recv_sparse_rootfs(int sock, int out_fd, uint64_t imgsize)
     fprintf(stderr, "deployd: sparse v%d.%d blk=%u total=%" PRIu32 " chunks=%" PRIu32 "\n",
             major, minor, blk, tblk, nch);
 
-    // padding between the 28-byte fields we parsed and file_hdr_sz
-    uint32_t pad = fhs - 28;
+    // fields parsed above total 24 bytes (8 fields); the file header is
+    // fhs bytes (28 = ... + trailing crc u32): skip whatever remains
+    uint32_t pad = fhs - 24;
     while (pad--) {
         uint8_t b;
         if (readn(sock, &b, 1)) return E_IO;

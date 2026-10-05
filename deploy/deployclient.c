@@ -74,7 +74,19 @@ int main(int argc, char **argv)
         fprintf(stderr, "bad host: %s\n", host);
         return 2;
     }
-    if (connect(s, (struct sockaddr *)&a, sizeof(a))) { perror("connect"); return 2; }
+    // deployd starts right after the gadget in the initrd; the first
+    // connect may race it -- retry for up to ~60 s
+    int ctry;
+    for (ctry = 0; ; ctry++) {
+        if (connect(s, (struct sockaddr *)&a, sizeof(a)) == 0) break;
+        if (errno != ECONNREFUSED && errno != ETIMEDOUT) { perror("connect"); return 2; }
+        if (ctry >= 30) { fprintf(stderr, "deployclient: connect giving up\n"); return 2; }
+        fprintf(stderr, "deployclient: connect retry %d\n", ctry + 1);
+        close(s);
+        sleep(2);
+        s = socket(AF_INET, SOCK_STREAM, 0);
+        if (s < 0) { perror("socket"); return 2; }
+    }
     int one = 1;
     setsockopt(s, IPPROTO_TCP, TCP_NODELAY, &one, sizeof(one));
     fprintf(stderr, "deployclient: connected %s:%d\n", host, port);
