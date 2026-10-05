@@ -39,9 +39,10 @@ case "$1" in
         fi
 
         # cmdline for booting the Ubuntu rootfs; the Ubuntu initramfs has a
-        # full udev, so by-partlabel is resolvable there
+        # full udev, so by-partlabel is resolvable there.  Full debug set:
+        # the panel is the only console (MSM UART not routed out)
         cfg="$(mktemp)"
-        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0\n' > "$cfg"
+        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0 earlycon ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8\n' > "$cfg"
         if ! flash_partition bootcfg "$cfg"; then
             rm -f "$cfg"
             echo "iceland: flashing the bootcfg partition failed" >&2
