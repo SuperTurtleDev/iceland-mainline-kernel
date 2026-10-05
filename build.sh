@@ -15,6 +15,7 @@
 #                                  (9V/2A fixed PDO + console telemetry)
 #   scripts/build-deployd.sh         static ARM64 streaming deploy server
 #   scripts/make-deploy-initrd.sh  deploy initrds + initrd-partition containers
+#   scripts/build-deploy-tools.sh     host makeblob/deployclient + ramdeploy file set
 #   scripts/make-deploy-net-initrd.sh  TINY net-deploy initrds (TestBootApp RAM boot;
 #                                  rootfs+debs stream over NCM to deployd)
 #                                  ([size]initrd[size]deb..., debs loaded off
@@ -41,7 +42,7 @@ OUT="$(cd "${OUT}" && pwd)"
 RUNIN="${META}/../podman_container/runin.sh"
 DATA="${OUT}/podman-data"
 
-STAGES=(build-kernel pack-headers build-oot build-debs build-deployd make-initrd make-charge-initrd make-deploy-initrd make-deploy-net-initrd pack-images)
+STAGES=(build-kernel pack-headers build-oot build-debs build-deployd make-initrd make-charge-initrd make-deploy-initrd make-deploy-net-initrd build-deploy-tools pack-images)
 
 log() { printf '[build.sh] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }
