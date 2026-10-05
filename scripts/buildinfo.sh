@@ -132,7 +132,6 @@ repo_state() {
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
-        initrd_deploy_release.img initrd_deploy_debug.img \
         initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst SHA256SUMS; do
         if [ -f "${OUT}/${f}" ]; then
             line "artifact-sha256-${f}" "$(sha256sum "${OUT}/${f}" | cut -d' ' -f1)"

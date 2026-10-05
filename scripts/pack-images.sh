@@ -93,13 +93,6 @@ for f in initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst; do
     [ -f "${OUT}/$f" ] || die "missing $f (run make-deploy-net-initrd first)"
 done
 
-# --- deploy containers ------------------------------------------------------------
-# Already self-describing blob chains ([u32]initrd[u32]deb...): no extra
-# prefix here, only presence + checksums
-for f in initrd_deploy_release.img initrd_deploy_debug.img; do
-    [ -f "${OUT}/$f" ] || die "missing $f (run make-deploy-initrd first)"
-done
-
 # --- checksums ----------------------------------------------------------------------------
 (
     cd "${OUT}"
@@ -107,7 +100,6 @@ done
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
-        initrd_deploy_release.img initrd_deploy_debug.img \
         initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst \
         debs/*.deb > SHA256SUMS
 )
