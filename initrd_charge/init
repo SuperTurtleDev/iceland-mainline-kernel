@@ -1,0 +1,230 @@
+#!/bin/sh
+# iceland charge initrd /init (busybox ash)
+#
+# The debug initrd (full curated module + firmware set, USB NCM/telnet
+# debugging, console shells) plus a 9 V / 2 A fixed-PDO charging session
+# driven by the out-of-tree charge_boost_lite module: negotiate the PD
+# contract right after the module set loads, then report the real numbers
+# (SOC, battery and vbus voltage/current, temperature) on the console
+# every 5 s.  Safety gates mirror oot/charge_boost/pd-boost.sh: stop PD
+# at SOC >= 90 %, battery temp >= 43.0 C, abnormal vbus, charger gone;
+# rmmod always restores the 5 V baseline and a reattach re-engages.
+
+BB=/bin/busybox
+
+log() {
+    echo "[charge] $*" >/dev/console 2>&1 || echo "[charge] $*" 2>/dev/null || true
+}
+
+# --- 1. base filesystems ------------------------------------------------------
+$BB mkdir -p /proc /sys /dev /dev/pts /tmp /run \
+    /bin /sbin /usr/bin /usr/sbin /etc /lib /root
+
+$BB grep -q ' /proc ' /proc/mounts 2>/dev/null || $BB mount -t proc proc /proc || log "mount /proc failed"
+$BB grep -q ' /sys ' /proc/mounts 2>/dev/null || $BB mount -t sysfs sysfs /sys || log "mount /sys failed"
+$BB grep -q ' /dev ' /proc/mounts 2>/dev/null || $BB mount -t devtmpfs devtmpfs /dev || log "mount /dev failed"
+$BB mkdir -p /dev/pts   # devtmpfs shadows the cpio /dev, recreate it
+$BB grep -q ' /dev/pts ' /proc/mounts 2>/dev/null || $BB mount -t devpts devpts /dev/pts || log "mount /dev/pts failed"
+
+if [ -c /dev/console ]; then
+    exec 0</dev/console 1>/dev/console 2>&1 || true
+fi
+
+$BB --install -s || log "busybox --install failed"
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+hostname sm8850-charge 2>/dev/null || true
+
+# --- 1.5 kernel modules (curated set incl. charge_boost_lite) ------------------
+# /etc/modules.order lists every initrd module with its dependencies first
+# (topological sort of modules.dep).  charge_boost_lite rides along in the
+# set; its PD parameters are (re)applied explicitly after the load.
+KVER="$(ls /lib/modules 2>/dev/null | head -1)"
+if [ -n "${KVER}" ] && [ -f /etc/modules.order ]; then
+    total=0; loaded=0
+    while IFS= read -r mod; do
+        case "$mod" in ''|'#'*) continue ;; esac
+        total=$((total + 1))
+        m="${mod##*/}"
+        m="${m%.ko}"
+        if modprobe "$m" >/dev/null 2>&1 \
+           || insmod "/lib/modules/${KVER}/${mod}" >/dev/null 2>&1; then
+            loaded=$((loaded + 1))
+        fi
+    done < /etc/modules.order
+    log "modules: ${loaded}/${total} loaded from /etc/modules.order"
+else
+    log "no /etc/modules.order or no /lib/modules; skipping module loading"
+fi
+
+BAT=/sys/class/power_supply/qcom-battmgr-bat
+USB=/sys/class/power_supply/qcom-battmgr-usb
+P=/sys/module/charge_boost_lite/parameters
+MOD="/lib/modules/${KVER}/updates/charge_boost_lite.ko"
+
+# --- 2. charging: wait for battmgr, engage 9 V / 2 A fixed PDO -----------------
+i=0
+while [ $i -lt 30 ] && { [ ! -d "$BAT" ] || [ ! -d "$USB" ]; }; do
+    sleep 1; i=$((i + 1))
+done
+[ -d "$BAT" ] || log "ERROR: $BAT never appeared -- 5 V baseline only"
+
+fmt() { $BB awk -v u="$1" 'BEGIN{printf "%.3f", u/1000000}' 2>/dev/null || echo "?"; }
+tdeg() { $BB awk -v t="$1" 'BEGIN{printf "%.1f", t/10}' 2>/dev/null || echo "?"; }
+
+engage_boost() {
+    if [ ! -d "$USB" ]; then
+        return 1
+    fi
+    if [ ! -d "$P" ] && [ -f "$MOD" ]; then
+        insmod "$MOD" pdo_mv=9000 curr_uv=2000000 apply=1 2>/dev/null \
+            || log "insmod charge_boost_lite failed"
+    fi
+    if [ -d "$P" ]; then
+        echo 9000 > "$P/pdo_mv" 2>/dev/null
+        echo 2000000 > "$P/curr_uv" 2>/dev/null
+        return 0
+    fi
+    return 1
+}
+
+boost_off() {
+    if lsmod 2>/dev/null | grep -q charge_boost_lite; then
+        rmmod charge_boost_lite 2>/dev/null && log "$1 -- PD off, 5 V baseline"
+    fi
+}
+
+report() {
+    [ -d "$BAT" ] || return
+    soc=$($BB cat "$BAT/capacity" 2>/dev/null || echo -1)
+    vb=$($BB cat "$BAT/voltage_now" 2>/dev/null || echo 0)
+    ib=$($BB cat "$BAT/current_now" 2>/dev/null || echo 0)
+    vu=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
+    iu=$($BB cat "$USB/current_now" 2>/dev/null || echo 0)
+    t=$($BB cat "$BAT/temp" 2>/dev/null || echo 0)
+    st=$($BB cat "$BAT/status" 2>/dev/null || echo "?")
+    on=$($BB cat "$USB/online" 2>/dev/null || echo 0)
+    log "SOC=${soc}%  Vbat=$(fmt "$vb")V  Ibat=$(fmt "$ib")A  Vbus=$(fmt "$vu")V  Ibus=$(fmt "$iu")A  T=$(tdeg "$t")C  status=${st}  online=${on}"
+}
+
+if engage_boost; then
+    log "charge_boost_lite: 9 V fixed PDO, input limit 2 A requested"
+    sleep 3
+    vu=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
+    if [ "$vu" -ge 7500000 ] 2>/dev/null; then
+        log "PD boost engaged: vbus=$(fmt "$vu")V"
+    else
+        log "PD boost NOT confirmed (vbus=$(fmt "$vu")V) -- 5 V baseline"
+    fi
+fi
+report
+
+# --- 3. usb gadget network (configfs) -----------------------------------------
+usbnet=ncm
+for arg in $(cat /proc/cmdline 2>/dev/null); do
+    case "$arg" in usbnet=*) usbnet="${arg#usbnet=}";; esac
+done
+case "$usbnet" in ncm|ecm|rndis) ;; *) usbnet=ncm ;; esac
+
+mkdir -p /sys/kernel/config || true
+grep -q ' /sys/kernel/config ' /proc/mounts 2>/dev/null || \
+    mount -t configfs configfs /sys/kernel/config || log "mount configfs failed"
+
+G=/sys/kernel/config/usb_gadget/g1
+if mkdir -p "$G" 2>/dev/null; then
+    echo 0x18d1 > "$G/idVendor" 2>/dev/null || true
+    echo 0xd001 > "$G/idProduct" 2>/dev/null || true
+    mkdir -p "$G/strings/0x409" "$G/functions/${usbnet}.usb0" "$G/configs/c.1"
+    echo "Oneplus Pad 4 mainline" > "$G/strings/0x409/manufacturer" 2>/dev/null || true
+    echo "sm8850 charge"         > "$G/strings/0x409/product"      2>/dev/null || true
+    echo "iceland-charge"        > "$G/strings/0x409/serialnumber" 2>/dev/null || true
+    ln -sf "$G/functions/${usbnet}.usb0" "$G/configs/c.1/${usbnet}.usb0" 2>/dev/null || true
+    i=0
+    while [ $i -lt 20 ]; do
+        udc="$(ls /sys/class/udc 2>/dev/null | head -1)"
+        [ -n "$udc" ] && break
+        sleep 0.5; i=$((i + 1))
+    done
+    if [ -n "$udc" ]; then
+        echo "$udc" > "$G/UDC" && log "gadget g1 bound to UDC $udc (${usbnet})" \
+            || log "failed to bind UDC $udc"
+    else
+        log "no UDC found; usb network unavailable"
+    fi
+    i=0
+    while [ $i -lt 20 ]; do
+        [ -d /sys/class/net/usb0 ] && break
+        sleep 0.5; i=$((i + 1))
+    done
+    ifconfig usb0 192.168.42.42 netmask 255.255.255.0 up 2>/dev/null \
+        && log "usb0 up at 192.168.42.42/24" || log "ifconfig usb0 failed"
+fi
+
+touch /tmp/udhcpd.leases 2>/dev/null || true
+if [ -f /etc/udhcpd.conf ]; then
+    udhcpd /etc/udhcpd.conf && log "udhcpd started" || log "udhcpd failed"
+fi
+start_telnetd() {
+    telnetd -p 23 -l /bin/sh 2>/dev/null && log "telnetd on :23" || true
+}
+start_telnetd
+
+# --- 4. interactive shells on serial + framebuffer console ---------------------
+respawn_shell() {
+    con="$1"
+    i=0
+    while [ $i -lt 10 ] && [ ! -c "$con" ]; do sleep 0.5; i=$((i + 1)); done
+    [ -c "$con" ] || { log "console $con not available"; return; }
+    log "shell on $con"
+    while :; do
+        setsid cttyhack /bin/sh < "$con" > "$con" 2>&1
+        sleep 1
+    done
+}
+respawn_shell /dev/ttyMSM0 &
+respawn_shell /dev/tty0 &
+
+log "charge initrd up: 9 V/2 A PD session, telnet 192.168.42.42:23 (when on a host)"
+
+# --- 5. supervisor: charge telemetry + safety gates + telnetd keepalive -------
+STOP_SOC=90
+STOP_TEMP=430
+tick=0
+
+while :; do
+    sleep 5
+    tick=$((tick + 1))
+
+    pidof telnetd >/dev/null 2>&1 || start_telnetd
+
+    [ -d "$BAT" ] || continue
+
+    on=$($BB cat "$USB/online" 2>/dev/null || echo 0)
+    if [ "$on" != 1 ]; then
+        boost_off "charger gone"
+        while [ "$($BB cat "$USB/online" 2>/dev/null || echo 0)" != 1 ]; do
+            sleep 5
+            pidof telnetd >/dev/null 2>&1 || start_telnetd
+        done
+        engage_boost && log "charger reattached: 9 V/2 A boost re-engaged"
+        sleep 3
+        report
+        continue
+    fi
+
+    soc=$($BB cat "$BAT/capacity" 2>/dev/null || echo 0)
+    t=$($BB cat "$BAT/temp" 2>/dev/null || echo 0)
+    st=$($BB cat "$BAT/status" 2>/dev/null)
+    v=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
+
+    if [ "$soc" -ge "$STOP_SOC" ]; then
+        boost_off "SOC ${soc}% >= ${STOP_SOC}%"
+    elif [ "$t" -ge "$STOP_TEMP" ] 2>/dev/null; then
+        boost_off "battery temp high ($(tdeg "$t")C)"
+    elif [ "$st" != "Charging" ] && [ "$st" != "Full" ]; then
+        boost_off "status=${st}"
+    elif [ "$v" -lt 4500000 ] || [ "$v" -gt 12000000 ] 2>/dev/null; then
+        boost_off "vbus out of range ($(fmt "$v")V)"
+    fi
+
+    report
+done

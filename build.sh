@@ -11,6 +11,8 @@
 #   scripts/build-oot.sh           charge_boost against headers.tar.gz + depmod
 #   scripts/build-debs.sh          4 debian packages (image/modules/headers/fw)
 #   scripts/make-initrd.sh         debug initrd (bare .ko subset, modules.order)
+#   scripts/make-charge-initrd.sh  charge initrd = debug base + charge_boost_lite
+#                                  (9V/2A fixed PDO + console telemetry)
 #   scripts/make-deploy-initrd.sh  deploy initrds + initrd-partition containers
 #                                  ([size]initrd[size]deb..., debs loaded off
 #                                  the partition at runtime to save BL memory)
@@ -36,7 +38,7 @@ OUT="$(cd "${OUT}" && pwd)"
 RUNIN="${META}/../podman_container/runin.sh"
 DATA="${OUT}/podman-data"
 
-STAGES=(build-kernel pack-headers build-oot build-debs make-initrd make-deploy-initrd pack-images)
+STAGES=(build-kernel pack-headers build-oot build-debs make-initrd make-charge-initrd make-deploy-initrd pack-images)
 
 log() { printf '[build.sh] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }

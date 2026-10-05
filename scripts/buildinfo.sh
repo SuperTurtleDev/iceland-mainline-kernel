@@ -129,7 +129,7 @@ repo_state() {
     echo
     echo "# artifacts"
     for f in \
-        kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
+        kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
         initrd_deploy_release.img initrd_deploy_debug.img SHA256SUMS; do

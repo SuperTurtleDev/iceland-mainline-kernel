@@ -16,6 +16,7 @@
 #  9) debs/ contains the four packages, dpkg-deb --info clean
 # 10) deploy containers: [u32]initrd[u32]deb... chain consumes the file
 #     exactly; inner initrd lists init/busybox/sh/udhcpd.conf/deploy-mode
+# 11) initrd_charge.img: prefix + inner cpio (debug base + charge_boost_lite)
 set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -106,6 +107,7 @@ def elf_static_aarch64(b):
 
 
 imgs = ["kernel.img", "dtb.img", "initrd_debug.img", "bootcfg_debug.img",
+        "initrd_charge.img",
         "bootcfg/kernel.img", "bootcfg_debug/kernel_debug.img"]
 
 # ---- 1) length prefix ---------------------------------------------------------
@@ -340,6 +342,37 @@ for rel in ("initrd_deploy_release.img", "initrd_deploy_debug.img"):
     if ok and not any(rel in d for d in detail):
         detail.append(f"{rel}: chain ok, initrd {blobs[0][1]}B + {len(blobs) - 1} debs")
 check(10, "deploy containers: blob chain + inner initrd (init/busybox/deploy-mode)",
+      ok, "; ".join(detail))
+
+# ---- 11) charge initrd --------------------------------------------------------------
+detail = []
+ok = True
+_, cpayload = read_payload(os.path.join(OUT, "initrd_charge.img"))
+with tempfile.TemporaryDirectory() as td:
+    zst, cpio = os.path.join(td, "c.cpio.zst"), os.path.join(td, "c.cpio")
+    with open(zst, "wb") as f:
+        f.write(cpayload)
+    r = subprocess.run(["zstd", "-q", "-d", "-T0", zst, "-o", cpio],
+                       capture_output=True, text=True)
+    entries = {}
+    if r.returncode != 0:
+        ok = False
+        detail.append(f"zstd -d failed: {r.stderr.strip()}")
+    else:
+        with open(cpio, "rb") as f:
+            cdata = f.read()
+        entries = parse_cpio_newc(cdata)
+        for need in ("init", "bin/busybox", "bin/sh", "etc/udhcpd.conf",
+                     "etc/modules.order",
+                     f"lib/modules/{KVER}/updates/charge_boost_lite.ko",
+                     f"lib/modules/{KVER}/modules.dep"):
+            if need not in entries:
+                ok = False
+                detail.append(f"missing {need}")
+        if ok:
+            n_ko = sum(1 for e in entries if e.endswith(".ko"))
+            detail.append(f"{len(entries)} entries, {n_ko} bare .ko incl. charge_boost_lite")
+check(11, "initrd_charge.img: debug base + charge_boost_lite + modules.order",
       ok, "; ".join(detail))
 
 # ---- summary ----------------------------------------------------------------------------
