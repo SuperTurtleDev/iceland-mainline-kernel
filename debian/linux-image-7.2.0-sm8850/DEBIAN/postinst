@@ -41,7 +41,7 @@ case "$1" in
         # cmdline for booting the Ubuntu rootfs; the Ubuntu initramfs has a
         # full udev, so by-partlabel is resolvable there
         cfg="$(mktemp)"
-        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0 console=ttyMSM0,115200n8\n' > "$cfg"
+        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0\n' > "$cfg"
         if ! flash_partition bootcfg "$cfg"; then
             rm -f "$cfg"
             echo "iceland: flashing the bootcfg partition failed" >&2

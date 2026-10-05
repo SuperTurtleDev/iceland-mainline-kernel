@@ -16,7 +16,7 @@ O="${OUT}/kbuild"
 KVER="7.2.0-sm8850"
 MODROOT="${OUT}/staging/modroot"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
-BOOTCFG_DEBUG_CMDLINE='cmdline=console=tty0 console=ttyMSM0,115200n8 earlycon ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8'
+BOOTCFG_DEBUG_CMDLINE='cmdline=console=tty0 earlycon ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8'
 
 log() { printf '[pack-images] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }
