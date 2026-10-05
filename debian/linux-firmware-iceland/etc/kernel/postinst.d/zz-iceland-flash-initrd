@@ -9,6 +9,9 @@ set -e
 version="${1:-}"
 bootsrc="${2:-/boot}"
 img="$bootsrc/initrd.img-$version"
+# some rootfs images run mkinitramfs with an empty BOOTDIR and drop the
+# image at the filesystem root instead of /boot
+[ -f "$img" ] || img="/initrd.img-$version"
 [ -n "$version" ] && [ -f "$img" ] || exit 0
 
 part_dev() {
