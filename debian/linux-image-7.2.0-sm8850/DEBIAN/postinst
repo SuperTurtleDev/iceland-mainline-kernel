@@ -38,11 +38,12 @@ case "$1" in
             exit 1
         fi
 
-        # cmdline for booting the Ubuntu rootfs; the Ubuntu initramfs has a
-        # full udev, so by-partlabel is resolvable there.  Full debug set:
-        # the panel is the only console (MSM UART not routed out)
+        # production cmdline for booting the Ubuntu rootfs; the Ubuntu
+        # initramfs has a full udev, so by-partlabel is resolvable there.
+        # No debug verbosity; earlycon can never show anything (the MSM
+        # UART is unrouted and there is no early display without an EFI fb)
         cfg="$(mktemp)"
-        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0 earlycon ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8\n' > "$cfg"
+        printf 'cmdline=root=/dev/disk/by-partlabel/rootfs ro rootwait console=tty0 clk_ignore_unused pd_ignore_unused\n' > "$cfg"
         if ! flash_partition bootcfg "$cfg"; then
             rm -f "$cfg"
             echo "iceland: flashing the bootcfg partition failed" >&2
