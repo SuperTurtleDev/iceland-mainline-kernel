@@ -69,18 +69,40 @@ mkdir -p "${T}/usr/lib/firmware" "${T}/usr/lib/linux-image-${KVER}"
 rsync -a --exclude='.git' "${SRC}/firmware/" "${T}/usr/lib/firmware/"
 cp "${O}/${DTB_REL}" "${T}/usr/lib/linux-image-${KVER}/kaanapali-oneplus-iceland.dtb"
 
-# generated initramfs-tools hook carrying the curated boot module set
+# generated initramfs-tools hook: curated boot module set + explicit
+# firmware copy (mkinitramfs only auto-includes firmware referenced by the
+# modinfo of modules that actually made it into the image, so the curated
+# set is copied unconditionally; module-add failures are counted and
+# reported -- an entirely failed set aborts the initramfs build)
 mkdir -p "${T}/etc/initramfs-tools/hooks"
 {
     echo '#!/bin/sh'
     echo '# initramfs-tools build hook -- GENERATED from initrd-modules.txt by'
     echo '# scripts/build-debs.sh; do not edit.  Adds the curated iceland boot'
-    echo '# module set (conf.d/iceland sets MODULES=list to keep the rest out).'
+    echo '# module set (conf.d/iceland sets MODULES=list to keep the rest out)'
+    echo '# and copies the curated boot firmware explicitly.'
+    echo 'n_fail=0; n_total=0'
     printf 'for m in'
     grep -E "^/usr/lib/modules/${KVER}/.*\.ko\.zst$" "${LIST}" \
         | sed 's|.*/||; s|\.ko\.zst$||' \
         | while IFS= read -r m; do printf ' \\\n    %s' "${m}"; done
-    printf ';\ndo\n    manual_add_module "$m" 2>/dev/null || true\ndone\n'
+    printf ';\ndo\n    n_total=$((n_total + 1))\n'
+    printf '    manual_add_module "$m" \\\n'
+    printf '        || { echo "W: iceland hook: module $m not added" >&2; n_fail=$((n_fail + 1)); }\ndone\n'
+    echo '[ "$n_fail" -lt "$n_total" ] || { echo "E: iceland hook: every module failed to add" >&2; exit 1; }'
+    echo "echo \"I: iceland hook: modules added, \$((n_total - n_fail))/\$n_total ok\" >&2"
+    printf 'for f in'
+    grep -E '^/usr/lib/firmware/' "${LIST}" \
+        | sed 's|^/usr/lib/firmware/||' \
+        | while IFS= read -r f; do printf ' \\\n    %s' "${f}"; done
+    printf ';\ndo\n'
+    printf '    if [ -f "/usr/lib/firmware/$f" ]; then\n'
+    printf '        mkdir -p "${DESTDIR}/lib/firmware/$(dirname "$f")"\n'
+    printf '        cp "/usr/lib/firmware/$f" "${DESTDIR}/lib/firmware/$f" \\\n'
+    printf '            || echo "W: iceland hook: firmware copy failed: $f" >&2\n'
+    printf '    else\n'
+    printf '        echo "W: iceland hook: firmware missing: $f" >&2\n'
+    printf '    fi\ndone\n'
 } > "${T}/etc/initramfs-tools/hooks/iceland"
 
 # dpkg-deb archives the mode bits as they are: make scripts executable
