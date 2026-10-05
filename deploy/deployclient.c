@@ -99,7 +99,9 @@ int main(int argc, char **argv)
         if (fread(hdr, 1, 8, bf) != 8) { fprintf(stderr, "deployclient: blob truncated\n"); return 1; }
         uint64_t size = 0;
         for (int i = 7; i >= 0; i--) size = (size << 8) | hdr[i];
-        if (size == 0) {
+        if (size == 0 && blob > 0) {
+            // terminator (frame 0 with size 0 is the "no rootfs" marker
+            // and was already forwarded when it was read)
             if (sendall(s, hdr, 8)) return 1;
             uint32_t ack;
             if (recv_ack(s, &ack)) return 1;
@@ -111,8 +113,17 @@ int main(int argc, char **argv)
         }
 
         fprintf(stderr, "deployclient: blob %u (%" PRIu64 " bytes)%s\n",
-                blob, size, blob == 0 ? " [sparse rootfs]" : "");
+                blob, size,
+                blob == 0 ? (size ? " [sparse rootfs]" : " [no rootfs: packages only]") : "");
         if (sendall(s, hdr, 8)) return 1;
+        if (size == 0) {
+            uint32_t ack;
+            if (recv_ack(s, &ack)) return 1;
+            if (ack) { fprintf(stderr, "deployclient: no-rootfs marker rejected (%u)\n", ack); return 1; }
+            fprintf(stderr, "deployclient: blob 0 ack OK (package-only)\n");
+            blob++;
+            continue;
+        }
 
         uint64_t left = size;
         while (left) {

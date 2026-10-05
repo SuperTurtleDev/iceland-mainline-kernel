@@ -332,6 +332,15 @@ int main(int argc, char **argv)
     for (;;) {
         uint64_t size;
         if (recv_u64(c, &size)) { fprintf(stderr, "deployd: header read failed\n"); exitcode = E_IO; break; }
+        if (blob == 0 && size == 0) {
+            // first frame with size 0 = "no rootfs" -- package-only
+            // update onto the existing rootfs; the stream still ends with
+            // a regular [u64 0] terminator frame
+            send_u32(c, OK);
+            fprintf(stderr, "deployd: rootfs blob empty -- package-only update\n");
+            blob++;
+            continue;
+        }
         if (size == 0) {
             send_u32(c, OK);
             fprintf(stderr, "deployd: terminator received, transfer complete\n");

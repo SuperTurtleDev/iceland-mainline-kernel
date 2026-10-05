@@ -70,13 +70,20 @@ int main(int argc, char **argv)
 {
     const char *out = "deploy.blob";
     int first = 1;
+    int no_rootfs = 0;
 
     if (argc >= 3 && strcmp(argv[1], "-o") == 0) {
         out = argv[2];
         first = 3;
     }
+    if (first < argc && strcmp(argv[first], "--no-rootfs") == 0) {
+        // emit a size-0 first frame: deployd skips the rootfs write and
+        // the stream becomes a packages-only update
+        no_rootfs = 1;
+        first++;
+    }
     if (argc - first < 1) {
-        fprintf(stderr, "usage: %s [-o deploy.blob] <sparse-rootfs.img> [<deb> ...]\n", argv[0]);
+        fprintf(stderr, "usage: %s [-o deploy.blob] [--no-rootfs] <sparse-rootfs.img> [<deb> ...]\n", argv[0]);
         return 2;
     }
 
@@ -85,6 +92,11 @@ int main(int argc, char **argv)
     if (!o) { perror(out); return 1; }
 
     static unsigned char buf[WINDOW];
+
+    if (no_rootfs) {
+        put_u64(o, 0);
+        fprintf(stderr, "makeblob: [0] <no rootfs -- packages-only update>\n");
+    }
 
     for (int i = first; i < argc; i++) {
         FILE *f = fopen(argv[i], "rb");
