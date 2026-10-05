@@ -68,6 +68,7 @@ while IFS= read -r line; do
 done < "${LIST}"
 
 # the charging module joins the same set, as a bare .ko under updates/
+mkdir -p "${ROOT}/${KMODDIR}/updates"
 zstd -q -d -f "${MODROOT}/lib/modules/${KVER}/updates/charge_boost_lite.ko.zst" \
     -o "${ROOT}/${KMODDIR}/updates/charge_boost_lite.ko"
 n_mod=$((n_mod + 1))
