@@ -45,14 +45,6 @@ mkdir -p "${T}/DEBIAN"
 cp -a "${SRC}/debian/linux-modules-${KVER}/DEBIAN/." "${T}/DEBIAN/"
 mkdir -p "${T}/usr"
 cp -a "${MODROOT}/lib" "${T}/usr/lib"
-# gunyah auto-load config + the verified VM smoke-test tools
-mkdir -p "${T}/etc/modules-load.d" "${T}/usr/share/gunyah"
-cp "${SRC}/debian/linux-modules-${KVER}/etc/modules-load.d/gunyah.conf" \
-    "${T}/etc/modules-load.d/gunyah.conf"
-for f in gh_vmtest.py gh_trace.sh; do
-    [ -f "${SRC}/linux/tools/virt/gunyah/$f" ] \
-        && cp "${SRC}/linux/tools/virt/gunyah/$f" "${T}/usr/share/gunyah/$f"
-done
 
 # --- linux-headers -------------------------------------------------------------
 T="${S}/linux-headers"
