@@ -70,29 +70,30 @@ rsync -a --exclude='.git' "${SRC}/firmware/" "${T}/usr/lib/firmware/"
 cp "${O}/${DTB_REL}" "${T}/usr/lib/linux-image-${KVER}/kaanapali-oneplus-iceland.dtb"
 
 # generated initramfs-tools hook: curated boot module set + explicit
-# firmware copy (mkinitramfs only auto-includes firmware referenced by the
-# modinfo of modules that actually made it into the image, so the curated
-# set is copied unconditionally; module-add failures are counted and
-# reported -- an entirely failed set aborts the initramfs build)
+# firmware copy.  Follows the canonical hook contract (see hooks/kmod in
+# the initramfs-tools package): handle the "prereqs" probe pass, source
+# hook-functions, and mark modules with manual_add_modules -- the marks
+# propagate through the exported $__MODULES_TO_ADD file and mkinitramfs
+# installs them (deps + firmware included) via dracut-install in
+# apply_add_modules().  A hook WITHOUT the prereqs guard runs its whole
+# body during the probe pass and derails the mark/apply phasing.
 mkdir -p "${T}/etc/initramfs-tools/hooks"
 {
-    echo '#!/bin/sh'
+    echo '#!/bin/sh -e'
     echo '# initramfs-tools build hook -- GENERATED from initrd-modules.txt by'
-    echo '# scripts/build-debs.sh; do not edit.  Adds the curated iceland boot'
+    echo '# scripts/build-debs.sh; do not edit.  Marks the curated iceland boot'
     echo '# module set (conf.d/iceland sets MODULES=list to keep the rest out)'
     echo '# and copies the curated boot firmware explicitly.'
-    echo '#'
-    echo '# call_scripts() EXECUTES hooks as child processes and this'
-    echo '# initramfs-tools exports only variables -- the helper API has to be'
-    echo '# sourced here or manual_add_modules is "not found".'
-    echo '[ -n "${DESTDIR:-}" ] || { echo "E: iceland hook: DESTDIR not set" >&2; exit 1; }'
+    echo 'if [ "$1" = "prereqs" ]; then exit 0; fi'
     echo '. /usr/share/initramfs-tools/hook-functions'
     printf 'manual_add_modules'
     grep -E "^/usr/lib/modules/${KVER}/.*\.ko\.zst$" "${LIST}" \
         | sed 's|.*/||; s|\.ko\.zst$||' \
         | while IFS= read -r m; do printf ' \\\n    %s' "${m}"; done
     printf '\n'
-    echo 'echo "I: iceland hook: module set passed to manual_add_modules" >&2'
+    echo 'echo "I: iceland hook: module set marked for install" >&2'
+    echo '# dracut-install only includes firmware referenced by the modinfo of'
+    echo '# installed modules -- copy the curated boot set unconditionally'
     printf 'for f in'
     grep -E '^/usr/lib/firmware/' "${LIST}" \
         | sed 's|^/usr/lib/firmware/||' \
@@ -100,8 +101,7 @@ mkdir -p "${T}/etc/initramfs-tools/hooks"
     printf ';\ndo\n'
     printf '    if [ -f "/usr/lib/firmware/$f" ]; then\n'
     printf '        mkdir -p "${DESTDIR}/lib/firmware/$(dirname "$f")"\n'
-    printf '        cp "/usr/lib/firmware/$f" "${DESTDIR}/lib/firmware/$f" \\\n'
-    printf '            || echo "W: iceland hook: firmware copy failed: $f" >&2\n'
+    printf '        cp "/usr/lib/firmware/$f" "${DESTDIR}/lib/firmware/$f"\n'
     printf '    else\n'
     printf '        echo "W: iceland hook: firmware missing: $f" >&2\n'
     printf '    fi\ndone\n'
