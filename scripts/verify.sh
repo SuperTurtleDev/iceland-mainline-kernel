@@ -17,6 +17,7 @@
 # 10) deploy containers: [u32]initrd[u32]deb... chain consumes the file
 #     exactly; inner initrd lists init/busybox/sh/udhcpd.conf/deploy-mode
 # 11) initrd_charge.img: prefix + inner cpio (debug base + charge_boost_lite)
+# 12) net-deploy initrds: RAW zstd cpio (RAM-flashed) with static deployd
 set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -372,6 +373,56 @@ with tempfile.TemporaryDirectory() as td:
             n_ko = sum(1 for e in entries if e.endswith(".ko"))
             detail.append(f"{len(entries)} entries, {n_ko} bare .ko incl. charge_boost_lite")
 check(11, "initrd_charge.img: debug base + charge_boost_lite + modules.order",
+      ok, "; ".join(detail))
+
+# ---- 12) net-deploy initrds (RAW, RAM-flashed via TestBootApp) -------------------------
+detail = []
+ok = True
+for rel in ("initrd_deploy_net_release.cpio.zst", "initrd_deploy_net_debug.cpio.zst"):
+    path = os.path.join(OUT, rel)
+    if not os.path.isfile(path):
+        ok = False
+        detail.append(f"{rel}: missing")
+        continue
+    with open(path, "rb") as f:
+        head = f.read(4)
+    if head != b"\x28\xb5\x2f\xfd":  # zstd magic, NOT a u32 length prefix
+        ok = False
+        detail.append(f"{rel}: expected raw zstd payload")
+        continue
+    with tempfile.TemporaryDirectory() as td:
+        cpio = os.path.join(td, "n.cpio")
+        r = subprocess.run(["zstd", "-q", "-d", "-T0", path, "-o", cpio],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            ok = False
+            detail.append(f"{rel}: zstd -d failed")
+            continue
+        with open(cpio, "rb") as f:
+            entries = parse_cpio_newc(f.read())
+        for need in ("init", "bin/busybox", "bin/sh", "deployd", "etc/udhcpd.conf", "etc/deploy-mode"):
+            if need not in entries:
+                ok = False
+                detail.append(f"{rel}: missing {need}")
+        if "deployd" in entries:
+            off, size = entries["deployd"]
+            with open(cpio, "rb") as f:
+                f.seek(off)
+                blob = f.read(size)
+            good, reason = elf_static_aarch64(blob)
+            if not good:
+                ok = False
+                detail.append(f"{rel}: deployd not static aarch64 ({reason})")
+        mode_name = "debug" if "debug" in rel else "release"
+        off2, n2 = entries.get("etc/deploy-mode", (0, 0))
+        with open(cpio, "rb") as f:
+            f.seek(off2)
+            if f.read(n2).decode("utf-8", "replace").strip() != mode_name:
+                ok = False
+                detail.append(f"{rel}: deploy-mode mismatch")
+    if ok and not any(rel in d for d in detail):
+        detail.append(f"{rel}: raw zstd cpio + static deployd ok")
+check(12, "net-deploy initrds: raw (no prefix), busybox + static deployd + mode",
       ok, "; ".join(detail))
 
 # ---- summary ----------------------------------------------------------------------------

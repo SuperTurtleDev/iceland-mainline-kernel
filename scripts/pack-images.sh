@@ -88,6 +88,11 @@ tar --sort=name --owner=0 --group=0 --numeric-owner \
 [ -f "${OUT}/staging/initrd_charge.cpio.zst" ] || die "missing staging/initrd_charge.cpio.zst (run make-charge-initrd first)"
 prefix_img "${OUT}/staging/initrd_charge.cpio.zst" "${OUT}/initrd_charge.img"
 
+# --- net-deploy initrds (RAW, no prefix: RAM-flashed via TestBootApp) -------------
+for f in initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst; do
+    [ -f "${OUT}/$f" ] || die "missing $f (run make-deploy-net-initrd first)"
+done
+
 # --- deploy containers ------------------------------------------------------------
 # Already self-describing blob chains ([u32]initrd[u32]deb...): no extra
 # prefix here, only presence + checksums
@@ -103,6 +108,7 @@ done
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
         initrd_deploy_release.img initrd_deploy_debug.img \
+        initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst \
         debs/*.deb > SHA256SUMS
 )
 

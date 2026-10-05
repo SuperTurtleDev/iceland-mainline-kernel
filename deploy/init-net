@@ -1,0 +1,194 @@
+#!/bin/sh
+# iceland NET deploy initrd /init (busybox ash + deployd)
+#
+# Booted via TestBootApp RAM fastboot (kernel/dtb/bootcfg/initrd staged in
+# RAM, nothing touches the partitions).  This init brings up the NCM
+# gadget network and runs the C deploy server (/deployd): the host
+# streams [u64][sparse-rootfs][crc32][u64][deb][crc32]...[u64 0]; deployd
+# decodes the sparse rootfs straight onto the rootfs partition (bounded
+# memory) and stores the debs in /debs.  Afterwards the usual provision
+# runs (mount rootfs, dpkg, postinsts flash kernel/dtb/bootcfg/initrd
+# partitions) and the mode endgame applies:
+#   release: reboot into Ubuntu on success, stay on failure
+#   debug:   never reboot -- usbnet + telnet stay up for inspection
+
+BB=/bin/busybox
+
+log() {
+    # the LAST console= owns /dev/console; write the framebuffer too so
+    # userspace output is visible next to printk on the panel
+    echo "[netdeploy] $*" >/dev/tty0 2>/dev/null || true
+    echo "[netdeploy] $*" >/dev/console 2>&1 || echo "[netdeploy] $*" 2>/dev/null || true
+}
+
+# --- 1. base filesystems ---------------------------------------------------
+$BB mkdir -p /proc /sys /dev /dev/pts /tmp /run /etc /bin /sbin /usr/bin /usr/sbin /lib /root /debs
+$BB grep -q ' /proc ' /proc/mounts 2>/dev/null || $BB mount -t proc proc /proc || log "mount /proc failed"
+$BB grep -q ' /sys ' /proc/mounts 2>/dev/null || $BB mount -t sysfs sysfs /sys || log "mount /sys failed"
+$BB grep -q ' /dev ' /proc/mounts 2>/dev/null || $BB mount -t devtmpfs devtmpfs /dev || log "mount /dev failed"
+$BB mkdir -p /dev/pts
+$BB grep -q ' /dev/pts ' /proc/mounts 2>/dev/null || $BB mount -t devpts devpts /dev/pts || log "mount /dev/pts failed"
+$BB mount -t tmpfs tmpfs /tmp 2>/dev/null || true
+
+if [ -c /dev/console ]; then
+    exec 0</dev/console 1>/dev/console 2>&1 || true
+fi
+
+$BB --install -s || log "busybox --install failed"
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+hostname sm8850-netdeploy 2>/dev/null || true
+
+MODE=release
+[ -f /etc/deploy-mode ] && MODE="$($BB cat /etc/deploy-mode 2>/dev/null)"
+[ "$MODE" = debug ] || MODE=release
+
+# --- 2. partition lookup (no udev: PARTNAME from the kernel uevent) --------
+part_dev() {
+    for u in /sys/class/block/*/uevent; do
+        grep -q "^PARTNAME=$1\$" "$u" 2>/dev/null || continue
+        d="$(sed -n 's/^DEVNAME=//p' "$u")"
+        [ -n "$d" ] && { echo "/dev/$d"; return 0; }
+    done
+    return 1
+}
+
+# --- 3. usb gadget network FIRST (deployd rides on it) ---------------------
+usbnet=ncm
+for arg in $(cat /proc/cmdline 2>/dev/null); do
+    case "$arg" in usbnet=*) usbnet="${arg#usbnet=}";; esac
+done
+case "$usbnet" in ncm|ecm|rndis) ;; *) usbnet=ncm ;; esac
+
+mkdir -p /sys/kernel/config || true
+grep -q ' /sys/kernel/config ' /proc/mounts 2>/dev/null || \
+    mount -t configfs configfs /sys/kernel/config || log "mount configfs failed"
+
+G=/sys/kernel/config/usb_gadget/g1
+if mkdir -p "$G" 2>/dev/null; then
+    echo 0x18d1 > "$G/idVendor" 2>/dev/null || true
+    echo 0xd001 > "$G/idProduct" 2>/dev/null || true
+    mkdir -p "$G/strings/0x409" "$G/functions/${usbnet}.usb0" "$G/configs/c.1"
+    echo "Oneplus Pad 4 mainline" > "$G/strings/0x409/manufacturer" 2>/dev/null || true
+    echo "sm8850 netdeploy"      > "$G/strings/0x409/product"      2>/dev/null || true
+    echo "iceland-netdeploy"     > "$G/strings/0x409/serialnumber" 2>/dev/null || true
+    ln -sf "$G/functions/${usbnet}.usb0" "$G/configs/c.1/${usbnet}.usb0" 2>/dev/null || true
+    i=0
+    while [ $i -lt 20 ]; do
+        udc="$(ls /sys/class/udc 2>/dev/null | head -1)"
+        [ -n "$udc" ] && break
+        sleep 0.5; i=$((i + 1))
+    done
+    if [ -n "$udc" ]; then
+        echo "$udc" > "$G/UDC" && log "gadget bound to UDC $udc (${usbnet})" \
+            || log "failed to bind UDC $udc"
+    else
+        log "no UDC found -- deployd unreachable"
+    fi
+    i=0
+    while [ $i -lt 20 ]; do
+        [ -d /sys/class/net/usb0 ] && break
+        sleep 0.5; i=$((i + 1))
+    done
+    ifconfig usb0 192.168.42.42 netmask 255.255.255.0 up 2>/dev/null \
+        && log "usb0 up at 192.168.42.42/24" || log "ifconfig usb0 failed"
+fi
+
+touch /tmp/udhcpd.leases 2>/dev/null || true
+if [ -f /etc/udhcpd.conf ]; then
+    udhcpd /etc/udhcpd.conf && log "udhcpd started" || log "udhcpd failed"
+fi
+start_telnetd() {
+    telnetd -p 23 -l /bin/sh 2>/dev/null && log "telnetd on :23" || true
+}
+start_telnetd
+
+# --- 4. run the streaming deploy server -------------------------------------
+rdev="$(part_dev rootfs)"
+if [ -z "$rdev" ]; then
+    log "ERROR: rootfs partition not found"
+else
+    log "deployd: streaming rootfs -> $rdev, then provision debs"
+    log "HOST: scripts/deploy-send.py 192.168.42.42 5190 <sparse-rootfs> <debs...>"
+    /deployd 5190 "$rdev" /debs
+    rc=$?
+    log "deployd exit $rc"
+    if [ "$rc" = 0 ]; then
+        echo ok > /tmp/deploy.status
+    else
+        echo fail > /tmp/deploy.status
+    fi
+fi
+
+STATUS="$(cat /tmp/deploy.status 2>/dev/null || echo fail)"
+
+# --- 5. provision the debs (rootfs is fresh on disk now) ---------------------
+provision() {
+    mkdir -p /rootfs
+    if ! mount -t ext4 -o rw "$rdev" /rootfs; then
+        log "ERROR: cannot mount fresh rootfs"
+        return 1
+    fi
+    mkdir -p /rootfs/var/log /rootfs/root/kernel-debs
+
+    # known rootfs-image defect: the dhcpcd initramfs hook references a
+    # missing udev.so and aborts update-initramfs inside dpkg
+    if [ -f /rootfs/usr/share/initramfs-tools/hooks/dhcpcd ]; then
+        mv /rootfs/usr/share/initramfs-tools/hooks/dhcpcd \
+            /rootfs/root/dhcpcd-hook.disabled 2>/dev/null \
+            && log "disabled broken dhcpcd hook"
+    fi
+
+    mount -o bind /dev  /rootfs/dev  2>/dev/null || true
+    mount -o bind /proc /rootfs/proc 2>/dev/null || true
+    mount -o bind /sys  /rootfs/sys  2>/dev/null || true
+    chroot /rootfs resize2fs "$rdev" 2>&1 && log "resize2fs done" \
+        || log "WARNING: resize2fs nonzero (already grown?)"
+
+    mount -o bind /debs /rootfs/root/kernel-debs || { log "cannot stage debs"; return 1; }
+    if chroot /rootfs /usr/bin/env DEBIAN_FRONTEND=noninteractive \
+            /bin/sh -c 'dpkg -i /root/kernel-debs/blob-*.deb' 2>&1; then
+        log "dpkg provision OK (partitions updated by postinsts)"
+    else
+        log "ERROR: dpkg provision failed"
+        return 1
+    fi
+
+    umount /rootfs/root/kernel-debs 2>/dev/null || true
+    umount /rootfs/dev/pts 2>/dev/null || true
+    umount /rootfs/dev /rootfs/proc /rootfs/sys 2>/dev/null || true
+    umount /rootfs 2>/dev/null || umount -l /rootfs 2>/dev/null || true
+    return 0
+}
+
+if [ "$STATUS" = ok ]; then
+    provision || STATUS=fail
+    [ "$STATUS" = ok ] && echo ok > /tmp/deploy.status
+fi
+
+# --- 6. end game --------------------------------------------------------------
+respawn_shell() {
+    con="$1"
+    i=0
+    while [ $i -lt 10 ] && [ ! -c "$con" ]; do sleep 0.5; i=$((i + 1)); done
+    [ -c "$con" ] || return
+    log "shell on $con"
+    while :; do
+        setsid cttyhack /bin/sh < "$con" > "$con" 2>&1
+        sleep 1
+    done
+}
+
+if [ "$STATUS" = ok ] && [ "$MODE" = release ]; then
+    log "deploy OK (release) -- rebooting into Ubuntu"
+    sync; sleep 3; reboot -f
+fi
+
+[ "$STATUS" = ok ] && log "deploy OK ($MODE) -- staying up" \
+                  || log "deploy FAILED ($MODE) -- staying up"
+log "telnet 192.168.42.42:23 for inspection"
+respawn_shell /dev/tty0 &
+
+while :; do
+    sleep 10
+    pidof telnetd >/dev/null 2>&1 || start_telnetd
+done
