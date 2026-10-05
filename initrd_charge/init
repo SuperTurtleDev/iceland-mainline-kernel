@@ -71,17 +71,41 @@ done
 fmt() { $BB awk -v u="$1" 'BEGIN{printf "%.3f", u/1000000}' 2>/dev/null || echo "?"; }
 tdeg() { $BB awk -v t="$1" 'BEGIN{printf "%.1f", t/10}' 2>/dev/null || echo "?"; }
 
-engage_boost() {
+# Custom charging curve (device rated 55 W; fixed PDOs only):
+#     SOC  0- 5% :  9 V / 2 A
+#     SOC  5-40% : 12 V / 3 A
+#     SOC 40-80% :  9 V / 3 A
+#     SOC 80-90% :  9 V / 2 A
+#     SOC  >=90% :  5 V (baseline PDO, module stays loaded)
+tier_for() {
+    soc="$1"
+    if [ "$soc" -lt 5 ]; then
+        echo "9000 2000000"
+    elif [ "$soc" -lt 40 ]; then
+        echo "12000 3000000"
+    elif [ "$soc" -lt 80 ]; then
+        echo "9000 3000000"
+    elif [ "$soc" -lt 90 ]; then
+        echo "9000 2000000"
+    else
+        echo "5000 2000000"
+    fi
+}
+
+active_tier=""
+
+engage_tier() { # engage_tier <mv> <curr_uv>
+    mv="$1"; ua="$2"
     if [ ! -d "$USB" ]; then
         return 1
     fi
     if [ ! -d "$P" ] && [ -f "$MOD" ]; then
-        insmod "$MOD" pdo_mv=9000 curr_uv=2000000 apply=1 2>/dev/null \
+        insmod "$MOD" pdo_mv="$mv" curr_uv="$ua" apply=1 2>/dev/null \
             || log "insmod charge_boost_lite failed"
     fi
     if [ -d "$P" ]; then
-        echo 9000 > "$P/pdo_mv" 2>/dev/null
-        echo 2000000 > "$P/curr_uv" 2>/dev/null
+        echo "$mv" > "$P/pdo_mv" 2>/dev/null
+        echo "$ua" > "$P/curr_uv" 2>/dev/null
         return 0
     fi
     return 1
@@ -100,14 +124,16 @@ report() {
     log "SOC=${soc}%  Vbat=$(fmt "$vb")V  Ibat=$(fmt "$ib")A  Vbus=$(fmt "$vu")V  Ibus=$(fmt "$iu")A  T=$(tdeg "$t")C  status=${st}  online=${on}"
 }
 
-if engage_boost; then
-    log "charge_boost_lite: 9 V fixed PDO, input limit 2 A requested"
-    sleep 3
-    vu=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
-    if [ "$vu" -ge 7500000 ] 2>/dev/null; then
-        log "PD boost engaged: vbus=$(fmt "$vu")V"
-    else
-        log "PD boost NOT confirmed (vbus=$(fmt "$vu")V) -- 5 V baseline"
+# initial engagement: the tier for the CURRENT state of charge
+soc0=$($BB cat "$BAT/capacity" 2>/dev/null || echo "")
+if [ -n "$soc0" ] && [ "$soc0" -ge 0 ] 2>/dev/null; then
+    set -- $(tier_for "$soc0")
+    if engage_tier "$1" "$2"; then
+        active_tier="$1 $2"
+        log "charge curve: SOC=${soc0}% -> tier $(( $1 / 1000 ))V/$(( $2 / 1000000 ))A engaged"
+        sleep 3
+        vu=$($BB cat "$USB/voltage_now" 2>/dev/null || echo 0)
+        log "vbus now $(fmt "$vu")V"
     fi
 fi
 report
@@ -177,14 +203,14 @@ respawn_shell() {
 respawn_shell /dev/ttyMSM0 &
 respawn_shell /dev/tty0 &
 
-log "charge initrd up: 9 V/2 A PD session, telnet 192.168.42.42:23 (when on a host)"
+log "charge initrd up: custom PD curve (0-5%:9V/2A, 5-40%:12V/3A, 40-80%:9V/3A, 80-90%:9V/2A, >=90%:5V), telnet 192.168.42.42:23"
 
-# --- 5. supervisor: fixed 9 V / 2 A session + console telemetry ---------------
-# The boost module stays loaded for the WHOLE session -- no gates, no
-# unload.  A fixed PDO does not need PD keepalive (that is a PPS-only
-# requirement); whenever the charger is (re)attached the parameters are
-# re-sent, which re-negotiates the 9 V / 2 A contract.  Telemetry every
-# 5 s; telnetd kept alive alongside.
+# --- 5. supervisor: charge-curve state machine + console telemetry ------------
+# The boost module stays loaded for the WHOLE session -- no unload.  Each
+# cycle the tier for the current SOC is computed; a tier change re-sends
+# pdo_mv/curr_uv (the module re-negotiates on parameter writes).  A 1 %
+# deadband around each boundary keeps SOC jitter from flapping tiers.
+# Charger reattach re-engages the current tier.  Telemetry every 5 s.
 
 was_online=""
 if [ -d "$USB" ]; then
@@ -198,20 +224,37 @@ while :; do
     [ -d "$BAT" ] || continue
 
     on=$($BB cat "$USB/online" 2>/dev/null || echo "")
-
-    # re-assert the 9 V / 2 A contract on charger (re)attach
+    reattached=0
     if [ -n "$on" ] && [ "$on" = 1 ] && [ "$was_online" != 1 ]; then
-        if [ ! -d "$P" ] && [ -f "$MOD" ]; then
-            insmod "$MOD" pdo_mv=9000 curr_uv=2000000 apply=1 2>/dev/null \
-                && log "charger attached: charge_boost_lite loaded (9 V/2 A)"
-        elif [ -d "$P" ]; then
-            echo 9000 > "$P/pdo_mv" 2>/dev/null
-            echo 2000000 > "$P/curr_uv" 2>/dev/null
-            log "charger reattached: 9 V/2 A re-negotiated"
-        fi
-        sleep 3
+        reattached=1
+        sleep 3   # let the 5 V contract settle before requesting a PDO
     fi
     was_online="$on"
+
+    soc=$($BB cat "$BAT/capacity" 2>/dev/null || echo "")
+    if [ -n "$soc" ] && [ "$soc" -ge 0 ] 2>/dev/null && [ -n "$on" ] && [ "$on" = 1 ]; then
+        set -- $(tier_for "$soc")
+        want="$1 $2"
+        if [ "$want" != "$active_tier" ]; then
+            # deadband: skip the switch when SOC sits within 1 % of the
+            # boundary of the tier we are already in
+            case "$active_tier" in
+                "9000 2000000")  lo=0;   hi=6   ;;
+                "12000 3000000") lo=4;   hi=41  ;;
+                "9000 3000000")  lo=39;  hi=81  ;;
+                "5000 2000000")  lo=89;  hi=101 ;;
+                "")              lo=0;   hi=101 ;;   # first engagement
+            esac
+            if [ "$soc" -le "$lo" ] || [ "$soc" -ge "$hi" ] || [ "$reattached" = 1 ]; then
+                if engage_tier "$1" "$2"; then
+                    active_tier="$want"
+                    log "curve: SOC=${soc}% -> $(( $1 / 1000 ))V/$(( $2 / 1000000 ))A$( [ "$reattached" = 1 ] && echo ' (charger reattached)')"
+                fi
+            fi
+        elif [ "$reattached" = 1 ]; then
+            engage_tier "$1" "$2" && log "charger reattached: $(( $1 / 1000 ))V/$(( $2 / 1000000 ))A re-negotiated"
+        fi
+    fi
 
     report
 done
