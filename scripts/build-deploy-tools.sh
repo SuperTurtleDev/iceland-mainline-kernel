@@ -30,7 +30,7 @@ log "tools: makeblob + deployclient ($(du -h ${OUT}/tools/makeblob | cut -f1) / 
 # RAM boot file set (TestBootApp stages these verbatim: RAW, no prefixes)
 cp "${O}/arch/arm64/boot/Image" "${RAM}/kernel_ramdeploy.bin"
 cp "${O}/${DTB_REL}"            "${RAM}/dtb_ramdeploy.bin"
-printf 'console=tty0 clk_ignore_unused pd_ignore_unused\n' > "${RAM}/bootcfg_ramdeploy.bin"
+printf 'cmdline=console=tty0 clk_ignore_unused pd_ignore_unused\n' > "${RAM}/bootcfg_ramdeploy.bin"
 cp "${OUT}/initrd_deploy_net_release.cpio.zst" "${RAM}/initrd_ramdeploy.bin"
 cp "${OUT}/initrd_deploy_net_debug.cpio.zst"   "${RAM}/initrd_debug_ramdeploy.bin"
 
