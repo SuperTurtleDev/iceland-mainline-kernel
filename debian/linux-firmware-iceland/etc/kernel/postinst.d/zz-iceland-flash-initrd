@@ -25,6 +25,13 @@ part_dev() {
 
 dev="$(part_dev initrd)" || { echo "iceland: GPT partition 'initrd' not found" >&2; exit 1; }
 size="$(stat -c %s "$img")"
+# an initramfs without the curated module set cannot boot this device;
+# MODULES=list plus the iceland hook lands around 40-60MB -- well above
+# this floor (an 11MB image means the module set never made it in)
+[ "$size" -ge $((15 * 1024 * 1024)) ] || {
+    echo "iceland: initrd.img-$version is only $size bytes -- module set missing, refusing to flash" >&2
+    exit 1
+}
 b0=$((size & 255)); b1=$(((size >> 8) & 255))
 b2=$(((size >> 16) & 255)); b3=$(((size >> 24) & 255))
 hdr="$(printf '\\%03o\\%03o\\%03o\\%03o' "$b0" "$b1" "$b2" "$b3")"

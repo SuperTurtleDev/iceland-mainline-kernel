@@ -81,16 +81,18 @@ mkdir -p "${T}/etc/initramfs-tools/hooks"
     echo '# scripts/build-debs.sh; do not edit.  Adds the curated iceland boot'
     echo '# module set (conf.d/iceland sets MODULES=list to keep the rest out)'
     echo '# and copies the curated boot firmware explicitly.'
-    echo 'n_fail=0; n_total=0'
-    printf 'for m in'
+    echo '#'
+    echo '# call_scripts() EXECUTES hooks as child processes and this'
+    echo '# initramfs-tools exports only variables -- the helper API has to be'
+    echo '# sourced here or manual_add_modules is "not found".'
+    echo '[ -n "${DESTDIR:-}" ] || { echo "E: iceland hook: DESTDIR not set" >&2; exit 1; }'
+    echo '. /usr/share/initramfs-tools/hook-functions'
+    printf 'manual_add_modules'
     grep -E "^/usr/lib/modules/${KVER}/.*\.ko\.zst$" "${LIST}" \
         | sed 's|.*/||; s|\.ko\.zst$||' \
         | while IFS= read -r m; do printf ' \\\n    %s' "${m}"; done
-    printf ';\ndo\n    n_total=$((n_total + 1))\n'
-    printf '    manual_add_module "$m" \\\n'
-    printf '        || { echo "W: iceland hook: module $m not added" >&2; n_fail=$((n_fail + 1)); }\ndone\n'
-    echo '[ "$n_fail" -lt "$n_total" ] || { echo "E: iceland hook: every module failed to add" >&2; exit 1; }'
-    echo "echo \"I: iceland hook: modules added, \$((n_total - n_fail))/\$n_total ok\" >&2"
+    printf '\n'
+    echo 'echo "I: iceland hook: module set passed to manual_add_modules" >&2'
     printf 'for f in'
     grep -E '^/usr/lib/firmware/' "${LIST}" \
         | sed 's|^/usr/lib/firmware/||' \
