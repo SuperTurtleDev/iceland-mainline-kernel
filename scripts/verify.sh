@@ -38,9 +38,8 @@ import tempfile
 
 META, OUT = os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])
 KVER = "7.2.0-sm8850"
-BOOTCFG_CMDLINE = ("cmdline=console=tty0 console=ttyMSM0,115200n8 earlycon "
-                   "ignore_loglevel initcall_debug clk_ignore_unused "
-                   "pd_ignore_unused loglevel=8\n")
+BOOTCFG_CMDLINE = ("cmdline=console=tty0 earlycon ignore_loglevel initcall_debug "
+                   "clk_ignore_unused pd_ignore_unused loglevel=8\n")
 
 results = []
 
