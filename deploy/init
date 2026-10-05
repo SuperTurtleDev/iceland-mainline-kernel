@@ -181,6 +181,15 @@ deploy_steps() {
     log "rootfs: $rdev at /rootfs"
     mkdir -p /rootfs/var/log /rootfs/root/kernel-debs
 
+    # known rootfs-image defect: the dhcpcd initramfs hook references a
+    # missing dhcpcd/dev/udev.so and aborts every update-initramfs run;
+    # disable it so the linux-image postinst can finish
+    if [ -f /rootfs/usr/share/initramfs-tools/hooks/dhcpcd ]; then
+        mv /rootfs/usr/share/initramfs-tools/hooks/dhcpcd \
+            /rootfs/root/dhcpcd-hook.disabled 2>/dev/null \
+            && log "disabled broken dhcpcd initramfs hook (missing udev.so)"
+    fi
+
     # grow the filesystem into the partition before the debs land (best
     # effort: an already-maximum fs is not an error)
     mount -o bind /dev  /rootfs/dev  2>/dev/null || true
