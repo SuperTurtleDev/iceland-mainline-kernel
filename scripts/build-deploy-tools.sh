@@ -28,11 +28,11 @@ gcc -O2 -Wall -Wextra -o "${OUT}/tools/deployclient" "${SRC}/deploy/deployclient
 log "tools: makeblob + deployclient ($(du -h ${OUT}/tools/makeblob | cut -f1) / $(du -h ${OUT}/tools/deployclient | cut -f1))"
 
 # RAM boot file set (TestBootApp stages these verbatim: RAW, no prefixes)
-cp "${O}/arch/arm64/boot/Image" "${RAM}/kernel"
-cp "${O}/${DTB_REL}"            "${RAM}/dtb"
-printf 'console=tty0 clk_ignore_unused pd_ignore_unused\n' > "${RAM}/bootcfg"
+cp "${O}/arch/arm64/boot/Image" "${RAM}/kernel_ramdeploy.bin"
+cp "${O}/${DTB_REL}"            "${RAM}/dtb_ramdeploy.bin"
+printf 'console=tty0 clk_ignore_unused pd_ignore_unused\n' > "${RAM}/bootcfg_ramdeploy.bin"
 cp "${OUT}/initrd_deploy_net_release.cpio.zst" "${RAM}/initrd_ramdeploy.bin"
-cp "${OUT}/initrd_deploy_net_debug.cpio.zst"   "${RAM}/initrd_ramdeploy_debug.bin"
+cp "${OUT}/initrd_deploy_net_debug.cpio.zst"   "${RAM}/initrd_debug_ramdeploy.bin"
 
 cat > "${RAM}/ramdeploy.sh" <<'EOS'
 #!/usr/bin/env bash
@@ -42,10 +42,10 @@ cat > "${RAM}/ramdeploy.sh" <<'EOS'
 set -eu
 D=$(cd "$(dirname "$0")" && pwd)
 INITRD=initrd_ramdeploy.bin
-[ "${2:-}" = debug ] && INITRD=initrd_ramdeploy_debug.bin
-fastboot flash bootcfg "$D/bootcfg"
-fastboot flash kernel   "$D/kernel"
-fastboot flash dtb      "$D/dtb"
+[ "${2:-}" = debug ] && INITRD=initrd_debug_ramdeploy.bin
+fastboot flash bootcfg "$D/bootcfg_ramdeploy.bin"
+fastboot flash kernel   "$D/kernel_ramdeploy.bin"
+fastboot flash dtb      "$D/dtb_ramdeploy.bin"
 fastboot flash initrd   "$D/$INITRD"
 fastboot continue || true                      # device re-enumerates down
 echo "== waiting for deploy NCM (60 s)..."
@@ -55,5 +55,5 @@ ip -4 -o addr show | grep enx | head -1
 EOS
 chmod +x "${RAM}/ramdeploy.sh"
 
-log "ramdeploy set: kernel dtb bootcfg initrd_ramdeploy.bin (+debug) + ramdeploy.sh"
+log "ramdeploy set: *_ramdeploy.bin (kernel/dtb/bootcfg/initrd + debug initrd) + ramdeploy.sh"
 log "done"
