@@ -14,7 +14,8 @@
 #   scripts/make-charge-initrd.sh  charge initrd = debug base + charge_boost_lite
 #                                  (9V/2A fixed PDO + console telemetry)
 #   scripts/build-deployd.sh         static ARM64 streaming deploy server
-#   scripts/build-deploy-tools.sh     host makeblob/deployclient + ramdeploy file set
+#   scripts/build-deploy-tools.sh     host makeblob/deployclient + ramdeploy and
+#                                  charge (charge/*_charge.bin) file sets
 #   scripts/make-deploy-net-initrd.sh  TINY net-deploy initrds (TestBootApp RAM boot;
 #                                  rootfs+debs stream over NCM to deployd)
 #                                  ([size]initrd[size]deb..., debs loaded off

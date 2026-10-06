@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# In-container stage: host-side deploy tools (makeblob, deployclient) and
-# the RAM-deploy boot file set (initrd_ramdeploy.bin etc.).
+# In-container stage: host-side deploy tools (makeblob, deployclient), the
+# RAM-deploy boot file set (initrd_ramdeploy.bin etc.) and the charge boot
+# set (charge/*_charge.bin for TestBootApp temporary-charge boots).
 set -euo pipefail
 
 SRC=/work/src
@@ -56,4 +57,32 @@ EOS
 chmod +x "${RAM}/ramdeploy.sh"
 
 log "ramdeploy set: *_ramdeploy.bin (kernel/dtb/bootcfg/initrd + debug initrd) + ramdeploy.sh"
+
+# charge RAM boot set (TestBootApp temporary boot, RAW no prefixes):
+# same kernel/dtb, charge initrd (9 V/2A->custom PD curve), minimal cmdline
+CHG="${OUT}/charge"
+mkdir -p "${CHG}"
+[ -f "${OUT}/staging/initrd_charge.cpio.zst" ] || die "missing staging/initrd_charge.cpio.zst (run make-charge-initrd first)"
+cp "${O}/arch/arm64/boot/Image" "${CHG}/kernel_charge.bin"
+cp "${O}/${DTB_REL}"            "${CHG}/dtb_charge.bin"
+cp "${OUT}/staging/initrd_charge.cpio.zst" "${CHG}/initrd_charge.bin"
+printf 'cmdline=console=tty0 clk_ignore_unused pd_ignore_unused\n' > "${CHG}/bootcfg_charge.bin"
+
+cat > "${CHG}/charge.sh" <<'EOS'
+#!/usr/bin/env bash
+# One-shot charge boot: stage the charge initrd set with TestBootApp and
+# continue into it.  Run from this directory, device already in ABL fastboot.
+set -eu
+D=$(cd "$(dirname "$0")" && pwd)
+fastboot boot "${TESTBOOT_EFI:-TestBootApp.efi}"
+sleep 6                                    # TestBootApp re-enumerates
+fastboot flash bootcfg "$D/bootcfg_charge.bin"
+fastboot flash kernel   "$D/kernel_charge.bin"
+fastboot flash dtb      "$D/dtb_charge.bin"
+fastboot flash initrd   "$D/initrd_charge.bin"
+fastboot continue || true
+echo "== charging initrd booted: PD curve + NCM 192.168.42.42 (telnet :23)"
+EOS
+chmod +x "${CHG}/charge.sh"
+log "charge set: charge/*_charge.bin (kernel/dtb/bootcfg/initrd) + charge.sh"
 log "done"
