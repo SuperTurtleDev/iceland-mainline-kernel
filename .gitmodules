@@ -4,5 +4,5 @@
 	branch = iceland-7.2
 [submodule "firmware"]
 	path = firmware
-	url = /home/wyb/Documents/mainline/repos/iceland-firmware.git
+	url = https://github.com/SuperTurtleDev/iceland-mainline-kernel-firmware.git
 	ignore = dirty
