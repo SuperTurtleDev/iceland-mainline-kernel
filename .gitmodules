@@ -1,6 +1,6 @@
 [submodule "linux"]
 	path = linux
-	url = https://github.com/map220v/sm8850-mainline
+	url = https://github.com/SuperTurtleDev/iceland-mainline-kernel-linux.git
 	branch = iceland-7.2
 [submodule "firmware"]
 	path = firmware
