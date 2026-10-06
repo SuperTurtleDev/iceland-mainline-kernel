@@ -264,7 +264,6 @@
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/pinctrl/qcom/pinctrl-sm8650-lpass-lpi.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/reset/nvmem-reboot-mode.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/sequencing/pwrseq-pcie-m2.ko.zst
-/usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/sequencing/pwrseq-qcom-wcn.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/supply/bq25890_charger.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/supply/bq25980_charger.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/power/supply/max17042_battery.ko.zst
@@ -291,7 +290,6 @@
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/rtc/rtc-tps6594.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/rtc/rtc-zynqmp.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/soc/qcom/qcom-pbs.ko.zst
-/usr/lib/modules/7.2.0-sm8850/kernel/drivers/soc/qcom/qcom_pd_mapper.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/soc/qcom/qcom_stats.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/soc/qcom/spm.ko.zst
 /usr/lib/modules/7.2.0-sm8850/kernel/drivers/soc/qcom/wcnss_ctrl.ko.zst
