@@ -21,6 +21,7 @@ die() { log "ERROR: $*"; exit 1; }
 [ -f "${SRC}/deploy/init-net" ]             || die "deploy/init-net missing"
 [ -f "${SRC}/initrd_debug/etc/udhcpd.conf" ] || die "udhcpd.conf missing"
 [ -f "${OUT}/staging/deployd" ]             || die "deployd missing (run build-deployd first)"
+[ -f "${OUT}/staging/mkgpt" ]               || die "mkgpt missing (run build-deployd first)"
 [ -x "${GIC}" ]                             || die "gen_init_cpio missing"
 
 build() { # build <release|debug>
@@ -36,6 +37,21 @@ build() { # build <release|debug>
     chmod 0755 "${ROOT}/init"
     cp "${SRC}/initrd_debug/etc/udhcpd.conf" "${ROOT}/etc/udhcpd.conf"
     printf '%s\n' "${mode}" > "${ROOT}/etc/deploy-mode"
+
+    # factory-first-boot tools + ESP content (Android-sparse FAT32 from the
+    # bootloader build; build.sh stages it at OUT/staging/firsttime-esp.img)
+    for t in mkgpt unsparse; do
+        [ -f "${OUT}/staging/${t}" ] || die "staging/${t} missing (run build-deployd first)"
+        cp "${OUT}/staging/${t}" "${ROOT}/${t}"
+        chmod 0755 "${ROOT}/${t}"
+    done
+    if [ -f "${OUT}/staging/firsttime-esp.img" ]; then
+        mkdir -p "${ROOT}/firsttime"
+        cp "${OUT}/staging/firsttime-esp.img" "${ROOT}/firsttime/esp.img"
+        log "embedded firsttime esp.img ($(du -h "${OUT}/staging/firsttime-esp.img" | cut -f1), sparse)"
+    else
+        log "no firsttime-esp.img staged: first boot gets partitions but no ESP content"
+    fi
 
     # /dev/console + /dev/null nodes before devtmpfs (mknod is not
     # permitted in the rootless container; gen_init_cpio emits them)

@@ -65,6 +65,13 @@ mkdir -p "${OUT}/logs" "${OUT}/staging"
 START="$(date +%s)"
 printf 'start-utc %s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" > "${OUT}/staging/last-run.txt"
 
+# stage the bootloader build's esp.img (Android-sparse FAT32) for the
+# netdeploy initrd's factory-first-boot ESP install, when present
+if [ -f "${OUT}/../bootloader/esp.img" ]; then
+    cp -f "${OUT}/../bootloader/esp.img" "${OUT}/staging/firsttime-esp.img"
+    log "staged ../bootloader/esp.img for the netdeploy initrd"
+fi
+
 for stage in "${STAGES[@]}"; do
     t0="$(date +%s)"
     log "[${stage}] RUN (log: ${OUT}/logs/${stage}.log)"

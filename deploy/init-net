@@ -52,6 +52,34 @@ part_dev() {
     return 1
 }
 
+# --- 2.5 factory preconfiguration: LUN0 partition table (pre-UDC) ---------
+# A virgin LUN0 (stock table: super/userdata, no esp) is reconfigured here
+# so deployd has partitions to stream onto.  /mkgpt (static, from
+# build-deployd) deletes super/userdata by GPT name and appends
+# kernel/bootcfg/dtb/initrd/esp with rootfs running to the disk end --
+# computed from the real disk size, so any storage capacity works.
+# /firsttime/esp.img (Android-sparse FAT32 from the bootloader build) is
+# decoded onto the esp partition by /unsparse.
+if ! part_dev esp >/dev/null 2>&1 && [ -x /mkgpt ]; then
+    ftdisk=sda                      # UFS LUN0; vda = QEMU virtio test disk
+    [ -b /dev/sda ] || ftdisk=vda
+    [ -b "/dev/$ftdisk" ] || ftdisk=""
+    if [ -z "$ftdisk" ]; then
+        log "firsttime: no esp and no candidate disk, skipping"
+    elif /mkgpt "/dev/$ftdisk"; then
+        sleep 1
+        espdev="$(part_dev esp)"
+        if [ -n "$espdev" ] && [ -f /firsttime/esp.img ] && [ -x /unsparse ]; then
+            log "firsttime: installing ESP onto $espdev"
+            /unsparse /firsttime/esp.img "$espdev"
+        fi
+        sync
+        log "firsttime: LUN0 provisioned"
+    else
+        log "firsttime: mkgpt failed, continuing without repartitioning"
+    fi
+fi
+
 # --- 3. usb gadget network FIRST (deployd rides on it) ---------------------
 usbnet=ncm
 for arg in $(cat /proc/cmdline 2>/dev/null); do

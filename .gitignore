@@ -17,3 +17,6 @@
 .local/
 # python bytecode from local tooling
 __pycache__/
+
+# git-worktree skill checkout area
+.zcf/
