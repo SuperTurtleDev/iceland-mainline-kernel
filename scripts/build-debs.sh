@@ -59,6 +59,10 @@ T="${S}/linux-headers"
 mkdir -p "${T}/DEBIAN" "${T}/usr/src"
 cp -a "${SRC}/debian/linux-headers-${KVER}/DEBIAN/." "${T}/DEBIAN/"
 tar -xzf "${OUT}/headers.tar.gz" -C "${T}/usr/src"
+# the /lib/modules/<kver>/build symlink external-module builds resolve
+# (Ubuntu flavour headers package does the same)
+mkdir -p "${T}/usr/lib/modules/${KVER}"
+ln -s "/usr/src/linux-headers-${KVER}" "${T}/usr/lib/modules/${KVER}/build"
 
 # --- linux-image -----------------------------------------------------------------
 T="${S}/linux-image"

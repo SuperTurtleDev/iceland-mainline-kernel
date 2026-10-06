@@ -1,9 +1,11 @@
 Package: linux-headers-7.2.0-sm8850
 Version: 7.2.0-sm8850-1
 Architecture: arm64
-Section: kernel
+Section: devel
 Priority: optional
 Maintainer: iceland mainline <iceland@localhost>
+Provides: linux-headers, linux-headers-3.0
+Depends: libc6, libdw1t64, libelf1t64, libgcc-s1, libssl3t64, zlib1g
 Description: Header files for Linux 7.2.0-sm8850 (OOT module development)
  Kernel headers and Kbuild infrastructure for building out-of-tree
  modules against 7.2.0-sm8850: prepared source headers, generated
