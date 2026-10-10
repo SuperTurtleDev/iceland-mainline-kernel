@@ -13,7 +13,7 @@ mkdir -p "${OUT}"
 OUT="$(cd "${OUT}" && pwd)"
 PCONT="$(cd "${META}/.." && pwd)/podman_container"
 DATA="${OUT}/podman-data"
-KVER="7.2.0-sm8850"
+KVER="7.2.9-sm8850"
 
 log() { printf '[buildinfo] %s\n' "$*" >&2; }
 line() { printf '%s: %s\n' "$1" "$2"; }

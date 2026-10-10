@@ -36,7 +36,7 @@ import tarfile
 import tempfile
 
 META, OUT = os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])
-KVER = "7.2.0-sm8850"
+KVER = "7.2.9-sm8850"
 BOOTCFG_CMDLINE = ("cmdline=console=tty0 ignore_loglevel initcall_debug "
                    "clk_ignore_unused pd_ignore_unused loglevel=8\n")
 
@@ -265,8 +265,8 @@ check(8, "buildinfo.txt contains metarepo/linux/firmware/podman_container hashes
       ok, "; ".join(detail) or "all four hashes found")
 
 # ---- 9) debian packages --------------------------------------------------------------
-KVER_FULL = "7.2.0-sm8850"
-VER = "7.2.0-sm8850-1"
+KVER_FULL = "7.2.9-sm8850"
+VER = "7.2.9-sm8850-1"
 deb_names = [f"linux-modules-{KVER_FULL}_{VER}_arm64.deb",
              f"linux-headers-{KVER_FULL}_{VER}_arm64.deb",
              f"linux-image-{KVER_FULL}_{VER}_arm64.deb",

@@ -13,7 +13,7 @@ set -euo pipefail
 
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.0-sm8850"
+KVER="7.2.9-sm8850"
 MODROOT="${OUT}/staging/modroot"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
 BOOTCFG_DEBUG_CMDLINE='cmdline=console=tty0 ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8'

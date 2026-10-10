@@ -1,13 +1,13 @@
-Package: linux-image-7.2.0-sm8850
-Version: 7.2.0-sm8850-1
+Package: linux-image-7.2.9-sm8850
+Version: 7.2.9-sm8850-1
 Architecture: arm64
 Section: kernel
 Priority: optional
 Maintainer: iceland mainline <iceland@localhost>
 Provides: linux-image
-Depends: kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-7.2.0-sm8850 (= 7.2.0-sm8850-1), linux-firmware-iceland (= 7.2.0-sm8850-1), initramfs-tools | linux-initramfs-tool
-Suggests: linux-headers-7.2.0-sm8850
-Description: Linux kernel image 7.2.0-sm8850 for OnePlus Pad 4 (SM8850)
+Depends: kmod, linux-base (>= 4.5ubuntu1~16.04.1), linux-modules-7.2.9-sm8850 (= 7.2.9-sm8850-1), linux-firmware-iceland (= 7.2.9-sm8850-1), initramfs-tools | linux-initramfs-tool
+Suggests: linux-headers-7.2.9-sm8850
+Description: Linux kernel image 7.2.9-sm8850 for OnePlus Pad 4 (SM8850)
  Arm64 kernel Image built from the iceland metarepo (linux iceland-7.2).
  .
  postinst writes the kernel Image and the Ubuntu boot cmdline, each with

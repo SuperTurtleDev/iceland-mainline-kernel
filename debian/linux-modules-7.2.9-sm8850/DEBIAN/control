@@ -1,12 +1,12 @@
-Package: linux-modules-7.2.0-sm8850
-Version: 7.2.0-sm8850-1
+Package: linux-modules-7.2.9-sm8850
+Version: 7.2.9-sm8850-1
 Architecture: arm64
 Section: kernel
 Priority: optional
 Maintainer: iceland mainline <iceland@localhost>
 Replaces: fastcharge
 Recommends: wireless-regdb
-Description: Linux kernel modules 7.2.0-sm8850 for OnePlus Pad 4 (SM8850)
- All kernel modules for 7.2.0-sm8850 (zstd-compressed), including the
+Description: Linux kernel modules 7.2.9-sm8850 for OnePlus Pad 4 (SM8850)
+ All kernel modules for 7.2.9-sm8850 (zstd-compressed), including the
  out-of-tree charge_boost module under updates/.  postinst refreshes the
  depmod metadata.

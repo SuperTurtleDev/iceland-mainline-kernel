@@ -4,7 +4,7 @@
 # the deploy bootstrap treats as "do not reboot".
 set -e
 
-KVER=7.2.0-sm8850
+KVER=7.2.9-sm8850
 DTB="/usr/lib/linux-image-$KVER/kaanapali-oneplus-iceland.dtb"
 
 part_dev() {

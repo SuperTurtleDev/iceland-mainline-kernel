@@ -1,5 +1,5 @@
 Package: linux-firmware-iceland
-Version: 7.2.0-sm8850-1
+Version: 7.2.9-sm8850-1
 Architecture: arm64
 Section: kernel
 Priority: optional

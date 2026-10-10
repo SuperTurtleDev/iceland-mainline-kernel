@@ -15,7 +15,7 @@ set -euo pipefail
 SRC=/work/src
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.0-sm8850"
+KVER="7.2.9-sm8850"
 HDR_ROOT="${OUT}/staging/headers"
 HDR="${HDR_ROOT}/usr/src/linux-headers-${KVER}"
 

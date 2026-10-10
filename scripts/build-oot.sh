@@ -10,7 +10,7 @@ set -euo pipefail
 
 SRC=/work/src
 OUT=/work/out
-KVER="7.2.0-sm8850"
+KVER="7.2.9-sm8850"
 HDR_TEST="${OUT}/staging/hdr-test"
 HDR="${HDR_TEST}/usr/src/linux-headers-${KVER}"
 OOT_SRC="${OUT}/staging/charge_boost"

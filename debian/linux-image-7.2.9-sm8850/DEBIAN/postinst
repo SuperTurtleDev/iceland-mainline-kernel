@@ -5,7 +5,7 @@
 # run, which the deploy bootstrap treats as "do not reboot".
 set -e
 
-KVER=7.2.0-sm8850
+KVER=7.2.9-sm8850
 
 # Resolve a GPT partition node by its label without udev: the kernel
 # exports PARTNAME (the GPT partition name) in each block device's uevent.

@@ -3,7 +3,7 @@
 #
 # Source tree: /work/src (read-only mount of the metarepo)
 # Build dir:   /work/out/kbuild (kernel O= directory)
-# Modules:     /work/out/staging/modroot/lib/modules/7.2.0-sm8850/
+# Modules:     /work/out/staging/modroot/lib/modules/7.2.9-sm8850/
 #
 # Determinism: SOURCE_DATE_EPOCH is taken from the linux submodule HEAD
 # commit time and exported as KBUILD_BUILD_TIMESTAMP; user/host are fixed.
@@ -12,7 +12,7 @@ set -euo pipefail
 SRC=/work/src
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.0-sm8850"
+KVER="7.2.9-sm8850"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
 
 log() { printf '[build-kernel] %s\n' "$*" >&2; }

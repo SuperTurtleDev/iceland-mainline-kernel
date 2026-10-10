@@ -14,8 +14,8 @@ set -euo pipefail
 
 SRC=/work/src
 OUT=/work/out
-KVER="7.2.0-sm8850"
-VER="7.2.0-sm8850-1"
+KVER="7.2.9-sm8850"
+VER="7.2.9-sm8850-1"
 O="${OUT}/kbuild"
 MODROOT="${OUT}/staging/modroot"
 LIST="${SRC}/initrd-modules.txt"
