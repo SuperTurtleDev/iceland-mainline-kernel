@@ -173,6 +173,16 @@ provision() {
         || log "WARNING: resize2fs nonzero (already grown?)"
 
     mount -o bind /debs /rootfs/root/kernel-debs || { log "cannot stage debs"; return 1; }
+
+    # --no-rootfs updates land on a rootfs that still carries the previous
+    # version-stamped kernel packages (linux-{image,modules,headers}-<ver>-sm8850);
+    # they own overlapping files, so dpkg -i would abort on the first conflict.
+    # The blob always carries the full package set, so purge them all.
+    chroot /rootfs /usr/bin/env DEBIAN_FRONTEND=noninteractive \
+        /bin/sh -c "apt-get purge -y 'linux-image*' 'linux-modules*' 'linux-headers*'" 2>&1 \
+        && log "old kernel packages purged (or none installed)" \
+        || log "WARNING: old kernel package purge nonzero (fresh rootfs?)"
+
     if chroot /rootfs /usr/bin/env DEBIAN_FRONTEND=noninteractive \
             /bin/sh -c 'dpkg -i /root/kernel-debs/blob-*.deb' 2>&1; then
         log "dpkg provision OK (partitions updated by postinsts)"
