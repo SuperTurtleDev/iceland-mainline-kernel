@@ -12,6 +12,9 @@ WHITELIST = {
     "49fbcd3da","6cc6c28c9",                            # battmgr
     "6bd10931a","cb83cfff8","7a52e76b6",                # iris
     "a5e341a25","cfcaa26b3","d7f34cbac","14f49e457","b141852e6",
+    # geni i2c series: SE_GENI_CLK_SEL clock index + timing fixes are
+    # REQUIRED on kaanapali -- reverting them kills GPI DMA (camera i2c dead)
+    "82339215f","139efdb3e","6c3420d6b","4edab0371","fb54df364","19cd6394f",
 }
 
 def sh(cmd, check=True):

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/lost+found",
+    "mode": 16832
+  },
+  {
+    "path": "/etc",
+    "mode": 16877
+  },
+  {
+    "path": "/apex_manifest.pb",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/mtk",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/qcom",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/qcom/sm8750",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/qcom/sm8850",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/qcom/sm8850/oplus_continuity_sm8850.napp_header",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre/qcom/sm8850/oplus_continuity_sm8850.so",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre/qcom/sm8750/oplus_continuity_sm8750.napp_header",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre/qcom/sm8750/oplus_continuity_sm8750.so",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre/mtk/mt6993",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/chre/mtk/mt6993/oplus_continuity_dx5.napp_header",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/chre/mtk/mt6993/oplus_continuity_dx5.so",
+    "mode": 33188
+  }
+]

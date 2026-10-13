@@ -1,0 +1,1225 @@
+[
+  {
+    "path": "/system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/Tag/Tag.apk",
+    "entries": 172,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/Shell/Shell.apk",
+    "entries": 143,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/ProxyHandler/ProxyHandler.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/ONS/ONS.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/NfcNci/NfcNci.apk",
+    "entries": 2067,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/NetworkStackGoogle/NetworkStackGoogle-arm64_v8a.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/NetworkStackGoogle/NetworkStackGoogle.apk",
+    "entries": 32,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/MusicFX/MusicFX.apk",
+    "entries": 106,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/MtpService/MtpService.apk",
+    "entries": 433,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk",
+    "entries": 422,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk",
+    "entries": 1023,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/LocalTransport/LocalTransport.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/IntentResolver/IntentResolver.apk",
+    "entries": 1588,
+    "protobuf_paths": [
+      "share.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/InputDevices/InputDevices.apk",
+    "entries": 61,
+    "protobuf_paths": [],
+    "name_matches": [
+      "res/raw/keyboard_layout_icelandic.kcm"
+    ],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/FusedLocation/FusedLocation.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/E2eeContactKeysProvider/E2eeContactKeysProvider.apk",
+    "entries": 10,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DownloadProviderUi/DownloadProviderUi.apk",
+    "entries": 11,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-hdpi.apk",
+    "entries": 79,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-ldpi.apk",
+    "entries": 257,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-mdpi.apk",
+    "entries": 79,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-tvdpi.apk",
+    "entries": 120,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-xhdpi.apk",
+    "entries": 79,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-xxhdpi.apk",
+    "entries": 79,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle-xxxhdpi.apk",
+    "entries": 79,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DocumentsUIGoogle/DocumentsUIGoogle.apk",
+    "entries": 1237,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DeviceDiagnostics/DeviceDiagnostics.apk",
+    "entries": 1789,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/DeviceAsWebcam/DeviceAsWebcam.apk",
+    "entries": 480,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/CredentialManager/CredentialManager.apk",
+    "entries": 1999,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/CellBroadcastLegacyApp/CellBroadcastLegacyApp.apk",
+    "entries": 422,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk",
+    "entries": 92,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/QPerformance.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/QXPerformance.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/UxPerformance.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/WfdCommon.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/abx.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/am.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hardware.biometrics.face-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hardware.biometrics.fingerprint-V2.3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hardware.ir-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hardware.secure_element-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hidl.base-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.hidl.manager-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.test.base.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.test.mock.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/android.test.runner.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/appwidget.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/bmgr.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/bu.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/com.android.future.usb.accessory.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/com.android.location.provider.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/com.android.media.remotedisplay.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/com.android.mediadrm.signer.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/com.android.nfc_extras.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/content.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/ext.jar",
+    "entries": 1175,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework-graphics.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework-location.jar",
+    "entries": 4,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework-nfc.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework-ondeviceintelligence-platform.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework-res.apk",
+    "entries": 8392,
+    "protobuf_paths": [
+      "assets/geoid_map/expiration-distance-disk-tile-1.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-3.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-5.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-7.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-9.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-b.pb",
+      "assets/geoid_map/expiration-distance-params.pb",
+      "assets/geoid_map/geoid-height-disk-tile-1.pb",
+      "assets/geoid_map/geoid-height-disk-tile-3.pb",
+      "assets/geoid_map/geoid-height-disk-tile-5.pb",
+      "assets/geoid_map/geoid-height-disk-tile-7.pb",
+      "assets/geoid_map/geoid-height-disk-tile-9.pb",
+      "assets/geoid_map/geoid-height-disk-tile-b.pb",
+      "assets/geoid_map/geoid-height-params.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/framework.jar",
+    "entries": 97,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/hid.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/ifaamanager.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/ims-common.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/incident-helper-cmd.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/javax.obex.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/monkey.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/oplus-framework.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/oplus-service-jobscheduler.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/oplus-services.jar",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/org.apache.http.legacy.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/qcom.fmradio.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/requestsync.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/services.jar",
+    "entries": 207,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/sm.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/subsystem-framework.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/svc.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/tcmclient.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/tcmiface.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/telecom.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/telephony-common.jar",
+    "entries": 789,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/tradeinmode.jar",
+    "entries": 15,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/uiautomator.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/uinput.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.biometrics.fingerprint-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.commondcs-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.display.MixLut3D-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.nfcExtns-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.olc2-V3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.opluslights-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.osense.client-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.pogo_keyboard-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.power.powermonitor-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.oplus.hardware.rpmh-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vendor.qti.hardware.data.connectionaidl-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/voip-common.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/framework/vr.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/etc/security/otacerts.zip",
+    "not_zip": true
+  },
+  {
+    "path": "/system/etc/security/fsverity/BuildManifest.apk",
+    "entries": 6,
+    "protobuf_paths": [
+      "assets/build_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/WallpaperBackup/WallpaperBackup.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/Traceur/Traceur.apk",
+    "entries": 1191,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/SimAppDialog/SimAppDialog.apk",
+    "entries": 223,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/PacProcessor/PacProcessor.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/ExtensionsService/ExtensionsService.apk",
+    "entries": 19,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/EasterEgg/EasterEgg.apk",
+    "entries": 215,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CrossDeviceServiceBroker/CrossDeviceServiceBroker.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CompanionDeviceManager/CompanionDeviceManager.apk",
+    "entries": 157,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CarrierDefaultApp/CarrierDefaultApp.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-hdpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-ldpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-mdpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-tvdpi.apk",
+    "entries": 84,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-xhdpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-xxhdpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle-xxxhdpi.apk",
+    "entries": 45,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CaptivePortalLoginGoogle/CaptivePortalLoginGoogle.apk",
+    "entries": 295,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/CameraExtensionsProxy/CameraExtensionsProxy.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/BookmarkProvider/BookmarkProvider.apk",
+    "entries": 9,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/BluetoothMidiService/BluetoothMidiService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/Bluetooth/Bluetooth.apk",
+    "entries": 2112,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/app/BasicDreams/BasicDreams.apk",
+    "entries": 15,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.apex.cts.shim.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.crashrecovery.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.i18n.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.profiling.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.runtime.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.uprobestats.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.android.virt.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.adbd_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.adservices_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.appsearch_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.art_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.cellbroadcast_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.configinfrastructure_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.conscrypt_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.devicelock.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_manifest.pb",
+      "apex_build_info.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.extservices_tplus_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.healthfitness_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.ipsec_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.media.swcodec_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.media_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.mediaprovider_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.neuralnetworks_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.ondevicepersonalization_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.os.statsd_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.permission_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.resolv_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.rkpd_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.scheduling_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.sdkext_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.tethering_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.tzdata6.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_manifest.pb",
+      "apex_build_info.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.uwb_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/system/apex/com.google.android.wifi_compressed.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  }
+]

@@ -1,0 +1,2230 @@
+[
+  {
+    "path": "/lost+found",
+    "mode": 16832
+  },
+  {
+    "path": "/data",
+    "mode": 16832
+  },
+  {
+    "path": "/hlos_rfs",
+    "mode": 16877
+  },
+  {
+    "path": "/sensors",
+    "mode": 16877
+  },
+  {
+    "path": "/secnvm",
+    "mode": 16888
+  },
+  {
+    "path": "/wlan",
+    "mode": 16895
+  },
+  {
+    "path": "/qcc",
+    "mode": 16888
+  },
+  {
+    "path": "/engineermode",
+    "mode": 16893
+  },
+  {
+    "path": "/camera",
+    "mode": 16895
+  },
+  {
+    "path": "/rfs",
+    "mode": 16832
+  },
+  {
+    "path": "/time",
+    "mode": 16888
+  },
+  {
+    "path": "/iar_db",
+    "mode": 16888
+  },
+  {
+    "path": "/display",
+    "mode": 16888
+  },
+  {
+    "path": "/vpp",
+    "mode": 16888
+  },
+  {
+    "path": "/hexlp",
+    "mode": 16888
+  },
+  {
+    "path": "/hvdcp_opti",
+    "mode": 16888
+  },
+  {
+    "path": "/copy",
+    "mode": 16888
+  },
+  {
+    "path": "/media",
+    "mode": 16893
+  },
+  {
+    "path": "/rpmb_status",
+    "mode": 16895
+  },
+  {
+    "path": "/efisp",
+    "mode": 16877
+  },
+  {
+    "path": "/mmt",
+    "mode": 16877
+  },
+  {
+    "path": "/efisp/tools",
+    "mode": 16877
+  },
+  {
+    "path": "/efisp/BOOTENTRIES",
+    "mode": 33188
+  },
+  {
+    "path": "/efisp/boot.efi",
+    "mode": 33204
+  },
+  {
+    "path": "/efisp/tools/ArbTools.efi",
+    "mode": 33188
+  },
+  {
+    "path": "/efisp/tools/RebootTools.efi",
+    "mode": 33188
+  },
+  {
+    "path": "/efisp/tools/BLTools.efi",
+    "mode": 33188
+  },
+  {
+    "path": "/efisp/tools/ENTRIES",
+    "mode": 33188
+  },
+  {
+    "path": "/copy/qca6490",
+    "mode": 16888
+  },
+  {
+    "path": "/copy/kiwi",
+    "mode": 16888
+  },
+  {
+    "path": "/copy/peach",
+    "mode": 16888
+  },
+  {
+    "path": "/copy/wcn7750",
+    "mode": 16888
+  },
+  {
+    "path": "/time/ats_2",
+    "mode": 33152
+  },
+  {
+    "path": "/time/ats_1",
+    "mode": 33152
+  },
+  {
+    "path": "/time/ats_16",
+    "mode": 33152
+  },
+  {
+    "path": "/time/ats_6",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/shared",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/apq",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/apq/gnss",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/mpss",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/adsp",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/slpi",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/tn",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/cdsp",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/mdm/ois",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/mpss",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/adsp",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/slpi",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/cdsp",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/ois",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/ois/server_check.txt",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry",
+    "mode": 16832
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/sns_reg_version",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/parsed_file_list.csv",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/DIR",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.gyro.fac_cal.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.gyro.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.gyro.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.accel.fac_cal.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.accel.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.accel.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.accel",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.temp.fac_cal.scale",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.temp.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.temp.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.temp",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.md.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.md",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.act.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.act",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.ff.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.ff",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.hs.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.hs",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.qvar.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.qvar",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.placement",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform.orient",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.accel.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.accel",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.gyro.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.md.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.md",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.temp.config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0.temp",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/lsm6dsv_aux_0",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/sns_direct_channel",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.dbg_flags",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.algo_info",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.ois_slots.slot_0",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.ois_slots.slot_1",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.ois_slots.slot_2",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.ois_slots.slot_3",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois.ois_slots",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/qsh_ois",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/msm/ois/sensors/registry/registry/sns_reg_config",
+    "mode": 33152
+  },
+  {
+    "path": "/rfs/shared/server_info.txt",
+    "mode": 33200
+  },
+  {
+    "path": "/camera/dual_calibration",
+    "mode": 16895
+  },
+  {
+    "path": "/camera/front_dual_calibration",
+    "mode": 16895
+  },
+  {
+    "path": "/camera/megvii",
+    "mode": 16893
+  },
+  {
+    "path": "/camera/rear_camera_eeprom_data.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/eeprom_icelandmain_eeprom.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/rear_camera_SN.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/Rear_camera_info.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/front_camera_eeprom_data.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/eeprom_icelandfront_eeprom.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/front_camera_SN.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/camera/Front_camera_info.bin",
+    "mode": 33206
+  },
+  {
+    "path": "/engineermode/config",
+    "mode": 16893
+  },
+  {
+    "path": "/engineermode/test_data",
+    "mode": 16893
+  },
+  {
+    "path": "/engineermode/test_record",
+    "mode": 16893
+  },
+  {
+    "path": "/engineermode/production_record",
+    "mode": 16893
+  },
+  {
+    "path": "/engineermode/agingthreshold",
+    "mode": 16893
+  },
+  {
+    "path": "/engineermode/sensor",
+    "mode": 16894
+  },
+  {
+    "path": "/engineermode/sensor/spectrum",
+    "mode": 16894
+  },
+  {
+    "path": "/qcc/frc.dat",
+    "mode": 33152
+  },
+  {
+    "path": "/wlan/cnss_diag.conf",
+    "mode": 33206
+  },
+  {
+    "path": "/wlan/cnss_diag_always_on.conf",
+    "mode": 33206
+  },
+  {
+    "path": "/wlan/WCNSS_qcom_cfg.ini",
+    "mode": 33206
+  },
+  {
+    "path": "/sensors/odp",
+    "mode": 16877
+  },
+  {
+    "path": "/sensors/registry",
+    "mode": 16877
+  },
+  {
+    "path": "/sensors/sensors_list.txt",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/cam_registry_dump.txt",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry",
+    "mode": 16877
+  },
+  {
+    "path": "/sensors/registry/sns_reg_version",
+    "mode": 33188
+  },
+  {
+    "path": "/sensors/registry/parsed_file_list.csv",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/DIR",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/dae",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.sensor_temperature.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.proximity.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.ambient_light",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.sar.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.accel_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.amd.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.tilt.attr_1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.persist_stationary_detect.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_dynamic_libraries",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_irq",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_qrcode",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_eod",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.custom_reg1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_amd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_te0_sensor0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_gmd_sensor0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_walk",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_device_orient_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_diag_sensor_datatype",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_flight_md_thresholds",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_pedometer",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_rotv_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_rotv_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_smd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_tppe_ble.filter_msg_ids",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_dynamic_libraries.libchre",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.gyro.fac_cal.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.temp",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.md",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.temp",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0.mag.config_2",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0_platform.als_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0.hall",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/pedometer_minute_platform.cal_sensor_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.boot_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.prox",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.cct",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.key_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.reg",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.dynamic_cali",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.algo_para_1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_mag_fusion.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_rotv_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_lay_commom.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.gsensor",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.rgb",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.tilt",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.ambient_light.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_hd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.mag_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.sensor_temperature",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gravity",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sensors_registry",
+    "mode": 33188
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.game_rv",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.chip_info_override",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.sar",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.fmv",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_fd_qvga",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.game_rv.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_camera_aon.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_cd0_sensor0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_direct_channel",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_fmv_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_rmd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_tppe_ble",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.gyro.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.placement",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform.intercept",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/pedometer_minute_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_mag_fusion.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_lay_commom",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.cct_rear_name",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.ps",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.tilt.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_ble_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/power.island",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.accel_cal.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.motion_detect.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro_rot_matrix.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.proximity",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.fmv.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.accel",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.md_irq_skip_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_aont",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_distance_bound_speed_for_motion_states",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_dpc",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_gyro_cal_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_mag_cal_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_offbody_detect_phone",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/free_fall_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.orient",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.accel",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.temp.fac_cal.scale",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.temp.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform.sensitivity",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.dynamic_cali.dc",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.als",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform.temperature",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.md_irq_skip_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gravity.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_fd_360p",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro_rot_matrix",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.geomag_rv.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.tuning_params.nms_fd_qqvga",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_dynamic_libraries.dyn_lib_1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vdig",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.persist_stationary_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.gpio_info.reset_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro_cal.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.amd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.amd.attr_1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.mag.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vio",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/power",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.rotv",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.sensor_pwr_rail_info.custom_reg1.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.als_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.bus_info.secondary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.custom_reg1.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.aux_pin_params.motion_detect",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_camera_aon",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_reg_values00",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_te1_sensor0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_device_orient_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_tilt",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_tilt_to_wake",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.accel.fac_cal.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.temp.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.lowg.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.accel.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.gyro.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.md.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.temp.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal_2",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0.mag.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0.hall.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bu52053nvx_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.als.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.als",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.prox.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_mag_fusion",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_rotv_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera.dbg_flags",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.md_irq_skip_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.gyro.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.lowg",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.mag",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0.accel",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.placement",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_reg_config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.power_save_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.mag_cal.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.rotv.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.orient",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyfront_3.bus_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.md.config",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.accel.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_gmd_sensor1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.sensor_pwr_rail_info.vio.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.custom_reg1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.accel.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_cm",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.aux_pin_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.bus_info.primary",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_infinitifront_4.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.gpio_info.dri_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.gpio_info.aux_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vana.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lafafront_4.aux_pin_params.ulp_streaming",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_fairladyExfront_3.sensor_pwr_rail_info.vana",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.accel.fac_cal.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ccd_te1_sensor1",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontmain_3.gpio_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.gyro.attr_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/bmi3x0_0_platform.md",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0_platform.mag.fac_cal.corr_mat",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.misc_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/default_sensors.geomag_rv",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_lighthousefront_1.md_poll_params",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/qsh_camera_swangoosefrontsub_4.sensor_pwr_rail_info.vdig.ldo_pin",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_amd",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/sns_fmv_platform",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/ak0991x_0.mag",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/oplus_gyro_cal_0_platform.bias",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_platform.cct.fac_cal",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.hw_cfg",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.dynamic_cali.dt",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/alsps_hw_stk36c01.algo_para_0",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/registry/registry/devinfo.rgb_rear",
+    "mode": 33152
+  },
+  {
+    "path": "/sensors/odp/sns_odp_version",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared",
+    "mode": 16877
+  },
+  {
+    "path": "/hlos_rfs/shared/imx766_ois_pb.pb",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors",
+    "mode": 16877
+  },
+  {
+    "path": "/hlos_rfs/shared/ois",
+    "mode": 16888
+  },
+  {
+    "path": "/hlos_rfs/shared/ois/ois_registry_dump.txt",
+    "mode": 33200
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config",
+    "mode": 16877
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/sns_reg_config",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/json.lst",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/kaanapali_lsm6dsv_aux_0.json",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/molokai_lsm6dsv_aux_0.json",
+    "mode": 33188
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/qsh_ois_common.json",
+    "mode": 33261
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/qsh_ois_imx766_ois.json",
+    "mode": 33261
+  },
+  {
+    "path": "/hlos_rfs/shared/sensors/config/sns_direct_channel.json",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm",
+    "mode": 16877
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt",
+    "mode": 16832
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_Alt",
+    "mode": 16832
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt",
+    "mode": 16832
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_",
+    "mode": 16832
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_",
+    "mode": 16832
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_",
+    "mode": 16832
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_/lxWKDtX3HrofKyyStzt9",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_/lxWKDtX3HrofKyyStzt9.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/LYbKI1svITWlV2BqGZvt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/LYbKI1svITWlV2BqGZvt.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/4peJ3AqBsLUCJu6La8UX",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/4peJ3AqBsLUCJu6La8UX.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/S3hbUThtLBQV4E6hgBHx",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_/S3hbUThtLBQV4E6hgBHx.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_",
+    "mode": 33152
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt/lxWKDtX3HrofKyyStzt9",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt/lxWKDtX3HrofKyyStzt9.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt/eIm7AUAOcvQXJjxYjtJx9NSwLbLIh9CxVQC41+qk3OU_Alt.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_Alt/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_Alt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_Alt/DdHdVQd1FIOARksZgXG27GJ1A5UjYCGhP-ZoGvseqsY_Alt.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/LYbKI1svITWlV2BqGZvt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/LYbKI1svITWlV2BqGZvt.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/4peJ3AqBsLUCJu6La8UX",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/4peJ3AqBsLUCJu6La8UX.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/S3hbUThtLBQV4E6hgBHx",
+    "mode": 33152
+  },
+  {
+    "path": "/data/YZm5lRjzHwRvSJmYWk6JKdcseU9MOZKtKMwDuTxz5vo_Alt/S3hbUThtLBQV4E6hgBHx.bak",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses",
+    "mode": 16893
+  },
+  {
+    "path": "/data/pfm/storage.txt",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/check.bin",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/check.bin.old",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/storage.txt.old",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/oplus_Widevine_licenses.pfm.inst",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/qls_hlos-timestamp",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm/licenses/store_0",
+    "mode": 33204
+  },
+  {
+    "path": "/data/pfm/licenses/store_1",
+    "mode": 33204
+  },
+  {
+    "path": "/data/pfm/licenses/store_2",
+    "mode": 33204
+  },
+  {
+    "path": "/data/pfm/licenses/store_3",
+    "mode": 33204
+  },
+  {
+    "path": "/data/pfm/licenses/store_4",
+    "mode": 33204
+  },
+  {
+    "path": "/data/pfm/licenses/store_5",
+    "mode": 33263
+  },
+  {
+    "path": "/data/pfm/licenses/store_6",
+    "mode": 33263
+  },
+  {
+    "path": "/data/pfm/licenses/isv__prj_Android_CTS_1679601403589.pfm.err_18",
+    "mode": 33263
+  },
+  {
+    "path": "/data/pfm/licenses/QWESAttestationCert.pfm.inst.err_16",
+    "mode": 33190
+  },
+  {
+    "path": "/data/pfm/licenses/SNS_DSDA_official_license_for_SM8850.pfm.inst",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm/licenses/2025-08-19_platform_RSA_SM8850-KAANAPALI_license_c5211d39-e3d3-46c8-9dd0-3775810af82f.pfm.inst",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/058eb5c6-666d-4d06-b996-522410412877_2026-01-12_platform_RSA_license_75992976805022424249809535731023317112.pfm.inst",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/SDS_official_license_SM8850.pfm.inst",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm/licenses/2025-09-23_platform_RSA_SM8845_license_5114256b-d4ce-4cf4-8c4b-40f4c70ce6a5.pfm.err_18",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/2025-05-09_platform_RSA_SM8850-KAANAPALI_license_44de0851-4860-4b27-93ce-888ddb6d846a.pfm.inst",
+    "mode": 33152
+  },
+  {
+    "path": "/data/pfm/licenses/SDS_official_license_SM8845.pfm.err_18",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm/licenses/SNS_official_license_for_SM8845.pfm.err_18",
+    "mode": 33188
+  },
+  {
+    "path": "/data/pfm/licenses/SDA_official_license_for_SM8845.pfm.err_18",
+    "mode": 33188
+  }
+]

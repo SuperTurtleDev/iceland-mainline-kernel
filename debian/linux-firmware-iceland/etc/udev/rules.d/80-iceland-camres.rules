@@ -1,0 +1,6 @@
+# oplus-camres emits CAMRES_READY=1 once its SNS client is registered
+# and the camera bus is in its boot (SEE-owned) state.  Camera child
+# drivers defer their probe until then; retrigger them explicitly
+# instead of waiting for the next unrelated probe to do it.
+ACTION=="change", SUBSYSTEM=="platform", KERNEL=="camres", ENV{CAMRES_READY}=="1", \
+  RUN{program}+="/bin/sh -c 'for d in /sys/bus/i2c/drivers/smartsens-sc/*-00* /sys/bus/i2c/drivers/dw9719/*-00*; do [ -e \"$d\" ] || continue; echo \"$(basename \"$d\")\" > \"$(dirname \"$d\")/bind\" 2>/dev/null || true; done'"

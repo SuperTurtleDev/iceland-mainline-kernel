@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/lost+found",
+    "mode": 16832
+  },
+  {
+    "path": "/bin",
+    "mode": 16877
+  },
+  {
+    "path": "/etc",
+    "mode": 16877
+  },
+  {
+    "path": "/apex_manifest.pb",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/cas-default.rc",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/vintf",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/vintf/android.hardware.cas-service.xml",
+    "mode": 33188
+  },
+  {
+    "path": "/bin/hw",
+    "mode": 16877
+  },
+  {
+    "path": "/bin/hw/android.hardware.cas-service.example",
+    "mode": 33261
+  }
+]

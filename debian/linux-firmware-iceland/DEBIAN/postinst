@@ -6,6 +6,8 @@ set -e
 
 KVER=7.2.9-sm8850
 DTB="/usr/lib/linux-image-$KVER/kaanapali-oneplus-iceland.dtb"
+CAMCFG_SRC="/usr/lib/firmware/qcom/camera"
+CAMCFG_DST="/vendor/lib64/camera"
 
 part_dev() {
     for u in /sys/class/block/*/uevent; do
@@ -32,6 +34,12 @@ case "$1" in
             echo "iceland: flashing the dtb partition failed" >&2
             exit 1
         fi
+        # SEE's camera handshake reads these through adsprpcd
+        mkdir -p "$CAMCFG_DST"
+        for pb in "$CAMCFG_SRC"/*.pb; do
+            [ -f "$pb" ] || continue
+            cp -f "$pb" "$CAMCFG_DST/"
+        done
         ;;
 esac
 

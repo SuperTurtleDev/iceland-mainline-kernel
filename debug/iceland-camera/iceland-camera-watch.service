@@ -1,0 +1,20 @@
+[Unit]
+Description=Iceland early camera trace and repeated single-frame capture
+DefaultDependencies=no
+Wants=sys-kernel-debug.mount sys-kernel-tracing.mount systemd-journald.service
+After=systemd-remount-fs.service sys-kernel-debug.mount sys-kernel-tracing.mount systemd-journald.service
+Before=systemd-udev-trigger.service sysinit.target shutdown.target
+Conflicts=shutdown.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+ExecStart=/bin/bash /var/tmp/iceland-camera-tools/monitor.sh --capture
+TimeoutStartSec=15
+TimeoutStopSec=5
+KillMode=control-group
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=sysinit.target

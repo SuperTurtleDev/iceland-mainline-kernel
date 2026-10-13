@@ -1,0 +1,33 @@
+{
+  "entries": [
+    "dev",
+    "dev/null",
+    "dev/console",
+    "dev/urandom",
+    "debug_ramdisk",
+    "dev",
+    "init",
+    "metadata",
+    "mnt",
+    "proc",
+    "second_stage_resources",
+    "sys",
+    "system",
+    "system/bin",
+    "system/bin/getevent",
+    "system/bin/getprop",
+    "system/bin/modprobe",
+    "system/bin/setprop",
+    "system/bin/snapuserd",
+    "system/bin/snapuserd_ramdisk",
+    "system/bin/start",
+    "system/bin/stop",
+    "system/bin/toolbox_ramdisk",
+    "system/etc",
+    "system/etc/init",
+    "system/etc/init/snapuserd.rc",
+    "system/etc/ramdisk",
+    "system/etc/ramdisk/build.prop"
+  ],
+  "init_matches": []
+}

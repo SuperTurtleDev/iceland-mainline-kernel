@@ -1,0 +1,9 @@
+{"frame_fields": {"1": 7, "2": 0, "3": 4294967295, "4": 1000, "5": 1, "6": 320, "7": 240, "8": 320, "9": 240, "10": 1, "16": 1}}
+{"send": 640, "uid": ["0xe9e8f776554493a2", "0xa1107f2efd3cfbea"], "payload": "0807100018ffffffff0f20e807280130c00238f00140c00248f0015001800101"}
+{"qmi_result": 0, "qmi_error": 0, "tlvs": {"2": "00000000", "16": "2800000000000000", "17": "00000000"}}
+{"event": 896, "payload": "080112020801"}
+{"subscribe_ack": {"status": 1, "error": 1, "detail_fields": [[1, 0, 1]]}, "ap_i2c_attempted": false}
+{"send": 641, "uid": ["0xe9e8f776554493a2", "0xa1107f2efd3cfbea"], "payload": ""}
+{"qmi_result": 0, "qmi_error": 0, "tlvs": {"2": "00000000", "16": "2800000000000000", "17": "00000000"}}
+{"event": 897, "payload": "080012020800"}
+{"unsubscribe_ack": {"status": 0, "error": 0, "detail_fields": [[1, 0, 0]]}}

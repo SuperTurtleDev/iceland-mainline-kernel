@@ -1,0 +1,26 @@
+
+/tmp/iceland-vendor-camera.ko:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+00000000001b12e4 <cam_qup_i2c_read>:
+  1b12e4:      	paciasp
+  1b12e8:      	stp	x29, x30, [sp, #-0x60]!
+  1b12ec:      	str	x27, [sp, #0x10]
+  1b12f0:      	stp	x26, x25, [sp, #0x20]
+  1b12f4:      	stp	x24, x23, [sp, #0x30]
+  1b12f8:      	stp	x22, x21, [sp, #0x40]
+  1b12fc:      	stp	x20, x19, [sp, #0x50]
+  1b1300:      	mov	x29, sp
+  1b1304:      	sub	w8, w3, #0x5
+  1b1308:      	cmn	w8, #0x4
+  1b130c:      	b.lo	0x1b1374 <cam_qup_i2c_read+0x90>
+  1b1310:      	sub	w8, w4, #0x5
+  1b1314:      	mov	w22, w4
+  1b1318:      	cmn	w8, #0x5
+  1b131c:      	b.ls	0x1b1374 <cam_qup_i2c_read+0x90>
+  1b1320:      	mov	w23, w3
+  1b1324:      	mov	w19, w1
+  1b1328:      	mov	x25, x0
+  1b132c:      	mov	x24, x2
+  1b1330:      	nop

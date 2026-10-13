@@ -1,0 +1,4 @@
+Oct 12 13:03:24 sm8850 adsprpcd[5566]: apps_std_imp.c:1133: Warning: apps_std_fopen_with_env failed with 0x2 for /vendor/lib64/camera/icelandmain_0.pb (No such file or directory)
+Oct 12 13:03:24 sm8850 adsprpcd[5566]: mod_table.c:911: Error 0x2: open_mod_table_handle_invoke failed for handle:0x80e1e9e0, sc:0x13050100
+Oct 12 13:03:24 sm8850 adsprpcd[5566]: apps_std_imp.c:1133: Warning: apps_std_fopen_with_env failed with 0x2 for /vendor/lib64/camera/icelandfront_1.pb (No such file or directory)
+Oct 12 13:03:24 sm8850 adsprpcd[5566]: mod_table.c:911: Error 0x2: open_mod_table_handle_invoke failed for handle:0x80e1e9e0, sc:0x13050100

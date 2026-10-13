@@ -1,0 +1,38 @@
+{
+  "files_scanned": 3058,
+  "hits": [
+    {
+      "image": "vendor",
+      "path": "/etc/sensors/config/sns_aont.json",
+      "matches": [
+        "    \"aont_enable\":{ \"type\": \"int\", \"ver\": \"0\","
+      ]
+    },
+    {
+      "image": "odm",
+      "path": "/etc/camera/CameraHWConfiguration.config",
+      "matches": [
+        "    so[28]=/vendor/lib64/camera/components/com.qti.node.gpu.so",
+        "    so[31]=/vendor/lib64/camera/components/com.qti.hwcfg.ipe.so",
+        "    so[3]=/vendor/lib64/camera/components/com.qti.stats.pdlib.so",
+        "    so[0]=/vendor/lib64/camera/components/com.qti.stats.haf.so",
+        "    so[1]=/vendor/lib64/camera/components/com.qti.stats.hafoverride.so",
+        "    so[14]=/vendor/lib64/camera/components/com.qti.stats.pdlib.so"
+      ]
+    },
+    {
+      "image": "odm",
+      "path": "/etc/camera/fwk_config.json",
+      "matches": [
+        "        \"feature_aon_enable\": true,"
+      ]
+    },
+    {
+      "image": "my_product",
+      "path": "/etc/extension/com.oplus.oplus-feature.xml",
+      "matches": [
+        "\t<oplus-feature name=\"oplus.hardware.aon_enable\"/>"
+      ]
+    }
+  ]
+}

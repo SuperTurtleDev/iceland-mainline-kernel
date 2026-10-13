@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/overlay/SecureElementResTarget_OdmVintfDisabled.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/framework_res_overlay_Network.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/etc/camera/sticker/material/animoji/data.zip",
+    "entries": 4,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/etc/camera/sticker/material/animoji/snowleopard_v_0_0_0_9.zip",
+    "entries": 32,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  }
+]

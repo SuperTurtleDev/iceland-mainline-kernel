@@ -1,0 +1,245 @@
+# ELF SHA256: 75c4de7550088bf3cff68e87448fb16e95f3a48121be2acb526b2cd99b8fcfa6
+# Packet boundaries from instruction parse bits; registers use pre-packet values unless .new.
+b211ec48 file=1351c48 call 0xb2019dd0
+b211ec4c file=1351c4c allocframe(#0x28)
+    # END_PACKET
+b211ec50 file=1351c50 r21 = add(r0,#0xc)
+b211ec54 file=1351c54 r3 = memw(r0+#0x94)
+    # END_PACKET
+b211ec58 file=1351c58 p0 = cmp.eq(r3,#0x0)
+b211ec5c file=1351c5c if (p0.new) r3 = add(r1,#0x4)
+b211ec60 file=1351c60 if (!p0.new) r3 = add(r21,#0x0)
+    # END_PACKET
+b211ec64 file=1351c64 r20 = memw(r3+#0x0)
+b211ec68 file=1351c68 if (cmp.gtu(r20.new,#0x1)) jump:t 0xb211ed50
+    # END_PACKET
+b211ec6c file=1351c6c r18 = r2
+b211ec70 file=1351c70 immext(#0xb21ea200)
+b211ec74 file=1351c74 r2 = memub(r20+##-0x4de15e00)
+    # END_PACKET
+b211ec78 file=1351c78 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211ed50
+    # END_PACKET
+b211ec7c file=1351c7c r17:16 = combine(r1,r0)
+b211ec80 file=1351c80 immext(#0xb21337c0)
+b211ec84 file=1351c84 r1:0 = combine(##-0x4decc81a,#0x1)
+b211ec88 file=1351c88 memw(r29+#0x0) = r20
+    # END_PACKET
+b211ec8c file=1351c8c call 0xb2119cb8
+    # END_PACKET
+b211ec90 file=1351c90 call 0xb2016734
+b211ec94 file=1351c94 immext(#0xb2134b00)
+b211ec98 file=1351c98 r1:0 = combine(#0x1,##0xb2134b14)
+b211ec9c file=1351c9c memw(r29+#0x0) = r20
+    # END_PACKET
+b211eca0 file=1351ca0 r1 = add(r29,#0x8)
+b211eca4 file=1351ca4 immext(#0xb21ea200)
+b211eca8 file=1351ca8 r19 = memw(r20<<#0x2+##0xb21ea208)
+b211ecac file=1351cac memw(r21+#0x0) = r20
+    # END_PACKET
+b211ecb0 file=1351cb0 r2 = add(r29,#0xc)
+b211ecb4 file=1351cb4 memw(r29+#0xc) = #0x0
+    # END_PACKET
+b211ecb8 file=1351cb8 call 0xb211eb1c
+b211ecbc file=1351cbc r0 = memw(r19+#0x28)
+    # END_PACKET
+b211ecc0 file=1351cc0 r2 = memub(r17+#0x8)
+    # END_PACKET
+b211ecc4 file=1351cc4 p0 = cmp.eq(r2,#0x2); if (p0.new) jump:t 0xb211ed3c
+b211ecc8 file=1351cc8 if (p0.new) memw(r17+#0xc) = #0x0
+    # END_PACKET
+b211eccc file=1351ccc p0 = cmp.eq(r2,#0x0); if (!p0.new) jump:nt 0xb211ed3c
+    # END_PACKET
+b211ecd0 file=1351cd0 call 0xb2119c10
+b211ecd4 file=1351cd4 r0 = memub(r19+#0x28)
+    # END_PACKET
+b211ecd8 file=1351cd8 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211ed38
+    # END_PACKET
+b211ecdc file=1351cdc call 0xb2119c10
+b211ece0 file=1351ce0 r0 = memub(r19+#0x28)
+    # END_PACKET
+b211ece4 file=1351ce4 r1 = memw(r0+#0x80)
+b211ece8 file=1351ce8 if (!cmp.gt(r1.new,#0x0)) jump:nt 0xb211ed38
+    # END_PACKET
+b211ecec file=1351cec r20 = memw(r29+#0xc)
+    # END_PACKET
+b211ecf0 file=1351cf0 call 0xb201a040
+b211ecf4 file=1351cf4 r0 = r20
+    # END_PACKET
+b211ecf8 file=1351cf8 immext(#0xb2134b00)
+b211ecfc file=1351cfc if (p0.new) r0 = ##-0x4decb4e0
+b211ed00 file=1351d00 p0 = cmp.gtu(r20,#0x10); if (p0.new) jump:nt 0xb211ed7c
+    # END_PACKET
+b211ed04 file=1351d04 loop0(0xb211ed1c,#0x10)
+b211ed08 file=1351d08 r3 = #0x0
+b211ed0c file=1351d0c r2 = #0x1	memw(r17+#0xc) = #0
+    # END_PACKET
+b211ed10 file=1351d10 r4 = maxu(r0,r2)
+b211ed14 file=1351d14 r2 = add(r17,#0x10)
+    # END_PACKET
+b211ed18 file=1351d18 r4 = minu(r4,r20)
+    # END_PACKET
+b211ed1c file=1351d1c r5 = mpyi(r3,r4)
+b211ed20 file=1351d20 memw(r2+#0x0) = r5.new
+    # END_PACKET
+b211ed24 file=1351d24 p0 = cmp.gtu(r20,r5); if (!p0.new) jump:nt 0xb211ed3c
+    # END_PACKET
+b211ed28 file=1351d28 r3 = add(r3,#0x1)
+b211ed2c file=1351d2c r2 = add(r2,#0x4)
+b211ed30 file=1351d30 memw(r17+#0xc) += #0x1
+    # END_PACKET
+b211ed34 file=1351d34 jump 0xb211ed3c
+    # END_PACKET
+b211ed38 file=1351d38 memb(r17+#0x8) = #0x2
+    # END_PACKET
+b211ed3c file=1351d3c call 0xb2019e48
+b211ed40 file=1351d40 r1:0 = combine(r16,r19)
+b211ed44 file=1351d44 r3:2 = combine(r17,r18)
+b211ed48 file=1351d48 r4 = #0x0
+    # END_PACKET
+b211ed4c file=1351d4c jump 0xb211f9d0
+    # END_PACKET
+b211ed50 file=1351d50 call 0xb2119cb8
+b211ed54 file=1351d54 immext(#0xb2132280)
+b211ed58 file=1351d58 r1:0 = combine(##-0x4decdd44,#0x1)
+b211ed5c file=1351d5c memw(r29+#0x0) = r20
+    # END_PACKET
+b211ed60 file=1351d60 call 0xb2016734
+b211ed64 file=1351d64 immext(#0xb2134b00)
+b211ed68 file=1351d68 r1:0 = combine(#0x1,##0xb2134b08)
+b211ed6c file=1351d6c memw(r29+#0x0) = r20
+    # END_PACKET
+b211ed70 file=1351d70 immext(#0x20000)
+b211ed74 file=1351d74 r0 = ##0x20002
+b211ed78 file=1351d78 jump 0xb2019ec0
+    # END_PACKET
+b211ed7c file=1351d7c call 0xb2012ae4
+    # END_PACKET
+b211ed80 file=1351d80 call 0xb2019de0
+b211ed84 file=1351d84 allocframe(#0x18)
+    # END_PACKET
+b211ed88 file=1351d88 r18 = memw(r0+#0xc)
+b211ed8c file=1351d8c if (cmp.gtu(r18.new,#0x1)) jump:t 0xb211edd8
+    # END_PACKET
+b211ed90 file=1351d90 immext(#0xb21ea200)
+b211ed94 file=1351d94 r2 = memub(r18+##-0x4de15e00)
+    # END_PACKET
+b211ed98 file=1351d98 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211edd8
+    # END_PACKET
+b211ed9c file=1351d9c r16 = r0
+b211eda0 file=1351da0 immext(#0xb2133800)
+b211eda4 file=1351da4 r1:0 = combine(##-0x4decc7cc,#0x1)
+    # END_PACKET
+b211eda8 file=1351da8 call 0xb2119cb8
+b211edac file=1351dac immext(#0xb21ea200)
+b211edb0 file=1351db0 r17 = memw(r18<<#0x2+##0xb21ea208)
+b211edb4 file=1351db4 memw(r29+#0x0) = r18
+    # END_PACKET
+b211edb8 file=1351db8 call 0xb2016734
+b211edbc file=1351dbc immext(#0xb2134b00)
+b211edc0 file=1351dc0 r1:0 = combine(#0x1,##0xb2134b38)
+b211edc4 file=1351dc4 memw(r29+#0x0) = r18
+    # END_PACKET
+b211edc8 file=1351dc8 call 0xb2019e5c
+b211edcc file=1351dcc r1:0 = combine(r16,r17)
+b211edd0 file=1351dd0 r2 = #0x0
+    # END_PACKET
+b211edd4 file=1351dd4 jump 0xb2120040
+    # END_PACKET
+b211edd8 file=1351dd8 call 0xb2119cb8
+b211eddc file=1351ddc immext(#0xb2132280)
+b211ede0 file=1351de0 r1:0 = combine(##-0x4decdd44,#0x1)
+b211ede4 file=1351de4 memw(r29+#0x0) = r18
+    # END_PACKET
+b211ede8 file=1351de8 call 0xb2016734
+b211edec file=1351dec immext(#0xb2134b00)
+b211edf0 file=1351df0 r1:0 = combine(#0x1,##0xb2134b2c)
+b211edf4 file=1351df4 memw(r29+#0x0) = r18
+    # END_PACKET
+b211edf8 file=1351df8 immext(#0x20000)
+b211edfc file=1351dfc r0 = ##0x20002
+b211ee00 file=1351e00 jump 0xb2019ed0
+    # END_PACKET
+b211ee04 file=1351e04 immext(#0xfffffdc0)
+b211ee08 file=1351e08 r3 = #0x2 ; jump 0xb211ebc8
+    # END_PACKET
+b211ee0c file=1351e0c immext(#0xfffffd80)
+b211ee10 file=1351e10 r3 = #0x1 ; jump 0xb211ebc8
+    # END_PACKET
+b211ee14 file=1351e14 p0 = cmp.eq(r1,#0x2)
+b211ee18 file=1351e18 r16 = r2
+b211ee1c file=1351e1c memd(r29+#-0x10) = r17:16	allocframe(#0x10)
+    # END_PACKET
+b211ee20 file=1351e20 if (p0) jump:nt 0xb211ee44
+    # END_PACKET
+b211ee24 file=1351e24 p0 = cmp.eq(r1,#0x1); if (p0.new) jump:nt 0xb211ee3c
+    # END_PACKET
+b211ee28 file=1351e28 p0 = cmp.eq(r1,#0x0); if (!p0.new) jump:t 0xb211eecc
+    # END_PACKET
+b211ee2c file=1351e2c r1 = r16
+b211ee30 file=1351e30 r2 = #0x4
+b211ee34 file=1351e34 r17:16 = memd(r29+#0x8)	deallocframe
+    # END_PACKET
+b211ee38 file=1351e38 jump 0xb211ec48
+    # END_PACKET
+b211ee3c file=1351e3c jump 0xb211ed80
+b211ee40 file=1351e40 r17:16 = memd(r29+#0x8)	deallocframe
+    # END_PACKET
+b211ee44 file=1351e44 r17 = memw(r0+#0xc)
+b211ee48 file=1351e48 if (cmp.gtu(r17.new,#0x1)) jump:t 0xb211ee58
+    # END_PACKET
+b211ee4c file=1351e4c immext(#0xb21ea200)
+b211ee50 file=1351e50 r2 = memub(r17+##-0x4de15e00)
+    # END_PACKET
+b211ee54 file=1351e54 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211ee84
+    # END_PACKET
+b211ee58 file=1351e58 call 0xb2119cb8
+b211ee5c file=1351e5c immext(#0xb2132280)
+b211ee60 file=1351e60 r1:0 = combine(##-0x4decdd44,#0x1)
+b211ee64 file=1351e64 memw(r29+#0x0) = r17
+    # END_PACKET
+b211ee68 file=1351e68 call 0xb2016734
+b211ee6c file=1351e6c immext(#0xb2134b40)
+b211ee70 file=1351e70 r1:0 = combine(#0x1,##0xb2134b44)
+b211ee74 file=1351e74 memw(r29+#0x0) = r17
+    # END_PACKET
+b211ee78 file=1351e78 immext(#0x20000)
+b211ee7c file=1351e7c r0 = ##0x20002
+b211ee80 file=1351e80 jump 0xb211eee8
+    # END_PACKET
+b211ee84 file=1351e84 immext(#0xb2133840)
+b211ee88 file=1351e88 r1:0 = combine(##-0x4decc7a7,#0x1)
+b211ee8c file=1351e8c immext(#0xb21ea200)
+b211ee90 file=1351e90 r17 = memw(r17<<#0x2+##0xb21ea208)
+    # END_PACKET
+b211ee94 file=1351e94 r2 = memub(r16+#0x4)
+b211ee98 file=1351e98 memb(r17+#0xf0) = r2.new
+    # END_PACKET
+b211ee9c file=1351e9c call 0xb2119cb8
+b211eea0 file=1351ea0 memw(r29+#0x0) = r2
+    # END_PACKET
+b211eea4 file=1351ea4 immext(#0xb2134b40)
+b211eea8 file=1351ea8 r1:0 = combine(#0x1,##0xb2134b50)
+b211eeac file=1351eac r2 = memub(r16+#0x4)
+b211eeb0 file=1351eb0 memw(r29+#0x0) = r2.new
+    # END_PACKET
+b211eeb4 file=1351eb4 call 0xb2016734
+    # END_PACKET
+b211eeb8 file=1351eb8 immext(#0x1540)
+b211eebc file=1351ebc r0 = memw(r17+##0x1558)
+b211eec0 file=1351ec0 r1 = memw(r16+#0x0)
+    # END_PACKET
+b211eec4 file=1351ec4 jump 0xb2117d10
+b211eec8 file=1351ec8 r17:16 = memd(r29+#0x8)	deallocframe
+    # END_PACKET
+b211eecc file=1351ecc call 0xb2119cb8
+b211eed0 file=1351ed0 immext(#0xb21324c0)
+b211eed4 file=1351ed4 r1:0 = combine(##-0x4decdb22,#0x0)
+    # END_PACKET
+b211eed8 file=1351ed8 call 0xb2016734
+b211eedc file=1351edc immext(#0xb21344c0)
+b211eee0 file=1351ee0 r1:0 = combine(#0x0,##0xb21344e8)
+    # END_PACKET
+b211eee4 file=1351ee4 r0 = #0x8
+    # END_PACKET
+b211eee8 file=1351ee8 r17:16 = memd(r29+#0x8)	dealloc_return
+    # END_PACKET

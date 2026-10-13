@@ -1,0 +1,154 @@
+[
+  {
+    "path": "/overlay/FrameworksResTarget_Vendor.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NfcResTarget.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SecureElementResTarget_Vendor.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/UwbResTarget_Vendor.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResMainlineTarget.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResMainlineTarget_spf.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResTarget.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResTarget_spf.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/XpanResTarget_Vendor.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/com.qualcomm.qti.gpudrivers.canoe.api36/com.qualcomm.qti.gpudrivers.canoe.api36.apk",
+    "entries": 4,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/TrustZoneAccessService/TrustZoneAccessService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/TimeService/TimeService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/CneApp/CneApp.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/CACertService/CACertService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/apex/com.android.hardware.cas.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "apex_payload": "/tmp/iceland-archive-audit/vendor-com.android.hardware.cas-payload.img"
+  },
+  {
+    "path": "/apex/com.google.android.widevine.nonupdatable.apex",
+    "entries": 9,
+    "protobuf_paths": [
+      "apex_manifest.pb",
+      "apex_build_info.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/apex/vendor.oplus.chre.continuity.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "apex_payload": "/tmp/iceland-archive-audit/vendor-vendor.oplus.chre.continuity-payload.img"
+  },
+  {
+    "path": "/apex/vendor.oplus.hardware.engineer.aidl.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "apex_payload": "/tmp/iceland-archive-audit/vendor-vendor.oplus.hardware.engineer.aidl-payload.img"
+  },
+  {
+    "path": "/apex/vendor.oplus.hardware.stability.aidl.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "apex_payload": "/tmp/iceland-archive-audit/vendor-vendor.oplus.hardware.stability.aidl-payload.img"
+  }
+]

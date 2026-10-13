@@ -1,0 +1,22 @@
+8224:10-02 18:07:44.284  2106  2106 V CAM_ENGMODE:  i = 1 str = icelandmain
+8225:10-02 18:07:44.284  2106  2106 V CAM_ENGMODE:  i = 2 str = icelandmain_eeprom
+8740:10-02 18:07:44.284  2106  2106 V CAM_ENGMODE: camid:1 sensor_name:icelandfront
+14527:10-02 18:07:45.032  2106  2106 I Chi     : [CORE_CFG][MCXCORE           ] chimcxcameraconfig.cpp:217 PickMatchingCameraXML() sensorId(0) -> sensorName(icelandmain), isVirtualSensor(0)
+14528:10-02 18:07:45.032  2106  2106 I Chi     : [CORE_CFG][MCXCORE           ] chimcxcameraconfig.cpp:217 PickMatchingCameraXML() sensorId(1) -> sensorName(icelandfront), isVirtualSensor(0)
+14533:10-02 18:07:45.032  2106  2106 I Chi     : [CORE_CFG][CORE              ] chxlogicalcameras.cpp:531 EnforceCameraIdInvariants() Cam.(frameworkId 0, cameraId = 0, xmlCameraId = 0, fold 0, ppDeviceInfo[0].(cameraId = 0, name = WidePhysicalCam frameworkId = 0, sensorId = 0, sensorName = icelandmain, isAONBusShared = 0, logicalCamId = 0, xmlCameraId = 0, isPrimary = 1))
+14534:10-02 18:07:45.032  2106  2106 I Chi     : [CORE_CFG][CORE              ] chxlogicalcameras.cpp:531 EnforceCameraIdInvariants() Cam.(frameworkId 1, cameraId = 1, xmlCameraId = 1, fold 0, ppDeviceInfo[0].(cameraId = 1, name = FrontPhysicalCam frameworkId = 1, sensorId = 1, sensorName = icelandfront, isAONBusShared = 0, logicalCamId = 1, xmlCameraId = 1, isPrimary = 1))
+14556:10-02 18:07:45.033  2106  2106 I Chi     : [ INFO][CORE              ] extensionlayer.cpp:1562 InitializeSupportedSizePool() sensorName: icelandmain, cameraId: 0, isQCFA: 0
+14558:10-02 18:07:45.033  2106  2106 I Chi     : [ INFO][CORE              ] extensionlayer.cpp:1562 InitializeSupportedSizePool() sensorName: icelandfront, cameraId: 1, isQCFA: 0
+14567:10-02 18:07:45.033  2106  2106 D Chi     : [DEBUG][CORE              ] extensionlayer.cpp:2394 LoadCamSubDevice() Map camera id 0 --> fd 50    sensorName:icelandmain 
+14570:10-02 18:07:45.033  2106  2106 D Chi     : [DEBUG][CORE              ] extensionlayer.cpp:2394 LoadCamSubDevice() Map camera id 1 --> fd 51    sensorName:icelandfront 
+14969:10-02 18:07:45.131  2106  2164 I OplusAONCamera: sensorhubaonservice register started
+14970:10-02 18:07:45.131  2106  2164 I SensorhubAON: [oplusAON:SensorhubAON] Constructor called
+14971:10-02 18:07:45.131  2106  2164 E SensorhubAON: [oplusAON:SensorhubAON] RegisterCamxHandShakeService failed
+14972:10-02 18:07:45.131  2106  2164 I SensorhubAON: [oplusAON:SensorhubAON] AONService constructer start Version[1] Hash[8d0c8f312ebf7c4e6a50ebba9432d2bde93c09c2]
+14976:10-02 18:07:45.131  2106  2164 I OplusAONCamera: sensorhubaon register successfully
+19457:10-02 18:07:45.856  2088  2176 E sensors-hal: report_sensor_init_failure:129, sensor oplus_camera_orient not found in suid_map, report init failure
+19458:10-02 18:07:45.856  2088  2176 I android.hardware.sensors-service.multihal: Async reporting init fail for sensor: oplus_camera_orient
+19462:10-02 18:07:45.857  2088  2176 I android.hardware.sensors-service.multihal: Queued report (queue size: 15): event_id=10002, log_type=device_oplus_camera_orient_publish_fail
+19511:10-02 18:07:45.858  2088  2176 E sensors-hal: report_sensor_init_failure:129, sensor shaking not found in suid_map, report init failure
+19512:10-02 18:07:45.858  2088  2176 I android.hardware.sensors-service.multihal: Async reporting init fail for sensor: shaking
+19516:10-02 18:07:45.858  2088  2176 I android.hardware.sensors-service.multihal: Queued report (queue size: 22): event_id=10002, log_type=device_shaking_publish_fail

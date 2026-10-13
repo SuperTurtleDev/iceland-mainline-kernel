@@ -1,0 +1,1086 @@
+b211d364 file=1350364 p0 = cmp.gtu(r1,#0x6); if (p0.new) jump:nt 0xb211d3cc
+b211d368 file=1350368 allocframe(#0x0)
+b211d36c file=135036c immext(#0xb2132200)
+b211d370 file=1350370 r3 = memw(r1<<#0x2+##0xb2132234)
+b211d374 file=1350374 jumpr r3
+b211d378 file=1350378 immext(#0x40)
+b211d37c file=135037c r1 = r2 ; jump 0xb211d3e8
+b211d380 file=1350380 deallocframe
+b211d384 file=1350384 immext(#0x6c0)
+b211d388 file=1350388 r1 = #0x0 ; jump 0xb211da80
+b211d38c file=135038c deallocframe
+b211d390 file=1350390 r2 = #0x0
+b211d394 file=1350394 r1 = r2
+	deallocframe
+b211d398 file=1350398 jump 0xb211dd0c
+b211d39c file=135039c immext(#0xc40)
+b211d3a0 file=13503a0 r1 = #0x0 ; jump 0xb211dfe4
+b211d3a4 file=13503a4 deallocframe
+b211d3a8 file=13503a8 r2 = #0x0
+b211d3ac file=13503ac r1 = r2
+	deallocframe
+b211d3b0 file=13503b0 jump 0xb211e218
+b211d3b4 file=13503b4 r2 = #0x0
+b211d3b8 file=13503b8 r1 = r2
+	deallocframe
+b211d3bc file=13503bc jump 0xb211e404
+b211d3c0 file=13503c0 r1 = r2
+b211d3c4 file=13503c4 r0 = memw(r0+#0xc)
+	deallocframe
+b211d3c8 file=13503c8 jump 0xb211e61c
+b211d3cc file=13503cc call 0xb2119cb8
+b211d3d0 file=13503d0 immext(#0xb2132400)
+b211d3d4 file=13503d4 r1:0 = combine(##-0x4decdbe4,#0x0) ; Unrecognized handshake cmd
+b211d3d8 file=13503d8 call 0xb2016734
+b211d3dc file=13503dc immext(#0xb2134480)
+b211d3e0 file=13503e0 r1:0 = combine(#0x0,##0xb2134488)
+b211d3e4 file=13503e4 r0 = #0x2
+	dealloc_return
+b211d3e8 file=13503e8 call 0xb2019d88
+b211d3ec file=13503ec allocframe(#0xb8)
+b211d3f0 file=13503f0 call 0xb2119cb8
+b211d3f4 file=13503f4 r17:16 = combine(r0,r1)
+b211d3f8 file=13503f8 immext(#0xb2132880)
+b211d3fc file=13503fc r1:0 = combine(##-0x4decd766,#0x0) ; handle_handshake_cmd_init
+b211d400 file=1350400 call 0xb2016734
+b211d404 file=1350404 immext(#0xb21345c0)
+b211d408 file=1350408 r1:0 = combine(#0x0,##0xb21345f0)
+b211d40c file=135040c immext(#0xb21ea200)
+b211d410 file=1350410 r24 = ##-0x4de15e00
+b211d414 file=1350414 immext(#0x28000)
+b211d418 file=1350418 r25 = ##0x28001
+b211d41c file=135041c r2 = memub(r24+#0x2)
+b211d420 file=1350420 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211d444
+b211d424 file=1350424 call 0xb2119cb8
+b211d428 file=1350428 immext(#0xb2132880)
+b211d42c file=135042c r1:0 = combine(##-0x4decd74c,#0x0) ; Framework manager not valid
+b211d430 file=1350430 immext(#0xb21345c0)
+b211d434 file=1350434 r1:0 = combine(#0x0,##0xb21345fc)
+b211d438 file=1350438 call 0xb2016734
+b211d43c file=135043c r21 = add(r25,#-0x7ff8)
+b211d440 file=1350440 jump 0xb211da30
+b211d444 file=1350444 immext(#0xb21f2240)
+b211d448 file=1350448 r4 = ##0xb21f2247
+	r2 = memub(r16+#0x4)
+b211d44c file=135044c r18 = add(r4,#-0x7fff)
+b211d450 file=1350450 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211d470
+b211d454 file=1350454 r3 = memw(r16+#0x0)
+b211d458 file=1350458 r0 = r18
+b211d45c file=135045c r2 = memw(r16+#0x8)
+b211d460 file=1350460 memw(r29+#0x4) = r2.new
+b211d464 file=1350464 jump 0xb211d47c
+b211d468 file=1350468 immext(#0xb21328c0)
+b211d46c file=135046c r2 = ##0xb21328d0 ; /vendor/lib64/camera/%s_%lu.pb
+	memw(r29+#0x0) = r3
+b211d470 file=1350470 r0 = r18
+b211d474 file=1350474 immext(#0xb21328c0)
+b211d478 file=1350478 r2 = ##0xb21328ef ; /vendor/lib64/camera/%s.pb
+	memw(r29+#0x0) = r3
+b211d47c file=135047c call 0xb23a1d48
+b211d480 file=1350480 r1 = #0x80
+b211d484 file=1350484 call 0xb254f730
+b211d488 file=1350488 r1 = add(r29,#0x24)
+b211d48c file=135048c r0 = r18
+b211d490 file=1350490 memw(r29+#0x24) = #0x0
+b211d494 file=1350494 r21 = #0x2
+b211d498 file=1350498 immext(#0x580)
+b211d49c file=135049c p0 = cmp.eq(r0,#0x0); if (!p0.new) jump:t 0xb211da30
+b211d4a0 file=13504a0 immext(#0xb2132900)
+b211d4a4 file=13504a4 r1:0 = combine(##-0x4decd6f6,#0x1) ; pb file for framework_%d parsed successfully
+b211d4a8 file=13504a8 r2 = memw(r29+#0x24)
+b211d4ac file=13504ac memw(r29+#0x0) = r2.new
+b211d4b0 file=13504b0 call 0xb2119cb8
+b211d4b4 file=13504b4 immext(#0xb2134600)
+b211d4b8 file=13504b8 r1:0 = combine(#0x1,##0xb2134608)
+b211d4bc file=13504bc r2 = memw(r29+#0x24)
+b211d4c0 file=13504c0 memw(r29+#0x0) = r2.new
+b211d4c4 file=13504c4 call 0xb2016734
+b211d4c8 file=13504c8 r2 = memw(r29+#0x24)
+b211d4cc file=13504cc p0 = cmp.gtu(r2,#0x1)
+b211d4d0 file=13504d0 r18 = mux(p0,#0x0,r2)
+b211d4d4 file=13504d4 r26 = r18
+b211d4d8 file=13504d8 r2 = memub(r24+r18<<#0x0)
+b211d4dc file=13504dc immext(#0xb21ea200)
+b211d4e0 file=13504e0 r26 = add(##0xb21ea208,asl(r26,#0x2))
+b211d4e4 file=13504e4 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211d8ac
+b211d4e8 file=13504e8 call 0xb23f82d0
+b211d4ec file=13504ec immext(#0x3600)
+b211d4f0 file=13504f0 r1:0 = combine(##0x362c,#0x0)
+b211d4f4 file=13504f4 p0 = cmp.eq(r0,#0x0); if (!p0.new) jump:t 0xb211d51c
+b211d4f8 file=13504f8 call 0xb2119cb8
+b211d4fc file=13504fc immext(#0xb2132900)
+b211d500 file=1350500 r1:0 = combine(##-0x4decd6c9,#0x1) ; failed to allocate memory for camera index %d framework
+b211d504 file=1350504 memw(r29+#0x0) = r18
+b211d508 file=1350508 call 0xb2016734
+b211d50c file=135050c immext(#0xb2134600)
+b211d510 file=1350510 r1:0 = combine(#0x1,##0xb2134614)
+b211d514 file=1350514 memw(r29+#0x0) = r18
+b211d518 file=1350518 jump 0xb211da30
+b211d51c file=135051c call 0xb2019800
+b211d520 file=1350520 r2 = #0x362c
+b211d524 file=1350524 r1 = #0x0
+	r19 = r0
+b211d528 file=1350528 r20 = add(r24,#0x4)
+b211d52c file=135052c r0 = add(r19,#0x168)
+b211d530 file=1350530 r1 = add(r29,#0x40)
+	memb(r19+#0xa) = #1
+b211d534 file=1350534 memw(r26+#0x0) = r19
+b211d538 file=1350538 memw(r20+#0x0) += #0x1
+b211d53c file=135053c memw(r29+#0x40) = r19
+b211d540 file=1350540 immext(#0xb2120a00)
+b211d544 file=1350544 memw(r29+#0x44) = ##-0x4dedf5d4
+b211d548 file=1350548 call 0xb2462970
+b211d54c file=135054c immext(#0xb2120a40)
+b211d550 file=1350550 memw(r29+#0x48) = ##-0x4dedf584
+b211d554 file=1350554 immext(#0xb2120a80)
+b211d558 file=1350558 r1:0 = combine(##-0x4dedf57c,#0x0)
+b211d55c file=135055c r3:2 = combine(#0x1,r18)
+b211d560 file=1350560 r4 = memw(r24+#0x40)
+b211d564 file=1350564 call 0xb2122d2c
+b211d568 file=1350568 memw(r19+#0x40) = r4
+b211d56c file=135056c memw(r19+#0x184) = r18
+b211d570 file=1350570 r0 = and(r18,#255)
+	memw(r19+#0x38) = r0
+b211d574 file=1350574 call 0xb2119a24
+b211d578 file=1350578 memw(r29+#0x28) = r0
+b211d57c file=135057c p0 = cmp.eq(r18,#0x0)
+b211d580 file=1350580 r27 = add(r19,#0x15a4)
+b211d584 file=1350584 memb(r19+#0x7) = #1
+	memb(r19+#0x9) = #0
+b211d588 file=1350588 r2 = !cmp.eq(r18,#0x0)
+b211d58c file=135058c r4 = mux(p0,#0x5,#0x6)
+b211d590 file=1350590 r3 = memw(r24+#0x10)
+b211d594 file=1350594 memw(r19+#0x3c) = r3.new
+b211d598 file=1350598 r3 = mux(p0,#0x2,#0x3)
+b211d59c file=135059c memw(r19+#0x34) = r0
+	memw(r19+#0x28) = r18
+b211d5a0 file=13505a0 memw(r19+#0x24) = r18
+b211d5a4 file=13505a4 r5 = memub(r16+#0x18)
+b211d5a8 file=13505a8 immext(#0x35c0)
+b211d5ac file=13505ac memb(r19+##0x35f5) = r5
+b211d5b0 file=13505b0 r5 = memub(r16+#0x19)
+b211d5b4 file=13505b4 immext(#0x3600)
+b211d5b8 file=13505b8 memb(r19+##0x3610) = r5
+b211d5bc file=13505bc memb(r27+#0x1c) = r2
+b211d5c0 file=13505c0 memb(r27+#0x1d) = r3
+b211d5c4 file=13505c4 memb(r27+#0x1e) = r4
+b211d5c8 file=13505c8 r2 = memw(r16+#0x10)
+b211d5cc file=13505cc if (cmp.eq(r2.new,#0x0)) jump:nt 0xb211d644
+b211d5d0 file=13505d0 r2 = memw(r16+#0x14)
+b211d5d4 file=13505d4 r23 = +mpyi(r2,#0xc)
+b211d5d8 file=13505d8 call 0xb23f82d0
+b211d5dc file=13505dc r1:0 = combine(r23,#0x0)
+b211d5e0 file=13505e0 immext(#0x440)
+b211d5e4 file=13505e4 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211da38
+b211d5e8 file=13505e8 call 0xb2019400
+b211d5ec file=13505ec r22 = r0
+b211d5f0 file=13505f0 r2 = r23
+	r1 = memw(r16+#0x10)
+b211d5f4 file=13505f4 r3 = memw(r16+#0x14)
+b211d5f8 file=13505f8 if (!cmp.gtu(r3.new,#0x1)) jump:t 0xb211d63c
+b211d5fc file=13505fc r2 = r22
+	r4 = memw(r22+#0x4)
+b211d600 file=1350600 r2 += mpyi(r3,#0xc)
+b211d604 file=1350604 r5 = memw(r2+#-0x8)
+b211d608 file=1350608 if (!cmp.gt(r4,r5.new)) jump:t 0xb211d63c
+b211d60c file=135060c r3 = memw(r22+#0x8)
+b211d610 file=1350610 r4 = memw(r2+#-0x4)
+b211d614 file=1350614 r1 = memw(r22+#0x4)
+	memw(r22+#0x8) = r4
+b211d618 file=1350618 r5 = memw(r2+#-0x8)
+b211d61c file=135061c memw(r22+#0x4) = r5.new
+b211d620 file=1350620 r0 = memw(r22+#0x0)
+b211d624 file=1350624 r6 = memw(r2+#-0xc)
+b211d628 file=1350628 memw(r22+#0x0) = r6
+b211d62c file=135062c memw(r2+#-0xc) = r0
+b211d630 file=1350630 memw(r2+#-0x4) = r3
+b211d634 file=1350634 memw(r2+#-0x8) = r1
+b211d638 file=1350638 r3 = memw(r16+#0x14)
+b211d63c file=135063c memw(r19+#0x50) = r22
+b211d640 file=1350640 memw(r19+#0x54) = r3
+b211d644 file=1350644 r24 = add(r18,r24)
+b211d648 file=1350648 r0 = memw(r29+#0x28)
+b211d64c file=135064c call 0xb2119d04
+b211d650 file=1350650 memb(r24+#0x0) = #0x1
+b211d654 file=1350654 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211da0c
+b211d658 file=1350658 immext(#0xb2200cc0)
+b211d65c file=135065c r1:0 = combine(##-0x4ddff324,r29)
+b211d660 file=1350660 r2 = #0x1c
+	r21 = r0
+b211d664 file=1350664 call 0xb2019400
+b211d668 file=1350668 memw(r19+#0x44) = r21
+b211d66c file=135066c memw(r27+#0x0) = r21
+b211d670 file=1350670 call 0xb2462f00
+b211d674 file=1350674 r22 = r0
+b211d678 file=1350678 r0 = add(r19,#0x1cbc)
+b211d67c file=135067c r1 = memw(r21+#0x4)
+b211d680 file=1350680 r2 = memw(r21+#0x250)
+b211d684 file=1350684 call 0xb210d7cc
+b211d688 file=1350688 r20 = add(r19,#0x1cf4)
+b211d68c file=135068c r3 = memw(r27+#0x724)
+b211d690 file=1350690 if (cmp.eq(r3.new,#0x0)) jump:nt 0xb211d6b4
+b211d694 file=1350694 r2 = add(r29,#0x40)
+b211d698 file=1350698 r0 = memw(r21+#0x4)
+b211d69c file=135069c memw(r29+#0x40) = #0x0
+b211d6a0 file=13506a0 callr r3
+b211d6a4 file=13506a4 r1 = memw(r21+#0x250)
+b211d6a8 file=13506a8 p0 = r0
+b211d6ac file=13506ac if (p0.new) r2 = memw(r29+#0x40)
+b211d6b0 file=13506b0 if (p0.new) memw(r20+#0x0) = r2.new
+b211d6b4 file=13506b4 r2 = memw(r27+#0x73c)
+b211d6b8 file=13506b8 if (cmp.eq(r2.new,#0x0)) jump:nt 0xb211d710
+b211d6bc file=13506bc r3 = add(r19,#0x1cf8)
+b211d6c0 file=13506c0 r1 = add(r29,#0x40)
+b211d6c4 file=13506c4 r0 = memw(r20+#0x0)
+b211d6c8 file=13506c8 memw(r29+#0x4c) = r3.new
+b211d6cc file=13506cc r3 = #0x1
+b211d6d0 file=13506d0 r23 = add(r19,#0x1ce0)
+b211d6d4 file=13506d4 immext(#0x80000000)
+b211d6d8 file=13506d8 memw(r29+#0x40) = ##-0x7ffffffe
+b211d6dc file=13506dc callr r2
+b211d6e0 file=13506e0 memb(r29+#0x44) = r3
+b211d6e4 file=13506e4 memw(r29+#0x48) = #0x1
+b211d6e8 file=13506e8 r2 = #0x1
+b211d6ec file=13506ec r0 = add(r19,#0x1cfc)
+b211d6f0 file=13506f0 memb(r29+#0x44) = r2.new
+b211d6f4 file=13506f4 r1 = add(r29,#0x40)
+b211d6f8 file=13506f8 r2 = memw(r23+#0x0)
+	memw(r29+#0x4c) = r0
+b211d6fc file=13506fc r0 = memw(r20+#0x0)
+b211d700 file=1350700 immext(#0x80000000)
+b211d704 file=1350704 memw(r29+#0x40) = ##-0x7fffffff
+b211d708 file=1350708 callr r2
+b211d70c file=135070c memw(r29+#0x48) = #0x1
+b211d710 file=1350710 r23 = add(r19,#0x1d00)
+b211d714 file=1350714 call 0xb210d730
+b211d718 file=1350718 r0 = r23
+b211d71c file=135071c call 0xb2119a68
+b211d720 file=1350720 r3 = add(r19,#0x1d08)
+b211d724 file=1350724 r2 = memw(r0+#0xdc)
+b211d728 file=1350728 r2 = add(r19,#0x1d04)
+b211d72c file=135072c p0 = cmp.eq(r2,#0x0); if (p0.new) jump:nt 0xb211d748
+b211d730 file=1350730 r4 = memw(r23+#0x0)
+b211d734 file=1350734 if (cmp.eq(r4.new,#0x0)) jump:nt 0xb211d748
+b211d738 file=1350738 r4 = memw(r2+#0x0)
+b211d73c file=135073c if (cmp.eq(r4.new,#0x0)) jump:nt 0xb211d748
+b211d740 file=1350740 r4 = memw(r3+#0x0)
+b211d744 file=1350744 if (!cmp.eq(r4.new,#0x0)) jump:t 0xb211d76c
+b211d748 file=1350748 immext(#0xb210ed40)
+b211d74c file=135074c r0 = ##-0x4def12a0
+b211d750 file=1350750 immext(#0xb210ecc0)
+b211d754 file=1350754 memw(r23+#0x0) = ##-0x4def1330
+b211d758 file=1350758 immext(#0xb210edc0)
+b211d75c file=135075c memw(r2+#0x0) = ##-0x4def1240
+b211d760 file=1350760 immext(#0xb210ed80)
+b211d764 file=1350764 memw(r3+#0x0) = ##-0x4def1244
+b211d768 file=1350768 memw(r27+#0x768) = r0
+b211d76c file=135076c if (p0.new) r22 = #0x0
+b211d770 file=1350770 p0 = cmp.eq(r22,#0x0); if (!p0.new) jump:t 0xb211d82c
+b211d774 file=1350774 r2 = memw(r19+#0xf4)
+b211d778 file=1350778 if (!cmp.eq(r2.new,#0x0)) jump:t 0xb211d82c
+b211d77c file=135077c r2 = memub(r24+#0x0)
+b211d780 file=1350780 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211d7ac
+b211d784 file=1350784 call 0xb2119cb8
+b211d788 file=1350788 immext(#0xb2132280)
+b211d78c file=135078c r1:0 = combine(##-0x4decdd44,#0x1) ; invalid framework index: %d
+b211d790 file=1350790 memw(r29+#0x0) = r18
+b211d794 file=1350794 call 0xb2016734
+b211d798 file=1350798 immext(#0xb2134680)
+b211d79c file=135079c r1:0 = combine(#0x1,##0xb21346a0)
+b211d7a0 file=13507a0 memw(r29+#0x0) = r18
+b211d7a4 file=13507a4 r22 = add(r25,#-0x7fff)
+b211d7a8 file=13507a8 jump 0xb211d82c
+b211d7ac file=13507ac r20 = add(r29,#0x40)
+b211d7b0 file=13507b0 r2 = memw(r26+#0x0)
+b211d7b4 file=13507b4 memw(r29+#0x2c) = r20.new
+b211d7b8 file=13507b8 call 0xb2463314
+b211d7bc file=13507bc r0 = r20
+	memw(r29+#0x30) = r2
+b211d7c0 file=13507c0 call 0xb24633d4
+b211d7c4 file=13507c4 r0 = r20
+b211d7c8 file=13507c8 immext(#0xb2134680)
+b211d7cc file=13507cc r1 = memw(r18<<#0x2+##0xb2134698)
+b211d7d0 file=13507d0 call 0xb2463400
+b211d7d4 file=13507d4 r1:0 = combine(#0x1,r20)
+b211d7d8 file=13507d8 r0 = r20
+b211d7dc file=13507dc r2 = #0xcc0
+b211d7e0 file=13507e0 immext(#0xb2134680)
+b211d7e4 file=13507e4 r1 = memw(r18<<#0x2+##0xb2134690)
+b211d7e8 file=13507e8 call 0xb24633a0
+b211d7ec file=13507ec r20 = memw(r29+#0x30)
+b211d7f0 file=13507f0 call 0xb210ea78
+b211d7f4 file=13507f4 r0 = add(r20,#0xf8)
+b211d7f8 file=13507f8 call 0xb210ea78
+b211d7fc file=13507fc r0 = add(r20,#0x35b8)
+b211d800 file=1350800 call 0xb210ea78
+b211d804 file=1350804 r0 = add(r20,#0xfc)
+b211d808 file=1350808 call 0xb2118b50
+b211d80c file=135080c r0 = add(r20,#0x35bc)
+b211d810 file=1350810 r3 = add(r20,#0xf4)
+b211d814 file=1350814 immext(#0xb211f440)
+b211d818 file=1350818 r1:0 = combine(r18,##-0x4dee0bac)
+b211d81c file=135081c r2 = memw(r29+#0x2c)
+b211d820 file=1350820 call 0xb2463434
+b211d824 file=1350824 p0 = cmp.eq(r0,#0x0)
+b211d828 file=1350828 r22 = mux(p0,#0x0,#0x2)
+b211d82c file=135082c r2 = memb(r21+#0x308)
+b211d830 file=1350830 if (cmp.eq(r2.new,#0x0)) jump:nt 0xb211d868
+b211d834 file=1350834 r2 = memw(r21+#0x368)
+b211d838 file=1350838 if (p0.new) r2 = add(r19,#0x60)
+b211d83c file=135083c p0 = cmp.eq(r2,#0xc); if (!p0.new) jump:t 0xb211da64
+b211d840 file=1350840 loop0(0xb211d854,#0xc)
+b211d844 file=1350844 immext(#0xb2134680)
+b211d848 file=1350848 r3 = ##-0x4decb948
+b211d84c file=135084c r4 = memw(r21+#0x36c)
+b211d850 file=1350850 r4 = add(r4,#0x2c)
+b211d854 file=1350854 r5 = memw(r3++#0x4)
+b211d858 file=1350858 memw(r2+#0x0) = r5.new
+b211d85c file=135085c r2 = add(r2,#0x4)
+b211d860 file=1350860 r5 = memw(r4++#-0x4)
+b211d864 file=1350864 memw(r2+#0x30) = r5.new
+b211d868 file=1350868 immext(#0x1d40)
+b211d86c file=135086c if (p0.new) r0 = add(r19,##0x1d44)
+b211d870 file=1350870 p0 = cmp.eq(r22,#0x0); if (!p0.new) jump:t 0xb211da0c
+b211d874 file=1350874 call 0xb2019800
+b211d878 file=1350878 r1 = #0x0
+	r2 = #0x30
+b211d87c file=135087c r1:0 = memd(r21+#0x130)
+b211d880 file=1350880 r5:4 = memd(r21+#0x140)
+b211d884 file=1350884 r6 = memw(r23+#0x0)
+b211d888 file=1350888 r2 = convert_df2sf(r1:0)
+b211d88c file=135088c r3 = convert_df2sf(r5:4)
+b211d890 file=1350890 r1 = add(r19,#0x1d8c)
+b211d894 file=1350894 r0 = memw(r29+#0x28)
+b211d898 file=1350898 callr r6
+b211d89c file=135089c p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211d9ec
+b211d8a0 file=13508a0 memw(r27+#0x794) = r0
+b211d8a4 file=13508a4 r2 = memub(r24+#0x0)
+b211d8a8 file=13508a8 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211da0c
+b211d8ac file=13508ac r19 = memw(r26+#0x0)
+b211d8b0 file=13508b0 if (cmp.eq(r19.new,#0x0)) jump:nt 0xb211da0c
+b211d8b4 file=13508b4 r2 = memb(r19+#0xa)
+b211d8b8 file=13508b8 if (cmp.eq(r2.new,#0x1)) jump:t 0xb211d8c8
+b211d8bc file=13508bc call 0xb2119a68
+b211d8c0 file=13508c0 r2 = memw(r0+#0xc)
+b211d8c4 file=13508c4 if (cmp.eq(r2.new,#0x0)) jump:nt 0xb211d9b4
+b211d8c8 file=13508c8 r20 = add(r19,#0x168)
+b211d8cc file=13508cc r2 = #0x0
+b211d8d0 file=13508d0 memw(r17+#0xc) = r18
+b211d8d4 file=13508d4 memb(r17+#0x10) = #0x1
+b211d8d8 file=13508d8 r1:0 = combine(r17,r20)
+b211d8dc file=13508dc memb(r17+#0x4) = #0x1
+b211d8e0 file=13508e0 memw(r16+#0xc) = r18
+b211d8e4 file=13508e4 r3 = memub(r16+#0x18)
+b211d8e8 file=13508e8 immext(#0x35c0)
+b211d8ec file=13508ec memb(r19+##0x35f5) = r3.new
+b211d8f0 file=13508f0 call 0xb2114558
+b211d8f4 file=13508f4 memb(r19+#0x8) = r3
+b211d8f8 file=13508f8 r21 = r0
+b211d8fc file=13508fc if (p0.new) r0 = add(r20,#0x0)
+b211d900 file=1350900 p0 = cmp.eq(r0,#0x0); if (!p0.new) jump:t 0xb211da30
+b211d904 file=1350904 call 0xb21144e4
+b211d908 file=1350908 p0 = cmp.eq(r0,#0x0)
+b211d90c file=135090c r0 = #0x1
+b211d910 file=1350910 r2 = memw(r19+#0x28)
+b211d914 file=1350914 memw(r29+#0x0) = r2.new
+b211d918 file=1350918 immext(#0xb21329c0)
+b211d91c file=135091c if (p0) r1 = ##-0x4decd601 ; FW_%d: moved to state FW_STATE_STAGE_0_SUS
+b211d920 file=1350920 immext(#0xb2134640)
+b211d924 file=1350924 if (p0) r17 = ##-0x4decb9a4
+b211d928 file=1350928 immext(#0xb2134640)
+b211d92c file=135092c if (p0) r18 = ##-0x4decb9b0
+b211d930 file=1350930 immext(#0xb2132980)
+b211d934 file=1350934 if (!p0) r1 = ##-0x4decd649 ; FW_%d: moved to state FW_STATE_STAGE_1_SUS
+b211d938 file=1350938 immext(#0xb2134600)
+b211d93c file=135093c if (!p0) r18 = ##-0x4decb9c8
+b211d940 file=1350940 immext(#0xb2134640)
+b211d944 file=1350944 if (!p0) r17 = ##-0x4decb9bc
+b211d948 file=1350948 call 0xb2119cb8
+b211d94c file=135094c r16 = mux(p0,#0x5,#0x6)
+b211d950 file=1350950 call 0xb2016734
+b211d954 file=1350954 r1:0 = combine(#0x1,r18)
+b211d958 file=1350958 r2 = memw(r19+#0x28)
+b211d95c file=135095c memw(r29+#0x0) = r2.new
+b211d960 file=1350960 call 0xb2119a68
+b211d964 file=1350964 call 0xb2119a68
+b211d968 file=1350968 r18 = memw(r0+#0xb8)
+b211d96c file=135096c immext(#0xb21329c0)
+b211d970 file=1350970 r1:0 = combine(##-0x4decd61e,#0x2) ; Island Cnt: Enter %d Exit %d
+b211d974 file=1350974 r2 = memw(r0+#0xbc)
+b211d978 file=1350978 memw(r29+#0x4) = r2.new
+b211d97c file=135097c call 0xb2119cb8
+b211d980 file=1350980 memw(r29+#0x0) = r18
+b211d984 file=1350984 call 0xb2119a68
+b211d988 file=1350988 call 0xb2119a68
+b211d98c file=135098c r18 = memw(r0+#0xb8)
+b211d990 file=1350990 r1:0 = combine(#0x2,r17)
+b211d994 file=1350994 r2 = memw(r0+#0xbc)
+b211d998 file=1350998 memw(r29+#0x4) = r2.new
+b211d99c file=135099c call 0xb2016734
+b211d9a0 file=13509a0 memw(r29+#0x0) = r18
+b211d9a4 file=13509a4 call 0xb2120acc
+b211d9a8 file=13509a8 r1:0 = combine(r19,r16)
+b211d9ac file=13509ac r21 = #0x0
+	memb(r19+#0xa) = r16
+b211d9b0 file=13509b0 jump 0xb211da30
+b211d9b4 file=13509b4 immext(#0xb2132a00)
+b211d9b8 file=13509b8 r1:0 = combine(##-0x4decd5d6,#0x2) ; Invalid framework %d state: %d
+b211d9bc file=13509bc r2 = memw(r26+#0x0)
+b211d9c0 file=13509c0 r2 = memub(r2+#0xa)
+b211d9c4 file=13509c4 memw(r29+#0x4) = r2.new
+b211d9c8 file=13509c8 call 0xb2119cb8
+b211d9cc file=13509cc memw(r29+#0x0) = r18
+b211d9d0 file=13509d0 immext(#0xb2134640)
+b211d9d4 file=13509d4 r1:0 = combine(#0x2,##0xb2134668)
+b211d9d8 file=13509d8 r2 = memw(r26+#0x0)
+b211d9dc file=13509dc r2 = memub(r2+#0xa)
+b211d9e0 file=13509e0 memw(r29+#0x4) = r2.new
+b211d9e4 file=13509e4 jump 0xb211d438
+b211d9e8 file=13509e8 memw(r29+#0x0) = r18
+b211d9ec file=13509ec call 0xb2119cb8
+b211d9f0 file=13509f0 immext(#0xb2132980)
+b211d9f4 file=13509f4 r1:0 = combine(##-0x4decd66f,#0x1) ; failed to create AEC ctx: fw_idx = %d
+b211d9f8 file=13509f8 memw(r29+#0x0) = r18
+b211d9fc file=13509fc call 0xb2016734
+b211da00 file=1350a00 immext(#0xb2134600)
+b211da04 file=1350a04 r1:0 = combine(#0x1,##0xb213462c)
+b211da08 file=1350a08 memw(r29+#0x0) = r18
+b211da0c file=1350a0c call 0xb2119cb8
+b211da10 file=1350a10 immext(#0xb2132a40)
+b211da14 file=1350a14 r1:0 = combine(##-0x4decd5b7,#0x2) ; Framework %d not initialized
+b211da18 file=1350a18 memw(r29+#0x0) = r18
+b211da1c file=1350a1c call 0xb2016734
+b211da20 file=1350a20 immext(#0xb2134640)
+b211da24 file=1350a24 r1:0 = combine(#0x1,##0xb2134674)
+b211da28 file=1350a28 memw(r29+#0x0) = r18
+b211da2c file=1350a2c r21 = add(r25,#-0x7fff)
+b211da30 file=1350a30 immext(#0xffefc440)
+b211da34 file=1350a34 r0 = r21 ; jump 0xb2019e78
+b211da38 file=1350a38 call 0xb2119cb8
+b211da3c file=1350a3c immext(#0xb2132940)
+b211da40 file=1350a40 r1:0 = combine(##-0x4decd691,#0x0) ; malloc failed: actutor DAC values
+b211da44 file=1350a44 call 0xb2016734
+b211da48 file=1350a48 immext(#0xb2134600)
+b211da4c file=1350a4c r1:0 = combine(#0x0,##0xb2134620)
+b211da50 file=1350a50 call 0xb23f847c
+b211da54 file=1350a54 r0 = r19
+b211da58 file=1350a58 memw(r26+#0x0) = #0x0
+b211da5c file=1350a5c jump 0xb211da30
+b211da60 file=1350a60 memw(r20+#0x0) -= #0x1
+b211da64 file=1350a64 call 0xb2119cb8
+b211da68 file=1350a68 immext(#0xb2132a80)
+b211da6c file=1350a6c r1:0 = combine(##-0x4decd572,#0x0) ; auto focus lookup table not populated
+b211da70 file=1350a70 call 0xb2016734
+b211da74 file=1350a74 immext(#0xb2134680)
+b211da78 file=1350a78 r1:0 = combine(#0x0,##0xb21346ac)
+b211da7c file=1350a7c jump 0xb211d868
+b211da80 file=1350a80 call 0xb2019dd0
+b211da84 file=1350a84 allocframe(#0x48)
+b211da88 file=1350a88 r19 = memw(r0+#0xc)
+	memw(r29+#0x10) = r0
+b211da8c file=1350a8c p0 = cmp.gtu(r19,#0x1); if (p0.new) jump:t 0xb211da9c
+b211da90 file=1350a90 immext(#0xb21ea200)
+b211da94 file=1350a94 r2 = memub(r19+##-0x4de15e00)
+b211da98 file=1350a98 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211dac8
+b211da9c file=1350a9c call 0xb2119cb8
+b211daa0 file=1350aa0 immext(#0xb2132280)
+b211daa4 file=1350aa4 r1:0 = combine(##-0x4decdd44,#0x1) ; invalid framework index: %d
+b211daa8 file=1350aa8 memw(r29+#0x0) = r19
+b211daac file=1350aac call 0xb2016734
+b211dab0 file=1350ab0 immext(#0xb21346c0)
+b211dab4 file=1350ab4 r1:0 = combine(#0x1,##0xb21346e8)
+b211dab8 file=1350ab8 memw(r29+#0x0) = r19
+b211dabc file=1350abc immext(#0x20000)
+b211dac0 file=1350ac0 r17 = ##0x20002
+b211dac4 file=1350ac4 jump 0xb211dd04
+b211dac8 file=1350ac8 r3:2 = combine(r1,#0x0)
+b211dacc file=1350acc r18 = add(r29,#0x18)
+b211dad0 file=1350ad0 immext(#0xb21ea200)
+b211dad4 file=1350ad4 r16 = memw(r19<<#0x2+##0xb21ea208)
+b211dad8 file=1350ad8 p0 = tstbit(r3,#0x0)
+b211dadc file=1350adc r1 = add(r16,#0x35bc)
+b211dae0 file=1350ae0 r17 = r0
+	r0 = r18
+b211dae4 file=1350ae4 r3 = p0
+b211dae8 file=1350ae8 call 0xb2118b68
+b211daec file=1350aec r21 = r3
+b211daf0 file=1350af0 memw(r29+#0x14) = r21.new
+b211daf4 file=1350af4 call 0xb2118c40
+b211daf8 file=1350af8 r0 = r18
+b211dafc file=1350afc immext(#0xb2132a80)
+b211db00 file=1350b00 r1:0 = combine(##-0x4decd54c,#0x2) ; FW_%d: handle_handshake_cmd_release_ctrl acquiring lock async = %d
+b211db04 file=1350b04 r2 = r21
+	r18 = r0
+b211db08 file=1350b08 p0 = r2
+b211db0c file=1350b0c memw(r29+#0x0) = r19
+b211db10 file=1350b10 call 0xb2119cb8
+b211db14 file=1350b14 r20 = mux(p0,#0x1,#0x0)
+b211db18 file=1350b18 memw(r29+#0x4) = r20.new
+b211db1c file=1350b1c immext(#0xb21346c0)
+b211db20 file=1350b20 r1:0 = combine(#0x2,##0xb21346f4)
+b211db24 file=1350b24 memw(r29+#0x4) = r20
+	memw(r29+#0x0) = r19
+b211db28 file=1350b28 call 0xb2016734
+b211db2c file=1350b2c r2 = r21
+b211db30 file=1350b30 p0 = r2
+b211db34 file=1350b34 if (!p0.new) jump:t 0xb211dc1c
+b211db38 file=1350b38 immext(#0x3600)
+b211db3c file=1350b3c if (!p0.new) r2 = memw(r16+##0x3614)
+b211db40 file=1350b40 call 0xb210eab8
+b211db44 file=1350b44 r0 = memw(r16+#0xf8)
+b211db48 file=1350b48 immext(#0xb2132b40)
+b211db4c file=1350b4c r1:0 = combine(##-0x4decd495,#0x4) ; FW_%d: handle_handshake_cmd_release_ctrl power_save_state = %d ctrl_state = %d async = %d
+b211db50 file=1350b50 r2 = memub(r16+#0x9)
+	r3 = memub(r16+#0x7)
+b211db54 file=1350b54 memw(r29+#0x8) = r3
+	memw(r29+#0xc) = r20
+b211db58 file=1350b58 call 0xb2119cb8
+b211db5c file=1350b5c memw(r29+#0x4) = r2
+	memw(r29+#0x0) = r19
+b211db60 file=1350b60 immext(#0xb2134700)
+b211db64 file=1350b64 r1:0 = combine(#0x4,##0xb213470c)
+b211db68 file=1350b68 r2 = memub(r16+#0x9)
+	r3 = memub(r16+#0x7)
+b211db6c file=1350b6c memw(r29+#0xc) = r20
+	memw(r29+#0x8) = r3
+b211db70 file=1350b70 call 0xb2016734
+b211db74 file=1350b74 memw(r29+#0x4) = r2
+	memw(r29+#0x0) = r19
+b211db78 file=1350b78 r2 = memb(r16+#0x9)
+b211db7c file=1350b7c if (cmp.eq(r2.new,#0x1)) jump:t 0xb211dc14
+b211db80 file=1350b80 r2 = memub(r16+#0xa)
+b211db84 file=1350b84 if (cmp.eq(r2.new,#0x2)) jump:nt 0xb211dc14
+b211db88 file=1350b88 immext(#0x240)
+b211db8c file=1350b8c if (p0.new) r0 = add(r16,##0x254)
+b211db90 file=1350b90 p0 = cmp.eq(r2,#0x6); if (p0.new) jump:nt 0xb211dca4
+b211db94 file=1350b94 p0 = cmp.eq(r2,#0x5); if (!p0.new) jump:t 0xb211dc74
+b211db98 file=1350b98 immext(#0xb2132bc0)
+b211db9c file=1350b9c r1:0 = combine(##-0x4decd43b,#0x1) ; FW_%d: moved to state FW_STATE_STAGE_0
+b211dba0 file=1350ba0 r2 = memw(r16+#0x28)
+b211dba4 file=1350ba4 memw(r29+#0x0) = r2.new
+b211dba8 file=1350ba8 call 0xb2119cb8
+b211dbac file=1350bac immext(#0xb2134700)
+b211dbb0 file=1350bb0 r1:0 = combine(#0x1,##0xb2134718)
+b211dbb4 file=1350bb4 r2 = memw(r16+#0x28)
+b211dbb8 file=1350bb8 memw(r29+#0x0) = r2.new
+b211dbbc file=1350bbc call 0xb2016734
+b211dbc0 file=1350bc0 call 0xb2119a68
+b211dbc4 file=1350bc4 call 0xb2119a68
+b211dbc8 file=1350bc8 r17 = memw(r0+#0xb8)
+b211dbcc file=1350bcc immext(#0xb21329c0)
+b211dbd0 file=1350bd0 r1:0 = combine(##-0x4decd61e,#0x2) ; Island Cnt: Enter %d Exit %d
+b211dbd4 file=1350bd4 r2 = memw(r0+#0xbc)
+b211dbd8 file=1350bd8 memw(r29+#0x4) = r2.new
+b211dbdc file=1350bdc call 0xb2119cb8
+b211dbe0 file=1350be0 memw(r29+#0x0) = r17
+b211dbe4 file=1350be4 call 0xb2119a68
+b211dbe8 file=1350be8 call 0xb2119a68
+b211dbec file=1350bec r17 = memw(r0+#0xb8)
+b211dbf0 file=1350bf0 immext(#0xb2134700)
+b211dbf4 file=1350bf4 r1:0 = combine(#0x2,##0xb2134724)
+b211dbf8 file=1350bf8 r2 = memw(r0+#0xbc)
+b211dbfc file=1350bfc memw(r29+#0x4) = r2.new
+b211dc00 file=1350c00 call 0xb2016734
+b211dc04 file=1350c04 memw(r29+#0x0) = r17
+b211dc08 file=1350c08 call 0xb2120acc
+b211dc0c file=1350c0c r1:0 = combine(r16,#0x2)
+b211dc10 file=1350c10 memb(r16+#0xa) = #0x2
+b211dc14 file=1350c14 r17 = #0x0 ; jump 0xb211dcb8
+b211dc18 file=1350c18 memb(r16+#0x7) = #0x0
+b211dc1c file=1350c1c r2 = or(r2,r18)
+b211dc20 file=1350c20 if (!cmp.eq(r2.new,#0x0)) jump:t 0xb211dc30
+b211dc24 file=1350c24 call 0xb210eb18
+b211dc28 file=1350c28 r0 = memw(r16+#0xf8)
+b211dc2c file=1350c2c p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211db48
+b211dc30 file=1350c30 immext(#0xb2132ac0)
+b211dc34 file=1350c34 r1:0 = combine(##-0x4decd509,#0x2) ; FW_%d: handle_handshake_cmd_release_ctrl, defer to async request, failed to acquire lock or non-zero queue len (%d)
+b211dc38 file=1350c38 memw(r29+#0x4) = r18
+	memw(r29+#0x0) = r19
+b211dc3c file=1350c3c call 0xb2119cb8
+b211dc40 file=1350c40 immext(#0xb2134700)
+b211dc44 file=1350c44 r1:0 = combine(#0x2,##0xb2134700)
+b211dc48 file=1350c48 memw(r29+#0x4) = r18
+	memw(r29+#0x0) = r19
+b211dc4c file=1350c4c call 0xb2016734
+b211dc50 file=1350c50 call 0xb2120cf8
+b211dc54 file=1350c54 r1:0 = combine(r17,r16)
+b211dc58 file=1350c58 r2 = #0x2
+b211dc5c file=1350c5c if (!p0.new) r17 = #0x1
+b211dc60 file=1350c60 p0 = cmp.eq(r0,#0x0); if (!p0.new) jump:t 0xb211dc68
+b211dc64 file=1350c64 r17 = #0x6 ; jump 0xb211dd04
+b211dc68 file=1350c68 call 0xb2120d48
+b211dc6c file=1350c6c r1:0 = combine(r0,r16)
+b211dc70 file=1350c70 jump 0xb211dd04
+b211dc74 file=1350c74 call 0xb2119cb8
+b211dc78 file=1350c78 immext(#0xb2132bc0)
+b211dc7c file=1350c7c r1:0 = combine(##-0x4decd414,#0x1) ; Invalid State: %d
+b211dc80 file=1350c80 memw(r29+#0x0) = r2
+b211dc84 file=1350c84 immext(#0xb2134700)
+b211dc88 file=1350c88 r1:0 = combine(#0x1,##0xb2134730)
+b211dc8c file=1350c8c r2 = memub(r16+#0xa)
+b211dc90 file=1350c90 memw(r29+#0x0) = r2.new
+b211dc94 file=1350c94 call 0xb2016734
+b211dc98 file=1350c98 immext(#0x20000)
+b211dc9c file=1350c9c r17 = ##0x20002
+b211dca0 file=1350ca0 jump 0xb211dcb8
+b211dca4 file=1350ca4 call 0xb211caf0
+b211dca8 file=1350ca8 r1 = r16
+b211dcac file=1350cac r17 = r0
+	p0 = cmp.eq(r0,#0x0)
+b211dcb0 file=1350cb0 if (p0) r17 = #0x0
+b211dcb4 file=1350cb4 if (p0) memb(r16+#0x7) = #0x0
+b211dcb8 file=1350cb8 r2 = memw(r29+#0x14)
+b211dcbc file=1350cbc p0 = r2
+b211dcc0 file=1350cc0 if (!p0.new) jump:t 0xb211dce4
+b211dcc4 file=1350cc4 immext(#0xb21ea200)
+b211dcc8 file=1350cc8 if (p0.new) r3 = memw(##0xb21ea224)
+b211dccc file=1350ccc r1 = add(r29,#0x18)
+	r2 = add(r29,#0x10)
+b211dcd0 file=1350cd0 r0 = memw(r16+#0x40)
+b211dcd4 file=1350cd4 memb(r29+#0x18) = #0x0
+b211dcd8 file=1350cd8 memw(r29+#0x20) = r2
+	memw(r29+#0x1c) = r17
+b211dcdc file=1350cdc callr r3
+b211dce0 file=1350ce0 memw(r29+#0x24) = #0x1
+b211dce4 file=1350ce4 immext(#0x35c0)
+b211dce8 file=1350ce8 r2 = memub(r16+##0x35f5)
+b211dcec file=1350cec p0 = tstbit(r2,#0x0)
+b211dcf0 file=1350cf0 if (p0.new) r0 = add(r16,#0x0)
+b211dcf4 file=1350cf4 immext(#0x30c0)
+b211dcf8 file=1350cf8 if (p0) call 0xb2120de4
+b211dcfc file=1350cfc call 0xb210eaf4
+b211dd00 file=1350d00 r0 = memw(r16+#0xf8)
+b211dd04 file=1350d04 immext(#0xffefc180)
+b211dd08 file=1350d08 r0 = r17 ; jump 0xb2019ec0
+b211dd0c file=1350d0c call 0xb2019dbc
+b211dd10 file=1350d10 allocframe(#0x50)
+b211dd14 file=1350d14 r20 = memw(r0+#0xc)
+	memw(r29+#0x10) = r0
+b211dd18 file=1350d18 p0 = cmp.gtu(r20,#0x1); if (p0.new) jump:t 0xb211dd30
+b211dd1c file=1350d1c r3 = r2
+b211dd20 file=1350d20 immext(#0xb21ea200)
+b211dd24 file=1350d24 r2 = memub(r20+##-0x4de15e00)
+b211dd28 file=1350d28 if (p0.new) r19 = add(r29,#0x18)
+b211dd2c file=1350d2c p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211dd5c
+b211dd30 file=1350d30 call 0xb2119cb8
+b211dd34 file=1350d34 immext(#0xb2132280)
+b211dd38 file=1350d38 r1:0 = combine(##-0x4decdd44,#0x1) ; invalid framework index: %d
+b211dd3c file=1350d3c memw(r29+#0x0) = r20
+b211dd40 file=1350d40 call 0xb2016734
+b211dd44 file=1350d44 immext(#0xb2134740)
+b211dd48 file=1350d48 r1:0 = combine(#0x1,##0xb2134748)
+b211dd4c file=1350d4c memw(r29+#0x0) = r20
+b211dd50 file=1350d50 immext(#0x20000)
+b211dd54 file=1350d54 r18 = ##0x20002
+b211dd58 file=1350d58 jump 0xb211dfdc
+b211dd5c file=1350d5c p0 = tstbit(r3,#0x0)
+b211dd60 file=1350d60 immext(#0xb21ea200)
+b211dd64 file=1350d64 r16 = memw(r20<<#0x2+##0xb21ea208)
+b211dd68 file=1350d68 r3 = p0
+b211dd6c file=1350d6c r1 = add(r16,#0x35bc)
+b211dd70 file=1350d70 r18 = r0
+	r17 = r1
+b211dd74 file=1350d74 r0 = r19
+b211dd78 file=1350d78 r2 = #0x0
+b211dd7c file=1350d7c r22 = r3
+b211dd80 file=1350d80 memw(r29+#0x14) = r22.new
+b211dd84 file=1350d84 call 0xb2118b68
+b211dd88 file=1350d88 call 0xb2118c40
+b211dd8c file=1350d8c r0 = r19
+b211dd90 file=1350d90 immext(#0xb2132c00)
+b211dd94 file=1350d94 r1:0 = combine(##-0x4decd3c9,#0x2) ; FW_%d: handle_handshake_cmd_revoke_ctrl acquiring lock async = %d
+b211dd98 file=1350d98 r2 = r22
+	r19 = r0
+b211dd9c file=1350d9c p0 = r2
+b211dda0 file=1350da0 memw(r29+#0x0) = r20
+b211dda4 file=1350da4 call 0xb2119cb8
+b211dda8 file=1350da8 r21 = mux(p0,#0x1,#0x0)
+b211ddac file=1350dac memw(r29+#0x4) = r21.new
+b211ddb0 file=1350db0 immext(#0xb2134740)
+b211ddb4 file=1350db4 r1:0 = combine(#0x2,##0xb2134754)
+b211ddb8 file=1350db8 memw(r29+#0x4) = r21
+	memw(r29+#0x0) = r20
+b211ddbc file=1350dbc call 0xb2016734
+b211ddc0 file=1350dc0 r2 = r22
+b211ddc4 file=1350dc4 p0 = r2
+b211ddc8 file=1350dc8 if (!p0.new) jump:t 0xb211de40
+b211ddcc file=1350dcc immext(#0x3600)
+b211ddd0 file=1350dd0 if (!p0.new) r2 = memw(r16+##0x3614)
+b211ddd4 file=1350dd4 call 0xb210eab8
+b211ddd8 file=1350dd8 r0 = memw(r16+#0xf8)
+b211dddc file=1350ddc immext(#0xb2132cc0)
+b211dde0 file=1350de0 r1:0 = combine(##-0x4decd314,#0x4) ; FW_%d: handle_handshake_cmd_revoke_ctrl power_save_state = %d ctrl_state = %d async = %d
+b211dde4 file=1350de4 r2 = memub(r16+#0x9)
+	r3 = memub(r16+#0x7)
+b211dde8 file=1350de8 memw(r29+#0x8) = r3
+	memw(r29+#0xc) = r21
+b211ddec file=1350dec call 0xb2119cb8
+b211ddf0 file=1350df0 memw(r29+#0x4) = r2
+	memw(r29+#0x0) = r20
+b211ddf4 file=1350df4 immext(#0xb2134740)
+b211ddf8 file=1350df8 r1:0 = combine(#0x4,##0xb213476c)
+b211ddfc file=1350dfc r2 = memub(r16+#0x9)
+	r3 = memub(r16+#0x7)
+b211de00 file=1350e00 memw(r29+#0xc) = r21
+	memw(r29+#0x8) = r3
+b211de04 file=1350e04 call 0xb2016734
+b211de08 file=1350e08 memw(r29+#0x4) = r2
+	memw(r29+#0x0) = r20
+b211de0c file=1350e0c r2 = memub(r16+#0xa)
+b211de10 file=1350e10 if (cmp.gt(r2.new,#0x4)) jump:nt 0xb211de98
+b211de14 file=1350e14 p0 = cmp.eq(r2,#0x2); if (p0.new) jump:nt 0xb211dee8
+b211de18 file=1350e18 if (p0.new) r0 = add(r16,#0x0)
+b211de1c file=1350e1c p0 = cmp.eq(r2,#0x3); if (p0.new) jump:nt 0xb211ded0
+b211de20 file=1350e20 if (p0.new) r1 = #0x0
+b211de24 file=1350e24 if (p0.new) r18 = #0x1
+b211de28 file=1350e28 p0 = cmp.eq(r2,#0x4); if (!p0.new) jump:nt 0xb211dea0
+b211de2c file=1350e2c immext(#0x1540)
+b211de30 file=1350e30 r0 = memw(r16+##0x1558)
+b211de34 file=1350e34 memb(r16+#0x7) = #0x2
+b211de38 file=1350e38 call 0xb2117de8
+b211de3c file=1350e3c jump 0xb211df68
+b211de40 file=1350e40 r2 = or(r2,r19)
+b211de44 file=1350e44 if (!cmp.eq(r2.new,#0x0)) jump:t 0xb211de54
+b211de48 file=1350e48 call 0xb210eb18
+b211de4c file=1350e4c r0 = memw(r16+#0xf8)
+b211de50 file=1350e50 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211dddc
+b211de54 file=1350e54 immext(#0xb2132c40)
+b211de58 file=1350e58 r1:0 = combine(##-0x4decd387,#0x2) ; FW_%d: handle_handshake_cmd_revoke_ctrl, defer to async request, failed to acquire lock or non-zero queue len (%d)
+b211de5c file=1350e5c memw(r29+#0x4) = r19
+	memw(r29+#0x0) = r20
+b211de60 file=1350e60 call 0xb2119cb8
+b211de64 file=1350e64 immext(#0xb2134740)
+b211de68 file=1350e68 r1:0 = combine(#0x2,##0xb2134760)
+b211de6c file=1350e6c memw(r29+#0x4) = r19
+	memw(r29+#0x0) = r20
+b211de70 file=1350e70 call 0xb2016734
+b211de74 file=1350e74 call 0xb2120cf8
+b211de78 file=1350e78 r1:0 = combine(r18,r16)
+b211de7c file=1350e7c r2 = #0x3
+b211de80 file=1350e80 if (!p0.new) r18 = #0x1
+b211de84 file=1350e84 p0 = cmp.eq(r0,#0x0); if (!p0.new) jump:t 0xb211de8c
+b211de88 file=1350e88 r18 = #0x6 ; jump 0xb211dfdc
+b211de8c file=1350e8c call 0xb2120d48
+b211de90 file=1350e90 r1:0 = combine(r0,r16)
+b211de94 file=1350e94 jump 0xb211dfdc
+b211de98 file=1350e98 r3 = add(r2,#-0x5)
+b211de9c file=1350e9c if (!cmp.gtu(r3.new,#0x1)) jump:t 0xb211df64
+b211dea0 file=1350ea0 call 0xb2119cb8
+b211dea4 file=1350ea4 immext(#0xb2132bc0)
+b211dea8 file=1350ea8 r1:0 = combine(##-0x4decd414,#0x1) ; Invalid State: %d
+b211deac file=1350eac memw(r29+#0x0) = r2
+b211deb0 file=1350eb0 immext(#0xb2134780)
+b211deb4 file=1350eb4 r1:0 = combine(#0x1,##0xb2134790)
+b211deb8 file=1350eb8 r2 = memub(r16+#0xa)
+b211debc file=1350ebc memw(r29+#0x0) = r2.new
+b211dec0 file=1350ec0 call 0xb2016734
+b211dec4 file=1350ec4 immext(#0x20000)
+b211dec8 file=1350ec8 r18 = ##0x20002
+b211decc file=1350ecc jump 0xb211df68
+b211ded0 file=1350ed0 call 0xb2120e40
+b211ded4 file=1350ed4 p0 = cmp.eq(r0,#0x0)
+b211ded8 file=1350ed8 r18 = r0
+b211dedc file=1350edc if (p0.new) memb(r16+#0x7) = #0x1
+b211dee0 file=1350ee0 if (p0) r18 = #0x0
+b211dee4 file=1350ee4 jump 0xb211df68
+b211dee8 file=1350ee8 immext(#0xb21329c0)
+b211deec file=1350eec r1:0 = combine(##-0x4decd601,#0x1) ; FW_%d: moved to state FW_STATE_STAGE_0_SUS
+b211def0 file=1350ef0 r2 = memw(r16+#0x28)
+b211def4 file=1350ef4 memw(r29+#0x0) = r2.new
+b211def8 file=1350ef8 call 0xb2119cb8
+b211defc file=1350efc immext(#0xb2134740)
+b211df00 file=1350f00 r1:0 = combine(#0x1,##0xb2134778)
+b211df04 file=1350f04 r2 = memw(r16+#0x28)
+b211df08 file=1350f08 memw(r29+#0x0) = r2.new
+b211df0c file=1350f0c call 0xb2016734
+b211df10 file=1350f10 call 0xb2119a68
+b211df14 file=1350f14 call 0xb2119a68
+b211df18 file=1350f18 r18 = memw(r0+#0xb8)
+b211df1c file=1350f1c immext(#0xb21329c0)
+b211df20 file=1350f20 r1:0 = combine(##-0x4decd61e,#0x2) ; Island Cnt: Enter %d Exit %d
+b211df24 file=1350f24 r2 = memw(r0+#0xbc)
+b211df28 file=1350f28 memw(r29+#0x4) = r2.new
+b211df2c file=1350f2c call 0xb2119cb8
+b211df30 file=1350f30 memw(r29+#0x0) = r18
+b211df34 file=1350f34 call 0xb2119a68
+b211df38 file=1350f38 call 0xb2119a68
+b211df3c file=1350f3c r18 = memw(r0+#0xb8)
+b211df40 file=1350f40 immext(#0xb2134780)
+b211df44 file=1350f44 r1:0 = combine(#0x2,##0xb2134784)
+b211df48 file=1350f48 r2 = memw(r0+#0xbc)
+b211df4c file=1350f4c memw(r29+#0x4) = r2.new
+b211df50 file=1350f50 call 0xb2016734
+b211df54 file=1350f54 memw(r29+#0x0) = r18
+b211df58 file=1350f58 call 0xb2120acc
+b211df5c file=1350f5c r1:0 = combine(r16,#0x5)
+b211df60 file=1350f60 memb(r16+#0xa) = #0x5
+b211df64 file=1350f64 r18 = #0x0
+	memb(r16+#0x7) = #1
+b211df68 file=1350f68 immext(#0x1d40)
+b211df6c file=1350f6c if (!p0.new) r1 = add(r16,##0x1d74)
+b211df70 file=1350f70 p0 = cmp.eq(r17,#0x0); if (p0.new) jump:nt 0xb211df88
+b211df74 file=1350f74 r2 = add(r16,#0x1d44)
+b211df78 file=1350f78 r0 = add(r16,#0x1d8c)
+b211df7c file=1350f7c memw(r17+#0x4) = r2.new
+b211df80 file=1350f80 memw(r17+#0x0) = r18
+	memw(r17+#0x8) = r1
+b211df84 file=1350f84 memw(r17+#0xc) = r0
+b211df88 file=1350f88 p0 = cmp.eq(r18,#0x1); if (p0.new) jump:nt 0xb211dfbc
+b211df8c file=1350f8c r2 = memw(r29+#0x14)
+b211df90 file=1350f90 p0 = r2
+b211df94 file=1350f94 if (!p0.new) jump:nt 0xb211dfbc
+b211df98 file=1350f98 immext(#0xb21ea200)
+b211df9c file=1350f9c if (p0.new) r3 = memw(##0xb21ea224)
+b211dfa0 file=1350fa0 r1 = add(r29,#0x18)
+	r2 = add(r29,#0x10)
+b211dfa4 file=1350fa4 r0 = memw(r16+#0x40)
+b211dfa8 file=1350fa8 memw(r29+#0x1c) = r17
+b211dfac file=1350fac memw(r29+#0x20) = r2
+b211dfb0 file=1350fb0 memb(r29+#0x18) = #0x1
+b211dfb4 file=1350fb4 callr r3
+b211dfb8 file=1350fb8 memw(r29+#0x24) = #0x1
+b211dfbc file=1350fbc immext(#0x35c0)
+b211dfc0 file=1350fc0 r2 = memub(r16+##0x35f5)
+b211dfc4 file=1350fc4 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211dfd4
+b211dfc8 file=1350fc8 call 0xb2120f04
+b211dfcc file=1350fcc r0 = r16
+b211dfd0 file=1350fd0 r2 = #0x1
+	r1 = add(r29,#0x10)
+b211dfd4 file=1350fd4 call 0xb210eaf4
+b211dfd8 file=1350fd8 r0 = memw(r16+#0xf8)
+b211dfdc file=1350fdc immext(#0xffefbec0)
+b211dfe0 file=1350fe0 r0 = r18 ; jump 0xb2019eac
+b211dfe4 file=1350fe4 call 0xb2019dd0
+b211dfe8 file=1350fe8 allocframe(#0x40)
+b211dfec file=1350fec r17 = r0
+b211dff0 file=1350ff0 r18 = r1
+	memw(r29+#0x8) = r0
+b211dff4 file=1350ff4 call 0xb2119cb8
+b211dff8 file=1350ff8 immext(#0xb2133180)
+b211dffc file=1350ffc r1:0 = combine(##-0x4decce50,#0x0) ; handle_handshake_cmd_close
+b211e000 file=1351000 call 0xb2016734
+b211e004 file=1351004 immext(#0xb2134900)
+b211e008 file=1351008 r1:0 = combine(#0x0,##0xb2134904)
+b211e00c file=135100c r16 = memw(r17+#0xc)
+b211e010 file=1351010 if (cmp.gtu(r16.new,#0x1)) jump:t 0xb211e024
+b211e014 file=1351014 immext(#0xb21ea200)
+b211e018 file=1351018 r2 = memub(r16+##-0x4de15e00)
+b211e01c file=135101c if (p0.new) r19 = add(r29,#0x10)
+b211e020 file=1351020 p0 = tstbit(r2,#0); if (p0.new) jump:t 0xb211e050
+b211e024 file=1351024 call 0xb2119cb8
+b211e028 file=1351028 immext(#0xb2132280)
+b211e02c file=135102c r1:0 = combine(##-0x4decdd44,#0x1) ; invalid framework index: %d
+b211e030 file=1351030 memw(r29+#0x0) = r16
+b211e034 file=1351034 call 0xb2016734
+b211e038 file=1351038 immext(#0xb2134900)
+b211e03c file=135103c r1:0 = combine(#0x1,##0xb2134910)
+b211e040 file=1351040 memw(r29+#0x0) = r16
+b211e044 file=1351044 immext(#0x20000)
+b211e048 file=1351048 r18 = ##0x20002
+b211e04c file=135104c jump 0xb211e210
+b211e050 file=1351050 p0 = tstbit(r18,#0x0)
+b211e054 file=1351054 immext(#0xb21ea200)
+b211e058 file=1351058 r16 = memw(r16<<#0x2+##0xb21ea208)
+b211e05c file=135105c r3 = p0
+b211e060 file=1351060 r1 = add(r16,#0x35bc)
+b211e064 file=1351064 r2 = #0x0
+	r0 = r19
+b211e068 file=1351068 call 0xb2118b68
+b211e06c file=135106c r20 = r3
+b211e070 file=1351070 memw(r29+#0xc) = r20.new
+b211e074 file=1351074 call 0xb2118c40
+b211e078 file=1351078 r0 = r19
+b211e07c file=135107c r2 = r20
+b211e080 file=1351080 r18 = add(r16,#0x35f4)
+b211e084 file=1351084 p0 = r2
+b211e088 file=1351088 if (!p0.new) jump:t 0xb211e0e4
+b211e08c file=135108c if (p0.new) r0 = memw(r16+#0xf8)
+b211e090 file=1351090 call 0xb210eab8
+b211e094 file=1351094 r2 = memub(r18+#0x1)
+b211e098 file=1351098 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211e0b4
+b211e09c file=135109c r2 = memb(r16+#0xa)
+b211e0a0 file=13510a0 if (!cmp.eq(r2.new,#0x6)) jump:t 0xb211e0b4
+b211e0a4 file=13510a4 call 0xb2121948
+b211e0a8 file=13510a8 r17 = add(r16,#0x35f5)
+b211e0ac file=13510ac r0 = r16
+	memb(r16+#0x8) = #1
+b211e0b0 file=13510b0 memb(r17+#0x0) = #0x0
+b211e0b4 file=13510b4 r2 = memub(r16+#0xa)
+b211e0b8 file=13510b8 if (cmp.gt(r2.new,#0x4)) jump:nt 0xb211e140
+b211e0bc file=13510bc p0 = cmp.eq(r2,#0x2); if (p0.new) jump:nt 0xb211e150
+b211e0c0 file=13510c0 if (p0.new) r0 = add(r16,#0x0)
+b211e0c4 file=13510c4 p0 = cmp.eq(r2,#0x3); if (p0.new) jump:nt 0xb211e14c
+b211e0c8 file=13510c8 p0 = cmp.eq(r2,#0x4); if (!p0.new) jump:nt 0xb211e1d4
+b211e0cc file=13510cc r1 = #0x0
+b211e0d0 file=13510d0 immext(#0x1540)
+b211e0d4 file=13510d4 r0 = memw(r16+##0x1558)
+b211e0d8 file=13510d8 memb(r16+#0x2) = #0x1
+b211e0dc file=13510dc call 0xb2117de8
+b211e0e0 file=13510e0 jump 0xb211e1d4
+b211e0e4 file=13510e4 r19 = r0
+	r2 = memw(r18+#0x20)
+b211e0e8 file=13510e8 r2 = or(r2,r0)
+b211e0ec file=13510ec if (!cmp.eq(r2.new,#0x0)) jump:t 0xb211e0fc
+b211e0f0 file=13510f0 call 0xb210eb18
+b211e0f4 file=13510f4 r0 = memw(r16+#0xf8)
+b211e0f8 file=13510f8 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211e094
+b211e0fc file=13510fc immext(#0xb21331c0)
+b211e100 file=1351100 r1:0 = combine(##-0x4decce35,#0x1) ; handle_handshake_cmd_close, defer to async request, failed to acquire lock or non-zero queue len (%d)
+b211e104 file=1351104 r18 = #0x1
+	memw(r29+#0x0) = r19
+b211e108 file=1351108 call 0xb2119cb8
+b211e10c file=135110c call 0xb2016734
+b211e110 file=1351110 immext(#0xb2134900)
+b211e114 file=1351114 r1:0 = combine(#0x1,##0xb213491c)
+b211e118 file=1351118 memw(r29+#0x0) = r19
+b211e11c file=135111c call 0xb2120cf8
+b211e120 file=1351120 r1:0 = combine(r17,r16)
+b211e124 file=1351124 r2 = #0x4
+b211e128 file=1351128 p0 = cmp.eq(r0,#0x0)
+b211e12c file=135112c if (!p0.new) r1:0 = combine(r0,r16)
+b211e130 file=1351130 if (p0.new) r18 = #0x6
+b211e134 file=1351134 immext(#0x2c00)
+b211e138 file=1351138 if (!p0) call 0xb2120d48
+b211e13c file=135113c jump 0xb211e210
+b211e140 file=1351140 r2 = add(r2,#-0x5)
+b211e144 file=1351144 if (!cmp.gtu(r2.new,#0x1)) jump:t 0xb211e150
+b211e148 file=1351148 jump 0xb211e1d4
+b211e14c file=135114c call 0xb2120e40
+b211e150 file=1351150 r2 = #0x0
+b211e154 file=1351154 r0 = memw(r16+#0x28)
+b211e158 file=1351158 memh(r18+#0x24) = r2.new
+b211e15c file=135115c call 0xb2119cb8
+b211e160 file=1351160 immext(#0xb2133200)
+b211e164 file=1351164 r1:0 = combine(##-0x4deccdcf,#0x1) ; FW_%d: moved to state FW_STATE_INIT_WAIT
+b211e168 file=1351168 memw(r29+#0x0) = r0
+b211e16c file=135116c immext(#0xb2134900)
+b211e170 file=1351170 r1:0 = combine(#0x1,##0xb2134928)
+b211e174 file=1351174 r2 = memw(r16+#0x28)
+b211e178 file=1351178 memw(r29+#0x0) = r2.new
+b211e17c file=135117c call 0xb2016734
+b211e180 file=1351180 call 0xb2119a68
+b211e184 file=1351184 call 0xb2119a68
+b211e188 file=1351188 r17 = memw(r0+#0xb8)
+b211e18c file=135118c immext(#0xb21329c0)
+b211e190 file=1351190 r1:0 = combine(##-0x4decd61e,#0x2) ; Island Cnt: Enter %d Exit %d
+b211e194 file=1351194 r2 = memw(r0+#0xbc)
+b211e198 file=1351198 memw(r29+#0x4) = r2.new
+b211e19c file=135119c call 0xb2119cb8
+b211e1a0 file=13511a0 memw(r29+#0x0) = r17
+b211e1a4 file=13511a4 call 0xb2119a68
+b211e1a8 file=13511a8 call 0xb2119a68
+b211e1ac file=13511ac r17 = memw(r0+#0xb8)
+b211e1b0 file=13511b0 immext(#0xb2134900)
+b211e1b4 file=13511b4 r1:0 = combine(#0x2,##0xb2134934)
+b211e1b8 file=13511b8 r2 = memw(r0+#0xbc)
+b211e1bc file=13511bc memw(r29+#0x4) = r2.new
+b211e1c0 file=13511c0 call 0xb2016734
+b211e1c4 file=13511c4 memw(r29+#0x0) = r17
+b211e1c8 file=13511c8 call 0xb2120acc
+b211e1cc file=13511cc r1:0 = combine(r16,#0x1)
+b211e1d0 file=13511d0 memb(r16+#0xa) = #0x1
+b211e1d4 file=13511d4 r2 = memw(r29+#0xc)
+b211e1d8 file=13511d8 p0 = r2
+b211e1dc file=13511dc if (!p0.new) jump:t 0xb211e204
+b211e1e0 file=13511e0 immext(#0xb21ea200)
+b211e1e4 file=13511e4 if (p0.new) r3 = memw(##0xb21ea224)
+b211e1e8 file=13511e8 r1 = add(r29,#0x10)
+	r2 = add(r29,#0x8)
+b211e1ec file=13511ec r0 = memw(r16+#0x40)
+b211e1f0 file=13511f0 memb(r29+#0x10) = #0x2
+b211e1f4 file=13511f4 memw(r29+#0x18) = r2
+b211e1f8 file=13511f8 memw(r29+#0x14) = #0x0
+b211e1fc file=13511fc callr r3
+b211e200 file=1351200 memw(r29+#0x1c) = #0x1
+b211e204 file=1351204 call 0xb210eaf4
+b211e208 file=1351208 r18 = #0x0
+b211e20c file=135120c r0 = memw(r16+#0xf8)
+b211e210 file=1351210 immext(#0xffefbc80)
+b211e214 file=1351214 r0 = r18 ; jump 0xb2019ec0
+b211e218 file=1351218 call 0xb2019dd0
+b211e21c file=135121c allocframe(#0x70)
+b211e220 file=1351220 r17 = r1
+b211e224 file=1351224 r19:18 = combine(r2,r0)
+b211e228 file=1351228 immext(#0xb2133240)
+b211e22c file=135122c r1:0 = combine(##-0x4deccda6,#0x0) ; handle_handshake_cmd_fd_proxy_event
+b211e230 file=1351230 call 0xb2119cb8
+b211e234 file=1351234 call 0xb2016734
+b211e238 file=1351238 immext(#0xb2134940)
+b211e23c file=135123c r1:0 = combine(#0x0,##0xb2134940)
+b211e240 file=1351240 r16 = memw(r18+#0xc)
+b211e244 file=1351244 if (cmp.gtu(r16.new,#0x1)) jump:t 0xb211e3d4
+b211e248 file=1351248 immext(#0xb21ea200)
+b211e24c file=135124c r2 = memub(r16+##-0x4de15e00)
+b211e250 file=1351250 p0 = tstbit(r2,#0); if (!p0.new) jump:t 0xb211e3d4
+b211e254 file=1351254 p0 = tstbit(r19,#0x0)
+b211e258 file=1351258 r19 = add(r29,#0xc)
+b211e25c file=135125c immext(#0xb21ea200)
+b211e260 file=1351260 r16 = memw(r16<<#0x2+##0xb21ea208)
+b211e264 file=1351264 r2 = p0
+b211e268 file=1351268 r1 = add(r16,#0x35bc)
+b211e26c file=135126c r0 = r19
+	r5:4 = combine(#0,#0x0)
+b211e270 file=1351270 r20 = r2
+b211e274 file=1351274 r2 = #0x0
+b211e278 file=1351278 memd(r29+#0x48) = r5:4
+	memd(r29+#0x40) = r5:4
+b211e27c file=135127c call 0xb2118b68
+b211e280 file=1351280 memd(r29+#0x38) = r5:4
+	memd(r29+#0x30) = r5:4
+b211e284 file=1351284 call 0xb2118c40
+b211e288 file=1351288 r0 = r19
+b211e28c file=135128c r2 = r20
+b211e290 file=1351290 p0 = r2
+b211e294 file=1351294 if (!p0.new) jump:t 0xb211e2cc
+b211e298 file=1351298 immext(#0x3600)
+b211e29c file=135129c if (!p0.new) r2 = memw(r16+##0x3614)
+b211e2a0 file=13512a0 call 0xb210eab8
+b211e2a4 file=13512a4 r0 = memw(r16+#0xf8)
+b211e2a8 file=13512a8 r2 = memb(r16+#0x8)
+b211e2ac file=13512ac if (cmp.eq(r2.new,#0x2)) jump:t 0xb211e330
+b211e2b0 file=13512b0 call 0xb2119cb8
+b211e2b4 file=13512b4 immext(#0xb21332c0)
+b211e2b8 file=13512b8 r1:0 = combine(##-0x4deccd13,#0x0) ; FD proxy request not ack'ed but event sent
+b211e2bc file=13512bc call 0xb2016734
+b211e2c0 file=13512c0 immext(#0xb2134940)
+b211e2c4 file=13512c4 r1:0 = combine(#0x0,##0xb2134964)
+b211e2c8 file=13512c8 jump 0xb211e3c4
+b211e2cc file=13512cc r19 = r0
+b211e2d0 file=13512d0 r2 = or(r2,r0)
+b211e2d4 file=13512d4 if (!cmp.eq(r2.new,#0x0)) jump:t 0xb211e2e4
+b211e2d8 file=13512d8 call 0xb210eb18
+b211e2dc file=13512dc r0 = memw(r16+#0xf8)
+b211e2e0 file=13512e0 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211e2a8
+b211e2e4 file=13512e4 call 0xb2119cb8
+b211e2e8 file=13512e8 immext(#0xb2133240)
+b211e2ec file=13512ec r1:0 = combine(##-0x4deccd82,#0x1) ; handle_handshake_cmd_fd_proxy_event, defer to async request, failed to acquire lock or non-zero queue len (%d)
+b211e2f0 file=13512f0 memw(r29+#0x0) = r19
+b211e2f4 file=13512f4 call 0xb2016734
+b211e2f8 file=13512f8 immext(#0xb2134940)
+b211e2fc file=13512fc r1:0 = combine(#0x1,##0xb2134958)
+b211e300 file=1351300 memw(r29+#0x0) = r19
+b211e304 file=1351304 call 0xb2120cf8
+b211e308 file=1351308 r1:0 = combine(r18,r16)
+b211e30c file=135130c r2 = #0x7
+b211e310 file=1351310 p0 = cmp.eq(r0,#0x0); if (p0.new) jump:nt 0xb211e3fc
+b211e314 file=1351314 r0 = add(r0,#0xbc)
+b211e318 file=1351318 r2 = #0xf28
+b211e31c file=135131c r18 = r0
+	r1 = r17
+b211e320 file=1351320 call 0xb2019f00
+b211e324 file=1351324 call 0xb2120d48
+b211e328 file=1351328 r1:0 = combine(r18,r16)
+b211e32c file=135132c jump 0xb211e3cc
+b211e330 file=1351330 r0 = add(r16,#0x27c)
+b211e334 file=1351334 r1 = add(r17,#0x4)
+b211e338 file=1351338 r2 = #0xf1c
+b211e33c file=135133c r19 = memub(r17+#0x0)
+b211e340 file=1351340 call 0xb2019400
+b211e344 file=1351344 memb(r16+#0x270) = r19
+b211e348 file=1351348 p0 = tstbit(r19,#0x0)
+b211e34c file=135134c r19 = add(r16,#0x26c)
+b211e350 file=1351350 r2 = memub(r17+#0x1)
+b211e354 file=1351354 memb(r16+#0x26c) = r2.new
+b211e358 file=1351358 if (!p0) jump:nt 0xb211e380
+b211e35c file=135135c if (p0) r3 = memw(r18+#0x94)
+b211e360 file=1351360 if (p0) memw(r29+#0xc) = #0x0

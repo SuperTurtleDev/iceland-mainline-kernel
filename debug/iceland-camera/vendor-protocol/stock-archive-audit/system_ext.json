@@ -1,0 +1,2912 @@
+[
+  {
+    "path": "/priv-app/xrvdservice/xrvdservice.apk",
+    "entries": 10,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/xrcbservice/xrcbservice.apk",
+    "entries": 10,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/ims/ims.apk",
+    "entries": 20,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/dpmserviceapp/dpmserviceapp.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/dcf/dcf.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/WirelessSettings/WirelessSettings.apk",
+    "entries": 2373,
+    "protobuf_paths": [
+      "agents.proto",
+      "card_action.proto",
+      "card_ui_data.proto",
+      "compat_scp.proto",
+      "connections.proto",
+      "deviceconnections.proto",
+      "devicemanager.proto",
+      "discoveries.proto",
+      "discovery.proto",
+      "fusionservice.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "results.proto",
+      "socket_qos.proto",
+      "wifi_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/WfdService/WfdService.apk",
+    "entries": 9,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/VpnDialogs/VpnDialogs.apk",
+    "entries": 11,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/VirtualCommService/VirtualCommService.apk",
+    "entries": 31,
+    "protobuf_paths": [
+      "agents.proto",
+      "compat_scp.proto",
+      "connections.proto",
+      "deviceconnections.proto",
+      "devicemanager.proto",
+      "discoveries.proto",
+      "discovery.proto",
+      "fusionservice.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "results.proto",
+      "socket_qos.proto",
+      "wifi_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/VDCService/VDCService.apk",
+    "entries": 1606,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/UpgradeGuide/UpgradeGuide.apk",
+    "entries": 1984,
+    "protobuf_paths": [
+      "card_action.proto",
+      "card_ui_data.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/TrafficMonitor/TrafficMonitor.apk",
+    "entries": 2936,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "graph.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/TelephonyProvider/TelephonyProvider.apk",
+    "entries": 32,
+    "protobuf_paths": [
+      "assets/latest_carrier_id/carrier_list.pb",
+      "assets/sdk28_carrier_id/carrier_list.pb",
+      "assets/sdk29_carrier_id/carrier_list.pb",
+      "assets/sdk30_carrier_id/carrier_list.pb",
+      "assets/sdk31_carrier_id/carrier_list.pb",
+      "assets/sdk33_carrier_id/carrier_list.pb",
+      "assets/sdk34_carrier_id/carrier_list.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/Telecom/Telecom.apk",
+    "entries": 1495,
+    "protobuf_paths": [
+      "google/api/annotations.proto",
+      "google/api/auth.proto",
+      "google/api/backend.proto",
+      "google/api/billing.proto",
+      "google/api/client.proto",
+      "google/api/config_change.proto",
+      "google/api/consumer.proto",
+      "google/api/context.proto",
+      "google/api/control.proto",
+      "google/api/distribution.proto",
+      "google/api/documentation.proto",
+      "google/api/endpoint.proto",
+      "google/api/error_reason.proto",
+      "google/api/field_behavior.proto",
+      "google/api/field_info.proto",
+      "google/api/http.proto",
+      "google/api/httpbody.proto",
+      "google/api/label.proto",
+      "google/api/launch_stage.proto",
+      "google/api/log.proto",
+      "google/api/logging.proto",
+      "google/api/metric.proto",
+      "google/api/monitored_resource.proto",
+      "google/api/monitoring.proto",
+      "google/api/policy.proto",
+      "google/api/quota.proto",
+      "google/api/resource.proto",
+      "google/api/routing.proto",
+      "google/api/service.proto",
+      "google/api/source_info.proto",
+      "google/api/system_parameter.proto",
+      "google/api/usage.proto",
+      "google/api/visibility.proto",
+      "google/cloud/audit/audit_log.proto",
+      "google/cloud/extended_operations.proto",
+      "google/cloud/location/locations.proto",
+      "google/geo/type/viewport.proto",
+      "google/logging/type/http_request.proto",
+      "google/logging/type/log_severity.proto",
+      "google/longrunning/operations.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "google/rpc/code.proto",
+      "google/rpc/context/attribute_context.proto",
+      "google/rpc/context/audit_context.proto",
+      "google/rpc/error_details.proto",
+      "google/rpc/status.proto",
+      "google/type/calendar_period.proto",
+      "google/type/color.proto",
+      "google/type/date.proto",
+      "google/type/datetime.proto",
+      "google/type/dayofweek.proto",
+      "google/type/decimal.proto",
+      "google/type/expr.proto",
+      "google/type/fraction.proto",
+      "google/type/interval.proto",
+      "google/type/latlng.proto",
+      "google/type/localized_text.proto",
+      "google/type/money.proto",
+      "google/type/month.proto",
+      "google/type/phone_number.proto",
+      "google/type/postal_address.proto",
+      "google/type/quaternion.proto",
+      "google/type/timeofday.proto",
+      "pulled_atoms.proto",
+      "telecom.proto",
+      "uuidchat.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/TeleService/TeleService.apk",
+    "entries": 2435,
+    "protobuf_paths": [
+      "google/api/annotations.proto",
+      "google/api/auth.proto",
+      "google/api/backend.proto",
+      "google/api/billing.proto",
+      "google/api/client.proto",
+      "google/api/config_change.proto",
+      "google/api/consumer.proto",
+      "google/api/context.proto",
+      "google/api/control.proto",
+      "google/api/distribution.proto",
+      "google/api/documentation.proto",
+      "google/api/endpoint.proto",
+      "google/api/error_reason.proto",
+      "google/api/field_behavior.proto",
+      "google/api/field_info.proto",
+      "google/api/http.proto",
+      "google/api/httpbody.proto",
+      "google/api/label.proto",
+      "google/api/launch_stage.proto",
+      "google/api/log.proto",
+      "google/api/logging.proto",
+      "google/api/metric.proto",
+      "google/api/monitored_resource.proto",
+      "google/api/monitoring.proto",
+      "google/api/policy.proto",
+      "google/api/quota.proto",
+      "google/api/resource.proto",
+      "google/api/routing.proto",
+      "google/api/service.proto",
+      "google/api/source_info.proto",
+      "google/api/system_parameter.proto",
+      "google/api/usage.proto",
+      "google/api/visibility.proto",
+      "google/cloud/audit/audit_log.proto",
+      "google/cloud/extended_operations.proto",
+      "google/cloud/location/locations.proto",
+      "google/geo/type/viewport.proto",
+      "google/logging/type/http_request.proto",
+      "google/logging/type/log_severity.proto",
+      "google/longrunning/operations.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "google/rpc/code.proto",
+      "google/rpc/context/attribute_context.proto",
+      "google/rpc/context/audit_context.proto",
+      "google/rpc/error_details.proto",
+      "google/rpc/status.proto",
+      "google/type/calendar_period.proto",
+      "google/type/color.proto",
+      "google/type/date.proto",
+      "google/type/datetime.proto",
+      "google/type/dayofweek.proto",
+      "google/type/decimal.proto",
+      "google/type/expr.proto",
+      "google/type/fraction.proto",
+      "google/type/interval.proto",
+      "google/type/latlng.proto",
+      "google/type/localized_text.proto",
+      "google/type/money.proto",
+      "google/type/month.proto",
+      "google/type/phone_number.proto",
+      "google/type/postal_address.proto",
+      "google/type/quaternion.proto",
+      "google/type/timeofday.proto",
+      "interceptInfo.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/SystemUI/SystemUI.apk",
+    "entries": 8646,
+    "protobuf_paths": [
+      "agents.proto",
+      "databus.proto",
+      "google/api/annotations.proto",
+      "google/api/auth.proto",
+      "google/api/backend.proto",
+      "google/api/billing.proto",
+      "google/api/client.proto",
+      "google/api/config_change.proto",
+      "google/api/consumer.proto",
+      "google/api/context.proto",
+      "google/api/control.proto",
+      "google/api/distribution.proto",
+      "google/api/documentation.proto",
+      "google/api/endpoint.proto",
+      "google/api/error_reason.proto",
+      "google/api/field_behavior.proto",
+      "google/api/field_info.proto",
+      "google/api/http.proto",
+      "google/api/httpbody.proto",
+      "google/api/label.proto",
+      "google/api/launch_stage.proto",
+      "google/api/log.proto",
+      "google/api/logging.proto",
+      "google/api/metric.proto",
+      "google/api/monitored_resource.proto",
+      "google/api/monitoring.proto",
+      "google/api/policy.proto",
+      "google/api/quota.proto",
+      "google/api/resource.proto",
+      "google/api/routing.proto",
+      "google/api/service.proto",
+      "google/api/source_info.proto",
+      "google/api/system_parameter.proto",
+      "google/api/usage.proto",
+      "google/api/visibility.proto",
+      "google/cloud/audit/audit_log.proto",
+      "google/cloud/extended_operations.proto",
+      "google/cloud/location/locations.proto",
+      "google/geo/type/viewport.proto",
+      "google/logging/type/http_request.proto",
+      "google/logging/type/log_severity.proto",
+      "google/longrunning/operations.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "google/rpc/code.proto",
+      "google/rpc/context/attribute_context.proto",
+      "google/rpc/context/audit_context.proto",
+      "google/rpc/error_details.proto",
+      "google/rpc/status.proto",
+      "google/type/calendar_period.proto",
+      "google/type/color.proto",
+      "google/type/date.proto",
+      "google/type/datetime.proto",
+      "google/type/dayofweek.proto",
+      "google/type/decimal.proto",
+      "google/type/expr.proto",
+      "google/type/fraction.proto",
+      "google/type/interval.proto",
+      "google/type/latlng.proto",
+      "google/type/localized_text.proto",
+      "google/type/money.proto",
+      "google/type/month.proto",
+      "google/type/phone_number.proto",
+      "google/type/postal_address.proto",
+      "google/type/quaternion.proto",
+      "google/type/timeofday.proto",
+      "results.proto",
+      "timesync.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/SubsysInterfacePlugin/SubsysInterfacePlugin.apk",
+    "entries": 21,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/StorageManager/StorageManager.apk",
+    "entries": 1737,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/StdID/StdID.apk",
+    "entries": 446,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/StatementService/StatementService.apk",
+    "entries": 447,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/SettingsProvider/SettingsProvider.apk",
+    "entries": 266,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/SettingsIntelligence/SettingsIntelligence.apk",
+    "entries": 1459,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/Settings/Settings.apk",
+    "entries": 10130,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "graph.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusVirtualComm/OplusVirtualComm.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusNrMode/OplusNrMode.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusNearComm/OplusNearComm.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusLauncher/OplusLauncher.apk",
+    "entries": 5802,
+    "protobuf_paths": [
+      "atoms.proto",
+      "card_action.proto",
+      "card_change_event.proto",
+      "card_config_info.proto",
+      "card_config_info_content.proto",
+      "card_operating_recommend_info.proto",
+      "card_ui_data.proto",
+      "launcher_dump.proto",
+      "launcher_log.proto",
+      "launcher_log_extension.proto",
+      "pantanal_card_action.proto",
+      "pantanal_card_ui_data.proto",
+      "persistent_desktop_repositories.proto",
+      "super_channel_data.proto",
+      "windowing_education.proto",
+      "wm_shell_trace.proto",
+      "wm_shell_transition_trace.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusExSystemService/OplusExSystemService.apk",
+    "entries": 1708,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusAppPlatform/OplusAppPlatform.apk",
+    "entries": 28,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/MoseyApp/MoseyApp.apk",
+    "entries": 330,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/MmsService/MmsService.apk",
+    "entries": 21,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/DownloadProvider/DownloadProvider.apk",
+    "entries": 11,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/DeepThinker/DeepThinker.apk",
+    "entries": 1720,
+    "protobuf_paths": [
+      "datum.proto",
+      "datum_packet.proto",
+      "definition.proto",
+      "device_activity.proto",
+      "environment.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "intent.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/DFS/DFS.apk",
+    "entries": 1666,
+    "protobuf_paths": [
+      "agents.proto",
+      "compat_scp.proto",
+      "connections.proto",
+      "databus.proto",
+      "deviceconnections.proto",
+      "devicemanager.proto",
+      "discoveries.proto",
+      "discovery.proto",
+      "fusionservice.proto",
+      "google/api/annotations.proto",
+      "google/api/auth.proto",
+      "google/api/backend.proto",
+      "google/api/billing.proto",
+      "google/api/client.proto",
+      "google/api/config_change.proto",
+      "google/api/consumer.proto",
+      "google/api/context.proto",
+      "google/api/control.proto",
+      "google/api/distribution.proto",
+      "google/api/documentation.proto",
+      "google/api/endpoint.proto",
+      "google/api/error_reason.proto",
+      "google/api/field_behavior.proto",
+      "google/api/field_info.proto",
+      "google/api/http.proto",
+      "google/api/httpbody.proto",
+      "google/api/label.proto",
+      "google/api/launch_stage.proto",
+      "google/api/log.proto",
+      "google/api/logging.proto",
+      "google/api/metric.proto",
+      "google/api/monitored_resource.proto",
+      "google/api/monitoring.proto",
+      "google/api/policy.proto",
+      "google/api/quota.proto",
+      "google/api/resource.proto",
+      "google/api/routing.proto",
+      "google/api/service.proto",
+      "google/api/source_info.proto",
+      "google/api/system_parameter.proto",
+      "google/api/usage.proto",
+      "google/api/visibility.proto",
+      "google/apps/card/v1/card.proto",
+      "google/cloud/audit/audit_log.proto",
+      "google/cloud/extended_operations.proto",
+      "google/cloud/location/locations.proto",
+      "google/geo/type/viewport.proto",
+      "google/logging/type/http_request.proto",
+      "google/logging/type/log_severity.proto",
+      "google/longrunning/operations.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "google/rpc/code.proto",
+      "google/rpc/context/attribute_context.proto",
+      "google/rpc/context/audit_context.proto",
+      "google/rpc/error_details.proto",
+      "google/rpc/status.proto",
+      "google/shopping/type/types.proto",
+      "google/type/calendar_period.proto",
+      "google/type/color.proto",
+      "google/type/date.proto",
+      "google/type/datetime.proto",
+      "google/type/dayofweek.proto",
+      "google/type/decimal.proto",
+      "google/type/expr.proto",
+      "google/type/fraction.proto",
+      "google/type/interval.proto",
+      "google/type/latlng.proto",
+      "google/type/localized_text.proto",
+      "google/type/money.proto",
+      "google/type/month.proto",
+      "google/type/phone_number.proto",
+      "google/type/postal_address.proto",
+      "google/type/quaternion.proto",
+      "google/type/timeofday.proto",
+      "results.proto",
+      "socket_qos.proto",
+      "timesync.proto",
+      "wifi_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/ContactsProvider/ContactsProvider.apk",
+    "entries": 356,
+    "protobuf_paths": [
+      "GrpcInfo.proto",
+      "google/api/annotations.proto",
+      "google/api/auth.proto",
+      "google/api/backend.proto",
+      "google/api/billing.proto",
+      "google/api/client.proto",
+      "google/api/config_change.proto",
+      "google/api/consumer.proto",
+      "google/api/context.proto",
+      "google/api/control.proto",
+      "google/api/distribution.proto",
+      "google/api/documentation.proto",
+      "google/api/endpoint.proto",
+      "google/api/error_reason.proto",
+      "google/api/field_behavior.proto",
+      "google/api/field_info.proto",
+      "google/api/http.proto",
+      "google/api/httpbody.proto",
+      "google/api/label.proto",
+      "google/api/launch_stage.proto",
+      "google/api/log.proto",
+      "google/api/logging.proto",
+      "google/api/metric.proto",
+      "google/api/monitored_resource.proto",
+      "google/api/monitoring.proto",
+      "google/api/policy.proto",
+      "google/api/quota.proto",
+      "google/api/resource.proto",
+      "google/api/routing.proto",
+      "google/api/service.proto",
+      "google/api/source_info.proto",
+      "google/api/system_parameter.proto",
+      "google/api/usage.proto",
+      "google/api/visibility.proto",
+      "google/cloud/audit/audit_log.proto",
+      "google/cloud/extended_operations.proto",
+      "google/cloud/location/locations.proto",
+      "google/geo/type/viewport.proto",
+      "google/logging/type/http_request.proto",
+      "google/logging/type/log_severity.proto",
+      "google/longrunning/operations.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "google/rpc/code.proto",
+      "google/rpc/context/attribute_context.proto",
+      "google/rpc/context/audit_context.proto",
+      "google/rpc/error_details.proto",
+      "google/rpc/status.proto",
+      "google/type/calendar_period.proto",
+      "google/type/color.proto",
+      "google/type/date.proto",
+      "google/type/datetime.proto",
+      "google/type/dayofweek.proto",
+      "google/type/decimal.proto",
+      "google/type/expr.proto",
+      "google/type/fraction.proto",
+      "google/type/interval.proto",
+      "google/type/latlng.proto",
+      "google/type/localized_text.proto",
+      "google/type/money.proto",
+      "google/type/month.proto",
+      "google/type/phone_number.proto",
+      "google/type/postal_address.proto",
+      "google/type/quaternion.proto",
+      "google/type/timeofday.proto"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/priv-app/ContactsProvider/ContactsProvider.apk!assets/comm_contactsprovider_romupdate_quick_search_value.zip",
+        "entries": 70,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/priv-app/CarrierConfig/CarrierConfig.apk",
+    "entries": 422,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/CallLogBackup/CallLogBackup.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/CalendarProvider/CalendarProvider.apk",
+    "entries": 59,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/BuiltInPrintService/BuiltInPrintService.apk",
+    "entries": 1315,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/BlurService/BlurService.apk",
+    "entries": 23,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk",
+    "entries": 551,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/AvatarPicker/AvatarPicker.apk",
+    "entries": 989,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/AppBooster/AppBooster.apk",
+    "entries": 1025,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/ConnectivityBaseOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NetworkStackOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusBluetoothResource.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusFrameworkBluetoothResource.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusFrameworkResTabletOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusWifiResourceEx.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/ServiceConnectivityResourcesOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/framework_res_overlay_Network.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SafetyCenterStylesOverlay/SafetyCenterStylesOverlay.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SafetyCenterResourcesOverlay/SafetyCenterResourcesOverlay.apk",
+    "entries": 9,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusPermissionControllerOverlay/OplusPermissionControllerOverlay.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CellBroadcastServiceModuleOverlay/CellBroadcastServiceModuleOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CellBroadcastReceiverModuleOverlay/CellBroadcastReceiverModuleOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/ActivityExt.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/OplusQConfigSetting.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/SatelliteClient.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/androidx.camera.extensions.impl.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/androidx.window.extensions.jar",
+    "entries": 4,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/androidx.window.sidecar.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/audiosphere.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.android.extensions.appfunctions.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qti.dpmframework.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.uceservice-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.uceservice-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.uceservice-V2.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.qualcomm.qti.uceservice-V2.3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.quicinc.cne.api-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.quicinc.cne.api-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.quicinc.cne.constants-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.quicinc.cne.constants-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.quicinc.cne.constants-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.vendor.nfc.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/datachannellib.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/defrag_wrapper.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/dpmapi.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/getcplc.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/getnfcc.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/nfcvendorlib.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-evolution-ext.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-evolution.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-framework-res.apk",
+    "entries": 1404,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-ims-ext.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-lbs-services.jar",
+    "entries": 24,
+    "protobuf_paths": [
+      "agents.proto",
+      "connections.proto",
+      "databus.proto",
+      "discovery.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "results.proto",
+      "socket_qos.proto",
+      "timesync.proto",
+      "wifi_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-subsys-tool.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-subsystem-service-ext.jar",
+    "entries": 34,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-subsystem-service.jar",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-telephony-common-ext.jar",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-telephony-common.jar",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-telephony-rus.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-virtual-audio-policy.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus-wifi-service.jar",
+    "entries": 26,
+    "protobuf_paths": [
+      "wifi_config.proto",
+      "timesync.proto",
+      "socket_qos.proto",
+      "results.proto",
+      "google/protobuf/wrappers.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/any.proto",
+      "discovery.proto",
+      "databus.proto",
+      "connections.proto",
+      "connection.proto",
+      "agents.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/oplus_bluetooth_common_ext.jar",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/qcrilhook.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/qmapbridge.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/qti-telephony-hidl-wrapper.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/qti-telephony-utils.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/rsmcService.jar",
+    "entries": 1,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/soc_bluetooth_ext.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-camera-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-channel-lock-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-gps-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-imsrtp-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-litefeature-plugin.jar",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-olk-plugin.jar",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-power-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-scene-plugin.jar",
+    "entries": 18,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-sido-plugin.jar",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-telephony-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/subsys-wifi-plugin.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor-subsystem-service.jar",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.binderstats-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.biometrics.fingerprintpay-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.charger-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.charger-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.charger-V11-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.cryptoeng-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.cryptoeng-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.engineer-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.engineer-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.fido.fido2ca-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.fido.fidoca-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.gameopt-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.gameopt-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.handlefactory-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.keymint-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.location_aidl-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.midasdev-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.misc-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.misc-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.oplusSensor-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.oplusSensor-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.osense.client-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.osml-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.riskdetect-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.stability.oplus_project-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.stability.oplus_project-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.stability.oplus_project-V3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.touch-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.touch-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.touch-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.transmessage-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.transmessage-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.oplus.hardware.weaver-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.dmapconsent-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.dmapconsent-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V2.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V2.3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factory-V2.4-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factoryservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.factoryservice-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.mwqem-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.mwqemaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.data.ntn-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.c2pa-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.cacertaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.api-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.constants-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.server-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.server-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.server-V1.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cne.internal.server-V1.3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cneaidlservice.internal.api-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cneaidlservice.internal.constants-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cneaidlservice.internal.server-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.cneaidlservice.internal.server-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.connectionfactory-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.dataactivity-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.dynamicddsaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.flow-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.flowaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.iwlan-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.iwlan-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.iwlandata-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.ka-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.lce-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.lceaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.qmi-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.data.qmiaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.dpmaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.dpmservice-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.dpmservice-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.mwqemadapter-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.mwqemadapteraidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.sensorscalibrate-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.hardware.slmadapter-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.callcapability-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.callcapabilityaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.callinfo-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.configaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.configservice-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.configservice-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.connection-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.connectionaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.datachannelservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.datachannelservice-V2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.datachannelservice-V3-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factory-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factory-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factory-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factory-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factory-V2.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.factoryaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.imscmaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsconfig-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsconfig-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcssip-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcssip-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcssip-V1.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcssipaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsuce-V1.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsuce-V1.1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsuce-V1.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.rcsuceaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.ims.uceaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.imsdatachannel.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.latency-V2.0-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.latency-V2.2-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/vendor.qti.latencyaidlservice-V1-java.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/videoLogcatExt.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/wapicertstore-qcom.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/etc/security/fsverity/BuildManifestSystemExt.apk",
+    "entries": 6,
+    "protobuf_paths": [
+      "assets/build_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/workloadclassifier/workloadclassifier.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/WapiCertManage/WapiCertManage.apk",
+    "entries": 18,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/UXDesign/UXDesign.apk",
+    "entries": 2134,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/UAFClient/UAFClient.apk",
+    "entries": 76,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/TTSatelliteAuth/TTSatelliteAuth.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SystemUIPlugin/SystemUIPlugin.apk",
+    "entries": 1485,
+    "protobuf_paths": [
+      "card_config_info_content.proto",
+      "pantanal_card_action.proto",
+      "pantanal_card_ui_data.proto",
+      "super_channel_data.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SystemAppUpdateService/SystemAppUpdateService.apk",
+    "entries": 843,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/SystemAppUpdateService/SystemAppUpdateService.apk!assets/opex/ovl_update_sign_1.zip",
+        "entries": 8,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/app/SystemAppUpdateService/SystemAppUpdateService.apk!assets/orescerts.zip",
+        "entries": 1,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/SubsystemApp/SubsystemApp.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_WifiQoe/SubsysPlugins_plugin_WifiQoe.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_MotionSense/SubsysPlugins_plugin_MotionSense.apk",
+    "entries": 17,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_CellularQoe/SubsysPlugins_plugin_CellularQoe.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_CellMap/SubsysPlugins_plugin_CellMap.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_BorderPreSearch/SubsysPlugins_plugin_BorderPreSearch.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SubsysPlugins_plugin_AppSense/SubsysPlugins_plugin_AppSense.apk",
+    "entries": 17,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SoterService/SoterService.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SecurityPermission/SecurityPermission.apk",
+    "entries": 1902,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SecureElement/SecureElement.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SafeCenter/SafeCenter.apk",
+    "entries": 2565,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SAUHelper/SAUHelper.apk",
+    "entries": 12,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/RsmcSatelliteAuth/RsmcSatelliteAuth.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/QCC/QCC.apk",
+    "entries": 22,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/PrintSpooler/PrintSpooler.apk",
+    "entries": 1515,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/PowerSaveMode/PowerSaveMode.apk",
+    "entries": 9,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/PowerMonitor/PowerMonitor.apk",
+    "entries": 311,
+    "protobuf_paths": [
+      "atoms.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "module_usage.proto",
+      "scene_msg.proto",
+      "trigger_type.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/PostmanService/PostmanService.apk",
+    "entries": 1873,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/PostmanService/PostmanService.apk!assets/plugin.zip",
+        "entries": 4,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": [],
+        "nested": [
+          {
+            "path": "/app/PostmanService/PostmanService.apk!assets/plugin.zip!detectrepair-tablet-exp-plugin-release.apk",
+            "entries": 2104,
+            "protobuf_paths": [],
+            "name_matches": [],
+            "content_matches": []
+          },
+          {
+            "path": "/app/PostmanService/PostmanService.apk!assets/plugin.zip!runtime-release-unsigned.apk",
+            "entries": 12,
+            "protobuf_paths": [],
+            "name_matches": [],
+            "content_matches": []
+          },
+          {
+            "path": "/app/PostmanService/PostmanService.apk!assets/plugin.zip!loader-release-unsigned.apk",
+            "entries": 12,
+            "protobuf_paths": [],
+            "name_matches": [],
+            "content_matches": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/app/OwkService/OwkService.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusQualityProtect/OplusQualityProtect.apk",
+    "entries": 26,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusMultiApp/OplusMultiApp.apk",
+    "entries": 1506,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusLocationService/OplusLocationService.apk",
+    "entries": 1032,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusGestureUI/OplusGestureUI.apk",
+    "entries": 2179,
+    "protobuf_paths": [
+      "card_action.proto",
+      "card_ui_data.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusFlexibleWindowUI/OplusFlexibleWindowUI.apk",
+    "entries": 1881,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusEyeProtect/OplusEyeProtect.apk",
+    "entries": 1326,
+    "protobuf_paths": [
+      "card_action.proto",
+      "card_ui_data.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusEngineerNetwork/OplusEngineerNetwork.apk",
+    "entries": 1774,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusCommercialEngineerMode/OplusCommercialEngineerMode.apk",
+    "entries": 1078,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusCommercialEngineerCamera/OplusCommercialEngineerCamera.apk",
+    "entries": 375,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusAtlasService/OplusAtlasService.apk",
+    "entries": 30,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Olc/Olc.apk",
+    "entries": 268,
+    "protobuf_paths": [
+      "config_scope_control.proto",
+      "invalid_config_reason_enum.proto",
+      "midas_config.proto",
+      "oplus_field_description.proto",
+      "oplus_power_profile.proto",
+      "ostats_config.proto",
+      "ostats_enums.proto",
+      "ostats_log.proto",
+      "stats_log.proto",
+      "statsd_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OTrace/OTrace.apk",
+    "entries": 366,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OTA/OTA.apk",
+    "entries": 1988,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/OTA/OTA.apk!assets/opex/ovl_update_sign_1.zip",
+        "entries": 8,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/app/OTA/OTA.apk!assets/opex/ovl_update_sign_256.zip",
+        "entries": 8,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/NtnSatApp/NtnSatApp.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NotificationCenter/NotificationCenter.apk",
+    "entries": 2705,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NfcEngineerTest/NfcEngineerTest.apk",
+    "entries": 24,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NetworkSense_plugin_NwEstimate/NetworkSense_plugin_NwEstimate.apk",
+    "entries": 14,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NetworkSense_plugin_NetworkSense/NetworkSense_plugin_NetworkSense.apk",
+    "entries": 20,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/NetworkSense_plugin_NetworkSense/NetworkSense_plugin_NetworkSense.apk!assets/residence/local.zip",
+        "entries": 2,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/NetworkSense_plugin_NetScore/NetworkSense_plugin_NetScore.apk",
+    "entries": 11,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NetworkSense_plugin_NetPrediction/NetworkSense_plugin_NetPrediction.apk",
+    "entries": 9,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/NetworkHealthService/NetworkHealthService.apk",
+    "entries": 116,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/LogKit/LogKit.apk",
+    "entries": 2122,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/LFEHer/LFEHer.apk",
+    "entries": 32,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/KeyguardStyleWidget/KeyguardStyleWidget.apk",
+    "entries": 1397,
+    "protobuf_paths": [
+      "card_config_info_content.proto",
+      "pantanal_card_action.proto",
+      "pantanal_card_ui_data.proto",
+      "super_channel_data.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/KeyguardPersonalityClocks/KeyguardPersonalityClocks.apk",
+    "entries": 1478,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/KeyguardClockBase/KeyguardClockBase.apk",
+    "entries": 1448,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/KeyChain/KeyChain.apk",
+    "entries": 234,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/ImsDataChannelService/ImsDataChannelService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/HealthService/HealthService.apk",
+    "entries": 21,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/HTMLViewer/HTMLViewer.apk",
+    "entries": 1473,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/FrameworksUtilsSysService/FrameworksUtilsSysService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/FidoAsm/FidoAsm.apk",
+    "entries": 23,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Fido2Client/Fido2Client.apk",
+    "entries": 524,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/EidService/EidService.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/CrsVcrbtSwitch/CrsVcrbtSwitch.apk",
+    "entries": 426,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/CertInstaller/CertInstaller.apk",
+    "entries": 455,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Battery/Battery.apk",
+    "entries": 2082,
+    "protobuf_paths": [
+      "card_action.proto",
+      "card_ui_data.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/BTtestmode/BTtestmode.apk",
+    "entries": 21,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Athena/Athena.apk",
+    "entries": 82,
+    "protobuf_paths": [
+      "atoms.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/AccessibilityMenu/AccessibilityMenu.apk",
+    "entries": 601,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/apex/com.android.compos.apex",
+    "entries": 10,
+    "protobuf_paths": [
+      "apex_build_info.pb",
+      "apex_manifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  }
+]

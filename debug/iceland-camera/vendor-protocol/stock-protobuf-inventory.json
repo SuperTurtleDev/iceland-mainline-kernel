@@ -1,0 +1,96 @@
+{
+  "vendor": {
+    "entry_count": 3145,
+    "protobuf_paths": [
+      "/lib64/camera/fairladyExfront_3.pb",
+      "/lib64/camera/fairladyfront_3.pb",
+      "/lib64/camera/infinitifront_4.pb",
+      "/lib64/camera/lafafront_4.pb",
+      "/lib64/camera/lighthousefront_1.pb",
+      "/lib64/camera/macanExFront_4.pb",
+      "/lib64/camera/macanFront_4.pb",
+      "/lib64/camera/swangoosefrontmain_3.pb",
+      "/lib64/camera/swangoosefrontsub_4.pb",
+      "/lib64/camera/u9bfront_4.pb",
+      "/lib64/camera/u9front_4.pb",
+      "/etc/aconfig_flags.pb",
+      "/etc/linker.config.pb"
+    ]
+  },
+  "odm": {
+    "entry_count": 2068,
+    "protobuf_paths": [
+      "/etc/uah/uahconfig.pb"
+    ]
+  },
+  "my_product": {
+    "entry_count": 4948,
+    "protobuf_paths": [
+      "/product/usr/srec/en-US/offline_action_data.pb"
+    ]
+  },
+  "my_stock": {
+    "entry_count": 605,
+    "protobuf_paths": []
+  },
+  "system_ext": {
+    "entry_count": 3153,
+    "protobuf_paths": [
+      "/etc/aconfig_flags.pb",
+      "/etc/afsConfig.pb",
+      "/etc/launcher.quickstep.protolog.pb",
+      "/etc/wmshell.protolog.pb",
+      "/etc/ostats/config/MidasConfig.pb",
+      "/etc/ostats/config/OStatsConfig.pb",
+      "/etc/ocenter/config/OCenterAdditionConfig.pb",
+      "/etc/ocenter/config/OCenterConfig.pb",
+      "/etc/obrain/config/DynamicPerfettoConfig.pb",
+      "/etc/obrain/config/StatsdConfig.pb"
+    ]
+  },
+  "product": {
+    "entry_count": 226,
+    "protobuf_paths": [
+      "/etc/aconfig_flags.pb",
+      "/etc/linker.config.pb"
+    ]
+  },
+  "system": {
+    "entry_count": 3332,
+    "protobuf_paths": [
+      "/system/etc/aconfig_flags.pb",
+      "/system/etc/core.protolog.pb",
+      "/system/etc/linker.config.pb",
+      "/system/etc/classpaths/bootclasspath.pb",
+      "/system/etc/classpaths/systemserverclasspath.pb"
+    ]
+  },
+  "my_bigball": {
+    "entry_count": 6,
+    "protobuf_paths": []
+  },
+  "my_carrier": {
+    "entry_count": 6,
+    "protobuf_paths": []
+  },
+  "my_engineering": {
+    "entry_count": 20,
+    "protobuf_paths": []
+  },
+  "my_heytap": {
+    "entry_count": 6,
+    "protobuf_paths": []
+  },
+  "my_manifest": {
+    "entry_count": 21,
+    "protobuf_paths": []
+  },
+  "my_region": {
+    "entry_count": 2587,
+    "protobuf_paths": []
+  },
+  "system_dlkm": {
+    "entry_count": 109,
+    "protobuf_paths": []
+  }
+}

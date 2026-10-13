@@ -1,0 +1,24 @@
+# ELF SHA256: 75c4de7550088bf3cff68e87448fb16e95f3a48121be2acb526b2cd99b8fcfa6
+# Packet boundaries from instruction parse bits; registers use pre-packet values unless .new.
+b2123244 file=1356244 r2 = r0
+b2123248 file=1356248 r0 = #0x1	r3 = and(r0,#255)
+    # END_PACKET
+b212324c file=135624c p0 = cmp.gtu(r3,#0x9); if (p0.new) jump:t 0xb212325c
+    # END_PACKET
+b2123250 file=1356250 r3 = and(r3,#0xf)
+    # END_PACKET
+b2123254 file=1356254 immext(#0xb2135800)
+b2123258 file=1356258 r0 = memw(r3<<#0x2+##0xb2135808)
+    # END_PACKET
+b212325c file=135625c immext(#0xffffffc0)
+b2123260 file=1356260 r2 = add(##0xffffffff,lsr(r2,#0x10))
+    # END_PACKET
+b2123264 file=1356264 r2 = and(r2,#0xff)
+    # END_PACKET
+b2123268 file=1356268 immext(#0x10000)
+b212326c file=135626c r2 = add(##0x10000,asl(r2,#0x10))
+b2123270 file=1356270 p0 = cmp.gtu(r2,#0x4)
+    # END_PACKET
+b2123274 file=1356274 if (!p0) r0 = or(r2,r0)
+b2123278 file=1356278 jumpr r31
+    # END_PACKET

@@ -1,0 +1,2044 @@
+
+CamX::QSEEAONIntf::QSEEAONIntf():
+0003ca0c hint	#25
+0003ca10 stp	x29, x30, [sp, #-96]!
+0003ca14 stp	x28, x27, [sp, #16]
+0003ca18 stp	x26, x25, [sp, #32]
+0003ca1c stp	x24, x23, [sp, #48]
+0003ca20 stp	x22, x21, [sp, #64]
+0003ca24 stp	x20, x19, [sp, #80]
+0003ca28 mov	x29, sp
+0003ca2c sub	sp, sp, #1040
+0003ca30 mrs	x26, TPIDR_EL0
+0003ca34 mov	x19, x0
+0003ca38 ldr	x8, [x26, #40]
+0003ca3c mov	w20, #416
+0003ca40 stur	x8, [x29, #-16]
+0003ca44 add	x0, x19, x20
+0003ca48 bl	#76232 -> 4f410 CamX::SensorUid::SensorUid()@plt
+0003ca4c add	x20, x20, #16
+0003ca50 cmp	x20, #496
+0003ca54 b.ne	#-16
+0003ca58 adrp	x9, #86016
+0003ca5c mov	w8, #1065353216
+0003ca60 movi	v0.2d, #0000000000000000
+0003ca64 add	x10, x19, #512
+0003ca68 ldr	x9, [x9, #2576]
+0003ca6c str	w8, [x19, #568]
+0003ca70 str	xzr, [x19, #560]
+0003ca74 str	xzr, [x19, #576]
+0003ca78 ldrb	w8, [x9, #33]
+0003ca7c add	x9, x19, #576
+0003ca80 stp	q0, q0, [x19, #528]
+0003ca84 str	q0, [x19, #512]
+0003ca88 stp	x9, x10, [sp, #64]
+0003ca8c str	xzr, [x19, #592]
+0003ca90 str	xzr, [x19, #584]
+0003ca94 tbnz	w8, #4, #20
+0003ca98 adrp	x8, #86016
+0003ca9c ldr	x8, [x8, #2584]
+0003caa0 ldr	w8, [x8]
+0003caa4 cbnz	w8, #72
+0003caa8 mov	w0, #4096
+0003caac bl	#75388 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003cab0 mov	x20, x0
+0003cab4 adrp	x0, #-163840
+0003cab8 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003cabc bl	#75396 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003cac0 mov	x5, x0
+0003cac4 adrp	x1, #-163840
+0003cac8 add	x1, x1, #3565 ; 14ded 
+0003cacc adrp	x3, #-196608
+0003cad0 add	x3, x3, #657 ; c291 '[ INFO]%s %s:38 %s() Construct QSEEAONIntf object start'
+0003cad4 adrp	x6, #-204800
+0003cad8 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003cadc mov	w0, #4096
+0003cae0 mov	w2, #4
+0003cae4 mov	x4, x20
+0003cae8 bl	#75304 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003caec str	xzr, [x19, #8]
+0003caf0 str	wzr, [x19]
+0003caf4 str	xzr, [x19, #384]
+0003caf8 adrp	x0, #-188416
+0003cafc add	x0, x0, #3092 ; ec14 'QSEEAONIntfMutex'
+0003cb00 bl	#76480 -> 4f5c0 CamX::Mutex::Create(char const*)@plt
+0003cb04 str	x0, [x19, #496]
+0003cb08 adrp	x0, #-200704
+0003cb0c add	x0, x0, #2080 ; b820 'QSEEAONIntfCondition'
+0003cb10 bl	#76488 -> 4f5d8 CamX::Condition::Create(char const*)@plt
+0003cb14 str	x0, [x19, #504]
+0003cb18 add	x0, x19, #16
+0003cb1c mov	w1, wzr
+0003cb20 mov	w2, #368
+0003cb24 bl	#78196 -> 4fc98 memset@plt
+0003cb28 movi	v0.2d, #0000000000000000
+0003cb2c ldr	x0, [x19, #512]
+0003cb30 ldr	x20, [sp, #72]
+0003cb34 stp	xzr, xzr, [x19, #392]
+0003cb38 str	wzr, [x19, #408]
+0003cb3c stp	q0, q0, [x19, #416]
+0003cb40 stp	q0, q0, [x19, #448]
+0003cb44 str	q0, [x19, #480]
+0003cb48 cbz	x0, #28
+0003cb4c ldr	x8, [x19, #528]
+0003cb50 str	x0, [x19, #520]
+0003cb54 sub	x1, x8, x0
+0003cb58 bl	#75504 -> 4f248 operator delete(void*, unsigned long)@plt
+0003cb5c stp	xzr, xzr, [x20]
+0003cb60 str	xzr, [x20, #16]
+0003cb64 movi	v0.2d, #0000000000000000
+0003cb68 add	x8, sp, #208
+0003cb6c add	x0, sp, #720
+0003cb70 str	xzr, [x20, #16]
+0003cb74 str	xzr, [sp, #208]
+0003cb78 str	x8, [sp, #720]
+0003cb7c str	q0, [x20]
+0003cb80 stur	q0, [sp, #216]
+0003cb84 bl	#16084 -> 40a58 std::__1::vector<CamX::QSEEAONSensorObj*, std::__1::allocator<CamX::QSEEAONSensorObj*> >::__destroy_vector::operator()[abi:ne200000]()
+0003cb88 movi	v0.2d, #0000000000000000
+0003cb8c mov	w20, #1065353216
+0003cb90 add	x0, x19, #536
+0003cb94 str	w20, [sp, #240]
+0003cb98 str	q0, [sp, #224]
+0003cb9c bl	#16244 -> 40b10 std::__1::__hash_table<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::__unordered_map_hasher<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::hash<void*>, std::__1::equal_to<void*>, true>, std::__1::__unordered_map_equal<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::equal_to<void*>, std::__1::hash<void*>, true>, std::__1::allocator<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*> > >::clear()
+0003cba0 add	x0, x19, #536
+0003cba4 mov	x1, xzr
+0003cba8 str	xzr, [sp, #208]
+0003cbac bl	#16324 -> 40b70 _ZNSt3__110unique_ptrIA_PNS_16__hash_node_baseIPNS_11__hash_nodeINS_17__hash_value_typeIPvPN4CamX17QSEEAONFwIntfBaseEEES4_EEEENS_25__bucket_list_deallocatorINS_9allocatorISC_EEEEE5resetB8ne200000IPSC_TnNS_9enable_ifIXsr28_CheckArrayPointerConversionIT_EE5valueEiE4typeELi0EEEvSM_
+0003cbb0 movi	v0.2d, #0000000000000000
+0003cbb4 add	x0, sp, #208
+0003cbb8 str	xzr, [sp, #216]
+0003cbbc str	xzr, [x19, #560]
+0003cbc0 str	w20, [x19, #568]
+0003cbc4 str	q0, [x19, #544]
+0003cbc8 bl	#16060 -> 40a84 std::__1::__hash_table<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::__unordered_map_hasher<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::hash<void*>, std::__1::equal_to<void*>, true>, std::__1::__unordered_map_equal<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::equal_to<void*>, std::__1::hash<void*>, true>, std::__1::allocator<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*> > >::~__hash_table()
+0003cbcc ldr	x8, [x19, #496]
+0003cbd0 cbz	x8, #2744
+0003cbd4 ldr	x8, [x19, #504]
+0003cbd8 cbz	x8, #2736
+0003cbdc bl	#77388 -> 4fa28 CamX::SettingsManager::GetInstance()@plt
+0003cbe0 ldr	x21, [x0]
+0003cbe4 mov	x20, x0
+0003cbe8 mov	x0, #29633
+0003cbec movk	x0, #10456, lsl #16
+0003cbf0 movk	x0, #8987, lsl #32
+0003cbf4 movk	x0, #4373, lsl #48
+0003cbf8 mov	x1, x21
+0003cbfc bl	#75436 -> 4f2a8 __cfi_slowpath@plt
+0003cc00 ldr	x8, [x21, #16]
+0003cc04 mov	x0, x20
+0003cc08 blr	x8
+0003cc0c cbz	x0, #2900
+0003cc10 ldr	w8, [x0, #528]
+0003cc14 mov	w9, #26112
+0003cc18 str	w8, [x19, #388]
+0003cc1c ldr	w8, [x0, x9]
+0003cc20 adrp	x9, #86016
+0003cc24 ldr	x9, [x9, #2576]
+0003cc28 str	w8, [x19, #384]
+0003cc2c ldrb	w9, [x9, #105]
+0003cc30 tbnz	w9, #4, #20
+0003cc34 adrp	x8, #86016
+0003cc38 ldr	x8, [x8, #2584]
+0003cc3c ldr	w8, [x8]
+0003cc40 cbnz	w8, #76
+0003cc44 mov	w0, #4096
+0003cc48 bl	#74976 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003cc4c mov	x20, x0
+0003cc50 adrp	x0, #-163840
+0003cc54 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003cc58 bl	#74984 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003cc5c ldr	w7, [x19, #388]
+0003cc60 mov	x5, x0
+0003cc64 adrp	x1, #-163840
+0003cc68 add	x1, x1, #3565 ; 14ded 
+0003cc6c adrp	x3, #-217088
+0003cc70 add	x3, x3, #3606 ; 7e16 '[CORE_CFG]%s %s:84 %s() enableAONUsecase = %d'
+0003cc74 adrp	x6, #-204800
+0003cc78 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003cc7c mov	w0, #4096
+0003cc80 mov	w2, #13
+0003cc84 mov	x4, x20
+0003cc88 bl	#74888 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003cc8c adrp	x0, #-180224
+0003cc90 add	x0, x0, #2817 ; 10b01 '/vendor/lib64/hw/camera.qcom.core.so'
+0003cc94 bl	#77228 -> 4fa40 CamX::OsUtils::LibMap(char const*)@plt
+0003cc98 mov	x20, x0
+0003cc9c cbz	x0, #2932
+0003cca0 adrp	x8, #86016
+0003cca4 ldr	x8, [x8, #2576]
+0003cca8 ldrb	w8, [x8, #105]
+0003ccac tbnz	w8, #4, #20
+0003ccb0 adrp	x8, #86016
+0003ccb4 ldr	x8, [x8, #2584]
+0003ccb8 ldr	w8, [x8]
+0003ccbc cbnz	w8, #72
+0003ccc0 mov	w0, #4096
+0003ccc4 bl	#74852 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003ccc8 mov	x21, x0
+0003cccc adrp	x0, #-163840
+0003ccd0 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003ccd4 bl	#74860 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003ccd8 mov	x5, x0
+0003ccdc adrp	x1, #-163840
+0003cce0 add	x1, x1, #3565 ; 14ded 
+0003cce4 adrp	x3, #-204800
+0003cce8 add	x3, x3, #3501 ; adad '[CORE_CFG]%s %s:104 %s() CamxDriver Library Opened successfully'
+0003ccec adrp	x6, #-204800
+0003ccf0 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003ccf4 mov	w0, #4096
+0003ccf8 mov	w2, #13
+0003ccfc mov	x4, x21
+0003cd00 bl	#74768 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003cd04 adrp	x1, #-212992
+0003cd08 add	x1, x1, #4028 ; 8fbc 'ChiEntry'
+0003cd0c mov	x0, x20
+0003cd10 bl	#77128 -> 4fa58 CamX::OsUtils::LibGetAddr(void*, char const*)@plt
+0003cd14 mov	x20, x0
+0003cd18 cbz	x0, #2968
+0003cd1c adrp	x8, #86016
+0003cd20 ldr	x8, [x8, #2576]
+0003cd24 ldrb	w8, [x8, #105]
+0003cd28 tbnz	w8, #4, #20
+0003cd2c adrp	x8, #86016
+0003cd30 ldr	x8, [x8, #2584]
+0003cd34 ldr	w8, [x8]
+0003cd38 cbnz	w8, #72
+0003cd3c mov	w0, #4096
+0003cd40 bl	#74728 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003cd44 mov	x21, x0
+0003cd48 adrp	x0, #-163840
+0003cd4c add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003cd50 bl	#74736 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003cd54 mov	x5, x0
+0003cd58 adrp	x1, #-163840
+0003cd5c add	x1, x1, #3565 ; 14ded 
+0003cd60 adrp	x3, #-221184
+0003cd64 add	x3, x3, #3454 ; 6d7e '[CORE_CFG]%s %s:110 %s() Obtained ChiEntry point function'
+0003cd68 adrp	x6, #-204800
+0003cd6c add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003cd70 mov	w0, #4096
+0003cd74 mov	w2, #13
+0003cd78 mov	x4, x21
+0003cd7c bl	#74644 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003cd80 mov	x0, #1767
+0003cd84 mov	x1, x20
+0003cd88 movk	x0, #49581, lsl #16
+0003cd8c movk	x0, #47771, lsl #32
+0003cd90 movk	x0, #54523, lsl #48
+0003cd94 bl	#75028 -> 4f2a8 __cfi_slowpath@plt
+0003cd98 add	x0, x19, #16
+0003cd9c blr	x20
+0003cda0 ldr	x21, [x19, #32]
+0003cda4 mov	x0, #40506
+0003cda8 movk	x0, #31294, lsl #16
+0003cdac movk	x0, #28015, lsl #32
+0003cdb0 movk	x0, #51353, lsl #48
+0003cdb4 mov	x1, x21
+0003cdb8 bl	#74992 -> 4f2a8 __cfi_slowpath@plt
+0003cdbc blr	x21
+0003cdc0 str	x0, [x19, #8]
+0003cdc4 cbz	x0, #2804
+0003cdc8 ldr	w8, [x19, #388]
+0003cdcc cmp	w8, #1
+0003cdd0 mov	w8, #3
+0003cdd4 csinc	w8, w8, wzr, ne
+0003cdd8 str	w8, [x19]
+0003cddc b.ne	#6340
+0003cde0 ldr	x0, [x19, #496]
+0003cde4 bl	#74972 -> 4f2c0 CamX::Mutex::Lock()@plt
+0003cde8 ldr	w8, [x19]
+0003cdec cmp	w8, #1
+0003cdf0 b.ne	#2940
+0003cdf4 adrp	x8, #86016
+0003cdf8 ldr	x8, [x8, #2576]
+0003cdfc ldrb	w8, [x8, #41]
+0003ce00 tbz	w8, #4, #72
+0003ce04 mov	w0, #4096
+0003ce08 bl	#74528 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003ce0c mov	x20, x0
+0003ce10 adrp	x0, #-163840
+0003ce14 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003ce18 bl	#74536 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003ce1c mov	x5, x0
+0003ce20 adrp	x1, #-188416
+0003ce24 add	x1, x1, #1738 ; e6ca 
+0003ce28 adrp	x3, #-180224
+0003ce2c add	x3, x3, #840 ; 10348 '[ VERB]%s %s:438 %s() Getting list of AON FWs'
+0003ce30 adrp	x6, #-212992
+0003ce34 add	x6, x6, #1529 ; 85f9 'ListAONFirmwares'
+0003ce38 mov	w0, #4096
+0003ce3c mov	w2, #5
+0003ce40 mov	x4, x20
+0003ce44 bl	#74444 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003ce48 add	x8, x19, #392
+0003ce4c movi	v0.2d, #0000000000000000
+0003ce50 mov	x20, xzr
+0003ce54 add	x22, sp, #720
+0003ce58 adrp	x21, #-163840
+0003ce5c add	x21, x21, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003ce60 stp	xzr, xzr, [x8]
+0003ce64 adrp	x24, #-221184
+0003ce68 add	x24, x24, #3578 ; 6dfa 'ProbeAONFirmware'
+0003ce6c str	wzr, [x8, #16]
+0003ce70 add	x8, x19, #392
+0003ce74 nop
+0003ce78 adr	x28, #94768
+0003ce7c stp	q0, q0, [x19, #416]
+0003ce80 stp	q0, q0, [x19, #448]
+0003ce84 stp	x8, x26, [sp, #48]
+0003ce88 mov	w26, #424
+0003ce8c str	q0, [x19, #480]
+0003ce90 mov	w0, #64
+0003ce94 mov	w1, wzr
+0003ce98 mov	w2, wzr
+0003ce9c mov	x3, xzr
+0003cea0 mov	w4, wzr
+0003cea4 bl	#74708 -> 4f278 operator new(unsigned long, int, int, char const*, unsigned int)@plt
+0003cea8 mov	x27, x0
+0003ceac adrp	x8, #81920
+0003ceb0 add	x8, x8, #168 ; 500a8 
+0003ceb4 str	x19, [sp, #728]
+0003ceb8 str	x22, [sp, #752]
+0003cebc str	x8, [sp, #720]
+0003cec0 add	x1, sp, #720
+0003cec4 bl	#76716 -> 4fa70 CamX::SuidLookup::SuidLookup(std::__1::function<void (std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::vector<CamX::SensorUid, std::__1::allocator<CamX::SensorUid> > const&)>)@plt
+0003cec8 ldr	x0, [sp, #752]
+0003cecc cmp	x0, x22
+0003ced0 b.eq	#16
+0003ced4 cbz	x0, #28
+0003ced8 mov	w8, #40
+0003cedc b	#8 -> 3cee4 CamX::QSEEAONIntf::QSEEAONIntf()+0x4d8
+0003cee0 mov	w8, #32
+0003cee4 ldr	x9, [x0]
+0003cee8 ldr	x8, [x9, x8]
+0003ceec blr	x8
+0003cef0 cmp	w20, #1
+0003cef4 b.gt	#156
+0003cef8 cbz	w20, #392
+0003cefc cmp	w20, #1
+0003cf00 b.ne	#300
+0003cf04 adrp	x8, #86016
+0003cf08 ldr	x8, [x8, #2576]
+0003cf0c ldrb	w8, [x8, #33]
+0003cf10 tbnz	w8, #4, #20
+0003cf14 adrp	x8, #86016
+0003cf18 ldr	x8, [x8, #2584]
+0003cf1c ldr	w8, [x8]
+0003cf20 cbnz	w8, #68
+0003cf24 mov	w0, #4096
+0003cf28 bl	#74240 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003cf2c mov	x23, x0
+0003cf30 mov	x0, x21
+0003cf34 bl	#74252 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003cf38 mov	x5, x0
+0003cf3c mov	w0, #4096
+0003cf40 adrp	x1, #-163840
+0003cf44 add	x1, x1, #3565 ; 14ded 
+0003cf48 mov	w2, #4
+0003cf4c adrp	x3, #-192512
+0003cf50 add	x3, x3, #2778 ; dada '[ INFO]%s %s:507 %s() Probe fwType: %d (QSEEAONFWFD, suid: camera_face_detect), Waiting max for 2000 msec'
+0003cf54 mov	x4, x23
+0003cf58 mov	x6, x24
+0003cf5c mov	w7, #1
+0003cf60 bl	#74160 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003cf64 add	x0, sp, #136
+0003cf68 adrp	x1, #-192512
+0003cf6c add	x1, x1, #2884 ; db44 'camera_face_detect'
+0003cf70 bl	#-1852 -> 3c834 _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B8ne200000ILi0EEEPKc
+0003cf74 add	x1, sp, #136
+0003cf78 mov	x0, x27
+0003cf7c bl	#76556 -> 4fa88 CamX::SuidLookup::RequestSuid(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)@plt
+0003cf80 ldrb	w8, [sp, #136]
+0003cf84 tbz	w8, #0, #544
+0003cf88 add	x8, sp, #136
+0003cf8c b	#520 -> 3d194 CamX::QSEEAONIntf::QSEEAONIntf()+0x788
+0003cf90 cmp	w20, #2
+0003cf94 b.eq	#376
+0003cf98 cmp	w20, #4
+0003cf9c b.ne	#144
+0003cfa0 adrp	x8, #86016
+0003cfa4 ldr	x8, [x8, #2576]
+0003cfa8 ldrb	w8, [x8, #32]
+0003cfac tbnz	w8, #1, #20
+0003cfb0 adrp	x8, #86016
+0003cfb4 ldr	x8, [x8, #2584]
+0003cfb8 ldr	w8, [x8]
+0003cfbc cbnz	w8, #68
+0003cfc0 mov	w0, #2
+0003cfc4 bl	#74084 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003cfc8 mov	x23, x0
+0003cfcc mov	x0, x21
+0003cfd0 bl	#74096 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003cfd4 mov	x5, x0
+0003cfd8 mov	w0, #2
+0003cfdc adrp	x1, #-163840
+0003cfe0 add	x1, x1, #3565 ; 14ded 
+0003cfe4 mov	w2, #4
+0003cfe8 adrp	x3, #-159744
+0003cfec add	x3, x3, #803 ; 15323 '[ INFO]%s %s:533 %s() Probe oplusType: %d (QSEEAONOPLUS, suid: camera_oplus_aon), Waiting max for a 150 msec'
+0003cff0 mov	x4, x23
+0003cff4 mov	x6, x24
+0003cff8 mov	w7, #4
+0003cffc bl	#74004 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d000 add	x0, sp, #88
+0003d004 adrp	x1, #-225280
+0003d008 add	x1, x1, #3595 ; 6e0b 'camera_oplus_aon'
+0003d00c bl	#-2008 -> 3c834 _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B8ne200000ILi0EEEPKc
+0003d010 add	x1, sp, #88
+0003d014 mov	x0, x27
+0003d018 bl	#76400 -> 4fa88 CamX::SuidLookup::RequestSuid(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)@plt
+0003d01c ldrb	w8, [sp, #88]
+0003d020 tbz	w8, #0, #388
+0003d024 add	x8, sp, #88
+0003d028 b	#364 -> 3d194 CamX::QSEEAONIntf::QSEEAONIntf()+0x788
+0003d02c adrp	x8, #81920
+0003d030 ldr	x8, [x8, #2576]
+0003d034 ldrb	w8, [x8, #41]
+0003d038 tbz	w8, #4, #692
+0003d03c mov	w0, #4096
+0003d040 bl	#73960 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d044 mov	x23, x0
+0003d048 mov	x0, x21
+0003d04c bl	#73972 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d050 mov	x5, x0
+0003d054 mov	w0, #4096
+0003d058 adrp	x1, #-192512
+0003d05c add	x1, x1, #1738 ; e6ca 
+0003d060 mov	w2, #5
+0003d064 adrp	x3, #-200704
+0003d068 add	x3, x3, #761 ; c2f9 '[ VERB]%s %s:571 %s() FwType unsupported %d !!'
+0003d06c mov	x4, x23
+0003d070 mov	x6, x24
+0003d074 mov	w7, w20
+0003d078 bl	#73880 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d07c b	#624 -> 3d2ec CamX::QSEEAONIntf::QSEEAONIntf()+0x8e0
+0003d080 adrp	x8, #81920
+0003d084 ldr	x8, [x8, #2576]
+0003d088 ldrb	w8, [x8, #33]
+0003d08c tbnz	w8, #4, #20
+0003d090 adrp	x8, #81920
+0003d094 ldr	x8, [x8, #2584]
+0003d098 ldr	w8, [x8]
+0003d09c cbnz	w8, #68
+0003d0a0 mov	w0, #4096
+0003d0a4 bl	#73860 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d0a8 mov	x23, x0
+0003d0ac mov	x0, x21
+0003d0b0 bl	#73872 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d0b4 mov	x5, x0
+0003d0b8 mov	w0, #4096
+0003d0bc adrp	x1, #-167936
+0003d0c0 add	x1, x1, #3565 ; 14ded 
+0003d0c4 mov	w2, #4
+0003d0c8 adrp	x3, #-217088
+0003d0cc add	x3, x3, #1546 ; 860a '[ INFO]%s %s:499 %s() Probe fwType: %d (QSEEAONFWHS, suid: camera_handshake), Waiting max for 2000 msec'
+0003d0d0 mov	x4, x23
+0003d0d4 mov	x6, x24
+0003d0d8 mov	w7, wzr
+0003d0dc bl	#73780 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d0e0 add	x0, sp, #160
+0003d0e4 adrp	x1, #-212992
+0003d0e8 add	x1, x1, #1768 ; 96e8 'camera_handshake'
+0003d0ec bl	#-2232 -> 3c834 _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B8ne200000ILi0EEEPKc
+0003d0f0 add	x1, sp, #160
+0003d0f4 mov	x0, x27
+0003d0f8 bl	#76176 -> 4fa88 CamX::SuidLookup::RequestSuid(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)@plt
+0003d0fc ldrb	w8, [sp, #160]
+0003d100 tbz	w8, #0, #164
+0003d104 add	x8, sp, #160
+0003d108 b	#140 -> 3d194 CamX::QSEEAONIntf::QSEEAONIntf()+0x788
+0003d10c adrp	x8, #81920
+0003d110 ldr	x8, [x8, #2576]
+0003d114 ldrb	w8, [x8, #33]
+0003d118 tbnz	w8, #4, #20
+0003d11c adrp	x8, #81920
+0003d120 ldr	x8, [x8, #2584]
+0003d124 ldr	w8, [x8]
+0003d128 cbnz	w8, #68
+0003d12c mov	w0, #4096
+0003d130 bl	#73720 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d134 mov	x23, x0
+0003d138 mov	x0, x21
+0003d13c bl	#73732 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d140 mov	x5, x0
+0003d144 mov	w0, #4096
+0003d148 adrp	x1, #-167936
+0003d14c add	x1, x1, #3565 ; 14ded 
+0003d150 mov	w2, #4
+0003d154 adrp	x3, #-217088
+0003d158 add	x3, x3, #1650 ; 8672 '[ INFO]%s %s:515 %s() Probe fwType: %d (QSEEAONFWQR, suid: camera_qrcode_detect), Waiting max for 2000 msec'
+0003d15c mov	x4, x23
+0003d160 mov	x6, x24
+0003d164 mov	w7, #2
+0003d168 bl	#73640 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d16c add	x0, sp, #112
+0003d170 adrp	x1, #-192512
+0003d174 add	x1, x1, #680 ; e2a8 'camera_qrcode_detect'
+0003d178 bl	#-2372 -> 3c834 _ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B8ne200000ILi0EEEPKc
+0003d17c add	x1, sp, #112
+0003d180 mov	x0, x27
+0003d184 bl	#76036 -> 4fa88 CamX::SuidLookup::RequestSuid(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >)@plt
+0003d188 ldrb	w8, [sp, #112]
+0003d18c tbz	w8, #0, #24
+0003d190 add	x8, sp, #112
+0003d194 ldr	x0, [x8, #16]
+0003d198 ldr	x8, [x8]
+0003d19c and	x1, x8, #0xfffffffffffffffe
+0003d1a0 bl	#73896 -> 4f248 operator delete(void*, unsigned long)@plt
+0003d1a4 ldp	x0, x23, [x19, #496]
+0003d1a8 bl	#74152 -> 4f350 CamX::Mutex::GetNativeHandle()@plt
+0003d1ac mov	x1, x0
+0003d1b0 mov	x0, x23
+0003d1b4 mov	w2, #2000
+0003d1b8 bl	#74112 -> 4f338 CamX::Condition::TimedWait(pthread_mutex_t*, unsigned int)@plt
+0003d1bc cbz	w0, #180
+0003d1c0 mov	w0, #4096
+0003d1c4 bl	#73572 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d1c8 mov	x23, x0
+0003d1cc mov	x0, x21
+0003d1d0 bl	#73584 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d1d4 ldr	x7, [x28, x20, lsl #3]
+0003d1d8 mov	x5, x0
+0003d1dc mov	w0, #4096
+0003d1e0 adrp	x1, #-196608
+0003d1e4 add	x1, x1, #3336 ; dd08 
+0003d1e8 mov	w2, #1
+0003d1ec adrp	x3, #-208896
+0003d1f0 add	x3, x3, #2081 ; a821 '[ERROR]%s %s:552 %s() Timed out for probing %s!'
+0003d1f4 mov	x4, x23
+0003d1f8 mov	x6, x24
+0003d1fc bl	#73492 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d200 adrp	x9, #81920
+0003d204 ldr	x9, [x9, #2592]
+0003d208 ldr	w8, [x9, #8]
+0003d20c cmp	w8, #1
+0003d210 b.ne	#412
+0003d214 ldrb	w8, [x9, #1]
+0003d218 tbz	w8, #4, #404
+0003d21c bl	#73532 -> 4f158 atrace_get_enabled_tags@plt
+0003d220 tst	x0, #0xc00
+0003d224 b.eq	#392
+0003d228 add	x0, sp, #208
+0003d22c mov	w1, wzr
+0003d230 mov	w2, #512
+0003d234 bl	#76388 -> 4fc98 memset@plt
+0003d238 ldr	x3, [x28, x20, lsl #3]
+0003d23c add	x0, sp, #208
+0003d240 mov	w1, #512
+0003d244 adrp	x2, #-159744
+0003d248 add	x2, x2, #1637 ; 16665 '[ERROR]Timed out for probing %s!'
+0003d24c bl	#-111876 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003d250 bl	#73480 -> 4f158 atrace_get_enabled_tags@plt
+0003d254 tst	x0, #0xc00
+0003d258 b.ne	#540
+0003d25c bl	#73468 -> 4f158 atrace_get_enabled_tags@plt
+0003d260 tst	x0, #0xc00
+0003d264 b.eq	#328
+0003d268 bl	#73504 -> 4f188 atrace_end_body@plt
+0003d26c b	#320 -> 3d3ac CamX::QSEEAONIntf::QSEEAONIntf()+0x9a0
+0003d270 ldr	x8, [sp, #48]
+0003d274 ldr	w8, [x8, x20, lsl #2]
+0003d278 cmp	w8, #1
+0003d27c b.ne	#120
+0003d280 adrp	x8, #81920
+0003d284 ldr	x8, [x8, #2576]
+0003d288 ldrb	w8, [x8, #33]
+0003d28c tbnz	w8, #4, #20
+0003d290 adrp	x8, #81920
+0003d294 ldr	x8, [x8, #2584]
+0003d298 ldr	w8, [x8]
+0003d29c cbnz	w8, #80
+0003d2a0 mov	w0, #4096
+0003d2a4 bl	#73348 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d2a8 mov	x23, x0
+0003d2ac mov	x0, x21
+0003d2b0 bl	#73360 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d2b4 add	x8, x19, x26
+0003d2b8 ldr	x7, [x28, x20, lsl #3]
+0003d2bc mov	x5, x0
+0003d2c0 ldp	x8, x9, [x8, #-8]
+0003d2c4 mov	w0, #4096
+0003d2c8 adrp	x1, #-167936
+0003d2cc add	x1, x1, #3565 ; 14ded 
+0003d2d0 mov	w2, #4
+0003d2d4 adrp	x3, #-221184
+0003d2d8 add	x3, x3, #1601 ; 7641 '[ INFO]%s %s:559 %s() Probe success for %s suid(H: 0x%llx, L: 0x%llx)'
+0003d2dc mov	x4, x23
+0003d2e0 mov	x6, x24
+0003d2e4 stp	x9, x8, [sp]
+0003d2e8 bl	#73256 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d2ec mov	w23, #1
+0003d2f0 b	#192 -> 3d3b0 CamX::QSEEAONIntf::QSEEAONIntf()+0x9a4
+0003d2f4 mov	w0, #4096
+0003d2f8 bl	#73264 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d2fc mov	x23, x0
+0003d300 mov	x0, x21
+0003d304 bl	#73276 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d308 add	x25, x19, x26
+0003d30c ldr	x7, [x28, x20, lsl #3]
+0003d310 mov	x5, x0
+0003d314 ldp	x9, x8, [x25, #-8]
+0003d318 mov	w0, #4096
+0003d31c adrp	x1, #-196608
+0003d320 add	x1, x1, #3336 ; dd08 
+0003d324 mov	w2, #1
+0003d328 adrp	x3, #-176128
+0003d32c add	x3, x3, #949 ; 123b5 '[ERROR]%s %s:566 %s() Probe failed for %s suid(H: 0x%llx, L: 0x%llx)'
+0003d330 mov	x4, x23
+0003d334 mov	x6, x24
+0003d338 stp	x8, x9, [sp]
+0003d33c bl	#73172 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d340 adrp	x9, #81920
+0003d344 ldr	x9, [x9, #2592]
+0003d348 ldr	w8, [x9, #8]
+0003d34c cmp	w8, #1
+0003d350 b.ne	#92
+0003d354 ldrb	w8, [x9, #1]
+0003d358 tbz	w8, #4, #84
+0003d35c bl	#73212 -> 4f158 atrace_get_enabled_tags@plt
+0003d360 tst	x0, #0xc00
+0003d364 b.eq	#72
+0003d368 add	x0, sp, #208
+0003d36c mov	w1, wzr
+0003d370 mov	w2, #512
+0003d374 bl	#76068 -> 4fc98 memset@plt
+0003d378 ldr	x3, [x28, x20, lsl #3]
+0003d37c ldp	x5, x4, [x25, #-8]
+0003d380 add	x0, sp, #208
+0003d384 mov	w1, #512
+0003d388 adrp	x2, #-196608
+0003d38c add	x2, x2, #374 ; d176 '[ERROR]Probe failed for %s suid(H: 0x%llx, L: 0x%llx)'
+0003d390 bl	#-112200 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003d394 bl	#73156 -> 4f158 atrace_get_enabled_tags@plt
+0003d398 tst	x0, #0xc00
+0003d39c b.ne	#228
+0003d3a0 bl	#73144 -> 4f158 atrace_get_enabled_tags@plt
+0003d3a4 tst	x0, #0xc00
+0003d3a8 b.ne	#228
+0003d3ac mov	w23, wzr
+0003d3b0 add	x0, x27, #48
+0003d3b4 bl	#74444 -> 4f680 CamX::SSCConnection::~SSCConnection()@plt
+0003d3b8 ldr	x0, [x27, #32]
+0003d3bc cmp	x0, x27
+0003d3c0 b.eq	#16
+0003d3c4 cbz	x0, #28
+0003d3c8 mov	w8, #40
+0003d3cc b	#8 -> 3d3d4 CamX::QSEEAONIntf::QSEEAONIntf()+0x9c8
+0003d3d0 mov	w8, #32
+0003d3d4 ldr	x9, [x0]
+0003d3d8 ldr	x8, [x9, x8]
+0003d3dc blr	x8
+0003d3e0 mov	x0, x27
+0003d3e4 mov	w1, #64
+0003d3e8 bl	#73312 -> 4f248 operator delete(void*, unsigned long)@plt
+0003d3ec tbnz	w23, #0, #116
+0003d3f0 mov	w25, #1
+0003d3f4 adrp	x8, #81920
+0003d3f8 ldr	x8, [x8, #2576]
+0003d3fc ldrb	w8, [x8, #17]
+0003d400 tbnz	w8, #4, #20
+0003d404 adrp	x8, #81920
+0003d408 ldr	x8, [x8, #2584]
+0003d40c ldr	w8, [x8]
+0003d410 cbnz	w8, #76
+0003d414 mov	w0, #4096
+0003d418 bl	#72976 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d41c mov	x23, x0
+0003d420 mov	x0, x21
+0003d424 bl	#72988 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d428 ldr	x7, [x28, x20, lsl #3]
+0003d42c mov	x5, x0
+0003d430 mov	w0, #4096
+0003d434 adrp	x1, #-184320
+0003d438 add	x1, x1, #1630 ; 1065e 
+0003d43c mov	w2, #2
+0003d440 adrp	x3, #-208896
+0003d444 add	x3, x3, #2029 ; a7ed '[ WARN]%s %s:451 %s() Probe AON FW %s with error %d'
+0003d448 mov	x4, x23
+0003d44c adrp	x6, #-217088
+0003d450 add	x6, x6, #1529 ; 85f9 'ListAONFirmwares'
+0003d454 str	w25, [sp]
+0003d458 bl	#72888 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d45c cbz	x20, #4364
+0003d460 add	x20, x20, #1
+0003d464 add	x26, x26, #16
+0003d468 cmp	x20, #5
+0003d46c b.ne	#-1500
+0003d470 b	#1364 -> 3d9c4 CamX::QSEEAONIntf::QSEEAONIntf()+0xfb8
+0003d474 add	x0, sp, #208
+0003d478 bl	#72952 -> 4f170 atrace_begin_body@plt
+0003d47c b	#-544 -> 3d25c CamX::QSEEAONIntf::QSEEAONIntf()+0x850
+0003d480 add	x0, sp, #208
+0003d484 bl	#72940 -> 4f170 atrace_begin_body@plt
+0003d488 b	#-232 -> 3d3a0 CamX::QSEEAONIntf::QSEEAONIntf()+0x994
+0003d48c bl	#72956 -> 4f188 atrace_end_body@plt
+0003d490 b	#-228 -> 3d3ac CamX::QSEEAONIntf::QSEEAONIntf()+0x9a0
+0003d494 ldr	x8, [sp, #752]
+0003d498 mov	x23, x1
+0003d49c mov	x25, x0
+0003d4a0 cmp	x8, x22
+0003d4a4 b.eq	#16
+0003d4a8 cbz	x8, #32
+0003d4ac mov	w9, #40
+0003d4b0 b	#8 -> 3d4b8 CamX::QSEEAONIntf::QSEEAONIntf()+0xaac
+0003d4b4 mov	w9, #32
+0003d4b8 ldr	x10, [x8]
+0003d4bc mov	x0, x8
+0003d4c0 ldr	x9, [x10, x9]
+0003d4c4 blr	x9
+0003d4c8 mov	x0, x27
+0003d4cc mov	w1, wzr
+0003d4d0 mov	w2, wzr
+0003d4d4 mov	x3, xzr
+0003d4d8 mov	w4, wzr
+0003d4dc bl	#73140 -> 4f290 operator delete(void*, int, int, char const*, unsigned int)@plt
+0003d4e0 b	#12 -> 3d4ec CamX::QSEEAONIntf::QSEEAONIntf()+0xae0
+0003d4e4 mov	x23, x1
+0003d4e8 mov	x25, x0
+0003d4ec cmp	w23, #1
+0003d4f0 b.ne	#5308
+0003d4f4 mov	x0, x25
+0003d4f8 bl	#72872 -> 4f1a0 __cxa_begin_catch@plt
+0003d4fc mov	x25, x0
+0003d500 mov	w0, #4096
+0003d504 bl	#72740 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d508 mov	x27, x0
+0003d50c mov	x0, x21
+0003d510 bl	#72752 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d514 ldr	x8, [x25]
+0003d518 mov	x23, x0
+0003d51c ldr	x9, [x28, x20, lsl #3]
+0003d520 mov	x0, x25
+0003d524 ldr	x8, [x8, #16]
+0003d528 str	x9, [sp, #40]
+0003d52c blr	x8
+0003d530 mov	x8, x0
+0003d534 ldr	x7, [sp, #40]
+0003d538 mov	w0, #4096
+0003d53c adrp	x1, #-196608
+0003d540 add	x1, x1, #3336 ; dd08 
+0003d544 mov	w2, #1
+0003d548 adrp	x3, #-221184
+0003d54c add	x3, x3, #3726 ; 7e8e '[ERROR]%s %s:489 %s() Failed to Probe AON Firmware %s error %s'
+0003d550 mov	x4, x27
+0003d554 mov	x5, x23
+0003d558 mov	x6, x24
+0003d55c str	x8, [sp]
+0003d560 bl	#72624 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d564 adrp	x8, #81920
+0003d568 ldr	x8, [x8, #2592]
+0003d56c ldr	w8, [x8, #8]
+0003d570 cmp	w8, #1
+0003d574 b.ne	#108
+0003d578 adrp	x8, #81920
+0003d57c ldr	x8, [x8, #2592]
+0003d580 ldrb	w8, [x8, #1]
+0003d584 tbz	w8, #4, #92
+0003d588 bl	#72656 -> 4f158 atrace_get_enabled_tags@plt
+0003d58c tst	x0, #0xc00
+0003d590 b.eq	#80
+0003d594 add	x0, sp, #208
+0003d598 mov	w1, wzr
+0003d59c mov	w2, #512
+0003d5a0 bl	#75512 -> 4fc98 memset@plt
+0003d5a4 ldr	x8, [x25]
+0003d5a8 mov	x0, x25
+0003d5ac ldr	x23, [x28, x20, lsl #3]
+0003d5b0 ldr	x8, [x8, #16]
+0003d5b4 blr	x8
+0003d5b8 mov	x4, x0
+0003d5bc add	x0, sp, #208
+0003d5c0 mov	w1, #512
+0003d5c4 adrp	x2, #-200704
+0003d5c8 add	x2, x2, #713 ; c2c9 '[ERROR]Failed to Probe AON Firmware %s error %s'
+0003d5cc mov	x3, x23
+0003d5d0 bl	#-114144 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003d5d4 add	x0, sp, #208
+0003d5d8 bl	#5148 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003d5dc bl	#5212 -> 3ea38 atrace_end(unsigned long)
+0003d5e0 bl	#72832 -> 4f260 __cxa_end_catch@plt
+0003d5e4 mov	w0, #4096
+0003d5e8 bl	#72512 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d5ec mov	x23, x0
+0003d5f0 mov	x0, x21
+0003d5f4 bl	#72524 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d5f8 mov	x5, x0
+0003d5fc mov	w0, #4096
+0003d600 adrp	x1, #-196608
+0003d604 add	x1, x1, #3336 ; dd08 
+0003d608 mov	w2, #1
+0003d60c adrp	x3, #-225280
+0003d610 add	x3, x3, #1547 ; 660b '[ERROR]%s %s:580 %s() Unable to create lookup object, out of memory !!'
+0003d614 mov	x4, x23
+0003d618 mov	x6, x24
+0003d61c bl	#72436 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d620 adrp	x8, #81920
+0003d624 ldr	x8, [x8, #2592]
+0003d628 ldr	w8, [x8, #8]
+0003d62c cmp	w8, #1
+0003d630 b.ne	#80
+0003d634 adrp	x8, #81920
+0003d638 ldr	x8, [x8, #2592]
+0003d63c ldrb	w8, [x8, #1]
+0003d640 tbz	w8, #4, #64
+0003d644 bl	#72468 -> 4f158 atrace_get_enabled_tags@plt
+0003d648 tst	x0, #0xc00
+0003d64c b.eq	#52
+0003d650 add	x0, sp, #208
+0003d654 mov	w1, wzr
+0003d658 mov	w2, #512
+0003d65c bl	#75324 -> 4fc98 memset@plt
+0003d660 add	x0, sp, #208
+0003d664 mov	w1, #512
+0003d668 adrp	x2, #-221184
+0003d66c add	x2, x2, #1671 ; 7687 '[ERROR]Unable to create lookup object, out of memory !!'
+0003d670 bl	#-112936 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003d674 add	x0, sp, #208
+0003d678 bl	#4988 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003d67c bl	#5052 -> 3ea38 atrace_end(unsigned long)
+0003d680 mov	w25, #4
+0003d684 b	#-656 -> 3d3f4 CamX::QSEEAONIntf::QSEEAONIntf()+0x9e8
+0003d688 mov	w0, #4096
+0003d68c bl	#72348 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d690 mov	x20, x0
+0003d694 adrp	x0, #-167936
+0003d698 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003d69c bl	#72356 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d6a0 ldp	x7, x8, [x19, #496]
+0003d6a4 mov	x5, x0
+0003d6a8 adrp	x1, #-196608
+0003d6ac add	x1, x1, #3336 ; dd08 
+0003d6b0 adrp	x3, #-159744
+0003d6b4 add	x3, x3, #1555 ; 16613 '[ERROR]%s %s:61 %s() Unable to create mutex objects for QSEEAON Interface, %p, %p'
+0003d6b8 adrp	x6, #-208896
+0003d6bc add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003d6c0 mov	w0, #4096
+0003d6c4 mov	w2, #1
+0003d6c8 mov	x4, x20
+0003d6cc str	x8, [sp]
+0003d6d0 bl	#72256 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d6d4 adrp	x8, #81920
+0003d6d8 ldr	x8, [x8, #2592]
+0003d6dc ldr	w9, [x8, #8]
+0003d6e0 cmp	w9, #1
+0003d6e4 b.ne	#88
+0003d6e8 ldrb	w8, [x8, #1]
+0003d6ec tbz	w8, #4, #80
+0003d6f0 bl	#72296 -> 4f158 atrace_get_enabled_tags@plt
+0003d6f4 tst	x0, #0xc00
+0003d6f8 b.eq	#68
+0003d6fc add	x0, sp, #208
+0003d700 mov	w1, wzr
+0003d704 mov	w2, #512
+0003d708 bl	#75152 -> 4fc98 memset@plt
+0003d70c ldp	x3, x4, [x19, #496]
+0003d710 adrp	x2, #-159744
+0003d714 add	x2, x2, #3405 ; 16d4d '[ERROR]Unable to create mutex objects for QSEEAON Interface, %p, %p'
+0003d718 add	x0, sp, #208
+0003d71c mov	w1, #512
+0003d720 bl	#-114480 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003d724 bl	#72244 -> 4f158 atrace_get_enabled_tags@plt
+0003d728 tst	x0, #0xc00
+0003d72c b.ne	#4372
+0003d730 bl	#72232 -> 4f158 atrace_get_enabled_tags@plt
+0003d734 tst	x0, #0xc00
+0003d738 b.ne	#4372
+0003d73c ldr	x0, [x19, #496]
+0003d740 cbz	x0, #12
+0003d744 bl	#73436 -> 4f620 CamX::Mutex::Destroy()@plt
+0003d748 str	xzr, [x19, #496]
+0003d74c ldr	x0, [x19, #504]
+0003d750 cbz	x0, #3920
+0003d754 bl	#73396 -> 4f608 CamX::Condition::Destroy()@plt
+0003d758 str	xzr, [x19, #504]
+0003d75c b	#3908 -> 3e6a0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1c94
+0003d760 mov	w0, #4096
+0003d764 bl	#72132 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d768 mov	x20, x0
+0003d76c adrp	x0, #-167936
+0003d770 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003d774 bl	#72140 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d778 mov	x5, x0
+0003d77c adrp	x1, #-196608
+0003d780 add	x1, x1, #3336 ; dd08 
+0003d784 adrp	x3, #-192512
+0003d788 add	x3, x3, #625 ; e271 '[ERROR]%s %s:88 %s() Invalid pointer to StaticSettings'
+0003d78c adrp	x6, #-208896
+0003d790 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003d794 mov	w0, #4096
+0003d798 mov	w2, #1
+0003d79c mov	x4, x20
+0003d7a0 bl	#72048 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d7a4 adrp	x8, #81920
+0003d7a8 ldr	x8, [x8, #2592]
+0003d7ac ldr	w9, [x8, #8]
+0003d7b0 cmp	w9, #1
+0003d7b4 b.ne	#3820
+0003d7b8 ldrb	w8, [x8, #1]
+0003d7bc tbz	w8, #4, #3812
+0003d7c0 bl	#72088 -> 4f158 atrace_get_enabled_tags@plt
+0003d7c4 tst	x0, #0xc00
+0003d7c8 b.eq	#3800
+0003d7cc add	x0, sp, #208
+0003d7d0 mov	w1, wzr
+0003d7d4 mov	w2, #512
+0003d7d8 bl	#74944 -> 4fc98 memset@plt
+0003d7dc adrp	x2, #-176128
+0003d7e0 add	x2, x2, #2673 ; 12a71 '[ERROR]Invalid pointer to StaticSettings'
+0003d7e4 add	x0, sp, #208
+0003d7e8 mov	w1, #512
+0003d7ec bl	#-114684 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003d7f0 bl	#72040 -> 4f158 atrace_get_enabled_tags@plt
+0003d7f4 tst	x0, #0xc00
+0003d7f8 b.ne	#4188
+0003d7fc bl	#72028 -> 4f158 atrace_get_enabled_tags@plt
+0003d800 tst	x0, #0xc00
+0003d804 b.eq	#3740
+0003d808 bl	#72064 -> 4f188 atrace_end_body@plt
+0003d80c b	#3732 -> 3e6a0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1c94
+0003d810 mov	w0, #4096
+0003d814 bl	#71956 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d818 mov	x20, x0
+0003d81c adrp	x0, #-167936
+0003d820 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003d824 bl	#71964 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d828 mov	x5, x0
+0003d82c adrp	x1, #-196608
+0003d830 add	x1, x1, #3336 ; dd08 
+0003d834 adrp	x3, #-184320
+0003d838 add	x3, x3, #784 ; 10310 '[ERROR]%s %s:127 %s() Unable to open CamxDriver Library'
+0003d83c adrp	x6, #-208896
+0003d840 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003d844 mov	w0, #4096
+0003d848 mov	w2, #1
+0003d84c mov	x4, x20
+0003d850 bl	#71872 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d854 adrp	x8, #81920
+0003d858 ldr	x8, [x8, #2592]
+0003d85c ldr	w9, [x8, #8]
+0003d860 cmp	w9, #1
+0003d864 b.ne	#3644
+0003d868 ldrb	w8, [x8, #1]
+0003d86c tbz	w8, #4, #3636
+0003d870 bl	#71912 -> 4f158 atrace_get_enabled_tags@plt
+0003d874 tst	x0, #0xc00
+0003d878 b.eq	#3624
+0003d87c add	x0, sp, #208
+0003d880 mov	w1, wzr
+0003d884 mov	w2, #512
+0003d888 bl	#74768 -> 4fc98 memset@plt
+0003d88c adrp	x2, #-196608
+0003d890 add	x2, x2, #2737 ; dab1 '[ERROR]Unable to open CamxDriver Library'
+0003d894 add	x0, sp, #208
+0003d898 mov	w1, #512
+0003d89c bl	#-114860 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003d8a0 add	x0, sp, #208
+0003d8a4 bl	#4432 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003d8a8 bl	#4496 -> 3ea38 atrace_end(unsigned long)
+0003d8ac b	#3572 -> 3e6a0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1c94
+0003d8b0 ldr	x0, [x19, #8]
+0003d8b4 cbnz	x0, #-2796
+0003d8b8 mov	w0, #4096
+0003d8bc bl	#71788 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d8c0 mov	x21, x0
+0003d8c4 adrp	x0, #-167936
+0003d8c8 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003d8cc bl	#71796 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d8d0 ldr	x8, [x19, #8]
+0003d8d4 mov	x5, x0
+0003d8d8 adrp	x1, #-196608
+0003d8dc add	x1, x1, #3336 ; dd08 
+0003d8e0 adrp	x3, #-176128
+0003d8e4 add	x3, x3, #750 ; 122ee '[ERROR]%s %s:120 %s() Unable to get CHIContext, funcPChiEntry = %p m_hCHIContext = %p'
+0003d8e8 adrp	x6, #-208896
+0003d8ec add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003d8f0 mov	w0, #4096
+0003d8f4 mov	w2, #1
+0003d8f8 mov	x4, x21
+0003d8fc mov	x7, x20
+0003d900 str	x8, [sp]
+0003d904 bl	#71692 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003d908 adrp	x8, #81920
+0003d90c ldr	x8, [x8, #2592]
+0003d910 ldr	w9, [x8, #8]
+0003d914 cmp	w9, #1
+0003d918 b.ne	#3464
+0003d91c ldrb	w8, [x8, #1]
+0003d920 tbz	w8, #4, #3456
+0003d924 bl	#71732 -> 4f158 atrace_get_enabled_tags@plt
+0003d928 tst	x0, #0xc00
+0003d92c b.eq	#3444
+0003d930 add	x0, sp, #208
+0003d934 mov	w1, wzr
+0003d938 mov	w2, #512
+0003d93c bl	#74588 -> 4fc98 memset@plt
+0003d940 ldr	x4, [x19, #8]
+0003d944 adrp	x2, #-208896
+0003d948 add	x2, x2, #1958 ; a7a6 '[ERROR]Unable to get CHIContext, funcPChiEntry = %p m_hCHIContext = %p'
+0003d94c add	x0, sp, #208
+0003d950 mov	w1, #512
+0003d954 mov	x3, x20
+0003d958 bl	#-115048 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003d95c add	x0, sp, #208
+0003d960 bl	#4244 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003d964 bl	#4308 -> 3ea38 atrace_end(unsigned long)
+0003d968 b	#3384 -> 3e6a0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1c94
+0003d96c adrp	x8, #81920
+0003d970 ldr	x8, [x8, #2576]
+0003d974 ldrb	w8, [x8, #33]
+0003d978 tbnz	w8, #4, #20
+0003d97c adrp	x8, #81920
+0003d980 ldr	x8, [x8, #2584]
+0003d984 ldr	w8, [x8]
+0003d988 cbnz	w8, #3096
+0003d98c mov	w0, #4096
+0003d990 bl	#71576 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003d994 mov	x20, x0
+0003d998 adrp	x0, #-167936
+0003d99c add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003d9a0 bl	#71584 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003d9a4 ldr	w8, [x19]
+0003d9a8 mov	x5, x0
+0003d9ac cmp	w8, #3
+0003d9b0 b.hi	#3008
+0003d9b4 nop
+0003d9b8 adr	x9, #79640
+0003d9bc ldr	x7, [x9, x8, lsl #3]
+0003d9c0 b	#3000 -> 3e578 CamX::QSEEAONIntf::QSEEAONIntf()+0x1b6c
+0003d9c4 ldr	x20, [x19, #48]
+0003d9c8 mov	x0, #50884
+0003d9cc movk	x0, #52055, lsl #16
+0003d9d0 movk	x0, #28344, lsl #32
+0003d9d4 movk	x0, #8238, lsl #48
+0003d9d8 mov	x1, x20
+0003d9dc bl	#71884 -> 4f2a8 __cfi_slowpath@plt
+0003d9e0 add	x0, sp, #720
+0003d9e4 mov	w1, wzr
+0003d9e8 mov	w2, #296
+0003d9ec bl	#74412 -> 4fc98 memset@plt
+0003d9f0 movi	v0.2d, #0000000000000000
+0003d9f4 ldr	x0, [x19, #8]
+0003d9f8 stp	q0, q0, [sp, #160]
+0003d9fc str	q0, [sp, #192]
+0003da00 ldr	x26, [sp, #56]
+0003da04 blr	x20
+0003da08 mov	w20, w0
+0003da0c add	x8, sp, #160
+0003da10 mov	x0, x19
+0003da14 str	x8, [sp, #728]
+0003da18 bl	#4636 -> 3ec34 CamX::QSEEAONIntf::ClearAONSensorObjArray()
+0003da1c cbz	w20, #932
+0003da20 mov	w21, wzr
+0003da24 str	w20, [sp, #48]
+0003da28 ldr	x22, [x19, #56]
+0003da2c mov	x0, #34545
+0003da30 movk	x0, #48636, lsl #16
+0003da34 movk	x0, #8801, lsl #32
+0003da38 movk	x0, #41810, lsl #48
+0003da3c mov	x1, x22
+0003da40 bl	#71784 -> 4f2a8 __cfi_slowpath@plt
+0003da44 ldr	x0, [x19, #8]
+0003da48 add	x2, sp, #720
+0003da4c mov	w1, w21
+0003da50 blr	x22
+0003da54 ldr	w8, [sp, #792]
+0003da58 cmp	w8, #1
+0003da5c b.ne	#836
+0003da60 add	x0, sp, #720
+0003da64 bl	#-68956 -> 2cd08 CamX::QSEEAONSensorObj::Create(ChiCameraInfo&) [clone .cfi]
+0003da68 ldr	x8, [x19, #584]
+0003da6c mov	x28, x0
+0003da70 ldr	x20, [x19, #592]
+0003da74 ldr	x25, [sp, #800]
+0003da78 ldr	w22, [sp, #740]
+0003da7c ldr	w9, [sp, #748]
+0003da80 ldr	w27, [sp, #792]
+0003da84 cmp	x8, x20
+0003da88 b.hs	#24
+0003da8c stp	w22, wzr, [x8]
+0003da90 add	x23, x8, #24 ; 51018 
+0003da94 str	x25, [x8, #8]
+0003da98 stp	w9, w27, [x8, #16]
+0003da9c b	#220 -> 3db78 CamX::QSEEAONIntf::QSEEAONIntf()+0x116c
+0003daa0 str	w9, [sp, #40]
+0003daa4 mov	x11, #-6148914691236517206
+0003daa8 ldr	x9, [sp, #64]
+0003daac movk	x11, #43691
+0003dab0 mov	x10, #-6148914691236517206
+0003dab4 movk	x10, #43691
+0003dab8 movk	x10, #2730, lsl #48
+0003dabc ldr	x26, [x9]
+0003dac0 sub	x9, x8, x26
+0003dac4 asr	x9, x9, #3
+0003dac8 mul	x24, x9, x11
+0003dacc add	x9, x24, #1 ; 6dfb 'robeAONFirmware'
+0003dad0 cmp	x9, x10
+0003dad4 b.hs	#3488
+0003dad8 sub	x10, x20, x26
+0003dadc asr	x10, x10, #3
+0003dae0 mul	x10, x10, x11
+0003dae4 lsl	x11, x10, #1
+0003dae8 cmp	x11, x9
+0003daec csel	x9, x11, x9, hi
+0003daf0 mov	x11, #6148914691236517205
+0003daf4 movk	x11, #1365, lsl #48
+0003daf8 cmp	x10, x11
+0003dafc mov	x10, #-6148914691236517206
+0003db00 movk	x10, #2730, lsl #48
+0003db04 csel	x23, x9, x10, lo
+0003db08 cbz	x23, #28
+0003db0c mov	x0, x23
+0003db10 bl	#12444 -> 40bac std::__1::allocator<CamX::CameraSensorInfo>::allocate[abi:ne200000](unsigned long)
+0003db14 ldr	x8, [x19, #584]
+0003db18 ldr	x26, [x19, #576]
+0003db1c ldr	x20, [x19, #592]
+0003db20 b	#8 -> 3db28 CamX::QSEEAONIntf::QSEEAONIntf()+0x111c
+0003db24 mov	x0, xzr
+0003db28 mov	w10, #24
+0003db2c sub	x2, x8, x26
+0003db30 ldr	w8, [sp, #40]
+0003db34 mov	x1, x26
+0003db38 madd	x9, x24, x10, x0
+0003db3c madd	x24, x23, x10, x0
+0003db40 add	x23, x9, #24 ; 6e13 'plus_aon'
+0003db44 stp	w22, wzr, [x9]
+0003db48 sub	x22, x9, x2
+0003db4c mov	x0, x22
+0003db50 str	x25, [x9, #8]
+0003db54 stp	w8, w27, [x9, #16]
+0003db58 bl	#73976 -> 4fc50 memcpy@plt
+0003db5c str	x22, [x19, #576]
+0003db60 str	x23, [x19, #584]
+0003db64 str	x24, [x19, #592]
+0003db68 cbz	x26, #16
+0003db6c sub	x1, x20, x26
+0003db70 mov	x0, x26
+0003db74 bl	#71380 -> 4f248 operator delete(void*, unsigned long)@plt
+0003db78 ldr	x9, [sp, #72]
+0003db7c str	x23, [x19, #584]
+0003db80 cbz	x28, #36
+0003db84 ldr	w8, [x19, #384]
+0003db88 str	w8, [x28, #68]
+0003db8c ldr	x20, [x19, #520]
+0003db90 ldr	x8, [x19, #528]
+0003db94 cmp	x20, x8
+0003db98 b.hs	#252
+0003db9c str	x28, [x20], #8
+0003dba0 b	#388 -> 3dd24 CamX::QSEEAONIntf::QSEEAONIntf()+0x1318
+0003dba4 mov	w0, #4096
+0003dba8 bl	#71040 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003dbac mov	x23, x0
+0003dbb0 adrp	x0, #-167936
+0003dbb4 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003dbb8 bl	#71048 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003dbbc ldr	x8, [sp, #800]
+0003dbc0 mov	x5, x0
+0003dbc4 ldr	w9, [sp, #792]
+0003dbc8 ldr	w10, [sp, #740]
+0003dbcc ldr	w11, [sp, #748]
+0003dbd0 mov	w0, #4096
+0003dbd4 adrp	x1, #-196608
+0003dbd8 add	x1, x1, #3336 ; dd08 
+0003dbdc mov	w2, #1
+0003dbe0 adrp	x3, #-188416
+0003dbe4 add	x3, x3, #3166 ; fc5e '[ERROR]%s %s:274 %s() Fail to create SensorObj physicalCamIdx %u slotId %u SensorName[%s] isAONCamera[%d] positionType[%d]'
+0003dbe8 mov	x4, x23
+0003dbec adrp	x6, #-217088
+0003dbf0 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003dbf4 mov	w7, w21
+0003dbf8 str	w11, [sp, #24]
+0003dbfc str	w9, [sp, #16]
+0003dc00 str	x8, [sp, #8]
+0003dc04 str	w10, [sp]
+0003dc08 bl	#70920 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003dc0c adrp	x8, #81920
+0003dc10 ldr	x8, [x8, #2592]
+0003dc14 ldr	w8, [x8, #8]
+0003dc18 cmp	w8, #1
+0003dc1c b.ne	#388
+0003dc20 adrp	x8, #81920
+0003dc24 ldr	x8, [x8, #2592]
+0003dc28 ldrb	w8, [x8, #1]
+0003dc2c tbz	w8, #4, #372
+0003dc30 bl	#70952 -> 4f158 atrace_get_enabled_tags@plt
+0003dc34 tst	x0, #0xc00
+0003dc38 b.eq	#360
+0003dc3c add	x0, sp, #208
+0003dc40 mov	w1, wzr
+0003dc44 mov	w2, #512
+0003dc48 bl	#73808 -> 4fc98 memset@plt
+0003dc4c ldr	x5, [sp, #800]
+0003dc50 ldr	w6, [sp, #792]
+0003dc54 ldr	w4, [sp, #740]
+0003dc58 ldr	w7, [sp, #748]
+0003dc5c add	x0, sp, #208
+0003dc60 mov	w1, #512
+0003dc64 adrp	x2, #-188416
+0003dc68 add	x2, x2, #1214 ; f4be '[ERROR]Fail to create SensorObj physicalCamIdx %u slotId %u SensorName[%s] isAONCamera[%d] positionType[%d]'
+0003dc6c mov	w3, w21
+0003dc70 bl	#-114472 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003dc74 bl	#70884 -> 4f158 atrace_get_enabled_tags@plt
+0003dc78 tst	x0, #0xc00
+0003dc7c b.ne	#312
+0003dc80 bl	#70872 -> 4f158 atrace_get_enabled_tags@plt
+0003dc84 tst	x0, #0xc00
+0003dc88 b.eq	#280
+0003dc8c bl	#70908 -> 4f188 atrace_end_body@plt
+0003dc90 b	#272 -> 3dda0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1394
+0003dc94 ldr	x26, [x9]
+0003dc98 sub	x24, x20, x26
+0003dc9c asr	x20, x24, #3
+0003dca0 add	x9, x20, #1
+0003dca4 lsr	x10, x9, #61
+0003dca8 cbnz	x10, #3048
+0003dcac sub	x23, x8, x26
+0003dcb0 lsr	x8, x23, #2
+0003dcb4 cmp	x8, x9
+0003dcb8 csel	x8, x8, x9, hi
+0003dcbc mov	x9, #9223372036854775800
+0003dcc0 cmp	x23, x9
+0003dcc4 mov	x9, #2305843009213693951
+0003dcc8 csel	x25, x8, x9, lo
+0003dccc cbz	x25, #28
+0003dcd0 lsr	x8, x25, #61
+0003dcd4 cbnz	x8, #3032
+0003dcd8 lsl	x0, x25, #3
+0003dcdc bl	#70972 -> 4f218 operator new(unsigned long)@plt
+0003dce0 mov	x22, x0
+0003dce4 b	#8 -> 3dcec CamX::QSEEAONIntf::QSEEAONIntf()+0x12e0
+0003dce8 mov	x22, xzr
+0003dcec add	x20, x22, x20, lsl #3
+0003dcf0 mov	x0, x22
+0003dcf4 mov	x1, x26
+0003dcf8 mov	x2, x24
+0003dcfc add	x25, x22, x25, lsl #3
+0003dd00 str	x28, [x20], #8
+0003dd04 bl	#73548 -> 4fc50 memcpy@plt
+0003dd08 str	x22, [x19, #512]
+0003dd0c str	x20, [x19, #520]
+0003dd10 str	x25, [x19, #528]
+0003dd14 cbz	x26, #16
+0003dd18 mov	x0, x26
+0003dd1c mov	x1, x23
+0003dd20 bl	#70952 -> 4f248 operator delete(void*, unsigned long)@plt
+0003dd24 adrp	x8, #81920
+0003dd28 ldr	x8, [x8, #2576]
+0003dd2c str	x20, [x19, #520]
+0003dd30 ldrb	w8, [x8, #41]
+0003dd34 tbz	w8, #4, #108
+0003dd38 mov	w0, #4096
+0003dd3c bl	#70636 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003dd40 mov	x23, x0
+0003dd44 adrp	x0, #-167936
+0003dd48 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003dd4c bl	#70644 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003dd50 ldr	x8, [sp, #800]
+0003dd54 mov	x5, x0
+0003dd58 ldr	w9, [sp, #792]
+0003dd5c ldr	w10, [sp, #740]
+0003dd60 ldr	w11, [sp, #748]
+0003dd64 mov	w0, #4096
+0003dd68 adrp	x1, #-192512
+0003dd6c add	x1, x1, #1738 ; e6ca 
+0003dd70 mov	w2, #5
+0003dd74 adrp	x3, #-212992
+0003dd78 add	x3, x3, #3793 ; 9ed1 '[ VERB]%s %s:263 %s() physicalCamIdx %u slotId %u SensorName[%s] isAONCamera[%d] positionType[%d]'
+0003dd7c mov	x4, x23
+0003dd80 adrp	x6, #-217088
+0003dd84 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003dd88 mov	w7, w21
+0003dd8c str	w11, [sp, #24]
+0003dd90 str	w9, [sp, #16]
+0003dd94 str	x8, [sp, #8]
+0003dd98 str	w10, [sp]
+0003dd9c bl	#70516 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003dda0 ldr	w20, [sp, #48]
+0003dda4 add	w21, w21, #1
+0003dda8 cmp	w20, w21
+0003ddac b.ne	#-900
+0003ddb0 b	#16 -> 3ddc0 CamX::QSEEAONIntf::QSEEAONIntf()+0x13b4
+0003ddb4 add	x0, sp, #208
+0003ddb8 bl	#70584 -> 4f170 atrace_begin_body@plt
+0003ddbc b	#-316 -> 3dc80 CamX::QSEEAONIntf::QSEEAONIntf()+0x1274
+0003ddc0 ldr	x9, [x19, #520]
+0003ddc4 ldr	x8, [x19, #512]
+0003ddc8 ldr	x26, [sp, #56]
+0003ddcc cmp	x9, x8
+0003ddd0 b.eq	#1536
+0003ddd4 mov	x9, xzr
+0003ddd8 mov	w12, wzr
+0003dddc add	x24, x19, #392
+0003dde0 str	x24, [sp, #40]
+0003dde4 ldr	x21, [x8, x9, lsl #3]
+0003dde8 mov	x20, xzr
+0003ddec str	w12, [sp, #36]
+0003ddf0 add	x8, x21, #232 ; 14c61 'RC Subscribe failed error: %d'
+0003ddf4 str	x8, [sp, #48]
+0003ddf8 ldr	w8, [x24, x20, lsl #2]
+0003ddfc cbz	w8, #792
+0003de00 adrp	x8, #81920
+0003de04 cmp	w20, #1
+0003de08 ldr	x8, [x8, #2576]
+0003de0c ldr	x8, [x8, #40]
+0003de10 b.gt	#116
+0003de14 cbz	w20, #552
+0003de18 cmp	w20, #1
+0003de1c b.ne	#220
+0003de20 tbz	w8, #12, #84
+0003de24 mov	w0, #4096
+0003de28 bl	#70400 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003de2c mov	x22, x0
+0003de30 adrp	x0, #-167936
+0003de34 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003de38 bl	#70408 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003de3c ldr	w8, [x21, #64]
+0003de40 mov	x5, x0
+0003de44 mov	w0, #4096
+0003de48 adrp	x1, #-192512
+0003de4c add	x1, x1, #1738 ; e6ca 
+0003de50 mov	w2, #5
+0003de54 adrp	x3, #-159744
+0003de58 add	x3, x3, #3528 ; 16dc8 '[ VERB]%s %s:306 %s() Creating AON FD FW for %s sensorSlotId = %d'
+0003de5c mov	x4, x22
+0003de60 adrp	x6, #-217088
+0003de64 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003de68 mov	x7, x21
+0003de6c str	w8, [sp]
+0003de70 bl	#70304 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003de74 add	x1, x19, #432
+0003de78 mov	x0, x21
+0003de7c bl	#-109172 -> 23408 CamX::QSEEAONFDFwIntf::Create(CamX::QSEEAONSensorObj&, CamX::SensorUid&) [clone .cfi]
+0003de80 b	#640 -> 3e100 CamX::QSEEAONIntf::QSEEAONIntf()+0x16f4
+0003de84 cmp	w20, #2
+0003de88 b.eq	#536
+0003de8c cmp	w20, #3
+0003de90 b.ne	#104
+0003de94 tbz	w8, #12, #84
+0003de98 mov	w0, #4096
+0003de9c bl	#70284 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003dea0 mov	x22, x0
+0003dea4 adrp	x0, #-167936
+0003dea8 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003deac bl	#70292 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003deb0 ldr	w8, [x21, #64]
+0003deb4 mov	x5, x0
+0003deb8 mov	w0, #4096
+0003debc adrp	x1, #-192512
+0003dec0 add	x1, x1, #1738 ; e6ca 
+0003dec4 mov	w2, #5
+0003dec8 adrp	x3, #-176128
+0003decc add	x3, x3, #883 ; 12373 '[ VERB]%s %s:324 %s() Creating AON HD FW for %s sensorSlotId = %d'
+0003ded0 mov	x4, x22
+0003ded4 adrp	x6, #-217088
+0003ded8 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003dedc mov	x7, x21
+0003dee0 str	w8, [sp]
+0003dee4 bl	#70188 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003dee8 add	x1, x19, #464
+0003deec mov	x0, x21
+0003def0 bl	#-47800 -> 32438 CamX::QSEEAONHDFwIntf::Create(CamX::QSEEAONSensorObj&, CamX::SensorUid&) [clone .cfi]
+0003def4 b	#524 -> 3e100 CamX::QSEEAONIntf::QSEEAONIntf()+0x16f4
+0003def8 tbz	w8, #12, #84
+0003defc mov	w0, #4096
+0003df00 bl	#70184 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003df04 mov	x22, x0
+0003df08 adrp	x0, #-167936
+0003df0c add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003df10 bl	#70192 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003df14 ldr	w8, [x21, #64]
+0003df18 mov	x5, x0
+0003df1c mov	w0, #4096
+0003df20 adrp	x1, #-192512
+0003df24 add	x1, x1, #1738 ; e6ca 
+0003df28 mov	w2, #5
+0003df2c adrp	x3, #-217088
+0003df30 add	x3, x3, #4037 ; 8fc5 '[ VERB]%s %s:334 %s() Creating OPLUS AON for %s sensorSlotId = %d'
+0003df34 mov	x4, x22
+0003df38 adrp	x6, #-217088
+0003df3c add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003df40 mov	x7, x21
+0003df44 str	w8, [sp]
+0003df48 bl	#70088 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003df4c add	x1, x19, #480
+0003df50 mov	x0, x21
+0003df54 bl	#33320 -> 4617c CamX::QSEEAONOplusIntf::Create(CamX::QSEEAONSensorObj&, CamX::SensorUid&) [clone .cfi]
+0003df58 mov	x26, x0
+0003df5c cbz	x0, #1156
+0003df60 ldr	x8, [sp, #64]
+0003df64 add	x22, x26, #8
+0003df68 cmp	x22, x8
+0003df6c b.eq	#412
+0003df70 ldr	x27, [x19, #576]
+0003df74 ldr	x25, [x19, #584]
+0003df78 ldr	x8, [x26, #24]
+0003df7c ldr	x24, [x26, #8]
+0003df80 sub	x28, x25, x27
+0003df84 sub	x1, x8, x24
+0003df88 cmp	x1, x28
+0003df8c b.hs	#408
+0003df90 cbz	x24, #28
+0003df94 mov	x0, x24
+0003df98 str	x24, [x26, #16]
+0003df9c bl	#70316 -> 4f248 operator delete(void*, unsigned long)@plt
+0003dfa0 mov	x8, xzr
+0003dfa4 stp	xzr, xzr, [x22]
+0003dfa8 str	xzr, [x22, #16]
+0003dfac mov	x10, #-6148914691236517206
+0003dfb0 asr	x9, x28, #3
+0003dfb4 movk	x10, #43691
+0003dfb8 ldr	x24, [sp, #40]
+0003dfbc mov	x11, #-6148914691236517206
+0003dfc0 mul	x9, x9, x10
+0003dfc4 movk	x11, #2730, lsl #48
+0003dfc8 cmp	x9, x11
+0003dfcc b.hi	#2216
+0003dfd0 asr	x8, x8, #3
+0003dfd4 mul	x8, x8, x10
+0003dfd8 lsl	x10, x8, #1
+0003dfdc cmp	x10, x9
+0003dfe0 csel	x9, x10, x9, hi
+0003dfe4 mov	x10, #6148914691236517205
+0003dfe8 movk	x10, #1365, lsl #48
+0003dfec cmp	x8, x10
+0003dff0 csel	x23, x9, x11, lo
+0003dff4 cmp	x23, x11
+0003dff8 b.hi	#2172
+0003dffc mov	x0, x23
+0003e000 bl	#11180 -> 40bac std::__1::allocator<CamX::CameraSensorInfo>::allocate[abi:ne200000](unsigned long)
+0003e004 mov	w8, #24
+0003e008 mov	x22, x0
+0003e00c cmp	x25, x27
+0003e010 stp	x0, x0, [x26, #8]
+0003e014 nop
+0003e018 madd	x8, x23, x8, x0
+0003e01c str	x8, [x26, #24]
+0003e020 b.eq	#20
+0003e024 mov	x0, x22
+0003e028 mov	x1, x27
+0003e02c mov	x2, x28
+0003e030 bl	#72736 -> 4fc50 memcpy@plt
+0003e034 add	x8, x22, x28
+0003e038 b	#348 -> 3e194 CamX::QSEEAONIntf::QSEEAONIntf()+0x1788
+0003e03c tbz	w8, #12, #84
+0003e040 mov	w0, #4096
+0003e044 bl	#69860 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e048 mov	x22, x0
+0003e04c adrp	x0, #-172032
+0003e050 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e054 bl	#69868 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e058 ldr	w8, [x21, #64]
+0003e05c mov	x5, x0
+0003e060 mov	w0, #4096
+0003e064 adrp	x1, #-196608
+0003e068 add	x1, x1, #1738 ; e6ca 
+0003e06c mov	w2, #5
+0003e070 adrp	x3, #-229376
+0003e074 add	x3, x3, #3512 ; 6db8 '[ VERB]%s %s:296 %s() Creating AON HS FW for %s sensorSlotId = %d'
+0003e078 mov	x4, x22
+0003e07c adrp	x6, #-221184
+0003e080 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003e084 mov	x7, x21
+0003e088 str	w8, [sp]
+0003e08c bl	#69764 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e090 add	x1, x19, #416
+0003e094 mov	x0, x21
+0003e098 bl	#-30500 -> 36974 CamX::QSEEAONHSFwIntf::Create(CamX::QSEEAONSensorObj&, CamX::SensorUid&) [clone .cfi]
+0003e09c b	#100 -> 3e100 CamX::QSEEAONIntf::QSEEAONIntf()+0x16f4
+0003e0a0 tbz	w8, #12, #84
+0003e0a4 mov	w0, #4096
+0003e0a8 bl	#69760 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e0ac mov	x22, x0
+0003e0b0 adrp	x0, #-172032
+0003e0b4 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e0b8 bl	#69768 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e0bc ldr	w8, [x21, #64]
+0003e0c0 mov	x5, x0
+0003e0c4 mov	w0, #4096
+0003e0c8 adrp	x1, #-196608
+0003e0cc add	x1, x1, #1738 ; e6ca 
+0003e0d0 mov	w2, #5
+0003e0d4 adrp	x3, #-196608
+0003e0d8 add	x3, x3, #3109 ; ec25 '[ VERB]%s %s:315 %s() Creating AON QR FW for %s sensorSlotId = %d'
+0003e0dc mov	x4, x22
+0003e0e0 adrp	x6, #-221184
+0003e0e4 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003e0e8 mov	x7, x21
+0003e0ec str	w8, [sp]
+0003e0f0 bl	#69664 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e0f4 add	x1, x19, #448
+0003e0f8 mov	x0, x21
+0003e0fc bl	#14524 -> 419b8 CamX::QSEEAONQRFwIntf::Create(CamX::QSEEAONSensorObj&, CamX::SensorUid&) [clone .cfi]
+0003e100 mov	x26, x0
+0003e104 cbz	x0, #732
+0003e108 ldr	x8, [sp, #48]
+0003e10c str	x26, [x8, x20, lsl #3]
+0003e110 ldr	x26, [sp, #56]
+0003e114 add	x20, x20, #1
+0003e118 cmp	x20, #5
+0003e11c b.ne	#-804
+0003e120 b	#124 -> 3e19c CamX::QSEEAONIntf::QSEEAONIntf()+0x1790
+0003e124 ldr	x22, [x26, #16]
+0003e128 sub	x23, x22, x24
+0003e12c cmp	x23, x28
+0003e130 b.hs	#68
+0003e134 cmp	x22, x24
+0003e138 b.eq	#24
+0003e13c mov	x0, x24
+0003e140 mov	x1, x27
+0003e144 mov	x2, x23
+0003e148 bl	#72576 -> 4fcc8 memmove@plt
+0003e14c ldr	x22, [x26, #16]
+0003e150 ldr	x24, [sp, #40]
+0003e154 add	x1, x27, x23
+0003e158 subs	x23, x25, x1
+0003e15c b.eq	#16
+0003e160 mov	x0, x22
+0003e164 mov	x2, x23
+0003e168 bl	#72544 -> 4fcc8 memmove@plt
+0003e16c add	x8, x22, x23
+0003e170 b	#36 -> 3e194 CamX::QSEEAONIntf::QSEEAONIntf()+0x1788
+0003e174 cmp	x25, x27
+0003e178 b.eq	#20
+0003e17c mov	x0, x24
+0003e180 mov	x1, x27
+0003e184 mov	x2, x28
+0003e188 bl	#72512 -> 4fcc8 memmove@plt
+0003e18c add	x8, x24, x28
+0003e190 ldr	x24, [sp, #40]
+0003e194 str	x8, [x26, #16]
+0003e198 b	#-144 -> 3e108 CamX::QSEEAONIntf::QSEEAONIntf()+0x16fc
+0003e19c ldr	w9, [sp, #36]
+0003e1a0 ldr	x10, [x19, #520]
+0003e1a4 ldr	x8, [x19, #512]
+0003e1a8 add	w9, w9, #1
+0003e1ac mov	w12, w9
+0003e1b0 sub	x11, x10, x8
+0003e1b4 cmp	x9, x11, asr #3
+0003e1b8 b.lo	#-980
+0003e1bc cmp	x10, x8
+0003e1c0 b.eq	#528
+0003e1c4 mov	x22, xzr
+0003e1c8 mov	w27, #1
+0003e1cc str	wzr, [sp, #48]
+0003e1d0 mov	x20, xzr
+0003e1d4 ldr	x8, [sp, #72]
+0003e1d8 ldr	x8, [x8]
+0003e1dc ldr	x21, [x8, x22, lsl #3]
+0003e1e0 add	x8, x21, x20, lsl #3
+0003e1e4 ldr	x23, [x8, #232]
+0003e1e8 cbz	x23, #412
+0003e1ec stp	xzr, xzr, [sp, #136]
+0003e1f0 nop
+0003e1f4 adr	x8, #73468
+0003e1f8 str	xzr, [sp, #152]
+0003e1fc ldr	x24, [x23]
+0003e200 mov	w9, #37449
+0003e204 sub	x8, x24, x8
+0003e208 ror	x8, x8, #5
+0003e20c cmp	x8, #15
+0003e210 lsl	w8, w27, w8
+0003e214 and	w8, w8, w9
+0003e218 ccmp	w8, #0, #4, ls
+0003e21c b.eq	#376
+0003e220 ldr	x8, [x24, #16]
+0003e224 add	x1, sp, #136
+0003e228 mov	x0, x23
+0003e22c blr	x8
+0003e230 cbnz	w0, #1324
+0003e234 ldp	x25, x2, [sp, #136]
+0003e238 sub	x28, x2, x25
+0003e23c asr	x8, x28, #6
+0003e240 cmp	x8, #1
+0003e244 b.lt	#304
+0003e248 mov	x0, x21
+0003e24c mov	x24, x21
+0003e250 ldp	x9, x23, [x0, #208]!
+0003e254 ldr	x10, [x24, #224]!
+0003e258 sub	x11, x10, x23
+0003e25c cmp	x11, x28
+0003e260 b.ge	#76
+0003e264 sub	x26, x23, x9
+0003e268 add	x8, x8, x26, asr #6
+0003e26c lsr	x11, x8, #58
+0003e270 cbnz	x11, #1624
+0003e274 sub	x9, x10, x9
+0003e278 str	x24, [sp, #240]
+0003e27c lsr	x10, x9, #5
+0003e280 cmp	x10, x8
+0003e284 csel	x8, x10, x8, hi
+0003e288 mov	x10, #9223372036854775744
+0003e28c cmp	x9, x10
+0003e290 mov	x9, #288230376151711743
+0003e294 csel	x27, x8, x9, lo
+0003e298 cbz	x27, #44
+0003e29c mov	x0, x24
+0003e2a0 mov	x1, x27
+0003e2a4 bl	#-74224 -> 2c0b4 std::__1::allocator<QSEEAONSensorCap>::allocate[abi:ne200000](unsigned long)
+0003e2a8 b	#32 -> 3e2c8 CamX::QSEEAONIntf::QSEEAONIntf()+0x18bc
+0003e2ac mov	x0, x24
+0003e2b0 mov	x1, x25
+0003e2b4 mov	x3, x23
+0003e2b8 bl	#-117256 -> 218b0 QSEEAONSensorCap* std::__1::__uninitialized_allocator_copy_impl[abi:ne200000]<std::__1::allocator<QSEEAONSensorCap>, QSEEAONSensorCap*, QSEEAONSensorCap*, QSEEAONSensorCap*>(std::__1::allocator<QSEEAONSensorCap>&, QSEEAONSensorCap*, QSEEAONSensorCap*, QSEEAONSensorCap*)
+0003e2bc str	x0, [x21, #216]
+0003e2c0 b	#180 -> 3e374 CamX::QSEEAONIntf::QSEEAONIntf()+0x1968
+0003e2c4 mov	x0, xzr
+0003e2c8 asr	x8, x26, #6
+0003e2cc add	x26, x0, x8, lsl #6
+0003e2d0 add	x8, x0, x27, lsl #6
+0003e2d4 add	x27, x26, x28
+0003e2d8 stp	x0, x26, [sp, #208]
+0003e2dc stp	x26, x8, [sp, #224]
+0003e2e0 ldr	x0, [sp, #240]
+0003e2e4 mov	x1, x26
+0003e2e8 mov	x2, x25
+0003e2ec bl	#-72736 -> 2c6cc void std::__1::allocator<QSEEAONSensorCap>::construct[abi:ne200000]<QSEEAONSensorCap, QSEEAONSensorCap&>(QSEEAONSensorCap*, QSEEAONSensorCap&)
+0003e2f0 add	x26, x26, #64
+0003e2f4 add	x25, x25, #64
+0003e2f8 subs	x28, x28, #64
+0003e2fc b.ne	#-28
+0003e300 ldr	x2, [x21, #216]
+0003e304 str	x27, [sp, #224]
+0003e308 mov	x0, x24
+0003e30c mov	x1, x23
+0003e310 mov	x3, x27
+0003e314 bl	#-74300 -> 2c0d8 void std::__1::__uninitialized_allocator_relocate[abi:ne200000]<std::__1::allocator<QSEEAONSensorCap>, QSEEAONSensorCap>(std::__1::allocator<QSEEAONSensorCap>&, QSEEAONSensorCap*, QSEEAONSensorCap*, QSEEAONSensorCap*) [clone .cfi]
+0003e318 ldp	x1, x8, [x21, #208]
+0003e31c ldp	x10, x9, [sp, #216]
+0003e320 sub	x8, x8, x23
+0003e324 str	x23, [x21, #216]
+0003e328 add	x8, x9, x8
+0003e32c sub	x9, x1, x23
+0003e330 add	x25, x10, x9
+0003e334 str	x8, [sp, #224]
+0003e338 mov	x0, x24
+0003e33c mov	x2, x23
+0003e340 mov	x3, x25
+0003e344 bl	#-74348 -> 2c0d8 void std::__1::__uninitialized_allocator_relocate[abi:ne200000]<std::__1::allocator<QSEEAONSensorCap>, QSEEAONSensorCap>(std::__1::allocator<QSEEAONSensorCap>&, QSEEAONSensorCap*, QSEEAONSensorCap*, QSEEAONSensorCap*) [clone .cfi]
+0003e348 ldr	q0, [sp, #224]
+0003e34c add	x0, sp, #208
+0003e350 ldr	x8, [x21, #208]
+0003e354 ldr	x9, [x21, #224]
+0003e358 str	x25, [x21, #208]
+0003e35c stur	q0, [x21, #216]
+0003e360 stp	x8, x8, [sp, #208]
+0003e364 stp	x8, x9, [sp, #224]
+0003e368 bl	#-74520 -> 2c050 std::__1::__split_buffer<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap>&>::~__split_buffer()
+0003e36c ldr	x26, [sp, #56]
+0003e370 mov	w27, #1
+0003e374 add	x8, sp, #136
+0003e378 add	x0, sp, #208
+0003e37c str	x8, [sp, #208]
+0003e380 bl	#-111624 -> 22f78 std::__1::vector<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap> >::__destroy_vector::operator()[abi:ne200000]()
+0003e384 add	x20, x20, #1
+0003e388 cmp	x20, #5
+0003e38c b.ne	#-440
+0003e390 b	#32 -> 3e3b0 CamX::QSEEAONIntf::QSEEAONIntf()+0x19a4
+0003e394 mov	x0, #20307
+0003e398 mov	x1, x24
+0003e39c movk	x0, #54106, lsl #16
+0003e3a0 movk	x0, #56319, lsl #32
+0003e3a4 movk	x0, #17672, lsl #48
+0003e3a8 bl	#69376 -> 4f2a8 __cfi_slowpath@plt
+0003e3ac b	#-396 -> 3e220 CamX::QSEEAONIntf::QSEEAONIntf()+0x1814
+0003e3b0 ldr	x8, [x19, #520]
+0003e3b4 ldr	x9, [x19, #512]
+0003e3b8 ldr	w10, [sp, #48]
+0003e3bc sub	x8, x8, x9
+0003e3c0 add	w22, w10, #1
+0003e3c4 cmp	x22, x8, asr #3
+0003e3c8 str	w22, [sp, #48]
+0003e3cc b.lo	#-508
+0003e3d0 mov	w8, #2
+0003e3d4 mov	w20, #1
+0003e3d8 str	w8, [x19]
+0003e3dc b	#456 -> 3e5a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1b98
+0003e3e0 mov	w0, #4096
+0003e3e4 ldr	x26, [sp, #56]
+0003e3e8 bl	#68928 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e3ec mov	x22, x0
+0003e3f0 adrp	x0, #-172032
+0003e3f4 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e3f8 bl	#68936 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e3fc ldr	w8, [x21, #64]
+0003e400 mov	x5, x0
+0003e404 ldr	w9, [x21, #72]
+0003e408 adrp	x1, #-200704
+0003e40c add	x1, x1, #3336 ; dd08 
+0003e410 adrp	x3, #-184320
+0003e414 add	x3, x3, #621 ; 1126d '[ERROR]%s %s:358 %s() Create AON FW Intf failed  SensorName = %s sensor slot id = %d pasitionType = %d AON FW type = %d'
+0003e418 adrp	x6, #-221184
+0003e41c add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003e420 mov	w0, #4096
+0003e424 mov	w2, #1
+0003e428 mov	x4, x22
+0003e42c mov	x7, x21
+0003e430 str	w20, [sp, #16]
+0003e434 str	w9, [sp, #8]
+0003e438 str	w8, [sp]
+0003e43c bl	#68820 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e440 adrp	x8, #77824
+0003e444 ldr	x8, [x8, #2592]
+0003e448 ldr	w8, [x8, #8]
+0003e44c cmp	w8, #1
+0003e450 b.ne	#108
+0003e454 adrp	x8, #77824
+0003e458 ldr	x8, [x8, #2592]
+0003e45c ldrb	w8, [x8, #1]
+0003e460 tbz	w8, #4, #92
+0003e464 bl	#68852 -> 4f158 atrace_get_enabled_tags@plt
+0003e468 tst	x0, #0xc00
+0003e46c b.eq	#80
+0003e470 add	x0, sp, #208
+0003e474 mov	w1, wzr
+0003e478 mov	w2, #512
+0003e47c bl	#71708 -> 4fc98 memset@plt
+0003e480 ldr	w4, [x21, #64]
+0003e484 ldr	w5, [x21, #72]
+0003e488 adrp	x2, #-167936
+0003e48c add	x2, x2, #3377 ; 15d31 '[ERROR]Create AON FW Intf failed  SensorName = %s sensor slot id = %d pasitionType = %d AON FW type = %d'
+0003e490 add	x0, sp, #208
+0003e494 mov	w1, #512
+0003e498 mov	x3, x21
+0003e49c mov	w6, w20
+0003e4a0 bl	#-116568 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003e4a4 bl	#68788 -> 4f158 atrace_get_enabled_tags@plt
+0003e4a8 tst	x0, #0xc00
+0003e4ac b.ne	#948
+0003e4b0 bl	#68776 -> 4f158 atrace_get_enabled_tags@plt
+0003e4b4 tst	x0, #0xc00
+0003e4b8 b.ne	#948
+0003e4bc mov	w0, #4096
+0003e4c0 bl	#68712 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e4c4 mov	x20, x0
+0003e4c8 adrp	x0, #-172032
+0003e4cc add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e4d0 bl	#68720 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e4d4 mov	x5, x0
+0003e4d8 adrp	x1, #-200704
+0003e4dc add	x1, x1, #3336 ; dd08 
+0003e4e0 adrp	x3, #-225280
+0003e4e4 add	x3, x3, #1539 ; 7603 '[ERROR]%s %s:208 %s() Unable to BuildAONSensorObjArray result'
+0003e4e8 adrp	x6, #-196608
+0003e4ec add	x6, x6, #3864 ; ef18 'Initialize'
+0003e4f0 mov	w0, #4096
+0003e4f4 mov	w2, #1
+0003e4f8 mov	x4, x20
+0003e4fc mov	w7, #1
+0003e500 bl	#68624 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e504 adrp	x9, #77824
+0003e508 ldr	x9, [x9, #2592]
+0003e50c ldr	w8, [x9, #8]
+0003e510 cmp	w8, #1
+0003e514 b.ne	#76
+0003e518 ldrb	w8, [x9, #1]
+0003e51c tbz	w8, #4, #68
+0003e520 bl	#68664 -> 4f158 atrace_get_enabled_tags@plt
+0003e524 tst	x0, #0xc00
+0003e528 b.eq	#56
+0003e52c add	x0, sp, #208
+0003e530 mov	w1, wzr
+0003e534 mov	w2, #512
+0003e538 bl	#71520 -> 4fc98 memset@plt
+0003e53c adrp	x2, #-180224
+0003e540 add	x2, x2, #836 ; 12344 '[ERROR]Unable to BuildAONSensorObjArray result'
+0003e544 add	x0, sp, #208
+0003e548 mov	w1, #512
+0003e54c mov	w3, #1
+0003e550 bl	#-116744 -> 21d48 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...) [clone .cfi]
+0003e554 add	x0, sp, #208
+0003e558 bl	#1180 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003e55c bl	#1244 -> 3ea38 atrace_end(unsigned long)
+0003e560 mov	w20, wzr
+0003e564 b	#64 -> 3e5a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1b98
+0003e568 ldr	x26, [sp, #56]
+0003e56c b	#56 -> 3e5a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1b98
+0003e570 adrp	x7, #-217088
+0003e574 add	x7, x7, #3940 ; 9f64 'ERROR! INVALID_QSEE_INTF_STATE'
+0003e578 adrp	x1, #-172032
+0003e57c add	x1, x1, #3565 ; 14ded 
+0003e580 adrp	x3, #-167936
+0003e584 add	x3, x3, #3314 ; 15cf2 '[ INFO]%s %s:214 %s() No need to initialize for intfState = %s'
+0003e588 adrp	x6, #-196608
+0003e58c add	x6, x6, #3864 ; ef18 'Initialize'
+0003e590 mov	w0, #4096
+0003e594 mov	w2, #4
+0003e598 mov	x4, x20
+0003e59c bl	#68468 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e5a0 mov	w20, #1
+0003e5a4 ldr	x0, [x19, #496]
+0003e5a8 bl	#68912 -> 4f2d8 CamX::Mutex::Unlock()@plt
+0003e5ac ldr	w8, [x19]
+0003e5b0 cmp	w8, #2
+0003e5b4 csel	w8, wzr, w20, ne
+0003e5b8 tbnz	w8, #0, #232
+0003e5bc mov	w0, #4096
+0003e5c0 bl	#68456 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e5c4 mov	x20, x0
+0003e5c8 adrp	x0, #-172032
+0003e5cc add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e5d0 bl	#68464 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e5d4 ldr	w8, [x19]
+0003e5d8 mov	x5, x0
+0003e5dc cmp	w8, #3
+0003e5e0 b.hi	#20
+0003e5e4 nop
+0003e5e8 adr	x9, #76520
+0003e5ec ldr	x7, [x9, x8, lsl #3]
+0003e5f0 b	#12 -> 3e5fc CamX::QSEEAONIntf::QSEEAONIntf()+0x1bf0
+0003e5f4 adrp	x7, #-217088
+0003e5f8 add	x7, x7, #3940 ; 9f64 'ERROR! INVALID_QSEE_INTF_STATE'
+0003e5fc adrp	x1, #-200704
+0003e600 add	x1, x1, #3336 ; dd08 
+0003e604 adrp	x3, #-225280
+0003e608 add	x3, x3, #3652 ; 7e44 '[ERROR]%s %s:141 %s() Error during init the QSEEAON object intfState = %s'
+0003e60c adrp	x6, #-212992
+0003e610 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003e614 mov	w0, #4096
+0003e618 mov	w2, #1
+0003e61c mov	x4, x20
+0003e620 bl	#68336 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e624 adrp	x8, #77824
+0003e628 ldr	x8, [x8, #2592]
+0003e62c ldr	w9, [x8, #8]
+0003e630 cmp	w9, #1
+0003e634 b.ne	#108
+0003e638 ldrb	w8, [x8, #1]
+0003e63c tbz	w8, #4, #100
+0003e640 bl	#68376 -> 4f158 atrace_get_enabled_tags@plt
+0003e644 tst	x0, #0xc00
+0003e648 b.eq	#88
+0003e64c add	x0, sp, #208
+0003e650 mov	w1, wzr
+0003e654 mov	w2, #512
+0003e658 bl	#71232 -> 4fc98 memset@plt
+0003e65c ldr	w8, [x19]
+0003e660 cmp	w8, #3
+0003e664 b.hi	#20
+0003e668 nop
+0003e66c adr	x9, #76388
+0003e670 ldr	x3, [x9, x8, lsl #3]
+0003e674 b	#12 -> 3e680 CamX::QSEEAONIntf::QSEEAONIntf()+0x1c74
+0003e678 adrp	x3, #-217088
+0003e67c add	x3, x3, #3940 ; 9f64 'ERROR! INVALID_QSEE_INTF_STATE'
+0003e680 adrp	x2, #-229376
+0003e684 add	x2, x2, #1488 ; 65d0 '[ERROR]Error during init the QSEEAON object intfState = %s'
+0003e688 add	x0, sp, #208
+0003e68c mov	w1, #512
+0003e690 bl	#-118432 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003e694 add	x0, sp, #208
+0003e698 bl	#860 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003e69c bl	#924 -> 3ea38 atrace_end(unsigned long)
+0003e6a0 adrp	x8, #77824
+0003e6a4 ldr	x8, [x8, #2576]
+0003e6a8 ldrb	w8, [x8, #33]
+0003e6ac tbnz	w8, #4, #20
+0003e6b0 adrp	x8, #77824
+0003e6b4 ldr	x8, [x8, #2584]
+0003e6b8 ldr	w8, [x8]
+0003e6bc cbnz	w8, #108
+0003e6c0 mov	w0, #4096
+0003e6c4 bl	#68196 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e6c8 mov	x20, x0
+0003e6cc adrp	x0, #-172032
+0003e6d0 add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e6d4 bl	#68204 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e6d8 ldr	w8, [x19]
+0003e6dc mov	x5, x0
+0003e6e0 cmp	w8, #3
+0003e6e4 b.hi	#20
+0003e6e8 nop
+0003e6ec adr	x9, #76260
+0003e6f0 ldr	x7, [x9, x8, lsl #3]
+0003e6f4 b	#12 -> 3e700 CamX::QSEEAONIntf::QSEEAONIntf()+0x1cf4
+0003e6f8 adrp	x7, #-217088
+0003e6fc add	x7, x7, #3940 ; 9f64 'ERROR! INVALID_QSEE_INTF_STATE'
+0003e700 adrp	x1, #-172032
+0003e704 add	x1, x1, #3565 ; 14ded 
+0003e708 adrp	x3, #-167936
+0003e70c add	x3, x3, #732 ; 152dc '[ INFO]%s %s:146 %s() Construct QSEEAONIntf object done intfState = %s'
+0003e710 adrp	x6, #-212992
+0003e714 add	x6, x6, #3489 ; ada1 'QSEEAONIntf'
+0003e718 mov	w0, #4096
+0003e71c mov	w2, #4
+0003e720 mov	x4, x20
+0003e724 bl	#68076 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e728 ldr	x8, [x26, #40]
+0003e72c ldur	x9, [x29, #-16]
+0003e730 cmp	x8, x9
+0003e734 b.ne	#700
+0003e738 add	sp, sp, #1040
+0003e73c ldp	x20, x19, [sp, #80]
+0003e740 ldp	x22, x21, [sp, #64]
+0003e744 ldp	x24, x23, [sp, #48]
+0003e748 ldp	x26, x25, [sp, #32]
+0003e74c ldp	x28, x27, [sp, #16]
+0003e750 ldp	x29, x30, [sp], #96
+0003e754 hint	#29
+0003e758 ret
+0003e75c mov	w0, #4096
+0003e760 bl	#68040 -> 4f128 CamX::Log::GroupToString(unsigned long)@plt
+0003e764 mov	x22, x0
+0003e768 adrp	x0, #-172032
+0003e76c add	x0, x0, #2937 ; 14b79 'vendor/qcom/proprietary/camx-common/../chi-cdk/../camx/camx-qsee/qsee-aon/camxqseeaonintf.cpp'
+0003e770 bl	#68048 -> 4f140 CamX::Log::GetFileName(char const*)@plt
+0003e774 ldr	w8, [x21, #64]
+0003e778 mov	x5, x0
+0003e77c ldr	w9, [x21, #72]
+0003e780 adrp	x1, #-200704
+0003e784 add	x1, x1, #3336 ; dd08 
+0003e788 adrp	x3, #-212992
+0003e78c add	x3, x3, #3565 ; aded '[ERROR]%s %s:401 %s() Query capability failed SensorName = %s SensorSlotId = %d pasitionType = %d AON FW type = %d'
+0003e790 adrp	x6, #-221184
+0003e794 add	x6, x6, #1506 ; 85e2 'BuildAONSensorObjArray'
+0003e798 mov	w0, #4096
+0003e79c mov	w2, #1
+0003e7a0 mov	x4, x22
+0003e7a4 mov	x7, x21
+0003e7a8 str	w20, [sp, #16]
+0003e7ac str	w9, [sp, #8]
+0003e7b0 str	w8, [sp]
+0003e7b4 bl	#67932 -> 4f110 CamX::Log::LogSystem(unsigned long, char const*, unsigned int, char const*, ...)@plt
+0003e7b8 adrp	x8, #77824
+0003e7bc ldr	x8, [x8, #2592]
+0003e7c0 ldr	w8, [x8, #8]
+0003e7c4 cmp	w8, #1
+0003e7c8 b.ne	#100
+0003e7cc adrp	x8, #77824
+0003e7d0 ldr	x8, [x8, #2592]
+0003e7d4 ldrb	w8, [x8, #1]
+0003e7d8 tbz	w8, #4, #84
+0003e7dc bl	#67964 -> 4f158 atrace_get_enabled_tags@plt
+0003e7e0 tst	x0, #0xc00
+0003e7e4 b.eq	#72
+0003e7e8 add	x0, sp, #208
+0003e7ec mov	w1, wzr
+0003e7f0 mov	w2, #512
+0003e7f4 bl	#70820 -> 4fc98 memset@plt
+0003e7f8 ldr	w4, [x21, #64]
+0003e7fc ldr	w5, [x21, #72]
+0003e800 adrp	x2, #-217088
+0003e804 add	x2, x2, #1668 ; 9684 '[ERROR]Query capability failed SensorName = %s SensorSlotId = %d pasitionType = %d AON FW type = %d'
+0003e808 add	x0, sp, #208
+0003e80c mov	w1, #512
+0003e810 mov	x3, x21
+0003e814 mov	w6, w20
+0003e818 bl	#-118824 -> 217f0 CamX::OsUtils::SNPrintF(char*, unsigned long, char const*, ...)
+0003e81c add	x0, sp, #208
+0003e820 bl	#468 -> 3e9f4 atrace_begin(unsigned long, char const*)
+0003e824 bl	#532 -> 3ea38 atrace_end(unsigned long)
+0003e828 ldr	x26, [sp, #56]
+0003e82c add	x8, sp, #136
+0003e830 add	x0, sp, #208
+0003e834 str	x8, [sp, #208]
+0003e838 bl	#-112832 -> 22f78 std::__1::vector<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap> >::__destroy_vector::operator()[abi:ne200000]()
+0003e83c b	#-896 -> 3e4bc CamX::QSEEAONIntf::QSEEAONIntf()+0x1ab0
+0003e840 add	x0, sp, #208
+0003e844 bl	#67884 -> 4f170 atrace_begin_body@plt
+0003e848 b	#-4376 -> 3d730 CamX::QSEEAONIntf::QSEEAONIntf()+0xd24
+0003e84c bl	#67900 -> 4f188 atrace_end_body@plt
+0003e850 b	#-4372 -> 3d73c CamX::QSEEAONIntf::QSEEAONIntf()+0xd30
+0003e854 add	x0, sp, #208
+0003e858 bl	#67864 -> 4f170 atrace_begin_body@plt
+0003e85c b	#-4192 -> 3d7fc CamX::QSEEAONIntf::QSEEAONIntf()+0xdf0
+0003e860 add	x0, sp, #208
+0003e864 bl	#67852 -> 4f170 atrace_begin_body@plt
+0003e868 b	#-952 -> 3e4b0 CamX::QSEEAONIntf::QSEEAONIntf()+0x1aa4
+0003e86c bl	#67868 -> 4f188 atrace_end_body@plt
+0003e870 b	#-948 -> 3e4bc CamX::QSEEAONIntf::QSEEAONIntf()+0x1ab0
+0003e874 ldr	x8, [sp, #56]
+0003e878 ldr	x8, [x8, #40]
+0003e87c ldur	x9, [x29, #-16]
+0003e880 cmp	x8, x9
+0003e884 b.ne	#364
+0003e888 ldr	x26, [sp, #56]
+0003e88c bl	#8968 -> 40b94 std::__1::vector<CamX::CameraSensorInfo, std::__1::allocator<CamX::CameraSensorInfo> >::__throw_length_error[abi:ne200000]() const
+0003e890 ldr	x8, [sp, #56]
+0003e894 ldr	x8, [x8, #40]
+0003e898 ldur	x9, [x29, #-16]
+0003e89c cmp	x8, x9
+0003e8a0 b.ne	#336
+0003e8a4 ldr	x26, [sp, #56]
+0003e8a8 bl	#9016 -> 40be0 std::__1::vector<CamX::QSEEAONSensorObj*, std::__1::allocator<CamX::QSEEAONSensorObj*> >::__throw_length_error[abi:ne200000]() const
+0003e8ac ldr	x8, [sp, #56]
+0003e8b0 ldr	x8, [x8, #40]
+0003e8b4 ldur	x9, [x29, #-16]
+0003e8b8 cmp	x8, x9
+0003e8bc b.ne	#308
+0003e8c0 ldr	x26, [sp, #56]
+0003e8c4 bl	#-113964 -> 22b98 std::__throw_bad_array_new_length[abi:ne200000]() [clone .cfi]
+0003e8c8 ldr	x8, [sp, #56]
+0003e8cc ldr	x8, [x8, #40]
+0003e8d0 ldur	x9, [x29, #-16]
+0003e8d4 cmp	x8, x9
+0003e8d8 b.ne	#280
+0003e8dc bl	#-75840 -> 2c09c std::__1::vector<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap> >::__throw_length_error[abi:ne200000]() const
+0003e8e0 b	#4 -> 3e8e4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1ed8
+0003e8e4 mov	x25, x0
+0003e8e8 bl	#67960 -> 4f260 __cxa_end_catch@plt
+0003e8ec b	#192 -> 3e9ac CamX::QSEEAONIntf::QSEEAONIntf()+0x1fa0
+0003e8f0 bl	#-114584 -> 22958 __clang_call_terminate
+0003e8f4 b	#36 -> 3e918 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f0c
+0003e8f8 b	#32 -> 3e918 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f0c
+0003e8fc b	#28 -> 3e918 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f0c
+0003e900 b	#24 -> 3e918 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f0c
+0003e904 mov	x25, x0
+0003e908 str	x23, [x21, #216]
+0003e90c b	#52 -> 3e940 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f34
+0003e910 mov	x25, x0
+0003e914 b	#36 -> 3e938 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f2c
+0003e918 mov	x25, x0
+0003e91c b	#36 -> 3e940 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f34
+0003e920 b	#132 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e924 b	#128 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e928 b	#124 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e92c b	#120 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e930 mov	x25, x0
+0003e934 str	x26, [sp, #224]
+0003e938 add	x0, sp, #208
+0003e93c bl	#-76012 -> 2c050 std::__1::__split_buffer<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap>&>::~__split_buffer()
+0003e940 add	x8, sp, #136
+0003e944 add	x0, sp, #112
+0003e948 str	x8, [sp, #112]
+0003e94c bl	#-113108 -> 22f78 std::__1::vector<QSEEAONSensorCap, std::__1::allocator<QSEEAONSensorCap> >::__destroy_vector::operator()[abi:ne200000]()
+0003e950 b	#92 -> 3e9ac CamX::QSEEAONIntf::QSEEAONIntf()+0x1fa0
+0003e954 mov	x25, x0
+0003e958 add	x0, sp, #160
+0003e95c b	#36 -> 3e980 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f74
+0003e960 mov	x25, x0
+0003e964 add	x0, sp, #136
+0003e968 b	#24 -> 3e980 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f74
+0003e96c mov	x25, x0
+0003e970 add	x0, sp, #112
+0003e974 b	#12 -> 3e980 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f74
+0003e978 mov	x25, x0
+0003e97c add	x0, sp, #88
+0003e980 bl	#68000 -> 4f320 std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::~basic_string()@plt
+0003e984 b	#40 -> 3e9ac CamX::QSEEAONIntf::QSEEAONIntf()+0x1fa0
+0003e988 b	#28 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e98c b	#24 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e990 b	#20 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e994 b	#20 -> 3e9a8 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f9c
+0003e998 b	#16 -> 3e9a8 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f9c
+0003e99c b	#8 -> 3e9a4 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f98
+0003e9a0 b	#8 -> 3e9a8 CamX::QSEEAONIntf::QSEEAONIntf()+0x1f9c
+0003e9a4 str	x26, [sp, #56]
+0003e9a8 mov	x25, x0
+0003e9ac ldr	x8, [sp, #64]
+0003e9b0 add	x0, sp, #80
+0003e9b4 str	x8, [sp, #80]
+0003e9b8 bl	#-82320 -> 2a828 std::__1::vector<CamX::CameraSensorInfo, std::__1::allocator<CamX::CameraSensorInfo> >::__destroy_vector::operator()[abi:ne200000]()
+0003e9bc add	x0, x19, #536
+0003e9c0 bl	#8388 -> 40a84 std::__1::__hash_table<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::__unordered_map_hasher<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::hash<void*>, std::__1::equal_to<void*>, true>, std::__1::__unordered_map_equal<void*, std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*>, std::__1::equal_to<void*>, std::__1::hash<void*>, true>, std::__1::allocator<std::__1::__hash_value_type<void*, CamX::QSEEAONFwIntfBase*> > >::~__hash_table()
+0003e9c4 ldr	x8, [sp, #72]
+0003e9c8 add	x0, sp, #80
+0003e9cc str	x8, [sp, #80]
+0003e9d0 bl	#8328 -> 40a58 std::__1::vector<CamX::QSEEAONSensorObj*, std::__1::allocator<CamX::QSEEAONSensorObj*> >::__destroy_vector::operator()[abi:ne200000]()
+0003e9d4 ldr	x8, [sp, #56]
+0003e9d8 ldr	x8, [x8, #40]
+0003e9dc ldur	x9, [x29, #-16]
+0003e9e0 cmp	x8, x9
+0003e9e4 b.ne	#12
+0003e9e8 mov	x0, x25
+0003e9ec bl	#70340 -> 4fcb0 _Unwind_Resume@plt
+0003e9f0 bl	#70288 -> 4fc80 __stack_chk_fail@plt

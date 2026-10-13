@@ -1,0 +1,498 @@
+[
+  {
+    "path": "/lost+found",
+    "mode": 16832
+  },
+  {
+    "path": "/adsp",
+    "mode": 16877
+  },
+  {
+    "path": "/cdsp",
+    "mode": 16877
+  },
+  {
+    "path": "/cdsp/AudioSphereModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/BassBoostModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/CFCM.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/PbeModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/PeakMeterModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/PoplessEqualizerModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/SAPlusCmnModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/ShoeboxModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/VirtualizerModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/aac_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/aac_enc_etsi_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/aig_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/custom_upsampler_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/eans.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/example_image_runner.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/fastrpc_shell_3",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/fastrpc_shell_unsigned_3",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libUbwcD.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libaudio_pd_cdsp_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libbenchmark_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libc++.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libc++abi.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libcrm_test_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libhcpfrc.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libloadalgo_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libstabilitydomain_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsynx.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsynx_os.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsynx_threadutils.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsysmondomain_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsysmondspload_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsysmonhvxthrottle_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/libsysmonquery_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/nmt_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/sdd_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/smecns_example_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/tts_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/cdsp/version.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/AudioSphereModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/CFCM.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/SAPlusCmnModule.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aac_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aac_enc_etsi_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/alac_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/amrwbplus_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/ans_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/ape_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aptx_adaptive_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aptx_adaptive_speech_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aptx_adaptive_speech_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aptx_classic_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/aptx_hd_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/asr_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/celt_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/cps_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/cps_module_v7.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fastrpc_shell_0",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/ffecns_module_VUI_ix.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/flac_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fluence_bs_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fluence_ef_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fluence_nn_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fluence_pro_vc_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/fluence_pro_vr_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/hdr_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/lc3_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/lc3_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/ldac_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libQnnLpai.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libQnnLpaiIsland.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libaptXAdaptiveDec4.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libaptXAdaptiveEnc.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libaptXAdaptiveEnc3.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libaptXAdaptiveEnc4.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libasc_dbg_channel_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libc++.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libc++abi.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libeai_service.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/liblc3qDec.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libois_channel_factory_test_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libois_channel_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libois_qc_dynamic_libs.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsns_device_mode_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsns_direct_channel_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsns_dynamic_loader_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsns_remote_proc_state_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libstabilitydomain_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsysmondomain_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/libsysmonquery_skel.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/mm_fluence_sb_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/msppv5_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/opus_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_eod.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_fd_360p.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_fd_qqvga.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_fd_qvga.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_hd.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_hgd.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/qsh_camera_model_qrcode.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sbc_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sbc_enc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sdd_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sdz_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sm_fluence_sb_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/smecns_v2_module_fvxiv.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/sns_tppe.so",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/spf-aptx-adaptive3-ble-enc.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/spf-aptx-adaptive4-xpan-dec.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/spf-aptx-adaptive4-xpan-enc.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/spv5_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/spv7_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/stage1_pdk_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/stage1_pdk_module_island.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/tsm_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/vocoder_evrc_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/vocoder_fourgv_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/vocoder_v13k_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/vorbis_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/wmapro_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/wmastd_dec_module.so.1",
+    "mode": 33188
+  },
+  {
+    "path": "/adsp/wnr_module.so.1",
+    "mode": 33188
+  }
+]

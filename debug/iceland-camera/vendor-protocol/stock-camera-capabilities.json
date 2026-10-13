@@ -1,0 +1,70 @@
+[
+  {
+    "module": "icelandfront",
+    "sha256": "7d081442cc73d13c099522d94322e21792e5d0b94143386cb2ecfaa0a93e78a2",
+    "modes": [
+      {
+        "mode": 0,
+        "capability_symbol": 177,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      },
+      {
+        "mode": 1,
+        "capability_symbol": 344,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      },
+      {
+        "mode": 2,
+        "capability_symbol": 511,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      }
+    ]
+  },
+  {
+    "module": "icelandmain",
+    "sha256": "a94533c4ebf7cf213c432520719e0437d1a93b65ff4e102aad63c3118cd077fc",
+    "modes": [
+      {
+        "mode": 0,
+        "capability_symbol": 177,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      },
+      {
+        "mode": 1,
+        "capability_symbol": 344,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      },
+      {
+        "mode": 2,
+        "capability_symbol": 511,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      },
+      {
+        "mode": 3,
+        "capability_symbol": 698,
+        "serialized_capabilities": [
+          0
+        ],
+        "has_aon_capability_2": false
+      }
+    ]
+  }
+]

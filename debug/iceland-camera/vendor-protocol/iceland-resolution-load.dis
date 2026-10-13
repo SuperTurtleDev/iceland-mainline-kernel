@@ -1,0 +1,4441 @@
+
+CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int):
+0059c08c hint	#25
+0059c090 stp	x29, x30, [sp, #-96]!
+0059c094 stp	x28, x27, [sp, #16]
+0059c098 stp	x26, x25, [sp, #32]
+0059c09c stp	x24, x23, [sp, #48]
+0059c0a0 stp	x22, x21, [sp, #64]
+0059c0a4 stp	x20, x19, [sp, #80]
+0059c0a8 mov	x29, sp
+0059c0ac sub	sp, sp, #512
+0059c0b0 mrs	x8, TPIDR_EL0
+0059c0b4 mov	w21, w2
+0059c0b8 stur	x8, [x29, #-248]
+0059c0bc adrp	x23, #-3674112
+0059c0c0 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c0c4 ldr	x8, [x8, #40]
+0059c0c8 mov	x19, x1
+0059c0cc mov	x22, x0
+0059c0d0 add	x27, x0, #548
+0059c0d4 mov	x0, x1
+0059c0d8 mov	w1, #-1
+0059c0dc mov	x2, x23
+0059c0e0 mov	w3, #3795
+0059c0e4 mov	w4, w21
+0059c0e8 stur	x8, [x29, #-16]
+0059c0ec bl	#-107408 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059c0f0 movi	v2.2d, #0000000000000000
+0059c0f4 mov	x8, x22
+0059c0f8 movi	v1.2d, #0000000000000000
+0059c0fc mov	x9, x22
+0059c100 fmov	d0, xzr
+0059c104 mov	w28, w0
+0059c108 mov	x24, x22
+0059c10c mov	x26, x22
+0059c110 str	wzr, [x9, #96]!
+0059c114 str	x9, [sp, #120]
+0059c118 mov	x9, x22
+0059c11c str	q2, [x8, #80]!
+0059c120 stur	x8, [x29, #-216]
+0059c124 mov	x8, x22
+0059c128 str	xzr, [x9, #120]!
+0059c12c str	x9, [sp, #136]
+0059c130 mov	x9, x22
+0059c134 str	d2, [x8, #104]!
+0059c138 str	x8, [sp, #128]
+0059c13c mov	x8, x22
+0059c140 str	d2, [x9, #144]!
+0059c144 str	x9, [sp, #152]
+0059c148 mov	x9, x22
+0059c14c str	q1, [x8, #128]!
+0059c150 str	x8, [sp, #144]
+0059c154 mov	x8, x22
+0059c158 str	xzr, [x9, #160]!
+0059c15c str	x9, [sp, #168]
+0059c160 mov	x9, x22
+0059c164 str	wzr, [x8, #152]!
+0059c168 str	x8, [sp, #160]
+0059c16c mov	x8, x22
+0059c170 str	d2, [x9, #176]!
+0059c174 str	x9, [sp, #184]
+0059c178 mov	x9, x22
+0059c17c str	wzr, [x8, #168]!
+0059c180 str	x8, [sp, #176]
+0059c184 mov	x8, x22
+0059c188 str	d2, [x9, #192]!
+0059c18c stur	q0, [x29, #-240]
+0059c190 mov	v0.d[1], v1.d[0]
+0059c194 str	wzr, [x8, #184]!
+0059c198 str	x8, [sp, #192]
+0059c19c mov	x8, x22
+0059c1a0 mov	x20, x22
+0059c1a4 mov	x25, x22
+0059c1a8 add	x0, x22, #352
+0059c1ac mov	w1, wzr
+0059c1b0 str	d2, [x8, #204]!
+0059c1b4 stp	x9, x8, [sp, #200]
+0059c1b8 mov	x8, x22
+0059c1bc mov	x9, x22
+0059c1c0 mov	w2, #144
+0059c1c4 str	wzr, [x24, #40]!
+0059c1c8 str	q2, [x8, #248]!
+0059c1cc str	xzr, [x9, #236]!
+0059c1d0 stp	x9, x8, [sp, #216]
+0059c1d4 add	x8, x22, #296
+0059c1d8 str	wzr, [x26, #48]!
+0059c1dc str	q1, [x20, #8]!
+0059c1e0 str	q0, [x22, #64]
+0059c1e4 str	wzr, [x22]
+0059c1e8 str	q1, [x25, #216]!
+0059c1ec stur	q1, [x22, #24]
+0059c1f0 str	wzr, [x22, #244]
+0059c1f4 str	wzr, [x22, #264]
+0059c1f8 str	q2, [x22, #272]
+0059c1fc str	wzr, [x22, #288]
+0059c200 str	x8, [sp, #232]
+0059c204 str	q2, [x8]
+0059c208 str	xzr, [x22, #320]
+0059c20c str	xzr, [x22, #336]
+0059c210 str	wzr, [x22, #344]
+0059c214 bl	#7270972 -> c8b450 memset@plt
+0059c218 ldur	q0, [x29, #-240]
+0059c21c movi	v1.2d, #0000000000000000
+0059c220 add	x8, x22, #560
+0059c224 movi	v2.2d, #0000000000000000
+0059c228 add	x0, x22, #1016
+0059c22c mov	w1, wzr
+0059c230 mov	w2, #180
+0059c234 str	wzr, [x22, #496]
+0059c238 mov	v0.d[1], v0.d[0]
+0059c23c str	x8, [sp, #240]
+0059c240 str	xzr, [x22, #504]
+0059c244 stur	q1, [x8, #8]
+0059c248 mov	x8, x27
+0059c24c str	wzr, [x22, #528]
+0059c250 str	d1, [x22, #536]
+0059c254 str	d1, [x27]
+0059c258 str	q0, [x22, #512]
+0059c25c movi	v0.2d, #0000000000000000
+0059c260 str	xzr, [x22, #560]
+0059c264 str	wzr, [x22, #584]
+0059c268 str	wzr, [x22, #720]
+0059c26c str	d1, [x22, #728]
+0059c270 str	d1, [x8, #192]!
+0059c274 stp	q0, q0, [x22, #592]
+0059c278 stp	q0, q0, [x22, #624]
+0059c27c stp	q0, q0, [x22, #656]
+0059c280 stp	q0, q0, [x22, #688]
+0059c284 str	x8, [sp, #248]
+0059c288 str	wzr, [x22, #752]
+0059c28c str	xzr, [x22, #768]
+0059c290 str	wzr, [x22, #776]
+0059c294 str	xzr, [x22, #784]
+0059c298 str	xzr, [x22, #800]
+0059c29c str	wzr, [x22, #808]
+0059c2a0 str	xzr, [x22, #816]
+0059c2a4 str	wzr, [x22, #824]
+0059c2a8 str	xzr, [x22, #832]
+0059c2ac str	wzr, [x22, #840]
+0059c2b0 str	d1, [x22, #848]
+0059c2b4 str	wzr, [x22, #860]
+0059c2b8 str	xzr, [x22, #872]
+0059c2bc str	wzr, [x22, #880]
+0059c2c0 str	d1, [x22, #888]
+0059c2c4 str	q1, [x27, #352]
+0059c2c8 str	wzr, [x22, #916]
+0059c2cc stp	q2, q2, [x22, #928]
+0059c2d0 str	q2, [x22, #960]
+0059c2d4 str	wzr, [x22, #976]
+0059c2d8 str	d0, [x22, #984]
+0059c2dc str	xzr, [x22, #1000]
+0059c2e0 str	wzr, [x22, #1008]
+0059c2e4 bl	#7270764 -> c8b450 memset@plt
+0059c2e8 movi	v0.2d, #0000000000000000
+0059c2ec add	x8, x22, #1252
+0059c2f0 add	x0, x22, #1320
+0059c2f4 mov	w1, wzr
+0059c2f8 mov	w2, #144
+0059c2fc str	wzr, [x22, #1196]
+0059c300 str	x8, [sp, #256]
+0059c304 str	d0, [x27, #656]
+0059c308 str	d0, [x22, #1216]
+0059c30c str	d0, [x27, #680]
+0059c310 str	d0, [x22, #1240]
+0059c314 str	q0, [x8]
+0059c318 str	d0, [x22, #1272]
+0059c31c str	d0, [x27, #736]
+0059c320 str	d0, [x22, #1296]
+0059c324 str	d0, [x27, #760]
+0059c328 bl	#7270696 -> c8b450 memset@plt
+0059c32c mov	x0, x19
+0059c330 mov	x1, x22
+0059c334 mov	x2, x23
+0059c338 mov	w3, #3906
+0059c33c mov	w4, w21
+0059c340 mov	w5, w28
+0059c344 bl	#-107756 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c348 ldr	w8, [x19, #16]
+0059c34c movi	v0.2d, #0000000000000000
+0059c350 sub	x1, x29, #208
+0059c354 mov	x2, x19
+0059c358 mov	x3, x23
+0059c35c mov	w4, #3910
+0059c360 mov	w5, w21
+0059c364 str	w8, [x22, #4]
+0059c368 ldr	x0, [x19]
+0059c36c stp	q0, q0, [x29, #-208]
+0059c370 stp	q0, q0, [x29, #-176]
+0059c374 bl	#-113620 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059c378 stur	x27, [x29, #-240]
+0059c37c tbz	w0, #0, #420
+0059c380 ldr	w8, [x22]
+0059c384 cbz	w8, #412
+0059c388 adrp	x27, #-3674112
+0059c38c add	x27, x27, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c390 sub	x0, x29, #208
+0059c394 mov	w1, #-1
+0059c398 mov	x2, x27
+0059c39c mov	w3, #2903
+0059c3a0 mov	w4, w21
+0059c3a4 str	x24, [sp, #104]
+0059c3a8 str	x25, [sp, #40]
+0059c3ac bl	#-108112 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059c3b0 mov	w23, w0
+0059c3b4 mov	x24, x22
+0059c3b8 mov	x25, x22
+0059c3bc sub	x0, x29, #208
+0059c3c0 mov	x1, x20
+0059c3c4 mov	x2, x27
+0059c3c8 mov	w3, #2912
+0059c3cc mov	w4, w21
+0059c3d0 mov	w5, w23
+0059c3d4 str	wzr, [x22, #8]
+0059c3d8 str	wzr, [x24, #12]!
+0059c3dc str	wzr, [x25, #16]!
+0059c3e0 str	xzr, [x22, #32]
+0059c3e4 bl	#-107916 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c3e8 sub	x0, x29, #208
+0059c3ec mov	x1, x24
+0059c3f0 mov	x2, x27
+0059c3f4 mov	w3, #2913
+0059c3f8 mov	w4, w21
+0059c3fc mov	w5, w23
+0059c400 bl	#-107944 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c404 sub	x0, x29, #208
+0059c408 mov	x1, x25
+0059c40c mov	x2, x27
+0059c410 mov	w3, #2914
+0059c414 mov	w4, w21
+0059c418 mov	w5, w23
+0059c41c bl	#-107972 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c420 mov	x24, x22
+0059c424 sub	x0, x29, #208
+0059c428 mov	x2, x27
+0059c42c mov	w3, #2920
+0059c430 mov	w4, w21
+0059c434 mov	w5, w23
+0059c438 str	wzr, [x24, #20]!
+0059c43c mov	x1, x24
+0059c440 str	w23, [sp, #96]
+0059c444 bl	#-108012 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c448 movi	v0.2d, #0000000000000000
+0059c44c ldur	x0, [x29, #-208]
+0059c450 sub	x1, x29, #144
+0059c454 sub	x2, x29, #208
+0059c458 mov	x3, x27
+0059c45c mov	w4, #2925
+0059c460 mov	w5, w21
+0059c464 stp	q0, q0, [x29, #-144]
+0059c468 stp	q0, q0, [x29, #-112]
+0059c46c bl	#-113868 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059c470 str	x24, [sp, #112]
+0059c474 tbz	w0, #0, #676
+0059c478 ldr	w6, [x24]
+0059c47c ldur	w7, [x29, #-96]
+0059c480 cmp	x7, x6, lsl #3
+0059c484 b.hs	#80
+0059c488 ldur	x8, [x29, #-200]
+0059c48c cmp	w7, #32
+0059c490 mov	w9, #4
+0059c494 lsr	x10, x7, #3
+0059c498 csel	x20, x9, x10, lo
+0059c49c adrp	x2, #-3674112
+0059c4a0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c4a4 adrp	x4, #-5234688
+0059c4a8 add	x4, x4, #495 ; 9e1ef 'Minimun CFAPixelCoordinate size (%u) * pixelCoordinateCount (%u) exceeds avaialable data (%u), setting pixelCoordinateCount to %u to prevent allocation errors\n'
+0059c4ac add	x9, x8, #8
+0059c4b0 cmp	x8, #0
+0059c4b4 mov	w1, #2
+0059c4b8 csel	x0, xzr, x9, eq
+0059c4bc mov	w3, #2937
+0059c4c0 mov	w5, #8
+0059c4c4 str	x20, [sp]
+0059c4c8 bl	#-2384136 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059c4cc mov	w6, w20
+0059c4d0 str	w20, [x24]
+0059c4d4 ldur	x8, [x29, #-88]
+0059c4d8 adrp	x4, #-3674112
+0059c4dc add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c4e0 ldur	x0, [x29, #-144]
+0059c4e4 ldp	w9, w2, [x29, #-128]
+0059c4e8 mov	w3, w6
+0059c4ec mov	w5, #2922
+0059c4f0 cmp	x8, #0
+0059c4f4 ldur	x27, [x29, #-240]
+0059c4f8 ldr	x25, [sp, #40]
+0059c4fc cset	w1, ne
+0059c500 ldr	x24, [sp, #104]
+0059c504 str	w9, [x22, #24]
+0059c508 bl	#-113612 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059c50c cbz	x0, #32
+0059c510 ldr	x8, [x0]
+0059c514 cbz	x8, #24
+0059c518 str	x8, [x22, #32]
+0059c51c b	#536 -> 59c734 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x6a8
+0059c520 movi	v0.2d, #0000000000000000
+0059c524 stp	q0, q0, [x20]
+0059c528 b	#556 -> 59c754 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x6c8
+0059c52c ldr	x8, [x22, #32]
+0059c530 cbnz	x8, #516
+0059c534 ldr	x8, [sp, #112]
+0059c538 ldr	w20, [x8]
+0059c53c cbz	w20, #468
+0059c540 add	x8, x20, x20, lsl #1
+0059c544 lsl	x0, x8, #3
+0059c548 bl	#7247832 -> c85d20 operator new[](unsigned long)@plt
+0059c54c ldur	x8, [x29, #-88]
+0059c550 mov	x3, x0
+0059c554 ldur	x0, [x29, #-144]
+0059c558 adrp	x5, #-3674112
+0059c55c add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c560 ldur	w2, [x29, #-124]
+0059c564 mov	w4, w20
+0059c568 mov	w6, #2922
+0059c56c cmp	x8, #0
+0059c570 str	x3, [x22, #32]
+0059c574 cset	w1, ne
+0059c578 bl	#-113112 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059c57c ldr	x9, [x22, #32]
+0059c580 ldr	w8, [x22, #20]
+0059c584 cbz	x9, #348
+0059c588 cbz	w8, #428
+0059c58c mov	x23, xzr
+0059c590 mov	x24, xzr
+0059c594 adrp	x20, #-3674112
+0059c598 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c59c str	w28, [sp, #52]
+0059c5a0 str	x26, [sp, #88]
+0059c5a4 ldr	x8, [x22, #32]
+0059c5a8 sub	x0, x29, #144
+0059c5ac mov	w1, #-1
+0059c5b0 mov	x2, x20
+0059c5b4 mov	w3, #2861
+0059c5b8 mov	w4, w21
+0059c5bc add	x27, x8, x23
+0059c5c0 bl	#-108644 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059c5c4 movi	v0.2d, #0000000000000000
+0059c5c8 mov	w28, w0
+0059c5cc mov	x26, x27
+0059c5d0 mov	x25, x27
+0059c5d4 sub	x0, x29, #144
+0059c5d8 mov	x1, x27
+0059c5dc mov	x2, x20
+0059c5e0 mov	w3, #2871
+0059c5e4 mov	w4, w21
+0059c5e8 mov	w5, w28
+0059c5ec str	wzr, [x26, #8]!
+0059c5f0 str	d0, [x25, #16]!
+0059c5f4 str	d0, [x27]
+0059c5f8 bl	#-108448 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c5fc sub	x0, x29, #144
+0059c600 add	x1, x27, #4 ; 21b330 'target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c604 mov	x2, x20
+0059c608 mov	w3, #2872
+0059c60c mov	w4, w21
+0059c610 mov	w5, w28
+0059c614 bl	#-108476 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c618 sub	x0, x29, #144
+0059c61c mov	x1, x26
+0059c620 mov	x2, x20
+0059c624 mov	w3, #2876
+0059c628 mov	w4, w21
+0059c62c mov	w5, w28
+0059c630 bl	#-108504 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c634 ldur	w8, [x29, #-128]
+0059c638 movi	v0.2d, #0000000000000000
+0059c63c sub	x1, x29, #80
+0059c640 sub	x2, x29, #144
+0059c644 mov	x3, x20
+0059c648 mov	w4, #2880
+0059c64c mov	w5, w21
+0059c650 str	w8, [x27, #12]
+0059c654 ldur	x0, [x29, #-144]
+0059c658 stp	q0, q0, [x29, #-80]
+0059c65c stp	q0, q0, [x29, #-48]
+0059c660 bl	#-114368 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059c664 tbz	w0, #0, #36
+0059c668 ldr	w8, [x26]
+0059c66c cbz	w8, #28
+0059c670 sub	x0, x29, #80
+0059c674 mov	x1, x25
+0059c678 mov	w2, w21
+0059c67c mov	w3, #-1
+0059c680 bl	#-18148 -> 597f9c CamX::ReadEnum_ExposureType(ParameterFileSymbolTableEntry*, CamX::ExposureType&, unsigned char, unsigned int) [clone .cfi]
+0059c684 b	#8 -> 59c68c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x600
+0059c688 str	wzr, [x25]
+0059c68c sub	x0, x29, #80
+0059c690 bl	#-110092 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059c694 sub	x0, x29, #144
+0059c698 add	x1, x27, #20 ; 21b340 'anoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c69c mov	w2, w21
+0059c6a0 mov	w3, w28
+0059c6a4 bl	#-9832 -> 59a03c CamX::ReadEnum_CFAPixelType(ParameterFileSymbolTableEntry*, CamX::CFAPixelType&, unsigned char, unsigned int) [clone .cfi]
+0059c6a8 sub	x0, x29, #144
+0059c6ac mov	w1, w28
+0059c6b0 mov	x2, x20
+0059c6b4 mov	w3, #2892
+0059c6b8 bl	#-108516 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059c6bc ldr	x8, [sp, #112]
+0059c6c0 add	x24, x24, #1
+0059c6c4 ldr	w28, [sp, #52]
+0059c6c8 add	x23, x23, #24 ; 21b344 '/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c6cc ldr	x26, [sp, #88]
+0059c6d0 ldr	w8, [x8]
+0059c6d4 cmp	x24, x8
+0059c6d8 b.lo	#-308
+0059c6dc b	#60 -> 59c718 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x68c
+0059c6e0 cbz	w8, #48
+0059c6e4 ldur	x8, [x29, #-200]
+0059c6e8 adrp	x2, #-3674112
+0059c6ec add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c6f0 adrp	x4, #-5304320
+0059c6f4 add	x4, x4, #2019 ; 8d7e3 'Failed to allocate pixelCoordinate\n'
+0059c6f8 mov	w1, #2
+0059c6fc mov	w3, #2973
+0059c700 add	x9, x8, #8
+0059c704 cmp	x8, #0
+0059c708 csel	x0, xzr, x9, eq
+0059c70c bl	#-2384716 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059c710 ldr	x8, [sp, #112]
+0059c714 str	wzr, [x8]
+0059c718 ldr	x8, [x22, #32]
+0059c71c ldur	x27, [x29, #-240]
+0059c720 ldr	x25, [sp, #40]
+0059c724 ldr	x24, [sp, #104]
+0059c728 cbnz	x8, #12
+0059c72c ldr	x8, [sp, #112]
+0059c730 str	wzr, [x8]
+0059c734 sub	x0, x29, #144
+0059c738 bl	#-110260 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059c73c ldr	w1, [sp, #96]
+0059c740 adrp	x2, #-3674112
+0059c744 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c748 sub	x0, x29, #208
+0059c74c mov	w3, #2989
+0059c750 bl	#-108668 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059c754 sub	x0, x29, #208
+0059c758 bl	#-110292 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059c75c adrp	x20, #-3674112
+0059c760 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c764 mov	x0, x19
+0059c768 mov	x1, x24
+0059c76c mov	x2, x20
+0059c770 mov	w3, #3923
+0059c774 mov	w4, w21
+0059c778 mov	w5, w28
+0059c77c bl	#-108836 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c780 ldr	w8, [x19, #16]
+0059c784 movi	v0.2d, #0000000000000000
+0059c788 sub	x1, x29, #80
+0059c78c mov	x2, x19
+0059c790 mov	x3, x20
+0059c794 mov	w4, #3927
+0059c798 mov	w5, w21
+0059c79c str	w8, [x22, #44]
+0059c7a0 ldr	x0, [x19]
+0059c7a4 stp	q0, q0, [x29, #-80]
+0059c7a8 stp	q0, q0, [x29, #-48]
+0059c7ac bl	#-114700 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059c7b0 tbz	w0, #0, #48
+0059c7b4 ldr	w8, [x22, #40]
+0059c7b8 cbz	w8, #40
+0059c7bc adrp	x2, #-3674112
+0059c7c0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c7c4 sub	x0, x29, #80
+0059c7c8 mov	x1, x26
+0059c7cc mov	w3, #3930
+0059c7d0 mov	w4, w21
+0059c7d4 mov	w5, #-1
+0059c7d8 bl	#-108928 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c7dc b	#8 -> 59c7e4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x758
+0059c7e0 str	wzr, [x26]
+0059c7e4 sub	x0, x29, #80
+0059c7e8 bl	#-110436 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059c7ec mov	x20, x22
+0059c7f0 adrp	x23, #-3674112
+0059c7f4 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c7f8 mov	x0, x19
+0059c7fc mov	x2, x23
+0059c800 mov	w3, #3942
+0059c804 str	wzr, [x20, #52]!
+0059c808 mov	x1, x20
+0059c80c mov	w4, w21
+0059c810 mov	w5, w28
+0059c814 bl	#-108988 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c818 movi	v0.2d, #0000000000000000
+0059c81c ldr	x0, [x19]
+0059c820 sub	x1, x29, #80
+0059c824 mov	x2, x19
+0059c828 mov	x3, x23
+0059c82c mov	w4, #3947
+0059c830 mov	w5, w21
+0059c834 stp	q0, q0, [x29, #-80]
+0059c838 stp	q0, q0, [x29, #-48]
+0059c83c bl	#-114844 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059c840 tbz	w0, #0, #352
+0059c844 ldr	w6, [x20]
+0059c848 ldur	w7, [x29, #-32]
+0059c84c cmp	x7, x6, lsl #2
+0059c850 b.hs	#68
+0059c854 ldr	x8, [x19, #8]
+0059c858 adrp	x2, #-3674112
+0059c85c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c860 adrp	x4, #-5427200
+0059c864 add	x4, x4, #1147 ; 6f47b 'Minimun TransitionGroupsEnum size (%u) * transitionGroupsCount (%u) exceeds avaialable data (%u), setting transitionGroupsCount to %u to prevent allocation errors\n'
+0059c868 mov	w1, #2
+0059c86c mov	w3, #3959
+0059c870 mov	w5, #4
+0059c874 add	x9, x8, #8
+0059c878 cmp	x8, #0
+0059c87c csel	x0, xzr, x9, eq
+0059c880 lsr	x23, x7, #2
+0059c884 str	x23, [sp]
+0059c888 bl	#-2385096 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059c88c mov	w6, w23
+0059c890 str	w23, [x20]
+0059c894 ldur	x8, [x29, #-24]
+0059c898 adrp	x4, #-3674112
+0059c89c add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c8a0 ldur	x0, [x29, #-80]
+0059c8a4 ldp	w9, w2, [x29, #-64]
+0059c8a8 mov	w3, w6
+0059c8ac mov	w5, #3944
+0059c8b0 cmp	x8, #0
+0059c8b4 ldur	x23, [x29, #-216]
+0059c8b8 cset	w1, ne
+0059c8bc str	w9, [x22, #56]
+0059c8c0 bl	#-114564 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059c8c4 cbz	x0, #20
+0059c8c8 ldr	x8, [x0]
+0059c8cc cbz	x8, #12
+0059c8d0 str	x8, [x22, #64]
+0059c8d4 b	#220 -> 59c9b0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x924
+0059c8d8 ldr	x8, [x22, #64]
+0059c8dc cbnz	x8, #212
+0059c8e0 ldr	w23, [x20]
+0059c8e4 cbz	w23, #184
+0059c8e8 lsl	x0, x23, #2
+0059c8ec bl	#7246900 -> c85d20 operator new[](unsigned long)@plt
+0059c8f0 ldur	x8, [x29, #-24]
+0059c8f4 mov	x3, x0
+0059c8f8 ldur	x0, [x29, #-80]
+0059c8fc adrp	x5, #-3674112
+0059c900 add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c904 ldur	w2, [x29, #-60]
+0059c908 mov	w4, w23
+0059c90c mov	w6, #3944
+0059c910 cmp	x8, #0
+0059c914 str	x3, [x22, #64]
+0059c918 cset	w1, ne
+0059c91c bl	#-114044 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059c920 ldr	x9, [x22, #64]
+0059c924 ldr	w8, [x22, #52]
+0059c928 cbz	x9, #68
+0059c92c ldur	x23, [x29, #-216]
+0059c930 cbz	w8, #128
+0059c934 mov	x23, xzr
+0059c938 mov	x24, xzr
+0059c93c ldr	x8, [x22, #64]
+0059c940 sub	x0, x29, #80
+0059c944 mov	w2, w21
+0059c948 mov	w3, #-1
+0059c94c add	x1, x8, x23
+0059c950 bl	#-14024 -> 599288 CamX::ReadEnum_TransitionGroupsEnum(ParameterFileSymbolTableEntry*, CamX::TransitionGroupsEnum&, unsigned char, unsigned int) [clone .cfi]
+0059c954 ldr	w8, [x22, #52]
+0059c958 add	x24, x24, #1
+0059c95c add	x23, x23, #4 ; 21b330 'target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c960 cmp	x24, x8
+0059c964 b.lo	#-40
+0059c968 b	#56 -> 59c9a0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x914
+0059c96c cbz	w8, #48
+0059c970 ldr	x8, [x19, #8]
+0059c974 adrp	x2, #-3674112
+0059c978 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c97c adrp	x4, #-5623808
+0059c980 add	x4, x4, #4007 ; 3ffa7 'Failed to allocate transitionGroups\n'
+0059c984 mov	w1, #2
+0059c988 mov	w3, #3995
+0059c98c add	x9, x8, #8
+0059c990 cmp	x8, #0
+0059c994 csel	x0, xzr, x9, eq
+0059c998 bl	#-2385368 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059c99c str	wzr, [x20]
+0059c9a0 ldr	x8, [x22, #64]
+0059c9a4 ldur	x23, [x29, #-216]
+0059c9a8 cbnz	x8, #8
+0059c9ac str	wzr, [x20]
+0059c9b0 sub	x0, x29, #80
+0059c9b4 bl	#-110896 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059c9b8 adrp	x20, #-3674112
+0059c9bc add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059c9c0 add	x1, x22, #72
+0059c9c4 mov	x0, x19
+0059c9c8 mov	x2, x20
+0059c9cc mov	w3, #4010
+0059c9d0 mov	w4, w21
+0059c9d4 mov	w5, w28
+0059c9d8 bl	#-109440 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059c9dc add	x1, x22, #76
+0059c9e0 mov	x0, x19
+0059c9e4 mov	w2, w21
+0059c9e8 mov	w3, w28
+0059c9ec bl	#-12648 -> 599884 CamX::ReadEnum_ColorFilterArrangement(ParameterFileSymbolTableEntry*, CamX::ColorFilterArrangement&, unsigned char, unsigned int) [clone .cfi]
+0059c9f0 mov	x0, x19
+0059c9f4 mov	w1, w28
+0059c9f8 mov	x2, x20
+0059c9fc mov	w3, #2770
+0059ca00 mov	w4, w21
+0059ca04 bl	#-109736 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059ca08 mov	w24, w0
+0059ca0c mov	x0, x19
+0059ca10 mov	x1, x23
+0059ca14 mov	x2, x20
+0059ca18 mov	w3, #2781
+0059ca1c mov	w4, w21
+0059ca20 mov	w5, w24
+0059ca24 str	xzr, [x22, #88]
+0059ca28 str	wzr, [x22, #80]
+0059ca2c bl	#-109524 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ca30 movi	v0.2d, #0000000000000000
+0059ca34 ldr	x0, [x19]
+0059ca38 sub	x1, x29, #144
+0059ca3c mov	x2, x19
+0059ca40 mov	x3, x20
+0059ca44 mov	w4, #2786
+0059ca48 mov	w5, w21
+0059ca4c stp	q0, q0, [x29, #-144]
+0059ca50 stp	q0, q0, [x29, #-112]
+0059ca54 bl	#-115380 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ca58 tbz	w0, #0, #1848
+0059ca5c ldr	w6, [x23]
+0059ca60 ldur	w7, [x29, #-96]
+0059ca64 cmp	x7, x6, lsl #3
+0059ca68 b.hs	#76
+0059ca6c ldr	x8, [x19, #8]
+0059ca70 cmp	w7, #8
+0059ca74 lsr	x9, x7, #3
+0059ca78 csinc	x20, x9, xzr, hs
+0059ca7c adrp	x2, #-3674112
+0059ca80 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ca84 adrp	x4, #-4714496
+0059ca88 add	x4, x4, #3259 ; 11dcbb 'Minimun StreamConfiguration size (%u) * streamConfigurationCount (%u) exceeds avaialable data (%u), setting streamConfigurationCount to %u to prevent allocation errors\n'
+0059ca8c add	x9, x8, #8
+0059ca90 cmp	x8, #0
+0059ca94 csel	x0, xzr, x9, eq
+0059ca98 mov	w1, #2
+0059ca9c mov	w3, #2798
+0059caa0 mov	w5, #8
+0059caa4 str	x20, [sp]
+0059caa8 bl	#-2385640 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059caac mov	w6, w20
+0059cab0 str	w20, [x23]
+0059cab4 ldur	x8, [x29, #-88]
+0059cab8 adrp	x4, #-3674112
+0059cabc add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059cac0 ldur	x0, [x29, #-144]
+0059cac4 ldp	w9, w2, [x29, #-128]
+0059cac8 mov	w3, w6
+0059cacc mov	w5, #2783
+0059cad0 cmp	x8, #0
+0059cad4 cset	w1, ne
+0059cad8 str	w9, [x22, #84]
+0059cadc bl	#-115104 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059cae0 cbz	x0, #20
+0059cae4 ldr	x8, [x0]
+0059cae8 cbz	x8, #12
+0059caec str	x8, [x22, #88]
+0059caf0 b	#1708 -> 59d19c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1110
+0059caf4 ldr	x8, [x22, #88]
+0059caf8 cbnz	x8, #1700
+0059cafc ldr	w20, [x23]
+0059cb00 cbz	w20, #1676
+0059cb04 lsl	x8, x20, #7
+0059cb08 sub	x0, x8, x20, lsl #3
+0059cb0c bl	#7246356 -> c85d20 operator new[](unsigned long)@plt
+0059cb10 ldur	x8, [x29, #-88]
+0059cb14 mov	x3, x0
+0059cb18 ldur	x0, [x29, #-144]
+0059cb1c adrp	x5, #-3674112
+0059cb20 add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059cb24 ldur	w2, [x29, #-124]
+0059cb28 mov	w4, w20
+0059cb2c mov	w6, #2783
+0059cb30 cmp	x8, #0
+0059cb34 str	x3, [x22, #88]
+0059cb38 cset	w1, ne
+0059cb3c bl	#-114588 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059cb40 ldr	x9, [x22, #88]
+0059cb44 ldr	w8, [x22, #80]
+0059cb48 cbz	x9, #1556
+0059cb4c cbz	w8, #1616
+0059cb50 fmov	d0, xzr
+0059cb54 mov	x9, xzr
+0059cb58 mov	x8, xzr
+0059cb5c adrp	x26, #-3674112
+0059cb60 add	x26, x26, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059cb64 str	w28, [sp, #52]
+0059cb68 str	x25, [sp, #40]
+0059cb6c str	w24, [sp, #36]
+0059cb70 fmov	d0, d0
+0059cb74 str	q0, [sp, #16]
+0059cb78 stp	x8, x9, [sp, #104]
+0059cb7c sub	x0, x29, #144
+0059cb80 ldr	x8, [x22, #88]
+0059cb84 mov	w1, #-1
+0059cb88 mov	x2, x26
+0059cb8c mov	w3, #2561
+0059cb90 mov	w4, w21
+0059cb94 add	x24, x8, x9
+0059cb98 bl	#-110140 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059cb9c movi	v0.2d, #0000000000000000
+0059cba0 mov	x10, x24
+0059cba4 mov	x9, x24
+0059cba8 mov	x8, x24
+0059cbac mov	w27, w0
+0059cbb0 mov	x28, x24
+0059cbb4 mov	x23, x24
+0059cbb8 mov	x20, x24
+0059cbbc sub	x0, x29, #144
+0059cbc0 mov	x1, x24
+0059cbc4 mov	x2, x26
+0059cbc8 mov	w3, #2588
+0059cbcc str	d0, [x10, #52]!
+0059cbd0 str	d0, [x9, #64]!
+0059cbd4 stp	x10, x9, [sp, #56]
+0059cbd8 mov	x10, x24
+0059cbdc mov	x9, x24
+0059cbe0 mov	w4, w21
+0059cbe4 str	d0, [x8, #76]!
+0059cbe8 str	d0, [x10, #88]!
+0059cbec str	d0, [x9, #100]!
+0059cbf0 ldr	q0, [sp, #16]
+0059cbf4 mov	w5, w27
+0059cbf8 str	x8, [sp, #72]
+0059cbfc mov	x8, x24
+0059cc00 strb	wzr, [x28, #16]!
+0059cc04 str	xzr, [x23, #20]!
+0059cc08 str	wzr, [x20, #44]!
+0059cc0c stp	x10, x9, [sp, #80]
+0059cc10 str	wzr, [x8, #112]!
+0059cc14 str	x8, [sp, #96]
+0059cc18 str	xzr, [x24, #8]
+0059cc1c stur	q0, [x24, #28]
+0059cc20 str	wzr, [x24]
+0059cc24 bl	#-110028 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cc28 movi	v0.2d, #0000000000000000
+0059cc2c ldur	x0, [x29, #-144]
+0059cc30 sub	x1, x29, #80
+0059cc34 sub	x2, x29, #144
+0059cc38 mov	x3, x26
+0059cc3c mov	w4, #2593
+0059cc40 mov	w5, w21
+0059cc44 stp	q0, q0, [x29, #-80]
+0059cc48 stp	q0, q0, [x29, #-48]
+0059cc4c bl	#-115884 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059cc50 tbz	w0, #0, #312
+0059cc54 ldr	w6, [x24]
+0059cc58 ldur	w7, [x29, #-32]
+0059cc5c cmp	x7, x6, lsl #2
+0059cc60 b.hs	#76
+0059cc64 ldur	x8, [x29, #-136]
+0059cc68 cmp	w7, #4
+0059cc6c lsr	x9, x7, #2
+0059cc70 csinc	x25, x9, xzr, hs
+0059cc74 mov	w1, #2
+0059cc78 mov	x2, x26
+0059cc7c mov	w3, #2605
+0059cc80 adrp	x4, #-4644864
+0059cc84 add	x4, x4, #4021 ; 12efb5 'Minimun VirtualChannel size (%u) * vcCount (%u) exceeds avaialable data (%u), setting vcCount to %u to prevent allocation errors\n'
+0059cc88 add	x9, x8, #8
+0059cc8c cmp	x8, #0
+0059cc90 mov	w5, #4
+0059cc94 csel	x0, xzr, x9, eq
+0059cc98 str	x25, [sp]
+0059cc9c bl	#-2386140 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059cca0 mov	w6, w25
+0059cca4 str	w25, [x24]
+0059cca8 ldr	x25, [sp, #40]
+0059ccac ldur	w8, [x29, #-64]
+0059ccb0 mov	w3, w6
+0059ccb4 mov	x4, x26
+0059ccb8 mov	w5, #2590
+0059ccbc str	w8, [x24, #4]
+0059ccc0 ldur	x8, [x29, #-24]
+0059ccc4 ldur	x0, [x29, #-80]
+0059ccc8 ldur	w2, [x29, #-60]
+0059cccc cmp	x8, #0
+0059ccd0 cset	w1, ne
+0059ccd4 bl	#-115608 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059ccd8 cbz	x0, #20
+0059ccdc ldr	x8, [x0]
+0059cce0 cbz	x8, #12
+0059cce4 str	x8, [x24, #8]
+0059cce8 b	#172 -> 59cd94 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xd08
+0059ccec ldr	x8, [x24, #8]
+0059ccf0 cbnz	x8, #164
+0059ccf4 ldr	w3, [x24]
+0059ccf8 cbz	w3, #140
+0059ccfc ldur	x0, [x29, #-56]
+0059cd00 cbz	x0, #52
+0059cd04 ldur	x8, [x29, #-72]
+0059cd08 mov	w4, w21
+0059cd0c ldur	w1, [x29, #-32]
+0059cd10 add	x9, x8, #8
+0059cd14 cmp	x8, #0
+0059cd18 sub	x8, x29, #80
+0059cd1c csel	x5, xzr, x9, eq
+0059cd20 add	x2, x8, #44
+0059cd24 bl	#-56048 -> 58f234 unsigned int* ParameterUtils::ReadArray<unsigned int>(unsigned char const*, unsigned int, unsigned int&, unsigned int, unsigned char, IParameterLoggingAPI*) [clone .cfi]
+0059cd28 cbz	x0, #12
+0059cd2c str	x0, [x24, #8]
+0059cd30 b	#100 -> 59cd94 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xd08
+0059cd34 mov	x0, xzr
+0059cd38 mov	w1, #1
+0059cd3c mov	x2, x26
+0059cd40 mov	w3, #2634
+0059cd44 adrp	x4, #-4911104
+0059cd48 add	x4, x4, #211 ; ed0d3 'Insufficient data to read array from symbol table entry\n'
+0059cd4c bl	#-2386316 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059cd50 ldr	w8, [x24]
+0059cd54 str	xzr, [x24, #8]
+0059cd58 cbz	w8, #44
+0059cd5c ldur	x8, [x29, #-136]
+0059cd60 mov	w1, #2
+0059cd64 mov	x2, x26
+0059cd68 mov	w3, #2641
+0059cd6c adrp	x4, #-5427200
+0059cd70 add	x4, x4, #1124 ; 6f464 'Failed to allocate vc\n'
+0059cd74 add	x9, x8, #8
+0059cd78 cmp	x8, #0
+0059cd7c csel	x0, xzr, x9, eq
+0059cd80 bl	#-2386368 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059cd84 str	wzr, [x24]
+0059cd88 ldr	x8, [x24, #8]
+0059cd8c cbnz	x8, #8
+0059cd90 str	wzr, [x24]
+0059cd94 sub	x0, x29, #80
+0059cd98 bl	#-111892 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059cd9c sub	x0, x29, #144
+0059cda0 mov	x1, x28
+0059cda4 mov	x2, x26
+0059cda8 mov	w3, #2652
+0059cdac mov	w4, w21
+0059cdb0 mov	w5, w27
+0059cdb4 bl	#-110200 -> 581f3c ParameterFileSymbolTableEntry::Read(unsigned char&, char const*, int, unsigned char, unsigned int)
+0059cdb8 sub	x1, x29, #144
+0059cdbc mov	x0, x23
+0059cdc0 mov	w2, w21
+0059cdc4 mov	w3, w27
+0059cdc8 bl	#-16568 -> 598d10 CamX::FrameDimension::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059cdcc sub	x0, x29, #144
+0059cdd0 add	x1, x24, #36
+0059cdd4 mov	x2, x26
+0059cdd8 mov	w3, #2654
+0059cddc mov	w4, w21
+0059cde0 mov	w5, w27
+0059cde4 bl	#-110476 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cde8 sub	x0, x29, #144
+0059cdec add	x1, x24, #40
+0059cdf0 mov	w2, w21
+0059cdf4 mov	w3, w27
+0059cdf8 bl	#-13116 -> 599abc CamX::ReadEnum_StreamType(ParameterFileSymbolTableEntry*, CamX::StreamType&, unsigned char, unsigned int) [clone .cfi]
+0059cdfc sub	x0, x29, #144
+0059ce00 mov	x1, x20
+0059ce04 mov	x2, x26
+0059ce08 mov	w3, #2659
+0059ce0c mov	w4, w21
+0059ce10 mov	w5, w27
+0059ce14 bl	#-110524 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ce18 ldur	w8, [x29, #-128]
+0059ce1c movi	v0.2d, #0000000000000000
+0059ce20 sub	x1, x29, #80
+0059ce24 sub	x2, x29, #144
+0059ce28 mov	x3, x26
+0059ce2c mov	w4, #2663
+0059ce30 mov	w5, w21
+0059ce34 str	w8, [x24, #48]
+0059ce38 ldur	x0, [x29, #-144]
+0059ce3c stp	q0, q0, [x29, #-80]
+0059ce40 stp	q0, q0, [x29, #-48]
+0059ce44 bl	#-116388 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ce48 tbz	w0, #0, #36
+0059ce4c ldr	w8, [x24, #44]
+0059ce50 cbz	w8, #28
+0059ce54 ldr	x1, [sp, #56]
+0059ce58 sub	x0, x29, #80
+0059ce5c mov	w2, w21
+0059ce60 mov	w3, #-1
+0059ce64 bl	#-12872 -> 599c1c CamX::ReadEnum_TPGPatternType(ParameterFileSymbolTableEntry*, CamX::TPGPatternType&, unsigned char, unsigned int) [clone .cfi]
+0059ce68 b	#12 -> 59ce74 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xde8
+0059ce6c ldr	x8, [sp, #56]
+0059ce70 str	wzr, [x8]
+0059ce74 ldr	w28, [sp, #52]
+0059ce78 sub	x0, x29, #80
+0059ce7c ldur	x23, [x29, #-216]
+0059ce80 bl	#-112124 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ce84 sub	x0, x29, #144
+0059ce88 add	x1, x24, #56
+0059ce8c mov	x2, x26
+0059ce90 mov	w3, #2676
+0059ce94 mov	w4, w21
+0059ce98 mov	w5, w27
+0059ce9c bl	#-110660 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cea0 ldur	w8, [x29, #-128]
+0059cea4 movi	v0.2d, #0000000000000000
+0059cea8 sub	x1, x29, #80
+0059ceac sub	x2, x29, #144
+0059ceb0 mov	x3, x26
+0059ceb4 mov	w4, #2680
+0059ceb8 mov	w5, w21
+0059cebc str	w8, [x24, #60]
+0059cec0 ldur	x0, [x29, #-144]
+0059cec4 stp	q0, q0, [x29, #-80]
+0059cec8 stp	q0, q0, [x29, #-48]
+0059cecc bl	#-116524 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ced0 tbz	w0, #0, #36
+0059ced4 ldr	w8, [x24, #56]
+0059ced8 cbz	w8, #28
+0059cedc ldr	x1, [sp, #64]
+0059cee0 sub	x0, x29, #80
+0059cee4 mov	w2, w21
+0059cee8 mov	w3, #-1
+0059ceec bl	#-12688 -> 599d5c CamX::ReadEnum_TPGColorBarMode(ParameterFileSymbolTableEntry*, CamX::TPGColorBarMode&, unsigned char, unsigned int) [clone .cfi]
+0059cef0 b	#12 -> 59cefc CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xe70
+0059cef4 ldr	x8, [sp, #64]
+0059cef8 str	wzr, [x8]
+0059cefc sub	x0, x29, #80
+0059cf00 bl	#-112252 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059cf04 sub	x0, x29, #144
+0059cf08 add	x1, x24, #68
+0059cf0c mov	x2, x26
+0059cf10 mov	w3, #2693
+0059cf14 mov	w4, w21
+0059cf18 mov	w5, w27
+0059cf1c bl	#-110788 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cf20 ldur	w8, [x29, #-128]
+0059cf24 movi	v0.2d, #0000000000000000
+0059cf28 sub	x1, x29, #80
+0059cf2c sub	x2, x29, #144
+0059cf30 mov	x3, x26
+0059cf34 mov	w4, #2697
+0059cf38 mov	w5, w21
+0059cf3c str	w8, [x24, #72]
+0059cf40 ldur	x0, [x29, #-144]
+0059cf44 stp	q0, q0, [x29, #-80]
+0059cf48 stp	q0, q0, [x29, #-48]
+0059cf4c bl	#-116652 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059cf50 tbz	w0, #0, #44
+0059cf54 ldr	w8, [x24, #68]
+0059cf58 cbz	w8, #36
+0059cf5c ldr	x1, [sp, #72]
+0059cf60 sub	x0, x29, #80
+0059cf64 mov	x2, x26
+0059cf68 mov	w3, #2700
+0059cf6c mov	w4, w21
+0059cf70 mov	w5, #-1
+0059cf74 bl	#-110876 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cf78 b	#12 -> 59cf84 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xef8
+0059cf7c ldr	x8, [sp, #72]
+0059cf80 str	wzr, [x8]
+0059cf84 sub	x0, x29, #80
+0059cf88 bl	#-112388 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059cf8c sub	x0, x29, #144
+0059cf90 add	x1, x24, #80
+0059cf94 mov	x2, x26
+0059cf98 mov	w3, #2710
+0059cf9c mov	w4, w21
+0059cfa0 mov	w5, w27
+0059cfa4 bl	#-110924 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059cfa8 ldur	w8, [x29, #-128]
+0059cfac movi	v0.2d, #0000000000000000
+0059cfb0 sub	x1, x29, #80
+0059cfb4 sub	x2, x29, #144
+0059cfb8 mov	x3, x26
+0059cfbc mov	w4, #2714
+0059cfc0 mov	w5, w21
+0059cfc4 str	w8, [x24, #84]
+0059cfc8 ldur	x0, [x29, #-144]
+0059cfcc stp	q0, q0, [x29, #-80]
+0059cfd0 stp	q0, q0, [x29, #-48]
+0059cfd4 bl	#-116788 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059cfd8 tbz	w0, #0, #44
+0059cfdc ldr	w8, [x24, #80]
+0059cfe0 cbz	w8, #36
+0059cfe4 ldr	x1, [sp, #80]
+0059cfe8 sub	x0, x29, #80
+0059cfec mov	x2, x26
+0059cff0 mov	w3, #2717
+0059cff4 mov	w4, w21
+0059cff8 mov	w5, #-1
+0059cffc bl	#-111012 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d000 b	#12 -> 59d00c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0xf80
+0059d004 ldr	x8, [sp, #80]
+0059d008 str	wzr, [x8]
+0059d00c sub	x0, x29, #80
+0059d010 bl	#-112524 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d014 sub	x0, x29, #144
+0059d018 add	x1, x24, #92
+0059d01c mov	x2, x26
+0059d020 mov	w3, #2727
+0059d024 mov	w4, w21
+0059d028 mov	w5, w27
+0059d02c bl	#-111060 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d030 ldur	w8, [x29, #-128]
+0059d034 movi	v0.2d, #0000000000000000
+0059d038 sub	x1, x29, #80
+0059d03c sub	x2, x29, #144
+0059d040 mov	x3, x26
+0059d044 mov	w4, #2731
+0059d048 mov	w5, w21
+0059d04c str	w8, [x24, #96]
+0059d050 ldur	x0, [x29, #-144]
+0059d054 stp	q0, q0, [x29, #-80]
+0059d058 stp	q0, q0, [x29, #-48]
+0059d05c bl	#-116924 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d060 tbz	w0, #0, #44
+0059d064 ldr	w8, [x24, #92]
+0059d068 cbz	w8, #36
+0059d06c ldr	x1, [sp, #88]
+0059d070 sub	x0, x29, #80
+0059d074 mov	x2, x26
+0059d078 mov	w3, #2734
+0059d07c mov	w4, w21
+0059d080 mov	w5, #-1
+0059d084 bl	#-111148 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d088 b	#12 -> 59d094 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1008
+0059d08c ldr	x8, [sp, #88]
+0059d090 str	wzr, [x8]
+0059d094 sub	x0, x29, #80
+0059d098 bl	#-112660 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d09c sub	x0, x29, #144
+0059d0a0 add	x1, x24, #104
+0059d0a4 mov	x2, x26
+0059d0a8 mov	w3, #2744
+0059d0ac mov	w4, w21
+0059d0b0 mov	w5, w27
+0059d0b4 bl	#-111196 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d0b8 ldur	w8, [x29, #-128]
+0059d0bc movi	v0.2d, #0000000000000000
+0059d0c0 sub	x1, x29, #80
+0059d0c4 sub	x2, x29, #144
+0059d0c8 mov	x3, x26
+0059d0cc mov	w4, #2748
+0059d0d0 mov	w5, w21
+0059d0d4 str	w8, [x24, #108]
+0059d0d8 ldur	x0, [x29, #-144]
+0059d0dc stp	q0, q0, [x29, #-80]
+0059d0e0 stp	q0, q0, [x29, #-48]
+0059d0e4 bl	#-117060 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d0e8 tbz	w0, #0, #36
+0059d0ec ldr	w8, [x24, #104]
+0059d0f0 cbz	w8, #28
+0059d0f4 ldr	x1, [sp, #96]
+0059d0f8 sub	x0, x29, #80
+0059d0fc mov	w2, w21
+0059d100 mov	w3, #-1
+0059d104 bl	#-14464 -> 599884 CamX::ReadEnum_ColorFilterArrangement(ParameterFileSymbolTableEntry*, CamX::ColorFilterArrangement&, unsigned char, unsigned int) [clone .cfi]
+0059d108 b	#12 -> 59d114 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1088
+0059d10c ldr	x8, [sp, #96]
+0059d110 str	wzr, [x8]
+0059d114 ldr	x20, [sp, #104]
+0059d118 sub	x0, x29, #80
+0059d11c bl	#-112792 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d120 sub	x0, x29, #144
+0059d124 mov	w1, w27
+0059d128 mov	x2, x26
+0059d12c mov	w3, #2759
+0059d130 bl	#-111196 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059d134 ldr	w8, [x23]
+0059d138 add	x20, x20, #1 ; 21b32d 'ut/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d13c ldr	x9, [sp, #112]
+0059d140 ldur	x27, [x29, #-240]
+0059d144 ldr	w24, [sp, #36]
+0059d148 cmp	x20, x8
+0059d14c mov	x8, x20
+0059d150 add	x9, x9, #120
+0059d154 b.lo	#-1500
+0059d158 b	#56 -> 59d190 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1104
+0059d15c cbz	w8, #48
+0059d160 ldr	x8, [x19, #8]
+0059d164 adrp	x2, #-3678208
+0059d168 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d16c adrp	x4, #-5308416
+0059d170 add	x4, x4, #1979 ; 8d7bb 'Failed to allocate streamConfiguration\n'
+0059d174 mov	w1, #2
+0059d178 mov	w3, #2834
+0059d17c add	x9, x8, #8
+0059d180 cmp	x8, #0
+0059d184 csel	x0, xzr, x9, eq
+0059d188 bl	#-2387400 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059d18c str	wzr, [x23]
+0059d190 ldr	x8, [x22, #88]
+0059d194 cbnz	x8, #8
+0059d198 str	wzr, [x23]
+0059d19c sub	x0, x29, #144
+0059d1a0 bl	#-112924 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d1a4 adrp	x20, #-3678208
+0059d1a8 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d1ac mov	x0, x19
+0059d1b0 mov	w1, w24
+0059d1b4 mov	x2, x20
+0059d1b8 mov	w3, #2850
+0059d1bc bl	#-111336 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059d1c0 ldr	x1, [sp, #120]
+0059d1c4 mov	x0, x19
+0059d1c8 mov	x2, x20
+0059d1cc mov	w3, #4016
+0059d1d0 mov	w4, w21
+0059d1d4 mov	w5, w28
+0059d1d8 bl	#-111488 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d1dc ldr	w8, [x19, #16]
+0059d1e0 movi	v0.2d, #0000000000000000
+0059d1e4 sub	x1, x29, #80
+0059d1e8 mov	x2, x19
+0059d1ec mov	x3, x20
+0059d1f0 mov	w4, #4020
+0059d1f4 mov	w5, w21
+0059d1f8 str	w8, [x22, #100]
+0059d1fc ldr	x0, [x19]
+0059d200 stp	q0, q0, [x29, #-80]
+0059d204 stp	q0, q0, [x29, #-48]
+0059d208 bl	#-117352 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d20c tbz	w0, #0, #48
+0059d210 ldr	w8, [x22, #96]
+0059d214 cbz	w8, #40
+0059d218 ldr	x1, [sp, #128]
+0059d21c adrp	x2, #-3678208
+0059d220 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d224 sub	x0, x29, #80
+0059d228 mov	w3, #4023
+0059d22c mov	w4, w21
+0059d230 mov	w5, #-1
+0059d234 bl	#-110604 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+0059d238 b	#12 -> 59d244 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x11b8
+0059d23c ldr	x8, [sp, #128]
+0059d240 str	wzr, [x8]
+0059d244 sub	x0, x29, #80
+0059d248 bl	#-113092 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d24c add	x1, x22, #108
+0059d250 mov	x0, x19
+0059d254 mov	x2, x20
+0059d258 mov	w3, #4033
+0059d25c mov	w4, w21
+0059d260 mov	w5, w28
+0059d264 bl	#-111628 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d268 ldr	w8, [x19, #16]
+0059d26c movi	v0.2d, #0000000000000000
+0059d270 sub	x1, x29, #80
+0059d274 mov	x2, x19
+0059d278 mov	x3, x20
+0059d27c mov	w4, #4037
+0059d280 mov	w5, w21
+0059d284 str	w8, [x22, #112]
+0059d288 ldr	x0, [x19]
+0059d28c stp	q0, q0, [x29, #-80]
+0059d290 stp	q0, q0, [x29, #-48]
+0059d294 bl	#-117492 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d298 tbz	w0, #0, #48
+0059d29c ldr	w8, [x22, #108]
+0059d2a0 cbz	w8, #40
+0059d2a4 ldr	x1, [sp, #136]
+0059d2a8 adrp	x2, #-3678208
+0059d2ac add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d2b0 sub	x0, x29, #80
+0059d2b4 mov	w3, #4040
+0059d2b8 mov	w4, w21
+0059d2bc mov	w5, #-1
+0059d2c0 bl	#-110524 -> 582304 ParameterFileSymbolTableEntry::Read(unsigned long&, char const*, int, unsigned char, unsigned int)
+0059d2c4 b	#12 -> 59d2d0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1244
+0059d2c8 ldr	x8, [sp, #136]
+0059d2cc str	xzr, [x8]
+0059d2d0 sub	x0, x29, #80
+0059d2d4 bl	#-113232 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d2d8 ldr	x1, [sp, #144]
+0059d2dc mov	x0, x19
+0059d2e0 mov	x2, x20
+0059d2e4 mov	w3, #4047
+0059d2e8 mov	w4, w21
+0059d2ec mov	w5, w28
+0059d2f0 bl	#-111768 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d2f4 add	x1, x22, #132
+0059d2f8 mov	x0, x19
+0059d2fc mov	x2, x20
+0059d300 mov	w3, #4048
+0059d304 mov	w4, w21
+0059d308 mov	w5, w28
+0059d30c bl	#-111796 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d310 add	x1, x22, #136
+0059d314 mov	x0, x19
+0059d318 mov	x2, x20
+0059d31c mov	w3, #4049
+0059d320 mov	w4, w21
+0059d324 mov	w5, w28
+0059d328 bl	#-111824 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d32c add	x1, x22, #140
+0059d330 mov	x0, x19
+0059d334 mov	x2, x20
+0059d338 mov	w3, #4050
+0059d33c mov	w4, w21
+0059d340 mov	w5, w28
+0059d344 bl	#-111852 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d348 ldr	x1, [sp, #152]
+0059d34c mov	x0, x19
+0059d350 mov	x2, x20
+0059d354 mov	w3, #4051
+0059d358 mov	w4, w21
+0059d35c mov	w5, w28
+0059d360 bl	#-111880 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d364 add	x1, x22, #148
+0059d368 mov	x0, x19
+0059d36c mov	x2, x20
+0059d370 mov	w3, #4052
+0059d374 mov	w4, w21
+0059d378 mov	w5, w28
+0059d37c bl	#-111908 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d380 ldr	x1, [sp, #160]
+0059d384 mov	x0, x19
+0059d388 mov	x2, x20
+0059d38c mov	w3, #4053
+0059d390 mov	w4, w21
+0059d394 mov	w5, w28
+0059d398 bl	#-111936 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d39c ldr	x1, [sp, #168]
+0059d3a0 mov	x0, x19
+0059d3a4 mov	x2, x20
+0059d3a8 mov	w3, #4054
+0059d3ac mov	w4, w21
+0059d3b0 mov	w5, w28
+0059d3b4 bl	#-110108 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059d3b8 ldr	x1, [sp, #176]
+0059d3bc mov	x0, x19
+0059d3c0 mov	x2, x20
+0059d3c4 mov	w3, #4058
+0059d3c8 mov	w4, w21
+0059d3cc mov	w5, w28
+0059d3d0 bl	#-111992 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d3d4 ldr	w8, [x19, #16]
+0059d3d8 movi	v0.2d, #0000000000000000
+0059d3dc sub	x1, x29, #80
+0059d3e0 mov	x2, x19
+0059d3e4 mov	x3, x20
+0059d3e8 mov	w4, #4062
+0059d3ec mov	w5, w21
+0059d3f0 str	w8, [x22, #172]
+0059d3f4 ldr	x0, [x19]
+0059d3f8 stp	q0, q0, [x29, #-80]
+0059d3fc stp	q0, q0, [x29, #-48]
+0059d400 bl	#-117856 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d404 tbz	w0, #0, #48
+0059d408 ldr	w8, [x22, #168]
+0059d40c cbz	w8, #40
+0059d410 ldr	x1, [sp, #184]
+0059d414 adrp	x2, #-3678208
+0059d418 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d41c sub	x0, x29, #80
+0059d420 mov	w3, #4065
+0059d424 mov	w4, w21
+0059d428 mov	w5, #-1
+0059d42c bl	#-112084 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d430 b	#12 -> 59d43c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x13b0
+0059d434 ldr	x8, [sp, #184]
+0059d438 str	wzr, [x8]
+0059d43c sub	x0, x29, #80
+0059d440 bl	#-113596 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d444 add	x1, x22, #180
+0059d448 mov	x0, x19
+0059d44c mov	x2, x20
+0059d450 mov	w3, #4072
+0059d454 mov	w4, w21
+0059d458 mov	w5, w28
+0059d45c bl	#-112132 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d460 ldr	x1, [sp, #192]
+0059d464 mov	x0, x19
+0059d468 mov	x2, x20
+0059d46c mov	w3, #4076
+0059d470 mov	w4, w21
+0059d474 mov	w5, w28
+0059d478 bl	#-112160 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d47c ldr	w8, [x19, #16]
+0059d480 movi	v0.2d, #0000000000000000
+0059d484 sub	x1, x29, #80
+0059d488 mov	x2, x19
+0059d48c mov	x3, x20
+0059d490 mov	w4, #4080
+0059d494 mov	w5, w21
+0059d498 str	w8, [x22, #188]
+0059d49c ldr	x0, [x19]
+0059d4a0 stp	q0, q0, [x29, #-80]
+0059d4a4 stp	q0, q0, [x29, #-48]
+0059d4a8 bl	#-118024 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d4ac tbz	w0, #0, #48
+0059d4b0 ldr	w8, [x22, #184]
+0059d4b4 cbz	w8, #40
+0059d4b8 ldr	x1, [sp, #200]
+0059d4bc adrp	x2, #-3678208
+0059d4c0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d4c4 sub	x0, x29, #80
+0059d4c8 mov	w3, #4083
+0059d4cc mov	w4, w21
+0059d4d0 mov	w5, #-1
+0059d4d4 bl	#-110616 -> 5824bc ParameterFileSymbolTableEntry::Read(float&, char const*, int, unsigned char, unsigned int)
+0059d4d8 b	#12 -> 59d4e4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1458
+0059d4dc ldr	x8, [sp, #200]
+0059d4e0 str	wzr, [x8]
+0059d4e4 sub	x0, x29, #80
+0059d4e8 bl	#-113764 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d4ec add	x1, x22, #196
+0059d4f0 mov	x0, x19
+0059d4f4 mov	x2, x20
+0059d4f8 mov	w3, #4093
+0059d4fc mov	w4, w21
+0059d500 mov	w5, w28
+0059d504 bl	#-112300 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d508 ldr	w8, [x19, #16]
+0059d50c movi	v0.2d, #0000000000000000
+0059d510 sub	x1, x29, #80
+0059d514 mov	x2, x19
+0059d518 mov	x3, x20
+0059d51c mov	w4, #4097
+0059d520 mov	w5, w21
+0059d524 str	w8, [x22, #200]
+0059d528 ldr	x0, [x19]
+0059d52c stp	q0, q0, [x29, #-80]
+0059d530 stp	q0, q0, [x29, #-48]
+0059d534 bl	#-118164 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d538 tbz	w0, #0, #48
+0059d53c ldr	w8, [x22, #196]
+0059d540 cbz	w8, #40
+0059d544 ldr	x1, [sp, #208]
+0059d548 adrp	x2, #-3678208
+0059d54c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d550 sub	x0, x29, #80
+0059d554 mov	w3, #4100
+0059d558 mov	w4, w21
+0059d55c mov	w5, #-1
+0059d560 bl	#-112392 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d564 b	#12 -> 59d570 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x14e4
+0059d568 ldr	x8, [sp, #208]
+0059d56c str	wzr, [x8]
+0059d570 sub	x0, x29, #80
+0059d574 bl	#-113904 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d578 add	x1, x22, #208
+0059d57c mov	x0, x19
+0059d580 mov	x2, x20
+0059d584 mov	w3, #4110
+0059d588 mov	w4, w21
+0059d58c mov	w5, w28
+0059d590 bl	#-112440 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d594 ldr	w8, [x19, #16]
+0059d598 movi	v0.2d, #0000000000000000
+0059d59c sub	x1, x29, #80
+0059d5a0 mov	x2, x19
+0059d5a4 mov	x3, x20
+0059d5a8 mov	w4, #4114
+0059d5ac mov	w5, w21
+0059d5b0 str	w8, [x22, #212]
+0059d5b4 ldr	x0, [x19]
+0059d5b8 stp	q0, q0, [x29, #-80]
+0059d5bc stp	q0, q0, [x29, #-48]
+0059d5c0 bl	#-118304 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d5c4 tbz	w0, #0, #48
+0059d5c8 ldr	w8, [x22, #208]
+0059d5cc cbz	w8, #40
+0059d5d0 adrp	x2, #-3678208
+0059d5d4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d5d8 sub	x0, x29, #80
+0059d5dc mov	x1, x25
+0059d5e0 mov	w3, #4117
+0059d5e4 mov	w4, w21
+0059d5e8 mov	w5, #-1
+0059d5ec bl	#-112532 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d5f0 b	#8 -> 59d5f8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x156c
+0059d5f4 str	wzr, [x25]
+0059d5f8 sub	x0, x29, #80
+0059d5fc bl	#-114040 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d600 add	x1, x22, #220
+0059d604 mov	x0, x19
+0059d608 mov	x2, x20
+0059d60c mov	w3, #4124
+0059d610 mov	w4, w21
+0059d614 mov	w5, w28
+0059d618 bl	#-112576 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d61c add	x1, x22, #224
+0059d620 mov	x0, x19
+0059d624 mov	x2, x20
+0059d628 mov	w3, #4125
+0059d62c mov	w4, w21
+0059d630 mov	w5, w28
+0059d634 bl	#-112604 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d638 add	x1, x22, #228
+0059d63c mov	x0, x19
+0059d640 mov	x2, x20
+0059d644 mov	w3, #4129
+0059d648 mov	w4, w21
+0059d64c mov	w5, w28
+0059d650 bl	#-112632 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d654 ldr	w8, [x19, #16]
+0059d658 movi	v0.2d, #0000000000000000
+0059d65c sub	x1, x29, #80
+0059d660 mov	x2, x19
+0059d664 mov	x3, x20
+0059d668 mov	w4, #4133
+0059d66c mov	w5, w21
+0059d670 str	w8, [x22, #232]
+0059d674 ldr	x0, [x19]
+0059d678 stp	q0, q0, [x29, #-80]
+0059d67c stp	q0, q0, [x29, #-48]
+0059d680 bl	#-118496 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d684 tbz	w0, #0, #168
+0059d688 ldr	w8, [x22, #228]
+0059d68c cbz	w8, #160
+0059d690 sub	x0, x29, #80
+0059d694 mov	w1, #-1
+0059d698 mov	x2, x20
+0059d69c mov	w3, #2540
+0059d6a0 mov	w4, w21
+0059d6a4 bl	#-112968 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059d6a8 mov	x23, x22
+0059d6ac mov	w25, w0
+0059d6b0 ldr	x1, [sp, #216]
+0059d6b4 sub	x0, x29, #80
+0059d6b8 mov	x2, x20
+0059d6bc mov	w3, #2546
+0059d6c0 str	wzr, [x23, #244]!
+0059d6c4 mov	x24, x23
+0059d6c8 mov	w4, w21
+0059d6cc mov	w5, w25
+0059d6d0 stur	wzr, [x23, #-8]
+0059d6d4 str	wzr, [x24, #-4]!
+0059d6d8 bl	#-112768 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d6dc sub	x0, x29, #80
+0059d6e0 mov	x1, x24
+0059d6e4 mov	x2, x20
+0059d6e8 mov	w3, #2547
+0059d6ec mov	w4, w21
+0059d6f0 mov	w5, w25
+0059d6f4 bl	#-112796 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d6f8 sub	x0, x29, #80
+0059d6fc mov	x1, x23
+0059d700 mov	x2, x20
+0059d704 mov	w3, #2548
+0059d708 mov	w4, w21
+0059d70c mov	w5, w25
+0059d710 bl	#-112824 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d714 sub	x0, x29, #80
+0059d718 mov	w1, w25
+0059d71c mov	x2, x20
+0059d720 mov	w3, #2550
+0059d724 bl	#-112720 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059d728 b	#16 -> 59d738 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x16ac
+0059d72c ldr	x8, [sp, #216]
+0059d730 str	wzr, [x8, #8]
+0059d734 str	xzr, [x8]
+0059d738 sub	x0, x29, #80
+0059d73c bl	#-114360 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d740 ldr	x0, [sp, #224]
+0059d744 mov	x1, x19
+0059d748 mov	w2, w21
+0059d74c mov	w3, w28
+0059d750 bl	#-20464 -> 598760 CamX::SettingsInfo::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059d754 add	x1, x22, #264
+0059d758 mov	x0, x19
+0059d75c mov	x2, x20
+0059d760 mov	w3, #4147
+0059d764 mov	w4, w21
+0059d768 mov	w5, w28
+0059d76c bl	#-112916 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d770 ldr	w8, [x19, #16]
+0059d774 movi	v0.2d, #0000000000000000
+0059d778 sub	x1, x29, #80
+0059d77c mov	x2, x19
+0059d780 mov	x3, x20
+0059d784 mov	w4, #4151
+0059d788 mov	w5, w21
+0059d78c str	w8, [x22, #268]
+0059d790 ldr	x0, [x19]
+0059d794 stp	q0, q0, [x29, #-80]
+0059d798 stp	q0, q0, [x29, #-48]
+0059d79c bl	#-118780 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d7a0 tbz	w0, #0, #36
+0059d7a4 ldr	w8, [x22, #264]
+0059d7a8 cbz	w8, #28
+0059d7ac add	x0, x22, #272
+0059d7b0 sub	x1, x29, #80
+0059d7b4 mov	w2, w21
+0059d7b8 mov	w3, #-1
+0059d7bc bl	#-20572 -> 598760 CamX::SettingsInfo::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059d7c0 b	#8 -> 59d7c8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x173c
+0059d7c4 stp	xzr, xzr, [x22, #272]
+0059d7c8 sub	x0, x29, #80
+0059d7cc bl	#-114504 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d7d0 add	x1, x22, #288
+0059d7d4 mov	x0, x19
+0059d7d8 mov	x2, x20
+0059d7dc mov	w3, #4164
+0059d7e0 mov	w4, w21
+0059d7e4 mov	w5, w28
+0059d7e8 bl	#-113040 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d7ec ldr	w8, [x19, #16]
+0059d7f0 movi	v0.2d, #0000000000000000
+0059d7f4 sub	x1, x29, #80
+0059d7f8 mov	x2, x19
+0059d7fc mov	x3, x20
+0059d800 mov	w4, #4168
+0059d804 mov	w5, w21
+0059d808 str	w8, [x22, #292]
+0059d80c ldr	x0, [x19]
+0059d810 stp	q0, q0, [x29, #-80]
+0059d814 stp	q0, q0, [x29, #-48]
+0059d818 bl	#-118904 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d81c tbz	w0, #0, #36
+0059d820 ldr	w8, [x22, #288]
+0059d824 cbz	w8, #28
+0059d828 ldr	x0, [sp, #232]
+0059d82c sub	x1, x29, #80
+0059d830 mov	w2, w21
+0059d834 mov	w3, #-1
+0059d838 bl	#-20696 -> 598760 CamX::SettingsInfo::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059d83c b	#12 -> 59d848 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x17bc
+0059d840 ldr	x8, [sp, #232]
+0059d844 stp	xzr, xzr, [x8]
+0059d848 sub	x0, x29, #80
+0059d84c bl	#-114632 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059d850 add	x20, x22, #312
+0059d854 adrp	x23, #-3678208
+0059d858 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d85c mov	x0, x19
+0059d860 mov	x1, x20
+0059d864 mov	x2, x23
+0059d868 mov	w3, #4183
+0059d86c mov	w4, w21
+0059d870 mov	w5, w28
+0059d874 str	wzr, [x22, #312]
+0059d878 bl	#-113184 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059d87c movi	v0.2d, #0000000000000000
+0059d880 ldr	x0, [x19]
+0059d884 sub	x1, x29, #80
+0059d888 mov	x2, x19
+0059d88c mov	x3, x23
+0059d890 mov	w4, #4188
+0059d894 mov	w5, w21
+0059d898 stp	q0, q0, [x29, #-80]
+0059d89c stp	q0, q0, [x29, #-48]
+0059d8a0 bl	#-119040 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059d8a4 tbz	w0, #0, #356
+0059d8a8 ldr	w6, [x20]
+0059d8ac ldur	w7, [x29, #-32]
+0059d8b0 cmp	x7, x6, lsl #3
+0059d8b4 b.hs	#76
+0059d8b8 ldr	x8, [x19, #8]
+0059d8bc cmp	w7, #8
+0059d8c0 lsr	x9, x7, #3
+0059d8c4 csinc	x23, x9, xzr, hs
+0059d8c8 adrp	x2, #-3678208
+0059d8cc add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d8d0 adrp	x4, #-4644864
+0059d8d4 add	x4, x4, #55 ; 12f037 'Minimun BorderInformation size (%u) * cropInfoCount (%u) exceeds avaialable data (%u), setting cropInfoCount to %u to prevent allocation errors\n'
+0059d8d8 add	x9, x8, #8
+0059d8dc cmp	x8, #0
+0059d8e0 csel	x0, xzr, x9, eq
+0059d8e4 mov	w1, #2
+0059d8e8 mov	w3, #4200
+0059d8ec mov	w5, #8
+0059d8f0 str	x23, [sp]
+0059d8f4 bl	#-2389300 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059d8f8 mov	w6, w23
+0059d8fc str	w23, [x20]
+0059d900 ldur	x8, [x29, #-24]
+0059d904 adrp	x4, #-3678208
+0059d908 add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d90c ldur	x0, [x29, #-80]
+0059d910 ldp	w9, w2, [x29, #-64]
+0059d914 mov	w3, w6
+0059d918 mov	w5, #4185
+0059d91c cmp	x8, #0
+0059d920 cset	w1, ne
+0059d924 str	w9, [x22, #316]
+0059d928 bl	#-118764 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059d92c cbz	x0, #20
+0059d930 ldr	x8, [x0]
+0059d934 cbz	x8, #12
+0059d938 str	x8, [x22, #320]
+0059d93c b	#216 -> 59da14 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1988
+0059d940 ldr	x8, [x22, #320]
+0059d944 cbnz	x8, #208
+0059d948 ldr	w23, [x20]
+0059d94c cbz	w23, #184
+0059d950 lsl	x8, x23, #5
+0059d954 sub	x0, x8, x23, lsl #2
+0059d958 bl	#7242696 -> c85d20 operator new[](unsigned long)@plt
+0059d95c ldur	x8, [x29, #-24]
+0059d960 mov	x3, x0
+0059d964 ldur	x0, [x29, #-80]
+0059d968 adrp	x5, #-3678208
+0059d96c add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d970 ldur	w2, [x29, #-60]
+0059d974 mov	w4, w23
+0059d978 mov	w6, #4185
+0059d97c cmp	x8, #0
+0059d980 str	x3, [x22, #320]
+0059d984 cset	w1, ne
+0059d988 bl	#-118248 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059d98c ldr	x9, [x22, #320]
+0059d990 ldr	w8, [x22, #312]
+0059d994 cbz	x9, #64
+0059d998 cbz	w8, #124
+0059d99c mov	x23, xzr
+0059d9a0 mov	x24, xzr
+0059d9a4 ldr	x8, [x22, #320]
+0059d9a8 sub	x1, x29, #80
+0059d9ac mov	w2, w21
+0059d9b0 mov	w3, #-1
+0059d9b4 add	x0, x8, x23
+0059d9b8 bl	#-9556 -> 59b464 CamX::BorderInformation::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059d9bc ldr	w8, [x22, #312]
+0059d9c0 add	x24, x24, #1
+0059d9c4 add	x23, x23, #28 ; 21b348 '/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d9c8 cmp	x24, x8
+0059d9cc b.lo	#-40
+0059d9d0 b	#56 -> 59da08 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x197c
+0059d9d4 cbz	w8, #48
+0059d9d8 ldr	x8, [x19, #8]
+0059d9dc adrp	x2, #-3678208
+0059d9e0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059d9e4 adrp	x4, #-5115904
+0059d9e8 add	x4, x4, #2927 ; bcb6f 'Failed to allocate cropInfo\n'
+0059d9ec mov	w1, #2
+0059d9f0 mov	w3, #4236
+0059d9f4 add	x9, x8, #8
+0059d9f8 cmp	x8, #0
+0059d9fc csel	x0, xzr, x9, eq
+0059da00 bl	#-2389568 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059da04 str	wzr, [x20]
+0059da08 ldr	x8, [x22, #320]
+0059da0c cbnz	x8, #8
+0059da10 str	wzr, [x20]
+0059da14 sub	x0, x29, #80
+0059da18 bl	#-115092 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059da1c add	x20, x22, #328
+0059da20 adrp	x23, #-3678208
+0059da24 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059da28 mov	x0, x19
+0059da2c mov	x1, x20
+0059da30 mov	x2, x23
+0059da34 mov	w3, #4256
+0059da38 mov	w4, w21
+0059da3c mov	w5, w28
+0059da40 str	wzr, [x22, #328]
+0059da44 bl	#-113644 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059da48 movi	v0.2d, #0000000000000000
+0059da4c ldr	x0, [x19]
+0059da50 sub	x1, x29, #80
+0059da54 mov	x2, x19
+0059da58 mov	x3, x23
+0059da5c mov	w4, #4261
+0059da60 mov	w5, w21
+0059da64 stp	q0, q0, [x29, #-80]
+0059da68 stp	q0, q0, [x29, #-48]
+0059da6c bl	#-119500 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059da70 tbz	w0, #0, #344
+0059da74 ldr	w6, [x20]
+0059da78 ldur	w7, [x29, #-32]
+0059da7c cmp	x7, x6, lsl #3
+0059da80 b.hs	#68
+0059da84 ldr	x8, [x19, #8]
+0059da88 adrp	x2, #-3678208
+0059da8c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059da90 adrp	x4, #-5431296
+0059da94 add	x4, x4, #1311 ; 6f51f 'Minimun ResolutionExposureInformation size (%u) * exposureInfoCount (%u) exceeds avaialable data (%u), setting exposureInfoCount to %u to prevent allocation errors\n'
+0059da98 mov	w1, #2
+0059da9c mov	w3, #4273
+0059daa0 mov	w5, #8
+0059daa4 add	x9, x8, #8
+0059daa8 cmp	x8, #0
+0059daac csel	x0, xzr, x9, eq
+0059dab0 lsr	x23, x7, #3
+0059dab4 str	x23, [sp]
+0059dab8 bl	#-2389752 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059dabc mov	w6, w23
+0059dac0 str	w23, [x20]
+0059dac4 ldur	x8, [x29, #-24]
+0059dac8 adrp	x4, #-3678208
+0059dacc add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dad0 ldur	x0, [x29, #-80]
+0059dad4 ldp	w9, w2, [x29, #-64]
+0059dad8 mov	w3, w6
+0059dadc mov	w5, #4258
+0059dae0 cmp	x8, #0
+0059dae4 cset	w1, ne
+0059dae8 str	w9, [x22, #332]
+0059daec bl	#-119216 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059daf0 cbz	x0, #20
+0059daf4 ldr	x8, [x0]
+0059daf8 cbz	x8, #12
+0059dafc str	x8, [x22, #336]
+0059db00 b	#212 -> 59dbd4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1b48
+0059db04 ldr	x8, [x22, #336]
+0059db08 cbnz	x8, #204
+0059db0c ldr	w23, [x20]
+0059db10 cbz	w23, #180
+0059db14 add	x8, x23, x23, lsl #2
+0059db18 lsl	x0, x8, #5
+0059db1c bl	#7242244 -> c85d20 operator new[](unsigned long)@plt
+0059db20 ldur	x8, [x29, #-24]
+0059db24 mov	x3, x0
+0059db28 ldur	x0, [x29, #-80]
+0059db2c adrp	x5, #-3678208
+0059db30 add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059db34 ldur	w2, [x29, #-60]
+0059db38 mov	w4, w23
+0059db3c mov	w6, #4258
+0059db40 cmp	x8, #0
+0059db44 str	x3, [x22, #336]
+0059db48 cset	w1, ne
+0059db4c bl	#-118700 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059db50 ldr	x9, [x22, #336]
+0059db54 ldr	w8, [x22, #328]
+0059db58 cbz	x9, #60
+0059db5c cbz	w8, #120
+0059db60 mov	x23, xzr
+0059db64 mov	x24, xzr
+0059db68 ldr	x8, [x22, #336]
+0059db6c sub	x1, x29, #80
+0059db70 mov	w2, w21
+0059db74 add	x0, x8, x23
+0059db78 bl	#-12032 -> 59ac78 CamX::ResolutionExposureInformation::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059db7c ldr	w8, [x22, #328]
+0059db80 add	x24, x24, #1
+0059db84 add	x23, x23, #160 ; 21b3cc 'nsitionGroupsEnum\n'
+0059db88 cmp	x24, x8
+0059db8c b.lo	#-36
+0059db90 b	#56 -> 59dbc8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1b3c
+0059db94 cbz	w8, #48
+0059db98 ldr	x8, [x19, #8]
+0059db9c adrp	x2, #-3678208
+0059dba0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dba4 adrp	x4, #-5693440
+0059dba8 add	x4, x4, #3702 ; 2fe76 'Failed to allocate exposureInfo\n'
+0059dbac mov	w1, #2
+0059dbb0 mov	w3, #4309
+0059dbb4 add	x9, x8, #8
+0059dbb8 cmp	x8, #0
+0059dbbc csel	x0, xzr, x9, eq
+0059dbc0 bl	#-2390016 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059dbc4 str	wzr, [x20]
+0059dbc8 ldr	x8, [x22, #336]
+0059dbcc cbnz	x8, #8
+0059dbd0 str	wzr, [x20]
+0059dbd4 sub	x0, x29, #80
+0059dbd8 bl	#-115540 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059dbdc adrp	x20, #-3678208
+0059dbe0 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dbe4 add	x1, x22, #344
+0059dbe8 mov	x0, x19
+0059dbec mov	x2, x20
+0059dbf0 mov	w3, #4327
+0059dbf4 mov	w4, w21
+0059dbf8 mov	w5, w28
+0059dbfc bl	#-114084 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059dc00 ldr	w8, [x19, #16]
+0059dc04 movi	v0.2d, #0000000000000000
+0059dc08 sub	x1, x29, #80
+0059dc0c mov	x2, x19
+0059dc10 mov	x3, x20
+0059dc14 mov	w4, #4331
+0059dc18 mov	w5, w21
+0059dc1c str	w8, [x22, #348]
+0059dc20 ldr	x0, [x19]
+0059dc24 stp	q0, q0, [x29, #-80]
+0059dc28 stp	q0, q0, [x29, #-48]
+0059dc2c bl	#-119948 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059dc30 tbz	w0, #0, #32
+0059dc34 ldr	w8, [x22, #344]
+0059dc38 cbz	w8, #24
+0059dc3c add	x0, x22, #352
+0059dc40 sub	x1, x29, #80
+0059dc44 mov	w2, w21
+0059dc48 bl	#-9748 -> 59b634 CamX::ModeSwitchRegisterInformation::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059dc4c b	#20 -> 59dc60 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1bd4
+0059dc50 add	x0, x22, #352
+0059dc54 mov	w1, wzr
+0059dc58 mov	w2, #144
+0059dc5c bl	#7264244 -> c8b450 memset@plt
+0059dc60 sub	x0, x29, #80
+0059dc64 add	x23, x22, #504
+0059dc68 bl	#-115684 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059dc6c add	x1, x22, #496
+0059dc70 mov	x0, x19
+0059dc74 mov	x2, x20
+0059dc78 mov	w3, #4344
+0059dc7c mov	w4, w21
+0059dc80 mov	w5, w28
+0059dc84 bl	#-114220 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059dc88 ldr	w8, [x19, #16]
+0059dc8c movi	v0.2d, #0000000000000000
+0059dc90 sub	x1, x29, #144
+0059dc94 mov	x2, x19
+0059dc98 mov	x3, x20
+0059dc9c mov	w4, #4348
+0059dca0 mov	w5, w21
+0059dca4 str	w8, [x22, #500]
+0059dca8 ldr	x0, [x19]
+0059dcac stp	q0, q0, [x29, #-144]
+0059dcb0 stp	q0, q0, [x29, #-112]
+0059dcb4 bl	#-120084 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059dcb8 tbz	w0, #0, #192
+0059dcbc ldr	w8, [x22, #496]
+0059dcc0 cbz	w8, #184
+0059dcc4 adrp	x25, #-3678208
+0059dcc8 add	x25, x25, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dccc sub	x0, x29, #144
+0059dcd0 mov	w1, #-1
+0059dcd4 mov	x2, x25
+0059dcd8 mov	w3, #2447
+0059dcdc mov	w4, w21
+0059dce0 bl	#-114564 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059dce4 movi	v0.2d, #0000000000000000
+0059dce8 mov	w20, w0
+0059dcec sub	x0, x29, #144
+0059dcf0 mov	x1, x23
+0059dcf4 mov	x2, x25
+0059dcf8 mov	w3, #2459
+0059dcfc mov	w4, w21
+0059dd00 mov	w5, w20
+0059dd04 str	wzr, [x22, #504]
+0059dd08 add	x24, x22, #512
+0059dd0c str	wzr, [x22, #524]
+0059dd10 str	d0, [x22, #512]
+0059dd14 bl	#-114364 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059dd18 movi	v0.2d, #0000000000000000
+0059dd1c ldur	w8, [x29, #-128]
+0059dd20 ldur	x0, [x29, #-144]
+0059dd24 sub	x1, x29, #80
+0059dd28 sub	x2, x29, #144
+0059dd2c mov	x3, x25
+0059dd30 mov	w4, #2463
+0059dd34 mov	w5, w21
+0059dd38 str	w8, [x22, #508]
+0059dd3c stp	q0, q0, [x29, #-80]
+0059dd40 stp	q0, q0, [x29, #-48]
+0059dd44 bl	#-120228 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059dd48 tbz	w0, #0, #60
+0059dd4c ldr	w8, [x22, #504]
+0059dd50 cbz	w8, #52
+0059dd54 adrp	x2, #-3678208
+0059dd58 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dd5c sub	x0, x29, #80
+0059dd60 mov	x1, x24
+0059dd64 mov	w3, #2466
+0059dd68 mov	w4, w21
+0059dd6c mov	w5, #-1
+0059dd70 bl	#-114456 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059dd74 b	#20 -> 59dd88 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1cfc
+0059dd78 stp	xzr, xzr, [x23]
+0059dd7c str	xzr, [x23, #16]
+0059dd80 b	#188 -> 59de3c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1db0
+0059dd84 str	wzr, [x24]
+0059dd88 sub	x0, x29, #80
+0059dd8c add	x23, x22, #524
+0059dd90 bl	#-115980 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059dd94 adrp	x24, #-3678208
+0059dd98 add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dd9c sub	x0, x29, #144
+0059dda0 add	x1, x22, #516
+0059dda4 mov	x2, x24
+0059dda8 mov	w3, #2476
+0059ddac mov	w4, w21
+0059ddb0 mov	w5, w20
+0059ddb4 bl	#-114524 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ddb8 movi	v0.2d, #0000000000000000
+0059ddbc ldur	w8, [x29, #-128]
+0059ddc0 ldur	x0, [x29, #-144]
+0059ddc4 sub	x1, x29, #80
+0059ddc8 sub	x2, x29, #144
+0059ddcc mov	x3, x24
+0059ddd0 mov	w4, #2480
+0059ddd4 mov	w5, w21
+0059ddd8 str	w8, [x22, #520]
+0059dddc stp	q0, q0, [x29, #-80]
+0059dde0 stp	q0, q0, [x29, #-48]
+0059dde4 bl	#-120388 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059dde8 tbz	w0, #0, #48
+0059ddec ldr	w8, [x22, #516]
+0059ddf0 cbz	w8, #40
+0059ddf4 adrp	x2, #-3678208
+0059ddf8 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ddfc sub	x0, x29, #80
+0059de00 mov	x1, x23
+0059de04 mov	w3, #2483
+0059de08 mov	w4, w21
+0059de0c mov	w5, #-1
+0059de10 bl	#-114616 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059de14 b	#8 -> 59de1c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1d90
+0059de18 str	wzr, [x23]
+0059de1c sub	x0, x29, #80
+0059de20 bl	#-116124 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059de24 adrp	x2, #-3678208
+0059de28 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059de2c sub	x0, x29, #144
+0059de30 mov	w1, w20
+0059de34 mov	w3, #2491
+0059de38 bl	#-114532 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059de3c sub	x0, x29, #144
+0059de40 add	x20, x22, #536
+0059de44 bl	#-116160 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059de48 adrp	x23, #-3678208
+0059de4c add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059de50 add	x1, x22, #528
+0059de54 mov	x0, x19
+0059de58 mov	x2, x23
+0059de5c mov	w3, #4361
+0059de60 mov	w4, w21
+0059de64 mov	w5, w28
+0059de68 bl	#-114704 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059de6c ldr	w8, [x19, #16]
+0059de70 movi	v0.2d, #0000000000000000
+0059de74 sub	x1, x29, #80
+0059de78 mov	x2, x19
+0059de7c mov	x3, x23
+0059de80 mov	w4, #4365
+0059de84 mov	w5, w21
+0059de88 str	w8, [x22, #532]
+0059de8c ldr	x0, [x19]
+0059de90 stp	q0, q0, [x29, #-80]
+0059de94 stp	q0, q0, [x29, #-48]
+0059de98 bl	#-120568 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059de9c tbz	w0, #0, #36
+0059dea0 ldr	w8, [x22, #528]
+0059dea4 cbz	w8, #28
+0059dea8 sub	x0, x29, #80
+0059deac mov	x1, x20
+0059deb0 mov	w2, w21
+0059deb4 mov	w3, #-1
+0059deb8 bl	#-18940 -> 5994bc CamX::ReadEnum_HDRExposureTypeInfo(ParameterFileSymbolTableEntry*, CamX::HDRExposureTypeInfo&, unsigned char, unsigned int) [clone .cfi]
+0059debc b	#8 -> 59dec4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1e38
+0059dec0 str	wzr, [x20]
+0059dec4 sub	x0, x29, #80
+0059dec8 bl	#-116292 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059decc adrp	x20, #-3678208
+0059ded0 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ded4 add	x1, x22, #540
+0059ded8 mov	x0, x19
+0059dedc mov	x2, x20
+0059dee0 mov	w3, #4378
+0059dee4 mov	w4, w21
+0059dee8 mov	w5, w28
+0059deec bl	#-114836 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059def0 ldr	w8, [x19, #16]
+0059def4 movi	v0.2d, #0000000000000000
+0059def8 sub	x1, x29, #80
+0059defc mov	x2, x19
+0059df00 mov	x3, x20
+0059df04 mov	w4, #4382
+0059df08 mov	w5, w21
+0059df0c str	w8, [x22, #544]
+0059df10 ldr	x0, [x19]
+0059df14 stp	q0, q0, [x29, #-80]
+0059df18 stp	q0, q0, [x29, #-48]
+0059df1c bl	#-120700 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059df20 tbz	w0, #0, #36
+0059df24 ldr	w8, [x22, #540]
+0059df28 cbz	w8, #28
+0059df2c sub	x0, x29, #80
+0059df30 mov	x1, x27
+0059df34 mov	w2, w21
+0059df38 mov	w3, #-1
+0059df3c bl	#-18856 -> 599594 CamX::ReadEnum_HDRDCGModeInfo(ParameterFileSymbolTableEntry*, CamX::HDRDCGModeInfo&, unsigned char, unsigned int) [clone .cfi]
+0059df40 b	#8 -> 59df48 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1ebc
+0059df44 str	wzr, [x27]
+0059df48 sub	x0, x29, #80
+0059df4c bl	#-116424 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059df50 add	x1, x22, #552
+0059df54 mov	x0, x19
+0059df58 mov	x2, x20
+0059df5c mov	w3, #4395
+0059df60 mov	w4, w21
+0059df64 mov	w5, w28
+0059df68 bl	#-114960 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059df6c ldr	w8, [x19, #16]
+0059df70 movi	v0.2d, #0000000000000000
+0059df74 sub	x1, x29, #144
+0059df78 mov	x2, x19
+0059df7c mov	x3, x20
+0059df80 mov	w4, #4399
+0059df84 mov	w5, w21
+0059df88 str	w8, [x22, #556]
+0059df8c ldr	x0, [x19]
+0059df90 stp	q0, q0, [x29, #-144]
+0059df94 stp	q0, q0, [x29, #-112]
+0059df98 bl	#-120824 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059df9c tbz	w0, #0, #180
+0059dfa0 ldr	w8, [x22, #552]
+0059dfa4 cbz	w8, #172
+0059dfa8 adrp	x24, #-3678208
+0059dfac add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059dfb0 sub	x0, x29, #144
+0059dfb4 mov	w1, #-1
+0059dfb8 mov	x2, x24
+0059dfbc mov	w3, #3361
+0059dfc0 mov	w4, w21
+0059dfc4 bl	#-115304 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059dfc8 movi	v0.2d, #0000000000000000
+0059dfcc mov	w20, w0
+0059dfd0 ldr	x1, [sp, #240]
+0059dfd4 sub	x0, x29, #144
+0059dfd8 mov	x2, x24
+0059dfdc mov	w3, #3373
+0059dfe0 mov	w4, w21
+0059dfe4 mov	w5, w20
+0059dfe8 str	wzr, [x22, #560]
+0059dfec add	x23, x22, #568
+0059dff0 str	wzr, [x22, #580]
+0059dff4 str	d0, [x22, #568]
+0059dff8 bl	#-115104 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059dffc movi	v0.2d, #0000000000000000
+0059e000 ldur	w8, [x29, #-128]
+0059e004 ldur	x0, [x29, #-144]
+0059e008 sub	x1, x29, #80
+0059e00c sub	x2, x29, #144
+0059e010 mov	x3, x24
+0059e014 mov	w4, #3377
+0059e018 mov	w5, w21
+0059e01c str	w8, [x22, #564]
+0059e020 stp	q0, q0, [x29, #-80]
+0059e024 stp	q0, q0, [x29, #-48]
+0059e028 bl	#-120968 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e02c tbz	w0, #0, #52
+0059e030 ldr	w8, [x22, #560]
+0059e034 cbz	w8, #44
+0059e038 sub	x0, x29, #80
+0059e03c mov	x1, x23
+0059e040 mov	w2, w21
+0059e044 mov	w3, #-1
+0059e048 bl	#-15468 -> 59a3dc CamX::ReadEnum_ZZHDRColorPattern(ParameterFileSymbolTableEntry*, CamX::ZZHDRColorPattern&, unsigned char, unsigned int) [clone .cfi]
+0059e04c b	#24 -> 59e064 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x1fd8
+0059e050 ldr	x8, [sp, #240]
+0059e054 stp	xzr, xzr, [x8]
+0059e058 str	xzr, [x8, #16]
+0059e05c b	#168 -> 59e104 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2078
+0059e060 str	wzr, [x23]
+0059e064 sub	x0, x29, #80
+0059e068 add	x23, x22, #580
+0059e06c bl	#-116712 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e070 sub	x0, x29, #144
+0059e074 add	x1, x22, #572
+0059e078 mov	x2, x24
+0059e07c mov	w3, #3390
+0059e080 mov	w4, w21
+0059e084 mov	w5, w20
+0059e088 bl	#-115248 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e08c movi	v0.2d, #0000000000000000
+0059e090 ldur	w8, [x29, #-128]
+0059e094 ldur	x0, [x29, #-144]
+0059e098 sub	x1, x29, #80
+0059e09c sub	x2, x29, #144
+0059e0a0 mov	x3, x24
+0059e0a4 mov	w4, #3394
+0059e0a8 mov	w5, w21
+0059e0ac str	w8, [x22, #576]
+0059e0b0 stp	q0, q0, [x29, #-80]
+0059e0b4 stp	q0, q0, [x29, #-48]
+0059e0b8 bl	#-121112 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e0bc tbz	w0, #0, #36
+0059e0c0 ldr	w8, [x22, #572]
+0059e0c4 cbz	w8, #28
+0059e0c8 sub	x0, x29, #80
+0059e0cc mov	x1, x23
+0059e0d0 mov	w2, w21
+0059e0d4 mov	w3, #-1
+0059e0d8 bl	#-15812 -> 59a314 CamX::ReadEnum_ZZHDRFirstExposurePattern(ParameterFileSymbolTableEntry*, CamX::ZZHDRFirstExposurePattern&, unsigned char, unsigned int) [clone .cfi]
+0059e0dc b	#8 -> 59e0e4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2058
+0059e0e0 str	wzr, [x23]
+0059e0e4 sub	x0, x29, #80
+0059e0e8 bl	#-116836 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e0ec adrp	x2, #-3682304
+0059e0f0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e0f4 sub	x0, x29, #144
+0059e0f8 mov	w1, w20
+0059e0fc mov	w3, #3405
+0059e100 bl	#-115244 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059e104 sub	x0, x29, #144
+0059e108 bl	#-116868 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e10c adrp	x20, #-3682304
+0059e110 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e114 add	x1, x22, #584
+0059e118 mov	x0, x19
+0059e11c mov	x2, x20
+0059e120 mov	w3, #4412
+0059e124 mov	w4, w21
+0059e128 mov	w5, w28
+0059e12c bl	#-115412 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e130 ldr	w8, [x19, #16]
+0059e134 movi	v0.2d, #0000000000000000
+0059e138 sub	x1, x29, #144
+0059e13c mov	x2, x19
+0059e140 mov	x3, x20
+0059e144 mov	w4, #4416
+0059e148 mov	w5, w21
+0059e14c str	w8, [x22, #588]
+0059e150 ldr	x0, [x19]
+0059e154 stp	q0, q0, [x29, #-144]
+0059e158 stp	q0, q0, [x29, #-112]
+0059e15c bl	#-121276 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e160 tbz	w0, #0, #224
+0059e164 ldr	w8, [x22, #584]
+0059e168 cbz	w8, #216
+0059e16c adrp	x26, #-3682304
+0059e170 add	x26, x26, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e174 sub	x0, x29, #144
+0059e178 mov	w1, #-1
+0059e17c mov	x2, x26
+0059e180 mov	w3, #3192
+0059e184 mov	w4, w21
+0059e188 bl	#-115756 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059e18c movi	v0.2d, #0000000000000000
+0059e190 mov	x25, x27
+0059e194 mov	w23, w0
+0059e198 add	x24, x22, #680
+0059e19c sub	x0, x29, #144
+0059e1a0 add	x1, x22, #592
+0059e1a4 mov	x2, x26
+0059e1a8 mov	w3, #3216
+0059e1ac mov	w4, w21
+0059e1b0 mov	w5, w23
+0059e1b4 str	wzr, [x22, #592]
+0059e1b8 add	x27, x22, #600
+0059e1bc str	d0, [x25, #88]!
+0059e1c0 mov	x20, x25
+0059e1c4 str	xzr, [x22, #664]
+0059e1c8 str	d0, [x22, #600]
+0059e1cc str	d0, [x22, #624]
+0059e1d0 str	d0, [x22, #648]
+0059e1d4 str	d0, [x20, #-24]!
+0059e1d8 str	wzr, [x22, #672]
+0059e1dc str	q0, [x24]
+0059e1e0 str	wzr, [x22, #696]
+0059e1e4 str	q0, [x22, #704]
+0059e1e8 bl	#-115600 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e1ec movi	v0.2d, #0000000000000000
+0059e1f0 ldur	w8, [x29, #-128]
+0059e1f4 ldur	x0, [x29, #-144]
+0059e1f8 sub	x1, x29, #80
+0059e1fc sub	x2, x29, #144
+0059e200 mov	x3, x26
+0059e204 mov	w4, #3220
+0059e208 mov	w5, w21
+0059e20c str	w8, [x22, #596]
+0059e210 stp	q0, q0, [x29, #-80]
+0059e214 stp	q0, q0, [x29, #-48]
+0059e218 bl	#-121464 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e21c tbz	w0, #0, #60
+0059e220 ldr	w8, [x22, #592]
+0059e224 cbz	w8, #52
+0059e228 sub	x0, x29, #80
+0059e22c mov	x1, x27
+0059e230 mov	w2, w21
+0059e234 mov	w3, #-1
+0059e238 bl	#-16404 -> 59a224 CamX::ReadEnum_HDR3ExposureTypeInfo(ParameterFileSymbolTableEntry*, CamX::HDR3ExposureTypeInfo&, unsigned char, unsigned int) [clone .cfi]
+0059e23c b	#32 -> 59e25c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x21d0
+0059e240 movi	v0.2d, #0000000000000000
+0059e244 stp	q0, q0, [x22, #592]
+0059e248 stp	q0, q0, [x22, #624]
+0059e24c stp	q0, q0, [x22, #656]
+0059e250 stp	q0, q0, [x22, #688]
+0059e254 b	#1020 -> 59e650 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x25c4
+0059e258 str	wzr, [x27]
+0059e25c sub	x0, x29, #80
+0059e260 bl	#-117212 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e264 sub	x0, x29, #144
+0059e268 add	x1, x22, #604
+0059e26c mov	x2, x26
+0059e270 mov	w3, #3233
+0059e274 mov	w4, w21
+0059e278 mov	w5, w23
+0059e27c bl	#-115748 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e280 movi	v0.2d, #0000000000000000
+0059e284 ldur	w8, [x29, #-128]
+0059e288 ldur	x0, [x29, #-144]
+0059e28c sub	x1, x29, #80
+0059e290 sub	x2, x29, #144
+0059e294 mov	x3, x26
+0059e298 mov	w4, #3237
+0059e29c mov	w5, w21
+0059e2a0 str	w8, [x22, #608]
+0059e2a4 stp	q0, q0, [x29, #-80]
+0059e2a8 stp	q0, q0, [x29, #-48]
+0059e2ac bl	#-121612 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e2b0 ldur	x27, [x29, #-240]
+0059e2b4 tbz	w0, #0, #48
+0059e2b8 ldr	w8, [x22, #604]
+0059e2bc cbz	w8, #40
+0059e2c0 adrp	x2, #-3682304
+0059e2c4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e2c8 sub	x0, x29, #80
+0059e2cc mov	x1, x20
+0059e2d0 mov	w3, #3240
+0059e2d4 mov	w4, w21
+0059e2d8 mov	w5, #-1
+0059e2dc bl	#-115844 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e2e0 b	#8 -> 59e2e8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x225c
+0059e2e4 str	wzr, [x20]
+0059e2e8 sub	x0, x29, #80
+0059e2ec add	x20, x22, #624
+0059e2f0 bl	#-117356 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e2f4 sub	x0, x29, #144
+0059e2f8 add	x1, x22, #616
+0059e2fc mov	x2, x26
+0059e300 mov	w3, #3250
+0059e304 mov	w4, w21
+0059e308 mov	w5, w23
+0059e30c bl	#-115892 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e310 movi	v0.2d, #0000000000000000
+0059e314 ldur	w8, [x29, #-128]
+0059e318 ldur	x0, [x29, #-144]
+0059e31c sub	x1, x29, #80
+0059e320 sub	x2, x29, #144
+0059e324 mov	x3, x26
+0059e328 mov	w4, #3254
+0059e32c mov	w5, w21
+0059e330 str	w8, [x22, #620]
+0059e334 stp	q0, q0, [x29, #-80]
+0059e338 stp	q0, q0, [x29, #-48]
+0059e33c bl	#-121756 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e340 tbz	w0, #0, #48
+0059e344 ldr	w8, [x22, #616]
+0059e348 cbz	w8, #40
+0059e34c adrp	x2, #-3682304
+0059e350 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e354 sub	x0, x29, #80
+0059e358 mov	x1, x20
+0059e35c mov	w3, #3257
+0059e360 mov	w4, w21
+0059e364 mov	w5, #-1
+0059e368 bl	#-115984 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e36c b	#8 -> 59e374 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x22e8
+0059e370 str	wzr, [x20]
+0059e374 sub	x0, x29, #80
+0059e378 bl	#-117492 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e37c adrp	x20, #-3682304
+0059e380 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e384 sub	x0, x29, #144
+0059e388 add	x1, x22, #628
+0059e38c mov	x2, x20
+0059e390 mov	w3, #3267
+0059e394 mov	w4, w21
+0059e398 mov	w5, w23
+0059e39c bl	#-116036 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e3a0 movi	v0.2d, #0000000000000000
+0059e3a4 ldur	w8, [x29, #-128]
+0059e3a8 ldur	x0, [x29, #-144]
+0059e3ac sub	x1, x29, #80
+0059e3b0 sub	x2, x29, #144
+0059e3b4 mov	x3, x20
+0059e3b8 mov	w4, #3271
+0059e3bc mov	w5, w21
+0059e3c0 str	w8, [x22, #632]
+0059e3c4 stp	q0, q0, [x29, #-80]
+0059e3c8 stp	q0, q0, [x29, #-48]
+0059e3cc bl	#-121900 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e3d0 tbz	w0, #0, #48
+0059e3d4 ldr	w8, [x22, #628]
+0059e3d8 cbz	w8, #40
+0059e3dc adrp	x2, #-3682304
+0059e3e0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e3e4 sub	x0, x29, #80
+0059e3e8 mov	x1, x25
+0059e3ec mov	w3, #3274
+0059e3f0 mov	w4, w21
+0059e3f4 mov	w5, #-1
+0059e3f8 bl	#-116128 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e3fc b	#8 -> 59e404 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2378
+0059e400 str	wzr, [x25]
+0059e404 sub	x0, x29, #80
+0059e408 add	x20, x22, #648
+0059e40c bl	#-117640 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e410 adrp	x25, #-3682304
+0059e414 add	x25, x25, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e418 sub	x0, x29, #144
+0059e41c add	x1, x22, #640
+0059e420 mov	x2, x25
+0059e424 mov	w3, #3284
+0059e428 mov	w4, w21
+0059e42c mov	w5, w23
+0059e430 bl	#-116184 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e434 movi	v0.2d, #0000000000000000
+0059e438 ldur	w8, [x29, #-128]
+0059e43c ldur	x0, [x29, #-144]
+0059e440 sub	x1, x29, #80
+0059e444 sub	x2, x29, #144
+0059e448 mov	x3, x25
+0059e44c mov	w4, #3288
+0059e450 mov	w5, w21
+0059e454 str	w8, [x22, #644]
+0059e458 stp	q0, q0, [x29, #-80]
+0059e45c stp	q0, q0, [x29, #-48]
+0059e460 bl	#-122048 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e464 tbz	w0, #0, #48
+0059e468 ldr	w8, [x22, #640]
+0059e46c cbz	w8, #40
+0059e470 adrp	x2, #-3682304
+0059e474 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e478 sub	x0, x29, #80
+0059e47c mov	x1, x20
+0059e480 mov	w3, #3291
+0059e484 mov	w4, w21
+0059e488 mov	w5, #-1
+0059e48c bl	#-116276 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e490 b	#8 -> 59e498 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x240c
+0059e494 str	wzr, [x20]
+0059e498 sub	x0, x29, #80
+0059e49c add	x20, x22, #664
+0059e4a0 bl	#-117788 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e4a4 sub	x0, x29, #144
+0059e4a8 add	x1, x22, #652
+0059e4ac mov	x2, x25
+0059e4b0 mov	w3, #3301
+0059e4b4 mov	w4, w21
+0059e4b8 mov	w5, w23
+0059e4bc bl	#-116324 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e4c0 movi	v0.2d, #0000000000000000
+0059e4c4 ldur	w8, [x29, #-128]
+0059e4c8 ldur	x0, [x29, #-144]
+0059e4cc sub	x1, x29, #80
+0059e4d0 sub	x2, x29, #144
+0059e4d4 mov	x3, x25
+0059e4d8 mov	w4, #3305
+0059e4dc mov	w5, w21
+0059e4e0 str	w8, [x22, #656]
+0059e4e4 stp	q0, q0, [x29, #-80]
+0059e4e8 stp	q0, q0, [x29, #-48]
+0059e4ec bl	#-122188 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e4f0 tbz	w0, #0, #48
+0059e4f4 ldr	w8, [x22, #652]
+0059e4f8 cbz	w8, #40
+0059e4fc adrp	x2, #-3682304
+0059e500 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e504 sub	x0, x29, #80
+0059e508 mov	x1, x20
+0059e50c mov	w3, #3308
+0059e510 mov	w4, w21
+0059e514 mov	w5, #-1
+0059e518 bl	#-114560 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059e51c b	#8 -> 59e524 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2498
+0059e520 str	xzr, [x20]
+0059e524 sub	x0, x29, #80
+0059e528 bl	#-117924 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e52c adrp	x20, #-3682304
+0059e530 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e534 sub	x0, x29, #144
+0059e538 add	x1, x22, #672
+0059e53c mov	x2, x20
+0059e540 mov	w3, #3318
+0059e544 mov	w4, w21
+0059e548 mov	w5, w23
+0059e54c bl	#-116468 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e550 movi	v0.2d, #0000000000000000
+0059e554 ldur	w8, [x29, #-128]
+0059e558 ldur	x0, [x29, #-144]
+0059e55c sub	x1, x29, #80
+0059e560 sub	x2, x29, #144
+0059e564 mov	x3, x20
+0059e568 mov	w4, #3322
+0059e56c mov	w5, w21
+0059e570 str	w8, [x22, #676]
+0059e574 stp	q0, q0, [x29, #-80]
+0059e578 stp	q0, q0, [x29, #-48]
+0059e57c bl	#-122332 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e580 tbz	w0, #0, #36
+0059e584 ldr	w8, [x22, #672]
+0059e588 cbz	w8, #28
+0059e58c sub	x1, x29, #80
+0059e590 mov	x0, x24
+0059e594 mov	w2, w21
+0059e598 mov	w3, #-1
+0059e59c bl	#-24124 -> 598760 CamX::SettingsInfo::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059e5a0 b	#8 -> 59e5a8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x251c
+0059e5a4 stp	xzr, xzr, [x24]
+0059e5a8 sub	x0, x29, #80
+0059e5ac add	x20, x22, #704
+0059e5b0 bl	#-118060 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e5b4 adrp	x24, #-3682304
+0059e5b8 add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e5bc sub	x0, x29, #144
+0059e5c0 add	x1, x22, #696
+0059e5c4 mov	x2, x24
+0059e5c8 mov	w3, #3335
+0059e5cc mov	w4, w21
+0059e5d0 mov	w5, w23
+0059e5d4 bl	#-116604 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e5d8 movi	v0.2d, #0000000000000000
+0059e5dc ldur	w8, [x29, #-128]
+0059e5e0 ldur	x0, [x29, #-144]
+0059e5e4 sub	x1, x29, #80
+0059e5e8 sub	x2, x29, #144
+0059e5ec mov	x3, x24
+0059e5f0 mov	w4, #3339
+0059e5f4 mov	w5, w21
+0059e5f8 str	w8, [x22, #700]
+0059e5fc stp	q0, q0, [x29, #-80]
+0059e600 stp	q0, q0, [x29, #-48]
+0059e604 bl	#-122468 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e608 tbz	w0, #0, #36
+0059e60c ldr	w8, [x22, #696]
+0059e610 cbz	w8, #28
+0059e614 sub	x1, x29, #80
+0059e618 mov	x0, x20
+0059e61c mov	w2, w21
+0059e620 mov	w3, #-1
+0059e624 bl	#-24260 -> 598760 CamX::SettingsInfo::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+0059e628 b	#8 -> 59e630 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x25a4
+0059e62c stp	xzr, xzr, [x20]
+0059e630 sub	x0, x29, #80
+0059e634 bl	#-118192 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e638 adrp	x2, #-3682304
+0059e63c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e640 sub	x0, x29, #144
+0059e644 mov	w1, w23
+0059e648 mov	w3, #3350
+0059e64c bl	#-116600 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059e650 sub	x0, x29, #144
+0059e654 add	x20, x22, #728
+0059e658 bl	#-118228 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e65c adrp	x23, #-3682304
+0059e660 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e664 add	x1, x22, #720
+0059e668 mov	x0, x19
+0059e66c mov	x2, x23
+0059e670 mov	w3, #4429
+0059e674 mov	w4, w21
+0059e678 mov	w5, w28
+0059e67c bl	#-116772 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e680 ldr	w8, [x19, #16]
+0059e684 movi	v0.2d, #0000000000000000
+0059e688 sub	x1, x29, #80
+0059e68c mov	x2, x19
+0059e690 mov	x3, x23
+0059e694 mov	w4, #4433
+0059e698 mov	w5, w21
+0059e69c str	w8, [x22, #724]
+0059e6a0 ldr	x0, [x19]
+0059e6a4 stp	q0, q0, [x29, #-80]
+0059e6a8 stp	q0, q0, [x29, #-48]
+0059e6ac bl	#-122636 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e6b0 tbz	w0, #0, #48
+0059e6b4 ldr	w8, [x22, #720]
+0059e6b8 cbz	w8, #40
+0059e6bc adrp	x2, #-3682304
+0059e6c0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e6c4 sub	x0, x29, #80
+0059e6c8 mov	x1, x20
+0059e6cc mov	w3, #4436
+0059e6d0 mov	w4, w21
+0059e6d4 mov	w5, #-1
+0059e6d8 bl	#-115888 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+0059e6dc b	#8 -> 59e6e4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2658
+0059e6e0 str	wzr, [x20]
+0059e6e4 sub	x0, x29, #80
+0059e6e8 bl	#-118372 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e6ec adrp	x20, #-3682304
+0059e6f0 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e6f4 add	x1, x22, #732
+0059e6f8 mov	x0, x19
+0059e6fc mov	x2, x20
+0059e700 mov	w3, #4446
+0059e704 mov	w4, w21
+0059e708 mov	w5, w28
+0059e70c bl	#-116916 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e710 ldr	w8, [x19, #16]
+0059e714 movi	v0.2d, #0000000000000000
+0059e718 sub	x1, x29, #80
+0059e71c mov	x2, x19
+0059e720 mov	x3, x20
+0059e724 mov	w4, #4450
+0059e728 mov	w5, w21
+0059e72c str	w8, [x22, #736]
+0059e730 ldr	x0, [x19]
+0059e734 stp	q0, q0, [x29, #-80]
+0059e738 stp	q0, q0, [x29, #-48]
+0059e73c bl	#-122780 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e740 tbz	w0, #0, #48
+0059e744 ldr	w8, [x22, #732]
+0059e748 cbz	w8, #40
+0059e74c ldr	x1, [sp, #248]
+0059e750 adrp	x2, #-3682304
+0059e754 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e758 sub	x0, x29, #80
+0059e75c mov	w3, #4453
+0059e760 mov	w4, w21
+0059e764 mov	w5, #-1
+0059e768 bl	#-116032 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+0059e76c b	#12 -> 59e778 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x26ec
+0059e770 ldr	x8, [sp, #248]
+0059e774 str	wzr, [x8]
+0059e778 sub	x0, x29, #80
+0059e77c add	x20, x22, #752
+0059e780 bl	#-118524 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e784 add	x1, x22, #744
+0059e788 mov	x0, x19
+0059e78c mov	x2, x23
+0059e790 mov	w3, #4463
+0059e794 mov	w4, w21
+0059e798 mov	w5, w28
+0059e79c bl	#-117060 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e7a0 ldr	w8, [x19, #16]
+0059e7a4 movi	v0.2d, #0000000000000000
+0059e7a8 sub	x1, x29, #80
+0059e7ac mov	x2, x19
+0059e7b0 mov	x3, x23
+0059e7b4 mov	w4, #4467
+0059e7b8 mov	w5, w21
+0059e7bc str	w8, [x22, #748]
+0059e7c0 ldr	x0, [x19]
+0059e7c4 stp	q0, q0, [x29, #-80]
+0059e7c8 stp	q0, q0, [x29, #-48]
+0059e7cc bl	#-122924 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e7d0 tbz	w0, #0, #36
+0059e7d4 ldr	w8, [x22, #744]
+0059e7d8 cbz	w8, #28
+0059e7dc sub	x0, x29, #80
+0059e7e0 mov	x1, x20
+0059e7e4 mov	w2, w21
+0059e7e8 mov	w3, #-1
+0059e7ec bl	#-16728 -> 59a694 CamX::ReadEnum_RemosaicType(ParameterFileSymbolTableEntry*, CamX::RemosaicType&, unsigned char, unsigned int) [clone .cfi]
+0059e7f0 b	#8 -> 59e7f8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x276c
+0059e7f4 str	wzr, [x20]
+0059e7f8 sub	x0, x29, #80
+0059e7fc bl	#-118648 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e800 add	x20, x22, #756
+0059e804 mov	x0, x19
+0059e808 mov	x1, x20
+0059e80c mov	x2, x23
+0059e810 mov	w3, #4482
+0059e814 mov	w4, w21
+0059e818 mov	w5, w28
+0059e81c str	wzr, [x22, #756]
+0059e820 bl	#-117192 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e824 movi	v0.2d, #0000000000000000
+0059e828 ldr	x0, [x19]
+0059e82c sub	x1, x29, #80
+0059e830 mov	x2, x19
+0059e834 mov	x3, x23
+0059e838 mov	w4, #4487
+0059e83c mov	w5, w21
+0059e840 stp	q0, q0, [x29, #-80]
+0059e844 stp	q0, q0, [x29, #-48]
+0059e848 bl	#-123048 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059e84c tbz	w0, #0, #352
+0059e850 ldr	w6, [x20]
+0059e854 ldur	w7, [x29, #-32]
+0059e858 cmp	x7, x6, lsl #2
+0059e85c b.hs	#76
+0059e860 ldr	x8, [x19, #8]
+0059e864 cmp	w7, #4
+0059e868 lsr	x9, x7, #2
+0059e86c csinc	x23, x9, xzr, hs
+0059e870 adrp	x2, #-3682304
+0059e874 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e878 adrp	x4, #-3940352
+0059e87c add	x4, x4, #2056 ; 1dc808 'Minimun SensorCapability size (%u) * capabilityCount (%u) exceeds avaialable data (%u), setting capabilityCount to %u to prevent allocation errors\n'
+0059e880 add	x9, x8, #8
+0059e884 cmp	x8, #0
+0059e888 csel	x0, xzr, x9, eq
+0059e88c mov	w1, #2
+0059e890 mov	w3, #4499
+0059e894 mov	w5, #4
+0059e898 str	x23, [sp]
+0059e89c bl	#-2393308 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059e8a0 mov	w6, w23
+0059e8a4 str	w23, [x20]
+0059e8a8 ldur	x8, [x29, #-24]
+0059e8ac adrp	x4, #-3682304
+0059e8b0 add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e8b4 ldur	x0, [x29, #-80]
+0059e8b8 ldp	w9, w2, [x29, #-64]
+0059e8bc mov	w3, w6
+0059e8c0 mov	w5, #4484
+0059e8c4 cmp	x8, #0
+0059e8c8 cset	w1, ne
+0059e8cc str	w9, [x22, #760]
+0059e8d0 bl	#-122772 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059e8d4 cbz	x0, #20
+0059e8d8 ldr	x8, [x0]
+0059e8dc cbz	x8, #12
+0059e8e0 str	x8, [x22, #768]
+0059e8e4 b	#212 -> 59e9b8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x292c
+0059e8e8 ldr	x8, [x22, #768]
+0059e8ec cbnz	x8, #204
+0059e8f0 ldr	w23, [x20]
+0059e8f4 cbz	w23, #180
+0059e8f8 lsl	x0, x23, #2
+0059e8fc bl	#7238692 -> c85d20 operator new[](unsigned long)@plt
+0059e900 ldur	x8, [x29, #-24]
+0059e904 mov	x3, x0
+0059e908 ldur	x0, [x29, #-80]
+0059e90c adrp	x5, #-3682304
+0059e910 add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e914 ldur	w2, [x29, #-60]
+0059e918 mov	w4, w23
+0059e91c mov	w6, #4484
+0059e920 cmp	x8, #0
+0059e924 str	x3, [x22, #768]
+0059e928 cset	w1, ne
+0059e92c bl	#-122252 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059e930 ldr	x9, [x22, #768]
+0059e934 ldr	w8, [x22, #756]
+0059e938 cbz	x9, #64
+0059e93c cbz	w8, #124
+0059e940 mov	x23, xzr
+0059e944 mov	x24, xzr
+0059e948 ldr	x8, [x22, #768]
+0059e94c sub	x0, x29, #80
+0059e950 mov	w2, w21
+0059e954 mov	w3, #-1
+0059e958 add	x1, x8, x23
+0059e95c bl	#-19200 -> 599e5c CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]
+0059e960 ldr	w8, [x22, #756]
+0059e964 add	x24, x24, #1 ; 21b32d 'ut/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e968 add	x23, x23, #4 ; 21b330 'target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e96c cmp	x24, x8
+0059e970 b.lo	#-40
+0059e974 b	#56 -> 59e9ac CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2920
+0059e978 cbz	w8, #48
+0059e97c ldr	x8, [x19, #8]
+0059e980 adrp	x2, #-3682304
+0059e984 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e988 adrp	x4, #-5120000
+0059e98c add	x4, x4, #2956 ; bcb8c 'Failed to allocate capability\n'
+0059e990 mov	w1, #2
+0059e994 mov	w3, #4535
+0059e998 add	x9, x8, #8
+0059e99c cmp	x8, #0
+0059e9a0 csel	x0, xzr, x9, eq
+0059e9a4 bl	#-2393572 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059e9a8 str	wzr, [x20]
+0059e9ac ldr	x8, [x22, #768]
+0059e9b0 cbnz	x8, #8
+0059e9b4 str	wzr, [x20]
+0059e9b8 sub	x0, x29, #80
+0059e9bc add	x20, x22, #784
+0059e9c0 bl	#-119100 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059e9c4 adrp	x23, #-3682304
+0059e9c8 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059e9cc add	x1, x22, #776
+0059e9d0 mov	x0, x19
+0059e9d4 mov	x2, x23
+0059e9d8 mov	w3, #4553
+0059e9dc mov	w4, w21
+0059e9e0 mov	w5, w28
+0059e9e4 bl	#-117644 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059e9e8 ldr	w8, [x19, #16]
+0059e9ec movi	v0.2d, #0000000000000000
+0059e9f0 sub	x1, x29, #80
+0059e9f4 mov	x2, x19
+0059e9f8 mov	x3, x23
+0059e9fc mov	w4, #4557
+0059ea00 mov	w5, w21
+0059ea04 str	w8, [x22, #780]
+0059ea08 ldr	x0, [x19]
+0059ea0c stp	q0, q0, [x29, #-80]
+0059ea10 stp	q0, q0, [x29, #-48]
+0059ea14 bl	#-123508 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ea18 tbz	w0, #0, #48
+0059ea1c ldr	w8, [x22, #776]
+0059ea20 cbz	w8, #40
+0059ea24 adrp	x2, #-3682304
+0059ea28 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ea2c sub	x0, x29, #80
+0059ea30 mov	x1, x20
+0059ea34 mov	w3, #4560
+0059ea38 mov	w4, w21
+0059ea3c mov	w5, #-1
+0059ea40 bl	#-115880 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059ea44 b	#8 -> 59ea4c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x29c0
+0059ea48 str	xzr, [x20]
+0059ea4c sub	x0, x29, #80
+0059ea50 bl	#-119244 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ea54 add	x20, x22, #792
+0059ea58 mov	x0, x19
+0059ea5c mov	x1, x20
+0059ea60 mov	x2, x23
+0059ea64 mov	w3, #4572
+0059ea68 mov	w4, w21
+0059ea6c mov	w5, w28
+0059ea70 str	wzr, [x22, #792]
+0059ea74 bl	#-117788 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ea78 movi	v0.2d, #0000000000000000
+0059ea7c ldr	x0, [x19]
+0059ea80 sub	x1, x29, #80
+0059ea84 mov	x2, x19
+0059ea88 mov	x3, x23
+0059ea8c mov	w4, #4577
+0059ea90 mov	w5, w21
+0059ea94 stp	q0, q0, [x29, #-80]
+0059ea98 stp	q0, q0, [x29, #-48]
+0059ea9c bl	#-123644 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059eaa0 tbz	w0, #0, #344
+0059eaa4 ldr	w6, [x20]
+0059eaa8 ldur	w7, [x29, #-32]
+0059eaac cmp	x7, x6, lsl #2
+0059eab0 b.hs	#68
+0059eab4 ldr	x8, [x19, #8]
+0059eab8 adrp	x2, #-3682304
+0059eabc add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eac0 adrp	x4, #-4071424
+0059eac4 add	x4, x4, #621 ; 1bc26d 'Minimun MipiFlagsType size (%u) * mipiFlagsCount (%u) exceeds avaialable data (%u), setting mipiFlagsCount to %u to prevent allocation errors\n'
+0059eac8 mov	w1, #2
+0059eacc mov	w3, #4589
+0059ead0 mov	w5, #4
+0059ead4 add	x9, x8, #8
+0059ead8 cmp	x8, #0
+0059eadc csel	x0, xzr, x9, eq
+0059eae0 lsr	x23, x7, #2
+0059eae4 str	x23, [sp]
+0059eae8 bl	#-2393896 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059eaec mov	w6, w23
+0059eaf0 str	w23, [x20]
+0059eaf4 ldur	x8, [x29, #-24]
+0059eaf8 adrp	x4, #-3682304
+0059eafc add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eb00 ldur	x0, [x29, #-80]
+0059eb04 ldp	w9, w2, [x29, #-64]
+0059eb08 mov	w3, w6
+0059eb0c mov	w5, #4574
+0059eb10 cmp	x8, #0
+0059eb14 cset	w1, ne
+0059eb18 str	w9, [x22, #796]
+0059eb1c bl	#-123360 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059eb20 cbz	x0, #20
+0059eb24 ldr	x8, [x0]
+0059eb28 cbz	x8, #12
+0059eb2c str	x8, [x22, #800]
+0059eb30 b	#212 -> 59ec04 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2b78
+0059eb34 ldr	x8, [x22, #800]
+0059eb38 cbnz	x8, #204
+0059eb3c ldr	w23, [x20]
+0059eb40 cbz	w23, #180
+0059eb44 lsl	x0, x23, #2
+0059eb48 bl	#7238104 -> c85d20 operator new[](unsigned long)@plt
+0059eb4c ldur	x8, [x29, #-24]
+0059eb50 mov	x3, x0
+0059eb54 ldur	x0, [x29, #-80]
+0059eb58 adrp	x5, #-3682304
+0059eb5c add	x5, x5, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eb60 ldur	w2, [x29, #-60]
+0059eb64 mov	w4, w23
+0059eb68 mov	w6, #4574
+0059eb6c cmp	x8, #0
+0059eb70 str	x3, [x22, #800]
+0059eb74 cset	w1, ne
+0059eb78 bl	#-122840 -> 580ba0 ParameterFileSymbolTable::SetDupObject(bool, unsigned int, void*, unsigned int, char const*, unsigned int)
+0059eb7c ldr	x9, [x22, #800]
+0059eb80 ldr	w8, [x22, #792]
+0059eb84 cbz	x9, #64
+0059eb88 cbz	w8, #124
+0059eb8c mov	x23, xzr
+0059eb90 mov	x24, xzr
+0059eb94 ldr	x8, [x22, #800]
+0059eb98 sub	x0, x29, #80
+0059eb9c mov	w2, w21
+0059eba0 mov	w3, #-1
+0059eba4 add	x1, x8, x23
+0059eba8 bl	#-19036 -> 59a14c CamX::ReadEnum_MipiFlagsType(ParameterFileSymbolTableEntry*, CamX::MipiFlagsType&, unsigned char, unsigned int) [clone .cfi]
+0059ebac ldr	w8, [x22, #792]
+0059ebb0 add	x24, x24, #1 ; 21b32e 't/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ebb4 add	x23, x23, #4 ; 21b330 'target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ebb8 cmp	x24, x8
+0059ebbc b.lo	#-40
+0059ebc0 b	#56 -> 59ebf8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2b6c
+0059ebc4 cbz	w8, #48
+0059ebc8 ldr	x8, [x19, #8]
+0059ebcc adrp	x2, #-3682304
+0059ebd0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ebd4 adrp	x4, #-5496832
+0059ebd8 add	x4, x4, #639 ; 6027f 'Failed to allocate mipiFlags\n'
+0059ebdc mov	w1, #2
+0059ebe0 mov	w3, #4625
+0059ebe4 add	x9, x8, #8
+0059ebe8 cmp	x8, #0
+0059ebec csel	x0, xzr, x9, eq
+0059ebf0 bl	#-2394160 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059ebf4 str	wzr, [x20]
+0059ebf8 ldr	x8, [x22, #800]
+0059ebfc cbnz	x8, #8
+0059ec00 str	wzr, [x20]
+0059ec04 sub	x0, x29, #80
+0059ec08 add	x20, x22, #816
+0059ec0c bl	#-119688 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ec10 adrp	x23, #-3682304
+0059ec14 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ec18 add	x1, x22, #808
+0059ec1c mov	x0, x19
+0059ec20 mov	x2, x23
+0059ec24 mov	w3, #4643
+0059ec28 mov	w4, w21
+0059ec2c mov	w5, w28
+0059ec30 bl	#-118232 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ec34 ldr	w8, [x19, #16]
+0059ec38 movi	v0.2d, #0000000000000000
+0059ec3c sub	x1, x29, #80
+0059ec40 mov	x2, x19
+0059ec44 mov	x3, x23
+0059ec48 mov	w4, #4647
+0059ec4c mov	w5, w21
+0059ec50 str	w8, [x22, #812]
+0059ec54 ldr	x0, [x19]
+0059ec58 stp	q0, q0, [x29, #-80]
+0059ec5c stp	q0, q0, [x29, #-48]
+0059ec60 bl	#-124096 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ec64 tbz	w0, #0, #48
+0059ec68 ldr	w8, [x22, #808]
+0059ec6c cbz	w8, #40
+0059ec70 adrp	x2, #-3682304
+0059ec74 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ec78 sub	x0, x29, #80
+0059ec7c mov	x1, x20
+0059ec80 mov	w3, #4650
+0059ec84 mov	w4, w21
+0059ec88 mov	w5, #-1
+0059ec8c bl	#-116468 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059ec90 b	#8 -> 59ec98 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2c0c
+0059ec94 str	xzr, [x20]
+0059ec98 sub	x0, x29, #80
+0059ec9c add	x20, x22, #832
+0059eca0 bl	#-119836 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059eca4 add	x1, x22, #824
+0059eca8 mov	x0, x19
+0059ecac mov	x2, x23
+0059ecb0 mov	w3, #4660
+0059ecb4 mov	w4, w21
+0059ecb8 mov	w5, w28
+0059ecbc bl	#-118372 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ecc0 ldr	w8, [x19, #16]
+0059ecc4 movi	v0.2d, #0000000000000000
+0059ecc8 sub	x1, x29, #80
+0059eccc mov	x2, x19
+0059ecd0 mov	x3, x23
+0059ecd4 mov	w4, #4664
+0059ecd8 mov	w5, w21
+0059ecdc str	w8, [x22, #828]
+0059ece0 ldr	x0, [x19]
+0059ece4 stp	q0, q0, [x29, #-80]
+0059ece8 stp	q0, q0, [x29, #-48]
+0059ecec bl	#-124236 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ecf0 tbz	w0, #0, #48
+0059ecf4 ldr	w8, [x22, #824]
+0059ecf8 cbz	w8, #40
+0059ecfc adrp	x2, #-3682304
+0059ed00 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ed04 sub	x0, x29, #80
+0059ed08 mov	x1, x20
+0059ed0c mov	w3, #4667
+0059ed10 mov	w4, w21
+0059ed14 mov	w5, #-1
+0059ed18 bl	#-116608 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059ed1c b	#8 -> 59ed24 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2c98
+0059ed20 str	xzr, [x20]
+0059ed24 sub	x0, x29, #80
+0059ed28 add	x20, x22, #848
+0059ed2c bl	#-119976 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ed30 add	x1, x22, #840
+0059ed34 mov	x0, x19
+0059ed38 mov	x2, x23
+0059ed3c mov	w3, #4677
+0059ed40 mov	w4, w21
+0059ed44 mov	w5, w28
+0059ed48 bl	#-118512 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ed4c ldr	w8, [x19, #16]
+0059ed50 movi	v0.2d, #0000000000000000
+0059ed54 sub	x1, x29, #80
+0059ed58 mov	x2, x19
+0059ed5c mov	x3, x23
+0059ed60 mov	w4, #4681
+0059ed64 mov	w5, w21
+0059ed68 str	w8, [x22, #844]
+0059ed6c ldr	x0, [x19]
+0059ed70 stp	q0, q0, [x29, #-80]
+0059ed74 stp	q0, q0, [x29, #-48]
+0059ed78 bl	#-124376 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ed7c tbz	w0, #0, #48
+0059ed80 ldr	w8, [x22, #840]
+0059ed84 cbz	w8, #40
+0059ed88 adrp	x2, #-3682304
+0059ed8c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ed90 sub	x0, x29, #80
+0059ed94 mov	x1, x20
+0059ed98 mov	w3, #4684
+0059ed9c mov	w4, w21
+0059eda0 mov	w5, #-1
+0059eda4 bl	#-118604 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059eda8 b	#8 -> 59edb0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2d24
+0059edac str	wzr, [x20]
+0059edb0 sub	x0, x29, #80
+0059edb4 add	x20, x22, #860
+0059edb8 bl	#-120116 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059edbc add	x1, x22, #852
+0059edc0 mov	x0, x19
+0059edc4 mov	x2, x23
+0059edc8 mov	w3, #4694
+0059edcc mov	w4, w21
+0059edd0 mov	w5, w28
+0059edd4 bl	#-118652 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059edd8 ldr	w8, [x19, #16]
+0059eddc movi	v0.2d, #0000000000000000
+0059ede0 sub	x1, x29, #80
+0059ede4 mov	x2, x19
+0059ede8 mov	x3, x23
+0059edec mov	w4, #4698
+0059edf0 mov	w5, w21
+0059edf4 str	w8, [x22, #856]
+0059edf8 ldr	x0, [x19]
+0059edfc stp	q0, q0, [x29, #-80]
+0059ee00 stp	q0, q0, [x29, #-48]
+0059ee04 bl	#-124516 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ee08 tbz	w0, #0, #48
+0059ee0c ldr	w8, [x22, #852]
+0059ee10 cbz	w8, #40
+0059ee14 adrp	x2, #-3682304
+0059ee18 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ee1c sub	x0, x29, #80
+0059ee20 mov	x1, x20
+0059ee24 mov	w3, #4701
+0059ee28 mov	w4, w21
+0059ee2c mov	w5, #-1
+0059ee30 bl	#-118744 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ee34 b	#8 -> 59ee3c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2db0
+0059ee38 str	wzr, [x20]
+0059ee3c sub	x0, x29, #80
+0059ee40 bl	#-120252 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ee44 add	x20, x22, #864
+0059ee48 mov	x0, x19
+0059ee4c mov	x1, x20
+0059ee50 mov	x2, x23
+0059ee54 mov	w3, #4713
+0059ee58 mov	w4, w21
+0059ee5c mov	w5, w28
+0059ee60 str	wzr, [x22, #864]
+0059ee64 bl	#-118796 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ee68 movi	v0.2d, #0000000000000000
+0059ee6c ldr	x0, [x19]
+0059ee70 sub	x1, x29, #80
+0059ee74 mov	x2, x19
+0059ee78 mov	x3, x23
+0059ee7c mov	w4, #4718
+0059ee80 mov	w5, w21
+0059ee84 stp	q0, q0, [x29, #-80]
+0059ee88 stp	q0, q0, [x29, #-48]
+0059ee8c bl	#-124652 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ee90 tbz	w0, #0, #320
+0059ee94 ldr	w6, [x20]
+0059ee98 ldur	w7, [x29, #-32]
+0059ee9c cmp	x7, x6, lsl #2
+0059eea0 b.hs	#76
+0059eea4 ldr	x8, [x19, #8]
+0059eea8 cmp	w7, #4
+0059eeac lsr	x9, x7, #2
+0059eeb0 csinc	x23, x9, xzr, hs
+0059eeb4 adrp	x2, #-3682304
+0059eeb8 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eebc adrp	x4, #-4141056
+0059eec0 add	x4, x4, #3209 ; 1abc89 'Minimun UINT32 size (%u) * prohibitedLineCountCount (%u) exceeds avaialable data (%u), setting prohibitedLineCountCount to %u to prevent allocation errors\n'
+0059eec4 add	x9, x8, #8
+0059eec8 cmp	x8, #0
+0059eecc csel	x0, xzr, x9, eq
+0059eed0 mov	w1, #2
+0059eed4 mov	w3, #4730
+0059eed8 mov	w5, #4
+0059eedc str	x23, [sp]
+0059eee0 bl	#-2394912 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059eee4 mov	w6, w23
+0059eee8 str	w23, [x20]
+0059eeec ldur	x8, [x29, #-24]
+0059eef0 adrp	x4, #-3682304
+0059eef4 add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eef8 ldur	x0, [x29, #-80]
+0059eefc ldp	w9, w2, [x29, #-64]
+0059ef00 mov	w3, w6
+0059ef04 mov	w5, #4715
+0059ef08 cmp	x8, #0
+0059ef0c cset	w1, ne
+0059ef10 str	w9, [x22, #868]
+0059ef14 bl	#-124376 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059ef18 cbz	x0, #20
+0059ef1c ldr	x8, [x0]
+0059ef20 cbz	x8, #12
+0059ef24 str	x8, [x22, #872]
+0059ef28 b	#180 -> 59efdc CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2f50
+0059ef2c ldr	x8, [x22, #872]
+0059ef30 cbnz	x8, #172
+0059ef34 ldr	w3, [x20]
+0059ef38 cbz	w3, #148
+0059ef3c ldur	x0, [x29, #-56]
+0059ef40 cbz	x0, #52
+0059ef44 ldur	x8, [x29, #-72]
+0059ef48 mov	w4, w21
+0059ef4c ldur	w1, [x29, #-32]
+0059ef50 add	x9, x8, #8
+0059ef54 cmp	x8, #0
+0059ef58 sub	x8, x29, #80
+0059ef5c csel	x5, xzr, x9, eq
+0059ef60 add	x2, x8, #44
+0059ef64 bl	#-64816 -> 58f234 unsigned int* ParameterUtils::ReadArray<unsigned int>(unsigned char const*, unsigned int, unsigned int&, unsigned int, unsigned char, IParameterLoggingAPI*) [clone .cfi]
+0059ef68 cbz	x0, #12
+0059ef6c str	x0, [x22, #872]
+0059ef70 b	#108 -> 59efdc CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2f50
+0059ef74 adrp	x2, #-3682304
+0059ef78 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ef7c adrp	x4, #-4919296
+0059ef80 add	x4, x4, #211 ; ed0d3 'Insufficient data to read array from symbol table entry\n'
+0059ef84 mov	x0, xzr
+0059ef88 mov	w1, #1
+0059ef8c mov	w3, #4759
+0059ef90 bl	#-2395088 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059ef94 ldr	w8, [x22, #864]
+0059ef98 str	xzr, [x22, #872]
+0059ef9c cbz	w8, #48
+0059efa0 ldr	x8, [x19, #8]
+0059efa4 adrp	x2, #-3682304
+0059efa8 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059efac adrp	x4, #-3682304
+0059efb0 add	x4, x4, #991 ; 21b3df 'Failed to allocate prohibitedLineCount\n'
+0059efb4 mov	w1, #2
+0059efb8 mov	w3, #4766
+0059efbc add	x9, x8, #8
+0059efc0 cmp	x8, #0
+0059efc4 csel	x0, xzr, x9, eq
+0059efc8 bl	#-2395144 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059efcc str	wzr, [x20]
+0059efd0 ldr	x8, [x22, #872]
+0059efd4 cbnz	x8, #8
+0059efd8 str	wzr, [x20]
+0059efdc sub	x0, x29, #80
+0059efe0 add	x20, x22, #888
+0059efe4 bl	#-120672 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059efe8 adrp	x23, #-3682304
+0059efec add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059eff0 add	x1, x22, #880
+0059eff4 mov	x0, x19
+0059eff8 mov	x2, x23
+0059effc mov	w3, #4780
+0059f000 mov	w4, w21
+0059f004 mov	w5, w28
+0059f008 bl	#-119216 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f00c ldr	w8, [x19, #16]
+0059f010 movi	v0.2d, #0000000000000000
+0059f014 sub	x1, x29, #80
+0059f018 mov	x2, x19
+0059f01c mov	x3, x23
+0059f020 mov	w4, #4784
+0059f024 mov	w5, w21
+0059f028 str	w8, [x22, #884]
+0059f02c ldr	x0, [x19]
+0059f030 stp	q0, q0, [x29, #-80]
+0059f034 stp	q0, q0, [x29, #-48]
+0059f038 bl	#-125080 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f03c tbz	w0, #0, #48
+0059f040 ldr	w8, [x22, #880]
+0059f044 cbz	w8, #40
+0059f048 adrp	x2, #-3686400
+0059f04c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f050 sub	x0, x29, #80
+0059f054 mov	x1, x20
+0059f058 mov	w3, #4787
+0059f05c mov	w4, w21
+0059f060 mov	w5, #-1
+0059f064 bl	#-119308 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f068 b	#8 -> 59f070 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x2fe4
+0059f06c str	wzr, [x20]
+0059f070 sub	x0, x29, #80
+0059f074 add	x23, x27, #352 ; 21b48c 'tSettingsCount to %u to prevent allocation errors\n'
+0059f078 bl	#-120820 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f07c adrp	x20, #-3686400
+0059f080 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f084 add	x1, x22, #892
+0059f088 mov	x0, x19
+0059f08c mov	x2, x20
+0059f090 mov	w3, #4797
+0059f094 mov	w4, w21
+0059f098 mov	w5, w28
+0059f09c bl	#-119364 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f0a0 ldr	w8, [x19, #16]
+0059f0a4 movi	v0.2d, #0000000000000000
+0059f0a8 sub	x1, x29, #144
+0059f0ac mov	x2, x19
+0059f0b0 mov	x3, x20
+0059f0b4 mov	w4, #4801
+0059f0b8 mov	w5, w21
+0059f0bc str	w8, [x22, #896]
+0059f0c0 ldr	x0, [x19]
+0059f0c4 stp	q0, q0, [x29, #-144]
+0059f0c8 stp	q0, q0, [x29, #-112]
+0059f0cc bl	#-125228 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f0d0 tbz	w0, #0, #192
+0059f0d4 ldr	w8, [x22, #892]
+0059f0d8 cbz	w8, #184
+0059f0dc adrp	x25, #-3686400
+0059f0e0 add	x25, x25, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f0e4 sub	x0, x29, #144
+0059f0e8 mov	w1, #-1
+0059f0ec mov	x2, x25
+0059f0f0 mov	w3, #2502
+0059f0f4 mov	w4, w21
+0059f0f8 bl	#-119708 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059f0fc mov	w20, w0
+0059f100 sub	x0, x29, #144
+0059f104 mov	x1, x23
+0059f108 mov	w2, w21
+0059f10c mov	w3, w20
+0059f110 add	x24, x22, #912
+0059f114 str	xzr, [x23]
+0059f118 str	wzr, [x22, #912]
+0059f11c bl	#-23216 -> 59966c CamX::ReadEnum_QCFAHDRTypeInfo(ParameterFileSymbolTableEntry*, CamX::QCFAHDRTypeInfo&, unsigned char, unsigned int) [clone .cfi]
+0059f120 sub	x0, x29, #144
+0059f124 add	x1, x22, #904
+0059f128 mov	x2, x25
+0059f12c mov	w3, #2514
+0059f130 mov	w4, w21
+0059f134 mov	w5, w20
+0059f138 bl	#-119520 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f13c movi	v0.2d, #0000000000000000
+0059f140 ldur	w8, [x29, #-128]
+0059f144 ldur	x0, [x29, #-144]
+0059f148 sub	x1, x29, #80
+0059f14c sub	x2, x29, #144
+0059f150 mov	x3, x25
+0059f154 mov	w4, #2518
+0059f158 mov	w5, w21
+0059f15c str	w8, [x22, #908]
+0059f160 stp	q0, q0, [x29, #-80]
+0059f164 stp	q0, q0, [x29, #-48]
+0059f168 bl	#-125384 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f16c tbz	w0, #0, #44
+0059f170 ldr	w8, [x22, #904]
+0059f174 cbz	w8, #36
+0059f178 sub	x0, x29, #80
+0059f17c mov	x1, x24
+0059f180 mov	w2, w21
+0059f184 mov	w3, #-1
+0059f188 bl	#-23108 -> 599744 CamX::ReadEnum_QCFAHDRPatternInfo(ParameterFileSymbolTableEntry*, CamX::QCFAHDRPatternInfo&, unsigned char, unsigned int) [clone .cfi]
+0059f18c b	#16 -> 59f19c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3110
+0059f190 stp	xzr, xzr, [x23]
+0059f194 b	#40 -> 59f1bc CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3130
+0059f198 str	wzr, [x24]
+0059f19c sub	x0, x29, #80
+0059f1a0 bl	#-121116 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f1a4 adrp	x2, #-3686400
+0059f1a8 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f1ac sub	x0, x29, #144
+0059f1b0 mov	w1, w20
+0059f1b4 mov	w3, #2529
+0059f1b8 bl	#-119524 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059f1bc sub	x0, x29, #144
+0059f1c0 bl	#-121148 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f1c4 adrp	x20, #-3686400
+0059f1c8 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f1cc add	x1, x22, #916
+0059f1d0 mov	x0, x19
+0059f1d4 mov	x2, x20
+0059f1d8 mov	w3, #4814
+0059f1dc mov	w4, w21
+0059f1e0 mov	w5, w28
+0059f1e4 bl	#-119692 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f1e8 ldr	w8, [x19, #16]
+0059f1ec movi	v0.2d, #0000000000000000
+0059f1f0 sub	x1, x29, #144
+0059f1f4 mov	x2, x19
+0059f1f8 mov	x3, x20
+0059f1fc mov	w4, #4818
+0059f200 mov	w5, w21
+0059f204 str	w8, [x22, #920]
+0059f208 ldr	x0, [x19]
+0059f20c stp	q0, q0, [x29, #-144]
+0059f210 stp	q0, q0, [x29, #-112]
+0059f214 bl	#-125556 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f218 tbz	w0, #0, #380
+0059f21c ldr	w8, [x22, #916]
+0059f220 cbz	w8, #372
+0059f224 adrp	x24, #-3686400
+0059f228 add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f22c sub	x0, x29, #144
+0059f230 mov	w1, #-1
+0059f234 mov	x2, x24
+0059f238 mov	w3, #3044
+0059f23c mov	w4, w21
+0059f240 bl	#-120036 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059f244 movi	v0.2d, #0000000000000000
+0059f248 mov	w23, w0
+0059f24c sub	x0, x29, #144
+0059f250 add	x1, x22, #928
+0059f254 mov	w2, w21
+0059f258 mov	w3, w23
+0059f25c str	wzr, [x22, #936]
+0059f260 str	xzr, [x22, #952]
+0059f264 str	wzr, [x22, #960]
+0059f268 str	d0, [x22, #928]
+0059f26c str	wzr, [x22, #968]
+0059f270 bl	#-19620 -> 59a5cc CamX::ReadEnum_PhaseType(ParameterFileSymbolTableEntry*, CamX::PhaseType&, unsigned char, unsigned int) [clone .cfi]
+0059f274 sub	x0, x29, #144
+0059f278 add	x1, x22, #932
+0059f27c mov	x2, x24
+0059f280 mov	w3, #3056
+0059f284 mov	w4, w21
+0059f288 mov	w5, w23
+0059f28c bl	#-118884 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+0059f290 sub	x0, x29, #144
+0059f294 add	x1, x22, #936
+0059f298 mov	x2, x24
+0059f29c mov	w3, #3057
+0059f2a0 mov	w4, w21
+0059f2a4 mov	w5, w23
+0059f2a8 bl	#-118912 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+0059f2ac add	x20, x22, #940
+0059f2b0 sub	x0, x29, #144
+0059f2b4 mov	x1, x20
+0059f2b8 mov	x2, x24
+0059f2bc mov	w3, #3063
+0059f2c0 mov	w4, w21
+0059f2c4 mov	w5, w23
+0059f2c8 str	wzr, [x22, #940]
+0059f2cc bl	#-119924 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f2d0 movi	v0.2d, #0000000000000000
+0059f2d4 ldur	x0, [x29, #-144]
+0059f2d8 sub	x1, x29, #80
+0059f2dc sub	x2, x29, #144
+0059f2e0 mov	x3, x24
+0059f2e4 mov	w4, #3068
+0059f2e8 mov	w5, w21
+0059f2ec stp	q0, q0, [x29, #-80]
+0059f2f0 stp	q0, q0, [x29, #-48]
+0059f2f4 bl	#-125780 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f2f8 tbz	w0, #0, #336
+0059f2fc ldr	w6, [x20]
+0059f300 ldur	w7, [x29, #-32]
+0059f304 cmp	x7, x6, lsl #2
+0059f308 b.hs	#76
+0059f30c ldur	x8, [x29, #-136]
+0059f310 cmp	w7, #4
+0059f314 lsr	x9, x7, #2
+0059f318 csinc	x24, x9, xzr, hs
+0059f31c adrp	x2, #-3686400
+0059f320 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f324 adrp	x4, #-3944448
+0059f328 add	x4, x4, #1866 ; 1dc74a 'Minimun UINT32 size (%u) * frequencyModulationCount (%u) exceeds avaialable data (%u), setting frequencyModulationCount to %u to prevent allocation errors\n'
+0059f32c add	x9, x8, #8
+0059f330 cmp	x8, #0
+0059f334 csel	x0, xzr, x9, eq
+0059f338 mov	w1, #2
+0059f33c mov	w3, #3080
+0059f340 mov	w5, #4
+0059f344 str	x24, [sp]
+0059f348 bl	#-2396040 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059f34c mov	w6, w24
+0059f350 str	w24, [x20]
+0059f354 ldur	x8, [x29, #-24]
+0059f358 adrp	x4, #-3686400
+0059f35c add	x4, x4, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f360 ldur	x0, [x29, #-80]
+0059f364 ldp	w9, w2, [x29, #-64]
+0059f368 mov	w3, w6
+0059f36c mov	w5, #3065
+0059f370 cmp	x8, #0
+0059f374 cset	w1, ne
+0059f378 str	w9, [x22, #944]
+0059f37c bl	#-125504 -> 58093c ParameterFileSymbolTable::GetDupObject(bool, unsigned int, unsigned int, char const*, unsigned int)
+0059f380 cbz	x0, #36
+0059f384 ldr	x8, [x0]
+0059f388 cbz	x8, #28
+0059f38c str	x8, [x22, #952]
+0059f390 b	#196 -> 59f454 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x33c8
+0059f394 movi	v0.2d, #0000000000000000
+0059f398 stp	q0, q0, [x22, #944]
+0059f39c str	q0, [x22, #928]
+0059f3a0 b	#360 -> 59f508 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x347c
+0059f3a4 ldr	x8, [x22, #952]
+0059f3a8 cbnz	x8, #172
+0059f3ac ldr	w3, [x20]
+0059f3b0 cbz	w3, #148
+0059f3b4 ldur	x0, [x29, #-56]
+0059f3b8 cbz	x0, #52
+0059f3bc ldur	x8, [x29, #-72]
+0059f3c0 mov	w4, w21
+0059f3c4 ldur	w1, [x29, #-32]
+0059f3c8 add	x9, x8, #8
+0059f3cc cmp	x8, #0
+0059f3d0 sub	x8, x29, #80
+0059f3d4 csel	x5, xzr, x9, eq
+0059f3d8 add	x2, x8, #44
+0059f3dc bl	#-65960 -> 58f234 unsigned int* ParameterUtils::ReadArray<unsigned int>(unsigned char const*, unsigned int, unsigned int&, unsigned int, unsigned char, IParameterLoggingAPI*) [clone .cfi]
+0059f3e0 cbz	x0, #12
+0059f3e4 str	x0, [x22, #952]
+0059f3e8 b	#108 -> 59f454 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x33c8
+0059f3ec adrp	x2, #-3686400
+0059f3f0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f3f4 adrp	x4, #-4923392
+0059f3f8 add	x4, x4, #211 ; ed0d3 'Insufficient data to read array from symbol table entry\n'
+0059f3fc mov	x0, xzr
+0059f400 mov	w1, #1
+0059f404 mov	w3, #3109
+0059f408 bl	#-2396232 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059f40c ldr	w8, [x22, #940]
+0059f410 str	xzr, [x22, #952]
+0059f414 cbz	w8, #48
+0059f418 ldur	x8, [x29, #-136]
+0059f41c adrp	x2, #-3686400
+0059f420 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f424 adrp	x4, #-4075520
+0059f428 add	x4, x4, #581 ; 1bc245 'Failed to allocate frequencyModulation\n'
+0059f42c mov	w1, #2
+0059f430 mov	w3, #3116
+0059f434 add	x9, x8, #8
+0059f438 cmp	x8, #0
+0059f43c csel	x0, xzr, x9, eq
+0059f440 bl	#-2396288 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+0059f444 str	wzr, [x20]
+0059f448 ldr	x8, [x22, #952]
+0059f44c cbnz	x8, #8
+0059f450 str	wzr, [x20]
+0059f454 sub	x0, x29, #80
+0059f458 add	x20, x22, #968
+0059f45c bl	#-121816 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f460 adrp	x24, #-3686400
+0059f464 add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f468 sub	x0, x29, #144
+0059f46c add	x1, x22, #960
+0059f470 mov	x2, x24
+0059f474 mov	w3, #3130
+0059f478 mov	w4, w21
+0059f47c mov	w5, w23
+0059f480 bl	#-120360 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f484 movi	v0.2d, #0000000000000000
+0059f488 ldur	w8, [x29, #-128]
+0059f48c ldur	x0, [x29, #-144]
+0059f490 sub	x1, x29, #80
+0059f494 sub	x2, x29, #144
+0059f498 mov	x3, x24
+0059f49c mov	w4, #3134
+0059f4a0 mov	w5, w21
+0059f4a4 str	w8, [x22, #964]
+0059f4a8 stp	q0, q0, [x29, #-80]
+0059f4ac stp	q0, q0, [x29, #-48]
+0059f4b0 bl	#-126224 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f4b4 tbz	w0, #0, #48
+0059f4b8 ldr	w8, [x22, #960]
+0059f4bc cbz	w8, #40
+0059f4c0 adrp	x2, #-3686400
+0059f4c4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f4c8 sub	x0, x29, #80
+0059f4cc mov	x1, x20
+0059f4d0 mov	w3, #3137
+0059f4d4 mov	w4, w21
+0059f4d8 mov	w5, #-1
+0059f4dc bl	#-120452 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f4e0 b	#8 -> 59f4e8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x345c
+0059f4e4 str	wzr, [x20]
+0059f4e8 sub	x0, x29, #80
+0059f4ec bl	#-121960 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f4f0 adrp	x2, #-3686400
+0059f4f4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f4f8 sub	x0, x29, #144
+0059f4fc mov	w1, w23
+0059f500 mov	w3, #3145
+0059f504 bl	#-120368 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059f508 sub	x0, x29, #144
+0059f50c add	x20, x22, #984
+0059f510 bl	#-121996 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f514 adrp	x23, #-3686400
+0059f518 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f51c add	x1, x22, #976
+0059f520 mov	x0, x19
+0059f524 mov	x2, x23
+0059f528 mov	w3, #4831
+0059f52c mov	w4, w21
+0059f530 mov	w5, w28
+0059f534 bl	#-120540 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f538 ldr	w8, [x19, #16]
+0059f53c movi	v0.2d, #0000000000000000
+0059f540 sub	x1, x29, #80
+0059f544 mov	x2, x19
+0059f548 mov	x3, x23
+0059f54c mov	w4, #4835
+0059f550 mov	w5, w21
+0059f554 str	w8, [x22, #980]
+0059f558 ldr	x0, [x19]
+0059f55c stp	q0, q0, [x29, #-80]
+0059f560 stp	q0, q0, [x29, #-48]
+0059f564 bl	#-126404 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f568 tbz	w0, #0, #48
+0059f56c ldr	w8, [x22, #976]
+0059f570 cbz	w8, #40
+0059f574 adrp	x2, #-3686400
+0059f578 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f57c sub	x0, x29, #80
+0059f580 mov	x1, x20
+0059f584 mov	w3, #4838
+0059f588 mov	w4, w21
+0059f58c mov	w5, #-1
+0059f590 bl	#-120632 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f594 b	#8 -> 59f59c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3510
+0059f598 str	wzr, [x20]
+0059f59c sub	x0, x29, #80
+0059f5a0 add	x20, x22, #1000
+0059f5a4 bl	#-122144 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f5a8 add	x1, x22, #988
+0059f5ac mov	x0, x19
+0059f5b0 mov	x2, x23
+0059f5b4 mov	w3, #4848
+0059f5b8 mov	w4, w21
+0059f5bc mov	w5, w28
+0059f5c0 bl	#-120680 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f5c4 ldr	w8, [x19, #16]
+0059f5c8 movi	v0.2d, #0000000000000000
+0059f5cc sub	x1, x29, #80
+0059f5d0 mov	x2, x19
+0059f5d4 mov	x3, x23
+0059f5d8 mov	w4, #4852
+0059f5dc mov	w5, w21
+0059f5e0 str	w8, [x22, #992]
+0059f5e4 ldr	x0, [x19]
+0059f5e8 stp	q0, q0, [x29, #-80]
+0059f5ec stp	q0, q0, [x29, #-48]
+0059f5f0 bl	#-126544 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f5f4 tbz	w0, #0, #48
+0059f5f8 ldr	w8, [x22, #988]
+0059f5fc cbz	w8, #40
+0059f600 adrp	x2, #-3686400
+0059f604 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f608 sub	x0, x29, #80
+0059f60c mov	x1, x20
+0059f610 mov	w3, #4855
+0059f614 mov	w4, w21
+0059f618 mov	w5, #-1
+0059f61c bl	#-118916 -> 582598 ParameterFileSymbolTableEntry::Read(double&, char const*, int, unsigned char, unsigned int)
+0059f620 b	#8 -> 59f628 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x359c
+0059f624 str	xzr, [x20]
+0059f628 sub	x0, x29, #80
+0059f62c bl	#-122280 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f630 adrp	x20, #-3686400
+0059f634 add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f638 add	x1, x22, #1008
+0059f63c mov	x0, x19
+0059f640 mov	x2, x20
+0059f644 mov	w3, #4865
+0059f648 mov	w4, w21
+0059f64c mov	w5, w28
+0059f650 bl	#-120824 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f654 ldr	w8, [x19, #16]
+0059f658 movi	v0.2d, #0000000000000000
+0059f65c sub	x1, x29, #144
+0059f660 mov	x2, x19
+0059f664 mov	x3, x20
+0059f668 mov	w4, #4869
+0059f66c mov	w5, w21
+0059f670 str	w8, [x22, #1012]
+0059f674 ldr	x0, [x19]
+0059f678 stp	q0, q0, [x29, #-144]
+0059f67c stp	q0, q0, [x29, #-112]
+0059f680 bl	#-126688 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f684 tbz	w0, #0, #236
+0059f688 ldr	w8, [x22, #1008]
+0059f68c cbz	w8, #228
+0059f690 sub	x0, x29, #144
+0059f694 mov	w1, #-1
+0059f698 mov	x2, x23
+0059f69c mov	w3, #1900
+0059f6a0 mov	w4, w21
+0059f6a4 bl	#-121160 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+0059f6a8 movi	v0.2d, #0000000000000000
+0059f6ac mov	w24, w0
+0059f6b0 sub	x0, x29, #144
+0059f6b4 add	x1, x22, #1016
+0059f6b8 mov	x2, x23
+0059f6bc mov	w3, #1938
+0059f6c0 mov	w4, w21
+0059f6c4 mov	w5, w24
+0059f6c8 str	wzr, [x22, #1016]
+0059f6cc add	x20, x22, #1024
+0059f6d0 str	wzr, [x22, #1192]
+0059f6d4 str	d0, [x22, #1024]
+0059f6d8 str	d0, [x27, #488]
+0059f6dc str	d0, [x22, #1048]
+0059f6e0 str	d0, [x27, #512]
+0059f6e4 str	d0, [x22, #1072]
+0059f6e8 str	d0, [x27, #536]
+0059f6ec str	d0, [x22, #1096]
+0059f6f0 str	d0, [x27, #560]
+0059f6f4 str	d0, [x22, #1120]
+0059f6f8 str	d0, [x27, #584]
+0059f6fc str	d0, [x22, #1144]
+0059f700 str	d0, [x27, #608]
+0059f704 str	d0, [x22, #1168]
+0059f708 str	d0, [x27, #632]
+0059f70c bl	#-121012 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f710 movi	v0.2d, #0000000000000000
+0059f714 ldur	w8, [x29, #-128]
+0059f718 ldur	x0, [x29, #-144]
+0059f71c sub	x1, x29, #80
+0059f720 sub	x2, x29, #144
+0059f724 mov	x3, x23
+0059f728 mov	w4, #1942
+0059f72c mov	w5, w21
+0059f730 str	w8, [x22, #1020]
+0059f734 stp	q0, q0, [x29, #-80]
+0059f738 stp	q0, q0, [x29, #-48]
+0059f73c bl	#-126876 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f740 tbz	w0, #0, #68
+0059f744 ldr	w8, [x22, #1016]
+0059f748 cbz	w8, #60
+0059f74c adrp	x2, #-3686400
+0059f750 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f754 sub	x0, x29, #80
+0059f758 mov	x1, x20
+0059f75c mov	w3, #1945
+0059f760 mov	w4, w21
+0059f764 mov	w5, #-1
+0059f768 bl	#-121104 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f76c b	#28 -> 59f788 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x36fc
+0059f770 add	x0, x22, #1016
+0059f774 mov	w1, wzr
+0059f778 mov	w2, #180
+0059f77c bl	#7257300 -> c8b450 memset@plt
+0059f780 b	#2000 -> 59ff50 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3ec4
+0059f784 str	wzr, [x20]
+0059f788 sub	x0, x29, #80
+0059f78c add	x20, x27, #488 ; 21b514 'd/g_sensor/camxsocidbinmap.cpp'
+0059f790 bl	#-122636 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f794 sub	x0, x29, #144
+0059f798 add	x1, x22, #1028
+0059f79c mov	x2, x23
+0059f7a0 mov	w3, #1955
+0059f7a4 mov	w4, w21
+0059f7a8 mov	w5, w24
+0059f7ac bl	#-121172 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f7b0 movi	v0.2d, #0000000000000000
+0059f7b4 ldur	w8, [x29, #-128]
+0059f7b8 ldur	x0, [x29, #-144]
+0059f7bc sub	x1, x29, #80
+0059f7c0 sub	x2, x29, #144
+0059f7c4 mov	x3, x23
+0059f7c8 mov	w4, #1959
+0059f7cc mov	w5, w21
+0059f7d0 str	w8, [x22, #1032]
+0059f7d4 stp	q0, q0, [x29, #-80]
+0059f7d8 stp	q0, q0, [x29, #-48]
+0059f7dc bl	#-127036 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f7e0 tbz	w0, #0, #48
+0059f7e4 ldr	w8, [x22, #1028]
+0059f7e8 cbz	w8, #40
+0059f7ec adrp	x2, #-3686400
+0059f7f0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f7f4 sub	x0, x29, #80
+0059f7f8 mov	x1, x20
+0059f7fc mov	w3, #1962
+0059f800 mov	w4, w21
+0059f804 mov	w5, #-1
+0059f808 bl	#-121264 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f80c b	#8 -> 59f814 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3788
+0059f810 str	wzr, [x20]
+0059f814 sub	x0, x29, #80
+0059f818 add	x20, x22, #1048
+0059f81c bl	#-122776 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f820 sub	x0, x29, #144
+0059f824 add	x1, x22, #1040
+0059f828 mov	x2, x23
+0059f82c mov	w3, #1972
+0059f830 mov	w4, w21
+0059f834 mov	w5, w24
+0059f838 bl	#-121312 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f83c movi	v0.2d, #0000000000000000
+0059f840 ldur	w8, [x29, #-128]
+0059f844 ldur	x0, [x29, #-144]
+0059f848 sub	x1, x29, #80
+0059f84c sub	x2, x29, #144
+0059f850 mov	x3, x23
+0059f854 mov	w4, #1976
+0059f858 mov	w5, w21
+0059f85c str	w8, [x22, #1044]
+0059f860 stp	q0, q0, [x29, #-80]
+0059f864 stp	q0, q0, [x29, #-48]
+0059f868 bl	#-127176 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f86c tbz	w0, #0, #48
+0059f870 ldr	w8, [x22, #1040]
+0059f874 cbz	w8, #40
+0059f878 adrp	x2, #-3686400
+0059f87c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f880 sub	x0, x29, #80
+0059f884 mov	x1, x20
+0059f888 mov	w3, #1979
+0059f88c mov	w4, w21
+0059f890 mov	w5, #-1
+0059f894 bl	#-121404 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f898 b	#8 -> 59f8a0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3814
+0059f89c str	wzr, [x20]
+0059f8a0 sub	x0, x29, #80
+0059f8a4 add	x20, x27, #512 ; 21b52c 'ap.cpp'
+0059f8a8 bl	#-122916 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f8ac sub	x0, x29, #144
+0059f8b0 add	x1, x22, #1052
+0059f8b4 mov	x2, x23
+0059f8b8 mov	w3, #1989
+0059f8bc mov	w4, w21
+0059f8c0 mov	w5, w24
+0059f8c4 bl	#-121452 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f8c8 movi	v0.2d, #0000000000000000
+0059f8cc ldur	w8, [x29, #-128]
+0059f8d0 ldur	x0, [x29, #-144]
+0059f8d4 sub	x1, x29, #80
+0059f8d8 sub	x2, x29, #144
+0059f8dc mov	x3, x23
+0059f8e0 mov	w4, #1993
+0059f8e4 mov	w5, w21
+0059f8e8 str	w8, [x22, #1056]
+0059f8ec stp	q0, q0, [x29, #-80]
+0059f8f0 stp	q0, q0, [x29, #-48]
+0059f8f4 bl	#-127316 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f8f8 tbz	w0, #0, #48
+0059f8fc ldr	w8, [x22, #1052]
+0059f900 cbz	w8, #40
+0059f904 adrp	x2, #-3686400
+0059f908 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f90c sub	x0, x29, #80
+0059f910 mov	x1, x20
+0059f914 mov	w3, #1996
+0059f918 mov	w4, w21
+0059f91c mov	w5, #-1
+0059f920 bl	#-121544 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f924 b	#8 -> 59f92c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x38a0
+0059f928 str	wzr, [x20]
+0059f92c sub	x0, x29, #80
+0059f930 add	x20, x22, #1072
+0059f934 bl	#-123056 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f938 sub	x0, x29, #144
+0059f93c add	x1, x22, #1064
+0059f940 mov	x2, x23
+0059f944 mov	w3, #2006
+0059f948 mov	w4, w21
+0059f94c mov	w5, w24
+0059f950 bl	#-121592 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f954 movi	v0.2d, #0000000000000000
+0059f958 ldur	w8, [x29, #-128]
+0059f95c ldur	x0, [x29, #-144]
+0059f960 sub	x1, x29, #80
+0059f964 sub	x2, x29, #144
+0059f968 mov	x3, x23
+0059f96c mov	w4, #2010
+0059f970 mov	w5, w21
+0059f974 str	w8, [x22, #1068]
+0059f978 stp	q0, q0, [x29, #-80]
+0059f97c stp	q0, q0, [x29, #-48]
+0059f980 bl	#-127456 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059f984 tbz	w0, #0, #48
+0059f988 ldr	w8, [x22, #1064]
+0059f98c cbz	w8, #40
+0059f990 adrp	x2, #-3686400
+0059f994 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059f998 sub	x0, x29, #80
+0059f99c mov	x1, x20
+0059f9a0 mov	w3, #2013
+0059f9a4 mov	w4, w21
+0059f9a8 mov	w5, #-1
+0059f9ac bl	#-121684 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f9b0 b	#8 -> 59f9b8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x392c
+0059f9b4 str	wzr, [x20]
+0059f9b8 sub	x0, x29, #80
+0059f9bc add	x20, x27, #536 ; 21b544 'chromatix_abfbincorr45TypeClass, binary name hash (0x%016llx) does not match source name hash (0x%016llx)\n'
+0059f9c0 bl	#-123196 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059f9c4 sub	x0, x29, #144
+0059f9c8 add	x1, x22, #1076
+0059f9cc mov	x2, x23
+0059f9d0 mov	w3, #2023
+0059f9d4 mov	w4, w21
+0059f9d8 mov	w5, w24
+0059f9dc bl	#-121732 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059f9e0 movi	v0.2d, #0000000000000000
+0059f9e4 ldur	w8, [x29, #-128]
+0059f9e8 ldur	x0, [x29, #-144]
+0059f9ec sub	x1, x29, #80
+0059f9f0 sub	x2, x29, #144
+0059f9f4 mov	x3, x23
+0059f9f8 mov	w4, #2027
+0059f9fc mov	w5, w21
+0059fa00 str	w8, [x22, #1080]
+0059fa04 stp	q0, q0, [x29, #-80]
+0059fa08 stp	q0, q0, [x29, #-48]
+0059fa0c bl	#-127596 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fa10 tbz	w0, #0, #48
+0059fa14 ldr	w8, [x22, #1076]
+0059fa18 cbz	w8, #40
+0059fa1c adrp	x2, #-3686400
+0059fa20 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fa24 sub	x0, x29, #80
+0059fa28 mov	x1, x20
+0059fa2c mov	w3, #2030
+0059fa30 mov	w4, w21
+0059fa34 mov	w5, #-1
+0059fa38 bl	#-121824 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fa3c b	#8 -> 59fa44 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x39b8
+0059fa40 str	wzr, [x20]
+0059fa44 sub	x0, x29, #80
+0059fa48 add	x20, x22, #1096
+0059fa4c bl	#-123336 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fa50 sub	x0, x29, #144
+0059fa54 add	x1, x22, #1088
+0059fa58 mov	x2, x23
+0059fa5c mov	w3, #2040
+0059fa60 mov	w4, w21
+0059fa64 mov	w5, w24
+0059fa68 bl	#-121872 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fa6c movi	v0.2d, #0000000000000000
+0059fa70 ldur	w8, [x29, #-128]
+0059fa74 ldur	x0, [x29, #-144]
+0059fa78 sub	x1, x29, #80
+0059fa7c sub	x2, x29, #144
+0059fa80 mov	x3, x23
+0059fa84 mov	w4, #2044
+0059fa88 mov	w5, w21
+0059fa8c str	w8, [x22, #1092]
+0059fa90 stp	q0, q0, [x29, #-80]
+0059fa94 stp	q0, q0, [x29, #-48]
+0059fa98 bl	#-127736 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fa9c tbz	w0, #0, #48
+0059faa0 ldr	w8, [x22, #1088]
+0059faa4 cbz	w8, #40
+0059faa8 adrp	x2, #-3686400
+0059faac add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fab0 sub	x0, x29, #80
+0059fab4 mov	x1, x20
+0059fab8 mov	w3, #2047
+0059fabc mov	w4, w21
+0059fac0 mov	w5, #-1
+0059fac4 bl	#-121964 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fac8 b	#8 -> 59fad0 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3a44
+0059facc str	wzr, [x20]
+0059fad0 sub	x0, x29, #80
+0059fad4 add	x20, x27, #560 ; 21b55c 'peClass, binary name hash (0x%016llx) does not match source name hash (0x%016llx)\n'
+0059fad8 bl	#-123476 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fadc sub	x0, x29, #144
+0059fae0 add	x1, x22, #1100
+0059fae4 mov	x2, x23
+0059fae8 mov	w3, #2057
+0059faec mov	w4, w21
+0059faf0 mov	w5, w24
+0059faf4 bl	#-122012 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059faf8 movi	v0.2d, #0000000000000000
+0059fafc ldur	w8, [x29, #-128]
+0059fb00 ldur	x0, [x29, #-144]
+0059fb04 sub	x1, x29, #80
+0059fb08 sub	x2, x29, #144
+0059fb0c mov	x3, x23
+0059fb10 mov	w4, #2061
+0059fb14 mov	w5, w21
+0059fb18 str	w8, [x22, #1104]
+0059fb1c stp	q0, q0, [x29, #-80]
+0059fb20 stp	q0, q0, [x29, #-48]
+0059fb24 bl	#-127876 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fb28 tbz	w0, #0, #48
+0059fb2c ldr	w8, [x22, #1100]
+0059fb30 cbz	w8, #40
+0059fb34 adrp	x2, #-3686400
+0059fb38 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fb3c sub	x0, x29, #80
+0059fb40 mov	x1, x20
+0059fb44 mov	w3, #2064
+0059fb48 mov	w4, w21
+0059fb4c mov	w5, #-1
+0059fb50 bl	#-122104 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fb54 b	#8 -> 59fb5c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3ad0
+0059fb58 str	wzr, [x20]
+0059fb5c sub	x0, x29, #80
+0059fb60 add	x20, x22, #1120
+0059fb64 bl	#-123616 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fb68 sub	x0, x29, #144
+0059fb6c add	x1, x22, #1112
+0059fb70 mov	x2, x23
+0059fb74 mov	w3, #2074
+0059fb78 mov	w4, w21
+0059fb7c mov	w5, w24
+0059fb80 bl	#-122152 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fb84 movi	v0.2d, #0000000000000000
+0059fb88 ldur	w8, [x29, #-128]
+0059fb8c ldur	x0, [x29, #-144]
+0059fb90 sub	x1, x29, #80
+0059fb94 sub	x2, x29, #144
+0059fb98 mov	x3, x23
+0059fb9c mov	w4, #2078
+0059fba0 mov	w5, w21
+0059fba4 str	w8, [x22, #1116]
+0059fba8 stp	q0, q0, [x29, #-80]
+0059fbac stp	q0, q0, [x29, #-48]
+0059fbb0 bl	#-128016 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fbb4 tbz	w0, #0, #48
+0059fbb8 ldr	w8, [x22, #1112]
+0059fbbc cbz	w8, #40
+0059fbc0 adrp	x2, #-3686400
+0059fbc4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fbc8 sub	x0, x29, #80
+0059fbcc mov	x1, x20
+0059fbd0 mov	w3, #2081
+0059fbd4 mov	w4, w21
+0059fbd8 mov	w5, #-1
+0059fbdc bl	#-122244 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fbe0 b	#8 -> 59fbe8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3b5c
+0059fbe4 str	wzr, [x20]
+0059fbe8 sub	x0, x29, #80
+0059fbec add	x20, x27, #584 ; 21b574 'h (0x%016llx) does not match source name hash (0x%016llx)\n'
+0059fbf0 bl	#-123756 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fbf4 sub	x0, x29, #144
+0059fbf8 add	x1, x22, #1124
+0059fbfc mov	x2, x23
+0059fc00 mov	w3, #2091
+0059fc04 mov	w4, w21
+0059fc08 mov	w5, w24
+0059fc0c bl	#-122292 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fc10 movi	v0.2d, #0000000000000000
+0059fc14 ldur	w8, [x29, #-128]
+0059fc18 ldur	x0, [x29, #-144]
+0059fc1c sub	x1, x29, #80
+0059fc20 sub	x2, x29, #144
+0059fc24 mov	x3, x23
+0059fc28 mov	w4, #2095
+0059fc2c mov	w5, w21
+0059fc30 str	w8, [x22, #1128]
+0059fc34 stp	q0, q0, [x29, #-80]
+0059fc38 stp	q0, q0, [x29, #-48]
+0059fc3c bl	#-128156 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fc40 tbz	w0, #0, #48
+0059fc44 ldr	w8, [x22, #1124]
+0059fc48 cbz	w8, #40
+0059fc4c adrp	x2, #-3686400
+0059fc50 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fc54 sub	x0, x29, #80
+0059fc58 mov	x1, x20
+0059fc5c mov	w3, #2098
+0059fc60 mov	w4, w21
+0059fc64 mov	w5, #-1
+0059fc68 bl	#-122384 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fc6c b	#8 -> 59fc74 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3be8
+0059fc70 str	wzr, [x20]
+0059fc74 sub	x0, x29, #80
+0059fc78 add	x20, x22, #1144
+0059fc7c bl	#-123896 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fc80 sub	x0, x29, #144
+0059fc84 add	x1, x22, #1136
+0059fc88 mov	x2, x23
+0059fc8c mov	w3, #2108
+0059fc90 mov	w4, w21
+0059fc94 mov	w5, w24
+0059fc98 bl	#-122432 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fc9c movi	v0.2d, #0000000000000000
+0059fca0 ldur	w8, [x29, #-128]
+0059fca4 ldur	x0, [x29, #-144]
+0059fca8 sub	x1, x29, #80
+0059fcac sub	x2, x29, #144
+0059fcb0 mov	x3, x23
+0059fcb4 mov	w4, #2112
+0059fcb8 mov	w5, w21
+0059fcbc str	w8, [x22, #1140]
+0059fcc0 stp	q0, q0, [x29, #-80]
+0059fcc4 stp	q0, q0, [x29, #-48]
+0059fcc8 bl	#-128296 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fccc tbz	w0, #0, #48
+0059fcd0 ldr	w8, [x22, #1136]
+0059fcd4 cbz	w8, #40
+0059fcd8 adrp	x2, #-3686400
+0059fcdc add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fce0 sub	x0, x29, #80
+0059fce4 mov	x1, x20
+0059fce8 mov	w3, #2115
+0059fcec mov	w4, w21
+0059fcf0 mov	w5, #-1
+0059fcf4 bl	#-122524 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fcf8 b	#8 -> 59fd00 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3c74
+0059fcfc str	wzr, [x20]
+0059fd00 sub	x0, x29, #80
+0059fd04 add	x20, x27, #608 ; 21b58c 'atch source name hash (0x%016llx)\n'
+0059fd08 bl	#-124036 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fd0c sub	x0, x29, #144
+0059fd10 add	x1, x22, #1148
+0059fd14 mov	x2, x23
+0059fd18 mov	w3, #2125
+0059fd1c mov	w4, w21
+0059fd20 mov	w5, w24
+0059fd24 bl	#-122572 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fd28 movi	v0.2d, #0000000000000000
+0059fd2c ldur	w8, [x29, #-128]
+0059fd30 ldur	x0, [x29, #-144]
+0059fd34 sub	x1, x29, #80
+0059fd38 sub	x2, x29, #144
+0059fd3c mov	x3, x23
+0059fd40 mov	w4, #2129
+0059fd44 mov	w5, w21
+0059fd48 str	w8, [x22, #1152]
+0059fd4c stp	q0, q0, [x29, #-80]
+0059fd50 stp	q0, q0, [x29, #-48]
+0059fd54 bl	#-128436 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fd58 tbz	w0, #0, #48
+0059fd5c ldr	w8, [x22, #1148]
+0059fd60 cbz	w8, #40
+0059fd64 adrp	x2, #-3686400
+0059fd68 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fd6c sub	x0, x29, #80
+0059fd70 mov	x1, x20
+0059fd74 mov	w3, #2132
+0059fd78 mov	w4, w21
+0059fd7c mov	w5, #-1
+0059fd80 bl	#-122664 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fd84 b	#8 -> 59fd8c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3d00
+0059fd88 str	wzr, [x20]
+0059fd8c sub	x0, x29, #80
+0059fd90 add	x20, x22, #1168
+0059fd94 bl	#-124176 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fd98 sub	x0, x29, #144
+0059fd9c add	x1, x22, #1160
+0059fda0 mov	x2, x23
+0059fda4 mov	w3, #2142
+0059fda8 mov	w4, w21
+0059fdac mov	w5, w24
+0059fdb0 bl	#-122712 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fdb4 movi	v0.2d, #0000000000000000
+0059fdb8 ldur	w8, [x29, #-128]
+0059fdbc ldur	x0, [x29, #-144]
+0059fdc0 sub	x1, x29, #80
+0059fdc4 sub	x2, x29, #144
+0059fdc8 mov	x3, x23
+0059fdcc mov	w4, #2146
+0059fdd0 mov	w5, w21
+0059fdd4 str	w8, [x22, #1164]
+0059fdd8 stp	q0, q0, [x29, #-80]
+0059fddc stp	q0, q0, [x29, #-48]
+0059fde0 bl	#-128576 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fde4 tbz	w0, #0, #48
+0059fde8 ldr	w8, [x22, #1160]
+0059fdec cbz	w8, #40
+0059fdf0 adrp	x2, #-3686400
+0059fdf4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fdf8 sub	x0, x29, #80
+0059fdfc mov	x1, x20
+0059fe00 mov	w3, #2149
+0059fe04 mov	w4, w21
+0059fe08 mov	w5, #-1
+0059fe0c bl	#-122804 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fe10 b	#8 -> 59fe18 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3d8c
+0059fe14 str	wzr, [x20]
+0059fe18 sub	x0, x29, #80
+0059fe1c add	x20, x27, #632 ; 21b5a4 'x%016llx)\n'
+0059fe20 bl	#-124316 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059fe24 sub	x0, x29, #144
+0059fe28 add	x1, x22, #1172
+0059fe2c mov	x2, x23
+0059fe30 mov	w3, #2159
+0059fe34 mov	w4, w21
+0059fe38 mov	w5, w24
+0059fe3c bl	#-122852 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fe40 movi	v0.2d, #0000000000000000
+0059fe44 ldur	w8, [x29, #-128]
+0059fe48 ldur	x0, [x29, #-144]
+0059fe4c sub	x1, x29, #80
+0059fe50 sub	x2, x29, #144
+0059fe54 mov	x3, x23
+0059fe58 mov	w4, #2163
+0059fe5c mov	w5, w21
+0059fe60 str	w8, [x22, #1176]
+0059fe64 stp	q0, q0, [x29, #-80]
+0059fe68 stp	q0, q0, [x29, #-48]
+0059fe6c bl	#-128716 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fe70 tbz	w0, #0, #48
+0059fe74 ldr	w8, [x22, #1172]
+0059fe78 cbz	w8, #40
+0059fe7c adrp	x2, #-3686400
+0059fe80 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059fe84 sub	x0, x29, #80
+0059fe88 mov	x1, x20
+0059fe8c mov	w3, #2166
+0059fe90 mov	w4, w21
+0059fe94 mov	w5, #-1
+0059fe98 bl	#-122944 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fe9c b	#8 -> 59fea4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3e18
+0059fea0 str	wzr, [x20]
+0059fea4 sub	x0, x29, #80
+0059fea8 add	x20, x22, #1192
+0059feac bl	#-124456 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059feb0 sub	x0, x29, #144
+0059feb4 add	x1, x22, #1184
+0059feb8 mov	x2, x23
+0059febc mov	w3, #2176
+0059fec0 mov	w4, w21
+0059fec4 mov	w5, w24
+0059fec8 bl	#-122992 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059fecc movi	v0.2d, #0000000000000000
+0059fed0 ldur	w8, [x29, #-128]
+0059fed4 ldur	x0, [x29, #-144]
+0059fed8 sub	x1, x29, #80
+0059fedc sub	x2, x29, #144
+0059fee0 mov	x3, x23
+0059fee4 mov	w4, #2180
+0059fee8 mov	w5, w21
+0059feec str	w8, [x22, #1188]
+0059fef0 stp	q0, q0, [x29, #-80]
+0059fef4 stp	q0, q0, [x29, #-48]
+0059fef8 bl	#-128856 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059fefc tbz	w0, #0, #48
+0059ff00 ldr	w8, [x22, #1184]
+0059ff04 cbz	w8, #40
+0059ff08 adrp	x2, #-3686400
+0059ff0c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ff10 sub	x0, x29, #80
+0059ff14 mov	x1, x20
+0059ff18 mov	w3, #2183
+0059ff1c mov	w4, w21
+0059ff20 mov	w5, #-1
+0059ff24 bl	#-123084 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ff28 b	#8 -> 59ff30 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3ea4
+0059ff2c str	wzr, [x20]
+0059ff30 sub	x0, x29, #80
+0059ff34 bl	#-124592 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ff38 adrp	x2, #-3686400
+0059ff3c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ff40 sub	x0, x29, #144
+0059ff44 mov	w1, w24
+0059ff48 mov	w3, #2191
+0059ff4c bl	#-123000 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+0059ff50 sub	x0, x29, #144
+0059ff54 add	x20, x27, #656 ; 21b5bc '_ofe_v2'
+0059ff58 bl	#-124628 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ff5c add	x1, x22, #1196
+0059ff60 mov	x0, x19
+0059ff64 mov	x2, x23
+0059ff68 mov	w3, #4882
+0059ff6c mov	w4, w21
+0059ff70 mov	w5, w28
+0059ff74 bl	#-123164 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ff78 ldr	w8, [x19, #16]
+0059ff7c movi	v0.2d, #0000000000000000
+0059ff80 sub	x1, x29, #80
+0059ff84 mov	x2, x19
+0059ff88 mov	x3, x23
+0059ff8c mov	w4, #4886
+0059ff90 mov	w5, w21
+0059ff94 str	w8, [x22, #1200]
+0059ff98 ldr	x0, [x19]
+0059ff9c stp	q0, q0, [x29, #-80]
+0059ffa0 stp	q0, q0, [x29, #-48]
+0059ffa4 bl	#-129028 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+0059ffa8 tbz	w0, #0, #48
+0059ffac ldr	w8, [x22, #1196]
+0059ffb0 cbz	w8, #40
+0059ffb4 adrp	x2, #-3686400
+0059ffb8 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059ffbc sub	x0, x29, #80
+0059ffc0 mov	x1, x20
+0059ffc4 mov	w3, #4889
+0059ffc8 mov	w4, w21
+0059ffcc mov	w5, #-1
+0059ffd0 bl	#-123256 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+0059ffd4 b	#8 -> 59ffdc CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3f50
+0059ffd8 str	wzr, [x20]
+0059ffdc sub	x0, x29, #80
+0059ffe0 add	x20, x22, #1216
+0059ffe4 bl	#-124768 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+0059ffe8 add	x1, x22, #1208
+0059ffec mov	x0, x19
+0059fff0 mov	x2, x23
+0059fff4 mov	w3, #4899
+0059fff8 mov	w4, w21
+0059fffc mov	w5, w28
+005a0000 bl	#-123304 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0004 ldr	w8, [x19, #16]
+005a0008 movi	v0.2d, #0000000000000000
+005a000c sub	x1, x29, #80
+005a0010 mov	x2, x19
+005a0014 mov	x3, x23
+005a0018 mov	w4, #4903
+005a001c mov	w5, w21
+005a0020 str	w8, [x22, #1212]
+005a0024 ldr	x0, [x19]
+005a0028 stp	q0, q0, [x29, #-80]
+005a002c stp	q0, q0, [x29, #-48]
+005a0030 bl	#-129168 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a0034 tbz	w0, #0, #48
+005a0038 ldr	w8, [x22, #1208]
+005a003c cbz	w8, #40
+005a0040 adrp	x2, #-3690496
+005a0044 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0048 sub	x0, x29, #80
+005a004c mov	x1, x20
+005a0050 mov	w3, #4906
+005a0054 mov	w4, w21
+005a0058 mov	w5, #-1
+005a005c bl	#-123396 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0060 b	#8 -> 5a0068 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x3fdc
+005a0064 str	wzr, [x20]
+005a0068 sub	x0, x29, #80
+005a006c add	x20, x27, #680 ; 21b5d4 'ze (%u) * thresQuantizationISOValueCount (%u) exceeds avaialable data (%u), setting thresQuantizationISOValueCount to %u to prevent allocation errors\n'
+005a0070 bl	#-124908 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0074 add	x1, x22, #1220
+005a0078 mov	x0, x19
+005a007c mov	x2, x23
+005a0080 mov	w3, #4916
+005a0084 mov	w4, w21
+005a0088 mov	w5, w28
+005a008c bl	#-123444 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0090 ldr	w8, [x19, #16]
+005a0094 movi	v0.2d, #0000000000000000
+005a0098 sub	x1, x29, #80
+005a009c mov	x2, x19
+005a00a0 mov	x3, x23
+005a00a4 mov	w4, #4920
+005a00a8 mov	w5, w21
+005a00ac str	w8, [x22, #1224]
+005a00b0 ldr	x0, [x19]
+005a00b4 stp	q0, q0, [x29, #-80]
+005a00b8 stp	q0, q0, [x29, #-48]
+005a00bc bl	#-129308 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a00c0 tbz	w0, #0, #48
+005a00c4 ldr	w8, [x22, #1220]
+005a00c8 cbz	w8, #40
+005a00cc adrp	x2, #-3690496
+005a00d0 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a00d4 sub	x0, x29, #80
+005a00d8 mov	x1, x20
+005a00dc mov	w3, #4923
+005a00e0 mov	w4, w21
+005a00e4 mov	w5, #-1
+005a00e8 bl	#-123536 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a00ec b	#8 -> 5a00f4 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x4068
+005a00f0 str	wzr, [x20]
+005a00f4 sub	x0, x29, #80
+005a00f8 add	x20, x22, #1240
+005a00fc bl	#-125048 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0100 add	x1, x22, #1232
+005a0104 mov	x0, x19
+005a0108 mov	x2, x23
+005a010c mov	w3, #4933
+005a0110 mov	w4, w21
+005a0114 mov	w5, w28
+005a0118 bl	#-123584 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a011c ldr	w8, [x19, #16]
+005a0120 movi	v0.2d, #0000000000000000
+005a0124 sub	x1, x29, #80
+005a0128 mov	x2, x19
+005a012c mov	x3, x23
+005a0130 mov	w4, #4937
+005a0134 mov	w5, w21
+005a0138 str	w8, [x22, #1236]
+005a013c ldr	x0, [x19]
+005a0140 stp	q0, q0, [x29, #-80]
+005a0144 stp	q0, q0, [x29, #-48]
+005a0148 bl	#-129448 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a014c tbz	w0, #0, #48
+005a0150 ldr	w8, [x22, #1232]
+005a0154 cbz	w8, #40
+005a0158 adrp	x2, #-3690496
+005a015c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0160 sub	x0, x29, #80
+005a0164 mov	x1, x20
+005a0168 mov	w3, #4940
+005a016c mov	w4, w21
+005a0170 mov	w5, #-1
+005a0174 bl	#-122040 -> 5824bc ParameterFileSymbolTableEntry::Read(float&, char const*, int, unsigned char, unsigned int)
+005a0178 b	#8 -> 5a0180 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x40f4
+005a017c str	wzr, [x20]
+005a0180 sub	x0, x29, #80
+005a0184 bl	#-125184 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0188 adrp	x20, #-3690496
+005a018c add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0190 add	x1, x22, #1244
+005a0194 mov	x0, x19
+005a0198 mov	x2, x20
+005a019c mov	w3, #4950
+005a01a0 mov	w4, w21
+005a01a4 mov	w5, w28
+005a01a8 bl	#-123728 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a01ac ldr	w8, [x19, #16]
+005a01b0 movi	v0.2d, #0000000000000000
+005a01b4 sub	x1, x29, #144
+005a01b8 mov	x2, x19
+005a01bc mov	x3, x20
+005a01c0 mov	w4, #4954
+005a01c4 mov	w5, w21
+005a01c8 str	w8, [x22, #1248]
+005a01cc ldr	x0, [x19]
+005a01d0 stp	q0, q0, [x29, #-144]
+005a01d4 stp	q0, q0, [x29, #-112]
+005a01d8 bl	#-129592 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a01dc tbz	w0, #0, #184
+005a01e0 ldr	w8, [x22, #1244]
+005a01e4 cbz	w8, #176
+005a01e8 adrp	x24, #-3690496
+005a01ec add	x24, x24, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a01f0 sub	x0, x29, #144
+005a01f4 mov	w1, #-1
+005a01f8 mov	x2, x24
+005a01fc mov	w3, #3156
+005a0200 mov	w4, w21
+005a0204 bl	#-124072 -> 581d5c ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)
+005a0208 mov	w20, w0
+005a020c ldr	x1, [sp, #256]
+005a0210 sub	x0, x29, #144
+005a0214 mov	x2, x24
+005a0218 mov	w3, #3166
+005a021c mov	w4, w21
+005a0220 mov	w5, w20
+005a0224 add	x23, x22, #1260
+005a0228 str	wzr, [x22, #1252]
+005a022c str	wzr, [x22, #1260]
+005a0230 bl	#-123864 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0234 movi	v0.2d, #0000000000000000
+005a0238 ldur	w8, [x29, #-128]
+005a023c ldur	x0, [x29, #-144]
+005a0240 sub	x1, x29, #80
+005a0244 sub	x2, x29, #144
+005a0248 mov	x3, x24
+005a024c mov	w4, #3170
+005a0250 mov	w5, w21
+005a0254 str	w8, [x22, #1256]
+005a0258 stp	q0, q0, [x29, #-80]
+005a025c stp	q0, q0, [x29, #-48]
+005a0260 bl	#-129728 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a0264 tbz	w0, #0, #64
+005a0268 ldr	w8, [x22, #1252]
+005a026c cbz	w8, #56
+005a0270 adrp	x2, #-3690496
+005a0274 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0278 sub	x0, x29, #80
+005a027c mov	x1, x23
+005a0280 mov	w3, #3173
+005a0284 mov	w4, w21
+005a0288 mov	w5, #-1
+005a028c bl	#-123956 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0290 b	#24 -> 5a02a8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x421c
+005a0294 ldr	x8, [sp, #256]
+005a0298 str	wzr, [x8, #8]
+005a029c str	xzr, [x8]
+005a02a0 b	#40 -> 5a02c8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x423c
+005a02a4 str	wzr, [x23]
+005a02a8 sub	x0, x29, #80
+005a02ac bl	#-125480 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a02b0 adrp	x2, #-3690496
+005a02b4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a02b8 sub	x0, x29, #144
+005a02bc mov	w1, w20
+005a02c0 mov	w3, #3181
+005a02c4 bl	#-123888 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+005a02c8 sub	x0, x29, #144
+005a02cc add	x20, x22, #1272
+005a02d0 bl	#-125516 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a02d4 adrp	x23, #-3690496
+005a02d8 add	x23, x23, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a02dc add	x1, x22, #1264
+005a02e0 mov	x0, x19
+005a02e4 mov	x2, x23
+005a02e8 mov	w3, #4967
+005a02ec mov	w4, w21
+005a02f0 mov	w5, w28
+005a02f4 bl	#-124060 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a02f8 ldr	w8, [x19, #16]
+005a02fc movi	v0.2d, #0000000000000000
+005a0300 sub	x1, x29, #80
+005a0304 mov	x2, x19
+005a0308 mov	x3, x23
+005a030c mov	w4, #4971
+005a0310 mov	w5, w21
+005a0314 str	w8, [x22, #1268]
+005a0318 ldr	x0, [x19]
+005a031c stp	q0, q0, [x29, #-80]
+005a0320 stp	q0, q0, [x29, #-48]
+005a0324 bl	#-129924 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a0328 tbz	w0, #0, #48
+005a032c ldr	w8, [x22, #1264]
+005a0330 cbz	w8, #40
+005a0334 adrp	x2, #-3690496
+005a0338 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a033c sub	x0, x29, #80
+005a0340 mov	x1, x20
+005a0344 mov	w3, #4974
+005a0348 mov	w4, w21
+005a034c mov	w5, #-1
+005a0350 bl	#-124152 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0354 b	#8 -> 5a035c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x42d0
+005a0358 str	wzr, [x20]
+005a035c sub	x0, x29, #80
+005a0360 add	x20, x27, #736 ; 21b60c 'aialable data (%u), setting thresQuantizationISOValueCount to %u to prevent allocation errors\n'
+005a0364 bl	#-125664 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0368 add	x1, x22, #1276
+005a036c mov	x0, x19
+005a0370 mov	x2, x23
+005a0374 mov	w3, #4984
+005a0378 mov	w4, w21
+005a037c mov	w5, w28
+005a0380 bl	#-124200 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0384 ldr	w8, [x19, #16]
+005a0388 movi	v0.2d, #0000000000000000
+005a038c sub	x1, x29, #80
+005a0390 mov	x2, x19
+005a0394 mov	x3, x23
+005a0398 mov	w4, #4988
+005a039c mov	w5, w21
+005a03a0 str	w8, [x22, #1280]
+005a03a4 ldr	x0, [x19]
+005a03a8 stp	q0, q0, [x29, #-80]
+005a03ac stp	q0, q0, [x29, #-48]
+005a03b0 bl	#-130064 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a03b4 tbz	w0, #0, #48
+005a03b8 ldr	w8, [x22, #1276]
+005a03bc cbz	w8, #40
+005a03c0 adrp	x2, #-3690496
+005a03c4 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a03c8 sub	x0, x29, #80
+005a03cc mov	x1, x20
+005a03d0 mov	w3, #4991
+005a03d4 mov	w4, w21
+005a03d8 mov	w5, #-1
+005a03dc bl	#-124292 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a03e0 b	#8 -> 5a03e8 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x435c
+005a03e4 str	wzr, [x20]
+005a03e8 sub	x0, x29, #80
+005a03ec add	x20, x22, #1296
+005a03f0 bl	#-125804 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a03f4 add	x1, x22, #1288
+005a03f8 mov	x0, x19
+005a03fc mov	x2, x23
+005a0400 mov	w3, #5001
+005a0404 mov	w4, w21
+005a0408 mov	w5, w28
+005a040c bl	#-124340 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a0410 ldr	w8, [x19, #16]
+005a0414 movi	v0.2d, #0000000000000000
+005a0418 sub	x1, x29, #80
+005a041c mov	x2, x19
+005a0420 mov	x3, x23
+005a0424 mov	w4, #5005
+005a0428 mov	w5, w21
+005a042c str	w8, [x22, #1292]
+005a0430 ldr	x0, [x19]
+005a0434 stp	q0, q0, [x29, #-80]
+005a0438 stp	q0, q0, [x29, #-48]
+005a043c bl	#-130204 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a0440 tbz	w0, #0, #48
+005a0444 ldr	w8, [x22, #1288]
+005a0448 cbz	w8, #40
+005a044c adrp	x2, #-3690496
+005a0450 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0454 sub	x0, x29, #80
+005a0458 mov	x1, x20
+005a045c mov	w3, #5008
+005a0460 mov	w4, w21
+005a0464 mov	w5, #-1
+005a0468 bl	#-123456 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+005a046c b	#8 -> 5a0474 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x43e8
+005a0470 str	wzr, [x20]
+005a0474 sub	x0, x29, #80
+005a0478 add	x20, x27, #760 ; 21b624 'ing thresQuantizationISOValueCount to %u to prevent allocation errors\n'
+005a047c bl	#-125944 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0480 add	x1, x22, #1300
+005a0484 mov	x0, x19
+005a0488 mov	x2, x23
+005a048c mov	w3, #5018
+005a0490 mov	w4, w21
+005a0494 mov	w5, w28
+005a0498 bl	#-124480 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a049c ldr	w8, [x19, #16]
+005a04a0 movi	v0.2d, #0000000000000000
+005a04a4 sub	x1, x29, #80
+005a04a8 mov	x2, x19
+005a04ac mov	x3, x23
+005a04b0 mov	w4, #5022
+005a04b4 mov	w5, w21
+005a04b8 str	w8, [x22, #1304]
+005a04bc ldr	x0, [x19]
+005a04c0 stp	q0, q0, [x29, #-80]
+005a04c4 stp	q0, q0, [x29, #-48]
+005a04c8 bl	#-130344 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a04cc tbz	w0, #0, #48
+005a04d0 ldr	w8, [x22, #1300]
+005a04d4 cbz	w8, #40
+005a04d8 adrp	x2, #-3690496
+005a04dc add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a04e0 sub	x0, x29, #80
+005a04e4 mov	x1, x20
+005a04e8 mov	w3, #5025
+005a04ec mov	w4, w21
+005a04f0 mov	w5, #-1
+005a04f4 bl	#-123596 -> 582228 ParameterFileSymbolTableEntry::Read(int&, char const*, int, unsigned char, unsigned int)
+005a04f8 b	#8 -> 5a0500 CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x4474
+005a04fc str	wzr, [x20]
+005a0500 sub	x0, x29, #80
+005a0504 bl	#-126080 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0508 adrp	x20, #-3690496
+005a050c add	x20, x20, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a0510 add	x1, x22, #1312
+005a0514 mov	x0, x19
+005a0518 mov	x2, x20
+005a051c mov	w3, #5035
+005a0520 mov	w4, w21
+005a0524 mov	w5, w28
+005a0528 bl	#-124624 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+005a052c ldr	w8, [x19, #16]
+005a0530 movi	v0.2d, #0000000000000000
+005a0534 sub	x1, x29, #80
+005a0538 mov	x2, x19
+005a053c mov	x3, x20
+005a0540 mov	w4, #5039
+005a0544 mov	w5, w21
+005a0548 str	w8, [x22, #1316]
+005a054c ldr	x0, [x19]
+005a0550 stp	q0, q0, [x29, #-80]
+005a0554 stp	q0, q0, [x29, #-48]
+005a0558 bl	#-130488 -> 5807a0 ParameterFileSymbolTable::ReadPointerEntry(ParameterFileSymbolTableEntry&, ParameterFileSymbolTableEntry*, char const*, int, unsigned char)
+005a055c tbz	w0, #0, #32
+005a0560 ldr	w8, [x22, #1312]
+005a0564 cbz	w8, #24
+005a0568 add	x0, x22, #1320
+005a056c sub	x1, x29, #80
+005a0570 mov	w2, w21
+005a0574 bl	#-20288 -> 59b634 CamX::ModeSwitchRegisterInformation::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)
+005a0578 b	#20 -> 5a058c CamX::ResolutionData::Load(ParameterFileSymbolTableEntry*, unsigned char, unsigned int)+0x4500
+005a057c add	x0, x22, #1320
+005a0580 mov	w1, wzr
+005a0584 mov	w2, #144
+005a0588 bl	#7253704 -> c8b450 memset@plt
+005a058c sub	x0, x29, #80
+005a0590 bl	#-126220 -> 581884 ParameterFileSymbolTableEntry::~ParameterFileSymbolTableEntry()
+005a0594 adrp	x2, #-3690496
+005a0598 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+005a059c mov	x0, x19
+005a05a0 mov	w1, w28
+005a05a4 mov	w3, #5050
+005a05a8 bl	#-124628 -> 581ed4 ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int)
+005a05ac ldur	x8, [x29, #-248]
+005a05b0 ldr	x8, [x8, #40]
+005a05b4 ldur	x9, [x29, #-16]
+005a05b8 cmp	x8, x9
+005a05bc b.ne	#40
+005a05c0 add	sp, sp, #512
+005a05c4 ldp	x20, x19, [sp, #80]
+005a05c8 ldp	x22, x21, [sp, #64]
+005a05cc ldp	x24, x23, [sp, #48]
+005a05d0 ldp	x26, x25, [sp, #32]
+005a05d4 ldp	x28, x27, [sp, #16]
+005a05d8 ldp	x29, x30, [sp], #96
+005a05dc hint	#29
+005a05e0 ret
+005a05e4 bl	#7253540 -> c8b408 __stack_chk_fail@plt

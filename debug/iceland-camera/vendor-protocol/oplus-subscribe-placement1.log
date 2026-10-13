@@ -1,0 +1,23 @@
+inactive
+inactive
+{"send": 516, "uid": ["0xf8447cc60209c100", "0x3e9145ace8717480"], "payload": ""}
+{"qmi_result": 0, "qmi_error": 0, "tlvs": {"2": "00000000", "16": "2600000000000000", "17": "00000000"}}
+{"event": 528, "payload": "08df01120c08c00210f0011a04140f0a05"}
+{"config_fields": [320, 240, 5, 1000, 0, 1, 5]}
+{"send": 513, "uid": ["0xf8447cc60209c100", "0x3e9145ace8717480"], "payload": "08c00210f001180520e807280030013805"}
+{"qmi_result": 0, "qmi_error": 0, "tlvs": {"2": "00000000", "16": "2600000000000000", "17": "00000000"}}
+{"event": 525, "payload": "0801"}
+{"send": 514, "uid": ["0xf8447cc60209c100", "0x3e9145ace8717480"], "payload": ""}
+{"qmi_result": 0, "qmi_error": 0, "tlvs": {"2": "00000000", "16": "2600000000000000", "17": "00000000"}}
+{"event": 526, "payload": "0800"}
+{"unsubscribe_ack_success": true}
+Traceback (most recent call last):
+  File "/var/tmp/see-oplus-subscribe.py", line 64, in <module>
+    main()
+    ~~~~^^
+  File "/var/tmp/see-oplus-subscribe.py", line 53, in main
+    check_ack(oplus.exchange(client, uid, 0x201, payload, 0x20d))
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/tmp/see-oplus-subscribe.py", line 21, in check_ack
+    raise RuntimeError(f'Oplus ACK error {error}')
+RuntimeError: Oplus ACK error 1

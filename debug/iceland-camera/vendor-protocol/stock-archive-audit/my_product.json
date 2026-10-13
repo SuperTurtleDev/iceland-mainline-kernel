@@ -1,0 +1,1721 @@
+[
+  {
+    "path": "/product_overlay/framework/com.oplus.camera.unit.sdk.adapter.jar",
+    "entries": 1,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/product_overlay/framework/com.oplus.camera.unit.sdk.jar",
+    "entries": 1,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk",
+    "entries": 100,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk",
+    "entries": 101,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/Wellbeing/Wellbeing.apk",
+    "entries": 1987,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/SearchSelector/SearchSelector.apk",
+    "entries": 898,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/RemoteControl/RemoteControl.apk",
+    "entries": 2637,
+    "protobuf_paths": [
+      "agents.proto",
+      "card_action.proto",
+      "card_ui_data.proto",
+      "connections.proto",
+      "discovery.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "results.proto",
+      "socket_qos.proto",
+      "wifi_config.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/PrivateComputeServices/PrivateComputeServices.apk",
+    "entries": 768,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/PlayAutoInstallConfig_OnePlus/PlayAutoInstallConfig_OnePlus.apk",
+    "entries": 3,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/Phonesky/Phonesky.apk",
+    "entries": 4193,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/OplusGames/OplusGames.apk",
+    "entries": 7843,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/Messages/Messages.apk",
+    "entries": 5123,
+    "protobuf_paths": [
+      "res/YA3.pb",
+      "res/v6E.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/priv-app/Messages/Messages.apk!assets/emoji_search_en_us.zip",
+        "entries": 2,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/priv-app/IPeManager/IPeManager.apk",
+    "entries": 2101,
+    "protobuf_paths": [
+      "card_action.proto",
+      "card_ui_data.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/priv-app/IPeManager/IPeManager.apk!assets/pen_fw_ota_4D45.05.00.19.zip",
+        "entries": 3,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/IPeManager/IPeManager.apk!assets/pen_fw_ota_4F50.4956.514601.02.66.zip",
+        "entries": 3,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/priv-app/GoogleVelvet_CTS/GoogleVelvet_CTS.apk",
+    "entries": 11317,
+    "protobuf_paths": [
+      "assets/app-terms.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/media_pipe_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/supported_languages_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/bede_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/bede_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/beng_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/deva_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/geor_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/geor_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/gocr_tflite_recognizer_gujr_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/gocr_tflite_recognizer_gujr_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/gocr_tflite_recognizer_latn_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/gocr_tflite_recognizer_latn_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/gocr_tflite_recognizer_latn_vi_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/hebr_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/hebr_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_arab_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_arab_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_arab_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_cyrl_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_hani_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_hani_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_hani_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_jpan_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_jpan_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_jpan_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_knda_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_knda_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_knda_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_kore_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_kore_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_kore_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_latn_vi_cyrl_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_latn_vi_cyrl_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_mlym_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_mlym_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_mlym_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_taml_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_taml_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_taml_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_telu_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_telu_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_telu_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_thai_label_map.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_thai_lm_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/recognizer_thai_prior.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/tflite_lstm_recognizer_el_0.1_config.pb",
+      "assets/lens_ondevice_text_stack_multiscript_omni/third_party/lens/line_recognition/v678672708/tflite_lstm_recognizer_el_0.1_label_map.pb",
+      "assets/mdd/apa_hotword_model_config/default/manifest_config.pb",
+      "assets/mobile_one_stage_object_detector/additional_objects_filtering_config.pb",
+      "assets/mobile_one_stage_object_detector/visual_saliency_filtering_config.pb",
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GoogleRestore/GoogleRestore.apk",
+    "entries": 1574,
+    "protobuf_paths": [
+      "res/raw/build_data.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GooglePartnerSetup/GooglePartnerSetup.apk",
+    "entries": 34,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GoogleOneTimeInitializer/GoogleOneTimeInitializer.apk",
+    "entries": 201,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GoogleKidsSpace/GoogleKidsSpace.apk",
+    "entries": 1285,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GoogleFiles/GoogleFiles.apk",
+    "entries": 1829,
+    "protobuf_paths": [
+      "assets/mlkit-google-ocr-models/gocr/gocr_models/line_recognition_mobile_convnext/Latn_ctc/optical/assets.extra/LabelMap.pb",
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GoogleDialer/GoogleDialer.apk",
+    "entries": 3944,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/GmsCore/GmsCore.apk",
+    "entries": 12194,
+    "protobuf_paths": [
+      "assets/Activities.pb",
+      "assets/ChimeraManifest.pb",
+      "assets/ChimeraModuleSetList.pb",
+      "assets/Receivers.pb",
+      "assets/all_signals_50_meters_model_parameters.pb",
+      "assets/all_signals_50_meters_model_parameters_threshold_06.pb",
+      "assets/all_signals_50_meters_model_parameters_threshold_07.pb",
+      "assets/all_signals_50_meters_model_parameters_threshold_08.pb",
+      "assets/all_signals_model_parameters.pb",
+      "assets/assets/model_bundle_metadata.pb",
+      "assets/assets/v2_model_bundle_metadata.pb",
+      "assets/cheap_signals_model_parameters.pb",
+      "assets/cobalt_config.pb",
+      "assets/googlesansdirectory.pb",
+      "res/-px.pb",
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/AdsDynamite.apk",
+        "entries": 225,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/CronetDynamite.apk",
+        "entries": 16,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/DynamiteLoader.apk",
+        "entries": 14,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/DynamiteModulesA.apk",
+        "entries": 60,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/DynamiteModulesC.apk",
+        "entries": 328,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/GoogleCertificates.apk",
+        "entries": 14,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/MapsDynamite.apk",
+        "entries": 217,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/chimera-modules/MeasurementDynamite.apk",
+        "entries": 14,
+        "protobuf_paths": [
+          "assets/ChimeraManifest.pb"
+        ],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/priv-app/GmsCore/GmsCore.apk!assets/locale_pack/locale_patches.zip",
+        "entries": 74,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": [],
+        "nested": [
+          {
+            "path": "/priv-app/GmsCore/GmsCore.apk!assets/locale_pack/locale_patches.zip!base-en.apk",
+            "entries": 2,
+            "protobuf_paths": [],
+            "name_matches": [],
+            "content_matches": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/priv-app/GmsCore/m/independent/AndroidPlatformServices.apk",
+    "entries": 1942,
+    "protobuf_paths": [
+      "assets/ChimeraManifest.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/FamilyLinkParentalControls/FamilyLinkParentalControls.apk",
+    "entries": 2664,
+    "protobuf_paths": [
+      "assets/ChimeraModuleSetList.pb",
+      "assets/SplitConfig.pb",
+      "res/YA.pb",
+      "assets/ChimeraManifest.pb",
+      "assets/Receivers.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/CrossDeviceServicesStub/CrossDeviceServicesStub.apk",
+    "entries": 7,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/ConfigUpdater/ConfigUpdater.apk",
+    "entries": 61,
+    "protobuf_paths": [
+      "assets/cts_data/telephony_config_update/cts_test_V1_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_V2_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_V4_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_V5_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_V6_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_v21_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_v22_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_v23_telephony_config.pb",
+      "res/YA.pb",
+      "assets/cts_data/telephony_config_update/cts_test_01212025-test-v15-telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_01212025-test-v16-telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_01212025-test-v17-telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_06122024-test-v14-telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_V3_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_v25_telephony_config.pb",
+      "assets/cts_data/telephony_config_update/cts_test_v26_telephony_config.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/priv-app/AndroidSystemIntelligence_Features/AndroidSystemIntelligence_Features.apk",
+    "entries": 2284,
+    "protobuf_paths": [
+      "res/YA.pb",
+      "assets/default_rules_chat.pb",
+      "assets/fssd_anchors_v3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CarrierConfigOverlay.iceland.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_FY_Icon.apk",
+    "entries": 58,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_FY_Press.apk",
+    "entries": 68,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_HY_Icon.apk",
+    "entries": 110,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_HY_Press.apk",
+    "entries": 49,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_Halo_Icon.apk",
+    "entries": 57,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_Halo_Press.apk",
+    "entries": 52,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_JD_Icon.apk",
+    "entries": 57,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_JD_Press.apk",
+    "entries": 66,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_LY_Icon.apk",
+    "entries": 57,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_LY_Press.apk",
+    "entries": 68,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_NONE_Press.apk",
+    "entries": 10,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_QY_Icon.apk",
+    "entries": 58,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_QY_Press.apk",
+    "entries": 68,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_SW_Icon.apk",
+    "entries": 58,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_SW_Press.apk",
+    "entries": 68,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_XW_Icon.apk",
+    "entries": 57,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_XW_Press.apk",
+    "entries": 64,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_ZF_Icon.apk",
+    "entries": 57,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIFingerprintRes_17_0_ZF_Press.apk",
+    "entries": 71,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/android_framework_res_overlay.display.product.25978.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/android_framework_res_overlay.tablet.location.timezone.iceland.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/android_framework_res_rro_export_oneplus.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/aon.frameworkres.overlay.product.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/com.android.SystemUIResOverlay.25978.apk",
+    "entries": 41,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/framework_res_overlay.network.iceland.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/oplus_framework_res_rro_oneplus.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusAiConfigOverlayCommon/OplusAiConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusAiConfigOverlayCircleToSearch/OplusAiConfigOverlayCircleToSearch.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/LauncherResourceOverlay/LauncherResourceOverlay.apk",
+    "entries": 310,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GmsConfigOverlayGSA/GmsConfigOverlayGSA.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GmsConfigOverlayComms/GmsConfigOverlayComms.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GmsConfigOverlayCommonEx/GmsConfigOverlayCommonEx.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GmsConfigOverlayASI_Features/GmsConfigOverlayASI_Features.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/priv-app/SetupWizard/SetupWizard.apk",
+    "entries": 1688,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk",
+    "entries": 815,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/priv-app/GooglePackageInstaller_tablet/GooglePackageInstaller_tablet.apk",
+    "entries": 751,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/priv-app/GoogleFeedback/GoogleFeedback.apk",
+    "entries": 88,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/app/GooglePrintRecommendationService/GooglePrintRecommendationService.apk",
+    "entries": 92,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/non_overlay/app/GoogleExtShared/GoogleExtShared.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/media/bootanimation/bootanimation.zip",
+    "entries": 385,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/media/bootanimation/rbootanimation.zip",
+    "entries": 64,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.android.hotwordenrollment.common.util.impl.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.android.hotwordenrollment.common.util.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.google.android.dialer.support.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/etc/aisubsystem/Plugin/plugin-cloud_entity_extraction-187699205-1011-pall-export.apk",
+    "entries": 148,
+    "protobuf_paths": [
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/del-app-pre/YTMusic_del/YTMusic.apk",
+    "entries": 3631,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/del-app-pre/Videos_del/Videos.apk",
+    "entries": 3619,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/del-app-pre/GoogleOne/GoogleOne.apk",
+    "entries": 1843,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/del-app-pre/GoogleHome/GoogleHome.apk",
+    "entries": 12652,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/-WR.zip",
+        "entries": 8,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/3DF.zip",
+        "entries": 4,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/E3l.zip",
+        "entries": 7,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/V1X.zip",
+        "entries": 10,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/m95.zip",
+        "entries": 14,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/del-app-pre/GoogleHome/GoogleHome.apk!res/rGH.zip",
+        "entries": 16,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/del-app-pre/GoogleFindMyDevice/GoogleFindMyDevice.apk",
+    "entries": 1907,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/del-app-pre/GoogleFindMyDevice/GoogleFindMyDevice.apk!assets/semantic_location_animation.zip",
+        "entries": 16,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/del-app-pre/Drive_del/Drive.apk",
+    "entries": 3435,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/VN/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/VN/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/VN/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TW/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TW/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TW/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TR/overlay/OplusConfigOverlayMms/OplusConfigOverlayMms.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TR/overlay/OplusConfigOverlayCommsEx/OplusConfigOverlayCommsEx.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TH/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TH/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/TH/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/SG/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/SG/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/SG/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/RU/overlay/OplusConfigOverlayMms/OplusConfigOverlayMms.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/RU/overlay/OplusConfigOverlayCommsEx/OplusConfigOverlayCommsEx.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/ROW/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/PH/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/PH/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/PH/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/OCA/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MY/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MY/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MY/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MEA/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MEA/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/MEA/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/LK/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/LK/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/LK/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/KZ/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/KZ/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/JP/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/JP/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/JP/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/IN/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/IN/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/IN/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/IN/overlay/GmsConfigOverlaySearchSelector/GmsConfigOverlaySearchSelector.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/ID/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/ID/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/ID/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/GB/overlay/GmsConfigOverlaySearchSelector/GmsConfigOverlaySearchSelector.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EUEX-ALL-CUST/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EUEX-ALL-CUST/overlay/GmsConfigOverlaySearchSelector/GmsConfigOverlaySearchSelector.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EUEX/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EUEX/overlay/GmsConfigOverlaySearchSelector/GmsConfigOverlaySearchSelector.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EU-EEA-Double/overlay/GmsConfigOverlaySearchSelector/GmsConfigOverlaySearchSelector.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EG/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EG/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/EG/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/BR/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/BR/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/BR/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/APC/overlay/OplusGmsConfigOverlayCommon/OplusGmsConfigOverlayCommon.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/APC/overlay/OplusConfigOverlayDialer/OplusConfigOverlayDialer.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/cust/APC/overlay/OplusConfigOverlayContact/OplusConfigOverlayContact.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/talkback/talkback.apk",
+    "entries": 1723,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/talkback/talkback.apk!res/A4.zip",
+        "entries": 242,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/app/talkback/talkback.apk!res/pZ.zip",
+        "entries": 197,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/clouddpc/clouddpc.apk",
+    "entries": 1790,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/YouTube/YouTube.apk",
+    "entries": 8236,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/WebViewGoogle64/WebViewGoogle64.apk",
+    "entries": 646,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/TrichromeLibrary64/TrichromeLibrary64.apk",
+    "entries": 17,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SwitchAccess/SwitchAccess.apk",
+    "entries": 2247,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/SpeechServicesByGoogle/SpeechServicesByGoogle.apk",
+    "entries": 1058,
+    "protobuf_paths": [
+      "assets/voices-list-dsig.pb",
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Photos/Photos.apk",
+    "entries": 5952,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/OplusCamera/OplusCamera.apk",
+    "entries": 4232,
+    "protobuf_paths": [
+      "agents.proto",
+      "card_action.proto",
+      "card_ui_data.proto",
+      "com/oplus/camera/watch/proto/WatchAgentProto.proto",
+      "compat_scp.proto",
+      "deviceconnections.proto",
+      "devicemanager.proto",
+      "discoveries.proto",
+      "fusionservice.proto",
+      "google/protobuf/any.proto",
+      "google/protobuf/api.proto",
+      "google/protobuf/descriptor.proto",
+      "google/protobuf/duration.proto",
+      "google/protobuf/empty.proto",
+      "google/protobuf/field_mask.proto",
+      "google/protobuf/source_context.proto",
+      "google/protobuf/struct.proto",
+      "google/protobuf/timestamp.proto",
+      "google/protobuf/type.proto",
+      "google/protobuf/wrappers.proto",
+      "results.proto"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/OplusCamera/OplusCamera.apk!assets/sticker/material/normal/LittleOBlushSticker.zip",
+        "entries": 31,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/Meet/Meet.apk",
+    "entries": 5165,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/Meet/Meet.apk!assets/pure_java_gpu_database-android_symbols/assets.zip",
+        "entries": 0,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/app/Meet/Meet.apk!assets/pure_java_gpu_database-android_symbols/symbols.zip",
+        "entries": 0,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/Maps/Maps.apk",
+    "entries": 5280,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/LatinImeGoogle/LatinImeGoogle.apk",
+    "entries": 8862,
+    "protobuf_paths": [
+      "res/YA3.pb",
+      "res/e__.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/LatinImeGoogle/LatinImeGoogle.apk!assets/emoji_en_us_20250115185814.zip",
+        "entries": 2,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/GoogleWallet/GoogleWallet.apk",
+    "entries": 2222,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/GoogleLocationHistory/GoogleLocationHistory.apk",
+    "entries": 13,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/GoogleGemini/GoogleGemini.apk",
+    "entries": 1259,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/GoogleContacts/GoogleContacts.apk",
+    "entries": 3929,
+    "protobuf_paths": [
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Gmail2/Gmail2.apk",
+    "entries": 10018,
+    "protobuf_paths": [
+      "res/YA3.pb"
+    ],
+    "name_matches": [],
+    "content_matches": [],
+    "nested": [
+      {
+        "path": "/app/Gmail2/Gmail2.apk!assets/pure_java_gpu_database-android_symbols/assets.zip",
+        "entries": 0,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      },
+      {
+        "path": "/app/Gmail2/Gmail2.apk!assets/pure_java_gpu_database-android_symbols/symbols.zip",
+        "entries": 0,
+        "protobuf_paths": [],
+        "name_matches": [],
+        "content_matches": []
+      }
+    ]
+  },
+  {
+    "path": "/app/GPay3/GPay3.apk",
+    "entries": 2313,
+    "protobuf_paths": [
+      "assets/android_release.assets/assets/fs/prod/asset/config.pb",
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/Chrome64/Chrome64.apk",
+    "entries": 4523,
+    "protobuf_paths": [
+      "assets/readaloud_voices.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/CalendarGoogle/CalendarGoogle.apk",
+    "entries": 2902,
+    "protobuf_paths": [
+      "assets/directory/directorydata_af.pb",
+      "assets/directory/directorydata_am.pb",
+      "assets/directory/directorydata_ar.pb",
+      "assets/directory/directorydata_be.pb",
+      "assets/directory/directorydata_bg.pb",
+      "assets/directory/directorydata_ca.pb",
+      "assets/directory/directorydata_cs.pb",
+      "assets/directory/directorydata_da.pb",
+      "assets/directory/directorydata_de.pb",
+      "assets/directory/directorydata_el.pb",
+      "assets/directory/directorydata_en.pb",
+      "assets/directory/directorydata_en_GB.pb",
+      "assets/directory/directorydata_en_IN.pb",
+      "assets/directory/directorydata_es.pb",
+      "assets/directory/directorydata_es_US.pb",
+      "assets/directory/directorydata_et.pb",
+      "assets/directory/directorydata_et_EE.pb",
+      "assets/directory/directorydata_fa.pb",
+      "assets/directory/directorydata_fi.pb",
+      "assets/directory/directorydata_fr.pb",
+      "assets/directory/directorydata_fr_CA.pb",
+      "assets/directory/directorydata_hi.pb",
+      "assets/directory/directorydata_hr.pb",
+      "assets/directory/directorydata_hu.pb",
+      "assets/directory/directorydata_hy_AM.pb",
+      "assets/directory/directorydata_in.pb",
+      "assets/directory/directorydata_it.pb",
+      "assets/directory/directorydata_iw.pb",
+      "assets/directory/directorydata_ja.pb",
+      "assets/directory/directorydata_ka_GE.pb",
+      "assets/directory/directorydata_kk.pb",
+      "assets/directory/directorydata_km_KH.pb",
+      "assets/directory/directorydata_ko.pb",
+      "assets/directory/directorydata_lo_LA.pb",
+      "assets/directory/directorydata_lt.pb",
+      "assets/directory/directorydata_lv.pb",
+      "assets/directory/directorydata_mn_MN.pb",
+      "assets/directory/directorydata_ms.pb",
+      "assets/directory/directorydata_ms_MY.pb",
+      "assets/directory/directorydata_nb.pb",
+      "assets/directory/directorydata_nl.pb",
+      "assets/directory/directorydata_pl.pb",
+      "assets/directory/directorydata_pt.pb",
+      "assets/directory/directorydata_pt_BR.pb",
+      "assets/directory/directorydata_pt_PT.pb",
+      "assets/directory/directorydata_ro.pb",
+      "assets/directory/directorydata_ru.pb",
+      "assets/directory/directorydata_sk.pb",
+      "assets/directory/directorydata_sl.pb",
+      "assets/directory/directorydata_sr.pb",
+      "assets/directory/directorydata_sv.pb",
+      "assets/directory/directorydata_sw.pb",
+      "assets/directory/directorydata_th.pb",
+      "assets/directory/directorydata_tl.pb",
+      "assets/directory/directorydata_tr.pb",
+      "assets/directory/directorydata_uk.pb",
+      "assets/directory/directorydata_ur.pb",
+      "assets/directory/directorydata_vi.pb",
+      "assets/directory/directorydata_zh_CN.pb",
+      "assets/directory/directorydata_zh_HK.pb",
+      "assets/directory/directorydata_zh_TW.pb",
+      "assets/directory/directorydata_zu.pb",
+      "assets/flairs/flairdata_af.pb",
+      "assets/flairs/flairdata_ar.pb",
+      "assets/flairs/flairdata_be.pb",
+      "assets/flairs/flairdata_bg.pb",
+      "assets/flairs/flairdata_ca.pb",
+      "assets/flairs/flairdata_cs.pb",
+      "assets/flairs/flairdata_da.pb",
+      "assets/flairs/flairdata_de.pb",
+      "assets/flairs/flairdata_el.pb",
+      "assets/flairs/flairdata_en.pb",
+      "assets/flairs/flairdata_en_GB.pb",
+      "assets/flairs/flairdata_en_IN.pb",
+      "assets/flairs/flairdata_es.pb",
+      "assets/flairs/flairdata_es_US.pb",
+      "assets/flairs/flairdata_et_EE.pb",
+      "assets/flairs/flairdata_fi.pb",
+      "assets/flairs/flairdata_fr.pb",
+      "assets/flairs/flairdata_fr_CA.pb",
+      "assets/flairs/flairdata_hi.pb",
+      "assets/flairs/flairdata_hr.pb",
+      "assets/flairs/flairdata_hu.pb",
+      "assets/flairs/flairdata_hy_AM.pb",
+      "assets/flairs/flairdata_in.pb",
+      "assets/flairs/flairdata_it.pb",
+      "assets/flairs/flairdata_iw.pb",
+      "assets/flairs/flairdata_ja.pb",
+      "assets/flairs/flairdata_ka_GE.pb",
+      "assets/flairs/flairdata_kk.pb",
+      "assets/flairs/flairdata_km_KH.pb",
+      "assets/flairs/flairdata_ko.pb",
+      "assets/flairs/flairdata_lo_LA.pb",
+      "assets/flairs/flairdata_lt.pb",
+      "assets/flairs/flairdata_lv.pb",
+      "assets/flairs/flairdata_mn_MN.pb",
+      "assets/flairs/flairdata_ms.pb",
+      "assets/flairs/flairdata_ms_MY.pb",
+      "assets/flairs/flairdata_nl.pb",
+      "assets/flairs/flairdata_pl.pb",
+      "assets/flairs/flairdata_pt.pb",
+      "assets/flairs/flairdata_pt_BR.pb",
+      "assets/flairs/flairdata_pt_PT.pb",
+      "assets/flairs/flairdata_ro.pb",
+      "assets/flairs/flairdata_ru.pb",
+      "assets/flairs/flairdata_sk.pb",
+      "assets/flairs/flairdata_sl.pb",
+      "assets/flairs/flairdata_sr.pb",
+      "assets/flairs/flairdata_sv.pb",
+      "assets/flairs/flairdata_sw.pb",
+      "assets/flairs/flairdata_th.pb",
+      "assets/flairs/flairdata_tl.pb",
+      "assets/flairs/flairdata_tr.pb",
+      "assets/flairs/flairdata_uk.pb",
+      "assets/flairs/flairdata_ur.pb",
+      "assets/flairs/flairdata_vi.pb",
+      "assets/flairs/flairdata_zh_CN.pb",
+      "assets/flairs/flairdata_zh_HK.pb",
+      "assets/flairs/flairdata_zh_TW.pb",
+      "assets/flairs/flairdata_zu.pb",
+      "res/YA.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/AudioEffectCenter/AudioEffectCenter.apk",
+    "entries": 284,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/AONService/AONService.apk",
+    "entries": 1860,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/AIPaint/AIPaint.apk",
+    "entries": 1867,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  }
+]

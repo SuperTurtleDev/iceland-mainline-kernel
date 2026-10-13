@@ -1,0 +1,46 @@
+[
+  {
+    "path": "/lost+found",
+    "mode": 16832
+  },
+  {
+    "path": "/bin",
+    "mode": 16877
+  },
+  {
+    "path": "/etc",
+    "mode": 16877
+  },
+  {
+    "path": "/apex_manifest.pb",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/oplus-stability-apex.rc",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/permissions",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/vintf",
+    "mode": 16877
+  },
+  {
+    "path": "/etc/vintf/stability-aidl-apex.xml",
+    "mode": 33188
+  },
+  {
+    "path": "/etc/permissions/vendor-oplus-hardware-stability-prebuilt.xml",
+    "mode": 33188
+  },
+  {
+    "path": "/bin/hw",
+    "mode": 16877
+  },
+  {
+    "path": "/bin/hw/vendor.oplus.hardware.stability.oplus_project-V1-service",
+    "mode": 33261
+  }
+]

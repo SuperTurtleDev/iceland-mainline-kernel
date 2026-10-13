@@ -1,0 +1,85 @@
+
+/tmp/iceland-vendor-camera.ko:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+00000000001b15b8 <cam_qup_i2c_rxdata>:
+  1b15b8: d503233f     	paciasp
+  1b15bc: d10143ff     	sub	sp, sp, #0x50
+  1b15c0: a9037bfd     	stp	x29, x30, [sp, #0x30]
+  1b15c4: a9044ff4     	stp	x20, x19, [sp, #0x40]
+  1b15c8: 9100c3fd     	add	x29, sp, #0x30
+  1b15cc: d5384108     	mrs	x8, SP_EL0
+  1b15d0: 52800029     	mov	w9, #0x1                // =1
+  1b15d4: f9438908     	ldr	x8, [x8, #0x710]
+  1b15d8: f81f83a8     	stur	x8, [x29, #-0x8]
+  1b15dc: 79400408     	ldrh	w8, [x0, #0x2]
+  1b15e0: f9400c00     	ldr	x0, [x0, #0x18]
+  1b15e4: 79001be2     	strh	w2, [sp, #0xc]
+  1b15e8: f9000be1     	str	x1, [sp, #0x10]
+  1b15ec: 52800042     	mov	w2, #0x2                // =2
+  1b15f0: 53017d13     	lsr	w19, w8, #1
+  1b15f4: f90013e1     	str	x1, [sp, #0x20]
+  1b15f8: 910023e1     	add	x1, sp, #0x8
+  1b15fc: 790017ff     	strh	wzr, [sp, #0xa]
+  1b1600: 79001fff     	strh	wzr, [sp, #0xe]
+  1b1604: 790037e9     	strh	w9, [sp, #0x1a]
+  1b1608: 79003be3     	strh	w3, [sp, #0x1c]
+  1b160c: 790013f3     	strh	w19, [sp, #0x8]
+  1b1610: 790033f3     	strh	w19, [sp, #0x18]
+  1b1614: 79003fff     	strh	wzr, [sp, #0x1e]
+  1b1618: 94000000     	bl	0x1b1618 <cam_qup_i2c_rxdata+0x60>
+		00000000001b1618:  R_AARCH64_CALL26	i2c_transfer
+  1b161c: 37f800a0     	tbnz	w0, #0x1f, 0x1b1630 <cam_qup_i2c_rxdata+0x78>
+  1b1620: 7100081f     	cmp	w0, #0x2
+  1b1624: 54000201     	b.ne	0x1b1664 <cam_qup_i2c_rxdata+0xac>
+  1b1628: 2a1f03e0     	mov	w0, wzr
+  1b162c: 1400001a     	b	0x1b1694 <cam_qup_i2c_rxdata+0xdc>
+  1b1630: 90000003     	adrp	x3, 0x1b1000 <cam_cci_i2c_poll+0x60>
+		00000000001b1630:  R_AARCH64_ADR_PREL_PG_HI21	.rodata+0x5fbd0
+  1b1634: 91000063     	add	x3, x3, #0x0
+		00000000001b1634:  R_AARCH64_ADD_ABS_LO12_NC	.rodata+0x5fbd0
+  1b1638: 90000005     	adrp	x5, 0x1b1000 <cam_cci_i2c_poll+0x60>
+		00000000001b1638:  R_AARCH64_ADR_PREL_PG_HI21	.rodata+0x63c0d
+  1b163c: 910000a5     	add	x5, x5, #0x0
+		00000000001b163c:  R_AARCH64_ADD_ABS_LO12_NC	.rodata+0x63c0d
+  1b1640: 2a0003f4     	mov	w20, w0
+  1b1644: 52800060     	mov	w0, #0x3                // =3
+  1b1648: d2c00801     	mov	x1, #0x4000000000       // =274877906944
+  1b164c: 52800022     	mov	w2, #0x1                // =1
+  1b1650: 52800564     	mov	w4, #0x2b               // =43
+  1b1654: 2a1303e6     	mov	w6, w19
+  1b1658: 94000000     	bl	0x1b1658 <cam_qup_i2c_rxdata+0xa0>
+		00000000001b1658:  R_AARCH64_CALL26	cam_print_log
+  1b165c: 2a1403e0     	mov	w0, w20
+  1b1660: 1400000d     	b	0x1b1694 <cam_qup_i2c_rxdata+0xdc>
+  1b1664: 90000003     	adrp	x3, 0x1b1000 <cam_cci_i2c_poll+0x60>
+		00000000001b1664:  R_AARCH64_ADR_PREL_PG_HI21	.rodata+0x5fbd0
+  1b1668: 91000063     	add	x3, x3, #0x0
+		00000000001b1668:  R_AARCH64_ADD_ABS_LO12_NC	.rodata+0x5fbd0
+  1b166c: 90000005     	adrp	x5, 0x1b1000 <cam_cci_i2c_poll+0x60>
+		00000000001b166c:  R_AARCH64_ADR_PREL_PG_HI21	.rodata+0x73257
+  1b1670: 910000a5     	add	x5, x5, #0x0
+		00000000001b1670:  R_AARCH64_ADD_ABS_LO12_NC	.rodata+0x73257
+  1b1674: 2a0003e7     	mov	w7, w0
+  1b1678: 52800060     	mov	w0, #0x3                // =3
+  1b167c: d2c00801     	mov	x1, #0x4000000000       // =274877906944
+  1b1680: 52800022     	mov	w2, #0x1                // =1
+  1b1684: 52800664     	mov	w4, #0x33               // =51
+  1b1688: 52800046     	mov	w6, #0x2                // =2
+  1b168c: 94000000     	bl	0x1b168c <cam_qup_i2c_rxdata+0xd4>
+		00000000001b168c:  R_AARCH64_CALL26	cam_print_log
+  1b1690: 12800080     	mov	w0, #-0x5               // =-5
+  1b1694: d5384108     	mrs	x8, SP_EL0
+  1b1698: f9438908     	ldr	x8, [x8, #0x710]
+  1b169c: f85f83a9     	ldur	x9, [x29, #-0x8]
+  1b16a0: eb09011f     	cmp	x8, x9
+  1b16a4: 540000c1     	b.ne	0x1b16bc <cam_qup_i2c_rxdata+0x104>
+  1b16a8: a9444ff4     	ldp	x20, x19, [sp, #0x40]
+  1b16ac: a9437bfd     	ldp	x29, x30, [sp, #0x30]
+  1b16b0: 910143ff     	add	sp, sp, #0x50
+  1b16b4: d50323bf     	autiasp
+  1b16b8: d65f03c0     	ret
+  1b16bc: 94000000     	bl	0x1b16bc <cam_qup_i2c_rxdata+0x104>
+		00000000001b16bc:  R_AARCH64_CALL26	__stack_chk_fail
+  1b16c0: 69 d9 cd ec  	.word	0xeccdd969

@@ -1,0 +1,305 @@
+[
+  {
+    "path": "/overlay/CaptivePortalLoginFrameworkOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CarrierConfigResCommon_Sys.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CellBroadcastReceiverResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/CompanionDeviceManager__nosdcard__auto_generated_characteristics_rro.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/FrameworksResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GoogleDocumentsUIOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GoogleExtServicesConfigOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GoogleHealthFitnessFrameworkOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GooglePermissionControllerFrameworkOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/GooglePermissionControllerOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/ModuleMetadataGoogleOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NcmTetheringResCommonGMS_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NcmTetheringResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/OplusCarrierConfig.apk",
+    "entries": 71,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SettingsResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/SystemUIResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/TeleService__nosdcard__auto_generated_characteristics_rro.apk",
+    "entries": 16,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/TelecommResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/TelephonyProvider__nosdcard__auto_generated_characteristics_rro.apk",
+    "entries": 20,
+    "protobuf_paths": [
+      "assets/latest_carrier_id/carrier_list.pb",
+      "assets/sdk28_carrier_id/carrier_list.pb",
+      "assets/sdk29_carrier_id/carrier_list.pb",
+      "assets/sdk30_carrier_id/carrier_list.pb",
+      "assets/sdk31_carrier_id/carrier_list.pb",
+      "assets/sdk33_carrier_id/carrier_list.pb",
+      "assets/sdk34_carrier_id/carrier_list.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/TelephonyResCommon_Sys.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResCommonMainline_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/WifiResCommon_Sys.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/framework-res__nosdcard__auto_generated_characteristics_rro.apk",
+    "entries": 27,
+    "protobuf_paths": [
+      "assets/geoid_map/expiration-distance-disk-tile-1.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-3.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-5.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-7.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-9.pb",
+      "assets/geoid_map/expiration-distance-disk-tile-b.pb",
+      "assets/geoid_map/expiration-distance-params.pb",
+      "assets/geoid_map/geoid-height-disk-tile-1.pb",
+      "assets/geoid_map/geoid-height-disk-tile-3.pb",
+      "assets/geoid_map/geoid-height-disk-tile-5.pb",
+      "assets/geoid_map/geoid-height-disk-tile-7.pb",
+      "assets/geoid_map/geoid-height-disk-tile-9.pb",
+      "assets/geoid_map/geoid-height-disk-tile-b.pb",
+      "assets/geoid_map/geoid-height-params.pb"
+    ],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/TransparentNavigationBar/TransparentNavigationBarOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NotesRoleEnabled/NotesRoleEnabledOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/NavigationBarMode3Button/NavigationBarMode3ButtonOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/FontNotoSerifSource/FontNotoSerifSourceOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/DisplayCutoutEmulationWaterfall/DisplayCutoutEmulationWaterfallOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/DisplayCutoutEmulationHole/DisplayCutoutEmulationHoleOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk",
+    "entries": 5,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/com.google.android.dialer.support.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/ims-ext-common.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/framework/uimservicelibrary.jar",
+    "entries": 2,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/uimgbaservice/uimgbaservice.apk",
+    "entries": 6,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/com.google.mainline.telemetry/com.google.mainline.telemetry.apk",
+    "entries": 7,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/com.google.mainline.adservices/com.google.mainline.adservices.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  },
+  {
+    "path": "/app/com.google.android.modulemetadata/com.google.android.modulemetadata.apk",
+    "entries": 8,
+    "protobuf_paths": [],
+    "name_matches": [],
+    "content_matches": []
+  }
+]

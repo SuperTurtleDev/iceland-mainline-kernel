@@ -1,0 +1,296 @@
+
+ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char):
+00581d5c hint	#25
+00581d60 sub	sp, sp, #80
+00581d64 stp	x29, x30, [sp, #16]
+00581d68 stp	x24, x23, [sp, #32]
+00581d6c stp	x22, x21, [sp, #48]
+00581d70 stp	x20, x19, [sp, #64]
+00581d74 add	x29, sp, #16
+00581d78 mrs	x24, TPIDR_EL0
+00581d7c mov	x22, x0
+00581d80 ldr	x8, [x24, #40]
+00581d84 mov	w19, w1
+00581d88 mov	w23, w4
+00581d8c mov	w20, w3
+00581d90 mov	x21, x2
+00581d94 str	x8, [sp, #8]
+00581d98 mov	w8, #-1
+00581d9c ldr	x9, [x0]
+00581da0 str	w8, [sp, #4]
+00581da4 add	x0, x9, #8
+00581da8 add	x1, x9, #16
+00581dac bl	#-51448 -> 5754b4 VersionUnion::Compare(VersionUnion const&) const
+00581db0 tbnz	w0, #31, #104
+00581db4 add	x1, sp, #4
+00581db8 mov	x0, x22
+00581dbc mov	x2, x21
+00581dc0 mov	w3, w20
+00581dc4 mov	w4, w23
+00581dc8 mov	w5, w19
+00581dcc bl	#140 -> 581e58 ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int)
+00581dd0 ldr	w8, [x22, #44]
+00581dd4 ldr	w9, [sp, #4]
+00581dd8 add	w5, w9, w8
+00581ddc cmp	w5, w19
+00581de0 str	w5, [sp, #4]
+00581de4 b.ls	#60
+00581de8 ldr	x8, [x22, #8]
+00581dec adrp	x4, #-4673536
+00581df0 add	x4, x4, #2684 ; 10ca7c 'Load limit (%u) exceeds available size (%u). Binary file may be older/newer than the XSD, and XSD is not forwards/backwards compatible\n'
+00581df4 mov	w1, #2
+00581df8 mov	x2, x21
+00581dfc mov	w3, w20
+00581e00 mov	w6, w19
+00581e04 add	x9, x8, #8
+00581e08 cmp	x8, #0
+00581e0c csel	x0, xzr, x9, eq
+00581e10 bl	#-2275920 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+00581e14 b	#16 -> 581e24 ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)+0xc8
+00581e18 mov	w19, #-1
+00581e1c b	#8 -> 581e24 ParameterFileSymbolTableEntry::ReadLoadDataLimit(unsigned int, char const*, int, unsigned char)+0xc8
+00581e20 mov	w19, w5
+00581e24 ldr	x8, [x24, #40]
+00581e28 ldr	x9, [sp, #8]
+00581e2c cmp	x8, x9
+00581e30 b.ne	#36
+00581e34 mov	w0, w19
+00581e38 ldp	x20, x19, [sp, #64]
+00581e3c ldp	x22, x21, [sp, #48]
+00581e40 ldp	x24, x23, [sp, #32]
+00581e44 ldp	x29, x30, [sp, #16]
+00581e48 add	sp, sp, #80
+00581e4c hint	#29
+00581e50 ret
+00581e54 bl	#7378356 -> c8b408 __stack_chk_fail@plt
+
+ParameterFileSymbolTableEntry::Read(unsigned int&, char const*, int, unsigned char, unsigned int):
+00581e58 hint	#25
+00581e5c stp	x29, x30, [sp, #-48]!
+00581e60 str	x21, [sp, #16]
+00581e64 stp	x20, x19, [sp, #32]
+00581e68 mov	x29, sp
+00581e6c mov	w19, w3
+00581e70 mov	x20, x2
+00581e74 mov	w2, w4
+00581e78 mov	w3, w5
+00581e7c mov	x21, x0
+00581e80 bl	#840 -> 5821c8 bool ParameterFileSymbolTableEntry::ReadInternal<unsigned int>(unsigned int&, unsigned char, unsigned int)
+00581e84 tbz	w0, #0, #24
+00581e88 ldp	x20, x19, [sp, #32]
+00581e8c ldr	x21, [sp, #16]
+00581e90 ldp	x29, x30, [sp], #48
+00581e94 hint	#29
+00581e98 ret
+00581e9c ldr	x8, [x21, #8]
+00581ea0 adrp	x4, #-4935680
+00581ea4 add	x4, x4, #2716 ; cca9c 'Insufficient data to read UINT32 from symbol table entry\n'
+00581ea8 mov	w1, #1
+00581eac mov	x2, x20
+00581eb0 add	x9, x8, #8
+00581eb4 cmp	x8, #0
+00581eb8 csel	x0, xzr, x9, eq
+00581ebc mov	w3, w19
+00581ec0 ldp	x20, x19, [sp, #32]
+00581ec4 ldr	x21, [sp, #16]
+00581ec8 ldp	x29, x30, [sp], #48
+00581ecc hint	#29
+00581ed0 b	#-2276112 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+
+ParameterFileSymbolTableEntry::UpdatePosition(unsigned int, char const*, int):
+00581ed4 hint	#34
+00581ed8 cmn	w1, #1
+00581edc b.eq	#92
+00581ee0 hint	#25
+00581ee4 stp	x29, x30, [sp, #-32]!
+00581ee8 stp	x20, x19, [sp, #16]
+00581eec mov	x29, sp
+00581ef0 ldr	w6, [x0, #44]
+00581ef4 mov	w19, w1
+00581ef8 mov	x20, x0
+00581efc cmp	w6, w1
+00581f00 b.eq	#40
+00581f04 ldr	x8, [x20, #8]
+00581f08 adrp	x4, #-4734976
+00581f0c add	x4, x4, #880 ; fd370 'Binary file structure bytes (%u) does not match expected bytes (%u). Binary file may be older/newer than the XSD\n'
+00581f10 mov	w1, #1
+00581f14 mov	w5, w19
+00581f18 add	x9, x8, #8
+00581f1c cmp	x8, #0
+00581f20 csel	x0, xzr, x9, eq
+00581f24 bl	#-2276196 -> 3563c0 ParameterLogging::Write(IParameterLoggingAPI*, ParameterLogging::ParameterLogLevel, char const*, int, char const*, ...)
+00581f28 str	w19, [x20, #44]
+00581f2c ldp	x20, x19, [sp, #16]
+00581f30 ldp	x29, x30, [sp], #32
+00581f34 hint	#29
+00581f38 ret
+
+CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]:
+00599e5c hint	#25
+00599e60 sub	sp, sp, #64
+00599e64 stp	x29, x30, [sp, #16]
+00599e68 str	x21, [sp, #32]
+00599e6c stp	x20, x19, [sp, #48]
+00599e70 add	x29, sp, #16
+00599e74 mrs	x21, TPIDR_EL0
+00599e78 mov	w5, w3
+00599e7c ldr	x8, [x21, #40]
+00599e80 mov	w4, w2
+00599e84 mov	x19, x1
+00599e88 adrp	x2, #-3661824
+00599e8c add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+00599e90 add	x1, sp, #4
+00599e94 mov	w3, #611
+00599e98 mov	x20, x0
+00599e9c str	x8, [sp, #8]
+00599ea0 str	wzr, [sp, #4]
+00599ea4 bl	#-95992 -> 5827ac ParameterFileSymbolTableEntry::ReadEnum(unsigned int&, char const*, int, unsigned char, unsigned int)
+00599ea8 ldr	w5, [sp, #4]
+00599eac cmp	w5, #22
+00599eb0 b.hi	#344
+00599eb4 adrp	x8, #-3579904
+00599eb8 add	x8, x8, #1978 ; 22f7ba 
+00599ebc adr	x9, #16
+00599ec0 ldrb	w10, [x8, x5]
+00599ec4 add	x9, x9, x10, lsl #2
+00599ec8 br	x9
+00599ecc hint	#36
+00599ed0 str	wzr, [x19]
+00599ed4 b	#268 -> 599fe0 CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x184
+00599ed8 hint	#36
+00599edc mov	w8, #16
+00599ee0 b	#252 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599ee4 hint	#36
+00599ee8 mov	w8, #14
+00599eec b	#240 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599ef0 hint	#36
+00599ef4 mov	w8, #11
+00599ef8 b	#228 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599efc hint	#36
+00599f00 mov	w8, #4
+00599f04 b	#216 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f08 hint	#36
+00599f0c mov	w8, #12
+00599f10 b	#204 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f14 hint	#36
+00599f18 mov	w8, #9
+00599f1c b	#192 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f20 hint	#36
+00599f24 mov	w8, #2
+00599f28 b	#180 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f2c hint	#36
+00599f30 mov	w8, #15
+00599f34 b	#168 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f38 hint	#36
+00599f3c mov	w8, #3
+00599f40 b	#156 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f44 hint	#36
+00599f48 mov	w8, #7
+00599f4c b	#144 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f50 hint	#36
+00599f54 mov	w8, #1
+00599f58 b	#132 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f5c hint	#36
+00599f60 mov	w8, #17
+00599f64 b	#120 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f68 hint	#36
+00599f6c mov	w8, #20
+00599f70 b	#108 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f74 hint	#36
+00599f78 mov	w8, #5
+00599f7c b	#96 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f80 hint	#36
+00599f84 mov	w8, #21
+00599f88 b	#84 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f8c hint	#36
+00599f90 mov	w8, #13
+00599f94 b	#72 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599f98 hint	#36
+00599f9c mov	w8, #6
+00599fa0 b	#60 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599fa4 hint	#36
+00599fa8 mov	w8, #18
+00599fac b	#48 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599fb0 hint	#36
+00599fb4 mov	w8, #10
+00599fb8 b	#36 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599fbc hint	#36
+00599fc0 mov	w8, #8
+00599fc4 b	#24 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599fc8 hint	#36
+00599fcc mov	w8, #22
+00599fd0 b	#12 -> 599fdc CamX::ReadEnum_SensorCapability(ParameterFileSymbolTableEntry*, CamX::SensorCapability&, unsigned char, unsigned int) [clone .cfi]+0x180
+00599fd4 hint	#36
+00599fd8 mov	w8, #19
+00599fdc str	w8, [x19]
+00599fe0 ldr	x8, [x21, #40]
+00599fe4 ldr	x9, [sp, #8]
+00599fe8 cmp	x8, x9
+00599fec b.ne	#76
+00599ff0 ldp	x20, x19, [sp, #48]
+00599ff4 ldr	x21, [sp, #32]
+00599ff8 ldp	x29, x30, [sp, #16]
+00599ffc add	sp, sp, #64
+0059a000 hint	#29
+0059a004 ret
+0059a008 ldr	x8, [x20, #8]
+0059a00c adrp	x2, #-3665920
+0059a010 add	x2, x2, #812 ; 21b32c 'out/target/product/canoe/obj/STATIC_LIBRARIES/libcamxgenerated_intermediates/generated/g_sensor/camxsensordriver.cpp'
+0059a014 adrp	x4, #-4902912
+0059a018 add	x4, x4, #373 ; ed175 'Invalid value(% u) converting UINT32 to SensorCapability\n'
+
+CamX::ImageSensorData::CheckResolutionCapability(unsigned int, CamX::SensorCapability):
+00a5cfa4 hint	#34
+00a5cfa8 ldr	x8, [x0]
+00a5cfac ldr	w9, [x0, #148]
+00a5cfb0 ldr	x8, [x8, #520]
+00a5cfb4 add	x8, x8, x9, lsl #5
+00a5cfb8 mov	w9, #1464
+00a5cfbc ldr	x8, [x8, #24]
+00a5cfc0 nop
+00a5cfc4 umaddl	x9, w1, w9, x8
+00a5cfc8 ldr	w8, [x9, #756]
+00a5cfcc cbz	w8, #32
+00a5cfd0 ldr	x9, [x9, #768]
+00a5cfd4 ldr	w10, [x9]
+00a5cfd8 cmp	w10, w2
+00a5cfdc b.eq	#24
+00a5cfe0 add	x9, x9, #4
+00a5cfe4 subs	x8, x8, #1
+00a5cfe8 b.ne	#-20
+00a5cfec mov	w0, #1
+00a5cff0 ret
+00a5cff4 mov	w0, wzr
+00a5cff8 ret
+00a65924 mov	w19, wzr
+00a65928 mov	x0, x28
+00a6592c mov	w1, w19
+00a65930 mov	w2, #2
+00a65934 bl	#-35216 -> a5cfa4 CamX::ImageSensorData::CheckResolutionCapability(unsigned int, CamX::SensorCapability)
+00a65938 cbz	w0, #20
+00a6593c add	w19, w19, #1
+00a65940 cmp	w20, w19
+00a65944 b.ne	#-28
+00a65948 b	#24 -> a65960 CamX::ImageSensorData::PopulateSensorStaticCapability(CamX::SensorModuleStaticCaps*, unsigned int)+0x1e88
+00a6594c mov	w8, #1
+00a65950 str	w8, [x27, #372]
+00a65954 ldr	x8, [sp, #248]
+00a65958 ldr	w20, [x8, #12]
+00a6595c cbz	w20, #212
+00374eac mov	x0, x21
+00374eb0 mov	w1, w20
+00374eb4 mov	x2, x19
+00374eb8 str	w9, [x19, #16]
+00374ebc ldr	x9, [x8, #24]
+00374ec0 str	x9, [x19, #80]
+00374ec4 ldr	w9, [x8, #376]
+00374ec8 str	w9, [x19, #68]
+00374ecc ldr	w9, [x8, #372]
+00374ed0 str	w9, [x19, #72]
+00374ed4 ldr	w9, [x8, #412]
+00374ed8 str	w9, [x19, #248]
+00374edc ldr	w9, [x8, #72]
+00374ee0 str	w9, [x19, #88]
+00374ee4 ldr	w9, [x8, #76]
+00374ee8 str	w9, [x19, #92]
+00374eec ldr	w9, [x8, #80]
