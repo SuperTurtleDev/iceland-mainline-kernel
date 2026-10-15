@@ -1,0 +1,15 @@
+#!/bin/sh
+# linux-tools-7.2.11-sm8850 prerm: drop the symlinks postinst created; the
+# unversioned name only when it is ours.
+set -e
+KVER="7.2.11-sm8850"
+
+case "$1" in
+remove|upgrade|deconfigure)
+    if [ "$(readlink /usr/bin/perf 2>/dev/null)" = "perf-${KVER}" ]; then
+        rm -f /usr/bin/perf
+    fi
+    rm -f "/usr/bin/perf-${KVER}"
+    ;;
+esac
+exit 0

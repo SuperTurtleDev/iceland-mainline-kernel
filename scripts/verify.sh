@@ -287,6 +287,22 @@ if ok:
     detail.append(f"{len(deb_names)} debs ok")
 check(9, "debs present and dpkg-deb --info clean", ok, "; ".join(detail))
 
+# ---- 9b) deb control identity matches the filename -------------------------
+detail = []
+ok = True
+for n in deb_names:
+    pkg = subprocess.run(["dpkg-deb", "-f", os.path.join(OUT, "debs", n), "Package"],
+                         capture_output=True, text=True).stdout.strip()
+    ver = subprocess.run(["dpkg-deb", "-f", os.path.join(OUT, "debs", n), "Version"],
+                         capture_output=True, text=True).stdout.strip()
+    exp_pkg = n.split("_")[0]
+    exp_ver = VER
+    if pkg != exp_pkg or ver != exp_ver:
+        ok = False
+        detail.append(f"{n}: control says {pkg} {ver}, expected {exp_pkg} {exp_ver}")
+check(9, "deb control Package/Version match filenames", ok,
+      "; ".join(detail) or "all four identities correct")
+
 # ---- 10) charge initrd --------------------------------------------------------------
 detail = []
 ok = True

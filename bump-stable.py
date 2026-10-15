@@ -153,11 +153,8 @@ def main():
     targets = []
     for d in ("scripts",):
         targets += [os.path.join(HERE, d, f) for f in os.listdir(os.path.join(HERE, d))]
-    fw = os.path.join(HERE, "debian", "linux-firmware-iceland")
-    for sub in ("DEBIAN",):
-        p = os.path.join(fw, sub)
-        if os.path.isdir(p):
-            targets += [os.path.join(p, f) for f in os.listdir(p)]
+    for root, _, files in os.walk(os.path.join(HERE, "debian")):
+        targets += [os.path.join(root, f) for f in files]
     targets += [os.path.join(HERE, "initrd-modules.txt"), os.path.join(HERE, "config")]
     for t in targets:
         if not os.path.isfile(t):

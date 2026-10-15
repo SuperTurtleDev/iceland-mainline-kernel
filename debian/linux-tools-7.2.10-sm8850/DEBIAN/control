@@ -1,0 +1,15 @@
+Package: linux-tools-7.2.11-sm8850
+Version: 7.2.11-sm8850-1
+Architecture: arm64
+Section: devel
+Priority: optional
+Maintainer: iceland mainline <iceland@localhost>
+Depends: ${shlibs:Depends}
+Description: Linux kernel version specific tools for 7.2.11-sm8850
+ perf built from the 7.2.11-sm8850 kernel tree (tools/perf), installed
+ under /usr/lib/linux-tools-7.2.11-sm8850/ following the Ubuntu
+ linux-tools-<version> layout.
+ .
+ postinst creates /usr/bin/perf-7.2.11-sm8850 and, when no other package
+ owns the name (Ubuntu's linux-perf ships /usr/bin/perf as a file),
+ /usr/bin/perf pointing at it; prerm removes both links again.
