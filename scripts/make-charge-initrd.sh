@@ -11,7 +11,7 @@ set -euo pipefail
 
 SRC=/work/src
 OUT=/work/out
-KVER="7.2.10-sm8850"
+KVER="7.2.11-sm8850"
 MODROOT="${OUT}/staging/modroot"
 ROOT="${OUT}/staging/charge-root"
 LIST="${SRC}/initrd-modules.txt"
