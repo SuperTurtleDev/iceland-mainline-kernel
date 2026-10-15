@@ -176,7 +176,7 @@ def main():
             log(f"  debian/{name}-{kver} -> {name}-{new_kver}")
 
     # --- 6. layer commits --------------------------------------------------------
-    git(HERE, "add", "-A", "scripts", "debian", "config", "initrd-modules.txt", "linux")
+    git(HERE, "add", "-u", "scripts", "debian", "config", "initrd-modules.txt", "linux")
     git(HERE, "commit", "-m",
         f"linux: Linux {new} ({merge_sha}); metarepo version bump to {new_kver}")
     sha = git(HERE, "rev-parse", "--short=9", "HEAD", capture=True).strip()
