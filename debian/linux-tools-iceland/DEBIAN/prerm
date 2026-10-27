@@ -1,8 +1,8 @@
 #!/bin/sh
-# linux-tools-7.2.11-sm8850 prerm: drop the symlinks postinst created; the
+# linux-tools-@KVER@ prerm: drop the symlinks postinst created; the
 # unversioned name only when it is ours.
 set -e
-KVER="7.2.11-sm8850"
+KVER="@KVER@"
 
 case "$1" in
 remove|upgrade|deconfigure)

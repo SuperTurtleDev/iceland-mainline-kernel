@@ -1,9 +1,9 @@
 #!/bin/sh
-# linux-tools-7.2.11-sm8850 postinst: version-specific command names.
+# linux-tools-@KVER@ postinst: version-specific command names.
 # The symlinks are maintained here rather than shipped so that this package
 # never owns /usr/bin/perf and cannot conflict with Ubuntu's linux-perf.
 set -e
-KVER="7.2.11-sm8850"
+KVER="@KVER@"
 LIB="/usr/lib/linux-tools-${KVER}"
 
 case "$1" in

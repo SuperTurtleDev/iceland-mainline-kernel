@@ -24,10 +24,11 @@ set -euo pipefail
 
 SRC=/work/src
 OUT=/work/out
-KVER="7.2.11-sm8850"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 MODROOT="${OUT}/staging/modroot"
 ROOT="${OUT}/staging/initrd-root"
-LIST="${SRC}/initrd-modules.txt"
+LIST="${OUT}/staging/initrd-modules.txt"
+sed "s/@KVER@/${KVER}/g" "${SRC}/initrd-modules.txt" > "${LIST}"
 MISSING="${OUT}/staging/initrd-missing.txt"
 KMODDIR="lib/modules/${KVER}"
 

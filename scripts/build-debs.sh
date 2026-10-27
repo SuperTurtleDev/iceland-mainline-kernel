@@ -1,24 +1,34 @@
 #!/usr/bin/env bash
-# In-container stage: assemble the four Debian packages from the build
+# In-container stage: assemble the five Debian packages from the build
 # artifacts plus the packaging trees under debian/.
 #
-#   linux-modules-<kver>        staging/modroot (all .ko.zst + depmod data)
-#   linux-headers-<kver>        headers.tar.gz (OOT dev package)
-#   linux-image-<kver>          Image + .config + System.map; postinst
+#   linux-modules-iceland        staging/modroot (all .ko.zst + depmod data)
+#   linux-headers-iceland        headers.tar.gz (OOT dev package)
+#   linux-tools-iceland          staging/tools (perf under
+#                               /usr/lib/linux-tools-<kver>/, built by the
+#                               arm64 stage); postinst/prerm maintain the
+#                               /usr/bin/perf-<kver> symlink
+#   linux-image-iceland          Image + .config + System.map; postinst
 #                               flashes kernel/bootcfg partitions and runs
 #                               /etc/kernel/postinst.d
 #   linux-firmware-iceland      firmware tree + DTB + initramfs-tools config
 #                               + generated module-set hook; postinst flashes
 #                               the dtb partition
+#
+# DEBIAN/control may carry ${shlibs:Depends}; it is replaced with the
+# dependency list build-hdr-tools.sh computed from the shipped aarch64 ELFs
+# (staging/shlibs/<package>).
 set -euo pipefail
 
 SRC=/work/src
 OUT=/work/out
-KVER="7.2.11-sm8850"
-VER="7.2.11-sm8850-1"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 O="${OUT}/kbuild"
 MODROOT="${OUT}/staging/modroot"
-LIST="${SRC}/initrd-modules.txt"
+TOOLS="${OUT}/staging/tools"
+SHLIBS="${OUT}/staging/shlibs"
+LIST="${OUT}/staging/initrd-modules.txt"
+sed "s/@KVER@/${KVER}/g" "${SRC}/initrd-modules.txt" > "${LIST}"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
 S="${OUT}/staging/debs"
 
@@ -27,6 +37,9 @@ die() { log "ERROR: $*"; exit 1; }
 
 command -v dpkg-deb >/dev/null 2>&1 || die "dpkg-deb missing"
 [ -f "${OUT}/headers.tar.gz" ]                || die "headers.tar.gz missing (run pack-headers first)"
+[ -x "${TOOLS}/usr/lib/linux-tools-${KVER}/perf" ] || die "staging/tools perf missing (run build-hdr-tools first)"
+[ -s "${SHLIBS}/linux-headers" ] && [ -s "${SHLIBS}/linux-tools" ] \
+                                              || die "staging/shlibs missing (run build-hdr-tools first)"
 [ -d "${MODROOT}/lib/modules/${KVER}" ]       || die "modroot missing (run build-kernel/build-oot first)"
 [ -f "${O}/arch/arm64/boot/Image" ]           || die "Image missing"
 [ -f "${O}/${DTB_REL}" ]                      || die "dtb missing"
@@ -39,35 +52,53 @@ export SOURCE_DATE_EPOCH="$(cat "${OUT}/staging/source-date-epoch" 2>/dev/null \
 rm -rf "${S}"
 mkdir -p "${S}" "${OUT}/debs"
 
+# control <linux-headers|linux-tools> <tree>: copy debian/<name>-iceland/DEBIAN
+# and fill in ${shlibs:Depends} from staging/shlibs/<name>
+control() {
+    mkdir -p "$2/DEBIAN"
+    cp -a "${SRC}/debian/$1-iceland/DEBIAN/." "$2/DEBIAN/"
+    if grep -q '\${shlibs:Depends}' "$2/DEBIAN/control"; then
+        sed -i "s|\${shlibs:Depends}|$(cat "${SHLIBS}/$1")|" "$2/DEBIAN/control"
+    fi
+    grep -q '\${' "$2/DEBIAN/control" && die "unsubstituted variable in $1 control"
+    return 0
+}
+
 # --- linux-modules -----------------------------------------------------------
 T="${S}/linux-modules"
 mkdir -p "${T}/DEBIAN"
-cp -a "${SRC}/debian/linux-modules-${KVER}/DEBIAN/." "${T}/DEBIAN/"
+cp -a "${SRC}/debian/linux-modules-iceland/DEBIAN/." "${T}/DEBIAN/"
 mkdir -p "${T}/usr"
 cp -a "${MODROOT}/lib" "${T}/usr/lib"
 # gunyah auto-load config + the verified VM smoke-test tools
 mkdir -p "${T}/etc/modules-load.d" "${T}/usr/share/gunyah"
-cp "${SRC}/debian/linux-modules-${KVER}/etc/modules-load.d/gunyah.conf" \
+cp "${SRC}/debian/linux-modules-iceland/etc/modules-load.d/gunyah.conf" \
     "${T}/etc/modules-load.d/gunyah.conf"
-for f in gh_vmtest.py gh_trace.sh; do
+for f in gh_vmtest.py gh_trace.sh gh_accepttest.py gh_sharetest.py gh_rmproxy.S; do
     [ -f "${SRC}/linux/tools/virt/gunyah/$f" ] \
         && cp "${SRC}/linux/tools/virt/gunyah/$f" "${T}/usr/share/gunyah/$f"
 done
 
 # --- linux-headers -------------------------------------------------------------
 T="${S}/linux-headers"
-mkdir -p "${T}/DEBIAN" "${T}/usr/src"
-cp -a "${SRC}/debian/linux-headers-${KVER}/DEBIAN/." "${T}/DEBIAN/"
-tar -xzf "${OUT}/headers.tar.gz" -C "${T}/usr/src"
+mkdir -p "${T}/usr/src"
+control "linux-headers" "${T}"
+tar -xzf "${OUT}/headers.tar.gz" -C "${T}"
 # the /lib/modules/<kver>/build symlink external-module builds resolve
 # (Ubuntu flavour headers package does the same)
 mkdir -p "${T}/usr/lib/modules/${KVER}"
 ln -s "/usr/src/linux-headers-${KVER}" "${T}/usr/lib/modules/${KVER}/build"
 
+# --- linux-tools ---------------------------------------------------------------
+T="${S}/linux-tools"
+mkdir -p "${T}"
+cp -a "${TOOLS}/." "${T}/"
+control "linux-tools" "${T}"
+
 # --- linux-image -----------------------------------------------------------------
 T="${S}/linux-image"
 mkdir -p "${T}/DEBIAN" "${T}/boot"
-cp -a "${SRC}/debian/linux-image-${KVER}/DEBIAN/." "${T}/DEBIAN/"
+cp -a "${SRC}/debian/linux-image-iceland/DEBIAN/." "${T}/DEBIAN/"
 cp "${O}/arch/arm64/boot/Image" "${T}/boot/vmlinuz-${KVER}"
 cp "${O}/.config"                "${T}/boot/config-${KVER}"
 cp "${O}/System.map"             "${T}/boot/System.map-${KVER}"
@@ -123,8 +154,14 @@ mkdir -p "${T}/etc/initramfs-tools/hooks"
     printf '    fi\ndone\n'
 } > "${T}/etc/initramfs-tools/hooks/iceland"
 
+# Render all package metadata and maintainer scripts from stable templates.
+find "${S}" -path '*/DEBIAN/*' -type f -exec sed -i "s/@KVER@/${KVER}/g; s/@VERSION@/${VER}/g" {} +
+if grep -RE '@(KVER|VERSION)@' "${S}"/*/DEBIAN/control; then
+    die "unrendered package metadata"
+fi
+
 # dpkg-deb archives the mode bits as they are: make scripts executable
-find "${S}" -type f \( -name postinst \
+find "${S}" -type f \( -name postinst -o -name prerm \
         -o -path '*/etc/kernel/postinst.d/*' \
         -o -path '*/etc/initramfs-tools/hooks/*' \) -exec chmod 0755 {} +
 
@@ -134,8 +171,9 @@ build() { # build <tree> <deb filename>
     log "built $2: $(du -h "${OUT}/debs/$2" | cut -f1)"
 }
 
-build "${S}/linux-modules"          "linux-modules-${KVER}_${VER}_arm64.deb"
-build "${S}/linux-headers"          "linux-headers-${KVER}_${VER}_arm64.deb"
-build "${S}/linux-image"            "linux-image-${KVER}_${VER}_arm64.deb"
+build "${S}/linux-modules"          "linux-modules-iceland_${VER}_arm64.deb"
+build "${S}/linux-headers"          "linux-headers-iceland_${VER}_arm64.deb"
+build "${S}/linux-tools"            "linux-tools-iceland_${VER}_arm64.deb"
+build "${S}/linux-image"            "linux-image-iceland_${VER}_arm64.deb"
 build "${S}/linux-firmware-iceland" "linux-firmware-iceland_${VER}_arm64.deb"
 log "done"

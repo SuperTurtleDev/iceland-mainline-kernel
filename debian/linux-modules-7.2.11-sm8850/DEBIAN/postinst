@@ -1,7 +1,0 @@
-#!/bin/sh
-set -e
-KVER=7.2.11-sm8850
-if command -v depmod >/dev/null 2>&1; then
-    depmod -a "$KVER"
-fi
-exit 0

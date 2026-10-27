@@ -8,12 +8,12 @@ set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 META="$(cd "${SCRIPTDIR}/.." && pwd)"
-OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
+OUT="${OUT:-${META}/../../build/kernel}"
 mkdir -p "${OUT}"
 OUT="$(cd "${OUT}" && pwd)"
 PCONT="$(cd "${META}/.." && pwd)/podman_container"
 DATA="${OUT}/podman-data"
-KVER="7.2.11-sm8850"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 
 log() { printf '[buildinfo] %s\n' "$*" >&2; }
 line() { printf '%s: %s\n' "$1" "$2"; }
@@ -128,6 +128,8 @@ repo_state() {
 
     echo
     echo "# artifacts"
+    line "config-sha256" "$(sha256sum "${META}/config" | cut -d' ' -f1)"
+    line "debian-version" "${VER}"
     for f in \
         kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
@@ -140,7 +142,7 @@ repo_state() {
             line "artifact-sha256-${f}" "(missing)"
         fi
     done
-    for f in "${OUT}"/debs/*.deb; do
+    for f in "${OUT}"/debs/linux-*-iceland_"${VER}"_arm64.deb; do
         [ -f "$f" ] || continue
         line "artifact-sha256-debs/$(basename "$f")" "$(sha256sum "$f" | cut -d' ' -f1)"
         line "artifact-size-debs/$(basename "$f")" "$(stat -c %s "$f")"

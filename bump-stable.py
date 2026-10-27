@@ -1,31 +1,13 @@
 #!/usr/bin/env python3
-"""One-click stable-kernel version bump for the iceland metarepo.
+"""Update within the current stable kernel series.
 
-    ./bump-stable.py <version>          # e.g. ./bump-stable.py 7.2.11
+    ./bump-stable.py 7.3.1
 
-Does everything the 7.2.9 -> 7.2.10 update did by hand, in order:
-
-  1. preflight: clean git trees, target != current KVER
-  2. fetch the upstream stable tag from the gregkh GitHub mirror
-     (origin is the port repo and only carries tags the porter pushed)
-  3. audit the v<old>..v<new> commit list, highlighting port-relevant
-     subsystems; informational only
-  4. merge the tag into linux (iceland-7.2) as an anchor merge commit
-     "Linux <version>" -- aborts cleanly on conflicts
-  5. version sweep in this repo: KVER strings in scripts/, version-stamped
-     debian/ template dirs (git mv), initrd-modules.txt paths, config header
-  6. layer commits:
-       linux:     the merge commit itself
-       src/kernel: "linux: Linux <ver> (<sha8>); metarepo version bump ..."
-       src:        "kernel: <sha8> -- Linux <ver> stable bump"
-
-NOT done automatically (deliberately): the container build (./build.sh) and
-folding staging/config-drift.diff back into ./config after the first build
-(new Kconfig symbols appear on minor bumps; the build logs the drift).
-
-Revision history convention: scripts/, debian/, config and initrd-modules.txt
-hardcode <ver>-sm8850; revert.py references the v7.2.9 tag on purpose and is
-deliberately NOT swept.
+Requires clean tracked inputs. Fetch and merge the stable tag, update only
+version.env, normalize config with the build container, then commit the
+linux / kernel / src layers. Package templates and initrd manifests are
+version-independent. The subsequent ./build.sh produces and verifies artifacts.
+Major/minor port migrations require explicit review and are rejected here.
 """
 
 import os
@@ -63,7 +45,9 @@ def sh(cwd, *argv, check=True, capture=False):
                        capture_output=capture or check is False)
     if check and r.returncode != 0:
         die(f"`{' '.join(argv[:3])}...` failed (rc={r.returncode}):\n{r.stderr}")
-    return r.stdout if capture else None
+    if r.returncode != 0:
+        return None
+    return r.stdout if capture else ""
 
 
 def git(repo, *argv, check=True, capture=False):
@@ -71,26 +55,34 @@ def git(repo, *argv, check=True, capture=False):
 
 
 def current_kver():
-    s = open(os.path.join(HERE, "scripts", "build-kernel.sh")).read()
-    m = re.search(r'^KVER="(.+?)"', s, re.M)
-    if not m:
-        die("cannot parse KVER from scripts/build-kernel.sh")
-    kver = m.group(1)
-    m = re.match(r"^(\d+\.\d+\.\d+)-sm8850$", kver)
-    if not m:
-        die(f"unexpected KVER format: {kver}")
-    return kver, m.group(1)
+    values = {}
+    with open(os.path.join(HERE, "version.env")) as f:
+        for line in f:
+            if line.strip() and not line.startswith("#"):
+                key, value = line.strip().split("=", 1)
+                values[key] = value
+    version = values["KERNEL_VERSION"]
+    return version + values["KERNEL_LOCALVERSION"], version
+
+
+def release_tag(version):
+    parts = version.split(".")
+    return "v" + (".".join(parts[:2]) if parts[2] == "0" else version)
 
 
 def main():
     if len(sys.argv) != 2 or not re.match(r"^\d+\.\d+\.\d+$", sys.argv[1]):
-        die("usage: ./bump-stable.py <version>   (e.g. 7.2.11)")
+        die("usage: ./bump-stable.py <version>   (e.g. 7.3.1)")
     new = sys.argv[1]
     kver, old = current_kver()
     if new == old:
         die(f"already at {new}")
-    new_kver = f"{new}-sm8850"
-    tag_new, tag_old = f"v{new}", f"v{old}"
+    if tuple(map(int, new.split("."))) <= tuple(map(int, old.split("."))):
+        die("target must be newer than the current version")
+    if new.split(".")[:2] != old.split(".")[:2]:
+        die("this script handles stable updates within one series; port major/minor changes explicitly")
+    new_kver = new + kver[len(old):]
+    tag_new, tag_old = release_tag(new), release_tag(old)
     log(f"{kver} -> {new_kver}")
 
     # --- 1. preflight ----------------------------------------------------------
@@ -138,50 +130,31 @@ def main():
 
     # --- 4. merge ---------------------------------------------------------------
     log(f"merging {tag_new} (anchor merge, like every prior stable bump)")
-    git(LINUX, "merge", "--no-ff", "-m", f"Linux {new}", tag_new, check=False)
-    st = git(LINUX, "status", "--porcelain", capture=True)
-    if any(l.startswith(("UU", "AA", "DD")) for l in st.splitlines()):
-        git(LINUX, "merge", "--abort")
-        die("merge conflicts -- port patches touched upstream files; "
-            "merge manually, then re-run with --skip-merge (not implemented: "
-            "finish the sweep by hand as documented in the README)")
+    merged = git(LINUX, "merge", "--no-ff", "-m", f"Linux {new}", tag_new, check=False)
+    if merged is None:
+        git(LINUX, "merge", "--abort", check=False)
+        die("merge failed; resolve the stable update manually before changing version.env")
     merge_sha = git(LINUX, "rev-parse", "--short=9", "HEAD", capture=True).strip()
     log(f"merged: Linux {new} ({merge_sha})")
 
-    # --- 5. version sweep -------------------------------------------------------
-    log(f"sweeping version strings {kver} -> {new_kver}")
-    targets = []
-    for d in ("scripts",):
-        targets += [os.path.join(HERE, d, f) for f in os.listdir(os.path.join(HERE, d))]
-    for root, _, files in os.walk(os.path.join(HERE, "debian")):
-        targets += [os.path.join(root, f) for f in files]
-    targets += [os.path.join(HERE, "initrd-modules.txt"), os.path.join(HERE, "config")]
-    for t in targets:
-        if not os.path.isfile(t):
-            continue
-        s = open(t, encoding="utf-8", errors="surrogateescape").read()
-        s2 = s.replace(kver, new_kver).replace(old, new)
-        if s2 != s:
-            open(t, "w", encoding="utf-8", errors="surrogateescape").write(s2)
-            log(f"  rewrote {os.path.relpath(t, HERE)}")
-
-    for name in ("linux-image", "linux-modules", "linux-headers"):
-        srcdir = os.path.join(HERE, "debian", f"{name}-{kver}")
-        dstdir = os.path.join(HERE, "debian", f"{name}-{new_kver}")
-        if os.path.isdir(srcdir):
-            git(HERE, "mv", f"debian/{name}-{kver}", f"debian/{name}-{new_kver}")
-            log(f"  debian/{name}-{kver} -> {name}-{new_kver}")
+    # --- 5. one version source + canonical Kconfig regeneration ----------------
+    version_file = os.path.join(HERE, "version.env")
+    text = open(version_file).read()
+    text = re.sub(r"(?m)^KERNEL_VERSION=.*$", f"KERNEL_VERSION={new}", text)
+    text = re.sub(r"(?m)^DEB_REVISION=.*$", "DEB_REVISION=1", text)
+    with open(version_file, "w") as f:
+        f.write(text)
+    sh(HERE, "bash", "scripts/normalize-config.sh")
 
     # --- 6. layer commits --------------------------------------------------------
-    git(HERE, "add", "-u", "scripts", "debian", "config", "initrd-modules.txt", "linux")
+    git(HERE, "add", "-u", "version.env", "config", "linux")
     git(HERE, "commit", "-m",
         f"linux: Linux {new} ({merge_sha}); metarepo version bump to {new_kver}")
     sha = git(HERE, "rev-parse", "--short=9", "HEAD", capture=True).strip()
     git(META, "add", "kernel")
-    git(META, "commit", "-m", f"kernel: {sha} -- Linux {new} stable bump")
+    git(META, "commit", "--only", "-m", f"kernel: {sha} -- Linux {new} stable bump", "--", "kernel")
     log(f"commits: linux {merge_sha} / kernel {sha} / metarepo bumped")
-    log("next: ./build.sh, then fold staging/config-drift.diff into ./config "
-        "if the build warns about drift, and commit --amend")
+    log("next: ./build.sh (config drift is a fatal error; package names remain stable)")
 
 
 if __name__ == "__main__":

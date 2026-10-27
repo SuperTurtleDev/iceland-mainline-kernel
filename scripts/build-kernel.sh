@@ -3,7 +3,7 @@
 #
 # Source tree: /work/src (read-only mount of the metarepo)
 # Build dir:   /work/out/kbuild (kernel O= directory)
-# Modules:     /work/out/staging/modroot/lib/modules/7.2.11-sm8850/
+# Modules:     /work/out/staging/modroot/lib/modules/<kernel-release>/
 #
 # Determinism: SOURCE_DATE_EPOCH is taken from the linux submodule HEAD
 # commit time and exported as KBUILD_BUILD_TIMESTAMP; user/host are fixed.
@@ -12,7 +12,7 @@ set -euo pipefail
 SRC=/work/src
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.11-sm8850"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
 
 log() { printf '[build-kernel] %s\n' "$*" >&2; }
@@ -41,6 +41,7 @@ log "SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH}"
 # --- prepare O= dir and .config ----------------------------------------------
 mkdir -p "${O}"
 cp "${SRC}/config" "${O}/.config"
+sed "s/@KVER@/${KVER}/g" "${SRC}/initrd-modules.txt" > "${OUT}/staging/initrd-modules.txt"
 
 log "running olddefconfig"
 make -C "${SRC}/linux" ARCH=arm64 LLVM=1 O="${O}" olddefconfig >"${OUT}/logs/kernel-olddefconfig.log" 2>&1 \
@@ -52,7 +53,7 @@ cp "${SRC}/config" "${O}/.config.before"
 if diff -u "${O}/.config.before" "${O}/.config.after" > "${OUT}/staging/config-drift.diff"; then
     log "config drift: none (as expected)"
 else
-    log "WARNING: olddefconfig changed the config, see staging/config-drift.diff"
+    die "config is not normalized; run scripts/normalize-config.sh (see staging/config-drift.diff)"
 fi
 
 # the release must be exactly KVER: everything downstream (modules_install,

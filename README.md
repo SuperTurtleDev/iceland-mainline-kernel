@@ -5,22 +5,47 @@
 
 ```
 build.sh              构建入口（stage 编排，全部串行、增量）
-config                内核 .config（7.2.0-sm8850, clang/LLVM, MODULES=zstd）
+config                内核 .config（7.3.0-iceland, clang/LLVM, MODULES=zstd）
 linux/                内核源码（gitlink，补丁在 linux 仓库内）
 oot/charge_boost/     域外模块 charge_boost_lite（PD 协商）
 initrd_debug/         debug initrd 根文件树（NCM + telnetd 调试面）
 initrd_charge/        充电 initrd 的 /init（自定义 PD 曲线状态机）
-initrd-modules.txt    initrd 精选模块/固件清单（322 模块 + 11 固件）
+initrd-modules.txt    initrd 精选模块/固件清单（debug 319 模块 + 11 固件）
 deploy/               deployd / deployclient / makeblob 源码 + init-net
-debian/               四个 deb 包模板（见下）
+debian/               五个 deb 包模板（见下）
 scripts/              各构建阶段脚本
 firmware/             设备固件（bluetooth_a 提取 + map220v/iceland-firmware）
 ```
 
-构建：`./build.sh`（或 `OUT_DIR=... ./build.sh`）。阶段顺序见 build.sh 头部注释：
-build-kernel → pack-headers → build-oot → build-debs → build-deployd →
-make-initrd → make-charge-initrd → make-deploy-net-initrd → build-deploy-tools →
-pack-images。内核用 kbuild 原生增量，其余 stage 每次全量重建（快且确定）。
+构建：`./build.sh`（或 `OUT=... ./build.sh`）。只生成并验证五个 deb 可用
+`./build.sh --debs`；中断后用 `./build.sh --from <stage>` 从指定阶段继续，
+前置产物必须已完成且与当前源码和配置一致。阶段顺序见 build.sh 头部注释：
+build-kernel → build-hdr-tools（arm64 容器）→ pack-headers → build-oot（arm64
+容器，原生验证 headers 包）→ build-debs → build-deployd → make-initrd →
+make-charge-initrd → make-deploy-net-initrd → build-deploy-tools → pack-images。
+内核用 kbuild 原生增量（kbuild 与 kbuild_hdr 两棵树），其余 stage 每次全量重建
+（快且确定）。
+
+## 版本与 Debian 包名
+
+版本统一由 `version.env` 定义：当前内核 release 为 `7.3.0-iceland`，
+Debian Version 为 `7.3.0-1`。五个固定包名是 `linux-image-iceland`、
+`linux-modules-iceland`、`linux-headers-iceland`、`linux-tools-iceland` 和
+`linux-firmware-iceland`；例如 `linux-image-iceland_7.3.0-1_arm64.deb`。
+内核、模块、headers 和 perf 的安装路径仍包含完整 release，防止 ABI 混用。
+modules 包声明对旧 `linux-modules-7.2.11-sm8850` 公共文件的 Replaces；
+旧版内核文件可继续保留，新的五包通过精确版本依赖配套安装。
+
+`debian/` 使用固定目录与 `@KVER@` / `@VERSION@` 模板，
+`initrd-modules.txt` 使用 `@KVER@`，构建时生成实际路径清单。
+调整配置后运行 `./scripts/normalize-config.sh`，再运行 `./build.sh`；
+构建阶段检测到配置漂移会报错。规范化使用与内核构建相同的容器工具链。
+同一稳定系列的后续更新使用 `./bump-stable.py 7.3.1`，脚本会更新统一版本入口、
+规范化配置并提交三层仓库；跨系列移植仍需要单独审核平台补丁。
+
+7.3 迁移保留本地摄像头、Iris VPU4、pogo 键盘、Gunyah 和 SCMI 改动，
+采用 map220v 新版 NT36536 / DSI1 实现。迁移与重放记录见
+`patches/platform-sm8850-7.3/README.md`。
 
 ## 启动协议（两种载荷格式）
 
@@ -45,10 +70,10 @@ bootcfg payload 是 ini 文本，必须以 `cmdline=` 开头（TestBootApp 解�
 | `bootcfg_debug.img` | `[u32]`+ini | debug cmdline（tty0 + ignore_loglevel + initcall_debug） |
 | `initrd_debug.img` | `[u32]`+cpio.zst | debug initrd：全量精选模块 + 固件 + NCM 192.168.42.42 + telnetd:23 + 串口/framebuffer shell |
 | `initrd_charge.img` | `[u32]`+cpio.zst | 充电 initrd：debug 底座 + charge_boost_lite + PD 曲线 |
-| `modules.tar.gz` | tar.gz | `/lib/modules/7.2.0-sm8850` 全集（含 charge_boost_lite） |
+| `modules.tar.gz` | tar.gz | `/lib/modules/7.3.0-iceland` 全集（含 charge_boost_lite） |
 | `headers.tar.gz` | tar.gz | OOT 开发包（build-oot 用它编 charge_boost_lite） |
 | `initrd_deploy_net_{release,debug}.cpio.zst` | RAW cpio.zst | 网络部署 initrd（TestBootApp RAM 引导，见下） |
-| `debs/*.deb` | deb | image / modules / headers / firmware-iceland 四包 |
+| `debs/*.deb` | deb | image / modules / headers / tools / firmware-iceland 五包（headers 内 scripts/ 工具与 tools 内 perf 均为 arm64 容器原生编译） |
 | `tools/makeblob`, `tools/deployclient` | x86 ELF | 主机端打包/推送 |
 | `ramdeploy/` | RAW 文件集 | RAM 部署四件套 + `ramdeploy.sh` 一键流式部署 |
 | `charge/` | RAW 文件集 | `*_charge.bin` 四件套 + `charge.sh` 一键临时充电启动 |

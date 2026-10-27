@@ -11,20 +11,24 @@
 #     modules as bare .ko
 #  5) bootcfg_debug.img payload is exactly the expected cmdline line
 #  6) bootcfg/kernel.img and bootcfg_debug/kernel_debug.img match kernel.img
-#  7) headers.tar.gz / modules.tar.gz list, required members present
+#  7) headers.tar.gz / modules.tar.gz list, required members present; every
+#     ELF under headers scripts/ is aarch64 (device-native host tools)
 #  8) buildinfo.txt contains the four repository hashes
-#  9) debs/ contains the four packages, dpkg-deb --info clean
+#  9) debs/ contains the five packages, dpkg-deb --info clean, linux-tools
+#     ships /usr/lib/linux-tools-<kver>/perf
 # 10) initrd_charge.img: prefix + inner cpio (debug base + charge_boost_lite)
 # 11) net-deploy initrds: RAW zstd cpio (RAM-flashed) with static deployd
 set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 META="$(cd "${SCRIPTDIR}/.." && pwd)"
-OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
+OUT="${OUT:-${META}/../../build/kernel}"
 
 [ -d "${OUT}" ] || { echo "verify: OUT dir ${OUT} does not exist" >&2; exit 1; }
 OUT="$(cd "${OUT}" && pwd)"
 command -v zstd >/dev/null 2>&1 || { echo "verify: zstd not found on host" >&2; exit 1; }
+
+source "${SCRIPTDIR}/kernel-version.sh"
 
 python3 - "${META}" "${OUT}" <<'PYEOF'
 import hashlib
@@ -36,7 +40,7 @@ import tarfile
 import tempfile
 
 META, OUT = os.path.abspath(sys.argv[1]), os.path.abspath(sys.argv[2])
-KVER = "7.2.11-sm8850"
+KVER = os.environ["KVER"]
 BOOTCFG_CMDLINE = ("cmdline=console=tty0 ignore_loglevel initcall_debug "
                    "clk_ignore_unused pd_ignore_unused loglevel=8\n")
 
@@ -169,9 +173,12 @@ with tempfile.TemporaryDirectory() as td:
         # /lib/modules with .ko)
         manifest = os.path.join(META, "initrd-modules.txt")
         with open(manifest, encoding="utf-8") as f:
-            mod_paths = [l.strip() for l in f
-                         if l.startswith(f"/usr/lib/modules/{KVER}/") and l.endswith(".ko.zst")]
+            mod_paths = [l.strip().replace("@KVER@", KVER) for l in f
+                         if l.replace("@KVER@", KVER).startswith(f"/usr/lib/modules/{KVER}/") and l.strip().endswith(".ko.zst")]
         sample = mod_paths[:3]
+        if not sample:
+            ok = False
+            detail.append("manifest contains no module samples")
         for p in sample:
             name = p[len(f"/usr/lib/modules/{KVER}/"):]
             name = "lib/modules/" + KVER + "/" + name[:-len(".zst")]
@@ -208,10 +215,31 @@ try:
     with tarfile.open(os.path.join(OUT, "headers.tar.gz"), "r:gz") as tf:
         hnames = set(tf.getnames())
     hdr = f"usr/src/linux-headers-{KVER}"
-    for need in (f"{hdr}/Makefile", f"{hdr}/Module.symvers", f"{hdr}/.config"):
+    for need in (f"{hdr}/Makefile", f"{hdr}/Module.symvers", f"{hdr}/.config",
+                 f"{hdr}/scripts/basic/fixdep", f"{hdr}/scripts/mod/modpost"):
         if need not in hnames:
             ok = False
             detail.append(f"headers.tar.gz missing {need}")
+    # the host tools are exec'd on the device: every ELF must be EM_AARCH64
+    with tarfile.open(os.path.join(OUT, "headers.tar.gz"), "r:gz") as tf:
+        n_elf, foreign = 0, []
+        for m in tf:
+            if not (m.isfile() and m.name.startswith(f"{hdr}/scripts/")):
+                continue
+            head = tf.extractfile(m).read(20)
+            if head[:4] != b"\x7fELF":
+                continue
+            n_elf += 1
+            if len(head) < 20 or struct.unpack_from("<H", head, 18)[0] != 183:
+                foreign.append(m.name[len(hdr) + 1:])
+    if n_elf == 0:
+        ok = False
+        detail.append("headers.tar.gz: no ELF host tools under scripts/")
+    if foreign:
+        ok = False
+        detail.append(f"headers.tar.gz: non-aarch64 host tools: {', '.join(foreign)}")
+    if ok:
+        detail.append(f"headers.tar.gz: {n_elf} aarch64 host tools")
 except Exception as e:  # noqa: BLE001
     ok = False
     detail.append(f"headers.tar.gz unreadable: {e}")
@@ -232,8 +260,8 @@ try:
 except Exception as e:  # noqa: BLE001
     ok = False
     detail.append(f"modules.tar.gz unreadable: {e}")
-check(7, "headers.tar.gz / modules.tar.gz listable with required members", ok,
-      "; ".join(detail))
+check(7, "headers.tar.gz (aarch64 host tools) / modules.tar.gz with required members",
+      ok, "; ".join(detail))
 
 # ---- 8) buildinfo ----------------------------------------------------------------------
 def git_head(path):
@@ -265,11 +293,12 @@ check(8, "buildinfo.txt contains metarepo/linux/firmware/podman_container hashes
       ok, "; ".join(detail) or "all four hashes found")
 
 # ---- 9) debian packages --------------------------------------------------------------
-KVER_FULL = "7.2.11-sm8850"
-VER = "7.2.11-sm8850-1"
-deb_names = [f"linux-modules-{KVER_FULL}_{VER}_arm64.deb",
-             f"linux-headers-{KVER_FULL}_{VER}_arm64.deb",
-             f"linux-image-{KVER_FULL}_{VER}_arm64.deb",
+KVER_FULL = KVER
+VER = os.environ["VER"]
+deb_names = [f"linux-modules-iceland_{VER}_arm64.deb",
+             f"linux-headers-iceland_{VER}_arm64.deb",
+             f"linux-tools-iceland_{VER}_arm64.deb",
+             f"linux-image-iceland_{VER}_arm64.deb",
              f"linux-firmware-iceland_{VER}_arm64.deb"]
 detail = []
 ok = True
@@ -283,9 +312,17 @@ for n in deb_names:
     if r.returncode != 0:
         ok = False
         detail.append(f"{n}: dpkg-deb --info rc={r.returncode}")
+    if "${" in r.stdout or "@KVER@" in r.stdout or "@VERSION@" in r.stdout:
+        ok = False
+        detail.append(f"{n}: unsubstituted variable in control")
+    if n.startswith("linux-tools-"):
+        c = subprocess.run(["dpkg-deb", "--contents", p], capture_output=True, text=True)
+        if f"./usr/lib/linux-tools-{KVER_FULL}/perf" not in c.stdout:
+            ok = False
+            detail.append(f"{n}: no usr/lib/linux-tools-{KVER_FULL}/perf")
 if ok:
-    detail.append(f"{len(deb_names)} debs ok")
-check(9, "debs present and dpkg-deb --info clean", ok, "; ".join(detail))
+    detail.append(f"{len(deb_names)} debs ok (tools ships perf)")
+check(9, "debs present, dpkg-deb --info clean, linux-tools ships perf", ok, "; ".join(detail))
 
 # ---- 9b) deb control identity matches the filename -------------------------
 detail = []
@@ -301,7 +338,7 @@ for n in deb_names:
         ok = False
         detail.append(f"{n}: control says {pkg} {ver}, expected {exp_pkg} {exp_ver}")
 check(9, "deb control Package/Version match filenames", ok,
-      "; ".join(detail) or "all four identities correct")
+      "; ".join(detail) or "all five identities correct")
 
 # ---- 10) charge initrd --------------------------------------------------------------
 detail = []
@@ -389,3 +426,5 @@ npass = sum(1 for r in results if r)
 print(f"verify: {npass}/{len(results)} checks passed")
 sys.exit(0 if all(results) else 1)
 PYEOF
+
+python3 "${SCRIPTDIR}/verify-debs.py" "${OUT}"

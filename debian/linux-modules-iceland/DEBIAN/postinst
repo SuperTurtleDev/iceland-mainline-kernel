@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+KVER=@KVER@
+case "$1" in
+    configure) depmod -a "$KVER" ;;
+esac
+exit 0

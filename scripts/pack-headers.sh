@@ -6,7 +6,9 @@
 # filter: Makefile*/Kconfig*/Kbuild*/*.sh/*.pl/*.lds everywhere) plus
 # include/, scripts/ and arch/*/include/ wholesale, overlaid with the
 # O= build artifacts (.config, Module.symvers, System.map, generated
-# headers, built host tools).
+# headers).  The built host tools under scripts/ come from the arm64
+# tree kbuild_hdr (build-hdr-tools.sh): the package is installed on the
+# device, so fixdep/modpost/... must be aarch64, not the build host's.
 #
 # Correctness is proven by scripts/build-oot.sh, which builds the
 # oot/charge_boost module against the unpacked tarball (and nothing else).
@@ -15,7 +17,8 @@ set -euo pipefail
 SRC=/work/src
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.11-sm8850"
+O_HDR="${OUT}/kbuild_hdr"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 HDR_ROOT="${OUT}/staging/headers"
 HDR="${HDR_ROOT}/usr/src/linux-headers-${KVER}"
 
@@ -23,6 +26,7 @@ log() { printf '[pack-headers] %s\n' "$*" >&2; }
 die() { log "ERROR: $*"; exit 1; }
 
 [ -f "${O}/Module.symvers" ] || die "no ${O}/Module.symvers; run build-kernel.sh first"
+[ -x "${O_HDR}/scripts/basic/fixdep" ] || die "no ${O_HDR}/scripts/basic/fixdep; run build-hdr-tools.sh first"
 
 # SOURCE_DATE_EPOCH is produced by build-kernel.sh; fall back to the linux
 # submodule commit time if the marker file is missing.
@@ -45,7 +49,8 @@ log "SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH}"
 #   wholesale    every arch/*/include/ directory
 #   from O=      .config Module.symvers System.map include/generated +
 #                include/config/auto.conf, arch/arm64/include/generated,
-#                built host tools under scripts/, objtool
+#                objtool
+#   from kbuild_hdr  built (aarch64) host tools under scripts/
 #   removed      *.o *.cmd ("Do not ship .o and .cmd artifacts")
 rm -rf "${HDR_ROOT}"
 mkdir -p "${HDR}"
@@ -87,7 +92,10 @@ if grep -q '^CONFIG_OBJTOOL=y' "${O}/.config" && [ -d "${O}/tools" ]; then
 fi
 
 # built host tools over the source scripts/ (fixdep, modpost, module.lds, ...)
-rsync -a "${O}/scripts/" "${HDR}/scripts/"
+# -- from the arm64 tree; build-hdr-tools.sh proves it is a superset of the
+# main tree's scripts/ and that every ELF in it is aarch64 (verify.sh
+# re-checks the tarball)
+rsync -a "${O_HDR}/scripts/" "${HDR}/scripts/"
 
 # Ubuntu: "Do not ship .o and .cmd artifacts in headers"
 find "${HDR}" \( -name '*.o' -o -name '*.cmd' \) -exec rm -f {} +

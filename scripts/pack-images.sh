@@ -13,7 +13,7 @@ set -euo pipefail
 
 OUT=/work/out
 O="${OUT}/kbuild"
-KVER="7.2.11-sm8850"
+source "$(dirname "${BASH_SOURCE[0]}")/kernel-version.sh"
 MODROOT="${OUT}/staging/modroot"
 DTB_REL="arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dtb"
 BOOTCFG_DEBUG_CMDLINE='cmdline=console=tty0 ignore_loglevel initcall_debug clk_ignore_unused pd_ignore_unused loglevel=8'
@@ -101,7 +101,7 @@ done
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
         initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst \
-        debs/*.deb > SHA256SUMS
+        debs/linux-*-iceland_"${VER}"_arm64.deb > SHA256SUMS
 )
 
 log "artifacts:"
@@ -109,11 +109,11 @@ for f in \
     kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
     bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
     headers.tar.gz modules.tar.gz \
-    initrd_deploy_release.img initrd_deploy_debug.img SHA256SUMS; do
+    initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst SHA256SUMS; do
     log "  $(ls -l "${OUT}/${f}")"
 done
 log "debs:"
-for f in "${OUT}"/debs/*.deb; do
+for f in "${OUT}"/debs/linux-*-iceland_"${VER}"_arm64.deb; do
     log "  $(ls -l "$f")"
 done
 log "done"

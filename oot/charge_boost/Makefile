@@ -1,14 +1,12 @@
-# out-of-tree build; no kernel tree modifications
-#   make KDIR=<kernel src> O=<kernel out> ; defaults below
+# Build against the headers installed for the running kernel by default.
+# Override KDIR for another prepared kernel tree and ODIR for a separate O= tree.
 obj-m := charge_boost_lite.o
 
-KDIR ?= /home/wyb/ML/bootloader/kernel/sm8850-mainline-iceland-7.2
-ODIR ?= /home/wyb/ML/bootloader/kernel/out
+KDIR ?= /lib/modules/$(shell uname -r)/build
 
-.PHONY: all clean install
-
+.PHONY: all clean
 all:
-	$(MAKE) -C $(KDIR) O=$(ODIR) ARCH=arm64 LLVM=1 M=$(CURDIR) modules
+	$(MAKE) -C $(KDIR) $(if $(ODIR),O=$(ODIR)) ARCH=arm64 LLVM=1 M=$(CURDIR) modules
 
 clean:
-	$(MAKE) -C $(KDIR) O=$(ODIR) ARCH=arm64 LLVM=1 M=$(CURDIR) clean
+	$(MAKE) -C $(KDIR) $(if $(ODIR),O=$(ODIR)) ARCH=arm64 LLVM=1 M=$(CURDIR) clean

@@ -1,0 +1,14 @@
+Package: linux-headers-iceland
+Version: @VERSION@
+Architecture: arm64
+Section: devel
+Priority: optional
+Maintainer: iceland mainline <iceland@localhost>
+Provides: linux-headers, linux-headers-3.0
+Depends: ${shlibs:Depends}
+Description: Header files for Linux @KVER@ (OOT module development)
+ Kernel headers and Kbuild infrastructure for building out-of-tree
+ modules against @KVER@: prepared source headers, generated
+ include files, host tool binaries, .config, Module.symvers and
+ System.map, under /usr/src/linux-headers-@KVER@.  The host tool
+ binaries are native aarch64 (built in the arm64 container).

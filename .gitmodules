@@ -1,7 +1,7 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/SuperTurtleDev/iceland-mainline-kernel-linux.git
-	branch = iceland-7.2
+	branch = iceland-7.3
 [submodule "firmware"]
 	path = firmware
 	url = https://github.com/SuperTurtleDev/iceland-mainline-kernel-firmware.git
