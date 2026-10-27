@@ -1,0 +1,89 @@
+Cloning into '/tmp/iceland73-am-g1y9xjfm'...
+HEAD is now at c03c1a145 Linux 7.3
+.git/rebase-apply/patch:162: trailing whitespace.
+	
+.git/rebase-apply/patch:241: trailing whitespace.
+		}		
+warning: 2 lines add whitespace errors.
+.git/rebase-apply/patch:117: new blank line at EOF.
++
+warning: 1 line adds whitespace errors.
+Applying: arm64: dts: qcom: kaanapali: add the GPU SMMU node
+Applying: arm64: dts: qcom: kaanapali: Add qfprom node
+Applying: arm64: dts: qcom: Add GPU support for Kaanapali
+Applying: arm64: dts: qcom: kaanapali: Add GPU cooling
+Applying: SM8850: Fix gpuss thermal polling delay
+Applying: SM8850: Add DSI1 nodes
+Applying: wifi: ath12k: add initial hardware definition for WCN7860
+Applying: wifi: ath12k: send QDSS config when CNSS_QDSS_CFG_MISS_V01 is disabled
+Applying: wifi: ath12k: disable CNSS_QDSS_CFG_MISS_V01 for the WCN7860
+Applying: PCI/pwrctrl: pwrseq: add support for WCN7860
+Applying: power: sequencing: qcom-wcn: add support for WCN7860
+Applying: Bluetooth: qca: add WCN7860 support
+Applying: SM8850: Add device tree for OnePlus Pad 4
+Applying: SM8850: Add sm8850.config fragment
+Applying: backlight: Add KTZ8869 driver for iceland
+Applying: ICELAND: Add KTZ8869 nodes
+Applying: drm/msm/dpu: Fix Compressed width calculation
+Applying: drm/panel: nt36536: Add PPD200UB2 support
+Applying: ICELAND: Add panel node
+Applying: Input: Add NT36536 touch driver
+Applying: ICELAND: Add touchscreen node
+Applying: SM8850: Fix GMU address
+Applying: SM8850: Add cache info
+Applying: qcom_battmgr: Add basic support for Kaanapali OnePlus SOCCP FW
+Applying: ASoC: Add simple TFA9865 driver Since TFA9865 and TFA9864 has no DSP and container file contains only init regs, this basic driver should be good for now.
+Applying: ICELAND: Add sound nodes
+Applying: SM8850: Update GPU OPP table
+Applying: ICELAND: Reserve llcc_lpi_mem to fix Gunyah crash
+Applying: ICELAND: Reserve adsp_mhi_mem and global_sync_mem Both have XN=2(EL1&EL0 NOEXEC) in VTTBR
+Applying: Revert "arm64: dts: qcom: kaanapali: Fix the PCIe iommu-map entries"
+Applying: arm64: dts: qcom: kaanapali: add cpu capacity-dmips-mhz (EAS capacity hints, cpupm work)
+Applying: arm64: dts: qcom: kaanapali: add uart17 and wire the OnePlus Pad 4 pogo keyboard
+Applying: Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver
+Applying: virt: gunyah: import Gunyah hypervisor drivers from android17-6.18
+Applying: Input: oneplus-pogo-kbd: fix link loss after attach and stuck re-detection
+Applying: Input: oneplus-pogo-kbd: expose the keyboard backlight as a LED class device
+Applying: virt: gunyah: adapt to mainline 7.2
+Applying: tools: virt: gunyah: add VM smoke test and record verification results
+Applying: backlight: ktz8869 - treat enable gpio defer as non-fatal (workaround)
+Applying: Revert "backlight: ktz8869 - treat enable gpio defer as non-fatal (workaround)"
+Applying: arm64: dts: qcom: kaanapali: drop duplicate enable-gpios from second ktz8869 node
+Applying: PCI: pwrctrl: default PCI_PWRCTRL_PWRSEQ to y on qcom
+Applying: backlight: ktz8869: fetch vddio as an optional regulator
+Applying: Revert "backlight: ktz8869: fetch vddio as an optional regulator"
+Applying: firmware: arm_scmi: quirk: skip P2A CHANNEL_FREE ack for Qualcomm CPUCP
+Applying: arm64: dts: qcom: iceland: RTC offset cell in SDAM2 for time persistence
+Applying: media: qcom: iceland camera bring-up: Kaanapali CAMSS + SmartSens SC sensors
+Applying: media: qcom: iceland camera follow-up: AF actuator, flash, CSIPHY supplies
+Applying: media: i2c: dw9719: DW9714V SAC tuning from the vendor actuator init
+Applying: media: qcom: iceland: declare camera orientation, fix mirrored rear image
+Applying: arm64: dts: qcom: kaanapali: asymmetric CPU capacity from the vendor calibration
+Applying: media: qcom: iris: Kaanapali (VPU4) video codec support for iceland
+Applying: power: supply: qcom_battmgr: compute power_now on kaanapali
+Applying: drm/msm/dpu: fix black screen after refresh-rate modeset on dual-DSI
+Applying: drm/panel: nt36536: add 50/48 Hz modes, drop unreachable 144 Hz
+Applying: Revert "drm/msm/a6xx: Fix stale rpmh votes after suspend"
+Applying: soc: qcom: oplus-camres — shared camera I2C bus manager (AP/SEE)
+Applying: soc: qcom: oplus-camres: restrict force sysfs knobs to CAP_SYS_ADMIN
+Applying: soc: qcom: oplus-camres: event-driven SNS receive path
+Applying: Input: remove the v2 pogo-keyboard driver (replaced by the v3 series)
+Applying: dt-bindings: input: add OnePlus pogo-pin keyboard
+Applying: Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver
+Applying: arm64: dts: qcom: iceland: pogo keyboard node for the v3 binding
+Applying: soc: qcom: oplus-camres: corrected SEE session bring-up and REVOKE takeover
+Applying: soc: qcom: oplus-camres: self-classify the no-handshake SEE, drop quiet mode
+Applying: soc: qcom: oplus-camres: fd-driven state machine, exact-boundary child hooks
+Applying: soc: qcom: oplus-camres: fix boot ordering — AON subscribe needs a free bus
+Applying: soc: qcom: oplus-camres: five fixes from self-review
+Applying: soc: qcom: oplus-camres: fixes from subagent audit
+Applying: soc: qcom: oplus-camres: ap_hold/DEINIT manual-vote policy, drop boot retry
+Applying: soc: qcom: oplus-camres: document the park-while-CONFIGURING loop
+Applying: soc: qcom: oplus-camres: clear PM runtime_error on state recovery
+Applying: soc: qcom: oplus-camres: unified vote architecture + protocol identical to v1
+Applying: dt-bindings: media: i2c: dongwoon,dw9719: Document the DW9714V
+Applying: media: i2c: dw9719: Add DW9714V support
+Applying: arm64: dts: qcom: kaanapali-oneplus-iceland: Tune the rear AF actuator
+Applying: virt: gunyah: Add runtime protected share (GuestAccept) ioctls
+Applying: media: iris: use gen2 firmware descriptor for Kaanapali on 7.3
+Applying: virt: gunyah: use the 7.3 mapping reverse-map iterator

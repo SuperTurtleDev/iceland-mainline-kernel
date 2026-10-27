@@ -1,0 +1,112 @@
+From 8a10b551846e489d5deb2e88a14d911edfc31d77 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 8 Jun 2026 09:21:38 +0000
+Subject: [PATCH] SM8850: Fix gpuss thermal polling delay
+
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 67c47e20a484fccd3e4b4290f5dfb17040f42165..a3ba839660c0140d0d3a210cb6f7df8438d212da 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -7050,7 +7050,7 @@ nsphmx-3-critical {
+ 		};
+ 
+ 		gpuss-0-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 0>;
+ 
+@@ -7077,7 +7077,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-1-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 1>;
+ 
+@@ -7104,7 +7104,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-2-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 2>;
+ 
+@@ -7131,7 +7131,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-3-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 3>;
+ 
+@@ -7158,7 +7158,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-4-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 4>;
+ 
+@@ -7185,7 +7185,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-5-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 5>;
+ 
+@@ -7212,7 +7212,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-6-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 6>;
+ 
+@@ -7239,7 +7239,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-7-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 7>;
+ 
+@@ -7266,7 +7266,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-8-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 8>;
+ 
+@@ -7293,7 +7293,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-9-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 9>;
+ 
+@@ -7320,7 +7320,7 @@ map0 {
+ 		};
+ 
+ 		gpuss-10-thermal {
+-			polling-delay-passive = <200>;
++			polling-delay-passive = <10>;
+ 
+ 			thermal-sensors = <&tsens5 10>;
+ 

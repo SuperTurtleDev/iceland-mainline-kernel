@@ -1,0 +1,1387 @@
+[
+  {
+    "commit": "6bacfd50d5227a913f83495bb234086f0ab55fd5",
+    "parents": "687a2e7918e8a425a7d81a02db17aac7a29ead86",
+    "author": "map220v",
+    "email": "map220v300@gmail.com",
+    "author_date": "2025-02-15T12:50:28Z",
+    "subject": "media: i2c: Add OV32D40 image sensor driver",
+    "patch": "alternatives/map220v/0001-6bacfd50d522-media-i2c-Add-OV32D40-image-sensor-driver.patch",
+    "sha256": "115578e603a9ce1c3ff272dc04c2542cbdbeae7e55dcecdba9f3a800bb49aca5",
+    "patch_id": "2857b1d43208b6832b93d699609933951e37d8b1",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/remotes/piano/piano/camera"
+    ],
+    "committer": "bluseliu50",
+    "committer_email": "265648257+bluseliu50@users.noreply.github.com",
+    "committer_date": "2026-10-05T14:33:52+08:00",
+    "target_author": "map220v",
+    "target_committer": null,
+    "matched_by": [
+      "author"
+    ],
+    "signed_off_by": [
+      "bluseliu50 <265648257+bluseliu50@users.noreply.github.com>"
+    ]
+  },
+  {
+    "commit": "469a19821136a7b7c246b9e4f7dc9d9d5c601c3b",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-07T03:38:39-05:00",
+    "subject": "firmware: arm_scmi: quirk: skip P2A CHANNEL_FREE ack for Qualcomm CPUCP",
+    "patch": "alternatives/yibo-wang/0002-469a19821136-firmware-arm-scmi-quirk-skip-P2A-CHANNEL-FREE-ack-for-Qualcomm-CPUCP.patch",
+    "sha256": "2be877ca4330a2e89b74636af35033005f28191e84a368935f93ea926ce048ec",
+    "patch_id": "c9927413b55f16be1916f9bbbced7cd563a97f4f",
+    "same_patch_in_head": [
+      "03be252e7197ca8f392691fd9ab4026aaa5e79ea"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/scmi-p2a-no-channel-free-ack",
+      "refs/remotes/superturtle/pr/scmi-p2a-no-channel-free-ack"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:43:58-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "0f8951a1a28f19411513afcab79d0f8a595d6976",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T02:49:00+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "arm64: dts: qcom: kaanapali: add uart17 and wire the OnePlus Pad 4 pogo keyboard",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0034-0f8951a1a28f-arm64-dts-qcom-kaanapali-add-uart17-and-wire-the-OnePlus-Pad-4-pogo-keyboard.patch",
+    "sha256": "5adbe9b66d63770cf07404db20b332039b1875ef54356a380ecb283caf673031",
+    "patch_id": "dd0b53a6a191515cb88d4c9455762d9cc94fda7f",
+    "same_patch_in_head": [
+      "4e9b716912e00212e751a46f43c859eca6f94497"
+    ],
+    "containing_refs": [
+      "refs/remotes/superturtle/pr/pogo-keyboard"
+    ]
+  },
+  {
+    "commit": "9a21ac268861b63c6e2e8e402fb23e0c5e747606",
+    "parents": "0f8951a1a28f19411513afcab79d0f8a595d6976",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T02:49:00+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0035-9a21ac268861-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "10a514657d4a7d06a78ec31d4df611e4a037f7fd54758ae9cf5bceb63b7e3fa3",
+    "patch_id": "e2e0e161d8128c6ab541a30aa0936b3a4fafe49b",
+    "same_patch_in_head": [
+      "a862a8973f65c0a96e94107b1c334d49be3cf027"
+    ],
+    "containing_refs": [
+      "refs/remotes/superturtle/pr/pogo-keyboard"
+    ]
+  },
+  {
+    "commit": "d2b84d01ae8a814eecad55187d62b8ec5285330d",
+    "parents": "9a21ac268861b63c6e2e8e402fb23e0c5e747606",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T04:17:54+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "Input: oneplus-pogo-kbd: fix link loss after attach and stuck re-detection",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0036-d2b84d01ae8a-Input-oneplus-pogo-kbd-fix-link-loss-after-attach-and-stuck-re-detection.patch",
+    "sha256": "8d3aeb495adaf2310059715beaafdb3d7c557de5d914f38bba4292c798085f1f",
+    "patch_id": "1d4ca47478396ede15f6486e2e00678eaae30b9c",
+    "same_patch_in_head": [
+      "d552aaff3771261b421b74deac28fcd8d51f10c7"
+    ],
+    "containing_refs": [
+      "refs/remotes/superturtle/pr/pogo-keyboard"
+    ]
+  },
+  {
+    "commit": "c040c2a89578a90c13ac205e5a576bc1ca435620",
+    "parents": "d2b84d01ae8a814eecad55187d62b8ec5285330d",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T04:20:59+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "Input: oneplus-pogo-kbd: expose the keyboard backlight as a LED class device",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0037-c040c2a89578-Input-oneplus-pogo-kbd-expose-the-keyboard-backlight-as-a-LED-class-device.patch",
+    "sha256": "2409fe0b375c896b09b9382431ba807049f3f16a1cfc746ed4f1fb894212b87c",
+    "patch_id": "d5d4aa1766d86f49d91ca189da4d97f28b3e668d",
+    "same_patch_in_head": [
+      "fceb74ea1552b20520b88c77f9b7904bf80d5ba3"
+    ],
+    "containing_refs": [
+      "refs/remotes/superturtle/pr/pogo-keyboard"
+    ]
+  },
+  {
+    "commit": "c4abca95007bbe4761230b726ff5adf96d477706",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T04:04:44+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "virt: gunyah: import Gunyah hypervisor drivers from android17-6.18",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0038-c4abca95007b-virt-gunyah-import-Gunyah-hypervisor-drivers-from-android17-6-18.patch",
+    "sha256": "8c9735030b8cc2c5a2b3fe2ba3c5f1ea7008c6aa7190c71c03f17e85f55938b1",
+    "patch_id": "49410f855122781c89f25c017539cdc5311d508d",
+    "same_patch_in_head": [
+      "645096c6bbc1d94c29b74ad575e8279fb14d9ba0"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/gunyah",
+      "refs/remotes/superturtle/pr/gunyah"
+    ]
+  },
+  {
+    "commit": "dbe63e43847b7a4b453d70f05649f89c2ee52f1f",
+    "parents": "c4abca95007bbe4761230b726ff5adf96d477706",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T04:28:40+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "virt: gunyah: adapt to mainline 7.2",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0039-dbe63e43847b-virt-gunyah-adapt-to-mainline-7-2.patch",
+    "sha256": "8d8334b3941e3de6097d3b4d618973b2e1293f96bb14e9cd08672c7659b4310c",
+    "patch_id": "9b5bb0829bb3c26e740885224a0caa73e893cdcf",
+    "same_patch_in_head": [
+      "91d78aa40296c779b857392bb8dd55657d2fc972"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/gunyah",
+      "refs/remotes/superturtle/pr/gunyah"
+    ]
+  },
+  {
+    "commit": "fd503a492d381687c143b7085ea79ebce58dcdc7",
+    "parents": "dbe63e43847b7a4b453d70f05649f89c2ee52f1f",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T05:16:15+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T03:44:05-05:00",
+    "subject": "tools: virt: gunyah: add VM smoke test and record verification results",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0040-fd503a492d38-tools-virt-gunyah-add-VM-smoke-test-and-record-verification-results.patch",
+    "sha256": "351163e6ddab383afc7a6d8a73293dc2e69bf60326834e9cff6f107fd312d497",
+    "patch_id": "ea38a4612a6e12309f10e4c2482861b3e36aad9c",
+    "same_patch_in_head": [
+      "56944665c1a3bcb937792fc3a50c8de0cd252bf2"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/gunyah",
+      "refs/remotes/superturtle/pr/gunyah"
+    ]
+  },
+  {
+    "commit": "a14184f581473e9d457460a936ec6b522120adc4",
+    "parents": "600503179d807ce315882d941e01b38a6baf8075",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-07T03:38:39-05:00",
+    "subject": "firmware: arm_scmi: quirk: skip P2A CHANNEL_FREE ack for Qualcomm CPUCP",
+    "patch": "alternatives/yibo-wang/0003-a14184f58147-firmware-arm-scmi-quirk-skip-P2A-CHANNEL-FREE-ack-for-Qualcomm-CPUCP.patch",
+    "sha256": "925c825bc7b93b5eb6ece63ac4c701b9f3d49444cdc812c18522f83f7f304297",
+    "patch_id": "c9927413b55f16be1916f9bbbced7cd563a97f4f",
+    "same_patch_in_head": [
+      "03be252e7197ca8f392691fd9ab4026aaa5e79ea"
+    ],
+    "containing_refs": [
+      "refs/heads/sensors"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T04:22:10-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "1d9b86fe5c8dcc38c9e25f5e59d12a94850c200d",
+    "parents": "7a8c303db897c13e272bd8448d02fd74835f22f2",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-07T13:37:49-05:00",
+    "subject": "rtc: pm8xxx: use s64 offset for full Unix timestamp range",
+    "patch": "alternatives/yibo-wang/0004-1d9b86fe5c8d-rtc-pm8xxx-use-s64-offset-for-full-Unix-timestamp-range.patch",
+    "sha256": "81c47588977fdc35c1fe50eb515909651ff3ed1b2181ba4e66fc73d667508af2",
+    "patch_id": "b89ce22189b973e9fc7efd313d7a24cd664089fc",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/u64time",
+      "refs/remotes/superturtle/u64time"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-07T13:37:49-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <2024312277@stu.hit.edu.cn>"
+    ]
+  },
+  {
+    "commit": "ecda847706d2db17180c3c385d738a49a40e3e5f",
+    "parents": "7a8c303db897c13e272bd8448d02fd74835f22f2",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T08:31:08-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: dt-bindings: Add CAMSS device for Kaanapali (lore: https://lore.kernel.org/r/20260601-kaanapali-camss-v14-0-e76f26aa6691@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0041-ecda847706d2-BACKPORT-media-dt-bindings-Add-CAMSS-device-for-Kaanapali-lore-https-lore-kernel-org-r-202.patch",
+    "sha256": "cd2f069fe9833e20ff73af3ee36f3e8b4b4cfa8b86389206996c9acbbd26cfc7",
+    "patch_id": "03f9fe5d9a18559572b9a56c3b1f0fb86109f4f2",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "1bdb5a2fab7834870defa4307068bb5fe702569f",
+    "parents": "ecda847706d2db17180c3c385d738a49a40e3e5f",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T08:31:09-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: Add Kaanapali compatible camss driver (lore: https://lore.kernel.org/r/20260601-kaanapali-camss-v14-0-e76f26aa6691@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0042-1bdb5a2fab78-BACKPORT-media-qcom-camss-Add-Kaanapali-compatible-camss-driver-lore-https-lore-kernel-org.patch",
+    "sha256": "2251a9443cace0ecac94cce538b22f0070033c46e28ff24fdf2a09a33e7e3202",
+    "patch_id": "5fbe09dec4a5448b016a6bd1d36473727bdbd485",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "3119da4089bf4bab3f7e9553c6f2fbbf2009a4e2",
+    "parents": "1bdb5a2fab7834870defa4307068bb5fe702569f",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T08:31:10-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: csiphy: Add support for v2.4.0 two-phase CSIPHY (lore: https://lore.kernel.org/r/20260601-kaanapali-camss-v14-0-e76f26aa6691@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0043-3119da4089bf-BACKPORT-media-qcom-camss-csiphy-Add-support-for-v2-4-0-two-phase-CSIPHY-lore-https-lore-k.patch",
+    "sha256": "d0007ca868ce8498459cfa9b17397e58731f7c56da0d784eba4390c6b55a72e1",
+    "patch_id": "60fd384dbeb9f837b0ac09b8900f82c42c14f914",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "104e98d14bda2a8773acbf4d57b4d26253836a6d",
+    "parents": "3119da4089bf4bab3f7e9553c6f2fbbf2009a4e2",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T08:31:11-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: csid: Add support for CSID gen4 (lore: https://lore.kernel.org/r/20260601-kaanapali-camss-v14-0-e76f26aa6691@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Atiya Kailany <atiya.kailany@oss.qualcomm.com>",
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0044-104e98d14bda-BACKPORT-media-qcom-camss-csid-Add-support-for-CSID-gen4-lore-https-lore-kernel-org-r-2026.patch",
+    "sha256": "0d26b70d77a0d71ce4d9e9eed944f3e78122d3d159d61fbb5f08c45d23304089",
+    "patch_id": "23a9dc6e6230cb4453df4261ca37653fbde28b69",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "d58f3fe013cf2d11ccc508f50780eef9f75da9e7",
+    "parents": "104e98d14bda2a8773acbf4d57b4d26253836a6d",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T08:31:12-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: vfe: Add support for VFE gen4 (lore: https://lore.kernel.org/r/20260601-kaanapali-camss-v14-0-e76f26aa6691@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Atiya Kailany <atiya.kailany@oss.qualcomm.com>",
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0045-d58f3fe013cf-BACKPORT-media-qcom-camss-vfe-Add-support-for-VFE-gen4-lore-https-lore-kernel-org-r-202606.patch",
+    "sha256": "d9710bd57a12446501d2788cff9af10c3f5ba4dd1b14ac3364ad156a712314b2",
+    "patch_id": "7a42e3280f6aaf17df14d5afbca9b29f34070116",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "17d42e63847ec0512932d40f1c82609359fa769d",
+    "parents": "d58f3fe013cf2d11ccc508f50780eef9f75da9e7",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T17:32:20-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: dt-bindings: Add CAMSS device for SM8750 (lore: https://lore.kernel.org/r/20260601-add-support-for-camss-on-sm8750-v5-0-dac36a190de8@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0046-17d42e63847e-BACKPORT-media-dt-bindings-Add-CAMSS-device-for-SM8750-lore-https-lore-kernel-org-r-202606.patch",
+    "sha256": "14b7c8d776d81742251a9089412746fc4ad2fb2371c9bcb516ea5384a82b51f1",
+    "patch_id": "258702b94af663e070d666f93b5fada54af59300",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "a46c4fba7303ad172d5dc5c8ef7c5e01c91fc289",
+    "parents": "17d42e63847ec0512932d40f1c82609359fa769d",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T17:32:21-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: Add SM8750 compatible camss driver (lore: https://lore.kernel.org/r/20260601-add-support-for-camss-on-sm8750-v5-0-dac36a190de8@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0047-a46c4fba7303-BACKPORT-media-qcom-camss-Add-SM8750-compatible-camss-driver-lore-https-lore-kernel-org-r-.patch",
+    "sha256": "94c601a52af4fbaff9c2d8f1e294d0a388a6939841f78e85e33ee873af5a70b5",
+    "patch_id": "c6633722832b2e6778fbb3f69186882fab23ac6c",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "d3e94518533173aec3ef7a459f4ced7f7bc14472",
+    "parents": "a46c4fba7303ad172d5dc5c8ef7c5e01c91fc289",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T17:32:22-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:10-05:00",
+    "subject": "BACKPORT: media: qcom: camss: csiphy: Add support for v2.3.0 two-phase CSIPHY (lore: https://lore.kernel.org/r/20260601-add-support-for-camss-on-sm8750-v5-0-dac36a190de8@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0048-d3e945185331-BACKPORT-media-qcom-camss-csiphy-Add-support-for-v2-3-0-two-phase-CSIPHY-lore-https-lore-k.patch",
+    "sha256": "818cdfd2739dff388ea87818cfe209ddcff95a3e13515d568d0258094b32a352",
+    "patch_id": "8bea2a8816cb270e13e5d326363fdbba19aedbd6",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "c68c5ca7bc47795be7f7f049cac67a931a3949c9",
+    "parents": "d3e94518533173aec3ef7a459f4ced7f7bc14472",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T17:32:23-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:11-05:00",
+    "subject": "BACKPORT: media: qcom: camss: csid: Add support for CSID 980 (lore: https://lore.kernel.org/r/20260601-add-support-for-camss-on-sm8750-v5-0-dac36a190de8@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Atiya Kailany <atiya.kailany@oss.qualcomm.com>",
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0049-c68c5ca7bc47-BACKPORT-media-qcom-camss-csid-Add-support-for-CSID-980-lore-https-lore-kernel-org-r-20260.patch",
+    "sha256": "551f453c9065a3adc95bef9f04419a3d49d38bcfe84f7d8a1ce6d2184d853a9b",
+    "patch_id": "8158fbe4442c34d63e7942675105ee3d06b49106",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "943cbadc211fb50983bbb3b0bdc90d6871e8a59f",
+    "parents": "c68c5ca7bc47795be7f7f049cac67a931a3949c9",
+    "author": "Hangxiang Ma",
+    "email": "hangxiang.ma@oss.qualcomm.com",
+    "author_date": "2026-06-01T17:32:24-07:00",
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:11-05:00",
+    "subject": "BACKPORT: media: qcom: camss: vfe: Add support for VFE 980 (lore: https://lore.kernel.org/r/20260601-add-support-for-camss-on-sm8750-v5-0-dac36a190de8@oss.qualcomm.com)",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [
+      "Atiya Kailany <atiya.kailany@oss.qualcomm.com>",
+      "Hangxiang Ma <hangxiang.ma@oss.qualcomm.com>"
+    ],
+    "patch": "alternatives/third-party-submitted/0050-943cbadc211f-BACKPORT-media-qcom-camss-vfe-Add-support-for-VFE-980-lore-https-lore-kernel-org-r-2026060.patch",
+    "sha256": "c0aace4634529db9cad292225693739835b6b449c14b4dfde242173a8f08d132",
+    "patch_id": "b2d5490fbf835ee125e2da5d0101bac5a30a5d8f",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ]
+  },
+  {
+    "commit": "2a7197cd5fe73fdafd560440bf61f4f9ac636772",
+    "parents": "943cbadc211fb50983bbb3b0bdc90d6871e8a59f",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-06T05:22:06-05:00",
+    "subject": "WIP: camera bring-up: iceland DT wiring + sc1300cs probe driver",
+    "patch": "alternatives/yibo-wang/0005-2a7197cd5fe7-WIP-camera-bring-up-iceland-DT-wiring-sc1300cs-probe-driver.patch",
+    "sha256": "0913c9c6a63d35062d0ccb36e7f2c551e394822af67575d9bb8d123fa1c56346",
+    "patch_id": "e53852f5e63c877b019ad7d38ae4f9cc33836da8",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T02:09:11-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "d5ff9063961ad1aea1ba4009578fd5fa3c190fc3",
+    "parents": "2a7197cd5fe73fdafd560440bf61f4f9ac636772",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T03:23:04-05:00",
+    "subject": "WIP: sc1300cs bring-up diagnostics (power-hold + bus scan on ID failure)",
+    "patch": "alternatives/yibo-wang/0006-d5ff9063961a-WIP-sc1300cs-bring-up-diagnostics-power-hold-bus-scan-on-ID-failure.patch",
+    "sha256": "75beaddafe4634a555a0c7e59dee81da9f14b286d3068054fc8c1e73cf1c113f",
+    "patch_id": "1815e7da30b7e71c0c97523a45c5d196ec17825b",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/camss-kaanapali"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T03:23:04-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "1f1df99c980e1dd32d0bcaf645386a492f9f47ec",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T10:12:06-05:00",
+    "subject": "media: qcom: iris: Kaanapali (VPU4) video codec support for iceland",
+    "patch": "alternatives/yibo-wang/0007-1f1df99c980e-media-qcom-iris-Kaanapali-VPU4-video-codec-support-for-iceland.patch",
+    "sha256": "0240ce4b739cf9772e45868fc34b207ee4a25a76b91da16d688d355d1bac53f5",
+    "patch_id": "97e0094fd76e9085b9a4592e94ae78469d364a74",
+    "same_patch_in_head": [
+      "a6e51c9ce17924fb08742f03f0418e0636490363"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/vpu",
+      "refs/remotes/superturtle/pr/vpu"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T11:17:27-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "iceland-dev",
+    "email": "dev@iceland.local",
+    "author_date": "2026-10-04T02:49:00+08:00",
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-09T07:45:11-05:00",
+    "subject": "arm64: dts: qcom: kaanapali: add uart17 and wire the OnePlus Pad 4 pogo keyboard",
+    "target_author": null,
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "committer"
+    ],
+    "signed_off_by": [],
+    "patch": "alternatives/third-party-submitted/0051-811954758c03-arm64-dts-qcom-kaanapali-add-uart17-and-wire-the-OnePlus-Pad-4-pogo-keyboard.patch",
+    "sha256": "ad5ab78950ec88fb854d559688d47df0280242ba6395e62b53908fcfa806a1b5",
+    "patch_id": "48cab0ccb4490917ed8e864935de185b98d33af9",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v2",
+      "refs/heads/pogo-kbd-v3",
+      "refs/heads/pogo-kbd-v5",
+      "refs/heads/pogo-kbd-v6",
+      "refs/heads/pr/pogo-keyboard"
+    ]
+  },
+  {
+    "commit": "f95ec4dd8f5f968ae03dcf8fe15f4ccc355772c0",
+    "parents": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-09T06:20:26-05:00",
+    "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard binding",
+    "patch": "alternatives/yibo-wang/0008-f95ec4dd8f5f-dt-bindings-input-add-OnePlus-pogo-pin-keyboard-binding.patch",
+    "sha256": "05e0305fe7581cb3999a9383e279dc8f02689febf6713f6277e7f2d3eed4f178",
+    "patch_id": "9332b321fffb2318e6fae3380ba0d9c7321d0d3c",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pr/pogo-keyboard"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-09T07:48:04-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "6978c2a9206173ff668edd07b853b7063c992a0c",
+    "parents": "f95ec4dd8f5f968ae03dcf8fe15f4ccc355772c0",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-09T06:20:35-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "patch": "alternatives/yibo-wang/0009-6978c2a92061-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "98513cfb44ac6e025c8acd4d896535d6ea1428d98c40e79e99b162524a6382e7",
+    "patch_id": "3bd47ec0a1c263cbd084d14b526f1f762b3ef99a",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pr/pogo-keyboard"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-09T07:48:04-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "fe676efa958869750ded7deca501910e3313531b",
+    "parents": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-09T06:20:26-05:00",
+    "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard",
+    "patch": "alternatives/yibo-wang/0010-fe676efa9588-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+    "sha256": "9c5180bdf5c8c96d9045294e697b5556978690327473bbfbfdbf2159c534fcdd",
+    "patch_id": "4593b6d40e8266a93989857a261b8e7a2935e1b6",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v2"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-09T22:43:00-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "3511ee4409e4bfa64ec4bfccbebfb0f76aee9d38",
+    "parents": "fe676efa958869750ded7deca501910e3313531b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-09T22:44:23-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "patch": "alternatives/yibo-wang/0011-3511ee4409e4-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "0d3cf894fc0bfe6bdf58659622e856f197ef43b4b5602e2eb3c81a4263a57274",
+    "patch_id": "d1eb59c72b5fe9b9b2286e15982330705e48add9",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v2"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-09T22:44:23-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "d95e1fc9de2bc85d8da9d193d17b9efc790b69fc",
+    "parents": "3b0eee0d80f5ee2b6031c183ff61d65771b1836f",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-10T08:07:32-05:00",
+    "subject": "arm64: dts: qcom: kaanapali: revert PCIe iommu-map to 1-cell format",
+    "patch": "alternatives/yibo-wang/0012-d95e1fc9de2b-arm64-dts-qcom-kaanapali-revert-PCIe-iommu-map-to-1-cell-format.patch",
+    "sha256": "971ae441000c6a3f7905574c64ef17c3c030adbba441f25a94bdcdce8ec5ea87",
+    "patch_id": "3ed50be55a64a5642f7d3d70aa0036cbf6c3ee6b",
+    "same_patch_in_head": [
+      "ce3e266f9e048c16c884ec7cd3422ab1ff2f890d"
+    ],
+    "containing_refs": [
+      "refs/heads/wifi-bisect"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-10T08:07:32-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "68828a4e7a6d52f796a55f5e264a2a73d29f7ac8",
+    "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T05:58:48-05:00",
+    "subject": "media: qcom: iceland camera bring-up: Kaanapali CAMSS + SmartSens SC sensors",
+    "patch": "alternatives/yibo-wang/0013-68828a4e7a6d-media-qcom-iceland-camera-bring-up-Kaanapali-CAMSS-SmartSens-SC-sensors.patch",
+    "sha256": "bebb499dd7e600d91cc5b43f8b5f03b3741ec78d826adbc79df20a1a4917024f",
+    "patch_id": "66f772bc82a64f5a2628d71c4d21bbc6a9860ada",
+    "same_patch_in_head": [
+      "af65f2a632d2f87ab3097dd305ffa47b918e85cc"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T11:17:21-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "01d193790c4fdc2d3e3425b995f6a1506f01da8a",
+    "parents": "68828a4e7a6d52f796a55f5e264a2a73d29f7ac8",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T08:19:08-05:00",
+    "subject": "media: qcom: iceland camera follow-up: AF actuator, flash, CSIPHY supplies",
+    "patch": "alternatives/yibo-wang/0014-01d193790c4f-media-qcom-iceland-camera-follow-up-AF-actuator-flash-CSIPHY-supplies.patch",
+    "sha256": "94e98efae1b200b984e85451c0b931051d80f6aecce526d31de077d518aa890b",
+    "patch_id": "6aa1e6db0a8ef31125e5e330d5fa2fe2daf006da",
+    "same_patch_in_head": [
+      "9e31a5791e781329916e3de2ac4c8c24a97752ff"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T11:17:21-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "69c0b0063c72148e75661be6c3696b214d228497",
+    "parents": "01d193790c4fdc2d3e3425b995f6a1506f01da8a",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T08:59:42-05:00",
+    "subject": "media: i2c: dw9719: DW9714V SAC tuning from the vendor actuator init",
+    "patch": "alternatives/yibo-wang/0015-69c0b0063c72-media-i2c-dw9719-DW9714V-SAC-tuning-from-the-vendor-actuator-init.patch",
+    "sha256": "8c25b95a0345fac6c355ac97caf12e49165cabbe34089e3d9e48999b3734457d",
+    "patch_id": "d44501fd305b74c31e937edebdf8bc09d71977c4",
+    "same_patch_in_head": [
+      "dfa968065e585dadfc5de09699b238ae631525f9"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T11:17:21-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "cc9c7c98d9dae587d62edeae0c2da3f4aa7b5638",
+    "parents": "69c0b0063c72148e75661be6c3696b214d228497",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-08T09:18:17-05:00",
+    "subject": "media: qcom: iceland: declare camera orientation, fix mirrored rear image",
+    "patch": "alternatives/yibo-wang/0016-cc9c7c98d9da-media-qcom-iceland-declare-camera-orientation-fix-mirrored-rear-image.patch",
+    "sha256": "17012ddb992bf751b7afcd32cc5742de38a74420e6c3a804b401dc3f40971b47",
+    "patch_id": "21c210ec98ba46d3bab6440861eeac4ccfb604d9",
+    "same_patch_in_head": [
+      "e585d5621c60ec8ba929a35259d9c9de9a8119f5"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "2024312277@stu.hit.edu.cn",
+    "committer_date": "2026-10-08T11:17:21-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "4bae7c0a5461b64d7c6a43d080f4851f9cd69f53",
+    "parents": "cc9c7c98d9dae587d62edeae0c2da3f4aa7b5638",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T01:18:55-05:00",
+    "subject": "soc: qcom: oplus-camres — shared camera I2C bus manager (AP/SEE)",
+    "patch": "alternatives/yibo-wang/0017-4bae7c0a5461-soc-qcom-oplus-camres-shared-camera-I2C-bus-manager-AP-SEE.patch",
+    "sha256": "c25182252bf6e1c18fb2e3f615d4053bbcb7d60cc42669827ba661b3750a9dd7",
+    "patch_id": "bc84e6da70bb8926671a12b65a61a43747dd28f2",
+    "same_patch_in_head": [
+      "81243488c7b81fc388dfa2aaae29e9a412c7151e"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-13T02:21:40-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <yibo.wang@opluscamera.com>"
+    ]
+  },
+  {
+    "commit": "8d235662ecc0538d89eed7d965f86ecf13c06188",
+    "parents": "4bae7c0a5461b64d7c6a43d080f4851f9cd69f53",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T01:39:10-05:00",
+    "subject": "soc: qcom: oplus-camres: restrict force sysfs knobs to CAP_SYS_ADMIN",
+    "patch": "alternatives/yibo-wang/0018-8d235662ecc0-soc-qcom-oplus-camres-restrict-force-sysfs-knobs-to-CAP-SYS-ADMIN.patch",
+    "sha256": "ab6718a8238b3a4b0c96422a0744e1e08fc4acd1d6b21302d25f7465bded09d7",
+    "patch_id": "7437d9bfbf0a877a5ddf8152ad3b760df851334e",
+    "same_patch_in_head": [
+      "9f35ddcd2f54820994f7c56caf6ec8a64fde9ad8"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-13T02:21:40-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "d8ed13a7fc2e59cd320f7ed0d996b2047d9adf59",
+    "parents": "8d235662ecc0538d89eed7d965f86ecf13c06188",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T02:16:01-05:00",
+    "subject": "soc: qcom: oplus-camres: event-driven SNS receive path",
+    "patch": "alternatives/yibo-wang/0019-d8ed13a7fc2e-soc-qcom-oplus-camres-event-driven-SNS-receive-path.patch",
+    "sha256": "86d255675239468f9142f260b70188b0a40db9e8ed93317566cf33fb41be9b38",
+    "patch_id": "015513b56a358b69a0f68d27c70063bac563eeac",
+    "same_patch_in_head": [
+      "e5437354cad39db75c79531a7cc6e11f6383a19d"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-13T02:21:40-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <yibo.wang@opluscamera.com>"
+    ]
+  },
+  {
+    "commit": "c815f01ceb8ee4a9775705df27ead1c7233b1674",
+    "parents": "d8ed13a7fc2e59cd320f7ed0d996b2047d9adf59",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T11:57:29-05:00",
+    "subject": "soc: qcom: oplus-camres: corrected SEE session bring-up and REVOKE takeover",
+    "patch": "alternatives/yibo-wang/0020-c815f01ceb8e-soc-qcom-oplus-camres-corrected-SEE-session-bring-up-and-REVOKE-takeover.patch",
+    "sha256": "79576ff2bd58fb85de28c5dff018e1a15478d7b89f4e7a6f15ed1c7ed5bbbc71",
+    "patch_id": "c6eca39d10d3c893120aeb050f6cc48935aee578",
+    "same_patch_in_head": [
+      "4529d5096a858431d7032225a868fce781834e63"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-13T12:39:44-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "399b30a55af31bc2b9164b6c1feda4cfd29e83c8",
+    "parents": "c815f01ceb8ee4a9775705df27ead1c7233b1674",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T12:38:54-05:00",
+    "subject": "soc: qcom: oplus-camres: self-classify the no-handshake SEE, drop quiet mode",
+    "patch": "alternatives/yibo-wang/0021-399b30a55af3-soc-qcom-oplus-camres-self-classify-the-no-handshake-SEE-drop-quiet-mode.patch",
+    "sha256": "0dfe7526cb7113658d43ba869e4b694d761536587c5ac6d75b03c8c5725a5d50",
+    "patch_id": "a09d820426b8392ea46bfdedd0b9033de2066e98",
+    "same_patch_in_head": [
+      "2e439c2338c1084458138ef108a619b3c236bfac"
+    ],
+    "containing_refs": [
+      "refs/heads/pr/camera",
+      "refs/remotes/superturtle/pr/camera"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-13T12:39:44-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": []
+  },
+  {
+    "commit": "5a879a569c2248c4a0313a2ef1346b24b0e1a1c3",
+    "parents": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T05:08:34-05:00",
+    "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard",
+    "patch": "alternatives/yibo-wang/0022-5a879a569c22-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+    "sha256": "243e913e9512366111dc2e13ffa688d1a4de5f1a5ee91b16c10f149649784698",
+    "patch_id": "77b9a018a607ab9c1db12a93aa1a9cc15fadeb99",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v3"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-15T05:45:53-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "a1f5cd88a40611d7f0a24263bb11831f49215656",
+    "parents": "5a879a569c2248c4a0313a2ef1346b24b0e1a1c3",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-13T05:34:07-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "patch": "alternatives/yibo-wang/0023-a1f5cd88a406-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "6b30d5bcdd0301d271dba1b753fb45db7862a07460c873a8d9ba641a074dd7e8",
+    "patch_id": "865fc2254d8927e4f8d112940bf68f25e3be7914",
+    "same_patch_in_head": [
+      "1b3df9532919a3a9110ac89df5da131e63fe0b2e"
+    ],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v3"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-15T05:46:09-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "d5e8583b99000e088bb461fddd748e452d411224",
+    "parents": "a2de78ee6ed8bf8cd99d177c74865a6e8c3cb6ea",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-15T11:15:22-05:00",
+    "subject": "dt-bindings: media: i2c: dongwoon,dw9719: Document DW9714V",
+    "patch": "alternatives/yibo-wang/0024-d5e8583b9900-dt-bindings-media-i2c-dongwoon-dw9719-Document-DW9714V.patch",
+    "sha256": "29e93e9c6280d4adc5736055b4473287d5d7e4feee348f04697589288066c4c3",
+    "patch_id": "f2491246fd0caba4e197d280f9fc2672ab903c6f",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/upstream-dw9714v"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-15T11:15:22-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <2024312277@stu.hit.edu.cn>"
+    ]
+  },
+  {
+    "commit": "8d9289f5256724406564402b6e61d9fa12e28d05",
+    "parents": "d5e8583b99000e088bb461fddd748e452d411224",
+    "author": "Yibo Wang",
+    "email": "2024312277@stu.hit.edu.cn",
+    "author_date": "2026-10-15T11:15:32-05:00",
+    "subject": "media: i2c: dw9719: Add DW9714V support",
+    "patch": "alternatives/yibo-wang/0025-8d9289f52567-media-i2c-dw9719-Add-DW9714V-support.patch",
+    "sha256": "a45a0314d6b66376e31ec98146ff84cad6bf1d7b052338060990a027e5fe5741",
+    "patch_id": "03f4e168022612d2226ece14ca2ae660e1c20aed",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/upstream-dw9714v"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-15T11:15:32-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <2024312277@stu.hit.edu.cn>"
+    ]
+  },
+  {
+    "commit": "eb66d56acbd724f47d9b3263ef4fdcf5783bf8f0",
+    "parents": "a2de78ee6ed8bf8cd99d177c74865a6e8c3cb6ea",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T03:28:20-05:00",
+    "subject": "dt-bindings: media: i2c: dongwoon,dw9719: Document DW9714VA",
+    "patch": "alternatives/yibo-wang/0026-eb66d56acbd7-dt-bindings-media-i2c-dongwoon-dw9719-Document-DW9714VA.patch",
+    "sha256": "0dc95fc195ea75c139146b1f6afd5956a91b77cf2b3d55147aa6be3f2509cfc4",
+    "patch_id": "2fc2855dd12c00b43012d1c87a939f34415b38d1",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/dw9714v-send"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T04:07:43-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "aefe15bc73bfa158d0c063f12be9c360ec4e91df",
+    "parents": "eb66d56acbd724f47d9b3263ef4fdcf5783bf8f0",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T04:07:43-05:00",
+    "subject": "media: i2c: dw9719: Add DW9714VA support",
+    "patch": "alternatives/yibo-wang/0027-aefe15bc73bf-media-i2c-dw9719-Add-DW9714VA-support.patch",
+    "sha256": "179d1bc773c08e236e0294bd2ed0ed0bef042768b7694074fbe2f3b8c637b5b7",
+    "patch_id": "36bd3b55118e04a6cee4d8c89d63fc7ac60f1b22",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/dw9714v-send"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T04:07:43-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "f2978d0e6a4a70de98d41c2ef11b1759392920d1",
+    "parents": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T07:22:34-05:00",
+    "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard",
+    "patch": "alternatives/yibo-wang/0028-f2978d0e6a4a-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+    "sha256": "aaea2986a8d294d82765fe44df272ecd38b45fbc074d468243cafc486823e878",
+    "patch_id": "8c98b03d904995825f57eb92fea3281aedbe614c",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v5"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T07:22:34-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "532a6977cce5bfd152efcfe39e920ff6fdc3ee27",
+    "parents": "f2978d0e6a4a70de98d41c2ef11b1759392920d1",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T07:22:34-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "patch": "alternatives/yibo-wang/0029-532a6977cce5-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "af1fcb6d073c7d026065d3dd12b5421f046615830e138d4837cb9c364bb347d3",
+    "patch_id": "865fc2254d8927e4f8d112940bf68f25e3be7914",
+    "same_patch_in_head": [
+      "1b3df9532919a3a9110ac89df5da131e63fe0b2e"
+    ],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v5"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T07:22:34-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "4f402defefe2a22fc30f9626708e22d48b3ae545",
+    "parents": "811954758c03bfca0558d9dd393ed7aeafe3893b",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T07:22:34-05:00",
+    "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard",
+    "patch": "alternatives/yibo-wang/0030-4f402defefe2-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+    "sha256": "ebcbda7e2dbb8e4f2c10abc602f19845afd1f71c2d1e51910e2e5dab5707395a",
+    "patch_id": "8c98b03d904995825f57eb92fea3281aedbe614c",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v6"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T11:30:53-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "0a75eb19d7bcc09244283148a7b16698a52f577a",
+    "parents": "4f402defefe2a22fc30f9626708e22d48b3ae545",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T11:30:53-05:00",
+    "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+    "patch": "alternatives/yibo-wang/0031-0a75eb19d7bc-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+    "sha256": "4fde41e6dbf4420c7d9084adb0ad271a735f4309cc4bb8abff367f8d64048923",
+    "patch_id": "865fc2254d8927e4f8d112940bf68f25e3be7914",
+    "same_patch_in_head": [
+      "1b3df9532919a3a9110ac89df5da131e63fe0b2e"
+    ],
+    "containing_refs": [
+      "refs/heads/pogo-kbd-v6"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-16T11:30:53-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "88a61897359a231f9b19b1b84d135bd7c25813c4",
+    "parents": "a2de78ee6ed8bf8cd99d177c74865a6e8c3cb6ea",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-16T03:28:20-05:00",
+    "subject": "dt-bindings: media: i2c: dongwoon,dw9719: Document DW9714VA",
+    "patch": "alternatives/yibo-wang/0032-88a61897359a-dt-bindings-media-i2c-dongwoon-dw9719-Document-DW9714VA.patch",
+    "sha256": "7ca66047cc5859b49528c228311dc3e8c56b561daa8e343070615816f9255d75",
+    "patch_id": "449bf9a2f1b1b81bd908d23a193d35fff22dd98f",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/dw9714v-v2"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-17T01:08:59-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  },
+  {
+    "commit": "c8ca818ac54f5af4e8a0e498068ce4db3b2b589d",
+    "parents": "88a61897359a231f9b19b1b84d135bd7c25813c4",
+    "author": "Yibo Wang",
+    "email": "wyibo6109@gmail.com",
+    "author_date": "2026-10-17T01:08:59-05:00",
+    "subject": "media: i2c: dw9719: Add DW9714VA support",
+    "patch": "alternatives/yibo-wang/0033-c8ca818ac54f-media-i2c-dw9719-Add-DW9714VA-support.patch",
+    "sha256": "eb82d0aa6f949984e2951613ac63c57d44eeca4c239b44267d541991697ddec1",
+    "patch_id": "36bd3b55118e04a6cee4d8c89d63fc7ac60f1b22",
+    "same_patch_in_head": [],
+    "containing_refs": [
+      "refs/heads/dw9714v-v2"
+    ],
+    "committer": "Yibo Wang",
+    "committer_email": "wyibo6109@gmail.com",
+    "committer_date": "2026-10-17T01:08:59-05:00",
+    "target_author": "Yibo Wang",
+    "target_committer": "Yibo Wang",
+    "matched_by": [
+      "author",
+      "committer"
+    ],
+    "signed_off_by": [
+      "Yibo Wang <wyibo6109@gmail.com>"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+From 4ecd53a4f1c8df09ef0bce8353e393eb092be95a Mon Sep 17 00:00:00 2001
+From: Gianni Spadoni <me@gio.blue>
+Date: Wed, 11 Mar 2026 16:19:06 +0800
+Subject: [PATCH] wifi: ath12k: disable CNSS_QDSS_CFG_MISS_V01 for the WCN7860
+X-Original-Commit: 1b693cd9928cebf4bc8fbd95ec36ca669a6cb615
+X-Original-Committer: map220v <map220v300@gmail.com>
+X-Original-Committer-Date: 2026-08-17T03:58:53Z
+
+This chip requires this change currently to negate a firmware crash. Follows up on the QDSS support in the previous commit.
+
+Signed-off-by: Gianni Spadoni <me@gio.blue>
+Signed-off-by: map220v <map220v300@gmail.com>
+---
+ drivers/net/wireless/ath/ath12k/wifi7/hw.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/ath/ath12k/wifi7/hw.c b/drivers/net/wireless/ath/ath12k/wifi7/hw.c
+index 709757028a830a8f055f86e59553d2a306badba0..7bc95c418678e56701aeed16d4c3d7ef7bfbc7ae 100644
+--- a/drivers/net/wireless/ath/ath12k/wifi7/hw.c
++++ b/drivers/net/wireless/ath/ath12k/wifi7/hw.c
+@@ -764,8 +764,7 @@ static const struct ath12k_hw_params ath12k_wifi7_hw_params[] = {
+ 
+ 		.wmi_init = ath12k_wifi7_wmi_init_wcn7850,
+ 
+-		.qmi_cnss_feature_bitmap = BIT(CNSS_QDSS_CFG_MISS_V01) |
+-					   BIT(CNSS_PCIE_PERST_NO_PULL_V01) |
++		.qmi_cnss_feature_bitmap = BIT(CNSS_PCIE_PERST_NO_PULL_V01) |
+ 					   BIT(CNSS_AUX_UC_SUPPORT_V01),
+ 
+ 		.rfkill_pin = 0,

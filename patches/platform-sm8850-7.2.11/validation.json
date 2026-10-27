@@ -1,0 +1,35 @@
+{
+  "aggregate_patch": "platform-v7.2.11.diff",
+  "sha256": "348cb493bb0894e17012ce9a8e4dbcc6f93f327dfb0faa6806d06bbf6134bf0d",
+  "forward_apply_check": "passed",
+  "forward_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f",
+  "expected_head_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f",
+  "reverse_apply_check": "passed",
+  "reverse_tree": "f485a526dbd9650749eb6c88b10d725cca615da2",
+  "expected_base_tree": "f485a526dbd9650749eb6c88b10d725cca615da2",
+  "parsed_original_patches": 90,
+  "parsed_alternative_patches": 51,
+  "source_head_index_worktree_unchanged": true,
+  "individual_series_replay_tested": true,
+  "build_or_hardware_tested": false,
+  "author_committer_selection_checked": true,
+  "third_party_main_patches": 26,
+  "new_alternative_third_party_patches": 18,
+  "aggregate_diff_unchanged_after_metadata_update": true,
+  "application_series": "series",
+  "application_patch_count": 86,
+  "original_history_series": "original.series",
+  "omitted_already_upstream": 4,
+  "sequential_apply": {
+    "report": "validation-series-apply.json",
+    "passed": 86,
+    "three_way_fallback": false,
+    "changed_files_vs_target": 0
+  },
+  "sequential_git_am": {
+    "report": "validation-series-am.json",
+    "passed": 86,
+    "three_way_fallback": false,
+    "changed_files_vs_target": 0
+  }
+}

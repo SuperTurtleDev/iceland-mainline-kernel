@@ -1,0 +1,33 @@
+From 600503179d807ce315882d941e01b38a6baf8075 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Tue, 6 Oct 2026 08:37:21 -0500
+Subject: [PATCH] Revert "backlight: ktz8869: fetch vddio as an optional
+ regulator"
+
+The dummy-regulator warning is benign noise on this board; keep the
+original plain get (decision: not worth the change).
+---
+ drivers/video/backlight/ktz8869_iceland.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/video/backlight/ktz8869_iceland.c b/drivers/video/backlight/ktz8869_iceland.c
+index 12cf8504701880d102a6c882c8d6dc9bf8e8fa13..52532a3034cc7d31f7e5d7cd043e0d7ecdc53bd0 100644
+--- a/drivers/video/backlight/ktz8869_iceland.c
++++ b/drivers/video/backlight/ktz8869_iceland.c
+@@ -137,14 +137,8 @@ static int ktz8869_probe(struct i2c_client *client)
+ 	ret = devm_regulator_get_enable(&client->dev, "vin");
+ 	if (ret)
+ 		return dev_err_probe(&client->dev, ret, "get regulator vin failed\n");
+-	/*
+-	 * iceland ties the IO rail to HWEN (the enable gpio) instead of a
+-	 * switchable regulator: the node carries no vddio-supply, so use the
+-	 * optional variant -- a plain get fabricates a dummy regulator and
+-	 * warns on every probe.
+-	 */
+-	ret = devm_regulator_get_enable_optional(&client->dev, "vddio");
+-	if (ret && ret != -ENODEV)
++	ret = devm_regulator_get_enable(&client->dev, "vddio");
++	if (ret)
+ 		return dev_err_probe(&client->dev, ret, "get regulator vddio failed\n");
+ 
+ 	if (id->driver_data == 2) {

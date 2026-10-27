@@ -1,0 +1,39 @@
+From 85459f4a3c7982be3d6ceb32d4b5a9bfb74de934 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Mon, 5 Oct 2026 12:01:28 -0500
+Subject: [PATCH] backlight: ktz8869 - treat enable gpio defer as non-fatal
+ (workaround)
+X-Original-Commit: baa5fda60af06000598feebf142a5ff8561e4aa3
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-05T12:01:28-05:00
+
+The original port carried an uncommitted workaround where enable gpio
+-EPROBE_DEFER was treated as NULL (skip GPIO handling, continue probe).
+UEFI already drives HWEN (tlmm1) high, so the IC stays powered without
+kernel GPIO control.  Without this, probe blocks in a defer loop during
+udev coldplug and contributes to the RCU stall / glink timeout chain.
+---
+ drivers/video/backlight/ktz8869_iceland.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/video/backlight/ktz8869_iceland.c b/drivers/video/backlight/ktz8869_iceland.c
+index 52532a3034cc7d31f7e5d7cd043e0d7ecdc53bd0..e48b1033d4ec7656e8904c6c5ef4e1dbda76bbd6 100644
+--- a/drivers/video/backlight/ktz8869_iceland.c
++++ b/drivers/video/backlight/ktz8869_iceland.c
+@@ -147,8 +147,14 @@ static int ktz8869_probe(struct i2c_client *client)
+ 	}
+ 
+ 	ktz->enable_gpio = devm_gpiod_get_optional(&client->dev, "enable", GPIOD_OUT_HIGH);
+-	if (IS_ERR(ktz->enable_gpio))
+-		return PTR_ERR(ktz->enable_gpio);
++	if (IS_ERR(ktz->enable_gpio)) {
++		/* GPIO controller may still be probing (tlmm defers on this
++		 * platform); UEFI already drives HWEN high, so proceed without
++		 * it rather than blocking probe in a defer loop */
++		dev_info(&client->dev, "enable gpio unavailable (%ld), continuing without\n",
++			 PTR_ERR(ktz->enable_gpio));
++		ktz->enable_gpio = NULL;
++	}
+ 
+ 	memset(&props, 0, sizeof(props));
+ 	props.type = BACKLIGHT_RAW;

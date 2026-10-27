@@ -1,0 +1,859 @@
+From 2a7197cd5fe73fdafd560440bf61f4f9ac636772 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Tue, 6 Oct 2026 05:22:06 -0500
+Subject: [PATCH] WIP: camera bring-up: iceland DT wiring + sc1300cs probe
+ driver
+
+- kaanapali.dtsi: qcom,kaanapali-camss node (v14 single-node topology,
+  from binding example; disabled by default)
+- iceland: &camss enable + 12 csiphy supplies (l3d_0p8/l1d_1p2 per MTP
+  reference), ports 4/5 endpoints, i2c9 enable, rear camera@36 / front
+  camera@10 SmartSens sensor nodes, PMK8850 func2 MCLK + PMH0110-G
+  reset pinctrl states
+- drivers/media/i2c/sc1300cs.c: power-on sequence + chip-ID read
+  (0x3107: 0xc658 rear / 0xd154 front), no register tables yet
+- binding: smartsens,sc1300cs.yaml
+
+Note: hot-test artifacts (i2c9-only dtb + configfs overlay) live in
+/home/wyb/Documents/mainline/camera/, outside this tree.
+---
+ .../media/i2c/smartsens,sc1300cs.yaml         | 111 ++++++
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    | 149 +++++++++
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi       | 173 ++++++++++
+ drivers/media/i2c/Kconfig                     |  13 +
+ drivers/media/i2c/Makefile                    |   1 +
+ drivers/media/i2c/sc1300cs.c                  | 316 ++++++++++++++++++
+ 6 files changed, 763 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/i2c/smartsens,sc1300cs.yaml
+ create mode 100644 drivers/media/i2c/sc1300cs.c
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/smartsens,sc1300cs.yaml b/Documentation/devicetree/bindings/media/i2c/smartsens,sc1300cs.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..4374aa5a4c2c94ea71fbf2fa17189ef6160b850b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/i2c/smartsens,sc1300cs.yaml
+@@ -0,0 +1,111 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# Copyright (c) 2026 OnePlus Pad 4 mainline effort
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/i2c/smartsens,sc1300cs.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: SmartSens SC1300CS / SC820CS raw MIPI CSI-2 sensors
++
++maintainers:
++  - Yibo Wang <yibo.wang@example.invalid>
++
++description: |
++  The SmartSens SC1300CS is a 13 MP PDAF raw Bayer sensor and the SC820CS
++  an 8 MP fixed-focus raw Bayer sensor, both with a MIPI CSI-2 image data
++  interface and an I2C-compatible control bus.  Register tables are not
++  publicly available; the mainline driver covers power sequencing and
++  chip identification only.
++
++properties:
++  compatible:
++    enum:
++      - smartsens,sc1300cs
++      - smartsens,sc820cs
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    description: XCLK input, 19.2 MHz on the OnePlus Pad 4 (RPMh DIV_CLK1).
++    maxItems: 1
++
++  avdd-supply: true
++
++  dvdd-supply: true
++
++  dovdd-supply: true
++
++  reset-gpios:
++    description: Reference to the GPIO connected to the XCLR pin (active low).
++    maxItems: 1
++
++  port:
++    $ref: /schemas/graph.yaml#/$defs/port-base
++    additionalProperties: false
++
++    properties:
++      endpoint:
++        $ref: /schemas/media/video-interfaces.yaml#
++        unevaluatedProperties: false
++
++        properties:
++          data-lanes:
++            oneOf:
++              - items:
++                  - const: 1
++                  - const: 2
++                  - const: 3
++                  - const: 4
++              - items:
++                  - const: 1
++                  - const: 2
++
++          link-frequencies: true
++
++        required:
++          - data-lanes
++
++    required:
++      - endpoint
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - avdd-supply
++  - dvdd-supply
++  - dovdd-supply
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        sensor@36 {
++            compatible = "smartsens,sc1300cs";
++            reg = <0x36>;
++
++            clocks = <&rpmhcc 17>;
++
++            reset-gpios = <&pmic_gpios 14 GPIO_ACTIVE_LOW>;
++
++            avdd-supply = <&camera_avdd_2p8>;
++            dvdd-supply = <&camera_dvdd_1p2>;
++            dovdd-supply = <&camera_dovdd_1p8>;
++
++            port {
++                endpoint {
++                    remote-endpoint = <&csiphy_in>;
++                    data-lanes = <1 2 3 4>;
++                };
++            };
++        };
++    };
++...
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index ed2cf9f84a01698b62fe14b554a49e5593478847..c46e95ce75db7e1319b5cca521292b4f7f11bda4 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1020,6 +1020,68 @@ backlight@11 {
+ 	};
+ };
+ 
++/*
++ * Camera sensors on QUPv3 SE9 (GENI I2C).  Wiring from the stock dtbo
++ * (fragment@97): rear reg 0x6c is the vendor 8-bit form of 7-bit 0x36,
++ * front 0x20 -> 0x10; both on CSIPHY4/5, reset on PMH0110-G gpio14/13,
++ * MCLK = RPMh DIV_CLK1 (19.2 MHz) on PMK8850 gpio2/gpio1 func2.
++ * Compatible/model names are provisional until the chip IDs (0x3107 =
++ * 0xc658 rear / 0xd154 front) have been read on hardware.
++ */
++&i2c9 {
++	clock-frequency = <400000>;
++
++	status = "okay";
++
++	rear_cam: camera@36 {
++		compatible = "smartsens,sc1300cs";
++		reg = <0x36>;
++
++		clocks = <&rpmhcc RPMH_DIV_CLK1>;
++		clock-names = "xclk";
++
++		avdd-supply = <&vreg_l14b_2p8>;
++		dvdd-supply = <&vreg_l1f_1p2>;
++		dovdd-supply = <&vreg_l2f_1p8>;
++
++		reset-gpios = <&pmh0110_g_e0_gpios 14 GPIO_ACTIVE_LOW>;
++
++		pinctrl-0 = <&cam_mclk_rear_active &cam_rst_rear_active>;
++		pinctrl-names = "default";
++
++		port {
++			rear_cam_ep: endpoint {
++				remote-endpoint = <&csiphy4_in>;
++				data-lanes = <1 2 3 4>;
++			};
++		};
++	};
++
++	front_cam: camera@10 {
++		compatible = "smartsens,sc820cs";
++		reg = <0x10>;
++
++		clocks = <&rpmhcc RPMH_DIV_CLK1>;
++		clock-names = "xclk";
++
++		avdd-supply = <&vreg_l14b_2p8>;
++		dvdd-supply = <&vreg_l1f_1p2>;
++		dovdd-supply = <&vreg_l2f_1p8>;
++
++		reset-gpios = <&pmh0110_g_e0_gpios 13 GPIO_ACTIVE_LOW>;
++
++		pinctrl-0 = <&cam_mclk_front_active &cam_rst_front_active>;
++		pinctrl-names = "default";
++
++		port {
++			front_cam_ep: endpoint {
++				remote-endpoint = <&csiphy5_in>;
++				data-lanes = <1 2>;
++			};
++		};
++	};
++};
++
+ &mdss {
+ 	status = "okay";
+ };
+@@ -1259,6 +1321,45 @@ pogo_kbd_power_default: pogo-kbd-power-default-state {
+ 	};
+ };
+ 
++&pmh0110_g_e0_gpios {
++	/* vendor CAM_RESET1_1P8 (rear), released = physical high */
++	cam_rst_rear_active: cam-rst-rear-active-state {
++		pins = "gpio14";
++		function = "normal";
++		input-disable;
++		output-enable;
++		power-source = <2>;
++		qcom,drive-strength = <2>;
++	};
++
++	/* vendor CAM_RESET4 (front), released = physical high */
++	cam_rst_front_active: cam-rst-front-active-state {
++		pins = "gpio13";
++		function = "normal";
++		input-disable;
++		output-enable;
++		power-source = <2>;
++		qcom,drive-strength = <2>;
++	};
++};
++
++&pmk8850_gpios {
++	/* sensor MCLK pads: RPMh DIV_CLK1 (19.2 MHz) routed out on func2 */
++	cam_mclk_rear_active: cam-mclk-rear-active-state {
++		pins = "gpio2";
++		function = "func2";
++		output-enable;
++		power-source = <0>;
++	};
++
++	cam_mclk_front_active: cam-mclk-front-active-state {
++		pins = "gpio1";
++		function = "func2";
++		output-enable;
++		power-source = <0>;
++	};
++};
++
+ &pmih0108_e1_eusb2_repeater {
+ 	vdd18-supply = <&vreg_l15b_1p8>;
+ 	vdd3-supply = <&vreg_l5b_3p1>;
+@@ -1573,3 +1674,51 @@ &usb_dp_qmpphy {
+ 
+ 	status = "okay";
+ };
++
++/*
++ * CSIPHY supplies: the v14-era driver bulk-gets all six 0p8/1p2 pairs,
++ * so every property must exist.  Rail assignment follows the Qualcomm
++ * kaanapali MTP reference design (vdda-0p9 = l3d, vdda-1p2 = l1d); those
++ * rails are shared with PCIe/USB phys on this board as well.
++ */
++&camss {
++	vdd-csiphy0-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy0-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy1-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy1-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy2-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy2-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy3-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy3-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy4-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy4-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy5-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy5-1p2-supply = <&vreg_l1d_1p2>;
++
++	status = "okay";
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		/* rear 13 MP: CSIPHY4 */
++		port@4 {
++			reg = <4>;
++
++			csiphy4_in: endpoint {
++				data-lanes = <1 2 3 4>;
++				remote-endpoint = <&rear_cam_ep>;
++			};
++		};
++
++		/* front 8 MP: CSIPHY5 */
++		port@5 {
++			reg = <5>;
++
++			csiphy5_in: endpoint {
++				data-lanes = <1 2>;
++				remote-endpoint = <&front_cam_ep>;
++			};
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 5ff0a45b371e31404dc1eb0be4118061e4a1f078..6150d56db455d711e80e4f53ce2fc9eed6acc816 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -3676,6 +3676,179 @@ camcc: clock-controller@956d000 {
+ 			#power-domain-cells = <1>;
+ 		};
+ 
++		camss: isp@9253000 {
++			compatible = "qcom,kaanapali-camss";
++
++			reg = <0x0 0x09253000 0x0 0x5e80>,
++			      <0x0 0x09263000 0x0 0x5e80>,
++			      <0x0 0x09273000 0x0 0x5e80>,
++			      <0x0 0x092d3000 0x0 0x3880>,
++			      <0x0 0x092e7000 0x0 0x3880>,
++			      <0x0 0x09523000 0x0 0x2000>,
++			      <0x0 0x09525000 0x0 0x2000>,
++			      <0x0 0x09527000 0x0 0x2000>,
++			      <0x0 0x09529000 0x0 0x2000>,
++			      <0x0 0x0952b000 0x0 0x2000>,
++			      <0x0 0x0952d000 0x0 0x2000>,
++			      <0x0 0x093fd000 0x0 0x400>,
++			      <0x0 0x093fe000 0x0 0x400>,
++			      <0x0 0x093ff000 0x0 0x400>,
++			      <0x0 0x09151000 0x0 0x20000>,
++			      <0x0 0x09171000 0x0 0x20000>,
++			      <0x0 0x09191000 0x0 0x20000>,
++			      <0x0 0x092dc000 0x0 0x9000>,
++			      <0x0 0x092f0000 0x0 0x9000>;
++			reg-names = "csid0",
++				    "csid1",
++				    "csid2",
++				    "csid_lite0",
++				    "csid_lite1",
++				    "csiphy0",
++				    "csiphy1",
++				    "csiphy2",
++				    "csiphy3",
++				    "csiphy4",
++				    "csiphy5",
++				    "csitpg0",
++				    "csitpg1",
++				    "csitpg2",
++				    "vfe0",
++				    "vfe1",
++				    "vfe2",
++				    "vfe_lite0",
++				    "vfe_lite1";
++
++			clocks = <&camcc CAM_CC_CAMNOC_NRT_AXI_CLK>,
++				 <&camcc CAM_CC_CAMNOC_RT_AXI_CLK>,
++				 <&camcc CAM_CC_CAM_TOP_AHB_CLK>,
++				 <&camcc CAM_CC_CAM_TOP_FAST_AHB_CLK>,
++				 <&camcc CAM_CC_CAMNOC_RT_TFE_0_MAIN_CLK>,
++				 <&camcc CAM_CC_CAMNOC_RT_TFE_1_MAIN_CLK>,
++				 <&camcc CAM_CC_CAMNOC_RT_TFE_2_MAIN_CLK>,
++				 <&camcc CAM_CC_CAMNOC_RT_IFE_LITE_CLK>,
++				 <&camcc CAM_CC_CSID_CLK>,
++				 <&camcc CAM_CC_CSID_CSIPHY_RX_CLK>,
++				 <&camcc CAM_CC_CSIPHY0_CLK>,
++				 <&camcc CAM_CC_CSI0PHYTIMER_CLK>,
++				 <&camcc CAM_CC_CSIPHY1_CLK>,
++				 <&camcc CAM_CC_CSI1PHYTIMER_CLK>,
++				 <&camcc CAM_CC_CSIPHY2_CLK>,
++				 <&camcc CAM_CC_CSI2PHYTIMER_CLK>,
++				 <&camcc CAM_CC_CSIPHY3_CLK>,
++				 <&camcc CAM_CC_CSI3PHYTIMER_CLK>,
++				 <&camcc CAM_CC_CSIPHY4_CLK>,
++				 <&camcc CAM_CC_CSI4PHYTIMER_CLK>,
++				 <&camcc CAM_CC_CSIPHY5_CLK>,
++				 <&camcc CAM_CC_CSI5PHYTIMER_CLK>,
++				 <&gcc GCC_CAMERA_HF_AXI_CLK>,
++				 <&gcc GCC_CAMERA_SF_AXI_CLK>,
++				 <&camcc CAM_CC_TFE_0_MAIN_CLK>,
++				 <&camcc CAM_CC_TFE_0_MAIN_FAST_AHB_CLK>,
++				 <&camcc CAM_CC_TFE_1_MAIN_CLK>,
++				 <&camcc CAM_CC_TFE_1_MAIN_FAST_AHB_CLK>,
++				 <&camcc CAM_CC_TFE_2_MAIN_CLK>,
++				 <&camcc CAM_CC_TFE_2_MAIN_FAST_AHB_CLK>,
++				 <&camcc CAM_CC_IFE_LITE_CLK>,
++				 <&camcc CAM_CC_IFE_LITE_AHB_CLK>,
++				 <&camcc CAM_CC_IFE_LITE_CPHY_RX_CLK>,
++				 <&camcc CAM_CC_IFE_LITE_CSID_CLK>,
++				 <&camcc CAM_CC_QDSS_DEBUG_XO_CLK>;
++			clock-names = "camnoc_nrt_axi",
++				      "camnoc_rt_axi",
++				      "cpas_ahb",
++				      "cpas_fast_ahb",
++				      "cpas_vfe0",
++				      "cpas_vfe1",
++				      "cpas_vfe2",
++				      "cpas_vfe_lite",
++				      "csid",
++				      "csid_csiphy_rx",
++				      "csiphy0",
++				      "csiphy0_timer",
++				      "csiphy1",
++				      "csiphy1_timer",
++				      "csiphy2",
++				      "csiphy2_timer",
++				      "csiphy3",
++				      "csiphy3_timer",
++				      "csiphy4",
++				      "csiphy4_timer",
++				      "csiphy5",
++				      "csiphy5_timer",
++				      "gcc_axi_hf",
++				      "gcc_axi_sf",
++				      "vfe0",
++				      "vfe0_fast_ahb",
++				      "vfe1",
++				      "vfe1_fast_ahb",
++				      "vfe2",
++				      "vfe2_fast_ahb",
++				      "vfe_lite",
++				      "vfe_lite_ahb",
++				      "vfe_lite_cphy_rx",
++				      "vfe_lite_csid",
++				      "qdss_debug_xo";
++
++			interrupts = <GIC_SPI 601 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 603 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 431 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 605 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 376 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 477 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 478 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 479 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 448 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 122 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 89 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 433 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 436 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 457 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 606 IRQ_TYPE_EDGE_RISING>,
++				     <GIC_SPI 377 IRQ_TYPE_EDGE_RISING>;
++			interrupt-names = "csid0",
++					  "csid1",
++					  "csid2",
++					  "csid_lite0",
++					  "csid_lite1",
++					  "csiphy0",
++					  "csiphy1",
++					  "csiphy2",
++					  "csiphy3",
++					  "csiphy4",
++					  "csiphy5",
++					  "vfe0",
++					  "vfe1",
++					  "vfe2",
++					  "vfe_lite0",
++					  "vfe_lite1";
++
++			interconnects = <&gem_noc MASTER_APPSS_PROC QCOM_ICC_TAG_ACTIVE_ONLY
++					 &config_noc SLAVE_CAMERA_CFG QCOM_ICC_TAG_ACTIVE_ONLY>,
++					<&mmss_noc MASTER_CAMNOC_HF QCOM_ICC_TAG_ALWAYS
++					 &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>,
++					<&mmss_noc MASTER_CAMNOC_SF QCOM_ICC_TAG_ALWAYS
++					 &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>,
++					<&mmss_noc MASTER_CAMNOC_NRT_ICP_SF QCOM_ICC_TAG_ALWAYS
++					 &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>;
++			interconnect-names = "ahb",
++					     "hf_mnoc",
++					     "sf_mnoc",
++					     "sf_icp_mnoc";
++
++			iommus = <&apps_smmu 0x1c00 0x00>;
++
++			power-domains = <&camcc CAM_CC_TFE_0_GDSC>,
++					<&camcc CAM_CC_TFE_1_GDSC>,
++					<&camcc CAM_CC_TFE_2_GDSC>,
++					<&camcc CAM_CC_TITAN_TOP_GDSC>;
++			power-domain-names = "ife0",
++					     "ife1",
++					     "ife2",
++					     "top";
++
++			status = "disabled";
++		};
++
+ 		mdss: display-subsystem@9800000 {
+ 			compatible = "qcom,kaanapali-mdss";
+ 			reg = <0x0 0x09800000 0x0 0x1000>;
+diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+index 5d173e0ecf424f2f204f8d426be818e44357f8e4..ad70c2c3eb37ed50a079836c376fa578f95d3f91 100644
+--- a/drivers/media/i2c/Kconfig
++++ b/drivers/media/i2c/Kconfig
+@@ -60,6 +60,19 @@ config VIDEO_AR0521
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called ar0521.
+ 
++config VIDEO_SC1300CS
++	tristate "SmartSens SC1300CS / SC820CS sensor bring-up support"
++	select V4L2_CCI_I2C
++	help
++	  This is a Video4Linux2 sensor driver for the SmartSens SC1300CS
++	  (13 MP) and SC820CS (8 MP) camera sensors found on the OnePlus
++	  Pad 4.  It implements the power-on sequence and chip-ID check
++	  only; streaming requires register tables that are not available
++	  yet.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called sc1300cs.
++
+ config VIDEO_GC0308
+ 	tristate "GalaxyCore GC0308 sensor support"
+ 	select V4L2_CCI_I2C
+diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+index e45359efe0e41e13e3c0869e5ead7d6cf4aca3a7..cc06e3c874f1afc86c1a1e4cb283616c8b1ee4a9 100644
+--- a/drivers/media/i2c/Makefile
++++ b/drivers/media/i2c/Makefile
+@@ -29,6 +29,7 @@ obj-$(CONFIG_VIDEO_CS3308) += cs3308.o
+ obj-$(CONFIG_VIDEO_CS5345) += cs5345.o
+ obj-$(CONFIG_VIDEO_CS53L32A) += cs53l32a.o
+ obj-$(CONFIG_VIDEO_CX25840) += cx25840/
++obj-$(CONFIG_VIDEO_SC1300CS) += sc1300cs.o
+ obj-$(CONFIG_VIDEO_DS90UB913) += ds90ub913.o
+ obj-$(CONFIG_VIDEO_DS90UB953) += ds90ub953.o
+ obj-$(CONFIG_VIDEO_DS90UB960) += ds90ub960.o
+diff --git a/drivers/media/i2c/sc1300cs.c b/drivers/media/i2c/sc1300cs.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..e79efa5cd79db88d186d6b5b5a30a45606613750
+--- /dev/null
++++ b/drivers/media/i2c/sc1300cs.c
+@@ -0,0 +1,316 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * SmartSens SC1300CS / SC820CS camera sensor bring-up driver
++ *
++ * OnePlus Pad 4 (iceland) rear (13 MP, PDAF) and front (8 MP) sensors sit
++ * on QUP SE9 GENI I2C and are SmartSens parts with no mainline driver.
++ * This driver implements the power-on sequence (dovdd -> avdd/dvdd,
++ * 19.2 MHz RPMh DIV_CLK1 xclk, PMIC reset GPIO) and verifies the chip ID
++ * at registers 0x3107/0x3108, which is what the stock firmware reads
++ * (ftm_setting_compatible: 0xc658 rear, 0xd154 front).
++ *
++ * BRING-UP SCOPE: no register tables yet, so no mode/stream support.
++ * Probe success + chip ID in dmesg validates regulators, reset, MCLK and
++ * the I2C address translation (vendor DT uses 8-bit forms 0x6c/0x20).
++ * Model names remain provisional until the IDs are confirmed on hardware.
++ */
++
++#include <linux/clk.h>
++#include <linux/delay.h>
++#include <linux/device.h>
++#include <linux/err.h>
++#include <linux/gpio/consumer.h>
++#include <linux/i2c.h>
++#include <linux/module.h>
++#include <linux/pm_runtime.h>
++#include <linux/regulator/consumer.h>
++
++#include <media/v4l2-cci.h>
++#include <media/v4l2-common.h>
++#include <media/v4l2-ctrls.h>
++#include <media/v4l2-subdev.h>
++
++#define SC13XX_REG_CHIP_ID		CCI_REG16(0x3107)
++#define SC13XX_REG_MODE_SELECT		CCI_REG8(0x0100)
++#define SC13XX_MODE_STANDBY		0x01
++
++#define SC13XX_XCLK_FREQ		19200000
++
++struct sc13xx {
++	struct v4l2_subdev sd;
++	struct media_pad pad;
++	struct regmap *regmap;
++
++	struct regulator *avdd;
++	struct regulator *dvdd;
++	struct regulator *dovdd;
++	struct clk *xclk;
++	struct gpio_desc *reset;
++
++	const struct sc13xx_cfg *cfg;
++};
++
++struct sc13xx_cfg {
++	const char *model;
++	u16 chip_id;
++};
++
++#define to_sc13xx(sd)	container_of(sd, struct sc13xx, sd)
++
++static const struct sc13xx_cfg sc1300cs_cfg = {
++	.model = "sc1300cs",
++	.chip_id = 0xc658,
++};
++
++static const struct sc13xx_cfg sc820cs_cfg = {
++	.model = "sc820cs",
++	.chip_id = 0xd154,
++};
++
++static int sc13xx_power_on(struct device *dev)
++{
++	struct v4l2_subdev *sd = dev_get_drvdata(dev);
++	struct sc13xx *sc13xx = to_sc13xx(sd);
++	int ret;
++
++	/* XCLR is active low: assert (drive low) across power-up */
++	gpiod_set_value_cansleep(sc13xx->reset, 1);
++
++	ret = regulator_enable(sc13xx->dovdd);
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to enable dovdd\n");
++
++	ret = regulator_enable(sc13xx->avdd);
++	if (ret)
++		goto err_dovdd;
++
++	ret = regulator_enable(sc13xx->dvdd);
++	if (ret)
++		goto err_avdd;
++
++	ret = clk_prepare_enable(sc13xx->xclk);
++	if (ret)
++		goto err_dvdd;
++
++	usleep_range(1000, 2000);
++
++	/* release XCLR */
++	gpiod_set_value_cansleep(sc13xx->reset, 0);
++
++	/* SmartSens init time after XCLR high */
++	usleep_range(20000, 22000);
++
++	return 0;
++
++err_dvdd:
++	regulator_disable(sc13xx->dvdd);
++err_avdd:
++	regulator_disable(sc13xx->avdd);
++err_dovdd:
++	regulator_disable(sc13xx->dovdd);
++	gpiod_set_value_cansleep(sc13xx->reset, 0);
++	return ret;
++}
++
++static int sc13xx_power_off(struct device *dev)
++{
++	struct v4l2_subdev *sd = dev_get_drvdata(dev);
++	struct sc13xx *sc13xx = to_sc13xx(sd);
++
++	/* best effort: standby before cutting rails */
++	cci_write(sc13xx->regmap, SC13XX_REG_MODE_SELECT,
++		  SC13XX_MODE_STANDBY, NULL);
++
++	clk_disable_unprepare(sc13xx->xclk);
++
++	regulator_disable(sc13xx->dvdd);
++	regulator_disable(sc13xx->avdd);
++	regulator_disable(sc13xx->dovdd);
++
++	gpiod_set_value_cansleep(sc13xx->reset, 1);
++
++	return 0;
++}
++
++static int sc13xx_identify(struct sc13xx *sc13xx)
++{
++	struct i2c_client *client = v4l2_get_subdevdata(&sc13xx->sd);
++	u64 chip_id = 0;
++	int ret;
++
++	ret = cci_read(sc13xx->regmap, SC13XX_REG_CHIP_ID, &chip_id, NULL);
++	if (ret)
++		return dev_err_probe(&client->dev, ret,
++				     "failed to read chip ID\n");
++
++	if (chip_id != sc13xx->cfg->chip_id) {
++		dev_err(&client->dev,
++			"unexpected chip ID 0x%04llx, expected 0x%04x (%s)\n",
++			(unsigned long long)chip_id, sc13xx->cfg->chip_id,
++			sc13xx->cfg->model);
++		return -ENODEV;
++	}
++
++	dev_info(&client->dev, "%s identified, chip ID 0x%04llx\n",
++		 sc13xx->cfg->model, (unsigned long long)chip_id);
++
++	return 0;
++}
++
++static int sc13xx_init_state(struct v4l2_subdev *sd,
++			     struct v4l2_subdev_state *state)
++{
++	struct v4l2_mbus_framefmt *fmt;
++
++	fmt = v4l2_subdev_state_get_format(state, 0);
++
++	/* placeholder until register tables land */
++	fmt->code = MEDIA_BUS_FMT_SBGGR10_1X10;
++	fmt->width = 2112;
++	fmt->height = 1560;
++
++	return 0;
++}
++
++static const struct v4l2_subdev_internal_ops sc13xx_internal_ops = {
++	.init_state = sc13xx_init_state,
++};
++
++static const struct v4l2_subdev_ops sc13xx_subdev_ops = {
++};
++
++static int sc13xx_get_pm_resources(struct sc13xx *sc13xx)
++{
++	struct i2c_client *client = v4l2_get_subdevdata(&sc13xx->sd);
++
++	sc13xx->dovdd = devm_regulator_get(&client->dev, "dovdd");
++	if (IS_ERR(sc13xx->dovdd))
++		return PTR_ERR(sc13xx->dovdd);
++
++	sc13xx->avdd = devm_regulator_get(&client->dev, "avdd");
++	if (IS_ERR(sc13xx->avdd))
++		return PTR_ERR(sc13xx->avdd);
++
++	sc13xx->dvdd = devm_regulator_get(&client->dev, "dvdd");
++	if (IS_ERR(sc13xx->dvdd))
++		return PTR_ERR(sc13xx->dvdd);
++
++	sc13xx->reset = devm_gpiod_get_optional(&client->dev, "reset",
++						GPIOD_OUT_HIGH);
++	if (IS_ERR(sc13xx->reset))
++		return PTR_ERR(sc13xx->reset);
++
++	sc13xx->xclk = devm_clk_get(&client->dev, "xclk");
++	if (IS_ERR(sc13xx->xclk))
++		return PTR_ERR(sc13xx->xclk);
++
++	return 0;
++}
++
++static int sc13xx_probe(struct i2c_client *client)
++{
++	struct sc13xx *sc13xx;
++	int ret;
++
++	sc13xx = devm_kzalloc(&client->dev, sizeof(*sc13xx), GFP_KERNEL);
++	if (!sc13xx)
++		return -ENOMEM;
++
++	sc13xx->cfg = device_get_match_data(&client->dev);
++	if (!sc13xx->cfg)
++		return -ENODEV;
++
++	sc13xx->regmap = devm_cci_regmap_init_i2c(client, 16);
++	if (IS_ERR(sc13xx->regmap))
++		return PTR_ERR(sc13xx->regmap);
++
++	v4l2_i2c_subdev_init(&sc13xx->sd, client, &sc13xx_subdev_ops);
++	sc13xx->sd.internal_ops = &sc13xx_internal_ops;
++
++	ret = sc13xx_get_pm_resources(sc13xx);
++	if (ret)
++		return ret;
++
++	ret = sc13xx_power_on(&client->dev);
++	if (ret)
++		return ret;
++
++	ret = sc13xx_identify(sc13xx);
++	if (ret)
++		goto err_power_off;
++
++	sc13xx->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
++	sc13xx->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
++	sc13xx->pad.flags = MEDIA_PAD_FL_SOURCE;
++
++	ret = media_entity_pads_init(&sc13xx->sd.entity, 1, &sc13xx->pad);
++	if (ret)
++		goto err_power_off;
++
++	ret = v4l2_subdev_init_finalize(&sc13xx->sd);
++	if (ret)
++		goto err_entity_cleanup;
++
++	pm_runtime_set_active(&client->dev);
++	pm_runtime_enable(&client->dev);
++	pm_runtime_idle(&client->dev);
++
++	ret = v4l2_async_register_subdev_sensor(&sc13xx->sd);
++	if (ret)
++		goto err_pm_disable;
++
++	return 0;
++
++err_pm_disable:
++	pm_runtime_disable(&client->dev);
++	pm_runtime_set_suspended(&client->dev);
++	v4l2_subdev_cleanup(&sc13xx->sd);
++
++err_entity_cleanup:
++	media_entity_cleanup(&sc13xx->sd.entity);
++
++err_power_off:
++	sc13xx_power_off(&client->dev);
++
++	return ret;
++}
++
++static void sc13xx_remove(struct i2c_client *client)
++{
++	struct v4l2_subdev *sd = i2c_get_clientdata(client);
++	struct sc13xx *sc13xx = to_sc13xx(sd);
++
++	v4l2_async_unregister_subdev(sd);
++	v4l2_subdev_cleanup(sd);
++	media_entity_cleanup(&sd->entity);
++	pm_runtime_disable(&client->dev);
++	if (!pm_runtime_status_suspended(&client->dev))
++		sc13xx_power_off(&client->dev);
++	pm_runtime_set_suspended(&client->dev);
++}
++
++static const struct dev_pm_ops sc13xx_pm_ops = {
++	SET_RUNTIME_PM_OPS(sc13xx_power_off, sc13xx_power_on, NULL)
++};
++
++static const struct of_device_id sc13xx_of_match[] = {
++	{ .compatible = "smartsens,sc1300cs", .data = &sc1300cs_cfg },
++	{ .compatible = "smartsens,sc820cs", .data = &sc820cs_cfg },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, sc13xx_of_match);
++
++static struct i2c_driver sc13xx_i2c_driver = {
++	.driver = {
++		.name = "sc1300cs",
++		.of_match_table = sc13xx_of_match,
++		.pm = &sc13xx_pm_ops,
++	},
++	.probe = sc13xx_probe,
++	.remove = sc13xx_remove,
++};
++
++module_i2c_driver(sc13xx_i2c_driver);
++
++MODULE_DESCRIPTION("SmartSens SC1300CS/SC820CS camera sensor bring-up driver");
++MODULE_LICENSE("GPL");

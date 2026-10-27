@@ -1,0 +1,64 @@
+From 25e696226a9dada33cdae494a2983894b07477c2 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 6 Jul 2026 19:05:53 +0000
+Subject: [PATCH 27/79] SM8850: Update GPU OPP table
+
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 30 ++++++++++++++++---------
+ 1 file changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 0edab18d1226e6d68f06018e3a4e686ef50c1344..be9debdc6ac4ef38d0637fee48d0ebe513259096 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -2765,6 +2765,22 @@ gpu_opp_table: opp-table {
+ 				compatible = "operating-points-v2-adreno",
+ 					     "operating-points-v2";
+ 
++				opp-160000000 {
++					opp-hz = /bits/ 64 <160000000>;
++					opp-level = <RPMH_REGULATOR_LEVEL_LOW_SVS_D3>;
++					opp-peak-kBps = <2136718>;
++					opp-supported-hw = <0x0f>;
++					/* ACD is disabled */
++				};
++
++				opp-191000000 {
++					opp-hz = /bits/ 64 <191000000>;
++					opp-level = <RPMH_REGULATOR_LEVEL_LOW_SVS_D2_1>;
++					opp-peak-kBps = <2136718>;
++					opp-supported-hw = <0x0f>;
++					/* ACD is disabled */
++				};
++
+ 				opp-222000000 {
+ 					opp-hz = /bits/ 64 <222000000>;
+ 					opp-level = <RPMH_REGULATOR_LEVEL_LOW_SVS_D2>;
+@@ -2821,14 +2837,6 @@ opp-500000000 {
+ 					qcom,opp-acd-level = <0xe82c5ffd>;
+ 				};
+ 
+-				opp-539000000 {
+-					opp-hz = /bits/ 64 <539000000>;
+-					opp-level = <RPMH_REGULATOR_LEVEL_LOW_SVS_L2>;
+-					opp-peak-kBps = <6074218>;
+-					opp-supported-hw = <0x0f>;
+-					qcom,opp-acd-level = <0xc82b5ffd>;
+-				};
+-
+ 				opp-578000000 {
+ 					opp-hz = /bits/ 64 <578000000>;
+ 					opp-level = <RPMH_REGULATOR_LEVEL_SVS>;
+@@ -2869,9 +2877,9 @@ opp-902000000 {
+ 					qcom,opp-acd-level = <0xa82b5ffd>;
+ 				};
+ 
+-				opp-967000000 {
+-					opp-hz = /bits/ 64 <967000000>;
+-					opp-level = <RPMH_REGULATOR_LEVEL_NOM_L1>;
++				opp-1000000000 {
++					opp-hz = /bits/ 64 <1000000000>;
++					opp-level = <RPMH_REGULATOR_LEVEL_TURBO>;
+ 					opp-peak-kBps = <12449218>;
+ 					opp-supported-hw = <0x0f>;
+ 					qcom,opp-acd-level = <0x882a5ffd>;

@@ -1,0 +1,25 @@
+From 553db2ea4098ae7b51527a49038f7ec3a30da9e8 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 6 Jul 2026 19:24:48 +0000
+Subject: [PATCH] ICELAND: Remove usb-role-switch
+X-Original-Commit: d629943c08947b92814bb5c41f2d53c853bf6090
+X-Original-Committer: map220v <map220v300@gmail.com>
+X-Original-Committer-Date: 2026-08-17T03:58:54Z
+
+---
+ arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 2c9b36805bafa5a75b8699f37d611aacf31e53c8..ab01f01d9c90ac4cfe8a6efd72fb93312dbf789c 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1451,8 +1451,6 @@ &ufs_mem_phy {
+ };
+ 
+ &usb {
+-	usb-role-switch;
+-
+ 	status = "okay";
+ };
+ 

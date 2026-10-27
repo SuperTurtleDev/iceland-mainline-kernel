@@ -1,0 +1,38 @@
+From f43cb00d872e344cc8860815b64a51d5fa89615c Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 8 Jun 2026 10:06:45 +0000
+Subject: [PATCH] ICELAND: Add touchscreen node
+
+---
+ .../dts/qcom/kaanapali-oneplus-iceland.dts     | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index ede368bc7ed192b0222b011f6427531cb34be48f..1ae707d301649e5c80ad617af8f996f33d11957e 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1103,6 +1103,24 @@ &remoteproc_soccp {
+ 	status = "okay";
+ };
+ 
++&spi19 {
++	status = "okay";
++
++	touchscreen@0 {
++		compatible = "novatek,NVT-ts-spi";
++		reg = <0>;
++
++		spi-max-frequency = <12000000>;
++		irq-gpios = <&tlmm 158 0x2002>;
++
++		novatek,pen-support;
++
++		panel = <&display_panel>;
++
++		firmware-name = "novatek/novatek_nt36536_fw.bin";
++	};
++};
++
+ &swr1 {
+ 	status = "okay";
+ 

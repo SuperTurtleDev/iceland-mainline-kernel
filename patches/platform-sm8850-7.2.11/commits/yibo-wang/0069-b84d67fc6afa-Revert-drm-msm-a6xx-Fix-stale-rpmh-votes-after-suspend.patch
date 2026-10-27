@@ -1,0 +1,46 @@
+From b84d67fc6afa5928f15bb9cd9d3dd22ac3775848 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Sun, 11 Oct 2026 02:56:32 -0500
+Subject: [PATCH] Revert "drm/msm/a6xx: Fix stale rpmh votes after suspend"
+
+This reverts commit 51fcee9d4140b08428bff9a9b2dc85ab74185557 (upstream
+d9108bfdb746edacdb05bd27959a4ae63c6c7f3f).
+
+The upstream fix targets stale BCM votes after system suspend; iceland
+never suspends.  But the same change rewires the per-idle GMU shutdown
+that runs on every GPU runtime suspend (adreno_runtime_suspend ->
+a6xx_gmu_pm_suspend -> a6xx_gmu_stop -> a6xx_gmu_shutdown): the RSC
+rpmh-off handshake now executes and the CM3 is halted on every slumber.
+Since v7.2.9 the GMU dies mid-use every few minutes (HFI
+GX_BW_PERF_VOTE response timeouts followed by DPU hangcheck gpu lockups,
+auto-recovering each time); v7.2.0, where the whole rpmh-stop sequence
+was skipped by the inverted condition and the CM3 was never halted,
+never showed this.  Restore the 7.2.0 behaviour until the root cause is
+understood.
+---
+ drivers/gpu/drm/msm/adreno/a6xx_gmu.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/adreno/a6xx_gmu.c b/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
+index a2f6918c4f7f23043eb28d9ddfbd27015d45dbba..2e5d7b53a0c380c664a1bd66eb7e51be8a151b93 100644
+--- a/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
++++ b/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
+@@ -642,7 +642,7 @@ static void a6xx_rpmh_stop(struct a6xx_gmu *gmu)
+ 	int ret;
+ 	u32 val;
+ 
+-	if (!test_and_clear_bit(GMU_STATUS_FW_START, &gmu->status))
++	if (test_and_clear_bit(GMU_STATUS_FW_START, &gmu->status))
+ 		return;
+ 
+ 	if (adreno_is_a840(adreno_gpu))
+@@ -1465,9 +1465,6 @@ static void a6xx_gmu_shutdown(struct a6xx_gmu *gmu)
+ 	/* Stop the interrupts and mask the hardware */
+ 	a6xx_gmu_irq_disable(gmu);
+ 
+-	/* Halt the gmu cm3 core */
+-	gmu_write(gmu, REG_A6XX_GMU_CM3_SYSRESET, 1);
+-
+ 	/* Tell RPMh to power off the GPU */
+ 	a6xx_rpmh_stop(gmu);
+ 

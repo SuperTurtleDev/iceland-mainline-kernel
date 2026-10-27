@@ -1,0 +1,169 @@
+From 4e9b716912e00212e751a46f43c859eca6f94497 Mon Sep 17 00:00:00 2001
+From: iceland-dev <dev@iceland.local>
+Date: Sun, 4 Oct 2026 02:49:00 +0800
+Subject: [PATCH] arm64: dts: qcom: kaanapali: add uart17 and wire the OnePlus
+ Pad 4 pogo keyboard
+
+Add the QUPv3 wrapper3 SE4 2-wire UART (serial@1990000) to the SoC dtsi.
+
+On iceland the port carries the magnetic pogo-pin keyboard: a single
+half-duplex wire shared by host TX (tlmm gpio22, gated onto the wire by
+pmh0110_d gpio6) and keyboard TX (tlmm gpio23).  tlmm gpio151 mirrors the
+wire for attach detection while the keyboard is unpowered and pmh0110_f
+gpio12 switches the keyboard supply.  Pin configuration follows the vendor
+DT (TX 8mA / RX 2mA, no bias).  The keyboard is described as a serdev
+child of uart17.
+---
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    | 63 +++++++++++++++++++
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi       | 30 +++++++++
+ 2 files changed, 93 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 71d1df4e6c25208e5a9eda33f4043aaa0d81cda6..76d7b7e61ac5411ee8d6d6d2214e5250f96a91a3 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/linux-event-codes.h>
+ #include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+ #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+ #include "kaanapali.dtsi"
+ 
+@@ -1204,6 +1205,14 @@ fte_sin_1p8_active: fte_sin_1p8_active {
+ 		output-disable;
+ 		power-source = <1>; /* 1.8V */
+ 	};
++	pogo_kbd_tx_en_default: pogo-kbd-tx-en-default-state {
++		pins = "gpio6";
++		function = "normal";
++		power-source = <0>;
++		bias-disable;
++		output-low;
++		qcom,drive-strength = <PMIC_GPIO_STRENGTH_LOW>;
++	};
+ };
+ 
+ &pmh0110_f_e0_gpios {
+@@ -1222,6 +1231,14 @@ sde_disp0_rst_1p8_active: sde-disp0-rst-1p8-active-state {
+ 		output-enable;
+ 		power-source = <1>; /* 1.8v */
+ 	};
++	pogo_kbd_power_default: pogo-kbd-power-default-state {
++		pins = "gpio12";
++		function = "normal";
++		power-source = <0>;
++		bias-disable;
++		output-low;
++		qcom,drive-strength = <PMIC_GPIO_STRENGTH_MED>;
++	};
+ };
+ 
+ &pmih0108_e1_eusb2_repeater {
+@@ -1421,12 +1438,58 @@ ws-pins {
+ 			bias-disable;
+ 		};
+ 	};
++
++	/* pogo keyboard: shared TRX wire, TX gated by a PMIC GPIO */
++	pogo_uart17_default: pogo-uart17-default-state {
++		tx-pins {
++			pins = "gpio22";
++			function = "qup3_se4";
++			drive-strength = <8>;
++			bias-disable;
++		};
++
++		rx-pins {
++			pins = "gpio23";
++			function = "qup3_se4";
++			drive-strength = <2>;
++			bias-disable;
++		};
++	};
++
++	pogo_kbd_wake_default: pogo-kbd-wake-default-state {
++		pins = "gpio151";
++		function = "gpio";
++		drive-strength = <2>;
++		bias-disable;
++	};
+ };
+ 
+ &uart7 {
+ 	status = "okay";
+ };
+ 
++&uart17 {
++	pinctrl-0 = <&pogo_uart17_default>;
++
++	status = "okay";
++
++	keyboard {
++		compatible = "oneplus,pogo-keyboard";
++
++		pinctrl-0 = <&pogo_kbd_wake_default>,
++			    <&pogo_kbd_power_default>,
++			    <&pogo_kbd_tx_en_default>;
++		pinctrl-names = "default";
++
++		power-gpios = <&pmh0110_f_e0_gpios 12 GPIO_ACTIVE_HIGH>;
++		tx-enable-gpios = <&pmh0110_d_e0_gpios 6 GPIO_ACTIVE_HIGH>;
++		wake-gpios = <&tlmm 151 GPIO_ACTIVE_LOW>;
++
++		touchpad-xy-max = <2560 1440>;
++		touchpad-xy-resolution = <24 25>;
++	};
++};
++
+ &uart18 {
+ 	status = "okay";
+ 
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 1d56855cb43af5c4749e47a87652bcbf8dee00dd..5ff0a45b371e31404dc1eb0be4118061e4a1f078 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -2056,6 +2056,28 @@ &clk_virt SLAVE_QUP_CORE_3 QCOM_ICC_TAG_ALWAYS>,
+ 				status = "disabled";
+ 			};
+ 
++			uart17: serial@1990000 {
++				compatible = "qcom,geni-uart";
++				reg = <0x0 0x01990000 0x0 0x4000>;
++
++				interrupts = <GIC_SPI 586 IRQ_TYPE_LEVEL_HIGH>;
++
++				clocks = <&gcc GCC_QUPV3_WRAP3_S4_CLK>;
++				clock-names = "se";
++
++				interconnects = <&clk_virt MASTER_QUP_CORE_3 QCOM_ICC_TAG_ALWAYS
++						 &clk_virt SLAVE_QUP_CORE_3 QCOM_ICC_TAG_ALWAYS>,
++						<&gem_noc MASTER_APPSS_PROC QCOM_ICC_TAG_ACTIVE_ONLY
++						 &config_noc SLAVE_QUP_3 QCOM_ICC_TAG_ACTIVE_ONLY>;
++				interconnect-names = "qup-core",
++						     "qup-config";
++
++				pinctrl-0 = <&qup_uart17_default>;
++				pinctrl-names = "default";
++
++				status = "disabled";
++			};
++
+ 			uart18: serial@1994000 {
+ 				compatible = "qcom,geni-uart";
+ 				reg = <0x0 0x01994000 0x0 0x4000>;
+@@ -4774,6 +4796,14 @@ qup_uart7_default: qup-uart7-state {
+ 				 bias-disable;
+ 			};
+ 
++			qup_uart17_default: qup-uart17-default-state {
++				/* TX, RX */
++				pins = "gpio22", "gpio23";
++				function = "qup3_se4";
++				drive-strength = <2>;
++				bias-pull-up;
++			};
++
+ 			qup_uart18_default: qup-uart18-default-state {
+ 				/* TX, RX */
+ 				pins = "gpio26", "gpio27";

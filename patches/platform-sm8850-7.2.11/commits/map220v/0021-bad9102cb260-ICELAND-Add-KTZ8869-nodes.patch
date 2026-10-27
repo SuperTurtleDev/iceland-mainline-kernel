@@ -1,0 +1,76 @@
+From bad9102cb260b863ae8e339964421d24e4de4443 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 8 Jun 2026 10:02:32 +0000
+Subject: [PATCH] ICELAND: Add KTZ8869 nodes
+
+---
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index f9a56dad62e059fc6066e28209e583cfac6b810f..c8d9673808fbf878cc5da4da47b0f4b9a6e34820 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -39,6 +39,32 @@ aliases {
+ 
+ 	chosen { };
+ 
++	/* Both produced by Master KTZ8869, unfortunately gpio 14 and 15 aren't
++	 * wired to Master KTZ8869 in MP units, so vddpos and vddneg will always be active
++	 * unless KTZ8869 driver gets implemented as regulator.
++	 */
++	lcd_vddpos_5p5: lcd-vddpos-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "lcd_vddpos_5p5";
++		regulator-min-microvolt = <5500000>;
++		regulator-max-microvolt = <5500000>;
++		regulator-always-on;
++		//regulator-enable-ramp-delay = <456>;
++		//gpio = <&tlmm 14 GPIO_ACTIVE_HIGH>;
++		//enable-active-high;
++	};
++
++	lcd_vddneg_5p5: lcd-vddneg-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "lcd_vddneg_5p5";
++		regulator-min-microvolt = <5500000>;
++		regulator-max-microvolt = <5500000>;
++		regulator-always-on;
++		//regulator-enable-ramp-delay = <912>;
++		//gpio = <&tlmm 15 GPIO_ACTIVE_HIGH>;
++		//enable-active-high;
++	};
++
+ 	clocks {
+ 		xo_board: xo-board {
+ 			compatible = "fixed-clock";
+@@ -816,6 +842,29 @@ wcd_usbss_sbu_mux: endpoint {
+ 	};
+ };
+ 
++&i2c14 {
++	status = "okay";
++
++	/* HWEN(enable gpio) is used instead vddio supply */
++	backlight: backlight@11 {
++		compatible = "kinetic,ktz8869a";
++		reg = <0x11>;
++		vin-supply = <&vph_pwr>;
++		enable-gpios = <&tlmm 1 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++&i2c15 {
++	status = "okay";
++
++	backlight@11 {
++		compatible = "kinetic,ktz8869b";
++		reg = <0x11>;
++		vin-supply = <&vph_pwr>;
++		enable-gpios = <&tlmm 1 GPIO_ACTIVE_HIGH>;
++	};
++};
++
+ &pcie0 {
+ 	pinctrl-0 = <&pcie0_default_state>;
+ 	pinctrl-names = "default";

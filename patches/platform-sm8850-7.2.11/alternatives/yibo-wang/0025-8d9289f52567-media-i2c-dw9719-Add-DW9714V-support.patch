@@ -1,0 +1,102 @@
+From 8d9289f5256724406564402b6e61d9fa12e28d05 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 15 Oct 2026 11:15:32 -0500
+Subject: [PATCH] media: i2c: dw9719: Add DW9714V support
+
+The DW9714V is a DW9714 variant which, in its register-mapped
+("advanced") mode, exposes the DW9719 register interface. This was
+observed on hardware: the chip answers register-addressed transfers,
+IC INFO returns manufacturer 0xF / model 0xE (0xFE), and the reset
+value of the VCM_FREQ register (0x60) matches the DW9719/DW9800
+prescaler-in-[7:6] / SACT-in-[5:0] layout rather than the bare 10-bit
+DAC interface the public DW9714V datasheet documents. The SAC mode
+field in MODE is shifted by 6, like on the DW9800K.
+
+Detect the chip through INFO and drive it through the DW9800K write
+path.
+
+The SAC parameters are module-specific: they have to match the
+mechanical resonance (tVIB) of the lens module. For the OnePlus Pad 4
+("iceland") rear module they were recovered from the vendor module
+firmware (com.qti.sensormodule.icelandmain.bin, which embeds the
+actuator init on this CamX generation): MODE 0x80 (SAC mode field 2)
+and FREQ 0x79 (prescaler 1, SACT 0x39). They were verified on hardware
+by register readback (CONTROL 0x02, MODE 0x80, FREQ 0x79) and a
+three-frame capture at focus position 450 with no I2C errors. No such
+data exists for any other DW9714V module, so the driver carries no
+DW9714V-specific defaults: it starts from the family defaults and
+boards are expected to provide the tuning through the existing
+dongwoon,sac-mode and dongwoon,vcm-prescale DT properties.
+
+Cc: David Heidelberg <david@ixit.cz>
+Signed-off-by: Yibo Wang <2024312277@stu.hit.edu.cn>
+---
+ drivers/media/i2c/dw9719.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/media/i2c/dw9719.c b/drivers/media/i2c/dw9719.c
+index 3b7ba88fd67c044ef9005a0aac6a5d26ab939a90..baa750add931b58d617a113d6f4150651aefb530 100644
+--- a/drivers/media/i2c/dw9719.c
++++ b/drivers/media/i2c/dw9719.c
+@@ -45,6 +45,12 @@
+ #define DW9719_INFO			CCI_REG8(0)
+ #define DW9719_ID			0xF1
+ #define DW9761_ID			0xF4
++/*
++ * DW9714V in its register-mapped ("advanced") mode: IC INFO reads
++ * manufacturer 0xF / model 0xE and the CONTROL/VCM/STATUS/MODE/FREQ
++ * registers sit at the DW9719 offsets.
++ */
++#define DW9714V_ID			0xFE
+ 
+ #define DW9719_CONTROL			CCI_REG8(2)
+ #define DW9719_STANDBY			0x00
+@@ -75,6 +81,7 @@
+ #define to_dw9719_device(x) container_of(x, struct dw9719_device, sd)
+ 
+ enum dw9719_model {
++	DW9714V,
+ 	DW9718S,
+ 	DW9719,
+ 	DW9761,
+@@ -153,6 +160,16 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 			return ret;
+ 
+ 		switch (val) {
++		case DW9714V_ID:
++			dw9719->model = DW9714V;
++			/*
++			 * No SAC tuning data exists for DW9714V modules in
++			 * general; start from the family defaults and let DT
++			 * provide the module-specific values.
++			 */
++			dw9719->sac_mode = DW9719_DEFAULT_SAC;
++			dw9719->vcm_freq = DW9719_DEFAULT_VCM_FREQ;
++			break;
+ 		case DW9719_ID:
+ 			dw9719->model = DW9719;
+ 			dw9719->mode_low_bits = 0x00;
+@@ -188,6 +205,7 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 	}
+ 
+ 	switch (dw9719->model) {
++	case DW9714V:
+ 	case DW9800K:
+ 		cci_write(dw9719->regmap, DW9719_CONTROL, DW9719_ENABLE_RINGING, &ret);
+ 		cci_write(dw9719->regmap, DW9719_MODE,
+@@ -440,6 +458,7 @@ static void dw9719_remove(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id dw9719_id_table[] = {
++	{ .name = "dw9714v", .driver_data = (kernel_ulong_t)DW9714V },
+ 	{ .name = "dw9718s", .driver_data = (kernel_ulong_t)DW9718S },
+ 	{ .name = "dw9719", .driver_data = (kernel_ulong_t)DW9719 },
+ 	{ .name = "dw9761", .driver_data = (kernel_ulong_t)DW9761 },
+@@ -449,6 +468,7 @@ static const struct i2c_device_id dw9719_id_table[] = {
+ MODULE_DEVICE_TABLE(i2c, dw9719_id_table);
+ 
+ static const struct of_device_id dw9719_of_table[] = {
++	{ .compatible = "dongwoon,dw9714v", .data = (const void *)DW9714V },
+ 	{ .compatible = "dongwoon,dw9718s", .data = (const void *)DW9718S },
+ 	{ .compatible = "dongwoon,dw9719", .data = (const void *)DW9719 },
+ 	{ .compatible = "dongwoon,dw9761", .data = (const void *)DW9761 },

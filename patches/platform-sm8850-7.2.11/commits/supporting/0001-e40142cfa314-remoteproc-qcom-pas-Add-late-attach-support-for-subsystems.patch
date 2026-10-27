@@ -1,0 +1,122 @@
+From e40142cfa314cad72eab4c6ffe88364287e33b78 Mon Sep 17 00:00:00 2001
+From: Jingyi Wang <jingyi.wang@oss.qualcomm.com>
+Date: Tue, 19 May 2026 00:24:23 -0700
+Subject: [PATCH] remoteproc: qcom: pas: Add late attach support for subsystems
+
+Subsystems can be brought out of reset by entities such as bootloaders.
+As the irq enablement could be later than subsystem bring up, the state
+of subsystem should be checked by reading SMP2P bits.
+
+A new qcom_pas_attach() function is introduced. if a crash state is
+detected for the subsystem, rproc_report_crash() is called. If the ready
+state is detected, it will be marked as "attached", otherwise it could
+be the early boot feature is not supported by other entities. In this
+case, the state will be marked as RPROC_OFFLINE so that the PAS driver
+can load the firmware and start the remoteproc.
+
+Co-developed-by: Gokul Krishna Krishnakumar <gokul.krishnakumar@oss.qualcomm.com>
+Signed-off-by: Gokul Krishna Krishnakumar <gokul.krishnakumar@oss.qualcomm.com>
+Signed-off-by: Jingyi Wang <jingyi.wang@oss.qualcomm.com>
+Tested-by: Shawn Guo <shengchao.guo@oss.qualcomm.com> # Nord ADSP
+Signed-off-by: map220v <map220v300@gmail.com>
+---
+ drivers/remoteproc/qcom_q6v5_pas.c | 58 ++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index 808e9609988d31ff9d18b441914f761192909904..42a7a3a0b62b28cb7b1e0b2dafad307f4967143d 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -60,6 +60,7 @@ struct qcom_pas_data {
+ 	int region_assign_count;
+ 	bool region_assign_shared;
+ 	int region_assign_vmid;
++	bool early_boot;
+ };
+ 
+ struct qcom_pas {
+@@ -507,6 +508,57 @@ static unsigned long qcom_pas_panic(struct rproc *rproc)
+ 	return qcom_q6v5_panic(&pas->q6v5);
+ }
+ 
++static int qcom_pas_attach(struct rproc *rproc)
++{
++	int ret;
++	struct qcom_pas *pas = rproc->priv;
++	bool ready_state;
++	bool crash_state;
++
++	pas->q6v5.handover_issued = true;
++	enable_irq(pas->q6v5.handover_irq);
++
++	pas->q6v5.running = true;
++	ret = irq_get_irqchip_state(pas->q6v5.fatal_irq,
++				    IRQCHIP_STATE_LINE_LEVEL, &crash_state);
++
++	if (ret)
++		goto disable_running;
++
++	if (crash_state) {
++		dev_err(pas->dev, "Subsystem has crashed before driver probe\n");
++		rproc_report_crash(rproc, RPROC_FATAL_ERROR);
++		ret = -EINVAL;
++		goto disable_running;
++	}
++
++	ret = irq_get_irqchip_state(pas->q6v5.ready_irq,
++				    IRQCHIP_STATE_LINE_LEVEL, &ready_state);
++
++	if (ret)
++		goto disable_running;
++
++	if (unlikely(!ready_state)) {
++		/*
++		 * The bootloader may not support early boot, mark the state as
++		 * RPROC_OFFLINE so that the PAS driver can load the firmware and
++		 * start the remoteproc.
++		 */
++		dev_err(pas->dev, "Failed to get subsystem ready interrupt\n");
++		pas->rproc->state = RPROC_OFFLINE;
++		disable_irq(pas->q6v5.handover_irq);
++		ret = -EINVAL;
++		goto disable_running;
++	}
++
++	return 0;
++
++disable_running:
++	pas->q6v5.running = false;
++
++	return ret;
++}
++
+ static const struct rproc_ops qcom_pas_ops = {
+ 	.unprepare = qcom_pas_unprepare,
+ 	.start = qcom_pas_start,
+@@ -515,6 +567,7 @@ static const struct rproc_ops qcom_pas_ops = {
+ 	.parse_fw = qcom_pas_parse_firmware,
+ 	.load = qcom_pas_load,
+ 	.panic = qcom_pas_panic,
++	.attach = qcom_pas_attach,
+ };
+ 
+ static const struct rproc_ops qcom_pas_minidump_ops = {
+@@ -526,6 +579,7 @@ static const struct rproc_ops qcom_pas_minidump_ops = {
+ 	.load = qcom_pas_load,
+ 	.panic = qcom_pas_panic,
+ 	.coredump = qcom_pas_minidump,
++	.attach = qcom_pas_attach,
+ };
+ 
+ static int qcom_pas_init_clock(struct qcom_pas *pas)
+@@ -852,6 +906,10 @@ static int qcom_pas_probe(struct platform_device *pdev)
+ 
+ 	pas->pas_ctx->use_tzmem = rproc->has_iommu;
+ 	pas->dtb_pas_ctx->use_tzmem = rproc->has_iommu;
++
++	if (desc->early_boot)
++		pas->rproc->state = RPROC_DETACHED;
++
+ 	ret = rproc_add(rproc);
+ 	if (ret)
+ 		goto remove_ssr_sysmon;

@@ -1,0 +1,59 @@
+From 341ccba2f3dc48c2317ef0134fc1afd6a058a333 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Fri, 9 Oct 2026 05:47:42 -0500
+Subject: [PATCH] drm/msm/dpu: fix black screen after refresh-rate modeset on
+ dual-DSI
+X-Original-Commit: c0e9662bef2d5f88b26073e07eff2caf168d5628
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-09T05:47:42-05:00
+
+Two issues on the modeset teardown path for this DPU generation,
+found while debugging the 30/60/90 Hz black screen on iceland
+(compositor keeps flipping, CRTC CRC reads black, linear buffers
+unaffected):
+
+- dpu_encoder_virt_atomic_disable() disabled all phys encoders in
+  array order, taking the master down before the slave on the
+  bonded dual-DSI encoder. Disable the slave first, then the
+  master, matching the bring-up order.
+- dpu_hw_ctl_clear_pending_flush() never cleared
+  pending_periph_flush_mask, so a periph flush latched before a
+  full modeset survived the pipe release and re-reservation done
+  on DPU 12+ with dynamic pipe allocation, corrupting the staging
+  setup of the re-assigned pipes.
+
+With both, switching refresh rates and reverting recovers without
+a power cycle.
+---
+ drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
+index 1f20695f81e35cc0868d981b89c4a2dd38409799..0a6be69a3e83b4341f239af54617e9c51b3842a6 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
++++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c
+@@ -1386,7 +1386,6 @@ static void dpu_encoder_virt_atomic_disable(struct drm_encoder *drm_enc,
+ 	struct dpu_encoder_virt *dpu_enc = NULL;
+ 	struct drm_crtc *crtc;
+ 	struct drm_crtc_state *old_state = NULL;
+-	int i = 0;
+ 
+ 	dpu_enc = to_dpu_encoder_virt(drm_enc);
+ 	DPU_DEBUG_ENC(dpu_enc, "\n");
+@@ -1412,12 +1411,11 @@ static void dpu_encoder_virt_atomic_disable(struct drm_encoder *drm_enc,
+ 
+ 	dpu_encoder_resource_control(drm_enc, DPU_ENC_RC_EVENT_PRE_STOP);
+ 
+-	for (i = 0; i < dpu_enc->num_phys_encs; i++) {
+-		struct dpu_encoder_phys *phys = dpu_enc->phys_encs[i];
++	if (dpu_enc->cur_slave && dpu_enc->cur_slave->ops.disable)
++		dpu_enc->cur_slave->ops.disable(dpu_enc->cur_slave);
+ 
+-		if (phys->ops.disable)
+-			phys->ops.disable(phys);
+-	}
++	if (dpu_enc->cur_master && dpu_enc->cur_master->ops.disable)
++		dpu_enc->cur_master->ops.disable(dpu_enc->cur_master);
+ 
+ 
+ 	/* after phys waits for frame-done, should be no more frames pending */

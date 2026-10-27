@@ -1,0 +1,108 @@
+From 8924990550fd2a959e0e595febc72f3a5e8afb1c Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 8 Jun 2026 09:24:24 +0000
+Subject: [PATCH] SM8850: Add SOCCP nodes
+X-Original-Commit: beaffadffca743537092aa562ce948e6ff5a02fd
+X-Original-Committer: map220v <map220v300@gmail.com>
+X-Original-Committer-Date: 2026-08-17T03:58:53Z
+
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 78 +++++++++++++++++++++++++
+ 1 file changed, 78 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 5b0f0de6421159abfe2b44149cba46f1e0162db7..6f938ac97c9ab84a2bf3feec18e3b6c1b9a3139a 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -505,6 +505,32 @@ smp2p_cdsp_in: slave-kernel {
+ 		};
+ 	};
+ 
++	smp2p-soccp {
++		compatible = "qcom,smp2p";
++
++		interrupts-extended = <&ipcc IPCC_MPROC_SOCCP
++					     IPCC_MPROC_SIGNAL_SMP2P
++					     IRQ_TYPE_EDGE_RISING>;
++
++		mboxes = <&ipcc IPCC_MPROC_SOCCP
++				IPCC_MPROC_SIGNAL_SMP2P>;
++
++		qcom,smem = <617>, <616>;
++		qcom,local-pid = <0>;
++		qcom,remote-pid = <19>;
++
++		smp2p_soccp_out: master-kernel {
++			qcom,entry-name = "master-kernel";
++			#qcom,smem-state-cells = <1>;
++		};
++
++		smp2p_soccp_in: slave-kernel {
++			qcom,entry-name = "slave-kernel";
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++	};
++
+ 	soc: soc@0 {
+ 		compatible = "simple-bus";
+ 
+@@ -1514,6 +1540,58 @@ &clk_virt SLAVE_QUP_CORE_1 QCOM_ICC_TAG_ALWAYS>,
+ 			};
+ 		};
+ 
++		remoteproc_soccp: remoteproc@d00000 {
++			compatible = "qcom,kaanapali-soccp-pas";
++			reg = <0x0 0x00d00000 0x0 0x200000>;
++
++			interrupts-extended = <&intc GIC_SPI 167 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_soccp_in 0 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_soccp_in 1 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_soccp_in 2 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_soccp_in 3 IRQ_TYPE_EDGE_RISING>,
++					      <&smp2p_soccp_in 9 IRQ_TYPE_EDGE_RISING>;
++			interrupt-names = "wdog",
++					  "fatal",
++					  "ready",
++					  "handover",
++					  "stop-ack",
++					  "pong";
++
++			clocks = <&rpmhcc RPMH_CXO_CLK>;
++			clock-names = "xo";
++
++			interconnects = <&aggre_noc MASTER_SOCCP_PROC QCOM_ICC_TAG_ALWAYS
++					 &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>;
++
++			power-domains = <&rpmhpd RPMHPD_CX>,
++					<&rpmhpd RPMHPD_MX>;
++			power-domain-names = "cx",
++					     "mx";
++
++			memory-region = <&soccp_mem>, <&soccp_dtb_mem>;
++
++			qcom,smem-states = <&smp2p_soccp_out 0>,
++					   <&smp2p_soccp_out 8>;
++			qcom,smem-state-names = "stop",
++						"ping";
++
++			status = "disabled";
++
++			remoteproc_soccp_glink: glink-edge {
++				interrupts-extended = <&ipcc IPCC_MPROC_SOCCP
++							     IPCC_MPROC_SIGNAL_GLINK_QMP
++							     IRQ_TYPE_EDGE_RISING>;
++
++				mboxes = <&ipcc IPCC_MPROC_SOCCP
++						IPCC_MPROC_SIGNAL_GLINK_QMP>;
++
++				qcom,remote-pid = <19>;
++
++				label = "soccp";
++
++			};
++		};
++
+ 		ipcc: mailbox@1106000 {
+ 			compatible = "qcom,kaanapali-ipcc", "qcom,ipcc";
+ 			reg = <0x0 0x01106000 0x0 0x1000>;

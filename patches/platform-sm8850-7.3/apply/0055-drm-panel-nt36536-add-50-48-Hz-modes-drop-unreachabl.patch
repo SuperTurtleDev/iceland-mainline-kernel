@@ -1,0 +1,56 @@
+From 2fe9301e73faa85f400638a313bd17367510963a Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Sat, 10 Oct 2026 11:33:38 -0500
+Subject: [PATCH 55/79] drm/panel: nt36536: add 50/48 Hz modes, drop
+ unreachable 144 Hz
+
+Add the two missing downstream DFPS rates (50 and 48 Hz) to the iceland
+CSOT mode table; the porch values come from the vendor DFPS lists
+(hfp 420, hsync 160, hbp 320, vfp 2010/2196, vbp 52 - per-DSI vendor
+values doubled to full-frame width).
+
+Drop the 144 Hz mode: dpu_crtc_mode_valid() requires a 662 MHz DPU core
+clock for its 1261 MHz pixel clock (mode clock * 105% inefficiency / 2
+with the 3D merge), above the 650 MHz MDP ceiling in the kaanapali
+dispcc plan, so it was silently pruned from the connector list anyway.
+
+(cherry picked from commit 5f7fdae6d0e532ded0f7a4c06b15406b0743123f)
+---
+ drivers/gpu/drm/panel/panel-novatek-nt36536.c | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/drivers/gpu/drm/panel/panel-novatek-nt36536.c b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+index b33e2a8321c1b42237c172fec0e80894754bf858..bdaf46c947d16e3cc0089d7fc53a092292c79d80 100644
+--- a/drivers/gpu/drm/panel/panel-novatek-nt36536.c
++++ b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+@@ -570,6 +570,30 @@ static const struct drm_display_mode csot_ppd200ub2_modes[] = {
+ 		.vsync_end = 2400 + 2726 + 2,
+ 		.vtotal = 2400 + 2726 + 2 + 272,
+ 	},
++	{
++		/* 50Hz */
++		.clock = (3392 + 420 + 160 + 320) * (2400 + 2010 + 2 + 52) * 50 / 1000,
++		.hdisplay = 3392,
++		.hsync_start = 3392 + 420,
++		.hsync_end = 3392 + 420 + 160,
++		.htotal = 3392 + 420 + 160 + 320,
++		.vdisplay = 2400,
++		.vsync_start = 2400 + 2010,
++		.vsync_end = 2400 + 2010 + 2,
++		.vtotal = 2400 + 2010 + 2 + 52,
++	},
++	{
++		/* 48Hz */
++		.clock = (3392 + 420 + 160 + 320) * (2400 + 2196 + 2 + 52) * 48 / 1000,
++		.hdisplay = 3392,
++		.hsync_start = 3392 + 420,
++		.hsync_end = 3392 + 420 + 160,
++		.htotal = 3392 + 420 + 160 + 320,
++		.vdisplay = 2400,
++		.vsync_start = 2400 + 2196,
++		.vsync_end = 2400 + 2196 + 2,
++		.vtotal = 2400 + 2196 + 2 + 52,
++	},
+ 	{
+ 		/* 30Hz */
+ 		.clock = (3392 + 100 + 64 + 104) * (2400 + 8126 + 2 + 272) * 30 / 1000,

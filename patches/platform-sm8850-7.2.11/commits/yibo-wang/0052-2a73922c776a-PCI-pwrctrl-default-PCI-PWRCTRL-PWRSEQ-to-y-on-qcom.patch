@@ -1,0 +1,33 @@
+From 2a73922c776ada4b6388695cc53352cca58e6a31 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Tue, 6 Oct 2026 07:25:52 -0500
+Subject: [PATCH] PCI: pwrctrl: default PCI_PWRCTRL_PWRSEQ to y on qcom
+
+Hidden tristate whose only pushers are the ath11k/ath12k selects --
+both =m on iceland, so the glue stayed a module and builtin qcom-pcie
+waited on udev for it (16 probe retries per boot).  Keying the default
+on POWER_SEQUENCING_QCOM_WCN recurses (WCN sits under if
+	POWER_SEQUENCING, which this symbol selects), so default it on the
+platform instead.
+---
+ drivers/pci/pwrctrl/Kconfig | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/pci/pwrctrl/Kconfig b/drivers/pci/pwrctrl/Kconfig
+index 9eec767cda86e229dea042ba765b03386f44ba98..5c77a39cd04ae8d87718b61f5c0afda8a0e73d2d 100644
+--- a/drivers/pci/pwrctrl/Kconfig
++++ b/drivers/pci/pwrctrl/Kconfig
+@@ -8,6 +8,13 @@ config PCI_PWRCTRL
+ 
+ config PCI_PWRCTRL_PWRSEQ
+ 	tristate
++	# iceland: hidden tristate only pushed by the ath11k/ath12k selects
++	# (both =m here), which kept the PCI glue a module and made the
++	# builtin qcom-pcie wait on udev (16 probe retries per boot).  Keying
++	# the default on WCN would recurse (WCN sits under if
++	# POWER_SEQUENCING, which this symbol selects), so default it on the
++	# platform instead.
++	default y if ARCH_QCOM && PCI
+ 	select POWER_SEQUENCING
+ 	select PCI_PWRCTRL
+ 

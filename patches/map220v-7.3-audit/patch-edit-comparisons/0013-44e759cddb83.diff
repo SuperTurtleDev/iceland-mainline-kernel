@@ -1,0 +1,38 @@
+--- afe020923fc80bfd30fe3fb2b7173730f7b779e2
+
++++ 44e759cddb837286f77c230c231962577083fe46
+
+@@ -94,7 +94,6 @@
+
+ +		compatible = "qcom,kaanapali-pmic-glink";
+ +		#address-cells = <1>;
+ +		#size-cells = <0>;
+-+		orientation-gpios = <&tlmm 60 GPIO_ACTIVE_HIGH>;
+ +
+ +		connector@0 {
+ +			compatible = "usb-c-connector";
+@@ -1121,8 +1120,6 @@
+
+ +};
+ +
+ +&usb {
+-+	usb-role-switch;
+-+
+ +	status = "okay";
+ +};
+ +
+@@ -1144,8 +1141,8 @@
+
+ +};
+ +
+ +&usb_dp_qmpphy {
+-+	vdda-phy-supply = <&vreg_l1d_1p2>;
+-+	vdda-pll-supply = <&vreg_l4f_0p8>;
+-+
+-+	status = "okay";
+-+};
+++	vdda-phy-supply = <&vreg_l4f_0p8>;
+++	vdda-pll-supply = <&vreg_l1d_1p2>;
+++
+++	status = "okay";
+++};

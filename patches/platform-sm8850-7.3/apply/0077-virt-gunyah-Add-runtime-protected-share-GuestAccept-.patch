@@ -1,0 +1,1535 @@
+From ad6941a5ad11441ccb5d1ed5ee8cd54fc8fedbb2 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Sat, 17 Oct 2026 05:28:13 -0500
+Subject: [PATCH 77/79] virt: gunyah: Add runtime protected share (GuestAccept)
+ ioctls
+
+The host cannot map memory into a protected guest's stage-2 (the
+hypervisor answers DENIED), so shared memory for a protected VM must
+be accepted by the guest itself. Add the in-tree form of DroidVM's
+out-of-tree gunyah_share model: the host SHAREs an RM memparcel and
+hands the handle to the VMM; the guest ACCEPTs that handle at an IPA
+of its choosing (RM MEM_ACCEPT) and RELEASEs it before the host
+reclaims.
+
+GH_VM_PROTECTED_SHARE pins a page-aligned userspace buffer
+(FOLL_LONGTERM) and shares it as one memparcel (ACL: guest with the
+requested access subset, host RWX), merging physically contiguous
+runs; GH_VM_PROTECTED_SHARE_DMABUF does the same for a page-aligned
+slice of a DMA-BUF, held by an attachment for exporters GUP cannot
+pin; GH_VM_PROTECTED_UNSHARE reclaims by label. The RM refuses a
+reclaim while the guest still holds its acceptance, so map MEM_INUSE
+to -EBUSY (the Android source mapped it to -EINVAL) and leave the
+parcel shared and pinned for the VMM to retry. Shares still live when
+the VM fd is closed are reclaimed after the RM has reset the VM (the
+reset drops the guest's acceptances); a parcel the RM will not return
+is leaked rather than freed under a possibly live stage-2 mapping.
+Labels carry bit 31 towards the RM so they cannot collide with
+userspace-region parcel labels. Probe with GH_CAP_PROTECTED_SHARE.
+
+Mainline addition, not from the android17-6.18 source; see
+Documentation/virt/gunyah/port_adaptations.md. Host-side and
+end-to-end tests in tools/virt/gunyah (gh_sharetest.py, and
+gh_accepttest.py driving the gh_rmproxy.S bare-metal guest that
+really accepts and releases), verified on the OnePlus Pad 4 (SM8850).
+
+Signed-off-by: Yibo Wang <2024312277@stu.hit.edu.cn>
+Co-Authored-By: Claude ZCode <noreply@anthropic.com>
+(cherry picked from commit 06416a1eae89a50eaa4fc493ce57639cb65936c8)
+---
+ Documentation/virt/gunyah/port_adaptations.md |  95 +++-
+ drivers/virt/gunyah/Kconfig                   |   1 +
+ drivers/virt/gunyah/Makefile                  |   2 +-
+ drivers/virt/gunyah/rsc_mgr.c                 |  13 +-
+ drivers/virt/gunyah/vm_mgr.c                  |  55 ++
+ drivers/virt/gunyah/vm_mgr.h                  |  13 +
+ drivers/virt/gunyah/vm_mgr_pshare.c           | 485 ++++++++++++++++++
+ include/uapi/linux/gunyah.h                   |  82 +++
+ tools/virt/gunyah/gh_accepttest.py            | 288 +++++++++++
+ tools/virt/gunyah/gh_rmproxy.S                | 105 ++++
+ tools/virt/gunyah/gh_sharetest.py             | 154 ++++++
+ tools/virt/gunyah/gh_vmtest.py                |  10 +-
+ 12 files changed, 1297 insertions(+), 6 deletions(-)
+ create mode 100644 drivers/virt/gunyah/vm_mgr_pshare.c
+ create mode 100644 tools/virt/gunyah/gh_accepttest.py
+ create mode 100644 tools/virt/gunyah/gh_rmproxy.S
+ create mode 100644 tools/virt/gunyah/gh_sharetest.py
+
+diff --git a/Documentation/virt/gunyah/port_adaptations.md b/Documentation/virt/gunyah/port_adaptations.md
+index 76686c0655eac076febab3947748a662fb1f60b4..b854aad55104d66150cacadc0efc3c39147d50aa 100644
+--- a/Documentation/virt/gunyah/port_adaptations.md
++++ b/Documentation/virt/gunyah/port_adaptations.md
+@@ -74,8 +74,8 @@ The RM validates the VMM-supplied DTB at VM_INIT and answers
+      protected VM.
+   Shared memory for a protected guest is therefore GuestAccept only: the
+   host shares an RM memparcel and the guest accepts it by handle into its
+-  own stage-2. That is provided by an out-of-tree module (the gunyah_share
+-  model), not by this tree.
++  own stage-2. This tree provides that on the VM fd, see "Runtime protected
++  share" below.
+ - The RM log (`/sys/hypervisor/rm_log`) is unimplemented (RM error -1).
+ - Never fork() a VMM process that holds lent guest RAM. The lent pages are
+   pinned (FOLL_LONGTERM), so dup_mmap() copies them eagerly instead of
+@@ -85,3 +85,94 @@ The RM validates the VMM-supplied DTB at VM_INIT and answers
+   acct_collect). Observed once on the Pad 4. Multi-process VMMs must pass
+   guest memory as shared memfd/dma-buf mappings, as crosvm does.
+ - QTVM (authenticated) launch needs a signed image and a PAS ID; untested.
++
++## Runtime protected share (GuestAccept)
++
++Mainline addition, not in the Android source: `drivers/virt/gunyah/vm_mgr_pshare.c`.
++It is the in-tree form of DroidVM's out-of-tree `gunyah_share_mod` (which had
++to add its own `/dev/gunyah_share` and resolve RM helpers via kallsyms because
++the GKI driver could not be patched). Here the ioctls sit on the VM fd itself
++and call `gunyah_rm_mem_share()` / `gunyah_rm_mem_reclaim()` directly.
++
++| ioctl (VM fd) | Direction | Effect |
++|---|---|---|
++| `GH_VM_PROTECTED_SHARE` | `struct gunyah_protected_share`, in/out | Pin a page-aligned userspace buffer (`FOLL_LONGTERM`), SHARE it as one RM memparcel (ACL: guest with the requested RWX subset, host RWX), return `mem_handle`. Physically contiguous runs are merged into one mem entry. |
++| `GH_VM_PROTECTED_SHARE_DMABUF` | `struct gunyah_protected_share_dmabuf`, in/out | Same for a page-aligned slice of a DMA-BUF: the attachment pins the exporter's backing, the parcel is sliced from its sg-table. For VM_PFNMAP exporters GUP cannot pin. |
++| `GH_VM_PROTECTED_UNSHARE` | `struct gunyah_protected_unshare`, in | Reclaim the parcel by label and unpin. The RM refuses (`MEM_INUSE`, surfaced as `-EBUSY`) while the guest still holds its acceptance; the share then stays pinned. Pages go back to the allocator only after a successful reclaim. |
++| `GH_VM_CHECK_EXTENSION` with `GH_CAP_PROTECTED_SHARE` | | Returns 1 when the three ioctls exist. |
++
++Rules the caller must follow:
++
++- Only the VM owner task (the mm that created the VM) may share or unshare,
++  like the other memory ioctls.
++- The VM must have been started (RM state LOAD/READY/RUNNING/PAUSED); the
++  guest VMID is part of the ACL. Before `GUNYAH_VM_START` the call fails with
++  `-ENXIO`.
++- Labels are unique per VM among protected shares (`-EEXIST`). Towards the RM
++  the label carries bit 31 so it cannot collide with a userspace-region label.
++- `guest_phys_addr` is informational: the guest picks its IPA when it accepts.
++- Nothing is mapped until the guest accepts. The guest side is the DroidVM
++  guest additions' `gunyah_guest.ko`: RM `MEM_ACCEPT` by handle with
++  `MAP_IPA_CONTIGUOUS`, one sgl `{gpa, memory_size}`, `validate_label = 0`;
++  the parcel's total size equals `memory_size`, which that accept form
++  requires.
++- Order on teardown: guest `MEM_RELEASE`, then host `GH_VM_PROTECTED_UNSHARE`.
++  The host never decides on its own that the guest is done: the RM tracks the
++  acceptance, and `-EBUSY` from UNSHARE means "guest has not released, retry
++  later". (`gunyah_rm_error_remap()` maps `MEM_INUSE` to `-EBUSY` for this;
++  the Android source mapped it to `-EINVAL`.)
++- `tools/virt/gunyah/gh_sharetest.py` exercises the host side against the
++  PSCI_OFF stub guest (no accept): validation, handles, labels, locked_vm
++  accounting, the udmabuf path and reclaim at fd close.
++- `tools/virt/gunyah/gh_accepttest.py` is the end-to-end test with a guest
++  that really accepts. The guest is `gh_rmproxy.S` (244 bytes, bare metal,
++  MMU off): a command loop driven through MMIO exits (dump/load memory, msgq
++  send/recv, power off). The host dumps the RM-overlaid DTB to find the RM
++  msgq capability ids, frames MEM_ACCEPT / MEM_RELEASE itself and verifies:
++  accept at a guest-chosen IPA, host->guest and guest->host visibility
++  through the buffer, UNSHARE while accepted -> `-EBUSY` with pages still
++  pinned, UNSHARE after MEM_RELEASE -> success, the same sequence for a
++  udmabuf-backed `GH_VM_PROTECTED_SHARE_DMABUF` (whole buffer and a sliced
++  re-share at an offset), and three still-accepted shares reclaimed at fd
++  close with locked_vm back to zero. Verified on the Pad 4.
++  Build the stub with the command in its header; the test loads
++  `gh_rmproxy.bin` from its own directory.
++
++### Guest DTB requirement for a self-accepting guest
++
++The RM only gives a VM an RM-RPC message queue pair when the VM config asks
++for one. Without it the overlay adds just `/hypervisor/qcom,gunyah-vm`, and the
++guest has no channel for MEM_ACCEPT. `gh_vmtest.build_dtb(rm_rpc=True)` adds:
++
++```
++vdevices {
++	generate = "/hypervisor";
++	rm-rpc {
++		vdevice-type = "rm-rpc";
++		generate = "/hypervisor/qcom,resource-mgr";
++		console-dev;
++		message-size = <0xf0>;
++		queue-depth = <8>;
++		qcom,label = <1>;
++	};
++};
++```
++
++The RM appends `gunyah-resource-manager`, `qcom,resource-manager` and
++`qcom,resource-manager-<api>` to the generated node's compatible list itself
++(`parse_rm_rpc()` in the RM's `vm_config_parser.c`), and sets
++`reg = <tx_capid rx_capid>` as two 64-bit cells. That is the node both the
++in-tree `gunyah_rsc_mgr` (as a guest) and the DroidVM guest additions look for.
++
++Two guest-side details that cost debugging time: with the MMU off, bracket
++shared-buffer accesses with `dc civac` (clean before loads so the host's dirty
++lines reach memory; clean+invalidate around stores so no dirty host line is
++written back over them), and remember that a guest resumes from an MMIO read
++exit only on the next `GUNYAH_VCPU_RUN`, so the host must round-trip once more
++before it may expect the guest's subsequent stores to have happened.
++  Shares still live when the VM fd is closed are reclaimed after the RM has
++  reset the VM (the reset drops the guest's acceptances). A parcel the RM
++  still refuses to return is leaked, never freed: the hypervisor may still map it.
++
++The RM misc device gets a 64-bit DMA mask at probe so it can serve as the
++DMA-BUF importer device.
+diff --git a/drivers/virt/gunyah/Kconfig b/drivers/virt/gunyah/Kconfig
+index 649147a459399c44e2d32f499ba7d8aab8843349..439cacd800bafeef893f85b74a170ad20f307e27 100644
+--- a/drivers/virt/gunyah/Kconfig
++++ b/drivers/virt/gunyah/Kconfig
+@@ -14,6 +14,7 @@ config GUNYAH
+ 	imply GUNYAH_QCOM_PLATFORM if ARCH_QCOM
+ 	select GUNYAH_HYPERCALLS
+ 	select GUNYAH_TIMER
++	select DMA_SHARED_BUFFER
+ 	depends on SYSFS
+ 	select SYS_HYPERVISOR
+ 	help
+diff --git a/drivers/virt/gunyah/Makefile b/drivers/virt/gunyah/Makefile
+index a1dee0e223aebe872553d18b99f7e32306285747..06e116a9d6ff70d0468242a47b03ef2ad26b83b1 100644
+--- a/drivers/virt/gunyah/Makefile
++++ b/drivers/virt/gunyah/Makefile
+@@ -2,7 +2,7 @@
+ 
+ obj-$(CONFIG_GUNYAH_HYPERCALLS)		+= gunyah.o
+ 
+-gunyah_rsc_mgr-y += rsc_mgr.o rsc_mgr_rpc.o vm_mgr.o vm_mgr_mem.o
++gunyah_rsc_mgr-y += rsc_mgr.o rsc_mgr_rpc.o vm_mgr.o vm_mgr_mem.o vm_mgr_pshare.o
+ gunyah_rsc_mgr-$(CONFIG_DMA_CMA) += vm_mgr_cma_mem.o
+ obj-$(CONFIG_GUNYAH) += gunyah_rsc_mgr.o gunyah_vcpu.o
+ obj-$(CONFIG_GUNYAH_QCOM_TRUSTED_VM) += gunyah_qtvm.o
+diff --git a/drivers/virt/gunyah/rsc_mgr.c b/drivers/virt/gunyah/rsc_mgr.c
+index b3ec2c9685e8fc88c648d6af196a176341a3d23b..e607c70ce8a7ee2af8d181ff338daec4aa24ed26 100644
+--- a/drivers/virt/gunyah/rsc_mgr.c
++++ b/drivers/virt/gunyah/rsc_mgr.c
+@@ -6,6 +6,7 @@
+ #define pr_fmt(fmt) "gunyah: " fmt
+ 
+ #include <linux/completion.h>
++#include <linux/dma-mapping.h>
+ #include <linux/gunyah.h>
+ #include <linux/kobject.h>
+ #include <linux/module.h>
+@@ -188,6 +189,8 @@ static inline int gunyah_rm_error_remap(enum gunyah_rm_error rm_error)
+ 	case GUNYAH_RM_ERROR_DENIED:
+ 		return -EPERM;
+ 	case GUNYAH_RM_ERROR_BUSY:
++	case GUNYAH_RM_ERROR_MEM_INUSE:
++		/* e.g. reclaim of a memparcel a borrower still has accepted */
+ 		return -EBUSY;
+ 	case GUNYAH_RM_ERROR_INVALID:
+ 	case GUNYAH_RM_ERROR_ARGUMENT_INVALID:
+@@ -195,7 +198,6 @@ static inline int gunyah_rm_error_remap(enum gunyah_rm_error rm_error)
+ 	case GUNYAH_RM_ERROR_VALIDATE_FAILED:
+ 	case GUNYAH_RM_ERROR_MAP_FAILED:
+ 	case GUNYAH_RM_ERROR_MEM_INVALID:
+-	case GUNYAH_RM_ERROR_MEM_INUSE:
+ 	case GUNYAH_RM_ERROR_MEM_RELEASED:
+ 	case GUNYAH_RM_ERROR_VMID_INVALID:
+ 	case GUNYAH_RM_ERROR_LOOKUP_FAILED:
+@@ -1029,6 +1031,15 @@ static int __init gunyah_rm_init(void)
+ 		goto free_rx_irq;
+ 	}
+ 
++	/*
++	 * The misc device doubles as the DMA-BUF importer for runtime protected
++	 * shares (vm_mgr_pshare.c); map_attachment needs a DMA mask on it.
++	 */
++	ret = dma_coerce_mask_and_coherent(rm->miscdev.this_device,
++					   DMA_BIT_MASK(64));
++	if (ret)
++		goto deregister_misc;
++
+ 	ret = gunyah_adev_init(rm, "gh_rm_core");
+ 	if (ret) {
+ 		pr_err("Failed to add gh_rm_core device\n");
+diff --git a/drivers/virt/gunyah/vm_mgr.c b/drivers/virt/gunyah/vm_mgr.c
+index c964642d0dd0a954a0df5fa4ec2bfe3307b336bf..46c01e794bad154682288f07e0b5af5bd313b796 100644
+--- a/drivers/virt/gunyah/vm_mgr.c
++++ b/drivers/virt/gunyah/vm_mgr.c
+@@ -713,6 +713,8 @@ static __must_check struct gunyah_vm *gunyah_vm_alloc(struct gunyah_rm *rm)
+ 	INIT_LIST_HEAD(&ghvm->resources);
+ 	INIT_LIST_HEAD(&ghvm->resource_tickets);
+ 	xa_init(&ghvm->boot_context);
++	INIT_LIST_HEAD(&ghvm->pshares);
++	mutex_init(&ghvm->pshares_lock);
+ 
+ 	init_rwsem(&ghvm->mmio_handler_lock);
+ 	ghvm->mmio_handler_root = RB_ROOT;
+@@ -1109,9 +1111,60 @@ static long gunyah_vm_ioctl(struct file *filp, unsigned int cmd,
+ 
+ 		return gunyah_vm_set_auth_type(ghvm, &auth_desc);
+ 	}
++	case GH_VM_PROTECTED_SHARE: {
++		struct gunyah_protected_share share;
++
++		/* only allow owner task to add memory */
++		if (ghvm->mm_s != current->mm)
++			return -EPERM;
++		if (copy_from_user(&share, argp, sizeof(share)))
++			return -EFAULT;
++		if (share.reserved)
++			return -EINVAL;
++
++		r = gunyah_vm_pshare_user(ghvm, &share);
++		if (!r && copy_to_user(argp, &share, sizeof(share))) {
++			/* userspace never learned the handle: do not leave it shared */
++			gunyah_vm_punshare(ghvm, share.label);
++			return -EFAULT;
++		}
++		break;
++	}
++	case GH_VM_PROTECTED_SHARE_DMABUF: {
++		struct gunyah_protected_share_dmabuf share;
++
++		/* only allow owner task to add memory */
++		if (ghvm->mm_s != current->mm)
++			return -EPERM;
++		if (copy_from_user(&share, argp, sizeof(share)))
++			return -EFAULT;
++
++		r = gunyah_vm_pshare_dmabuf(ghvm, &share);
++		if (!r && copy_to_user(argp, &share, sizeof(share))) {
++			/* userspace never learned the handle: do not leave it shared */
++			gunyah_vm_punshare(ghvm, share.label);
++			return -EFAULT;
++		}
++		break;
++	}
++	case GH_VM_PROTECTED_UNSHARE: {
++		struct gunyah_protected_unshare unshare;
++
++		/* only allow owner task to remove memory */
++		if (ghvm->mm_s != current->mm)
++			return -EPERM;
++		if (copy_from_user(&unshare, argp, sizeof(unshare)))
++			return -EFAULT;
++		if (unshare.reserved)
++			return -EINVAL;
++
++		r = gunyah_vm_punshare(ghvm, unshare.label);
++		break;
++	}
+ 	case GH_VM_CHECK_EXTENSION:
+ 		switch (arg) {
+ 		case GH_CAP_VCPU_TIMER_WAKEUP:
++		case GH_CAP_PROTECTED_SHARE:
+ 			r = 1;
+ 			break;
+ 		default:
+@@ -1193,6 +1246,8 @@ static void _gunyah_vm_put(struct kref *kref)
+ 	}
+ 
+ 	WARN_ON(gunyah_reclaim_parcels(ghvm, 0, ULONG_MAX));
++	/* After the reset: RM releases the guest's acceptances at VM reset */
++	gunyah_vm_pshare_release_all(ghvm);
+ 	down_write(&ghvm->bindings_lock);
+ 	mt_for_each(&ghvm->bindings, b, index, ULONG_MAX) {
+ 		mtree_erase(&ghvm->bindings, gunyah_gpa_to_gfn(b->guest_phys_addr));
+diff --git a/drivers/virt/gunyah/vm_mgr.h b/drivers/virt/gunyah/vm_mgr.h
+index 84f0e60b0ccc7f5fb296f1cf7f44f83ef9542203..99f74a32fa367a5496b820c8141ff3faf2db6343 100644
+--- a/drivers/virt/gunyah/vm_mgr.h
++++ b/drivers/virt/gunyah/vm_mgr.h
+@@ -111,6 +111,9 @@ long gunyah_dev_vm_mgr_ioctl(struct gunyah_rm *rm, unsigned int cmd,
+  * @dtb.parcel_pages: Number of pages lent for the memory parcel
+  * @dtb.parcel: Data for resource manager to lend the parcel
+  * @boot_context: Requested initial boot context to set when launching the VM
++ * @pshares: List of &struct gunyah_vm_pshare: memparcels shared at runtime for
++ *           the guest to accept itself (GH_VM_PROTECTED_SHARE)
++ * @pshares_lock: Serializes @pshares
+  *
+  * Members are grouped by hot path.
+  */
+@@ -158,6 +161,8 @@ struct gunyah_vm {
+ 		struct gunyah_vm_parcel parcel;
+ 	} fw;
+ 	struct xarray boot_context;
++	struct list_head pshares;
++	struct mutex pshares_lock;
+ };
+ 
+ int gunyah_vm_mmio_write(struct gunyah_vm *ghvm, u64 addr, u32 len, u64 data);
+@@ -264,6 +269,14 @@ int gunyah_demand_page(struct gunyah_vm *ghvm, u64 gpa, bool write);
+ int gunyah_setup_demand_paging(struct gunyah_vm *ghvm, u64 start_gfn,
+ 				u64 end_gfn);
+ int gunyah_vm_set_protected(struct gunyah_vm *ghvm);
++
++/* Runtime shares a protected guest accepts itself (vm_mgr_pshare.c) */
++int gunyah_vm_pshare_user(struct gunyah_vm *ghvm,
++			  struct gunyah_protected_share *args);
++int gunyah_vm_pshare_dmabuf(struct gunyah_vm *ghvm,
++			    struct gunyah_protected_share_dmabuf *args);
++int gunyah_vm_punshare(struct gunyah_vm *ghvm, u32 label);
++void gunyah_vm_pshare_release_all(struct gunyah_vm *ghvm);
+ #ifdef CONFIG_DMA_CMA
+ int gunyah_cma_mem_init(void);
+ void gunyah_cma_mem_exit(void);
+diff --git a/drivers/virt/gunyah/vm_mgr_pshare.c b/drivers/virt/gunyah/vm_mgr_pshare.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..b1b846929d754ff77fbd1c7bc8b7927943b81a8c
+--- /dev/null
++++ b/drivers/virt/gunyah/vm_mgr_pshare.c
+@@ -0,0 +1,485 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Runtime memory sharing with a protected guest ("GuestAccept").
++ *
++ * A protected VM owns its stage-2, so the host cannot push a mapping into it
++ * (the hypervisor answers DENIED, see Documentation/virt/gunyah). What the
++ * host can do is SHARE a resource-manager memparcel to the VM and hand the
++ * handle to the VMM; the guest then ACCEPTs that handle itself (RM
++ * MEM_ACCEPT with MAP_IPA_CONTIGUOUS) at an IPA of its choosing. Nothing is
++ * mapped until the guest agrees, and the guest alone decides where.
++ *
++ * Lifecycle: a share stays pinned until GH_VM_PROTECTED_UNSHARE reclaims it,
++ * which the RM refuses while the guest still holds its acceptance. Whatever is
++ * still shared when the VM goes away is reclaimed from the VM teardown path,
++ * after the RM has reset the VM and thereby released the guest's acceptances.
++ * A parcel the RM will not give back is leaked on purpose: memory the
++ * hypervisor may still map must never return to the allocator.
++ */
++
++#include <linux/delay.h>
++#include <linux/dma-buf.h>
++#include <linux/dma-mapping.h>
++#include <linux/mm.h>
++#include <linux/module.h>
++#include <linux/scatterlist.h>
++
++#include "vm_mgr.h"
++
++/*
++ * The RM-facing label lives in the same per-VM namespace as the labels the
++ * driver stamps on userspace region parcels (gunyah_share_parcel). Keep the
++ * two apart so a VMM may reuse a region label for a runtime share. Only the
++ * RM sees the bit; the ioctl ABI and this table use the VMM's label as given.
++ * The guest is unaffected: it accepts by handle with validate_label = 0.
++ */
++#define GUNYAH_PSHARE_LABEL_NS		BIT(31)
++
++/* The RM transiently refuses a share while a just-reclaimed parcel settles. */
++#define GUNYAH_PSHARE_SHARE_TRIES	8
++
++struct gunyah_vm_pshare {
++	struct list_head node;
++	u32 label;
++	unsigned long npages;
++	struct gunyah_rm_mem_parcel parcel;
++	/* DMA-BUF source; NULL for a pinned userspace buffer */
++	struct dma_buf *dmabuf;
++	struct dma_buf_attachment *attachment;
++	struct sg_table *sgt;
++};
++
++static bool gunyah_vm_pshare_allowed(struct gunyah_vm *ghvm)
++{
++	bool ok;
++
++	down_read(&ghvm->status_lock);
++	switch (ghvm->vm_status) {
++	case GUNYAH_RM_VM_STATUS_LOAD:
++	case GUNYAH_RM_VM_STATUS_READY:
++	case GUNYAH_RM_VM_STATUS_RUNNING:
++	case GUNYAH_RM_VM_STATUS_PAUSED:
++		ok = true;
++		break;
++	default:
++		ok = false;
++		break;
++	}
++	up_read(&ghvm->status_lock);
++	return ok;
++}
++
++/* Caller holds pshares_lock */
++static struct gunyah_vm_pshare *gunyah_vm_pshare_find(struct gunyah_vm *ghvm,
++						      u32 label)
++{
++	struct gunyah_vm_pshare *ps;
++
++	list_for_each_entry(ps, &ghvm->pshares, node)
++		if (ps->label == label)
++			return ps;
++	return NULL;
++}
++
++static u8 gunyah_vm_pshare_perms(u32 flags)
++{
++	u8 perms = 0;
++
++	if (flags & GUNYAH_MEM_ALLOW_READ)
++		perms |= GUNYAH_RM_ACL_R;
++	if (flags & GUNYAH_MEM_ALLOW_WRITE)
++		perms |= GUNYAH_RM_ACL_W;
++	if (flags & GUNYAH_MEM_ALLOW_EXEC)
++		perms |= GUNYAH_RM_ACL_X;
++	return perms;
++}
++
++/* Append [phys, phys + size) to the entry list, merging with the previous run */
++static void gunyah_vm_pshare_add_entry(struct gunyah_rm_mem_parcel *parcel,
++				       u64 phys, u64 size)
++{
++	struct gunyah_rm_mem_entry *last;
++
++	if (parcel->n_mem_entries) {
++		last = &parcel->mem_entries[parcel->n_mem_entries - 1];
++		if (le64_to_cpu(last->phys_addr) + le64_to_cpu(last->size) == phys) {
++			last->size = cpu_to_le64(le64_to_cpu(last->size) + size);
++			return;
++		}
++	}
++	last = &parcel->mem_entries[parcel->n_mem_entries++];
++	last->phys_addr = cpu_to_le64(phys);
++	last->size = cpu_to_le64(size);
++}
++
++/*
++ * SHARE: two ACL entries, the guest with the requested access and the host
++ * with RWX (Gunyah grants no more than the host already has).
++ */
++static int gunyah_vm_pshare_init_parcel(struct gunyah_vm *ghvm,
++					struct gunyah_vm_pshare *ps,
++					u32 label, u32 flags,
++					size_t max_entries)
++{
++	struct gunyah_rm_mem_parcel *parcel = &ps->parcel;
++	u16 host_vmid;
++	int ret;
++
++	ret = gunyah_rm_get_vmid(ghvm->rm, &host_vmid);
++	if (ret)
++		return ret;
++
++	parcel->acl_entries = kcalloc(2, sizeof(*parcel->acl_entries),
++				      GFP_KERNEL_ACCOUNT);
++	if (!parcel->acl_entries)
++		return -ENOMEM;
++	/*
++	 * Worst case one entry per page: a fragmented host may offer no
++	 * contiguous runs at all, so this can be far too large for kmalloc.
++	 */
++	parcel->mem_entries = kvcalloc(max_entries, sizeof(*parcel->mem_entries),
++				       GFP_KERNEL_ACCOUNT);
++	if (!parcel->mem_entries) {
++		kfree(parcel->acl_entries);
++		parcel->acl_entries = NULL;
++		return -ENOMEM;
++	}
++
++	parcel->mem_type = GUNYAH_RM_MEM_TYPE_NORMAL;
++	parcel->label = label | GUNYAH_PSHARE_LABEL_NS;
++	parcel->mem_handle = GUNYAH_MEM_HANDLE_INVAL;
++	parcel->n_acl_entries = 2;
++	parcel->acl_entries[0].vmid = cpu_to_le16(ghvm->vmid);
++	parcel->acl_entries[0].perms = gunyah_vm_pshare_perms(flags);
++	parcel->acl_entries[1].vmid = cpu_to_le16(host_vmid);
++	parcel->acl_entries[1].perms = GUNYAH_RM_ACL_R | GUNYAH_RM_ACL_W |
++				       GUNYAH_RM_ACL_X;
++	parcel->n_mem_entries = 0;
++	ps->label = label;
++	return 0;
++}
++
++static void gunyah_vm_pshare_free_parcel(struct gunyah_vm_pshare *ps)
++{
++	kvfree(ps->parcel.mem_entries);
++	kfree(ps->parcel.acl_entries);
++}
++
++/* Drop the pins behind a parcel whose memory the RM has given back to us */
++static void gunyah_vm_pshare_unpin_user(struct gunyah_vm *ghvm,
++					struct gunyah_vm_pshare *ps)
++{
++	struct gunyah_rm_mem_entry *entry;
++	unsigned long pfn, n, i;
++	size_t e;
++
++	for (e = 0; e < ps->parcel.n_mem_entries; e++) {
++		entry = &ps->parcel.mem_entries[e];
++		pfn = PHYS_PFN(le64_to_cpu(entry->phys_addr));
++		n = le64_to_cpu(entry->size) >> PAGE_SHIFT;
++		for (i = 0; i < n; i++)
++			unpin_user_page(pfn_to_page(pfn + i));
++	}
++	account_locked_vm(ghvm->mm_s, ps->npages, false);
++}
++
++static void gunyah_vm_pshare_put_dmabuf(struct gunyah_vm_pshare *ps)
++{
++	dma_buf_unmap_attachment_unlocked(ps->attachment, ps->sgt,
++					  DMA_BIDIRECTIONAL);
++	dma_buf_detach(ps->dmabuf, ps->attachment);
++	dma_buf_put(ps->dmabuf);
++}
++
++/* Release the backing of a share the RM no longer holds */
++static void gunyah_vm_pshare_free(struct gunyah_vm *ghvm,
++				  struct gunyah_vm_pshare *ps)
++{
++	if (ps->dmabuf)
++		gunyah_vm_pshare_put_dmabuf(ps);
++	else
++		gunyah_vm_pshare_unpin_user(ghvm, ps);
++	gunyah_vm_pshare_free_parcel(ps);
++	kfree(ps);
++}
++
++/* Hand the built parcel to the RM and publish it; @ps stays the caller's on failure */
++static int gunyah_vm_pshare_submit(struct gunyah_vm *ghvm,
++				   struct gunyah_vm_pshare *ps, u32 *mem_handle)
++{
++	int ret, tries;
++
++	mutex_lock(&ghvm->pshares_lock);
++	if (gunyah_vm_pshare_find(ghvm, ps->label)) {
++		ret = -EEXIST;
++		goto unlock;
++	}
++
++	for (tries = 0; tries < GUNYAH_PSHARE_SHARE_TRIES; tries++) {
++		ret = gunyah_rm_mem_share(ghvm->rm, &ps->parcel);
++		if (!ret)
++			break;
++		usleep_range(500, 1500);
++	}
++	if (ret) {
++		dev_warn(ghvm->parent,
++			 "Failed to share parcel label %u to VM %u: %d\n",
++			 ps->label, ghvm->vmid, ret);
++		goto unlock;
++	}
++
++	list_add_tail(&ps->node, &ghvm->pshares);
++	*mem_handle = ps->parcel.mem_handle;
++	dev_dbg(ghvm->parent,
++		"Shared label %u (%lu pages, %zu entries, %s) to VM %u: handle %#x\n",
++		ps->label, ps->npages, ps->parcel.n_mem_entries,
++		ps->dmabuf ? "dmabuf" : "user", ghvm->vmid, *mem_handle);
++unlock:
++	mutex_unlock(&ghvm->pshares_lock);
++	return ret;
++}
++
++int gunyah_vm_pshare_user(struct gunyah_vm *ghvm,
++			  struct gunyah_protected_share *args)
++{
++	struct gunyah_vm_pshare *ps;
++	struct page **pages;
++	unsigned long npages, i;
++	unsigned int gup_flags;
++	long pinned;
++	u64 end;
++	int ret;
++
++	if (args->flags & ~GUNYAH_MEM_ALLOW_RWX)
++		return -EINVAL;
++	if (!args->memory_size || !PAGE_ALIGNED(args->memory_size) ||
++	    !PAGE_ALIGNED(args->userspace_addr))
++		return -EINVAL;
++	if (check_add_overflow(args->userspace_addr, args->memory_size, &end))
++		return -EOVERFLOW;
++	if (!gunyah_vm_pshare_allowed(ghvm))
++		return -ENXIO;
++
++	npages = args->memory_size >> PAGE_SHIFT;
++	pages = kvcalloc(npages, sizeof(*pages), GFP_KERNEL_ACCOUNT);
++	if (!pages)
++		return -ENOMEM;
++
++	ps = kzalloc(sizeof(*ps), GFP_KERNEL_ACCOUNT);
++	if (!ps) {
++		ret = -ENOMEM;
++		goto free_pages;
++	}
++	ps->npages = npages;
++	ret = gunyah_vm_pshare_init_parcel(ghvm, ps, args->label, args->flags,
++					   npages);
++	if (ret)
++		goto free_ps;
++
++	gup_flags = FOLL_LONGTERM;
++	if (args->flags & GUNYAH_MEM_ALLOW_WRITE)
++		gup_flags |= FOLL_WRITE;
++	pinned = pin_user_pages_fast(args->userspace_addr, npages, gup_flags,
++				     pages);
++	if (pinned < 0) {
++		ret = pinned;
++		goto free_parcel;
++	}
++	if (pinned != npages) {
++		ret = -EFAULT;
++		goto unpin;
++	}
++	ret = account_locked_vm(current->mm, npages, true);
++	if (ret)
++		goto unpin;
++
++	/* Physically contiguous runs (THP folios collapse 512:1) become one entry */
++	for (i = 0; i < npages; i++)
++		gunyah_vm_pshare_add_entry(&ps->parcel, page_to_phys(pages[i]),
++					   PAGE_SIZE);
++
++	ret = gunyah_vm_pshare_submit(ghvm, ps, &args->mem_handle);
++	if (ret)
++		goto unaccount;
++
++	kvfree(pages);
++	return 0;
++
++unaccount:
++	account_locked_vm(current->mm, npages, false);
++unpin:
++	unpin_user_pages(pages, pinned);
++free_parcel:
++	gunyah_vm_pshare_free_parcel(ps);
++free_ps:
++	kfree(ps);
++free_pages:
++	kvfree(pages);
++	return ret;
++}
++
++/* Slice [offset, offset + size) out of the exporter's sg-table as physical runs */
++static int gunyah_vm_pshare_sgt_entries(struct gunyah_vm_pshare *ps,
++					u64 offset, u64 size)
++{
++	struct scatterlist *sg;
++	u64 skip = offset, remain = size, phys, take;
++	unsigned int i;
++
++	for_each_sgtable_sg(ps->sgt, sg, i) {
++		if (!remain)
++			break;
++		if (skip >= sg->length) {
++			skip -= sg->length;
++			continue;
++		}
++		phys = sg_phys(sg) + skip;
++		take = min_t(u64, (u64)sg->length - skip, remain);
++		if (!PAGE_ALIGNED(phys) || !PAGE_ALIGNED(take))
++			return -EINVAL;
++		gunyah_vm_pshare_add_entry(&ps->parcel, phys, take);
++		remain -= take;
++		skip = 0;
++	}
++	return remain ? -EINVAL : 0;
++}
++
++int gunyah_vm_pshare_dmabuf(struct gunyah_vm *ghvm,
++			    struct gunyah_protected_share_dmabuf *args)
++{
++	struct gunyah_vm_pshare *ps;
++	u64 end;
++	int ret;
++
++	if (args->flags & ~GUNYAH_MEM_ALLOW_RWX)
++		return -EINVAL;
++	if (!args->memory_size || !PAGE_ALIGNED(args->memory_size) ||
++	    !PAGE_ALIGNED(args->dmabuf_offset))
++		return -EINVAL;
++	if (check_add_overflow(args->dmabuf_offset, args->memory_size, &end))
++		return -EOVERFLOW;
++	if (!gunyah_vm_pshare_allowed(ghvm))
++		return -ENXIO;
++
++	ps = kzalloc(sizeof(*ps), GFP_KERNEL_ACCOUNT);
++	if (!ps)
++		return -ENOMEM;
++	ps->npages = args->memory_size >> PAGE_SHIFT;
++
++	ps->dmabuf = dma_buf_get(args->dmabuf_fd);
++	if (IS_ERR(ps->dmabuf)) {
++		ret = PTR_ERR(ps->dmabuf);
++		goto free_ps;
++	}
++	if (end > ps->dmabuf->size) {
++		ret = -EINVAL;
++		goto put_dmabuf;
++	}
++
++	/* The attachment pins the exporter's backing for the parcel's lifetime */
++	ps->attachment = dma_buf_attach(ps->dmabuf, ghvm->parent);
++	if (IS_ERR(ps->attachment)) {
++		ret = PTR_ERR(ps->attachment);
++		goto put_dmabuf;
++	}
++	ps->sgt = dma_buf_map_attachment_unlocked(ps->attachment,
++						  DMA_BIDIRECTIONAL);
++	if (IS_ERR(ps->sgt)) {
++		ret = PTR_ERR(ps->sgt);
++		goto detach;
++	}
++
++	/* At most one run per source SG entry */
++	ret = gunyah_vm_pshare_init_parcel(ghvm, ps, args->label, args->flags,
++					   ps->sgt->orig_nents);
++	if (ret)
++		goto unmap;
++	ret = gunyah_vm_pshare_sgt_entries(ps, args->dmabuf_offset,
++					   args->memory_size);
++	if (ret)
++		goto free_parcel;
++
++	ret = gunyah_vm_pshare_submit(ghvm, ps, &args->mem_handle);
++	if (ret)
++		goto free_parcel;
++	return 0;
++
++free_parcel:
++	gunyah_vm_pshare_free_parcel(ps);
++unmap:
++	dma_buf_unmap_attachment_unlocked(ps->attachment, ps->sgt,
++					  DMA_BIDIRECTIONAL);
++detach:
++	dma_buf_detach(ps->dmabuf, ps->attachment);
++put_dmabuf:
++	dma_buf_put(ps->dmabuf);
++free_ps:
++	kfree(ps);
++	return ret;
++}
++
++int gunyah_vm_punshare(struct gunyah_vm *ghvm, u32 label)
++{
++	struct gunyah_vm_pshare *ps;
++	int ret;
++
++	mutex_lock(&ghvm->pshares_lock);
++	ps = gunyah_vm_pshare_find(ghvm, label);
++	if (!ps) {
++		ret = -ENOENT;
++		goto unlock;
++	}
++
++	/*
++	 * The RM is the authority on whether the guest still holds its
++	 * acceptance: it answers MEM_INUSE (-EBUSY) until the guest has done
++	 * MEM_RELEASE. Only a successful reclaim may unpin -- freeing pages the
++	 * guest's stage-2 still maps would corrupt the guest.
++	 */
++	ret = gunyah_rm_mem_reclaim(ghvm->rm, &ps->parcel);
++	if (ret == -EBUSY) {
++		/* Expected while the guest is still using it; the VMM retries */
++		dev_dbg(ghvm->parent, "Parcel label %u still accepted by VM %u\n",
++			label, ghvm->vmid);
++		goto unlock;
++	}
++	if (ret) {
++		dev_warn(ghvm->parent,
++			 "Failed to reclaim parcel label %u from VM %u: %d\n",
++			 label, ghvm->vmid, ret);
++		goto unlock;
++	}
++
++	list_del(&ps->node);
++	gunyah_vm_pshare_free(ghvm, ps);
++unlock:
++	mutex_unlock(&ghvm->pshares_lock);
++	return ret;
++}
++
++/*
++ * VM teardown, after the RM reset the VM. The reset released the guest's
++ * acceptances, so the reclaims go through now; anything still refused is
++ * leaked rather than freed under a possibly live stage-2 mapping.
++ */
++void gunyah_vm_pshare_release_all(struct gunyah_vm *ghvm)
++{
++	struct gunyah_vm_pshare *ps, *tmp;
++	int ret;
++
++	mutex_lock(&ghvm->pshares_lock);
++	list_for_each_entry_safe(ps, tmp, &ghvm->pshares, node) {
++		list_del(&ps->node);
++		ret = gunyah_rm_mem_reclaim(ghvm->rm, &ps->parcel);
++		if (ret) {
++			dev_err(ghvm->parent,
++				"Failed to reclaim parcel label %u: %d, leaking %lu pages\n",
++				ps->label, ret, ps->npages);
++			continue;
++		}
++		gunyah_vm_pshare_free(ghvm, ps);
++	}
++	mutex_unlock(&ghvm->pshares_lock);
++}
++
++MODULE_IMPORT_NS("DMA_BUF");
+diff --git a/include/uapi/linux/gunyah.h b/include/uapi/linux/gunyah.h
+index f6f427be5e752bac90c72b9d155bc2395fd65a6e..bbaf486dc760e2646dd889513fd2923e2b1d37a7 100644
+--- a/include/uapi/linux/gunyah.h
++++ b/include/uapi/linux/gunyah.h
+@@ -475,6 +475,88 @@ struct gunyah_auth_desc {
+  *
+  * GH_CAP_VCPU_TIMER_WAKEUP: kernel handles GUNYAH_VCPU_STATE_EXPECTS_WAKEUP_OR_TIMEOUT,
+  *     arming a per-vCPU hrtimer for the hypervisor-provided deadline.
++ * GH_CAP_PROTECTED_SHARE: GH_VM_PROTECTED_SHARE{,_DMABUF} / GH_VM_PROTECTED_UNSHARE
++ *     are available.
+  */
+ #define GH_CAP_VCPU_TIMER_WAKEUP	0
++#define GH_CAP_PROTECTED_SHARE		1
++
++/*
++ * Runtime memory sharing with a protected guest ("GuestAccept").
++ *
++ * The host cannot map memory into a protected VM's stage-2: the guest owns it.
++ * Instead the host SHAREs a resource-manager memparcel to the VM and returns the
++ * parcel handle; the guest must then ACCEPT the handle itself (RM MEM_ACCEPT,
++ * MAP_IPA_CONTIGUOUS) at a guest physical address of its choosing. Nothing is
++ * mapped until the guest agrees. The VM must have been started.
++ *
++ * The parcel stays shared until GH_VM_PROTECTED_UNSHARE reclaims it, which the
++ * resource manager only allows once the guest has released its acceptance.
++ * Whatever is still shared when the VM fd is closed is reclaimed after the VM
++ * has been reset.
++ */
++
++/**
++ * struct gunyah_protected_share - share a page-aligned userspace buffer
++ * @label: Identifier for the parcel, unique among this VM's protected shares.
++ * @flags: Guest access: GUNYAH_MEM_ALLOW_READ / _WRITE / _EXEC. Host keeps RWX.
++ * @guest_phys_addr: Where the guest intends to accept it. Informational only.
++ * @memory_size: Page-aligned byte count.
++ * @userspace_addr: Page-aligned buffer in the VM owner's address space.
++ * @mem_handle: OUT - resource-manager memparcel handle for the guest to accept.
++ * @reserved: Must be zero.
++ */
++struct gunyah_protected_share {
++	__u32 label;
++	__u32 flags;
++	__u64 guest_phys_addr;
++	__u64 memory_size;
++	__u64 userspace_addr;
++	__u32 mem_handle;
++	__u32 reserved;
++};
++#define GH_VM_PROTECTED_SHARE		_IOWR(GH_ANDROID_IOCTL_TYPE, 0x18, \
++						struct gunyah_protected_share)
++
++/**
++ * struct gunyah_protected_share_dmabuf - share a page-aligned slice of a DMA-BUF
++ * @label: Identifier for the parcel, unique among this VM's protected shares.
++ * @flags: Guest access: GUNYAH_MEM_ALLOW_READ / _WRITE / _EXEC. Host keeps RWX.
++ * @guest_phys_addr: Where the guest intends to accept it. Informational only.
++ * @memory_size: Page-aligned byte count.
++ * @dmabuf_offset: Page-aligned offset into the DMA-BUF.
++ * @dmabuf_fd: DMA-BUF file descriptor.
++ * @mem_handle: OUT - resource-manager memparcel handle for the guest to accept.
++ *
++ * For exporters whose mmap is VM_PFNMAP/VM_MIXEDMAP and therefore cannot be
++ * pinned through GH_VM_PROTECTED_SHARE. The kernel holds an attachment on the
++ * buffer until the parcel is reclaimed.
++ */
++struct gunyah_protected_share_dmabuf {
++	__u32 label;
++	__u32 flags;
++	__u64 guest_phys_addr;
++	__u64 memory_size;
++	__u64 dmabuf_offset;
++	__s32 dmabuf_fd;
++	__u32 mem_handle;
++};
++#define GH_VM_PROTECTED_SHARE_DMABUF	_IOWR(GH_ANDROID_IOCTL_TYPE, 0x19, \
++						struct gunyah_protected_share_dmabuf)
++
++/**
++ * struct gunyah_protected_unshare - reclaim a protected share by label
++ * @label: Label given at share time.
++ * @reserved: Must be zero.
++ *
++ * Fails with -EBUSY (and leaves the parcel shared and pinned) while the guest
++ * still holds its acceptance; the guest must release first. Memory is only
++ * returned to the host allocator once the resource manager has reclaimed it.
++ */
++struct gunyah_protected_unshare {
++	__u32 label;
++	__u32 reserved;
++};
++#define GH_VM_PROTECTED_UNSHARE		_IOW(GH_ANDROID_IOCTL_TYPE, 0x1a, \
++						struct gunyah_protected_unshare)
+ #endif
+diff --git a/tools/virt/gunyah/gh_accepttest.py b/tools/virt/gunyah/gh_accepttest.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..5f2d3b73c973439c963c30319a9e4fdc68fc5d5c
+--- /dev/null
++++ b/tools/virt/gunyah/gh_accepttest.py
+@@ -0,0 +1,288 @@
++#!/usr/bin/env python3
++"""End-to-end GuestAccept test: the guest really accepts, so UNSHARE must say EBUSY.
++
++Guest = gh_rmproxy.bin (see gh_rmproxy.S): a command loop driven through MMIO
++exits. The host dumps the RM-overlaid DTB to find the RM msgq capabilities,
++frames the RM RPCs itself, and has the guest send/receive them. Checks:
++  - MEM_ACCEPT of a GH_VM_PROTECTED_SHARE handle at a guest-chosen IPA
++  - host->guest and guest->host visibility through the shared buffer
++  - GH_VM_PROTECTED_UNSHARE while accepted -> EBUSY, pages stay pinned
++  - after guest MEM_RELEASE -> UNSHARE succeeds, pins drop
++  - the same for a DMA-BUF (udmabuf) share, including a sliced re-share
++  - shares still accepted at VM fd close are reclaimed after the VM reset
++Run as root. Exit status = number of failures.
++"""
++import ctypes, errno, fcntl, mmap, os, struct, sys, time
++sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++import gh_vmtest as T
++import gh_sharetest as S
++
++RAM_BASE, RAM_SIZE = 0x80000000, 0x400000
++DTB_OFF, DTB_SIZE = 0x200000, 0x10000
++TXBUF, RXBUF = RAM_BASE + 0x100000, RAM_BASE + 0x110000
++GICD, GICR = 0x3FFF0000, 0x3FFD0000
++MMIO = 0x10000000
++ACCEPT_IPA = 0x90000000
++GH_ERROR_MSGQUEUE_EMPTY = 60
++RM_RPC_MEM_ACCEPT, RM_RPC_MEM_RELEASE = 0x51000011, 0x51000014
++
++check, expect_errno = S.check, S.expect_errno
++
++class GuestExited(Exception):
++    pass
++
++class Guest:
++    """Drives gh_rmproxy over MMIO exits. Offsets into struct gunyah_vcpu_run."""
++    def __init__(self, vcpu, run):
++        self.vcpu, self.run, self.exits = vcpu, run, 0
++
++    def _exit(self):
++        while True:
++            fcntl.ioctl(self.vcpu, T.GUNYAH_VCPU_RUN)
++            self.exits += 1
++            reason, = struct.unpack_from("<I", self.run, 8)
++            if reason == 1:
++                pa, data, ln, is_w, _ = struct.unpack_from("<Q8sIBB", self.run, 16)
++                struct.pack_into("<B", self.run, 37, 0)          # resume HANDLED
++                return pa, bool(is_w), ln, data
++            if reason == 2:
++                st, = struct.unpack_from("<I", self.run, 16)
++                raise GuestExited({1: "LOAD_FAILED", 2: "EXITED", 3: "CRASHED"}.get(st, st))
++            if reason == 3:
++                pa, attempt, _ = struct.unpack_from("<QiB", self.run, 16)
++                raise RuntimeError("guest page fault at %#x (%d)" % (pa, attempt))
++            raise RuntimeError("exit_reason %d" % reason)
++
++    def feed(self, value, at):
++        pa, is_w, ln, _ = self._exit()
++        if is_w or pa != at or ln != 8:
++            raise RuntimeError("expected 8-byte read at %#x, got %s len %d at %#x" % (at, "write" if is_w else "read", ln, pa))
++        struct.pack_into("<Q", self.run, 24, value)               # mmio.data
++
++    def take(self):
++        pa, is_w, ln, data = self._exit()
++        if not is_w or pa != MMIO + 8 or ln != 8:
++            raise RuntimeError("expected 8-byte write at DATA, got %s len %d at %#x" % ("write" if is_w else "read", ln, pa))
++        return int.from_bytes(data, "little")
++
++    def cmd(self, c): self.feed(c, MMIO)
++    def arg(self, v): self.feed(v, MMIO + 8)
++
++    def dump(self, addr, nbytes):
++        n = (nbytes + 7) // 8
++        self.cmd(1); self.arg(addr); self.arg(n)
++        return b"".join(self.take().to_bytes(8, "little") for _ in range(n))[:nbytes]
++
++    def load(self, addr, data):
++        data = data + bytes(-len(data) % 8)
++        self.cmd(2); self.arg(addr); self.arg(len(data) // 8)
++        for i in range(0, len(data), 8):
++            self.arg(int.from_bytes(data[i:i + 8], "little"))
++        self.take()     # ack: stores are complete only once the guest has run on past them
++
++    def send(self, cap, buf, size):
++        self.cmd(3); self.arg(cap); self.arg(size); self.arg(buf)
++        return self.take()
++
++    def recv(self, cap, buf, size):
++        self.cmd(4); self.arg(cap); self.arg(buf); self.arg(size)
++        return self.take(), self.take()
++
++    def off(self):
++        self.cmd(5)
++        try:
++            self._exit()
++        except GuestExited as e:
++            return e.args[0]
++        return "no STATUS exit"
++
++def fdt_find_rm_caps(dtb):
++    """(tx_capid, rx_capid) from the node compatible with gunyah-resource-manager."""
++    magic, total, off_struct, off_strings = struct.unpack_from(">IIII", dtb, 0)
++    if magic != 0xd00dfeed:
++        raise RuntimeError("bad FDT magic %#x" % magic)
++    def cstr(off):
++        end = dtb.index(b"\0", off); return dtb[off:end]
++    pos, depth, props, seen = off_struct, 0, [{}], []
++    while True:
++        tok, = struct.unpack_from(">I", dtb, pos); pos += 4
++        if tok == 1:
++            name = cstr(pos); pos = (pos + len(name) + 1 + 3) & ~3
++            props.append({}); depth += 1; seen.append("  " * depth + name.decode())
++        elif tok == 2:
++            p = props.pop(); depth -= 1
++            if b"compatible" in p: seen[-1] += " compatible=%r" % p[b"compatible"] if seen else ""
++            if b"gunyah-resource-manager" in p.get(b"compatible", b""):
++                reg = p[b"reg"]
++                if len(reg) == 16: return struct.unpack(">QQ", reg), p
++                if len(reg) == 8: return struct.unpack(">II", reg), p
++                raise RuntimeError("RM reg has %d bytes" % len(reg))
++        elif tok == 3:
++            ln, nameoff = struct.unpack_from(">II", dtb, pos); pos += 8
++            props[-1][cstr(off_strings + nameoff)] = dtb[pos:pos + ln]; pos = (pos + ln + 3) & ~3
++        elif tok == 4:
++            pass
++        elif tok == 9:
++            raise RuntimeError("no gunyah-resource-manager node in DTB; nodes: %s" % seen)
++        else:
++            raise RuntimeError("bad FDT token %d at %#x" % (tok, pos - 4))
++
++class RM:
++    """RM RPC client: frames here, transport through the guest proxy."""
++    def __init__(self, guest, tx, rx):
++        self.g, self.tx, self.rx, self.seq = guest, tx, rx, 0
++
++    def call(self, msg_id, payload):
++        self.seq = (self.seq + 1) & 0xffff
++        msg = struct.pack("<BBHI", 0x21, 0x01, self.seq, msg_id) + payload
++        self.g.load(TXBUF, msg)
++        err = self.g.send(self.tx, TXBUF, len(msg))
++        if err:
++            raise RuntimeError("msgq_send gunyah_error %d" % err)
++        for _ in range(2000):
++            err, ln = self.g.recv(self.rx, RXBUF, 240)
++            if err == GH_ERROR_MSGQUEUE_EMPTY:
++                time.sleep(0.0005); continue
++            if err:
++                raise RuntimeError("msgq_recv gunyah_error %d" % err)
++            rep = self.g.dump(RXBUF, ln)
++            api, typ, seq, rid, ecode = struct.unpack_from("<BBHII", rep)
++            if (typ & 3) == 2 and seq == self.seq and rid == msg_id:
++                return ecode, rep[12:]
++            print("    (skipping RM message type %#x id %#x)" % (typ, rid))
++        raise RuntimeError("RM reply timeout")
++
++    def mem_accept(self, handle, ipa, size):
++        payload = (struct.pack("<IBBBBI", handle, 0, 2, 0x10 | 0x80, 0, 0)   # NORMAL, SHARE, IPA_CONTIGUOUS|DONE, validate_label=0
++                   + struct.pack("<I", 0)                                       # acl: none (RM uses the stored ACL)
++                   + struct.pack("<HHQQ", 1, 0, ipa, size)                      # one sgl entry
++                   + struct.pack("<HH", 0, 0))                                  # mem attrs: none
++        return self.call(RM_RPC_MEM_ACCEPT, payload)[0]
++
++    def mem_release(self, handle):
++        return self.call(RM_RPC_MEM_RELEASE, struct.pack("<II", handle, 0))[0]
++
++def pattern(nwords, tag):
++    return b"".join(struct.pack("<Q", (tag << 32) | i) for i in range(nwords))
++
++def main():
++    here = os.path.dirname(os.path.abspath(__file__))
++    code = open(os.path.join(here, "gh_rmproxy.bin"), "rb").read()
++    lck_base = S.vmlck_kb()
++
++    dev = os.open("/dev/gunyah", os.O_RDWR)
++    vm = fcntl.ioctl(dev, T.GUNYAH_CREATE_VM)
++    mem, uaddr = S.anon(RAM_SIZE)
++    mem[0:len(code)] = code
++    dtb = T.build_dtb(RAM_BASE, RAM_SIZE, GICD, GICR, rm_rpc=True); mem[DTB_OFF:DTB_OFF + len(dtb)] = dtb
++    fcntl.ioctl(vm, T.GH_VM_ANDROID_LEND_USER_MEM, struct.pack("<IIQQQ", 0, T.MEM_RWX, RAM_BASE, RAM_SIZE, uaddr))
++    fcntl.ioctl(vm, T.GUNYAH_VM_SET_DTB_CONFIG, struct.pack("<QQ", RAM_BASE + DTB_OFF, DTB_SIZE))
++    fcntl.ioctl(vm, T.GUNYAH_VM_SET_BOOT_CONTEXT, struct.pack("<IIQ", T.REG_SET_PC, 0, RAM_BASE))
++    vcpu_arg = ctypes.c_uint32(0)
++    vcpu = fcntl.ioctl(vm, T.GUNYAH_VM_ADD_FUNCTION, bytearray(struct.pack("<IIQ", T.GUNYAH_FN_VCPU, 4, ctypes.addressof(vcpu_arg))), True)
++    run = mmap.mmap(vcpu, fcntl.ioctl(vcpu, T.GUNYAH_VCPU_MMAP_SIZE), flags=mmap.MAP_SHARED, prot=mmap.PROT_READ | mmap.PROT_WRITE)
++    fcntl.ioctl(vm, T.GUNYAH_VM_START)
++    g = Guest(vcpu, run)
++    print("[1] protected VM started with gh_rmproxy (%d B)" % len(code))
++
++    hdr = g.dump(RAM_BASE + DTB_OFF, 8)
++    total = struct.unpack_from(">I", hdr, 4)[0]
++    dtb_out = g.dump(RAM_BASE + DTB_OFF, total)
++    open("/tmp/guest-overlaid.dtb", "wb").write(dtb_out)
++    (tx, rx), rmprops = fdt_find_rm_caps(dtb_out)
++    print("[2] RM-overlaid DTB %d B (%d exits); RM msgq caps tx=%#x rx=%#x" % (total, g.exits, tx, rx))
++    rm = RM(g, tx, rx)
++
++    print("[3] share + guest accept")
++    size = 4 << 20
++    bufA, addrA = S.anon(size)
++    pat = pattern(512, 0xA5A5); bufA[0:len(pat)] = pat
++    bufA[size - 8:size] = struct.pack("<Q", 0x1A57BA5E00000000 | 0x1234)
++    hA = S.share(vm, 7, S.MEM_RW, addrA, size)
++    check("share A 4 MiB label 7", hA not in S.BAD_HANDLES, "handle %#x" % hA)
++    lck_shared = S.vmlck_kb()
++    ecode = rm.mem_accept(hA, ACCEPT_IPA, size - 4096)
++    check("MEM_ACCEPT with wrong size refused by RM", ecode != 0, "err_code %#x" % ecode)
++    ecode = rm.mem_accept(hA, ACCEPT_IPA, size)
++    check("MEM_ACCEPT handle %#x at IPA %#x" % (hA, ACCEPT_IPA), ecode == 0, "err_code %#x" % ecode)
++    if ecode:
++        print("cannot continue without an accepted parcel"); return S.fails + 1
++
++    print("[4] visibility through the shared buffer")
++    got = g.dump(ACCEPT_IPA, len(pat))
++    check("host pattern visible to guest (first 4 KiB)", got == pat, "" if got == pat else "first diff at %d" % next(i for i in range(len(pat)) if got[i] != pat[i]))
++    got = g.dump(ACCEPT_IPA + size - 8, 8)
++    check("last word visible to guest", got == bufA[size - 8:size], got.hex())
++    bufA[0x2000:0x2008] = struct.pack("<Q", 0x5EC0ADDED0000001)        # written after accept
++    check("host write after accept visible to guest", g.dump(ACCEPT_IPA + 0x2000, 8) == bufA[0x2000:0x2008])
++    g.load(ACCEPT_IPA + 0x1000, struct.pack("<Q", 0xDEADBEEFCAFEBABE))
++    check("guest write visible to host", bytes(bufA[0x1000:0x1008]) == struct.pack("<Q", 0xDEADBEEFCAFEBABE), bytes(bufA[0x1000:0x1008]).hex())
++
++    print("[5] UNSHARE while the guest holds the acceptance")
++    expect_errno("UNSHARE label 7 -> EBUSY", lambda: S.unshare(vm, 7), errno.EBUSY)
++    check("pages still pinned after refused UNSHARE", S.vmlck_kb() == lck_shared, "%d kB" % S.vmlck_kb())
++    check("guest still reads the buffer after refused UNSHARE", g.dump(ACCEPT_IPA, 64) == pat[:64])
++    expect_errno("second UNSHARE still EBUSY", lambda: S.unshare(vm, 7), errno.EBUSY)
++
++    print("[6] guest releases, then host unshares")
++    ecode = rm.mem_release(hA)
++    check("MEM_RELEASE handle %#x" % hA, ecode == 0, "err_code %#x" % ecode)
++    S.unshare(vm, 7); check("UNSHARE after release succeeds", True)
++    check("pins dropped", S.vmlck_kb() == lck_shared - (size >> 10), "%d kB" % S.vmlck_kb())
++
++    print("[7] DMA-BUF share (udmabuf over a sealed memfd) accepted by the guest")
++    DSIZE, DIPA = 2 << 20, ACCEPT_IPA + (8 << 20)
++    mfd = os.memfd_create("gh-accept", os.MFD_ALLOW_SEALING)
++    os.ftruncate(mfd, DSIZE)
++    fcntl.fcntl(mfd, fcntl.F_ADD_SEALS, fcntl.F_SEAL_SHRINK)
++    dmem = mmap.mmap(mfd, DSIZE)                       # host view of the exporter's pages
++    dpat = pattern(512, 0xD3A8); dmem[0:len(dpat)] = dpat
++    dmem[DSIZE - 8:DSIZE] = struct.pack("<Q", 0xD3A8E4D000000000 | 0x4321)
++    ud = os.open("/dev/udmabuf", os.O_RDWR)
++    dbuf = fcntl.ioctl(ud, S.UDMABUF_CREATE, bytearray(struct.pack("<IIQQ", mfd, 1, 0, DSIZE)), True)
++    hD = S.share_dmabuf(vm, 9, S.MEM_RW, dbuf, 0, DSIZE)
++    check("share dmabuf 2 MiB label 9", hD not in S.BAD_HANDLES, "handle %#x" % hD)
++    ecode = rm.mem_accept(hD, DIPA, DSIZE)
++    check("MEM_ACCEPT dmabuf handle %#x at IPA %#x" % (hD, DIPA), ecode == 0, "err_code %#x" % ecode)
++    if ecode == 0:
++        check("host pattern in dmabuf visible to guest", g.dump(DIPA, len(dpat)) == dpat)
++        check("last dmabuf word visible to guest", g.dump(DIPA + DSIZE - 8, 8) == dmem[DSIZE - 8:DSIZE])
++        dmem[0x3000:0x3008] = struct.pack("<Q", 0x5EC0ADDED0000002)
++        check("host write to dmabuf after accept visible to guest", g.dump(DIPA + 0x3000, 8) == dmem[0x3000:0x3008])
++        g.load(DIPA + 0x1000, struct.pack("<Q", 0xFEEDFACE0BADF00D))
++        check("guest write to dmabuf visible to host", bytes(dmem[0x1000:0x1008]) == struct.pack("<Q", 0xFEEDFACE0BADF00D), bytes(dmem[0x1000:0x1008]).hex())
++        expect_errno("UNSHARE dmabuf while accepted -> EBUSY", lambda: S.unshare(vm, 9), errno.EBUSY)
++        check("guest still reads dmabuf after refused UNSHARE", g.dump(DIPA, 64) == dpat[:64])
++        check("MEM_RELEASE dmabuf", rm.mem_release(hD) == 0)
++        S.unshare(vm, 9); check("UNSHARE dmabuf after release succeeds", True)
++        check("locked_vm untouched by dmabuf share", S.vmlck_kb() == lck_shared - (size >> 10), "%d kB" % S.vmlck_kb())
++        hD2 = S.share_dmabuf(vm, 9, S.MEM_RW, dbuf, 1 << 20, 1 << 20)
++        check("re-share dmabuf slice [+1 MiB, 1 MiB) label 9", hD2 not in S.BAD_HANDLES, "handle %#x" % hD2)
++        check("accept slice at %#x" % DIPA, rm.mem_accept(hD2, DIPA, 1 << 20) == 0)
++        check("slice maps dmabuf offset +1 MiB (sees host word at +1 MiB)", g.dump(DIPA, 8) == dmem[1 << 20:(1 << 20) + 8])
++        expect_errno("UNSHARE slice while accepted -> EBUSY", lambda: S.unshare(vm, 9), errno.EBUSY)
++        # left accepted on purpose: reclaimed with A and B at teardown below
++
++    print("[8] three live accepted shares at VM teardown")
++    hA2 = S.share(vm, 7, S.MEM_RW, addrA, size)
++    bufB, addrB = S.anon(1 << 20)
++    hB = S.share(vm, 8, S.MEM_R, addrB, 1 << 20)
++    check("re-share A (label 7) + B (label 8)", hA2 not in S.BAD_HANDLES and hB not in S.BAD_HANDLES, "handles %#x %#x" % (hA2, hB))
++    check("re-accept A at same IPA", rm.mem_accept(hA2, ACCEPT_IPA, size) == 0)
++    check("accept B (RO) at %#x" % (ACCEPT_IPA + size), rm.mem_accept(hB, ACCEPT_IPA + size, 1 << 20) == 0)
++    expect_errno("UNSHARE A -> EBUSY", lambda: S.unshare(vm, 7), errno.EBUSY)
++    expect_errno("UNSHARE B -> EBUSY", lambda: S.unshare(vm, 8), errno.EBUSY)
++    dmem[1 << 20:(1 << 20) + 8] = struct.pack("<Q", 0xC0FFEE0000000003)
++    check("dmabuf slice still live at teardown time", g.dump(DIPA, 8) == dmem[1 << 20:(1 << 20) + 8])
++    st = g.off()
++    check("guest SYSTEM_OFF", st == "EXITED", st)
++    expect_errno("UNSHARE A after guest exit, no reset yet -> EBUSY", lambda: S.unshare(vm, 7), errno.EBUSY)
++    run.close(); os.close(vcpu)
++    t0 = time.monotonic(); os.close(vm); dt = (time.monotonic() - t0) * 1000
++    check("locked_vm back to baseline after close (reset released the accepts)", S.vmlck_kb() == lck_base, "%d kB vs %d kB, close %.1f ms" % (S.vmlck_kb(), lck_base, dt))
++    os.close(dev)
++    print("%d failure(s), %d vCPU exits" % (S.fails, g.exits))
++    return S.fails
++
++if __name__ == "__main__":
++    sys.exit(min(main(), 125))
+diff --git a/tools/virt/gunyah/gh_rmproxy.S b/tools/virt/gunyah/gh_rmproxy.S
+new file mode 100644
+index 0000000000000000000000000000000000000000..7bb3c749cf7e904c3a40e1ed3158aca983e350e4
+--- /dev/null
++++ b/tools/virt/gunyah/gh_rmproxy.S
+@@ -0,0 +1,105 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * gh_rmproxy: minimal bare-metal guest for gh_accepttest.py.
++ *
++ * Runs at EL1 with the MMU off and executes commands the host feeds through
++ * MMIO exits at MMIO_BASE (unmapped in the guest). Every protocol decision --
++ * DTB parsing, RM RPC framing -- lives in the host test; the guest only moves
++ * bytes and issues the two msgq hypercalls. Cache maintenance brackets every
++ * memory access because MMU-off data accesses bypass the caches while the
++ * host's lines for the shared buffer sit in them: clean before a load so the
++ * host's dirty data reaches memory, clean+invalidate around a store so no
++ * dirty host line is written back over it afterwards.
++ *
++ *   CMD  = MMIO_BASE + 0: guest reads the next command
++ *   DATA = MMIO_BASE + 8: guest reads parameters / writes results, 8 bytes each
++ *
++ *   1 DUMP addr count : count x (ldr [addr], str DATA)
++ *   2 LOAD addr count : count x (ldr DATA, str [addr]); then DATA <- 0 as ack
++ *   3 SEND cap size buf : msgq_send(cap, size, buf, PUSH); DATA <- x0
++ *   4 RECV cap buf size : msgq_recv(cap, buf, size);  DATA <- x0, DATA <- x1 (len)
++ *   5 OFF              : PSCI SYSTEM_OFF
++ *
++ * Build: clang --target=aarch64-linux-gnu -c gh_rmproxy.S -o gh_rmproxy.o &&
++ *        llvm-objcopy -O binary -j .text gh_rmproxy.o gh_rmproxy.bin
++ */
++#define MMIO_BASE_HI	0x1000		/* 0x10000000 */
++#define HCALL_MSGQ_SEND	0x801B		/* | 0xC6000000: fast SMC64, vendor hyp */
++#define HCALL_MSGQ_RECV	0x801C
++#define PSCI_SYSTEM_OFF	0x84000008
++
++	.text
++	.globl _start
++_start:
++	movz	x20, #MMIO_BASE_HI, lsl #16
++loop:
++	ldr	x0, [x20]
++	cmp	x0, #1
++	b.eq	do_dump
++	cmp	x0, #2
++	b.eq	do_load
++	cmp	x0, #3
++	b.eq	do_send
++	cmp	x0, #4
++	b.eq	do_recv
++	cmp	x0, #5
++	b.eq	do_off
++	b	loop
++
++do_dump:
++	ldr	x1, [x20, #8]
++	ldr	x2, [x20, #8]
++1:	cbz	x2, loop
++	dc	civac, x1
++	dsb	sy
++	ldr	x3, [x1]
++	str	x3, [x20, #8]
++	add	x1, x1, #8
++	sub	x2, x2, #1
++	b	1b
++
++do_load:
++	ldr	x1, [x20, #8]
++	ldr	x2, [x20, #8]
++1:	cbz	x2, 2f
++	ldr	x3, [x20, #8]
++	dc	civac, x1		/* a dirty host line must not be written back over our store */
++	dsb	sy
++	str	x3, [x1]
++	dc	civac, x1		/* and no stale clean copy may survive for the host to hit */
++	dsb	sy
++	add	x1, x1, #8
++	sub	x2, x2, #1
++	b	1b
++2:	str	xzr, [x20, #8]		/* ack: the host may now read what we stored */
++	b	loop
++
++do_send:
++	ldr	x1, [x20, #8]		/* cap */
++	ldr	x2, [x20, #8]		/* size */
++	ldr	x3, [x20, #8]		/* buf */
++	mov	x4, #1			/* GH_MSGQ_TX_PUSH */
++	mov	x5, #0
++	movz	x0, #HCALL_MSGQ_SEND
++	movk	x0, #0xC600, lsl #16
++	hvc	#0
++	str	x0, [x20, #8]
++	b	loop
++
++do_recv:
++	ldr	x1, [x20, #8]		/* cap */
++	ldr	x2, [x20, #8]		/* buf */
++	ldr	x3, [x20, #8]		/* size */
++	mov	x4, #0
++	movz	x0, #HCALL_MSGQ_RECV
++	movk	x0, #0xC600, lsl #16
++	hvc	#0
++	str	x0, [x20, #8]
++	str	x1, [x20, #8]
++	b	loop
++
++do_off:
++	movz	x0, #(PSCI_SYSTEM_OFF >> 16), lsl #16
++	movk	x0, #(PSCI_SYSTEM_OFF & 0xffff)
++	hvc	#0
++	b	.
+diff --git a/tools/virt/gunyah/gh_sharetest.py b/tools/virt/gunyah/gh_sharetest.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..8a1d9e2d58e588700876da7fdc9aafd5471c928d
+--- /dev/null
++++ b/tools/virt/gunyah/gh_sharetest.py
+@@ -0,0 +1,154 @@
++#!/usr/bin/env python3
++"""Host-side test of GH_VM_PROTECTED_SHARE / _SHARE_DMABUF / _UNSHARE on a running
++protected VM. The guest here is the gh_vmtest PSCI_OFF stub, so nothing accepts:
++this checks argument validation, handle issue, label bookkeeping, pin accounting,
++the DMA-BUF (udmabuf) source and the reclaim of live shares at VM fd close.
++Run as root (needs /dev/gunyah and /dev/udmabuf). Exit status = number of failures.
++"""
++import ctypes, errno, fcntl, mmap, os, struct, sys, time
++sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++import gh_vmtest as T
++
++def _IOWR(t, nr, size): return T._IOC(3, t, nr, size)
++GH_VM_PROTECTED_SHARE        = _IOWR("A", 0x18, 40)
++GH_VM_PROTECTED_SHARE_DMABUF = _IOWR("A", 0x19, 40)
++GH_VM_PROTECTED_UNSHARE      = T._IOW("A", 0x1a, 8)
++GH_CAP_PROTECTED_SHARE = 1
++UDMABUF_CREATE = T._IOW("u", 0x42, 24)
++MEM_RW, MEM_R = 0x3, 0x1
++BAD_HANDLES = (0, 0xffffffff)
++
++fails = 0
++def check(name, cond, detail=""):
++    global fails
++    print("  [%s] %s %s" % ("ok " if cond else "FAIL", name, detail))
++    if not cond: fails += 1
++
++def expect_errno(name, fn, err):
++    try:
++        fn(); check(name, False, "unexpectedly succeeded")
++    except OSError as e:
++        check(name, e.errno == err, "errno %d (%s), want %d" % (e.errno, e.strerror, err))
++
++def share(vm, label, flags, uaddr, size, reserved=0):
++    buf = bytearray(struct.pack("<IIQQQII", label, flags, 0, size, uaddr, 0, reserved))
++    fcntl.ioctl(vm, GH_VM_PROTECTED_SHARE, buf, True)
++    return struct.unpack_from("<I", buf, 32)[0]
++
++def share_dmabuf(vm, label, flags, fd, off, size):
++    buf = bytearray(struct.pack("<IIQQQiI", label, flags, 0, size, off, fd, 0))
++    fcntl.ioctl(vm, GH_VM_PROTECTED_SHARE_DMABUF, buf, True)
++    return struct.unpack_from("<I", buf, 36)[0]
++
++def unshare(vm, label, reserved=0):
++    fcntl.ioctl(vm, GH_VM_PROTECTED_UNSHARE, struct.pack("<II", label, reserved))
++
++def vmlck_kb():
++    """account_locked_vm() charges mm->locked_vm, reported as VmLck"""
++    for l in open("/proc/self/status"):
++        if l.startswith("VmLck:"): return int(l.split()[1])
++    return -1
++
++def anon(size):
++    m = mmap.mmap(-1, size, flags=mmap.MAP_PRIVATE | mmap.MAP_ANONYMOUS, prot=mmap.PROT_READ | mmap.PROT_WRITE)
++    m[0:size] = bytes(size)
++    return m, ctypes.addressof(ctypes.c_char.from_buffer(m))
++
++def run_guest_to_exit(vcpu, run):
++    for i in range(8):
++        fcntl.ioctl(vcpu, T.GUNYAH_VCPU_RUN)
++        reason, = struct.unpack_from("<I", run, 8)
++        if reason == 2:
++            st, = struct.unpack_from("<I", run, 16)
++            return {1: "LOAD_FAILED", 2: "EXITED", 3: "CRASHED"}.get(st, st)
++        if reason == 1:
++            struct.pack_into("<B", run, 16 + 8 + 8 + 4 + 1, 0)
++        elif reason == 3:
++            struct.pack_into("<B", run, 16 + 8 + 4, 1)
++    return "no STATUS exit"
++
++def main():
++    RAM_BASE, RAM_SIZE = 0x80000000, 0x400000
++    DTB_OFF, DTB_SIZE = 0x200000, 0x10000
++    GICD, GICR = 0x3FFF0000, 0x3FFD0000
++
++    lck_base = vmlck_kb()   # before any VM memory exists; the VM's own parcels charge locked_vm too
++    dev = os.open("/dev/gunyah", os.O_RDWR)
++    vm = fcntl.ioctl(dev, T.GUNYAH_CREATE_VM)
++    print("[0] VM fd %d" % vm)
++    check("CHECK_EXTENSION(PROTECTED_SHARE) == 1", fcntl.ioctl(vm, T.GH_VM_CHECK_EXTENSION, GH_CAP_PROTECTED_SHARE) == 1)
++
++    bufA, addrA = anon(4 << 20)
++    bufB, addrB = anon(1 << 20)
++    expect_errno("share before VM_START -> ENXIO", lambda: share(vm, 7, MEM_RW, addrA, 4 << 20), errno.ENXIO)
++
++    # Protected VM: lent image whose payload is PSCI SYSTEM_OFF.
++    mem, uaddr = anon(RAM_SIZE)
++    code = struct.pack("<%dI" % len(T.PSCI_OFF), *T.PSCI_OFF); mem[0:len(code)] = code
++    dtb = T.build_dtb(RAM_BASE, RAM_SIZE, GICD, GICR); mem[DTB_OFF:DTB_OFF + len(dtb)] = dtb
++    fcntl.ioctl(vm, T.GH_VM_ANDROID_LEND_USER_MEM, struct.pack("<IIQQQ", 0, T.MEM_RWX, RAM_BASE, RAM_SIZE, uaddr))
++    fcntl.ioctl(vm, T.GUNYAH_VM_SET_DTB_CONFIG, struct.pack("<QQ", RAM_BASE + DTB_OFF, DTB_SIZE))
++    fcntl.ioctl(vm, T.GUNYAH_VM_SET_BOOT_CONTEXT, struct.pack("<IIQ", T.REG_SET_PC, 0, RAM_BASE))
++    vcpu_arg = ctypes.c_uint32(0)
++    vcpu = fcntl.ioctl(vm, T.GUNYAH_VM_ADD_FUNCTION, bytearray(struct.pack("<IIQ", T.GUNYAH_FN_VCPU, 4, ctypes.addressof(vcpu_arg))), True)
++    run = mmap.mmap(vcpu, fcntl.ioctl(vcpu, T.GUNYAH_VCPU_MMAP_SIZE), flags=mmap.MAP_SHARED, prot=mmap.PROT_READ | mmap.PROT_WRITE)
++    fcntl.ioctl(vm, T.GUNYAH_VM_START)
++    print("[1] protected VM started (RUNNING, vCPU not yet run)")
++
++    pin0 = vmlck_kb()
++    print("[2] argument validation")
++    expect_errno("unaligned size -> EINVAL", lambda: share(vm, 7, MEM_RW, addrA, 4096 + 1), errno.EINVAL)
++    expect_errno("zero size -> EINVAL", lambda: share(vm, 7, MEM_RW, addrA, 0), errno.EINVAL)
++    expect_errno("unknown flag -> EINVAL", lambda: share(vm, 7, 0x100, addrA, 4096), errno.EINVAL)
++    expect_errno("reserved != 0 -> EINVAL", lambda: share(vm, 7, MEM_RW, addrA, 4096, reserved=1), errno.EINVAL)
++    expect_errno("unmapped VA -> EFAULT", lambda: share(vm, 7, MEM_RW, 0x10000, 4096), errno.EFAULT)
++    expect_errno("unshare unknown label -> ENOENT", lambda: unshare(vm, 99), errno.ENOENT)
++
++    print("[3] userspace buffer shares")
++    t0 = time.monotonic(); hA = share(vm, 7, MEM_RW, addrA, 4 << 20); dt = (time.monotonic() - t0) * 1000
++    check("share A 4 MiB label 7 RW", hA not in BAD_HANDLES, "handle %#x (%.2f ms)" % (hA, dt))
++    check("VmLck +4 MiB", vmlck_kb() - pin0 == 4096, "%d kB" % (vmlck_kb() - pin0))
++    expect_errno("duplicate label 7 -> EEXIST", lambda: share(vm, 7, MEM_RW, addrB, 1 << 20), errno.EEXIST)
++    check("VmLck unchanged after refused share", vmlck_kb() - pin0 == 4096, "%d kB" % (vmlck_kb() - pin0))
++    hB = share(vm, 8, MEM_R, addrB, 1 << 20)
++    check("share B 1 MiB label 8 RO", hB not in BAD_HANDLES and hB != hA, "handle %#x" % hB)
++    unshare(vm, 7); check("unshare A (guest never accepted)", True)
++    check("VmLck -4 MiB after unshare", vmlck_kb() - pin0 == 1024, "%d kB" % (vmlck_kb() - pin0))
++    hA2 = share(vm, 7, MEM_RW, addrA, 4 << 20)
++    check("re-share A under label 7", hA2 not in BAD_HANDLES, "handle %#x" % hA2)
++
++    print("[4] DMA-BUF (udmabuf over a sealed memfd)")
++    try:
++        mfd = os.memfd_create("gh-share", os.MFD_ALLOW_SEALING)
++        os.ftruncate(mfd, 2 << 20)
++        fcntl.fcntl(mfd, fcntl.F_ADD_SEALS, fcntl.F_SEAL_SHRINK)
++        with mmap.mmap(mfd, 2 << 20) as mm: mm[0:2 << 20] = bytes(2 << 20)
++        ud = os.open("/dev/udmabuf", os.O_RDWR)
++        dbuf = fcntl.ioctl(ud, UDMABUF_CREATE, bytearray(struct.pack("<IIQQ", mfd, 1, 0, 2 << 20)), True)
++        expect_errno("slice past end -> EINVAL", lambda: share_dmabuf(vm, 9, MEM_RW, dbuf, 1 << 20, 2 << 20), errno.EINVAL)
++        expect_errno("wrapping offset -> EOVERFLOW", lambda: share_dmabuf(vm, 9, MEM_RW, dbuf, (1 << 64) - 4096, 8192), errno.EOVERFLOW)
++        expect_errno("non-dmabuf fd -> EINVAL", lambda: share_dmabuf(vm, 9, MEM_RW, mfd, 0, 4096), errno.EINVAL)
++        hD = share_dmabuf(vm, 9, MEM_RW, dbuf, 1 << 20, 1 << 20)
++        check("share dmabuf slice [+1 MiB, 1 MiB) label 9", hD not in BAD_HANDLES, "handle %#x" % hD)
++        unshare(vm, 9); check("unshare dmabuf", True)
++        hD = share_dmabuf(vm, 9, MEM_RW, dbuf, 0, 2 << 20)
++        check("re-share whole dmabuf label 9", hD not in BAD_HANDLES, "handle %#x" % hD)
++        check("VmLck unaffected by dmabuf shares", vmlck_kb() - pin0 == 5120, "%d kB" % (vmlck_kb() - pin0))
++    except OSError as e:
++        check("dmabuf path", False, "setup failed: %s" % e)
++
++    print("[5] guest runs to SYSTEM_OFF with labels 7, 8, 9 still shared")
++    st = run_guest_to_exit(vcpu, run)
++    check("guest exit STATUS EXITED", st == "EXITED", st)
++    expect_errno("share after guest exit -> ENXIO", lambda: share(vm, 10, MEM_RW, addrB, 4096), errno.ENXIO)
++
++    print("[6] close VM fd with live shares -> teardown reclaims")
++    run.close(); os.close(vcpu)
++    t0 = time.monotonic(); os.close(vm); dt = (time.monotonic() - t0) * 1000
++    check("VmLck back to pre-VM baseline after close", vmlck_kb() == lck_base, "%d kB vs %d kB (close %.1f ms)" % (vmlck_kb(), lck_base, dt))
++    os.close(dev)
++    print("%d failure(s)" % fails)
++    return fails
++
++if __name__ == "__main__":
++    sys.exit(min(main(), 125))
+diff --git a/tools/virt/gunyah/gh_vmtest.py b/tools/virt/gunyah/gh_vmtest.py
+index 05b8697481cecbd195e5384d9c8bdff9f89317af..7a1d83bdcc9ae31bce75aff8a1de7327f96a700a 100755
+--- a/tools/virt/gunyah/gh_vmtest.py
++++ b/tools/virt/gunyah/gh_vmtest.py
+@@ -56,8 +56,11 @@ class FDT:
+         return struct.pack(">IIIIIIIIII", 0xd00dfeed, total, st, strs, rsv, 17, 16, 0,
+                            len(self.strings), len(self.struct)) + b"\0" * 16 + bytes(self.struct) + bytes(self.strings)
+ 
+-def build_dtb(ram_base, ram_size, gicd, gicr, shared=None, variant="none"):
+-    """shared = (gpa, size, label) of an extra SHARE binding, declared per variant"""
++def build_dtb(ram_base, ram_size, gicd, gicr, shared=None, variant="none", rm_rpc=False):
++    """shared = (gpa, size, label) of an extra SHARE binding, declared per variant
++    rm_rpc: ask the RM for an RM-RPC message queue pair (vdevice-type "rm-rpc"); the RM then
++    generates /hypervisor/qcom,resource-mgr with compatible "gunyah-resource-manager" and
++    reg = <tx_capid rx_capid>, which is what a guest needs to issue MEM_ACCEPT itself"""
+     f = FDT()
+     f.begin("")
+     f.u32("#address-cells", 2); f.u32("#size-cells", 2)
+@@ -71,6 +74,9 @@ def build_dtb(ram_base, ram_size, gicd, gicr, shared=None, variant="none"):
+     if shared and variant == "vmmio":
+         f.u64("vmmio-ranges", shared[0], shared[1])
+     f.begin("vdevices"); f.s("generate", "/hypervisor")
++    if rm_rpc:
++        f.begin("rm-rpc"); f.s("vdevice-type", "rm-rpc"); f.s("generate", "/hypervisor/qcom,resource-mgr")
++        f.prop("console-dev"); f.u32("message-size", 0xf0); f.u32("queue-depth", 8); f.u32("qcom,label", 1); f.end()
+     if shared and variant == "shm":
+         f.begin("shm-0"); f.s("vdevice-type", "shm"); f.prop("peer-default"); f.u64("dma_base", 0)
+         f.begin("memory"); f.prop("optional"); f.u32("label", shared[2]); f.u32("#address-cells", 2); f.u64("base", shared[0]); f.end()

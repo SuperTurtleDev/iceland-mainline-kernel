@@ -1,0 +1,64 @@
+From 69c0b0063c72148e75661be6c3696b214d228497 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 8 Oct 2026 08:59:42 -0500
+Subject: [PATCH] media: i2c: dw9719: DW9714V SAC tuning from the vendor
+ actuator init
+
+The vendor actuator init sequence for this module lives inside
+com.qti.sensormodule.icelandmain.bin (this CamX generation embeds the
+actuator driver there; there is no separate actuator library). It
+programs MODE 0x80 (SAC mode field 2) and FREQ 0x79 (prescaler 1,
+SACT 0x39). The chip's reset value of register 0x07 is 0x60, matching
+the DW9719/DW9800 prescaler-in-[7:6] / SACT-in-[5:0] layout rather
+than the public DW9714V datasheet.
+
+Give DW9714V its own defaults (SAC 2, freq 0x79) and move it to the
+DW9800K write path, where the SAC mode is shifted by 6. Verified on
+hardware by register readback (CONTROL 0x02, MODE 0x80, FREQ 0x79)
+and a three-frame capture at focus 450 with no I2C errors.
+---
+ drivers/media/i2c/dw9719.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/media/i2c/dw9719.c b/drivers/media/i2c/dw9719.c
+index 72ac7a5f56007ef941cf2cdb5c8718ba41c07df1..75b72161e3437351734108e27dafcb075f4c4001 100644
+--- a/drivers/media/i2c/dw9719.c
++++ b/drivers/media/i2c/dw9719.c
+@@ -51,6 +51,9 @@
+  * registers sit at the DW9719 offsets.
+  */
+ #define DW9714V_ID			0xFE
++/* vendor init for the OnePlus Pad 4 module: MODE 0x80, FREQ 0x79 */
++#define DW9714V_DEFAULT_SAC		2
++#define DW9714V_DEFAULT_VCM_FREQ	0x79
+ 
+ #define DW9719_CONTROL			CCI_REG8(2)
+ #define DW9719_STANDBY			0x00
+@@ -162,9 +165,8 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 		switch (val) {
+ 		case DW9714V_ID:
+ 			dw9719->model = DW9714V;
+-			dw9719->mode_low_bits = 0x00;
+-			dw9719->sac_mode = DW9719_DEFAULT_SAC;
+-			dw9719->vcm_freq = DW9719_DEFAULT_VCM_FREQ;
++			dw9719->sac_mode = DW9714V_DEFAULT_SAC;
++			dw9719->vcm_freq = DW9714V_DEFAULT_VCM_FREQ;
+ 			break;
+ 		case DW9719_ID:
+ 			dw9719->model = DW9719;
+@@ -201,6 +203,7 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 	}
+ 
+ 	switch (dw9719->model) {
++	case DW9714V:
+ 	case DW9800K:
+ 		cci_write(dw9719->regmap, DW9719_CONTROL, DW9719_ENABLE_RINGING, &ret);
+ 		cci_write(dw9719->regmap, DW9719_MODE,
+@@ -224,7 +227,6 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 		cci_write(dw9719->regmap, DW9761_VCM_PRELOAD,
+ 			  DW9761_DEFAULT_VCM_PRELOAD, &ret);
+ 		fallthrough;
+-	case DW9714V:
+ 	case DW9719:
+ 		cci_write(dw9719->regmap, DW9719_CONTROL, DW9719_ENABLE_RINGING, &ret);
+ 		cci_write(dw9719->regmap, DW9719_MODE, dw9719->mode_low_bits |

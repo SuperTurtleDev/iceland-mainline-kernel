@@ -1,0 +1,93 @@
+From cc9c7c98d9dae587d62edeae0c2da3f4aa7b5638 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 8 Oct 2026 09:18:17 -0500
+Subject: [PATCH] media: qcom: iceland: declare camera orientation, fix
+ mirrored rear image
+
+GNOME treated both sensors as webcams because the driver exposed no
+orientation/rotation, which left the rear image mirrored. Parse the
+fwnode device properties in smartsens-sc and expose them as the
+V4L2_CID_CAMERA_ORIENTATION/ROTATION controls libcamera reads, and
+declare the mount orientation in DT: rear camera@36 = <1> (back),
+front camera@10 = <0> (front).
+
+No rotation property: the vendor sensor-position-roll of 90 does not
+translate into a userspace rotation on this pipeline - declaring it
+made libcamera rotate the image 90 degrees and dropped the camera
+nodes, so orientation only.
+
+Verified on the device: subdev controls report Back/Front with no
+rotation control, two libcamera camera nodes, rear image orientation
+correct in GNOME.
+---
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    |  4 ++++
+ drivers/media/i2c/smartsens-sc.c              | 19 ++++++++++++++++---
+ 2 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index e85c2a0f3f594468a297338f6058871ad9a593c7..c4d10f2d5fe65826d6d21dbcea63b35170fa2c1f 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1059,6 +1059,8 @@ camera_rear: camera@36 {
+ 		compatible = "smartsens,sc1300cs";
+ 		reg = <0x36>;
+ 
++		orientation = <1>;
++
+ 		clocks = <&rpmhcc RPMH_DIV_CLK1>;
+ 
+ 		/* vendor drives the pin high while the sensor runs */
+@@ -1102,6 +1104,8 @@ camera_front: camera@10 {
+ 		compatible = "smartsens,sc820cs";
+ 		reg = <0x10>;
+ 
++		orientation = <0>;
++
+ 		clocks = <&rpmhcc RPMH_DIV_CLK1>;
+ 
+ 		reset-gpios = <&pmh0110_g_e0_gpios 13 GPIO_ACTIVE_LOW>;
+diff --git a/drivers/media/i2c/smartsens-sc.c b/drivers/media/i2c/smartsens-sc.c
+index bd9bba9db61d2184aa7cb11d2eae8f2ff1b4d89c..26a13ea933570587cbfa6a24b97d33edbeb681f5 100644
+--- a/drivers/media/i2c/smartsens-sc.c
++++ b/drivers/media/i2c/smartsens-sc.c
+@@ -782,10 +782,11 @@ static int sc_init_controls(struct sc_sensor *sc)
+ 	struct v4l2_ctrl_handler *hdl = &sc->ctrls;
+ 	const s64 *link_freq = chip == &sc1300cs_info ? sc1300cs_link_freq :
+ 							sc820cs_link_freq;
++	struct v4l2_fwnode_device_properties props;
+ 	struct v4l2_ctrl *ctrl;
+ 	int ret;
+ 
+-	ret = v4l2_ctrl_handler_init(hdl, 7);
++	ret = v4l2_ctrl_handler_init(hdl, 9);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -825,13 +826,25 @@ static int sc_init_controls(struct sc_sensor *sc)
+ 
+ 	if (hdl->error) {
+ 		ret = hdl->error;
+-		v4l2_ctrl_handler_free(hdl);
+-		return ret;
++		goto err_free;
+ 	}
+ 
++	/* orientation/rotation from DT: libcamera derives Location from these */
++	ret = v4l2_fwnode_device_parse(sc->dev, &props);
++	if (ret)
++		goto err_free;
++
++	ret = v4l2_ctrl_new_fwnode_properties(hdl, &sc_ctrl_ops, &props);
++	if (ret)
++		goto err_free;
++
+ 	sc->sd.ctrl_handler = hdl;
+ 
+ 	return 0;
++
++err_free:
++	v4l2_ctrl_handler_free(hdl);
++	return ret;
+ }
+ 
+ static int sc_parse_endpoint(struct sc_sensor *sc)

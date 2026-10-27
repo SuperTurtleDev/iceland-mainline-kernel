@@ -1,0 +1,22 @@
+From aa36d0f611d6dca6b89fa839902ef4c6d8b19751 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Tue, 27 Oct 2026 06:01:25 -0500
+Subject: [PATCH 79/79] virt: gunyah: use the 7.3 mapping reverse-map iterator
+
+---
+ drivers/virt/gunyah/vm_mgr.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/virt/gunyah/vm_mgr.h b/drivers/virt/gunyah/vm_mgr.h
+index 99f74a32fa367a5496b820c8141ff3faf2db6343..06f217e60451451a6bdbc60d5b4008a8b3745340 100644
+--- a/drivers/virt/gunyah/vm_mgr.h
++++ b/drivers/virt/gunyah/vm_mgr.h
+@@ -178,7 +178,7 @@ static bool folio_mmapped(struct folio *folio)
+ 	bool ret = false;
+ 
+ 	i_mmap_lock_read(mapping);
+-	vma_interval_tree_foreach(vma, &mapping->i_mmap, folio->index,
++	mapping_rmap_tree_foreach(vma, mapping, folio->index,
+ 				  folio->index + folio_nr_pages(folio)) {
+ 		ret = true;
+ 		break;

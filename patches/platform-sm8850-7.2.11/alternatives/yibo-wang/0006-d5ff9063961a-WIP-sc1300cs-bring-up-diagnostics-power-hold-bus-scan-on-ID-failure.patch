@@ -1,0 +1,86 @@
+From d5ff9063961ad1aea1ba4009578fd5fa3c190fc3 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 8 Oct 2026 03:23:04 -0500
+Subject: [PATCH] WIP: sc1300cs bring-up diagnostics (power-hold + bus scan on
+ ID failure)
+
+---
+ drivers/media/i2c/sc1300cs.c | 44 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/i2c/sc1300cs.c b/drivers/media/i2c/sc1300cs.c
+index e79efa5cd79db88d186d6b5b5a30a45606613750..1344dd1d1bcc1f548eeb1451d64ae8d57a4d1a72 100644
+--- a/drivers/media/i2c/sc1300cs.c
++++ b/drivers/media/i2c/sc1300cs.c
+@@ -36,6 +36,13 @@
+ 
+ #define SC13XX_XCLK_FREQ		19200000
+ 
++/* bring-up diagnosis: keep power on for N seconds after a failed chip-ID
++ * read so i2cdetect can scan the bus while the sensor is alive
++ */
++static unsigned int hold_power_on_fail = 20;
++module_param(hold_power_on_fail, uint, 0644);
++MODULE_PARM_DESC(hold_power_on_fail, "seconds to keep power after failed ID read");
++
+ struct sc13xx {
+ 	struct v4l2_subdev sd;
+ 	struct media_pad pad;
+@@ -132,12 +139,38 @@ static int sc13xx_power_off(struct device *dev)
+ 	return 0;
+ }
+ 
++/* bring-up: scan the bus for ACKing addresses while power is held */
++static void sc13xx_scan_bus(struct i2c_client *client)
++{
++	unsigned char buf[1];
++	struct i2c_msg msg = {
++		.flags = I2C_M_RD,
++		.buf = buf,
++		.len = 1,
++	};
++	char hits[512];
++	int n = 0;
++	u16 addr;
++
++	for (addr = 0x03; addr < 0x78; addr++) {
++		msg.addr = addr;
++		if (i2c_transfer(client->adapter, &msg, 1) == 1)
++			n += scnprintf(hits + n, sizeof(hits) - n, "%02x ", addr);
++	}
++
++	dev_info(&client->dev, "bus scan ACKs: %s\n", n > 0 ? hits : "(none)");
++}
++
+ static int sc13xx_identify(struct sc13xx *sc13xx)
+ {
+ 	struct i2c_client *client = v4l2_get_subdevdata(&sc13xx->sd);
+ 	u64 chip_id = 0;
+ 	int ret;
+ 
++	dev_info(&client->dev, "xclk %lu Hz, reset gpio level %d\n",
++		 clk_get_rate(sc13xx->xclk),
++		 sc13xx->reset ? gpiod_get_value_cansleep(sc13xx->reset) : -1);
++
+ 	ret = cci_read(sc13xx->regmap, SC13XX_REG_CHIP_ID, &chip_id, NULL);
+ 	if (ret)
+ 		return dev_err_probe(&client->dev, ret,
+@@ -236,8 +269,17 @@ static int sc13xx_probe(struct i2c_client *client)
+ 		return ret;
+ 
+ 	ret = sc13xx_identify(sc13xx);
+-	if (ret)
++	if (ret) {
++		if (hold_power_on_fail) {
++			dev_warn(&client->dev,
++				 "ID read failed; keeping power on %u s for bus scanning\n",
++				 hold_power_on_fail);
++			msleep(200);
++			sc13xx_scan_bus(client);
++			msleep(hold_power_on_fail * 1000);
++		}
+ 		goto err_power_off;
++	}
+ 
+ 	sc13xx->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+ 	sc13xx->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;

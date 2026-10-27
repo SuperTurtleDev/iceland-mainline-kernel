@@ -1,0 +1,23 @@
+--- bf079c30d01f3cd98e858b488244f3ae0faa1742
+
++++ 860f49637eb00acc4eda553392fc4208a48befaf
+
+@@ -49,6 +49,7 @@
+
+ +				   BIT(NL80211_IFTYPE_P2P_CLIENT) |
+ +				   BIT(NL80211_IFTYPE_P2P_GO),
+ +		.supports_monitor = true,
+++		.supports_cong_ctrl_max_msdus = false,
+ +
+ +		.idle_ps = true,
+ +		.download_calib = false,
+@@ -101,6 +102,8 @@
+
+ +			.max_client_dbs = 128,
+ +			.max_client_dbs_sbs = 128,
+ +		},
+++
+++		.host_alloc_ml_id = false,
+ +	},
+ diff --git a/drivers/net/wireless/ath/ath12k/wifi7/pci.c b/drivers/net/wireless/ath/ath12k/wifi7/pci.c
+ +#define WCN7860_DEVICE_ID		0x110e

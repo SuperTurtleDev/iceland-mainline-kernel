@@ -1,0 +1,93 @@
+From 8430ac47e620928023efdcb5b03811f3a220d532 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 8 Jun 2026 10:03:14 +0000
+Subject: [PATCH] drm/msm/dpu: Add missing rect offsets for Kaanapali DMA SSPP
+
+---
+ .../drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h   | 12 ++++++------
+ drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c       | 12 ++++++++++++
+ 2 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h b/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
+index 06da1583fb1eb462f00c03fca4bc8ee038e08986..85f455a9f29c8d6db17487f1affaa497598fb6fe 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
++++ b/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
+@@ -86,42 +86,42 @@ static const struct dpu_sspp_cfg kaanapali_sspp[] = {
+ 		.name = "sspp_8", .id = SSPP_DMA0,
+ 		.base = 0x97000, .len = 0x84,
+ 		.features = DMA_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 1,
+ 		.type = SSPP_TYPE_DMA,
+ 	}, {
+ 		.name = "sspp_9", .id = SSPP_DMA1,
+ 		.base = 0xa0000, .len = 0x84,
+ 		.features = DMA_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 5,
+ 		.type = SSPP_TYPE_DMA,
+ 	}, {
+ 		.name = "sspp_10", .id = SSPP_DMA2,
+ 		.base = 0xa9000, .len = 0x84,
+ 		.features = DMA_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 9,
+ 		.type = SSPP_TYPE_DMA,
+ 	}, {
+ 		.name = "sspp_11", .id = SSPP_DMA3,
+ 		.base = 0xb2000, .len = 0x84,
+ 		.features = DMA_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 13,
+ 		.type = SSPP_TYPE_DMA,
+ 	}, {
+ 		.name = "sspp_12", .id = SSPP_DMA4,
+ 		.base = 0xbb000, .len = 0x84,
+ 		.features = DMA_CURSOR_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 14,
+ 		.type = SSPP_TYPE_DMA,
+ 	}, {
+ 		.name = "sspp_13", .id = SSPP_DMA5,
+ 		.base = 0xc4000, .len = 0x84,
+ 		.features = DMA_CURSOR_SDM845_MASK_SDMA,
+-		.sblk = &dpu_dma_sblk,
++		.sblk = &dpu_dma_sblk_v13,
+ 		.xin_id = 15,
+ 		.type = SSPP_TYPE_DMA,
+ 	},
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
+index 2e10add84fd71ff4655e8e2f20e65bd1e10e370f..00b307366dcfb35b084521cc41cd5b657be92be9 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
++++ b/drivers/gpu/drm/msm/disp/dpu1/dpu_hw_catalog.c
+@@ -303,6 +303,16 @@ static const u32 wb2_formats_rgb_yuv[] = {
+ 	.num_formats = ARRAY_SIZE(plane_formats), \
+ 	}
+ 
++#define _DMA_SBLK_V13() \
++	{ \
++	.sspp_rec0_blk = {.name = "sspp_rec0", \
++		.base = 0x1000, .len = 0x180,},	\
++	.sspp_rec1_blk = {.name = "sspp_rec1", \
++		.base = 0x3000, .len = 0x180,},	\
++	.format_list = plane_formats, \
++	.num_formats = ARRAY_SIZE(plane_formats), \
++	}
++
+ static const struct dpu_rotation_cfg dpu_rot_sc7280_cfg_v2 = {
+ 	.rot_maxheight = 1088,
+ 	.rot_num_formats = ARRAY_SIZE(rotation_v2_formats),
+@@ -353,6 +363,8 @@ static const struct dpu_sspp_sub_blks dpu_rgb_sblk = _RGB_SBLK();
+ 
+ static const struct dpu_sspp_sub_blks dpu_dma_sblk = _DMA_SBLK();
+ 
++static const struct dpu_sspp_sub_blks dpu_dma_sblk_v13 = _DMA_SBLK_V13();
++
+ /*************************************************************
+  * MIXER sub blocks config
+  *************************************************************/

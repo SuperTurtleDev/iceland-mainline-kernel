@@ -1,0 +1,31 @@
+From 16c9f5076dbd593266a8db38031b400028ca51bd Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Mon, 13 Jul 2026 19:15:23 +0000
+Subject: [PATCH 28/79] ICELAND: Reserve llcc_lpi_mem to fix Gunyah crash
+
+instruction/data abort from VM 3, ESR_EL2 = 0x92000035, fault VA = 0xaaaafd67cbd0, fault IPA = 0x0, ELR_EL2 = 0xffffbbeb9618
+Abort: Unhandled instruction/data abort from PC 0xffffffff4020ed2c, FP 0xffffffe9fe080e60
+Making SMC call TZ_SECURE_WDOG_TRIGGER_ID
+
+0xaaaafd67cbd0 is 0xffe7cbd0
+0xffffbbeb9618 is 0x8cc17e618 contains "ldaddal w1, w1, [x0]"
+---
+ arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 383576a9982513604377068a0febfa93339b5b50..6e59cf499386892fc4061ea7e28ead121d231e56 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -213,6 +213,11 @@ tz_merged_mem: tz-merged@d8000000 {
+ 			reg = <0x0 0xd8000000 0x0 0x800000>;
+ 			no-map;
+ 		};
++
++		llcc_lpi_mem: llcc-lpi@ff800000 {
++			reg = <0x0 0xff800000 0x0 0x800000>;
++			no-map;
++		};
+ 	};
+ 
+ 	sound {

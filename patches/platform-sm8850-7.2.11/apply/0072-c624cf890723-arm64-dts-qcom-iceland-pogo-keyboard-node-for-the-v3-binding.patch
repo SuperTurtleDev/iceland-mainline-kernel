@@ -1,0 +1,41 @@
+From 5e5c0e39348621ba3fb1417c62e76a1b9499b3d0 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Tue, 13 Oct 2026 05:45:07 -0500
+Subject: [PATCH] arm64: dts: qcom: iceland: pogo keyboard node for the v3
+ binding
+X-Original-Commit: c624cf890723ecff6e4f97f6d91a7e81cb006eef
+X-Original-Committer: Yibo Wang <wyibo6109@gmail.com>
+X-Original-Committer-Date: 2026-10-13T05:45:07-05:00
+
+Switch the uart17 keyboard node to the project compatible
+(oneplus,iceland-pogo-keyboard) and drop the touchpad-xy-max /
+touchpad-xy-resolution properties: the v3 driver carries the touchpad
+geometry and feature set per project in OF match data (iceland: wake
+notification + keyboard backlight).
+---
+ arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 94a6e7b2bf99dc8956a9461da31a5b9d7cf69756..0e11ebe17a4aecd2f74c4a32c3f25226ee7e7926 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1710,7 +1710,7 @@ &uart17 {
+ 	status = "okay";
+ 
+ 	keyboard {
+-		compatible = "oneplus,pogo-keyboard";
++		compatible = "oneplus,iceland-pogo-keyboard";
+ 
+ 		pinctrl-0 = <&pogo_kbd_wake_default>,
+ 			    <&pogo_kbd_power_default>,
+@@ -1720,9 +1720,6 @@ keyboard {
+ 		power-gpios = <&pmh0110_f_e0_gpios 12 GPIO_ACTIVE_HIGH>;
+ 		tx-enable-gpios = <&pmh0110_d_e0_gpios 6 GPIO_ACTIVE_HIGH>;
+ 		wake-gpios = <&tlmm 151 GPIO_ACTIVE_LOW>;
+-
+-		touchpad-xy-max = <2560 1440>;
+-		touchpad-xy-resolution = <24 25>;
+ 	};
+ };
+ 

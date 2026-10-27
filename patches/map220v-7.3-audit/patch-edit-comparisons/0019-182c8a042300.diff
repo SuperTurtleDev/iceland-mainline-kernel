@@ -1,0 +1,26 @@
+--- cb5e37b615799af2e69f53bd1ff39a51ce46b810
+
++++ 182c8a042300286ff3205f6b4730ce1685d2da2a
+
+@@ -11,7 +11,7 @@
+
+ +	status = "okay";
+ +
+ +	display_panel: panel@0 {
+-+		compatible = "oneplus,iceland-nt36536", "novatek,nt36536";
+++		compatible = "csot,ppd200ub2";
+ +		reg = <0>;
+ +
+ +		//Reset GPIO, TE GPIO, Paired Master TE, Paired Slave TE, Paired Reset
+@@ -26,8 +26,8 @@
+
+ +		pinctrl-names = "default", "sleep";
+ +
+ +		vddio-supply = <&vreg_l12b_1p9>;
+-+		avdd-supply = <&lcd_vddpos_5p5>;
+-+		avee-supply = <&lcd_vddneg_5p5>;
+++		vsp-supply = <&lcd_vddpos_5p5>;
+++		vsn-supply = <&lcd_vddneg_5p5>;
+ +
+ +		reset-gpios = <&tlmm 171 GPIO_ACTIVE_LOW>;
+ +		backlight = <&backlight>;

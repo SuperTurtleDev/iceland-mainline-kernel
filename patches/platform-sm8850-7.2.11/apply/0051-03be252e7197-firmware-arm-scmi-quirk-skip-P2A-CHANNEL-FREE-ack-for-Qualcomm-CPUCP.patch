@@ -1,0 +1,92 @@
+From 3a2631468a527359210fd76b13ec59ffb7aa286b Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Wed, 7 Oct 2026 03:38:39 -0500
+Subject: [PATCH] firmware: arm_scmi: quirk: skip P2A CHANNEL_FREE ack for
+ Qualcomm CPUCP
+X-Original-Commit: 03be252e7197ca8f392691fd9ab4026aaa5e79ea
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-07T03:38:39-05:00
+
+On Kaanapali the agent's iowrite32(CHANNEL_FREE) to the P2A shmem
+channel_status (phys 0x81f08004), issued from the notification IRQ in
+response to the first PERFORMANCE_LIMITS_CHANGED, never completes: CPU0
+wedges on that store in hardirq context, no backtrace IPI lands, and the
+box sits at the RCU stall report until power-cycled.  Every access
+before it in the same handler (RX_MBOX_STAT/CMD MMIO, P2A header and
+payload reads, both xfer_lock spinlocks, kfifo, queue_work) completes,
+and the same word is writable from the AP at other times, so this is
+not a dead bus; the write is rejected only in that window.
+
+It only shows up after a cold soak because CPUCP sends the limits
+notification only when it actually changes a limit, i.e. when it
+throttles during a cold boot; warm boots never take the write at all.
+
+CPUCP ("PDP0") does not consume the SMT handshake on the P2A channel:
+with the write skipped, notifications keep arriving under load.  Key a
+quirk on the BASE-protocol identity Qualcomm/PDP0 and return early from
+scmi_clear_channel() for P2A channels, which covers notifications and
+delayed responses on every transport.  The quirk is registered in
+scmi_quirks_table[]; a DEFINE_SCMI_QUIRK() alone is never hashed and
+silently stays disabled.
+
+Verified across the cold-soak reproduction: boots, and the quirk is
+listed by "Enabling SCMI Quirk" at probe.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ drivers/firmware/arm_scmi/driver.c | 3 +++
+ drivers/firmware/arm_scmi/quirks.c | 8 ++++++++
+ drivers/firmware/arm_scmi/quirks.h | 1 +
+ 3 files changed, 12 insertions(+)
+
+diff --git a/drivers/firmware/arm_scmi/driver.c b/drivers/firmware/arm_scmi/driver.c
+index ef29fd223287dd5843d336cfbe0429d234e7aa3e..ae6fd2bdd28bbd54a91cba173b1168bc8e1bc190 100644
+--- a/drivers/firmware/arm_scmi/driver.c
++++ b/drivers/firmware/arm_scmi/driver.c
+@@ -1072,6 +1072,9 @@ static inline void scmi_clear_channel(struct scmi_info *info,
+ 		return;
+ 	}
+ 
++	/* Platform does not consume the P2A CHANNEL_FREE ack; skip the write */
++	SCMI_QUIRK(p2a_no_channel_free_ack, { return; });
++
+ 	if (info->desc->ops->clear_channel)
+ 		info->desc->ops->clear_channel(cinfo);
+ }
+diff --git a/drivers/firmware/arm_scmi/quirks.c b/drivers/firmware/arm_scmi/quirks.c
+index 9ed5ce4feded1652adba92786bb444ce43329951..ac2adb20cfa20eaad5777cf8dba123c18d588553 100644
+--- a/drivers/firmware/arm_scmi/quirks.c
++++ b/drivers/firmware/arm_scmi/quirks.c
+@@ -172,6 +172,13 @@ struct scmi_quirk {
+ /* Global Quirks Definitions */
+ DEFINE_SCMI_QUIRK(clock_rates_triplet_out_of_spec, NULL, NULL, NULL);
+ DEFINE_SCMI_QUIRK(perf_level_get_fc_force, "Qualcomm", NULL, "0x20000-");
++/*
++ * Qualcomm CPUCP ("PDP0") does not implement the SMT channel_status
++ * handshake on the P2A channel: notifications keep flowing without the
++ * agent ever writing CHANNEL_FREE, and on Kaanapali the agent's write of
++ * that flag from the notification IRQ never completes and wedges the CPU.
++ */
++DEFINE_SCMI_QUIRK(p2a_no_channel_free_ack, "Qualcomm", "PDP0", NULL);
+ 
+ /*
+  * Quirks Pointers Array
+@@ -182,6 +189,7 @@ DEFINE_SCMI_QUIRK(perf_level_get_fc_force, "Qualcomm", NULL, "0x20000-");
+ static struct scmi_quirk *scmi_quirks_table[] = {
+ 	__DECLARE_SCMI_QUIRK_ENTRY(clock_rates_triplet_out_of_spec),
+ 	__DECLARE_SCMI_QUIRK_ENTRY(perf_level_get_fc_force),
++	__DECLARE_SCMI_QUIRK_ENTRY(p2a_no_channel_free_ack),
+ 	NULL
+ };
+ 
+diff --git a/drivers/firmware/arm_scmi/quirks.h b/drivers/firmware/arm_scmi/quirks.h
+index d8ba60b956522d046d1da43bbb6ac4ebe6a65fde..2330aed495bf5311cb1cbbfb953c4f77b0e70793 100644
+--- a/drivers/firmware/arm_scmi/quirks.h
++++ b/drivers/firmware/arm_scmi/quirks.h
+@@ -48,5 +48,6 @@ static inline void scmi_quirks_enable(struct device *dev, const char *vend,
+ /* Quirk delarations */
+ DECLARE_SCMI_QUIRK(clock_rates_triplet_out_of_spec);
+ DECLARE_SCMI_QUIRK(perf_level_get_fc_force);
++DECLARE_SCMI_QUIRK(p2a_no_channel_free_ack);
+ 
+ #endif /* _SCMI_QUIRKS_H */

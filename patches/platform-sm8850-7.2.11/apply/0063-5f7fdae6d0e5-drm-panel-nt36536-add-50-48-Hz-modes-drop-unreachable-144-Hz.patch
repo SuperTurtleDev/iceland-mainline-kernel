@@ -1,0 +1,83 @@
+From 27700e8cf471ff9a8c05c223f3ebb16de2e7b42d Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Sat, 10 Oct 2026 11:33:38 -0500
+Subject: [PATCH] drm/panel: nt36536: add 50/48 Hz modes, drop unreachable 144
+ Hz
+X-Original-Commit: 5f7fdae6d0e532ded0f7a4c06b15406b0743123f
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-10T11:33:38-05:00
+
+Add the two missing downstream DFPS rates (50 and 48 Hz) to the iceland
+CSOT mode table; the porch values come from the vendor DFPS lists
+(hfp 420, hsync 160, hbp 320, vfp 2010/2196, vbp 52 - per-DSI vendor
+values doubled to full-frame width).
+
+Drop the 144 Hz mode: dpu_crtc_mode_valid() requires a 662 MHz DPU core
+clock for its 1261 MHz pixel clock (mode clock * 105% inefficiency / 2
+with the 3D merge), above the 650 MHz MDP ceiling in the kaanapali
+dispcc plan, so it was silently pruned from the connector list anyway.
+---
+ drivers/gpu/drm/panel/panel-novatek-nt36536.c | 43 +++++++++++++------
+ 1 file changed, 31 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/gpu/drm/panel/panel-novatek-nt36536.c b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+index ae9185b4a660589695468bfe95cd7a0952b68c01..ddb695350534cbc3bff3cc6c27fff30e9569e60c 100644
+--- a/drivers/gpu/drm/panel/panel-novatek-nt36536.c
++++ b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+@@ -217,18 +217,13 @@ static int iceland_csot_init_sequence(struct panel_info *pinfo)
+ }
+ 
+ static const struct drm_display_mode iceland_csot_modes[] = {
+-	{
+-		/* 144Hz */
+-		.clock = (3392 + 68 + 32 + 40) * (2400 + 26 + 2 + 52) * 144 / 1000,
+-		.hdisplay = 3392,
+-		.hsync_start = 3392 + 68,
+-		.hsync_end = 3392 + 68 + 32,
+-		.htotal = 3392 + 68 + 32 + 40,
+-		.vdisplay = 2400,
+-		.vsync_start = 2400 + 26,
+-		.vsync_end = 2400 + 26 + 2,
+-		.vtotal = 2400 + 26 + 2 + 52,
+-	},
++	/*
++	 * The downstream 144Hz timing (hfp 68, hsync 32, hbp 40, vfp 26, vbp 52)
++	 * is deliberately absent: its 1261 MHz pixel clock needs a 662 MHz DPU
++	 * core clock (mode clock * 105% / 2 with the 3D merge), above the 650 MHz
++	 * MDP ceiling in the kaanapali dispcc clock plan, so dpu_crtc_mode_valid()
++	 * prunes it from the connector mode list anyway.
++	 */
+ 	{
+ 		/* 120Hz */
+ 		.clock = (3392 + 100 + 64 + 104) * (2400 + 26 + 2 + 272) * 120 / 1000,
+@@ -265,6 +260,30 @@ static const struct drm_display_mode iceland_csot_modes[] = {
+ 		.vsync_end = 2400 + 2726 + 2,
+ 		.vtotal = 2400 + 2726 + 2 + 272,
+ 	},
++	{
++		/* 50Hz */
++		.clock = (3392 + 420 + 160 + 320) * (2400 + 2010 + 2 + 52) * 50 / 1000,
++		.hdisplay = 3392,
++		.hsync_start = 3392 + 420,
++		.hsync_end = 3392 + 420 + 160,
++		.htotal = 3392 + 420 + 160 + 320,
++		.vdisplay = 2400,
++		.vsync_start = 2400 + 2010,
++		.vsync_end = 2400 + 2010 + 2,
++		.vtotal = 2400 + 2010 + 2 + 52,
++	},
++	{
++		/* 48Hz */
++		.clock = (3392 + 420 + 160 + 320) * (2400 + 2196 + 2 + 52) * 48 / 1000,
++		.hdisplay = 3392,
++		.hsync_start = 3392 + 420,
++		.hsync_end = 3392 + 420 + 160,
++		.htotal = 3392 + 420 + 160 + 320,
++		.vdisplay = 2400,
++		.vsync_start = 2400 + 2196,
++		.vsync_end = 2400 + 2196 + 2,
++		.vtotal = 2400 + 2196 + 2 + 52,
++	},
+ 	{
+ 		/* 30Hz */
+ 		.clock = (3392 + 100 + 64 + 104) * (2400 + 8126 + 2 + 272) * 30 / 1000,

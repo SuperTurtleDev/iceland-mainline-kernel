@@ -1,0 +1,30 @@
+From aa2aab0526195862ea0a03cf02670a67d1847e8f Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Tue, 6 Oct 2026 02:09:28 -0500
+Subject: [PATCH] arm64: dts: qcom: kaanapali: drop duplicate enable-gpios from
+ second ktz8869 node
+
+Both KTZ8869 nodes (i2c14 master + i2c15 slave) declared the same
+enable-gpios = <&tlmm 1>.  The second declaration made gpiolib classify
+the line shared and route it through the gpio-shared-proxy auxiliary
+chip, so the built-in backlight driver deferred until udev loaded that
+module -- the 20-retry probe storm behind the probabilistic boot stall.
+HWEN belongs to the i2c14 master alone.
+---
+ arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 76d7b7e61ac5411ee8d6d6d2214e5250f96a91a3..92a34d583b68761a901d29b3058180b064a74425 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1015,7 +1015,8 @@ backlight@11 {
+ 		compatible = "kinetic,ktz8869b";
+ 		reg = <0x11>;
+ 		vin-supply = <&vph_pwr>;
+-		enable-gpios = <&tlmm 1 GPIO_ACTIVE_HIGH>;
++		/* enable (HWEN, tlmm 1) is owned by the i2c14 master node;
++		 * duplicating it here made gpiolib classify the line shared */
+ 	};
+ };
+ 

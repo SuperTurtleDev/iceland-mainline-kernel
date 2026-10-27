@@ -1,0 +1,26 @@
+From 8f1ef42eb53ddd65ae909d0de3566186fe5256cf Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Wed, 16 Sep 2026 09:27:43 +0000
+Subject: [PATCH 30/79] Revert "arm64: dts: qcom: kaanapali: Fix the PCIe
+ iommu-map entries"
+
+This reverts commit 35eda0e5f87d52ed9f015f8a44155e8ab2ad9c5a.
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index be9debdc6ac4ef38d0637fee48d0ebe513259096..c35aa501a2c351f8b552f633a9dc0e1df05c5324 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -2441,8 +2441,8 @@ &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>,
+ 
+ 			operating-points-v2 = <&pcie0_opp_table>;
+ 
+-			iommu-map = <0 &apps_smmu 0x1400 0x0 0x1>,
+-				    <0x100 &apps_smmu 0x1401 0x0 0x1>;
++			iommu-map = <0 &apps_smmu 0x1400 0x1>,
++				    <0x100 &apps_smmu 0x1401 0x1>;
+ 
+ 			interrupt-map = <0 0 0 1 &intc 0 0 GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH>,
+ 					<0 0 0 2 &intc 0 0 GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH>,

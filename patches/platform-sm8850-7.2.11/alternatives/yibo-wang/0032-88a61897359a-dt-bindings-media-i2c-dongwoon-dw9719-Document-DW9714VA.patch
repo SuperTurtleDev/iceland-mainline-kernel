@@ -1,0 +1,55 @@
+From 88a61897359a231f9b19b1b84d135bd7c25813c4 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Fri, 16 Oct 2026 03:28:20 -0500
+Subject: [PATCH] dt-bindings: media: i2c: dongwoon,dw9719: Document DW9714VA
+
+The dongwoon,dw9714va compatible names a DW9714V silicon revision.
+DW9714VA is not an official part number: it is coined to distinguish
+this revision, which shares its IC INFO id (0xFE) with the other
+DW9714V revisions.
+
+In its register-mapped ("advanced") mode it exposes the DW9719
+register interface, with the SAC mode field in MODE shifted by 6 like
+on the DW9800K.  This differs from the advanced-mode layout of the
+currently available DW9714V datasheet (Rev. 0.03G), which puts
+SAC_MODE in [3:0] of SAC_CFG and splits the prescaler and SACT into
+separate registers.
+
+The datasheet-conformant DW9714V and DW9714A, used in their normal
+(direct DAC) mode, are covered by the dongwoon,dw9714 binding
+instead; see the in-flight series by David Heidelberg documenting
+them:
+
+https://lore.kernel.org/linux-media/20260729-dw9714v-v1-0-3c479b3cf8c0@ixit.cz/
+
+The module-specific SAC tuning is carried by the already-documented
+dongwoon,sac-mode and dongwoon,vcm-prescale properties.
+
+Cc: David Heidelberg <david@ixit.cz>
+Signed-off-by: Yibo Wang <wyibo6109@gmail.com>
+---
+ .../devicetree/bindings/media/i2c/dongwoon,dw9719.yaml     | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+index 8e8d62436e0d0c4f9af9e52262b23881abd37cec..63fe750752c24ea9b3ed07d9f65a3128f85b1db9 100644
+--- a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+@@ -14,10 +14,17 @@ description:
+   with 100 mA output current sink capability, designed for linear control of
+   voice coil motors (VCM) in camera lenses. This chip provides a Smart Actuator
+   Control (SAC) mode intended for driving voice coil lenses in camera modules.
++  The DW9714VA, a DW9714V silicon revision, exposes this register
++  interface in its register-mapped ("advanced") mode, with a register
++  layout following the DW9719 rather than the DW9714V datasheet.
++  dongwoon,dw9714va is not an official part number; it is coined to
++  name this revision, which shares its IC INFO id with the other
++  DW9714V revisions.
+ 
+ properties:
+   compatible:
+     enum:
++      - dongwoon,dw9714va
+       - dongwoon,dw9718s
+       - dongwoon,dw9719
+       - dongwoon,dw9761

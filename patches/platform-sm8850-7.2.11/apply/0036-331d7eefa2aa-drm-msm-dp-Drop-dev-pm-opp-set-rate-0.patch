@@ -1,0 +1,32 @@
+From bb50257f38ace6151de1daee82d97de769257deb Mon Sep 17 00:00:00 2001
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Date: Tue, 28 Jul 2026 15:20:46 +0200
+Subject: [PATCH] drm/msm/dp: Drop dev_pm_opp_set_rate(0)
+X-Original-Commit: 331d7eefa2aa3f708869eb25bc9c73231be48a4f
+X-Original-Committer: map220v <map220v300@gmail.com>
+X-Original-Committer-Date: 2026-08-17T03:58:54Z
+
+dev_pm_opp_set_rate(0) removes the vote specified in required-opps but
+does not actually park the clock, making it run without the necessary
+power backing. Drop the explicit calls to it.
+
+Fixes: c943b4948b58 ("drm/msm/dp: add displayPort driver support")
+Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Signed-off-by: map220v <map220v300@gmail.com>
+---
+ drivers/gpu/drm/msm/dp/dp_ctrl.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/msm/dp/dp_ctrl.c b/drivers/gpu/drm/msm/dp/dp_ctrl.c
+index 9024abdc2c569f4dac7c67f8eb2e291ae778847a..e09924eae5a7a827a620ee367ca3e474737ab536 100644
+--- a/drivers/gpu/drm/msm/dp/dp_ctrl.c
++++ b/drivers/gpu/drm/msm/dp/dp_ctrl.c
+@@ -2571,7 +2571,6 @@ void msm_dp_ctrl_off_link_stream(struct msm_dp_ctrl *msm_dp_ctrl)
+ 		ctrl->stream_clks_on = false;
+ 	}
+ 
+-	dev_pm_opp_set_rate(ctrl->dev, 0);
+ 	msm_dp_ctrl_link_clk_disable(&ctrl->msm_dp_ctrl);
+ 
+ 	phy_power_off(phy);

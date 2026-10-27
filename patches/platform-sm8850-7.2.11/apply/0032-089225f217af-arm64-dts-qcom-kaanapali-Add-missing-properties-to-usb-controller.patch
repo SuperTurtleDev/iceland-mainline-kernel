@@ -1,0 +1,35 @@
+From ebc6acebff55e92226aafdf3abc7e8b9625af120 Mon Sep 17 00:00:00 2001
+From: Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
+Date: Fri, 3 Jul 2026 00:14:40 +0530
+Subject: [PATCH] arm64: dts: qcom: kaanapali: Add missing properties to usb
+ controller
+X-Original-Commit: 089225f217aff1abbc159d181a25b72015485f05
+X-Original-Committer: map220v <map220v300@gmail.com>
+X-Original-Committer-Date: 2026-08-17T03:58:54Z
+
+USB controller on Kaanapali SoC is capable of switching role betwen device
+and host and also is a wakeup capable device. Add usb-role-switch and
+wakeup-source properties to the controller node accordingly.
+
+Signed-off-by: Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
+Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Signed-off-by: map220v <map220v300@gmail.com>
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index d28a890a8908bdef4f996b6508aaf27b0ffe933f..337bca7c757ebc482a4b2751154a667c60701f2f 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -4057,6 +4057,9 @@ &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>,
+ 			tx-fifo-resize;
+ 			dma-coherent;
+ 
++			usb-role-switch;
++			wakeup-source;
++
+ 			status = "disabled";
+ 
+ 			ports {

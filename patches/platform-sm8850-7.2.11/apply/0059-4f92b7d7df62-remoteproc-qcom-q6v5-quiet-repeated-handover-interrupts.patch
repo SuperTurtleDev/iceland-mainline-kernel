@@ -1,0 +1,43 @@
+From 01ff2709fdf92702663a479bcd1c6036515157cc Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 8 Oct 2026 11:11:58 -0500
+Subject: [PATCH] remoteproc: qcom_q6v5: quiet repeated handover interrupts
+X-Original-Commit: 4f92b7d7df625c2800c042e58330d4eb8dc33cbe
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-08T11:11:58-05:00
+
+The SM8850 ADSP firmware re-asserts the handover SMP2P bit
+periodically, roughly one interrupt every few seconds, and the
+driver logs an error for every repeat after the first. On this
+device that floods dmesg with thousands of lines and drowns
+everything else, while the reference (vendor) driver handles
+repeats without complaint.
+
+Demote the repeat notice to dev_dbg. Rate limiting would not
+help here - the natural rate sits below the ratelimit threshold.
+
+Verified on the device: zero occurrences after an hour where the
+previous kernel logged thousands; adsp/cdsp/soccp all healthy.
+---
+ drivers/remoteproc/qcom_q6v5.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/remoteproc/qcom_q6v5.c b/drivers/remoteproc/qcom_q6v5.c
+index 241478ea29782a1cb0ad48a165798f82fccb7953..49c13c8596cafe575f3bea0dc6477917949a406d 100644
+--- a/drivers/remoteproc/qcom_q6v5.c
++++ b/drivers/remoteproc/qcom_q6v5.c
+@@ -165,7 +165,13 @@ static irqreturn_t q6v5_handover_interrupt(int irq, void *data)
+ 	struct qcom_q6v5 *q6v5 = data;
+ 
+ 	if (q6v5->handover_issued) {
+-		dev_err(q6v5->dev, "Handover signaled, but it already happened\n");
++		/*
++		 * Some firmware (e.g. the SM8850 ADSP) re-asserts the handover
++		 * SMP2P bit periodically; the reference driver handles repeats
++		 * without complaint. Keep the trace but out of the error log,
++		 * where it drowns everything else.
++		 */
++		dev_dbg(q6v5->dev, "handover re-signaled\n");
+ 		return IRQ_HANDLED;
+ 	}
+ 

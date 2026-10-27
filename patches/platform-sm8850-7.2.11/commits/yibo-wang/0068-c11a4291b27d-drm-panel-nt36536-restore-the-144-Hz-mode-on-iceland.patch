@@ -1,0 +1,83 @@
+From c11a4291b27d660954110a560e4d8614c616e76c Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Sun, 11 Oct 2026 02:56:26 -0500
+Subject: [PATCH] drm/panel: nt36536: restore the 144 Hz mode on iceland
+
+Add back the vendor 144 Hz timing (hfp 68 / hsync 32 / hbp 40, 1261 MHz
+pixel clock, own DFPS family so switching to/from it relocks the DSI PLL
+through the full modeset path), and drop the kaanapali DPU catalog
+core-clock fudge from 105% to 100% so dpu_crtc_mode_valid() keeps the
+mode: at 105% the required 662 MHz core clock exceeds the 650 MHz MDP
+ceiling of the dispcc clock plan.  Any real margin shortfall shows up as
+DPU fifo underruns at 144 Hz, not as a pruned mode.
+---
+ .../disp/dpu1/catalog/dpu_13_0_kaanapali.h    | 12 ++++++++-
+ drivers/gpu/drm/panel/panel-novatek-nt36536.c | 25 +++++++++++++------
+ 2 files changed, 29 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h b/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
+index 85f455a9f29c8d6db17487f1affaa497598fb6fe..928b4b12271054716cfc356cbb5d5e31c1cc7b41 100644
+--- a/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
++++ b/drivers/gpu/drm/msm/disp/dpu1/catalog/dpu_13_0_kaanapali.h
+@@ -449,7 +449,17 @@ static const struct dpu_perf_cfg kaanapali_perf_data = {
+ 		{.rd_enable = 1, .wr_enable = 1},
+ 		{.rd_enable = 1, .wr_enable = 0}
+ 	},
+-	.clk_inefficiency_factor = 105,
++	/*
++	 * 100 instead of the generic 105: with 105 the only mode above
++	 * 120Hz on the iceland panel (144Hz, 1261 MHz pixel clock) needs a
++	 * 662 MHz core clock, above the 650 MHz MDP ceiling of the kaanapali
++	 * dispcc clock plan, and is pruned by dpu_crtc_mode_valid().  The
++	 * downstream clock plan has the same 650 MHz ceiling and still ships
++	 * 144Hz (per-LM pixel rate 631 MHz, ~3% margin), so drop the extra
++	 * fudge.  If the margin turns out to be real, it shows up as DPU
++	 * fifo underruns at 144Hz - not as a pruned mode.
++	 */
++	.clk_inefficiency_factor = 100,
+ 	.bw_inefficiency_factor = 120,
+ };
+ 
+diff --git a/drivers/gpu/drm/panel/panel-novatek-nt36536.c b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+index ddb695350534cbc3bff3cc6c27fff30e9569e60c..f6bc5b22ba405ad56827eec33551c2298f033da7 100644
+--- a/drivers/gpu/drm/panel/panel-novatek-nt36536.c
++++ b/drivers/gpu/drm/panel/panel-novatek-nt36536.c
+@@ -217,13 +217,6 @@ static int iceland_csot_init_sequence(struct panel_info *pinfo)
+ }
+ 
+ static const struct drm_display_mode iceland_csot_modes[] = {
+-	/*
+-	 * The downstream 144Hz timing (hfp 68, hsync 32, hbp 40, vfp 26, vbp 52)
+-	 * is deliberately absent: its 1261 MHz pixel clock needs a 662 MHz DPU
+-	 * core clock (mode clock * 105% / 2 with the 3D merge), above the 650 MHz
+-	 * MDP ceiling in the kaanapali dispcc clock plan, so dpu_crtc_mode_valid()
+-	 * prunes it from the connector mode list anyway.
+-	 */
+ 	{
+ 		/* 120Hz */
+ 		.clock = (3392 + 100 + 64 + 104) * (2400 + 26 + 2 + 272) * 120 / 1000,
+@@ -236,6 +229,24 @@ static const struct drm_display_mode iceland_csot_modes[] = {
+ 		.vsync_end = 2400 + 26 + 2,
+ 		.vtotal = 2400 + 26 + 2 + 272,
+ 	},
++	{
++		/*
++		 * 144Hz: own pixel-clock family (1261 MHz, vendor DFPS list
++		 * value), so a switch to/from it relocks the DSI PLL through the
++		 * full modeset path.  Needs the 100% (not 105%) core-clock
++		 * efficiency in the kaanapali DPU catalog, see
++		 * dpu_13_0_kaanapali.h.
++		 */
++		.clock = (3392 + 68 + 32 + 40) * (2400 + 26 + 2 + 52) * 144 / 1000,
++		.hdisplay = 3392,
++		.hsync_start = 3392 + 68,
++		.hsync_end = 3392 + 68 + 32,
++		.htotal = 3392 + 68 + 32 + 40,
++		.vdisplay = 2400,
++		.vsync_start = 2400 + 26,
++		.vsync_end = 2400 + 26 + 2,
++		.vtotal = 2400 + 26 + 2 + 52,
++	},
+ 	{
+ 		/* 90Hz */
+ 		.clock = (3392 + 420 + 160 + 320) * (2400 + 26 + 2 + 52) * 90 / 1000,

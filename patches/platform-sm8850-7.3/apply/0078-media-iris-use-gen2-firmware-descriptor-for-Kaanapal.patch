@@ -1,0 +1,23 @@
+From 0fdadb9fe02ab88a50d772c2103f66cf203e363a Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Tue, 27 Oct 2026 05:23:10 -0500
+Subject: [PATCH 78/79] media: iris: use gen2 firmware descriptor for Kaanapali
+ on 7.3
+
+---
+ drivers/media/platform/qcom/iris/iris_platform_vpu4x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/qcom/iris/iris_platform_vpu4x.c b/drivers/media/platform/qcom/iris/iris_platform_vpu4x.c
+index 34819159ba663f7a864b98808b237c185505d9af..0d515adf331d7f451408826136539e6b6fd4a1af 100644
+--- a/drivers/media/platform/qcom/iris/iris_platform_vpu4x.c
++++ b/drivers/media/platform/qcom/iris/iris_platform_vpu4x.c
+@@ -37,7 +37,7 @@ static const struct bw_info iris_bw_table_dec_vpu4x[] = {
+ static const char * const iris_opp_pd_table_vpu4x[] = { "mxc", "mmcx" };
+ 
+ const struct iris_platform_data kaanapali_data = {
+-	.firmware_desc = &iris_vpu40_p2_s7_gen2_desc,
++	.firmware_desc_gen2 = &iris_vpu40_p2_s7_gen2_desc,
+ 	.vpu_ops = &iris_vpu4x_ops,
+ 	.icc_tbl = iris_icc_info_vpu4x,
+ 	.icc_tbl_size = ARRAY_SIZE(iris_icc_info_vpu4x),

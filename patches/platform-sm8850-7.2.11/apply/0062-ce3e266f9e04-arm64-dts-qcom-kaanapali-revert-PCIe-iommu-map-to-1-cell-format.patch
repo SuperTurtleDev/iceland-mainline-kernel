@@ -1,0 +1,40 @@
+From 1f5f9af5622caca41f9b2e483e550c504f99dac9 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Sat, 10 Oct 2026 08:07:32 -0500
+Subject: [PATCH] arm64: dts: qcom: kaanapali: revert PCIe iommu-map to 1-cell
+ format
+X-Original-Commit: ce3e266f9e048c16c884ec7cd3422ab1ff2f890d
+X-Original-Committer: Yibo Wang <wyibo6109@gmail.com>
+X-Original-Committer-Date: 2026-10-10T08:10:19-05:00
+
+The upstream stable commit 36fb7eea7 changed the PCIe iommu-map from
+1-cell to 2-cell format (adding SID mask) to silence an OF core
+warning.  On the OnePlus Pad 4 (iceland), this breaks WiFi entirely:
+the WCN7860 PCIe device loses its SMMU stream mapping, MHI cannot
+initialize ('Device link is not accessible'), and no WiFi interface
+appears.  Bluetooth (UART) is unaffected.
+
+Revert the kaanapali DTS change to the 1-cell format that works on
+this board.  The proper fix needs investigation of why the 2-cell
+SID mask 0x0 fails here (possibly apps_smmu configuration).
+
+Verified: WiFi fully functional with only this revert on v7.2.9.
+---
+ arch/arm64/boot/dts/qcom/kaanapali.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali.dtsi b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+index 61c1099842f0ea6886cad32f98c631554009d9f3..a2148fcac7792f5f8a77cca93bc2e1dd2642bd92 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali.dtsi
++++ b/arch/arm64/boot/dts/qcom/kaanapali.dtsi
+@@ -2481,8 +2481,8 @@ &mc_virt SLAVE_EBI1 QCOM_ICC_TAG_ALWAYS>,
+ 
+ 			operating-points-v2 = <&pcie0_opp_table>;
+ 
+-			iommu-map = <0 &apps_smmu 0x1400 0x0 0x1>,
+-				    <0x100 &apps_smmu 0x1401 0x0 0x1>;
++			iommu-map = <0 &apps_smmu 0x1400 0x1>,
++				    <0x100 &apps_smmu 0x1401 0x1>;
+ 
+ 			interrupt-map = <0 0 0 1 &intc 0 0 GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH>,
+ 					<0 0 0 2 &intc 0 0 GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH>,

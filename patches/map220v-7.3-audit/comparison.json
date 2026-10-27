@@ -1,0 +1,683 @@
+{
+  "checked_on": "2026-10-27",
+  "repository": "https://github.com/map220v/sm8850-mainline",
+  "branch": "iceland-7.3",
+  "remote_head": "8f1ef42eb53ddd65ae909d0de3566186fe5256cf",
+  "remote_head_committer_date": "2026-10-19T08:36:17Z",
+  "remote_base": "c03c1a14507dfaf8b856c2608f9ac216021fc222",
+  "remote_base_subject": "Linux 7.3",
+  "local_comparison_head": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+  "local_comparison_archive": "../platform-sm8850-7.2.11",
+  "classification_counts": {
+    "same-patch-id": 21,
+    "migration-adaptation": 5,
+    "context-only": 3,
+    "already-in-current": 1
+  },
+  "total": 30,
+  "authored_by_map220v": 20,
+  "third_party_authored_committed_by_map220v": 10,
+  "verification": "GitHub branch refs and commit API; verified linear parent chain from release commit; stable patch-id against all 90 local historical patches; manual diff review for nine unmatched patches; upstream source inspection. No replay/build/runtime verification in this step.",
+  "patches": [
+    {
+      "number": 1,
+      "commit": "161adc78cd64ba72f5d44bdd9275583d8e9336c0",
+      "subject": "arm64: dts: qcom: kaanapali: add the GPU SMMU node",
+      "patch_id": "a3757768ec541903e3e4c94d9b042723f29c3cef",
+      "patch": "patches/0001-161adc78cd64.patch",
+      "author": {
+        "name": "Qingqing Zhou",
+        "email": "quic_qqzhou@quicinc.com",
+        "date": "2026-05-11T22:23:17Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "3dd86ebf8044dc6d473faec8e928a335bef8e858c5a8609fef31856e38eeb0e4",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "84367cda4bc519d1c1654a09577a2fbcdf33415a",
+      "previous_patch": "commits/supporting/0003-84367cda4bc5-arm64-dts-qcom-kaanapali-add-the-GPU-SMMU-node.patch"
+    },
+    {
+      "number": 2,
+      "commit": "ccc1d658585cd9d439715b593b9d8d75ae721d51",
+      "subject": "arm64: dts: qcom: kaanapali: Add qfprom node",
+      "patch_id": "b5d2fda472accdfc1933cf117ef56a278ad24bb8",
+      "patch": "patches/0002-ccc1d658585c.patch",
+      "author": {
+        "name": "Jingyi Wang",
+        "email": "jingyi.wang@oss.qualcomm.com",
+        "date": "2026-05-11T22:23:18Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "88777bfdc159a67b0b6667bbcc6df1485346602ebf91f22d68fddfe6d1c2f1d9",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "5828f9e0a528b111982527c93ab59b817a5f52ed",
+      "previous_patch": "commits/supporting/0004-5828f9e0a528-arm64-dts-qcom-kaanapali-Add-qfprom-node.patch"
+    },
+    {
+      "number": 3,
+      "commit": "d557301dcb354761b04f49d18c6cd6d3d0b2a224",
+      "subject": "arm64: dts: qcom: Add GPU support for Kaanapali",
+      "patch_id": "944fb3c8035167203219380d742967142d4561dd",
+      "patch": "patches/0003-d557301dcb35.patch",
+      "author": {
+        "name": "Akhil P Oommen",
+        "email": "akhilpo@oss.qualcomm.com",
+        "date": "2026-05-11T22:23:19Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "b949d8c125eddb97add63417e0cc016a8e8d5848c982086bda22a3a87d6bd029",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "9757148c5bb1d2427f427c7fd4cc6466c5a02a61",
+      "previous_patch": "commits/supporting/0005-9757148c5bb1-arm64-dts-qcom-Add-GPU-support-for-Kaanapali.patch"
+    },
+    {
+      "number": 4,
+      "commit": "cb02d702abb97cfc12f73f51e8b8343d233510e8",
+      "subject": "arm64: dts: qcom: kaanapali: Add GPU cooling",
+      "patch_id": "e538dbd185ae84093b8ab44af257867af7f2212c",
+      "patch": "patches/0004-cb02d702abb9.patch",
+      "author": {
+        "name": "Gaurav Kohli",
+        "email": "gaurav.kohli@oss.qualcomm.com",
+        "date": "2026-05-11T22:23:20Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "fe6a8f0e640c94a8471a19ff6a65f1f05e1efa5377fbd856724b929fce3a884a",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "856c9a5d76e2dea539ffd036058c463712c8c5c2",
+      "previous_patch": "commits/supporting/0006-856c9a5d76e2-arm64-dts-qcom-kaanapali-Add-GPU-cooling.patch"
+    },
+    {
+      "number": 5,
+      "commit": "781baaeaf9482231ddc718a499845c73c4ce1b32",
+      "subject": "SM8850: Fix gpuss thermal polling delay",
+      "patch_id": "2a0e2789f30206ea1018f13774efe0d8160b340e",
+      "patch": "patches/0005-781baaeaf948.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T09:21:38Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "c2c15df8c61dfa0efe69c903347da115d7298c839011005174712fdc7e614d9a",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "8a10b551846e489d5deb2e88a14d911edfc31d77",
+      "previous_patch": "commits/map220v/0007-8a10b551846e-SM8850-Fix-gpuss-thermal-polling-delay.patch"
+    },
+    {
+      "number": 6,
+      "commit": "3eae7909bae33f4cf707e504b16dcfb1f1a970c2",
+      "subject": "SM8850: Add DSI1 nodes",
+      "patch_id": "213b7a9db520917a44392fc4aa3833e4124ea2a9",
+      "patch": "patches/0006-3eae7909bae3.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T09:24:51Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "a0af6f2ac0c3fa925aa0a7a6ab027a359b6bdcaece8dc49e914309c396065193",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "a89e7724daf19845d228d9dd974fce4298f26cb6",
+      "previous_patch": "commits/map220v/0009-a89e7724daf1-SM8850-Add-DSI1-nodes.patch"
+    },
+    {
+      "number": 7,
+      "commit": "860f49637eb00acc4eda553392fc4208a48befaf",
+      "subject": "wifi: ath12k: add initial hardware definition for WCN7860",
+      "patch_id": "26307f867a0329dbc31b9688c8d910293e485359",
+      "patch": "patches/0007-860f49637eb0.patch",
+      "author": {
+        "name": "Teguh Sobirin",
+        "email": "teguh@sobir.in",
+        "date": "2026-03-25T15:53:30Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "previous_commit": "bf079c30d01f3cd98e858b488244f3ae0faa1742",
+      "previous_patch": "commits/supporting/0010-bf079c30d01f-wifi-ath12k-add-initial-hardware-definition-for-WCN7860.patch",
+      "sha256": "b55a39dffeb475b9b8a22b7d8d4ad06d64bbd20fbc491fd6185975c1309088a4",
+      "classification": "migration-adaptation",
+      "note": "WCN7860 硬件表补齐 supports_cong_ctrl_max_msdus=false、host_alloc_ml_id=false；显式零值字段适配，不代表新增 Wi-Fi 功能。"
+    },
+    {
+      "number": 8,
+      "commit": "bd5ce5933f81a4aab38bff56dfd4d857f8c666a3",
+      "subject": "wifi: ath12k: send QDSS config when CNSS_QDSS_CFG_MISS_V01 is disabled",
+      "patch_id": "67f00b574af12d461bdf7cd79d7a6caa2f80fa53",
+      "patch": "patches/0008-bd5ce5933f81.patch",
+      "author": {
+        "name": "Gianni Spadoni",
+        "email": "me@gio.blue",
+        "date": "2026-03-11T08:08:41Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "previous_commit": "64258447b10fbeec37e4167b98c22d55f489a8d0",
+      "previous_patch": "commits/supporting/0011-64258447b10f-wifi-ath12k-send-QDSS-config-when-CNSS-QDSS-CFG-MISS-V01-is-disabled.patch",
+      "sha256": "86ce4132e4ad6f72aff9b977a89142f3f19cdc0771b04f9602aa724a36096c20",
+      "classification": "context-only",
+      "note": "新增/删除代码相同；QMI 函数签名及宏附近上下文改变。"
+    },
+    {
+      "number": 9,
+      "commit": "58f0f42060f930dac245cf5a013f5e8fcc6e9917",
+      "subject": "wifi: ath12k: disable CNSS_QDSS_CFG_MISS_V01 for the WCN7860",
+      "patch_id": "6d62c0d12ffe9970650d45ad23a4de50c585cd8c",
+      "patch": "patches/0009-58f0f42060f9.patch",
+      "author": {
+        "name": "Gianni Spadoni",
+        "email": "me@gio.blue",
+        "date": "2026-03-11T08:19:06Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "ad4a28b9c03c7f691c63098a13fdd947e5e311fb8db6c22a9cfd79799daeaecf",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "1b693cd9928cebf4bc8fbd95ec36ca669a6cb615",
+      "previous_patch": "commits/supporting/0012-1b693cd9928c-wifi-ath12k-disable-CNSS-QDSS-CFG-MISS-V01-for-the-WCN7860.patch"
+    },
+    {
+      "number": 10,
+      "commit": "5f83bf94bffb544349800510316eb5fb927aaa35",
+      "subject": "PCI/pwrctrl: pwrseq: add support for WCN7860",
+      "patch_id": "bb483280fe9f630ccabf8c8d2232ca3ba5cdb799",
+      "patch": "patches/0010-5f83bf94bffb.patch",
+      "author": {
+        "name": "Teguh Sobirin",
+        "email": "teguh@sobir.in",
+        "date": "2026-03-25T13:39:34Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "af8eabe7384df16b365395190060db5fe4049fa989733cfd6a5b2bdd4b608790",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "c72982d5ad796e35296c6352ab67d8e1da9047f8",
+      "previous_patch": "commits/supporting/0013-c72982d5ad79-PCI-pwrctrl-pwrseq-add-support-for-WCN7860.patch"
+    },
+    {
+      "number": 11,
+      "commit": "14b6772b4df1346ebd18db06018dd42b267fbd52",
+      "subject": "power: sequencing: qcom-wcn: add support for WCN7860",
+      "patch_id": "f063497e511a87963967e02ef2697085607b6f93",
+      "patch": "patches/0011-14b6772b4df1.patch",
+      "author": {
+        "name": "Teguh Sobirin",
+        "email": "teguh@sobir.in",
+        "date": "2026-03-25T13:37:37Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "3846b73119143d1a4de23df2bbc9b83573bf03f358f703bf4352dd75ee1eaae6",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "719fa465db93c3409d407f026443bfca00e2dcf9",
+      "previous_patch": "commits/supporting/0014-719fa465db93-power-sequencing-qcom-wcn-add-support-for-WCN7860.patch"
+    },
+    {
+      "number": 12,
+      "commit": "4c731204370f4ece35afd8bb58d6c571347fc7fc",
+      "subject": "Bluetooth: qca: add WCN7860 support",
+      "patch_id": "26ac6c5baa72ae6c5090be856c6e0783fe31ff53",
+      "patch": "patches/0012-4c731204370f.patch",
+      "author": {
+        "name": "Teguh Sobirin",
+        "email": "teguh@sobir.in",
+        "date": "2026-03-30T12:57:46Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "sha256": "1b9852bcbc0410c60e65701b78f2bd9e42533127d194c18fa44fb914d3c3cfec",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "1568c3ce350259b303be0ba14be7e5cbc2eda18c",
+      "previous_patch": "commits/supporting/0015-1568c3ce3502-Bluetooth-qca-add-WCN7860-support.patch"
+    },
+    {
+      "number": 13,
+      "commit": "44e759cddb837286f77c230c231962577083fe46",
+      "subject": "SM8850: Add device tree for OnePlus Pad 4",
+      "patch_id": "f25dd14ea59a3da2a8fdce1f127fc10c9207fa6d",
+      "patch": "patches/0013-44e759cddb83.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T09:49:48Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:16Z"
+      },
+      "previous_commit": "afe020923fc80bfd30fe3fb2b7173730f7b779e2",
+      "previous_patch": "commits/map220v/0016-afe020923fc8-SM8850-Add-device-tree-for-OnePlus-Pad-4.patch",
+      "sha256": "3d03de182fa10fc4f7c337d47efa69e5592c2ea442dcab121978cc3d1132cd7f",
+      "classification": "migration-adaptation",
+      "note": "板级 DTS 删除 pmic-glink 的 orientation-gpios；USB DP PHY 供电改为 vdda-phy=L4F 0.8V、vdda-pll=L1D 1.2V。不再添加 usb-role-switch 的改动已由当前树后续补丁实现。"
+    },
+    {
+      "number": 14,
+      "commit": "5067c11895277e9fff97cf135f466b730c607aab",
+      "subject": "SM8850: Add sm8850.config fragment",
+      "patch_id": "01fc9f94ab38610d213da59520c7bd5854bd87f1",
+      "patch": "patches/0014-5067c1189527.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T09:50:01Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "e3195e5ffd9159d8e48f89fe59c74abda28a4ad2",
+      "previous_patch": "commits/map220v/0017-e3195e5ffd91-SM8850-Add-sm8850-config-fragment.patch",
+      "sha256": "6350f6cb89f6048b71bbfbb8fd5a84ac6d70510ca659a0a7e45195a540cc44bf",
+      "classification": "migration-adaptation",
+      "note": "sm8850.config 新增 CONFIG_GPIO_SHARED_PROXY=y。"
+    },
+    {
+      "number": 15,
+      "commit": "b0d3dbbadd979888bc5a4cfe03ca0cba68b8d3a0",
+      "subject": "backlight: Add KTZ8869 driver for iceland",
+      "patch_id": "d3360f9fd40272975ba51bfcfdfa7c4505b0e6ab",
+      "patch": "patches/0015-b0d3dbbadd97.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:01:35Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "38a053d131b4da398a00694ac4228d96819ebbe3",
+      "previous_patch": "commits/map220v/0020-38a053d131b4-backlight-Add-KTZ8869-driver-for-iceland.patch",
+      "sha256": "2c6bb95ef87cf577473d25f3fa542bb789ff5924b53d196b973ab87a19e2e146",
+      "classification": "context-only",
+      "note": "KTZ8869 驱动改动相同；Kconfig 插入位置随上游变化。"
+    },
+    {
+      "number": 16,
+      "commit": "514fb2b118d3ebf41c83c8b073d4b6f0e1b9b0ad",
+      "subject": "ICELAND: Add KTZ8869 nodes",
+      "patch_id": "7b887c1842c9d9ada5985ad1f1feae62b1ba637e",
+      "patch": "patches/0016-514fb2b118d3.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:02:32Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "e13c59808b1c2a7a2e79d8cf875fcee478930285f623352101f29a7d2faf2f96",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "bad9102cb260b863ae8e339964421d24e4de4443",
+      "previous_patch": "commits/map220v/0021-bad9102cb260-ICELAND-Add-KTZ8869-nodes.patch"
+    },
+    {
+      "number": 17,
+      "commit": "5a30e30610f4114e284d8e28eda0ae410db516f3",
+      "subject": "drm/msm/dpu: Fix Compressed width calculation",
+      "patch_id": "1b4272c886828aa13375ba63e6a89b19a48daf61",
+      "patch": "patches/0017-5a30e30610f4.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:03:41Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "3da79b0e2ca2fdfc4a75efb8d5e2580929146236ee389e53aa8c08eee3bb4fec",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "66b96f8774516944ceca4eaff143c55e3fcb5eb4",
+      "previous_patch": "commits/map220v/0023-66b96f877451-drm-msm-dpu-Fix-Compressed-width-calculation.patch"
+    },
+    {
+      "number": 18,
+      "commit": "1d43c83a6254a9c50b96cccc28f1406e0d36b8ac",
+      "subject": "drm/panel: nt36536: Add PPD200UB2 support",
+      "patch_id": "9a3b845190cdb881cf27f9900bb1fe32d0d6c682",
+      "patch": "patches/0018-1d43c83a6254.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-09-10T08:10:58Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "6b790f157d18e7fd5db971add19aa196a7f62284",
+      "previous_patch": "commits/map220v/0024-6b790f157d18-drm-panel-Add-driver-for-NT36536-panels.patch",
+      "sha256": "53e9c91ccd3b161edf027e0b5d04b0c5fa2096a81fdc61eea414ccb6d3a2090b",
+      "classification": "migration-adaptation",
+      "note": "替换旧的整文件面板驱动补丁，改为在上游 NT36536 框架增加 CSOT PPD200UB2 描述；使用新 DSC 模式标志及上游双 DSI 框架。"
+    },
+    {
+      "number": 19,
+      "commit": "182c8a042300286ff3205f6b4730ce1685d2da2a",
+      "subject": "ICELAND: Add panel node",
+      "patch_id": "9445321a317588d877fc899ad4f569b5a74ea11d",
+      "patch": "patches/0019-182c8a042300.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:05:44Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "cb5e37b615799af2e69f53bd1ff39a51ce46b810",
+      "previous_patch": "commits/map220v/0025-cb5e37b61579-ICELAND-Add-panel-node.patch",
+      "sha256": "6c5c24339dca20a280415a30e79c66e2d1503f09cbe0cfb40516d835ac7c3c34",
+      "classification": "migration-adaptation",
+      "note": "面板 compatible 改为 csot,ppd200ub2；avdd/avee-supply 改为 vsp/vsn-supply，必须与新面板驱动配套。"
+    },
+    {
+      "number": 20,
+      "commit": "6db2e5ef2dd78ac40644790405f8b181f1071341",
+      "subject": "Input: Add NT36536 touch driver",
+      "patch_id": "d1287c994a35f4e0856931eeff2e240c6d36555d",
+      "patch": "patches/0020-6db2e5ef2dd7.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:05:57Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "ac1453d7754393aeedb3e47dbd74d5cc8055f9b1d39eecee28dc0769ca78caef",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "d8f0b2f4e40a6b5e869cb23ec033ab7bcc52faff",
+      "previous_patch": "commits/map220v/0026-d8f0b2f4e40a-Input-Add-NT36536-touch-driver.patch"
+    },
+    {
+      "number": 21,
+      "commit": "ae49f087a73716be87e7bb56386f141b3b323a3e",
+      "subject": "ICELAND: Add touchscreen node",
+      "patch_id": "f69166c6a5c51398855cc8bd84311352513b2165",
+      "patch": "patches/0021-ae49f087a737.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-08T10:06:45Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "bed4d463208f687723c04af7d3e8c80594d8a05a90a92530bb194c202686ba98",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "f43cb00d872e344cc8860815b64a51d5fa89615c",
+      "previous_patch": "commits/map220v/0027-f43cb00d872e-ICELAND-Add-touchscreen-node.patch"
+    },
+    {
+      "number": 22,
+      "commit": "003582bc34af89c2384e30f33f9313ba916aa57a",
+      "subject": "SM8850: Fix GMU address",
+      "patch_id": "872a7512ee86521834f6702aed19e19659a9ed87",
+      "patch": "patches/0022-003582bc34af.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-11T07:56:25Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "9697010fc6883e516cc93617e767d4655d33e6391ef35fbf7f2712b4c8871778",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "65152354d8ae4afec5a3847e66944c89ddc3e433",
+      "previous_patch": "commits/map220v/0028-65152354d8ae-SM8850-Fix-GMU-address.patch"
+    },
+    {
+      "number": 23,
+      "commit": "1e4e58d10787cc9a01f40fa186ef9a8bc580fe95",
+      "subject": "SM8850: Add cache info",
+      "patch_id": "5eb97ad43dbc650a5f41d6b3e38fbd8d8d45489d",
+      "patch": "patches/0023-1e4e58d10787.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-19T17:58:04Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "4fdc45fcc700c730e65da0868491bb32736d88e1",
+      "previous_patch": "commits/map220v/0029-4fdc45fcc700-SM8850-Add-cache-info.patch",
+      "sha256": "d53ebc80a17b3eded456413d654c6be7c25fd6519e6e7ff9bef673b552e169ba",
+      "classification": "context-only",
+      "note": "cache 属性新增内容相同；上下文改用上游 SCMI performance power-domains。"
+    },
+    {
+      "number": 24,
+      "commit": "7a7b941d12d721677b5ffb40552c3962bc28071f",
+      "subject": "qcom_battmgr: Add basic support for Kaanapali OnePlus SOCCP FW",
+      "patch_id": "f4c23473017261af2cce225f0d37b0f627ebed57",
+      "patch": "patches/0024-7a7b941d12d7.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-06-22T18:57:01Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "previous_commit": "2bc508d899d0d8dd09af6b426078c0e8c73c38f0",
+      "previous_patch": "commits/map220v/0030-2bc508d899d0-qcom-battmgr-Add-basic-support-for-Kaanapali-OnePlus-SOCCP-FW.patch",
+      "sha256": "632358cf98ca360d9aaa8fcbeca1356e2730760b6d27a924e39528ef79886b35",
+      "classification": "already-in-current",
+      "note": "相对旧原始补丁改用 devm_work_autocancel；当前 7.2.11 源码和已验证 apply 补丁已包含，差别主要为说明注释及上下文。"
+    },
+    {
+      "number": 25,
+      "commit": "3918c1308d4240118ffb4290a08c195b75af2244",
+      "subject": "ASoC: Add simple TFA9865 driver",
+      "patch_id": "420eafccf74b38f27312f25dc796d87ee1ff84df",
+      "patch": "patches/0025-3918c1308d42.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-07-06T18:35:44Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "3c7a295408effe4ba65e6c67c0da2d9d304c225ff2f4b474b8d41c52e56ad58f",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "5f86156d7b81f4e1169120533530010136b080e4",
+      "previous_patch": "commits/map220v/0031-5f86156d7b81-ASoC-Add-simple-TFA9865-driver-Since-TFA9865-and-TFA9864-has-no-DSP-and-container-file-con.patch"
+    },
+    {
+      "number": 26,
+      "commit": "dff38a509eeb24660e639bfb519ef101740033b4",
+      "subject": "ICELAND: Add sound nodes",
+      "patch_id": "14253c20341a0b2db6d6061389a14b4fa6cb7bf7",
+      "patch": "patches/0026-dff38a509eeb.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-07-06T18:37:11Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "440cb709d4ffc99c346a686bff6333dbc734ca7e31c1db9cb342f1c3c728239a",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "be941be038171c2bd68a9eaf1a3f063830c2474d",
+      "previous_patch": "commits/map220v/0032-be941be03817-ICELAND-Add-sound-nodes.patch"
+    },
+    {
+      "number": 27,
+      "commit": "25e696226a9dada33cdae494a2983894b07477c2",
+      "subject": "SM8850: Update GPU OPP table",
+      "patch_id": "3aa4ef8c928e5d0d5743056d19661bb6c5bc5d4e",
+      "patch": "patches/0027-25e696226a9d.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-07-06T19:05:53Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "a589f36fe9234b860adc2f0e467c9c0df2131edf8d3268bafcce00f783aa0e33",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "39708d9ccc231379c1ecad46d13d7c77740b8cf8",
+      "previous_patch": "commits/map220v/0033-39708d9ccc23-SM8850-Update-GPU-OPP-table.patch"
+    },
+    {
+      "number": 28,
+      "commit": "16c9f5076dbd593266a8db38031b400028ca51bd",
+      "subject": "ICELAND: Reserve llcc_lpi_mem to fix Gunyah crash",
+      "patch_id": "03ced0cee529b04922540054f1d948f42c8c6b9f",
+      "patch": "patches/0028-16c9f5076dbd.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-07-13T19:15:23Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "0724b1595e4ef2a5c05ef2061c7ca136c231e909ef0fb0da416ceae18a14d28e",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "ed9d01daed04572c6eeb7eb20948574b7bdb767b",
+      "previous_patch": "commits/map220v/0036-ed9d01daed04-ICELAND-Reserve-llcc-lpi-mem-to-fix-Gunyah-crash.patch"
+    },
+    {
+      "number": 29,
+      "commit": "521b8c8697c572ff5e43b37308d22462fecd0065",
+      "subject": "ICELAND: Reserve adsp_mhi_mem and global_sync_mem",
+      "patch_id": "13f6d9fc094a66e5b6e1333bac4cf847386aa0cd",
+      "patch": "patches/0029-521b8c8697c5.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-07-14T06:22:32Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "c2546eced282e628d9f6c26ddecdd470c660608d4aff9d616dcfec278e57aa89",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "175302a0a2f9761e1675e0bd8cde5b66fdf0d14e",
+      "previous_patch": "commits/map220v/0037-175302a0a2f9-ICELAND-Reserve-adsp-mhi-mem-and-global-sync-mem-Both-have-XN-2-EL1-EL0-NOEXEC-in-VTTBR.patch"
+    },
+    {
+      "number": 30,
+      "commit": "8f1ef42eb53ddd65ae909d0de3566186fe5256cf",
+      "subject": "Revert \"arm64: dts: qcom: kaanapali: Fix the PCIe iommu-map entries\"",
+      "patch_id": "3ed50be55a64a5642f7d3d70aa0036cbf6c3ee6b",
+      "patch": "patches/0030-8f1ef42eb53d.patch",
+      "author": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-09-16T09:27:43Z"
+      },
+      "committer": {
+        "name": "map220v",
+        "email": "map220v300@gmail.com",
+        "date": "2026-10-19T08:36:17Z"
+      },
+      "sha256": "173583a2ae096b189578d951e766c69d2b12fbc585d337a389370f618d711273",
+      "classification": "same-patch-id",
+      "note": "与现有归档的原始补丁 patch-id 相同。",
+      "previous_commit": "ce3e266f9e048c16c884ec7cd3422ab1ff2f890d",
+      "previous_patch": "commits/yibo-wang/0066-ce3e266f9e04-arm64-dts-qcom-kaanapali-revert-PCIe-iommu-map-to-1-cell-format.patch"
+    }
+  ]
+}

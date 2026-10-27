@@ -1,0 +1,24 @@
+--- 2bc508d899d0d8dd09af6b426078c0e8c73c38f0
+
++++ 7a7b941d12d721677b5ffb40552c3962bc28071f
+
+@@ -142,8 +142,16 @@
+
+ +	mutex_unlock(&battmgr->lock);
+ +	return;
+ +	{ .compatible = "oplus,kaanapali-pmic-glink", .data = (void *)OPLUS_BATTMGR_KAANAPALI },
+-+	INIT_WORK(&battmgr->oplus_otg_work, qcom_battmgr_oplus_otg_worker);
+-+	INIT_WORK(&battmgr->oplus_charging_work, qcom_battmgr_oplus_charging_worker);
+ -		if (battmgr->variant == QCOM_BATTMGR_SM8550)
+ +		if (battmgr->variant == QCOM_BATTMGR_SM8550 ||
+ +		    battmgr->variant == OPLUS_BATTMGR_KAANAPALI)
+++	ret = devm_work_autocancel(dev, &battmgr->oplus_otg_work,
+++				   qcom_battmgr_oplus_otg_worker);
+++	if (ret)
+++		return ret;
+++
+++	ret = devm_work_autocancel(dev, &battmgr->oplus_charging_work,
+++				   qcom_battmgr_oplus_charging_worker);
+++	if (ret)
+++		return ret;
+++

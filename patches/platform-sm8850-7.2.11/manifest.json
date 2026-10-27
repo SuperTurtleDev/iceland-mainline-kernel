@@ -1,0 +1,2013 @@
+{
+  "collected_on": "2026-10-27",
+  "source_repository": "/home/wyb/Documents/mainline/src/kernel/linux",
+  "source_branch": "oneplus-cami2c",
+  "base_ref": "v7.2.11",
+  "base_commit": "a2de78ee6ed8bf8cd99d177c74865a6e8c3cb6ea",
+  "head_commit": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+  "base_tree": "f485a526dbd9650749eb6c88b10d725cca615da2",
+  "head_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f",
+  "shallow_repository": true,
+  "scope": "Local committed history and existing local/remote-tracking refs; no remote refresh",
+  "counts": {
+    "supporting": 26,
+    "map220v": 22,
+    "yibo-wang": 42
+  },
+  "excluded_stable_merges": 3,
+  "alternative_patches": 51,
+  "refs_snapshot": {
+    "refs/heads/bisec/cam-r2": "b84d67fc6afa5928f15bb9cd9d3dd22ac3775848",
+    "refs/heads/camss-kaanapali": "d5ff9063961ad1aea1ba4009578fd5fa3c190fc3",
+    "refs/heads/dw9714v-send": "aefe15bc73bfa158d0c063f12be9c360ec4e91df",
+    "refs/heads/dw9714v-v2": "c8ca818ac54f5af4e8a0e498068ce4db3b2b589d",
+    "refs/heads/iceland-7.2": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+    "refs/heads/oneplus-cami2c": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+    "refs/heads/oplus-camres": "81243488c7b81fc388dfa2aaae29e9a412c7151e",
+    "refs/heads/pogo-kbd-v2": "3511ee4409e4bfa64ec4bfccbebfb0f76aee9d38",
+    "refs/heads/pogo-kbd-v3": "a1f5cd88a40611d7f0a24263bb11831f49215656",
+    "refs/heads/pogo-kbd-v5": "532a6977cce5bfd152efcfe39e920ff6fdc3ee27",
+    "refs/heads/pogo-kbd-v6": "0a75eb19d7bcc09244283148a7b16698a52f577a",
+    "refs/heads/pr/camera": "399b30a55af31bc2b9164b6c1feda4cfd29e83c8",
+    "refs/heads/pr/gunyah": "fd503a492d381687c143b7085ea79ebce58dcdc7",
+    "refs/heads/pr/pogo-keyboard": "6978c2a9206173ff668edd07b853b7063c992a0c",
+    "refs/heads/pr/scmi-p2a-no-channel-free-ack": "469a19821136a7b7c246b9e4f7dc9d9d5c601c3b",
+    "refs/heads/pr/vpu": "1f1df99c980e1dd32d0bcaf645386a492f9f47ec",
+    "refs/heads/sensors": "a14184f581473e9d457460a936ec6b522120adc4",
+    "refs/heads/u64time": "1d9b86fe5c8dcc38c9e25f5e59d12a94850c200d",
+    "refs/heads/upstream-dw9714v": "8d9289f5256724406564402b6e61d9fa12e28d05",
+    "refs/heads/wifi-bisect": "d95e1fc9de2bc85d8da9d193d17b9efc790b69fc",
+    "refs/remotes/origin/HEAD": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+    "refs/remotes/origin/iceland-7.2": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+    "refs/remotes/piano/piano/camera": "84cb707e0a81e343f4c558c59858032e60eaeb5b",
+    "refs/remotes/superturtle/HEAD": "4c743c779b1bc60ab334a8f2625090a08ad4869c",
+    "refs/remotes/superturtle/iceland-7.2": "4c743c779b1bc60ab334a8f2625090a08ad4869c",
+    "refs/remotes/superturtle/pr/camera": "399b30a55af31bc2b9164b6c1feda4cfd29e83c8",
+    "refs/remotes/superturtle/pr/gunyah": "fd503a492d381687c143b7085ea79ebce58dcdc7",
+    "refs/remotes/superturtle/pr/pogo-keyboard": "c040c2a89578a90c13ac205e5a576bc1ca435620",
+    "refs/remotes/superturtle/pr/scmi-p2a-no-channel-free-ack": "469a19821136a7b7c246b9e4f7dc9d9d5c601c3b",
+    "refs/remotes/superturtle/pr/vpu": "1f1df99c980e1dd32d0bcaf645386a492f9f47ec",
+    "refs/remotes/superturtle/u64time": "1d9b86fe5c8dcc38c9e25f5e59d12a94850c200d"
+  },
+  "commits": [
+    {
+      "commit": "e40142cfa314cad72eab4c6ffe88364287e33b78",
+      "parents": "8d3ae59288f1e7d58d76558a6ee96d533bc5019f",
+      "author": "Jingyi Wang",
+      "email": "jingyi.wang@oss.qualcomm.com",
+      "author_date": "2026-05-19T00:24:23-07:00",
+      "subject": "remoteproc: qcom: pas: Add late attach support for subsystems",
+      "patch": "commits/supporting/0001-e40142cfa314-remoteproc-qcom-pas-Add-late-attach-support-for-subsystems.patch",
+      "sha256": "d226e6af6b92a04c022b4acd15d2476eb80a126f70519f3b4de1c363d815c027",
+      "patch_id": "bf5532cd5c8b66127e20be0677adbbbb3bd9578f",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:52Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Gokul Krishna Krishnakumar <gokul.krishnakumar@oss.qualcomm.com>",
+        "Jingyi Wang <jingyi.wang@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "9de9261f09df29a05f4d1442a07a55ced16b184c",
+      "parents": "e40142cfa314cad72eab4c6ffe88364287e33b78",
+      "author": "Jingyi Wang",
+      "email": "jingyi.wang@oss.qualcomm.com",
+      "author_date": "2026-05-19T00:24:24-07:00",
+      "subject": "remoteproc: qcom_q6v5_pas: Add SoCCP node on Kaanapali",
+      "patch": "commits/supporting/0002-9de9261f09df-remoteproc-qcom-q6v5-pas-Add-SoCCP-node-on-Kaanapali.patch",
+      "sha256": "4742716b8accd6b1e97c7abb6d678d63cf226b6bfc00f74e695574eb345b4cb1",
+      "patch_id": "fa7954f6fd2d27a6f0e805c9643b70e7e201c503",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:52Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Jingyi Wang <jingyi.wang@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "84367cda4bc519d1c1654a09577a2fbcdf33415a",
+      "parents": "9de9261f09df29a05f4d1442a07a55ced16b184c",
+      "author": "Qingqing Zhou",
+      "email": "quic_qqzhou@quicinc.com",
+      "author_date": "2026-05-12T03:53:17+05:30",
+      "subject": "arm64: dts: qcom: kaanapali: add the GPU SMMU node",
+      "patch": "commits/supporting/0003-84367cda4bc5-arm64-dts-qcom-kaanapali-add-the-GPU-SMMU-node.patch",
+      "sha256": "c061a913a86c5a926ad70ae44b5bafafddcfda56bfdcaf833b2322788b2c1551",
+      "patch_id": "a3757768ec541903e3e4c94d9b042723f29c3cef",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:52Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Qingqing Zhou <quic_qqzhou@quicinc.com>",
+        "Akhil P Oommen <akhilpo@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "5828f9e0a528b111982527c93ab59b817a5f52ed",
+      "parents": "84367cda4bc519d1c1654a09577a2fbcdf33415a",
+      "author": "Jingyi Wang",
+      "email": "jingyi.wang@oss.qualcomm.com",
+      "author_date": "2026-05-12T03:53:18+05:30",
+      "subject": "arm64: dts: qcom: kaanapali: Add qfprom node",
+      "patch": "commits/supporting/0004-5828f9e0a528-arm64-dts-qcom-kaanapali-Add-qfprom-node.patch",
+      "sha256": "61a3dcb3968d78a58797b09a9e39fed33389df18e5b942446610268e5571701f",
+      "patch_id": "b5d2fda472accdfc1933cf117ef56a278ad24bb8",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:52Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Jingyi Wang <jingyi.wang@oss.qualcomm.com>",
+        "Akhil P Oommen <akhilpo@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "9757148c5bb1d2427f427c7fd4cc6466c5a02a61",
+      "parents": "5828f9e0a528b111982527c93ab59b817a5f52ed",
+      "author": "Akhil P Oommen",
+      "email": "akhilpo@oss.qualcomm.com",
+      "author_date": "2026-05-12T03:53:19+05:30",
+      "subject": "arm64: dts: qcom: Add GPU support for Kaanapali",
+      "patch": "commits/supporting/0005-9757148c5bb1-arm64-dts-qcom-Add-GPU-support-for-Kaanapali.patch",
+      "sha256": "7fef91737ce60e2196482082efe4b492a847ec6f6d2735bbfeed877762c1ddcf",
+      "patch_id": "944fb3c8035167203219380d742967142d4561dd",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Akhil P Oommen <akhilpo@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "856c9a5d76e2dea539ffd036058c463712c8c5c2",
+      "parents": "9757148c5bb1d2427f427c7fd4cc6466c5a02a61",
+      "author": "Gaurav Kohli",
+      "email": "gaurav.kohli@oss.qualcomm.com",
+      "author_date": "2026-05-12T03:53:20+05:30",
+      "subject": "arm64: dts: qcom: kaanapali: Add GPU cooling",
+      "patch": "commits/supporting/0006-856c9a5d76e2-arm64-dts-qcom-kaanapali-Add-GPU-cooling.patch",
+      "sha256": "a4d093f80f6c48dcecd88ead22207ade07b798c9b0e498a66ea33c8c3f3124f6",
+      "patch_id": "e538dbd185ae84093b8ab44af257867af7f2212c",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Gaurav Kohli <gaurav.kohli@oss.qualcomm.com>",
+        "Akhil P Oommen <akhilpo@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "8a10b551846e489d5deb2e88a14d911edfc31d77",
+      "parents": "856c9a5d76e2dea539ffd036058c463712c8c5c2",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T09:21:38Z",
+      "subject": "SM8850: Fix gpuss thermal polling delay",
+      "patch": "commits/map220v/0007-8a10b551846e-SM8850-Fix-gpuss-thermal-polling-delay.patch",
+      "sha256": "384f584cceaca4625412f0651ff6248e583a2f0f76635f958b1172d4f07f54b9",
+      "patch_id": "2a0e2789f30206ea1018f13774efe0d8160b340e",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "beaffadffca743537092aa562ce948e6ff5a02fd",
+      "parents": "8a10b551846e489d5deb2e88a14d911edfc31d77",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T09:24:24Z",
+      "subject": "SM8850: Add SOCCP nodes",
+      "patch": "commits/map220v/0008-beaffadffca7-SM8850-Add-SOCCP-nodes.patch",
+      "sha256": "94dee56c32ce60f5daf51070a78fd1cbd067741add558feb87b73b649c85583f",
+      "patch_id": "e67aec4fcc139008eceedc7076d673cad2def226",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "a89e7724daf19845d228d9dd974fce4298f26cb6",
+      "parents": "beaffadffca743537092aa562ce948e6ff5a02fd",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T09:24:51Z",
+      "subject": "SM8850: Add DSI1 nodes",
+      "patch": "commits/map220v/0009-a89e7724daf1-SM8850-Add-DSI1-nodes.patch",
+      "sha256": "81669b35d48c6c6fdee9e473e69333660e3b865441bbd4e0374ed1a330d3fe3d",
+      "patch_id": "213b7a9db520917a44392fc4aa3833e4124ea2a9",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "bf079c30d01f3cd98e858b488244f3ae0faa1742",
+      "parents": "a89e7724daf19845d228d9dd974fce4298f26cb6",
+      "author": "Teguh Sobirin",
+      "email": "teguh@sobir.in",
+      "author_date": "2026-03-25T23:53:30+08:00",
+      "subject": "wifi: ath12k: add initial hardware definition for WCN7860",
+      "patch": "commits/supporting/0010-bf079c30d01f-wifi-ath12k-add-initial-hardware-definition-for-WCN7860.patch",
+      "sha256": "aff290aa688b467563f1f13f62c8fcc0bbdea3d0139ea7fa3001e98aae1d834a",
+      "patch_id": "efa3e4166924debe5fe3299a0ecac78bc29cffdc",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Teguh Sobirin <teguh@sobir.in>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "64258447b10fbeec37e4167b98c22d55f489a8d0",
+      "parents": "bf079c30d01f3cd98e858b488244f3ae0faa1742",
+      "author": "Gianni Spadoni",
+      "email": "me@gio.blue",
+      "author_date": "2026-03-11T16:08:41+08:00",
+      "subject": "wifi: ath12k: send QDSS config when CNSS_QDSS_CFG_MISS_V01 is disabled",
+      "patch": "commits/supporting/0011-64258447b10f-wifi-ath12k-send-QDSS-config-when-CNSS-QDSS-CFG-MISS-V01-is-disabled.patch",
+      "sha256": "5ba24238d0758092c37463d91cc6c5bc1d9864935e54385169e39d4b9703ace2",
+      "patch_id": "5e4661f5c4028ab0cbbbdf6734d074d78e2f98e9",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Gianni Spadoni <me@gio.blue>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "1b693cd9928cebf4bc8fbd95ec36ca669a6cb615",
+      "parents": "64258447b10fbeec37e4167b98c22d55f489a8d0",
+      "author": "Gianni Spadoni",
+      "email": "me@gio.blue",
+      "author_date": "2026-03-11T16:19:06+08:00",
+      "subject": "wifi: ath12k: disable CNSS_QDSS_CFG_MISS_V01 for the WCN7860",
+      "patch": "commits/supporting/0012-1b693cd9928c-wifi-ath12k-disable-CNSS-QDSS-CFG-MISS-V01-for-the-WCN7860.patch",
+      "sha256": "ee998ef417651c07e92c3c2d8d4c9c27c97c8b8e2283a50307286b1c1159aded",
+      "patch_id": "6d62c0d12ffe9970650d45ad23a4de50c585cd8c",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Gianni Spadoni <me@gio.blue>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "c72982d5ad796e35296c6352ab67d8e1da9047f8",
+      "parents": "1b693cd9928cebf4bc8fbd95ec36ca669a6cb615",
+      "author": "Teguh Sobirin",
+      "email": "teguh@sobir.in",
+      "author_date": "2026-03-25T21:39:34+08:00",
+      "subject": "PCI/pwrctrl: pwrseq: add support for WCN7860",
+      "patch": "commits/supporting/0013-c72982d5ad79-PCI-pwrctrl-pwrseq-add-support-for-WCN7860.patch",
+      "sha256": "ede3ce7f4512388841da0ff301fc7991b2d7b5b723bc10d539a3cbd752fccb07",
+      "patch_id": "bb483280fe9f630ccabf8c8d2232ca3ba5cdb799",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Teguh Sobirin <teguh@sobir.in>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "719fa465db93c3409d407f026443bfca00e2dcf9",
+      "parents": "c72982d5ad796e35296c6352ab67d8e1da9047f8",
+      "author": "Teguh Sobirin",
+      "email": "teguh@sobir.in",
+      "author_date": "2026-03-25T21:37:37+08:00",
+      "subject": "power: sequencing: qcom-wcn: add support for WCN7860",
+      "patch": "commits/supporting/0014-719fa465db93-power-sequencing-qcom-wcn-add-support-for-WCN7860.patch",
+      "sha256": "1857bc1f2bf9efee489268a5942b278282cba89c9d01f57bd386281855e6ab0f",
+      "patch_id": "f063497e511a87963967e02ef2697085607b6f93",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Teguh Sobirin <teguh@sobir.in>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "1568c3ce350259b303be0ba14be7e5cbc2eda18c",
+      "parents": "719fa465db93c3409d407f026443bfca00e2dcf9",
+      "author": "Teguh Sobirin",
+      "email": "teguh@sobir.in",
+      "author_date": "2026-03-30T20:57:46+08:00",
+      "subject": "Bluetooth: qca: add WCN7860 support",
+      "patch": "commits/supporting/0015-1568c3ce3502-Bluetooth-qca-add-WCN7860-support.patch",
+      "sha256": "2e98334fc17029af02c707b2138ec1b11a5712b4917864f628c747b413523541",
+      "patch_id": "26ac6c5baa72ae6c5090be856c6e0783fe31ff53",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Teguh Sobirin <teguh@sobir.in>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "afe020923fc80bfd30fe3fb2b7173730f7b779e2",
+      "parents": "1568c3ce350259b303be0ba14be7e5cbc2eda18c",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T09:49:48Z",
+      "subject": "SM8850: Add device tree for OnePlus Pad 4",
+      "patch": "commits/map220v/0016-afe020923fc8-SM8850-Add-device-tree-for-OnePlus-Pad-4.patch",
+      "sha256": "3a49c38b035d336daaeaf2d08f75b34992311d4777ba22978e28170cd39d8ce2",
+      "patch_id": "976d198b06127606a2d6f2b6d4e36c42ee0243c0",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "e3195e5ffd9159d8e48f89fe59c74abda28a4ad2",
+      "parents": "afe020923fc80bfd30fe3fb2b7173730f7b779e2",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T09:50:01Z",
+      "subject": "SM8850: Add sm8850.config fragment",
+      "patch": "commits/map220v/0017-e3195e5ffd91-SM8850-Add-sm8850-config-fragment.patch",
+      "sha256": "be8a1f2e9f313a92ce69b35ccaf87b4a8dd7a904c05c8f49d94c4d97580e6b06",
+      "patch_id": "fdbc8ccbf6d0d49bfb5c32234be4f11cd38deba5",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "972c7a104c942584a4a9b79f5e1dab75ca5555ad",
+      "parents": "e3195e5ffd9159d8e48f89fe59c74abda28a4ad2",
+      "author": "Dmitry Baryshkov",
+      "email": "dmitry.baryshkov@linaro.org",
+      "author_date": "2023-06-04T21:44:33+03:00",
+      "subject": "drm/msm/dsi: change sync mode to sync on DSI0 rather than DSI1",
+      "patch": "commits/supporting/0018-972c7a104c94-drm-msm-dsi-change-sync-mode-to-sync-on-DSI0-rather-than-DSI1.patch",
+      "sha256": "486d063c521c4a4dc4864b6ffe5bc7f0d04645808f617790e46ebfd18fc02b10",
+      "patch_id": "bd907db38ae2bc7912d1e76ba6db79b08e052836",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Dmitry Baryshkov <dmitry.baryshkov@linaro.org>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "e7765030a49dd93206204a3e07d8982af3294ded",
+      "parents": "972c7a104c942584a4a9b79f5e1dab75ca5555ad",
+      "author": "Jonathan Marek",
+      "email": "jonathan@marek.ca",
+      "author_date": "2023-11-14T17:58:33-05:00",
+      "subject": "drm/msm/dsi: support DSC configurations with slice_per_pkt > 1",
+      "patch": "commits/supporting/0019-e7765030a49d-drm-msm-dsi-support-DSC-configurations-with-slice-per-pkt-1.patch",
+      "sha256": "6d624e4844af95f2f0514458173251b00b32555d0d34b502a8cb53da05b73796",
+      "patch_id": "4dbdd50b28c0b5dec54785709f183c171128e855",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Jonathan Marek <jonathan@marek.ca>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "38a053d131b4da398a00694ac4228d96819ebbe3",
+      "parents": "e7765030a49dd93206204a3e07d8982af3294ded",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:01:35Z",
+      "subject": "backlight: Add KTZ8869 driver for iceland",
+      "patch": "commits/map220v/0020-38a053d131b4-backlight-Add-KTZ8869-driver-for-iceland.patch",
+      "sha256": "26d3047ad993e6a14c199752670d032b4815dfbc4e06a5acdac94c6dafb8a43d",
+      "patch_id": "66619824f58b56cf830fd7ccba15945c94d5b487",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "bad9102cb260b863ae8e339964421d24e4de4443",
+      "parents": "38a053d131b4da398a00694ac4228d96819ebbe3",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:02:32Z",
+      "subject": "ICELAND: Add KTZ8869 nodes",
+      "patch": "commits/map220v/0021-bad9102cb260-ICELAND-Add-KTZ8869-nodes.patch",
+      "sha256": "85e67d568a92f42269e5fe8be8d17f5c6e924db7383c59d714172a7ef69418c2",
+      "patch_id": "7b887c1842c9d9ada5985ad1f1feae62b1ba637e",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "8430ac47e620928023efdcb5b03811f3a220d532",
+      "parents": "bad9102cb260b863ae8e339964421d24e4de4443",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:03:14Z",
+      "subject": "drm/msm/dpu: Add missing rect offsets for Kaanapali DMA SSPP",
+      "patch": "commits/map220v/0022-8430ac47e620-drm-msm-dpu-Add-missing-rect-offsets-for-Kaanapali-DMA-SSPP.patch",
+      "sha256": "138ab2320e7c5a2c3e8e62992921eff5074c47a3e3578ecc7722f962c7f2f90e",
+      "patch_id": "de79268133d8a0f8ad1b28955aec5fda3ab2d82d",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:53Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "66b96f8774516944ceca4eaff143c55e3fcb5eb4",
+      "parents": "8430ac47e620928023efdcb5b03811f3a220d532",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:03:41Z",
+      "subject": "drm/msm/dpu: Fix Compressed width calculation",
+      "patch": "commits/map220v/0023-66b96f877451-drm-msm-dpu-Fix-Compressed-width-calculation.patch",
+      "sha256": "204eec6285cb7b5fc1f9d53e838f6b6fc6d32b986959073b56289bba828f9333",
+      "patch_id": "1b4272c886828aa13375ba63e6a89b19a48daf61",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "6b790f157d18e7fd5db971add19aa196a7f62284",
+      "parents": "66b96f8774516944ceca4eaff143c55e3fcb5eb4",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:04:19Z",
+      "subject": "drm/panel: Add driver for NT36536 panels",
+      "patch": "commits/map220v/0024-6b790f157d18-drm-panel-Add-driver-for-NT36536-panels.patch",
+      "sha256": "2252012df29a45bed9a6e0198f33596d9b2ad4ec74b8618cc5bea03d99db8c7b",
+      "patch_id": "fb1c6c5af0b0296115b26c197f8450de078497bb",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "cb5e37b615799af2e69f53bd1ff39a51ce46b810",
+      "parents": "6b790f157d18e7fd5db971add19aa196a7f62284",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:05:44Z",
+      "subject": "ICELAND: Add panel node",
+      "patch": "commits/map220v/0025-cb5e37b61579-ICELAND-Add-panel-node.patch",
+      "sha256": "ce8949cc8ede2a891846fd20c1908d1c4fe5a46ec4b61631ac429bf9eaad0f34",
+      "patch_id": "0cff7dee7e6105686fd9afd8263e45ca05ebb490",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "d8f0b2f4e40a6b5e869cb23ec033ab7bcc52faff",
+      "parents": "cb5e37b615799af2e69f53bd1ff39a51ce46b810",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:05:57Z",
+      "subject": "Input: Add NT36536 touch driver",
+      "patch": "commits/map220v/0026-d8f0b2f4e40a-Input-Add-NT36536-touch-driver.patch",
+      "sha256": "97325c5bc3b5a091cc5c8d954344942da0bdd7f74e73e1048a5572b48e374e4c",
+      "patch_id": "d1287c994a35f4e0856931eeff2e240c6d36555d",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "f43cb00d872e344cc8860815b64a51d5fa89615c",
+      "parents": "d8f0b2f4e40a6b5e869cb23ec033ab7bcc52faff",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-08T10:06:45Z",
+      "subject": "ICELAND: Add touchscreen node",
+      "patch": "commits/map220v/0027-f43cb00d872e-ICELAND-Add-touchscreen-node.patch",
+      "sha256": "274473ef06623a97d9a09329255e42c4e65b61d2e2617904a287d828b5a29b82",
+      "patch_id": "f69166c6a5c51398855cc8bd84311352513b2165",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "65152354d8ae4afec5a3847e66944c89ddc3e433",
+      "parents": "f43cb00d872e344cc8860815b64a51d5fa89615c",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-11T07:56:25Z",
+      "subject": "SM8850: Fix GMU address",
+      "patch": "commits/map220v/0028-65152354d8ae-SM8850-Fix-GMU-address.patch",
+      "sha256": "0f45955428dd591e2296b32540f65b181f779179606431628ab381f002f534a5",
+      "patch_id": "872a7512ee86521834f6702aed19e19659a9ed87",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "4fdc45fcc700c730e65da0868491bb32736d88e1",
+      "parents": "65152354d8ae4afec5a3847e66944c89ddc3e433",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-19T17:58:04Z",
+      "subject": "SM8850: Add cache info",
+      "patch": "commits/map220v/0029-4fdc45fcc700-SM8850-Add-cache-info.patch",
+      "sha256": "b62eb4672c664876f4ec4a91ab85b645fd6b33a8a1b5bbe6cfc1a520da39a7ef",
+      "patch_id": "d91699658f283e7ea17789cc49d6fb7f09cc81f7",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "2bc508d899d0d8dd09af6b426078c0e8c73c38f0",
+      "parents": "4fdc45fcc700c730e65da0868491bb32736d88e1",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-06-22T18:57:01Z",
+      "subject": "qcom_battmgr: Add basic support for Kaanapali OnePlus SOCCP FW",
+      "patch": "commits/map220v/0030-2bc508d899d0-qcom-battmgr-Add-basic-support-for-Kaanapali-OnePlus-SOCCP-FW.patch",
+      "sha256": "53ab37d14e6ba9317ed0ff1537ed09692515aad6e338a2b95c74b2749dece8fd",
+      "patch_id": "bd73101e0cd298a9e4d435d43750099fa22545bb",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "5f86156d7b81f4e1169120533530010136b080e4",
+      "parents": "2bc508d899d0d8dd09af6b426078c0e8c73c38f0",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-06T18:35:44Z",
+      "subject": "ASoC: Add simple TFA9865 driver Since TFA9865 and TFA9864 has no DSP and container file contains only init regs, this basic driver should be good for now.",
+      "patch": "commits/map220v/0031-5f86156d7b81-ASoC-Add-simple-TFA9865-driver-Since-TFA9865-and-TFA9864-has-no-DSP-and-container-file-con.patch",
+      "sha256": "694aba6961297596de9c608e517c9e3fb471510ee4216b44ca6f048b67f9ae74",
+      "patch_id": "420eafccf74b38f27312f25dc796d87ee1ff84df",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "be941be038171c2bd68a9eaf1a3f063830c2474d",
+      "parents": "5f86156d7b81f4e1169120533530010136b080e4",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-06T18:37:11Z",
+      "subject": "ICELAND: Add sound nodes",
+      "patch": "commits/map220v/0032-be941be03817-ICELAND-Add-sound-nodes.patch",
+      "sha256": "53e5d282a81a2e05e48f44156b272ce8b95c1d8dff4e51ab8a758678c7a2a8f0",
+      "patch_id": "14253c20341a0b2db6d6061389a14b4fa6cb7bf7",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "39708d9ccc231379c1ecad46d13d7c77740b8cf8",
+      "parents": "be941be038171c2bd68a9eaf1a3f063830c2474d",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-06T19:05:53Z",
+      "subject": "SM8850: Update GPU OPP table",
+      "patch": "commits/map220v/0033-39708d9ccc23-SM8850-Update-GPU-OPP-table.patch",
+      "sha256": "146ccfb129dd88ff38c0c57ee37c9fe9709517f555907b61e205edccf1cac415",
+      "patch_id": "3aa4ef8c928e5d0d5743056d19661bb6c5bc5d4e",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "089225f217aff1abbc159d181a25b72015485f05",
+      "parents": "39708d9ccc231379c1ecad46d13d7c77740b8cf8",
+      "author": "Krishna Kurapati",
+      "email": "krishna.kurapati@oss.qualcomm.com",
+      "author_date": "2026-07-03T00:14:40+05:30",
+      "subject": "arm64: dts: qcom: kaanapali: Add missing properties to usb controller",
+      "patch": "commits/supporting/0034-089225f217af-arm64-dts-qcom-kaanapali-Add-missing-properties-to-usb-controller.patch",
+      "sha256": "7c2717b02a8dfb2501d4b0be12f35fd200878be77e1fe97ac182701fd2f66e1e",
+      "patch_id": "fa686eaf25e8f56db4ae57a332417b13d966527c",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "d629943c08947b92814bb5c41f2d53c853bf6090",
+      "parents": "089225f217aff1abbc159d181a25b72015485f05",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-06T19:24:48Z",
+      "subject": "ICELAND: Remove usb-role-switch",
+      "patch": "commits/map220v/0035-d629943c0894-ICELAND-Remove-usb-role-switch.patch",
+      "sha256": "b36f8b91370c85f085a3d92d0ad895bdeec5bb11f57a93ea0a5470141665487e",
+      "patch_id": "d779f218f384aafa46d94c4d7940afc2ac488290",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "ed9d01daed04572c6eeb7eb20948574b7bdb767b",
+      "parents": "d629943c08947b92814bb5c41f2d53c853bf6090",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-13T19:15:23Z",
+      "subject": "ICELAND: Reserve llcc_lpi_mem to fix Gunyah crash",
+      "patch": "commits/map220v/0036-ed9d01daed04-ICELAND-Reserve-llcc-lpi-mem-to-fix-Gunyah-crash.patch",
+      "sha256": "a8d22a67d68cd9a2f853b5bf88bf2ddd965eebf7e40ee4121fa821b69cf8499f",
+      "patch_id": "03ced0cee529b04922540054f1d948f42c8c6b9f",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "175302a0a2f9761e1675e0bd8cde5b66fdf0d14e",
+      "parents": "ed9d01daed04572c6eeb7eb20948574b7bdb767b",
+      "author": "map220v",
+      "email": "map220v300@gmail.com",
+      "author_date": "2026-07-14T06:22:32Z",
+      "subject": "ICELAND: Reserve adsp_mhi_mem and global_sync_mem Both have XN=2(EL1&EL0 NOEXEC) in VTTBR",
+      "patch": "commits/map220v/0037-175302a0a2f9-ICELAND-Reserve-adsp-mhi-mem-and-global-sync-mem-Both-have-XN-2-EL1-EL0-NOEXEC-in-VTTBR.patch",
+      "sha256": "2131ccf2d95d2acd6572398a29ce4b8b7ef7b9a4b3382c959320e81bacb8cfb3",
+      "patch_id": "13f6d9fc094a66e5b6e1333bac4cf847386aa0cd",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": "map220v",
+      "target_committer": "map220v",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "696975ebf0e4edcbb5d8cee1d528ab406af988bf",
+      "parents": "175302a0a2f9761e1675e0bd8cde5b66fdf0d14e",
+      "author": "Konrad Dybcio",
+      "email": "konrad.dybcio@oss.qualcomm.com",
+      "author_date": "2026-07-28T15:20:45+02:00",
+      "subject": "drm/msm/dpu: Drop sneaky dev_pm_opp_set_rate(0)",
+      "patch": "commits/supporting/0038-696975ebf0e4-drm-msm-dpu-Drop-sneaky-dev-pm-opp-set-rate-0.patch",
+      "sha256": "e45330dda2ee45bcc761fbca5cbb3305518e1f8739cb94ce02d5f090f193f768",
+      "patch_id": "42ed9b3dbdf139ec7313c168e155c3d465474c78",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "331d7eefa2aa3f708869eb25bc9c73231be48a4f",
+      "parents": "696975ebf0e4edcbb5d8cee1d528ab406af988bf",
+      "author": "Konrad Dybcio",
+      "email": "konrad.dybcio@oss.qualcomm.com",
+      "author_date": "2026-07-28T15:20:46+02:00",
+      "subject": "drm/msm/dp: Drop dev_pm_opp_set_rate(0)",
+      "patch": "commits/supporting/0039-331d7eefa2aa-drm-msm-dp-Drop-dev-pm-opp-set-rate-0.patch",
+      "sha256": "38924812b6b7cb41a2b8e7c77fbe3e211f4bfb1d26947b55cf4ec265109ff6f0",
+      "patch_id": "e54a7ee97327157c32a1d0c05a4820278dcb61ed",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+      "parents": "331d7eefa2aa3f708869eb25bc9c73231be48a4f",
+      "author": "Konrad Dybcio",
+      "email": "konrad.dybcio@oss.qualcomm.com",
+      "author_date": "2026-07-28T15:20:47+02:00",
+      "subject": "drm/msm/dsi: Drop dev_pm_opp_set_rate(0)",
+      "patch": "commits/supporting/0040-bc3e5fc83c9c-drm-msm-dsi-Drop-dev-pm-opp-set-rate-0.patch",
+      "sha256": "b2d9ca6034738cac8b3e3c4f8fc04cba64560bf8102613cecc7968643fa84dd2",
+      "patch_id": "ec9c0cd83e9740b6d508475ab57e708fdc6438db",
+      "committer": "map220v",
+      "committer_email": "map220v300@gmail.com",
+      "committer_date": "2026-08-17T03:58:54Z",
+      "target_author": null,
+      "target_committer": "map220v",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": [
+        "Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>",
+        "map220v <map220v300@gmail.com>"
+      ]
+    },
+    {
+      "commit": "7e578f0121e1d8a75630da33203dc14fa7dd663e",
+      "parents": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-03T23:22:54+08:00",
+      "subject": "arm64: dts: qcom: kaanapali: add cpu capacity-dmips-mhz (EAS capacity hints, cpupm work)",
+      "patch": "commits/supporting/0041-7e578f0121e1-arm64-dts-qcom-kaanapali-add-cpu-capacity-dmips-mhz-EAS-capacity-hints-cpupm-work.patch",
+      "sha256": "4fe940aeee3a8e65d2c565fe1c5ff4b0357f477334da7d55a80ba152791e0cf6",
+      "patch_id": "fd49d9e3d7577a0e2b98ccff3f6d6f45088ab994",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:31:42-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "4e9b716912e00212e751a46f43c859eca6f94497",
+      "parents": "7e578f0121e1d8a75630da33203dc14fa7dd663e",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T02:49:00+08:00",
+      "subject": "arm64: dts: qcom: kaanapali: add uart17 and wire the OnePlus Pad 4 pogo keyboard",
+      "patch": "commits/supporting/0042-4e9b716912e0-arm64-dts-qcom-kaanapali-add-uart17-and-wire-the-OnePlus-Pad-4-pogo-keyboard.patch",
+      "sha256": "74943162a143f6d01328766419c135cf94d0a1d202aaf8e2a89b7d534c1cfe7a",
+      "patch_id": "dd0b53a6a191515cb88d4c9455762d9cc94fda7f",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:01-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "a862a8973f65c0a96e94107b1c334d49be3cf027",
+      "parents": "4e9b716912e00212e751a46f43c859eca6f94497",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T02:49:00+08:00",
+      "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+      "patch": "commits/supporting/0043-a862a8973f65-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+      "sha256": "1cb46bfb9feba5f51d9b06009dc83addda2f32a6c6ee1bd49b1fcfca01e498b7",
+      "patch_id": "e2e0e161d8128c6ab541a30aa0936b3a4fafe49b",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:04-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "645096c6bbc1d94c29b74ad575e8279fb14d9ba0",
+      "parents": "a862a8973f65c0a96e94107b1c334d49be3cf027",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T04:04:44+08:00",
+      "subject": "virt: gunyah: import Gunyah hypervisor drivers from android17-6.18",
+      "patch": "commits/supporting/0044-645096c6bbc1-virt-gunyah-import-Gunyah-hypervisor-drivers-from-android17-6-18.patch",
+      "sha256": "d4e929163fd59f7c88cd8d70f06dc6401ec4953bd33fe90c20fdcb3b6419dedd",
+      "patch_id": "49410f855122781c89f25c017539cdc5311d508d",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:08-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "d552aaff3771261b421b74deac28fcd8d51f10c7",
+      "parents": "645096c6bbc1d94c29b74ad575e8279fb14d9ba0",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T04:17:54+08:00",
+      "subject": "Input: oneplus-pogo-kbd: fix link loss after attach and stuck re-detection",
+      "patch": "commits/supporting/0045-d552aaff3771-Input-oneplus-pogo-kbd-fix-link-loss-after-attach-and-stuck-re-detection.patch",
+      "sha256": "389721d93759bb22c38675f9e085f5cdfcc04cc60eeaf1b78f13c87113041d3f",
+      "patch_id": "1d4ca47478396ede15f6486e2e00678eaae30b9c",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:14-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "fceb74ea1552b20520b88c77f9b7904bf80d5ba3",
+      "parents": "d552aaff3771261b421b74deac28fcd8d51f10c7",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T04:20:59+08:00",
+      "subject": "Input: oneplus-pogo-kbd: expose the keyboard backlight as a LED class device",
+      "patch": "commits/supporting/0046-fceb74ea1552-Input-oneplus-pogo-kbd-expose-the-keyboard-backlight-as-a-LED-class-device.patch",
+      "sha256": "e3784ab522e32835bfc2a891a56d319484536a10b84d1fcd4835fd2ec19a207b",
+      "patch_id": "d5d4aa1766d86f49d91ca189da4d97f28b3e668d",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:17-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "91d78aa40296c779b857392bb8dd55657d2fc972",
+      "parents": "fceb74ea1552b20520b88c77f9b7904bf80d5ba3",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T04:28:40+08:00",
+      "subject": "virt: gunyah: adapt to mainline 7.2",
+      "patch": "commits/supporting/0047-91d78aa40296-virt-gunyah-adapt-to-mainline-7-2.patch",
+      "sha256": "756a906c13955afcfb4f0337aa1341d442626ae1fc41eb1696f77fd1a20b9f0a",
+      "patch_id": "9b5bb0829bb3c26e740885224a0caa73e893cdcf",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:20-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "56944665c1a3bcb937792fc3a50c8de0cd252bf2",
+      "parents": "91d78aa40296c779b857392bb8dd55657d2fc972",
+      "author": "iceland-dev",
+      "email": "dev@iceland.local",
+      "author_date": "2026-10-04T05:16:15+08:00",
+      "subject": "tools: virt: gunyah: add VM smoke test and record verification results",
+      "patch": "commits/supporting/0048-56944665c1a3-tools-virt-gunyah-add-VM-smoke-test-and-record-verification-results.patch",
+      "sha256": "773a9dc2edad02ed72bf7324daeb629d2d5531aa7975d212d687bd60ab7d75ab",
+      "patch_id": "ea38a4612a6e12309f10e4c2482861b3e36aad9c",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-04T08:32:26-05:00",
+      "target_author": null,
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "baa5fda60af06000598feebf142a5ff8561e4aa3",
+      "parents": "56944665c1a3bcb937792fc3a50c8de0cd252bf2",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-05T12:01:28-05:00",
+      "subject": "backlight: ktz8869 - treat enable gpio defer as non-fatal (workaround)",
+      "patch": "commits/yibo-wang/0049-baa5fda60af0-backlight-ktz8869-treat-enable-gpio-defer-as-non-fatal-workaround.patch",
+      "sha256": "808ae60f0b3fe67c8f8870f019db5024cb85f08b382707e0af9f710c2b44ba06",
+      "patch_id": "acd06d57dde6a6f5046ec71b471649e6ddcb0786",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-05T12:01:28-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "cedbce88b66fc76df7dc0d014d8f82ca04888316",
+      "parents": "baa5fda60af06000598feebf142a5ff8561e4aa3",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-06T00:12:28-05:00",
+      "subject": "Revert \"backlight: ktz8869 - treat enable gpio defer as non-fatal (workaround)\"",
+      "patch": "commits/yibo-wang/0050-cedbce88b66f-Revert-backlight-ktz8869-treat-enable-gpio-defer-as-non-fatal-workaround.patch",
+      "sha256": "a10799017200f20e7396a8a44521968702b6ed8ce4d61fb6d02b0b3be9e8b18d",
+      "patch_id": "dac0071b605f0a81477cc4c7a01084152c836d10",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-06T00:12:28-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "aa2aab0526195862ea0a03cf02670a67d1847e8f",
+      "parents": "cedbce88b66fc76df7dc0d014d8f82ca04888316",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-06T02:09:28-05:00",
+      "subject": "arm64: dts: qcom: kaanapali: drop duplicate enable-gpios from second ktz8869 node",
+      "patch": "commits/yibo-wang/0051-aa2aab052619-arm64-dts-qcom-kaanapali-drop-duplicate-enable-gpios-from-second-ktz8869-node.patch",
+      "sha256": "e30c167cfa1b6f636ade4f66b2c55c16bf5467734fceed71493dd0144defe0fb",
+      "patch_id": "24255cbf378326de05d41155de605fbc6e7b9010",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-06T02:09:28-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "2a73922c776ada4b6388695cc53352cca58e6a31",
+      "parents": "aa2aab0526195862ea0a03cf02670a67d1847e8f",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-06T07:25:52-05:00",
+      "subject": "PCI: pwrctrl: default PCI_PWRCTRL_PWRSEQ to y on qcom",
+      "patch": "commits/yibo-wang/0052-2a73922c776a-PCI-pwrctrl-default-PCI-PWRCTRL-PWRSEQ-to-y-on-qcom.patch",
+      "sha256": "c79bc58857286bde1989d4e196590994bdf926e565697dd449ca71c22646fde9",
+      "patch_id": "7546762e0d1e4c180788409736466a38f06259a5",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-06T07:25:52-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "81b77fb34a63096e5cb31a5b11acf0c54a66eda4",
+      "parents": "2a73922c776ada4b6388695cc53352cca58e6a31",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-06T08:34:25-05:00",
+      "subject": "backlight: ktz8869: fetch vddio as an optional regulator",
+      "patch": "commits/yibo-wang/0053-81b77fb34a63-backlight-ktz8869-fetch-vddio-as-an-optional-regulator.patch",
+      "sha256": "ec484abae115a764bf85954d97cb1e34c45873aeaf48a5f2ab1d89e784ddeaaa",
+      "patch_id": "00b15436bd28fa65949be0d1f6274a81f7c81575",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-06T08:34:25-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "600503179d807ce315882d941e01b38a6baf8075",
+      "parents": "81b77fb34a63096e5cb31a5b11acf0c54a66eda4",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-06T08:37:21-05:00",
+      "subject": "Revert \"backlight: ktz8869: fetch vddio as an optional regulator\"",
+      "patch": "commits/yibo-wang/0054-600503179d80-Revert-backlight-ktz8869-fetch-vddio-as-an-optional-regulator.patch",
+      "sha256": "0100f51c09a76f3e48e2f5a631ecf2786645e1852a1a21b345e755656f2fbd1d",
+      "patch_id": "9fc16f4b69baaf4e7f3566cfacd3c19ec6c2e327",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-06T08:37:21-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "03be252e7197ca8f392691fd9ab4026aaa5e79ea",
+      "parents": "600503179d807ce315882d941e01b38a6baf8075",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-07T03:38:39-05:00",
+      "subject": "firmware: arm_scmi: quirk: skip P2A CHANNEL_FREE ack for Qualcomm CPUCP",
+      "patch": "commits/yibo-wang/0055-03be252e7197-firmware-arm-scmi-quirk-skip-P2A-CHANNEL-FREE-ack-for-Qualcomm-CPUCP.patch",
+      "sha256": "94fed0cb7ec4159c24b9aa021beea1dfc77fc8217c2ebac3122f3a1fd9f39f24",
+      "patch_id": "c9927413b55f16be1916f9bbbced7cd563a97f4f",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-07T03:38:39-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "7a8c303db897c13e272bd8448d02fd74835f22f2",
+      "parents": "03be252e7197ca8f392691fd9ab4026aaa5e79ea",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-07T13:24:02-05:00",
+      "subject": "arm64: dts: qcom: iceland: RTC offset cell in SDAM2 for time persistence",
+      "patch": "commits/yibo-wang/0056-7a8c303db897-arm64-dts-qcom-iceland-RTC-offset-cell-in-SDAM2-for-time-persistence.patch",
+      "sha256": "2d2cfa07d59edfb376bc46f2bff5b2a4e79ead8e2fb0b0e8bc53aaa163ecc36f",
+      "patch_id": "a9777df75da2bd3c83b0fb777150a6257430534d",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-07T13:24:02-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "af65f2a632d2f87ab3097dd305ffa47b918e85cc",
+      "parents": "7a8c303db897c13e272bd8448d02fd74835f22f2",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T05:58:48-05:00",
+      "subject": "media: qcom: iceland camera bring-up: Kaanapali CAMSS + SmartSens SC sensors",
+      "patch": "commits/yibo-wang/0057-af65f2a632d2-media-qcom-iceland-camera-bring-up-Kaanapali-CAMSS-SmartSens-SC-sensors.patch",
+      "sha256": "435d240bf707278dff97079f5d78fe22fbf86411519054b14ecd071cf9c8f94e",
+      "patch_id": "66f772bc82a64f5a2628d71c4d21bbc6a9860ada",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T05:58:48-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "9e31a5791e781329916e3de2ac4c8c24a97752ff",
+      "parents": "af65f2a632d2f87ab3097dd305ffa47b918e85cc",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T08:19:08-05:00",
+      "subject": "media: qcom: iceland camera follow-up: AF actuator, flash, CSIPHY supplies",
+      "patch": "commits/yibo-wang/0058-9e31a5791e78-media-qcom-iceland-camera-follow-up-AF-actuator-flash-CSIPHY-supplies.patch",
+      "sha256": "7c88c5f2c0bf3bad17a548dfd1768e94893af2841af358623e1d35706be2693b",
+      "patch_id": "6aa1e6db0a8ef31125e5e330d5fa2fe2daf006da",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T08:19:08-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "dfa968065e585dadfc5de09699b238ae631525f9",
+      "parents": "9e31a5791e781329916e3de2ac4c8c24a97752ff",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T08:59:42-05:00",
+      "subject": "media: i2c: dw9719: DW9714V SAC tuning from the vendor actuator init",
+      "patch": "commits/yibo-wang/0059-dfa968065e58-media-i2c-dw9719-DW9714V-SAC-tuning-from-the-vendor-actuator-init.patch",
+      "sha256": "0d5dcf0bd79c41a1d015586814e3169cf874ad6f003a2ab9e32abfa92ee9fe2e",
+      "patch_id": "d44501fd305b74c31e937edebdf8bc09d71977c4",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T08:59:42-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "e585d5621c60ec8ba929a35259d9c9de9a8119f5",
+      "parents": "dfa968065e585dadfc5de09699b238ae631525f9",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T09:18:17-05:00",
+      "subject": "media: qcom: iceland: declare camera orientation, fix mirrored rear image",
+      "patch": "commits/yibo-wang/0060-e585d5621c60-media-qcom-iceland-declare-camera-orientation-fix-mirrored-rear-image.patch",
+      "sha256": "3dab2d74e639f29ac61c67f5924096b7bc926901fef01b2d37672f282e8f107e",
+      "patch_id": "21c210ec98ba46d3bab6440861eeac4ccfb604d9",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T09:18:17-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "cb23870f29a2baf8ab7d021614e7ca86264056db",
+      "parents": "e585d5621c60ec8ba929a35259d9c9de9a8119f5",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T09:24:26-05:00",
+      "subject": "arm64: dts: qcom: kaanapali: asymmetric CPU capacity from the vendor calibration",
+      "patch": "commits/yibo-wang/0061-cb23870f29a2-arm64-dts-qcom-kaanapali-asymmetric-CPU-capacity-from-the-vendor-calibration.patch",
+      "sha256": "9d338e7f0be5c7b12bfd3fbf8f0706d4011d677389dc3beb35ece5078341465e",
+      "patch_id": "0867f3f83292f1a90ffd7679884504e75d06f8f0",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T09:24:26-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "a6e51c9ce17924fb08742f03f0418e0636490363",
+      "parents": "cb23870f29a2baf8ab7d021614e7ca86264056db",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T10:12:06-05:00",
+      "subject": "media: qcom: iris: Kaanapali (VPU4) video codec support for iceland",
+      "patch": "commits/yibo-wang/0062-a6e51c9ce179-media-qcom-iris-Kaanapali-VPU4-video-codec-support-for-iceland.patch",
+      "sha256": "cb7820d242f1f36bae9e80752edb76ebff60ddf104de0233c5dd70303bafc67c",
+      "patch_id": "97e0094fd76e9085b9a4592e94ae78469d364a74",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T10:12:06-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "4f92b7d7df625c2800c042e58330d4eb8dc33cbe",
+      "parents": "a6e51c9ce17924fb08742f03f0418e0636490363",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-08T11:11:58-05:00",
+      "subject": "remoteproc: qcom_q6v5: quiet repeated handover interrupts",
+      "patch": "commits/yibo-wang/0063-4f92b7d7df62-remoteproc-qcom-q6v5-quiet-repeated-handover-interrupts.patch",
+      "sha256": "38f7c35e1d03d863e8abe21ec83de266863eaeb1b84421865b3fa2ba521c0f1e",
+      "patch_id": "12b8aee08e247e4751dc558353b2c6c512e7c9aa",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-08T11:11:58-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "2201139167a5e3d7b2047d426ce0238d78cce48a",
+      "parents": "4f92b7d7df625c2800c042e58330d4eb8dc33cbe",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-09T05:37:11-05:00",
+      "subject": "power: supply: qcom_battmgr: compute power_now on kaanapali",
+      "patch": "commits/yibo-wang/0064-2201139167a5-power-supply-qcom-battmgr-compute-power-now-on-kaanapali.patch",
+      "sha256": "acdfb991bc72f29419b4026f47fb5b3af5c43ce5fa57770132e45b8211e1c9d0",
+      "patch_id": "48201ff669ab8f0260152f0d3a01c27b71d4add8",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-09T05:37:11-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "c0e9662bef2d5f88b26073e07eff2caf168d5628",
+      "parents": "2201139167a5e3d7b2047d426ce0238d78cce48a",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-09T05:47:42-05:00",
+      "subject": "drm/msm/dpu: fix black screen after refresh-rate modeset on dual-DSI",
+      "patch": "commits/yibo-wang/0065-c0e9662bef2d-drm-msm-dpu-fix-black-screen-after-refresh-rate-modeset-on-dual-DSI.patch",
+      "sha256": "2c63c7ca209357fa62cfc04bb86b53f1bb026a7fc943a05baf2cdc607adb1744",
+      "patch_id": "6157df40d7b1cdbde17ea229215480b49b78944b",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-09T05:47:42-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "ce3e266f9e048c16c884ec7cd3422ab1ff2f890d",
+      "parents": "3b0eee0d80f5ee2b6031c183ff61d65771b1836f",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-10T08:07:32-05:00",
+      "subject": "arm64: dts: qcom: kaanapali: revert PCIe iommu-map to 1-cell format",
+      "patch": "commits/yibo-wang/0066-ce3e266f9e04-arm64-dts-qcom-kaanapali-revert-PCIe-iommu-map-to-1-cell-format.patch",
+      "sha256": "d1548f216b347b0bad81bcc1ddcd463f6e41d7f63707d9a988e945aaf27a8113",
+      "patch_id": "3ed50be55a64a5642f7d3d70aa0036cbf6c3ee6b",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-10T08:10:19-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "5f7fdae6d0e532ded0f7a4c06b15406b0743123f",
+      "parents": "ce3e266f9e048c16c884ec7cd3422ab1ff2f890d",
+      "author": "Yibo Wang",
+      "email": "2024312277@stu.hit.edu.cn",
+      "author_date": "2026-10-10T11:33:38-05:00",
+      "subject": "drm/panel: nt36536: add 50/48 Hz modes, drop unreachable 144 Hz",
+      "patch": "commits/yibo-wang/0067-5f7fdae6d0e5-drm-panel-nt36536-add-50-48-Hz-modes-drop-unreachable-144-Hz.patch",
+      "sha256": "edbc2757ddea9adabcaff65f4727c22680eefa2ecd0631dd613e28c361ae785d",
+      "patch_id": "2d622da78069aebf5276265073a6e1fb2d2db95f",
+      "committer": "Yibo Wang",
+      "committer_email": "2024312277@stu.hit.edu.cn",
+      "committer_date": "2026-10-10T11:33:38-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "c11a4291b27d660954110a560e4d8614c616e76c",
+      "parents": "5f7fdae6d0e532ded0f7a4c06b15406b0743123f",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-11T02:56:26-05:00",
+      "subject": "drm/panel: nt36536: restore the 144 Hz mode on iceland",
+      "patch": "commits/yibo-wang/0068-c11a4291b27d-drm-panel-nt36536-restore-the-144-Hz-mode-on-iceland.patch",
+      "sha256": "e5bca6fd43c7c7d1090091290a51e3c77238451f1177ca452bc723fae02a3745",
+      "patch_id": "7506d657d0ddb4e2150e44ef0bc32f10181cdf03",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-11T02:56:26-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "b84d67fc6afa5928f15bb9cd9d3dd22ac3775848",
+      "parents": "c11a4291b27d660954110a560e4d8614c616e76c",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-11T02:56:32-05:00",
+      "subject": "Revert \"drm/msm/a6xx: Fix stale rpmh votes after suspend\"",
+      "patch": "commits/yibo-wang/0069-b84d67fc6afa-Revert-drm-msm-a6xx-Fix-stale-rpmh-votes-after-suspend.patch",
+      "sha256": "6e7ec848eb50292d040823f19b5942672c6912190f40563656546c8f1400c06b",
+      "patch_id": "4a10e04ab9aaab4d41ec2964d790e6357181e465",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-11T02:56:32-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "81243488c7b81fc388dfa2aaae29e9a412c7151e",
+      "parents": "b84d67fc6afa5928f15bb9cd9d3dd22ac3775848",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T01:18:55-05:00",
+      "subject": "soc: qcom: oplus-camres — shared camera I2C bus manager (AP/SEE)",
+      "patch": "commits/yibo-wang/0070-81243488c7b8-soc-qcom-oplus-camres-shared-camera-I2C-bus-manager-AP-SEE.patch",
+      "sha256": "c1c92defa477b8b870c39cecaffc13eaba6e55af29b0a5c20e3991cfc1d0a90d",
+      "patch_id": "bc84e6da70bb8926671a12b65a61a43747dd28f2",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T01:18:55-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <yibo.wang@opluscamera.com>"
+      ]
+    },
+    {
+      "commit": "9f35ddcd2f54820994f7c56caf6ec8a64fde9ad8",
+      "parents": "81243488c7b81fc388dfa2aaae29e9a412c7151e",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T01:39:10-05:00",
+      "subject": "soc: qcom: oplus-camres: restrict force sysfs knobs to CAP_SYS_ADMIN",
+      "patch": "commits/yibo-wang/0071-9f35ddcd2f54-soc-qcom-oplus-camres-restrict-force-sysfs-knobs-to-CAP-SYS-ADMIN.patch",
+      "sha256": "c2a4d104e71a2e1bc029ac9244804a392da95dc7b20230508c981b40b04cce83",
+      "patch_id": "7437d9bfbf0a877a5ddf8152ad3b760df851334e",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T01:39:10-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "e5437354cad39db75c79531a7cc6e11f6383a19d",
+      "parents": "9f35ddcd2f54820994f7c56caf6ec8a64fde9ad8",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T02:16:01-05:00",
+      "subject": "soc: qcom: oplus-camres: event-driven SNS receive path",
+      "patch": "commits/yibo-wang/0072-e5437354cad3-soc-qcom-oplus-camres-event-driven-SNS-receive-path.patch",
+      "sha256": "e85572fb7c203c88069bb65611ddebfd87719a32f67e00cc85c04a258c5d4f24",
+      "patch_id": "015513b56a358b69a0f68d27c70063bac563eeac",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T02:16:01-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <yibo.wang@opluscamera.com>"
+      ]
+    },
+    {
+      "commit": "da9dd1f65df5d31a73c2cea5a4d873b7fc1b5bd8",
+      "parents": "65eebc195d2621881457df1b885fa7f588bfa35e",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T05:42:38-05:00",
+      "subject": "Input: remove the v2 pogo-keyboard driver (replaced by the v3 series)",
+      "patch": "commits/yibo-wang/0073-da9dd1f65df5-Input-remove-the-v2-pogo-keyboard-driver-replaced-by-the-v3-series.patch",
+      "sha256": "f4edeb38cc3251fb9e186f54e98cea54bfc4fb158030b774c393c427814a08c1",
+      "patch_id": "8fbed40e16e6eba54f09ba136ac7faca7b3c7bd3",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T05:42:38-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "f9e801c2a0b7f660f02308830c0a190af2f30074",
+      "parents": "da9dd1f65df5d31a73c2cea5a4d873b7fc1b5bd8",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T05:08:34-05:00",
+      "subject": "dt-bindings: input: add OnePlus pogo-pin keyboard",
+      "patch": "commits/yibo-wang/0074-f9e801c2a0b7-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+      "sha256": "df3ea21727db62d6bc4e3a23ed415e970a7e5c027a37a264b04a8de36d530e1b",
+      "patch_id": "b3d29f0035fae48464e6baed8889bb4f50be89d3",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T05:43:17-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <wyibo6109@gmail.com>"
+      ]
+    },
+    {
+      "commit": "1b3df9532919a3a9110ac89df5da131e63fe0b2e",
+      "parents": "f9e801c2a0b7f660f02308830c0a190af2f30074",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T05:34:07-05:00",
+      "subject": "Input: add OnePlus/OPPO Pad pogo-pin keyboard serdev driver",
+      "patch": "commits/yibo-wang/0075-1b3df9532919-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+      "sha256": "51dabde19c497efa61bcb53f94bd7e7f84a84fd77104bad9abad907613d78449",
+      "patch_id": "865fc2254d8927e4f8d112940bf68f25e3be7914",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T05:43:17-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <wyibo6109@gmail.com>"
+      ]
+    },
+    {
+      "commit": "c624cf890723ecff6e4f97f6d91a7e81cb006eef",
+      "parents": "1b3df9532919a3a9110ac89df5da131e63fe0b2e",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T05:45:07-05:00",
+      "subject": "arm64: dts: qcom: iceland: pogo keyboard node for the v3 binding",
+      "patch": "commits/yibo-wang/0076-c624cf890723-arm64-dts-qcom-iceland-pogo-keyboard-node-for-the-v3-binding.patch",
+      "sha256": "3f4bde2ee48f53b43077dc882cdda2accb4ee8740a1d15f7c311fe44d5c55335",
+      "patch_id": "711ff972fac0c4f551da7f5f6debf0394b5e4a27",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T05:45:07-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "4529d5096a858431d7032225a868fce781834e63",
+      "parents": "c624cf890723ecff6e4f97f6d91a7e81cb006eef",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T11:57:29-05:00",
+      "subject": "soc: qcom: oplus-camres: corrected SEE session bring-up and REVOKE takeover",
+      "patch": "commits/yibo-wang/0077-4529d5096a85-soc-qcom-oplus-camres-corrected-SEE-session-bring-up-and-REVOKE-takeover.patch",
+      "sha256": "fd50d644833383fcda11107e26c7509cd2c5e4fcc9ec10482c2b7e74abfa5fb8",
+      "patch_id": "c6eca39d10d3c893120aeb050f6cc48935aee578",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T11:57:29-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "2e439c2338c1084458138ef108a619b3c236bfac",
+      "parents": "4529d5096a858431d7032225a868fce781834e63",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-13T12:38:54-05:00",
+      "subject": "soc: qcom: oplus-camres: self-classify the no-handshake SEE, drop quiet mode",
+      "patch": "commits/yibo-wang/0078-2e439c2338c1-soc-qcom-oplus-camres-self-classify-the-no-handshake-SEE-drop-quiet-mode.patch",
+      "sha256": "38ccfa2121046838ccecdffdd28b188e5a90ab6ee4ebdca9e8f194ae1366f46a",
+      "patch_id": "a09d820426b8392ea46bfdedd0b9033de2066e98",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-13T12:38:54-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "89ef9e4c6e0b1bff703a10eba9cdd562bccabae3",
+      "parents": "2e439c2338c1084458138ef108a619b3c236bfac",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T11:40:39-05:00",
+      "subject": "soc: qcom: oplus-camres: fd-driven state machine, exact-boundary child hooks",
+      "patch": "commits/yibo-wang/0079-89ef9e4c6e0b-soc-qcom-oplus-camres-fd-driven-state-machine-exact-boundary-child-hooks.patch",
+      "sha256": "4aa0009854c2c120f247210c7dca314e68c1b5477fa41042e3087b4f1e3b13bf",
+      "patch_id": "d2a6374989031d7334fba66df18b8cdde029d734",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T11:40:39-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "dba210f9568d8c0842e1975b15914e4a85a2462b",
+      "parents": "89ef9e4c6e0b1bff703a10eba9cdd562bccabae3",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T12:01:07-05:00",
+      "subject": "soc: qcom: oplus-camres: fix boot ordering — AON subscribe needs a free bus",
+      "patch": "commits/yibo-wang/0080-dba210f9568d-soc-qcom-oplus-camres-fix-boot-ordering-AON-subscribe-needs-a-free-bus.patch",
+      "sha256": "f4b027c7bb5a687bc18078e851a1ea860ea9af4c39cd1150b31351ee92b43738",
+      "patch_id": "2f5fab9e4874e87c5ac9fea6d0885506e95b53be",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T12:01:07-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "81e1c6b3677dd11d46b0aaefd1227fd7ece77a94",
+      "parents": "dba210f9568d8c0842e1975b15914e4a85a2462b",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T12:08:45-05:00",
+      "subject": "soc: qcom: oplus-camres: five fixes from self-review",
+      "patch": "commits/yibo-wang/0081-81e1c6b3677d-soc-qcom-oplus-camres-five-fixes-from-self-review.patch",
+      "sha256": "21a8d5b5a29faaf990510ba1db49a51cd82f1c761f7d629f0a0c7157ec4e1c0b",
+      "patch_id": "fef4dd0b5efab4359920ca31878df82133d708aa",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T12:08:45-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "a81556edac54ee0a8cc75bacd0dd9e615a47d91a",
+      "parents": "81e1c6b3677dd11d46b0aaefd1227fd7ece77a94",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T12:27:07-05:00",
+      "subject": "soc: qcom: oplus-camres: fixes from subagent audit",
+      "patch": "commits/yibo-wang/0082-a81556edac54-soc-qcom-oplus-camres-fixes-from-subagent-audit.patch",
+      "sha256": "6b62376905dfb8bfb97bee8db1236e395393901ad3edc1d4ac6cbcbfdef9f4d5",
+      "patch_id": "4f0dd8b454ba7c737137b9bef3e3abdc1d947d14",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T12:27:07-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "7b7e1262016153c68df3e8bf200ddf8acc050df2",
+      "parents": "a81556edac54ee0a8cc75bacd0dd9e615a47d91a",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T23:41:54-05:00",
+      "subject": "soc: qcom: oplus-camres: ap_hold/DEINIT manual-vote policy, drop boot retry",
+      "patch": "commits/yibo-wang/0083-7b7e12620161-soc-qcom-oplus-camres-ap-hold-DEINIT-manual-vote-policy-drop-boot-retry.patch",
+      "sha256": "a852ef2e3af3f72cc9b07469fcfb74d637f87d6dcefc597c75ec933c56f114f0",
+      "patch_id": "920de7fdd02ec68f0b1244815e652d15b060668d",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T23:41:54-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "c5cf65eef19ebe92f7180af3f9c7359ca7793ac0",
+      "parents": "7b7e1262016153c68df3e8bf200ddf8acc050df2",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-14T23:58:19-05:00",
+      "subject": "soc: qcom: oplus-camres: document the park-while-CONFIGURING loop",
+      "patch": "commits/yibo-wang/0084-c5cf65eef19e-soc-qcom-oplus-camres-document-the-park-while-CONFIGURING-loop.patch",
+      "sha256": "f2d852adde6bed460afe57bf550fa8ec49588ed60f095146f1f44abb4cd5a318",
+      "patch_id": "7786a7181c276e760195504bf6c19de45723aef0",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-14T23:58:19-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "a434f155340a989a5e0a54a58bc789ff7988e6b6",
+      "parents": "c5cf65eef19ebe92f7180af3f9c7359ca7793ac0",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-15T00:58:12-05:00",
+      "subject": "soc: qcom: oplus-camres: clear PM runtime_error on state recovery",
+      "patch": "commits/yibo-wang/0085-a434f155340a-soc-qcom-oplus-camres-clear-PM-runtime-error-on-state-recovery.patch",
+      "sha256": "30670a694cb7f9dd3d2ec74886ae684e1504a2270b0031c7ade8b5defcbf0f83",
+      "patch_id": "86580e68705ab6426790408b3acc51dcc896a990",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-15T00:58:12-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "4c743c779b1bc60ab334a8f2625090a08ad4869c",
+      "parents": "a434f155340a989a5e0a54a58bc789ff7988e6b6",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-15T06:21:48-05:00",
+      "subject": "soc: qcom: oplus-camres: unified vote architecture + protocol identical to v1",
+      "patch": "commits/yibo-wang/0086-4c743c779b1b-soc-qcom-oplus-camres-unified-vote-architecture-protocol-identical-to-v1.patch",
+      "sha256": "f163e8e9086eb0d84ef81bf46411c2ce943933716416db24648457eec1e63cce",
+      "patch_id": "2fe75a75dd239ce19d24e8853cf845f6fb168e50",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-15T06:21:48-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": []
+    },
+    {
+      "commit": "14458640b1d946416d6abfa9309363177928eeda",
+      "parents": "dd7290582906f2d37a7866f4f34d2778ca327caa",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-16T02:35:10-05:00",
+      "subject": "dt-bindings: media: i2c: dongwoon,dw9719: Document the DW9714V",
+      "patch": "commits/yibo-wang/0087-14458640b1d9-dt-bindings-media-i2c-dongwoon-dw9719-Document-the-DW9714V.patch",
+      "sha256": "b12778081ce4966431902e3fd4a2a340691c3b9b9e0fb36ee95a1abb382ea5bd",
+      "patch_id": "afd61371b12276babd42530e1fa415366a6e2b1d",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-16T02:35:10-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <2024312277@stu.hit.edu.cn>"
+      ]
+    },
+    {
+      "commit": "e9b66e94bc574d49b5d715046ab70dd872b12a24",
+      "parents": "14458640b1d946416d6abfa9309363177928eeda",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-16T02:35:10-05:00",
+      "subject": "media: i2c: dw9719: Add DW9714V support",
+      "patch": "commits/yibo-wang/0088-e9b66e94bc57-media-i2c-dw9719-Add-DW9714V-support.patch",
+      "sha256": "431ce5cf5cac25d3ce4efed0cb8c2227ae324a4b5512d80e1599d3b7c0a9badf",
+      "patch_id": "163cbbce12daa1de8a07fcb13cbd0be7dd9b0f8a",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-16T02:35:10-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <2024312277@stu.hit.edu.cn>"
+      ]
+    },
+    {
+      "commit": "87b96a2a8dfc1876735522f321eef3de06ab8cf2",
+      "parents": "e9b66e94bc574d49b5d715046ab70dd872b12a24",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-16T02:35:10-05:00",
+      "subject": "arm64: dts: qcom: kaanapali-oneplus-iceland: Tune the rear AF actuator",
+      "patch": "commits/yibo-wang/0089-87b96a2a8dfc-arm64-dts-qcom-kaanapali-oneplus-iceland-Tune-the-rear-AF-actuator.patch",
+      "sha256": "1110465c5aeeb9e0338994b77f137b45fd8ca4340a589081109ebd57a36165af",
+      "patch_id": "f1e01fd8d78079cae2c052cbf82b07d23b7c1840",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-16T02:35:10-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <2024312277@stu.hit.edu.cn>"
+      ]
+    },
+    {
+      "commit": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+      "parents": "87b96a2a8dfc1876735522f321eef3de06ab8cf2",
+      "author": "Yibo Wang",
+      "email": "wyibo6109@gmail.com",
+      "author_date": "2026-10-17T05:28:13-05:00",
+      "subject": "virt: gunyah: Add runtime protected share (GuestAccept) ioctls",
+      "patch": "commits/yibo-wang/0090-06416a1eae89-virt-gunyah-Add-runtime-protected-share-GuestAccept-ioctls.patch",
+      "sha256": "518650b6f09b51cee12fbcba196e5414cd8104b43065c6cfb62372f3e117c2a9",
+      "patch_id": "1a81e175435079c05d5946432eb284026826db92",
+      "committer": "Yibo Wang",
+      "committer_email": "wyibo6109@gmail.com",
+      "committer_date": "2026-10-17T05:28:13-05:00",
+      "target_author": "Yibo Wang",
+      "target_committer": "Yibo Wang",
+      "matched_by": [
+        "author",
+        "committer"
+      ],
+      "signed_off_by": [
+        "Yibo Wang <2024312277@stu.hit.edu.cn>"
+      ]
+    }
+  ],
+  "selection_rule": "Author OR Committer matches map220v / Yibo Wang by recorded name or known email; Signed-off-by is recorded separately and is not proof of committer identity.",
+  "committer_counts": {
+    "map220v": 40,
+    "Yibo Wang": 50
+  },
+  "third_party_submitted_counts": {
+    "map220v": 18,
+    "Yibo Wang": 8
+  },
+  "alternative_third_party_submitted_counts": {
+    "Yibo Wang": 18
+  },
+  "application_series": {
+    "index": "series",
+    "manifest": "apply-manifest.json",
+    "patch_count": 86,
+    "original_history_index": "original.series",
+    "original_patch_count": 90,
+    "omitted_already_upstream": 4,
+    "expected_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f"
+  }
+}

@@ -1,0 +1,35 @@
+From d5e8583b99000e088bb461fddd748e452d411224 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 15 Oct 2026 11:15:22 -0500
+Subject: [PATCH] dt-bindings: media: i2c: dongwoon,dw9719: Document DW9714V
+
+The DW9714V exposes the DW9719 register interface when operating in its
+register-mapped ("advanced") mode, with the SAC mode field in MODE
+shifted by 6 like on the DW9800K. Document its compatible; the
+module-specific SAC tuning is carried by the already-documented
+dongwoon,sac-mode and dongwoon,vcm-prescale properties.
+
+Cc: David Heidelberg <david@ixit.cz>
+Signed-off-by: Yibo Wang <2024312277@stu.hit.edu.cn>
+---
+ .../devicetree/bindings/media/i2c/dongwoon,dw9719.yaml         | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+index 8e8d62436e0d0c4f9af9e52262b23881abd37cec..a0df6da5623c5970c063a519bc78307a7fc5e917 100644
+--- a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+@@ -14,10 +14,13 @@ description:
+   with 100 mA output current sink capability, designed for linear control of
+   voice coil motors (VCM) in camera lenses. This chip provides a Smart Actuator
+   Control (SAC) mode intended for driving voice coil lenses in camera modules.
++  The DW9714V exposes this register interface in its register-mapped
++  ("advanced") mode.
+ 
+ properties:
+   compatible:
+     enum:
++      - dongwoon,dw9714v
+       - dongwoon,dw9718s
+       - dongwoon,dw9719
+       - dongwoon,dw9761

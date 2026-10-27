@@ -1,0 +1,35 @@
+From 1d793ec6f6498def2c8caa9d8a52a6a797188a0c Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Tue, 6 Oct 2026 00:12:28 -0500
+Subject: [PATCH] Revert "backlight: ktz8869 - treat enable gpio defer as
+ non-fatal (workaround)"
+X-Original-Commit: cedbce88b66fc76df7dc0d014d8f82ca04888316
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-06T00:12:28-05:00
+
+This reverts commit baa5fda60af06000598feebf142a5ff8561e4aa3.
+---
+ drivers/video/backlight/ktz8869_iceland.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/video/backlight/ktz8869_iceland.c b/drivers/video/backlight/ktz8869_iceland.c
+index e48b1033d4ec7656e8904c6c5ef4e1dbda76bbd6..52532a3034cc7d31f7e5d7cd043e0d7ecdc53bd0 100644
+--- a/drivers/video/backlight/ktz8869_iceland.c
++++ b/drivers/video/backlight/ktz8869_iceland.c
+@@ -147,14 +147,8 @@ static int ktz8869_probe(struct i2c_client *client)
+ 	}
+ 
+ 	ktz->enable_gpio = devm_gpiod_get_optional(&client->dev, "enable", GPIOD_OUT_HIGH);
+-	if (IS_ERR(ktz->enable_gpio)) {
+-		/* GPIO controller may still be probing (tlmm defers on this
+-		 * platform); UEFI already drives HWEN high, so proceed without
+-		 * it rather than blocking probe in a defer loop */
+-		dev_info(&client->dev, "enable gpio unavailable (%ld), continuing without\n",
+-			 PTR_ERR(ktz->enable_gpio));
+-		ktz->enable_gpio = NULL;
+-	}
++	if (IS_ERR(ktz->enable_gpio))
++		return PTR_ERR(ktz->enable_gpio);
+ 
+ 	memset(&props, 0, sizeof(props));
+ 	props.type = BACKLIGHT_RAW;

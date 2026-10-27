@@ -1,0 +1,531 @@
+{
+  "method": "apply",
+  "base_commit": "a2de78ee6ed8bf8cd99d177c74865a6e8c3cb6ea",
+  "target_commit": "06416a1eae89a50eaa4fc493ce57639cb65936c8",
+  "expected_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f",
+  "actual_tree": "bca7d288b38b7fbabe1c87922357694fbc99065f",
+  "patch_count": 86,
+  "patches_passed": 86,
+  "three_way_fallback": false,
+  "changed_files_vs_target": 0,
+  "worktree_matches_index": true,
+  "source_head_index_worktree_unchanged": true,
+  "patches": [
+    {
+      "number": 1,
+      "patch": "apply/0001-9de9261f09df-remoteproc-qcom-q6v5-pas-Add-SoCCP-node-on-Kaanapali.patch",
+      "result": "passed",
+      "tree": "3e3359c4ec5710d01e1c66087350da4541770626"
+    },
+    {
+      "number": 2,
+      "patch": "apply/0002-84367cda4bc5-arm64-dts-qcom-kaanapali-add-the-GPU-SMMU-node.patch",
+      "result": "passed",
+      "tree": "0c440bfb3be3de5a533e16dd1104e27de07a8e04"
+    },
+    {
+      "number": 3,
+      "patch": "apply/0003-5828f9e0a528-arm64-dts-qcom-kaanapali-Add-qfprom-node.patch",
+      "result": "passed",
+      "tree": "1a7a5a6e1b7fd304188b3fd920660710d15e7853"
+    },
+    {
+      "number": 4,
+      "patch": "apply/0004-9757148c5bb1-arm64-dts-qcom-Add-GPU-support-for-Kaanapali.patch",
+      "result": "passed",
+      "tree": "04a8fac5ca5c81571ccbff3f74513f20b18b333a"
+    },
+    {
+      "number": 5,
+      "patch": "apply/0005-856c9a5d76e2-arm64-dts-qcom-kaanapali-Add-GPU-cooling.patch",
+      "result": "passed",
+      "tree": "da6d08bbea2c2038a7ed9d4fb9ac88462b8ea641"
+    },
+    {
+      "number": 6,
+      "patch": "apply/0006-8a10b551846e-SM8850-Fix-gpuss-thermal-polling-delay.patch",
+      "result": "passed",
+      "tree": "933ba7064ef7a4e52ac93175499ad26fbefa9d60"
+    },
+    {
+      "number": 7,
+      "patch": "apply/0007-beaffadffca7-SM8850-Add-SOCCP-nodes.patch",
+      "result": "passed",
+      "tree": "9ade2971c2a9eba1d6e35cd6a123ed73a37bb4b6"
+    },
+    {
+      "number": 8,
+      "patch": "apply/0008-a89e7724daf1-SM8850-Add-DSI1-nodes.patch",
+      "result": "passed",
+      "tree": "3e8157df6a287397a7bd43029971c8aad86ee73e"
+    },
+    {
+      "number": 9,
+      "patch": "apply/0009-bf079c30d01f-wifi-ath12k-add-initial-hardware-definition-for-WCN7860.patch",
+      "result": "passed",
+      "tree": "824fe18647fccb9c3abbe1d09abbc8475e42e66d"
+    },
+    {
+      "number": 10,
+      "patch": "apply/0010-64258447b10f-wifi-ath12k-send-QDSS-config-when-CNSS-QDSS-CFG-MISS-V01-is-disabled.patch",
+      "result": "passed",
+      "tree": "fcf261e44cc5efb8ca15e06306daf6ad58532a66"
+    },
+    {
+      "number": 11,
+      "patch": "apply/0011-1b693cd9928c-wifi-ath12k-disable-CNSS-QDSS-CFG-MISS-V01-for-the-WCN7860.patch",
+      "result": "passed",
+      "tree": "e8cff1236c137976bed0f34665e8d14d0b31410d"
+    },
+    {
+      "number": 12,
+      "patch": "apply/0012-c72982d5ad79-PCI-pwrctrl-pwrseq-add-support-for-WCN7860.patch",
+      "result": "passed",
+      "tree": "f0b154a0b0ce1c23650315c2b67546fa0b31cba4"
+    },
+    {
+      "number": 13,
+      "patch": "apply/0013-719fa465db93-power-sequencing-qcom-wcn-add-support-for-WCN7860.patch",
+      "result": "passed",
+      "tree": "0e07e92210e09b472d6e4eca7263e7c1ee3aa0b0"
+    },
+    {
+      "number": 14,
+      "patch": "apply/0014-1568c3ce3502-Bluetooth-qca-add-WCN7860-support.patch",
+      "result": "passed",
+      "tree": "816bc5b93a44786c507a5917ba6b3987f2e07501"
+    },
+    {
+      "number": 15,
+      "patch": "apply/0015-afe020923fc8-SM8850-Add-device-tree-for-OnePlus-Pad-4.patch",
+      "result": "passed",
+      "tree": "c75ddb7853c70c43fb08d5ea51a2ed8f6137fcae"
+    },
+    {
+      "number": 16,
+      "patch": "apply/0016-e3195e5ffd91-SM8850-Add-sm8850-config-fragment.patch",
+      "result": "passed",
+      "tree": "8b6bb0a4c80ac11478a9f8bf9a8c79feb9364630"
+    },
+    {
+      "number": 17,
+      "patch": "apply/0017-972c7a104c94-drm-msm-dsi-change-sync-mode-to-sync-on-DSI0-rather-than-DSI1.patch",
+      "result": "passed",
+      "tree": "62c4fa8d6e490bec1915f27efb7524b6ccbbb4b4"
+    },
+    {
+      "number": 18,
+      "patch": "apply/0018-e7765030a49d-drm-msm-dsi-support-DSC-configurations-with-slice-per-pkt-1.patch",
+      "result": "passed",
+      "tree": "a1884d4050893a0ee176ddd2bffd0ba100895e3a"
+    },
+    {
+      "number": 19,
+      "patch": "apply/0019-38a053d131b4-backlight-Add-KTZ8869-driver-for-iceland.patch",
+      "result": "passed",
+      "tree": "7b4dae362c258ecfee1188114f041eae110cb4f7"
+    },
+    {
+      "number": 20,
+      "patch": "apply/0020-bad9102cb260-ICELAND-Add-KTZ8869-nodes.patch",
+      "result": "passed",
+      "tree": "4340ace9b032fd27a0f3812511c2d8d6c512467a"
+    },
+    {
+      "number": 21,
+      "patch": "apply/0021-66b96f877451-drm-msm-dpu-Fix-Compressed-width-calculation.patch",
+      "result": "passed",
+      "tree": "9dc50d7290d7a781fbb1774045681bd04ed1ff04"
+    },
+    {
+      "number": 22,
+      "patch": "apply/0022-6b790f157d18-drm-panel-Add-driver-for-NT36536-panels.patch",
+      "result": "passed",
+      "tree": "0b45c40204eb5c970abf02369bb48af90cd67d24"
+    },
+    {
+      "number": 23,
+      "patch": "apply/0023-cb5e37b61579-ICELAND-Add-panel-node.patch",
+      "result": "passed",
+      "tree": "00facb99d0ab962a69d4926350bd1daefb353f7e"
+    },
+    {
+      "number": 24,
+      "patch": "apply/0024-d8f0b2f4e40a-Input-Add-NT36536-touch-driver.patch",
+      "result": "passed",
+      "tree": "1f5bb6ba374359083d121f53296625a4779ca862"
+    },
+    {
+      "number": 25,
+      "patch": "apply/0025-f43cb00d872e-ICELAND-Add-touchscreen-node.patch",
+      "result": "passed",
+      "tree": "454df8f6e6eee795c6443ca1b782418cda667ad4"
+    },
+    {
+      "number": 26,
+      "patch": "apply/0026-65152354d8ae-SM8850-Fix-GMU-address.patch",
+      "result": "passed",
+      "tree": "eca86f8e8ed273b526cb6b873abc879d3ebe4ce1"
+    },
+    {
+      "number": 27,
+      "patch": "apply/0027-4fdc45fcc700-SM8850-Add-cache-info.patch",
+      "result": "passed",
+      "tree": "5cd1067afaf958a9ff307999b750a968b1970aea"
+    },
+    {
+      "number": 28,
+      "patch": "apply/0028-2bc508d899d0-qcom-battmgr-Add-basic-support-for-Kaanapali-OnePlus-SOCCP-FW.patch",
+      "result": "passed",
+      "tree": "e0bf6546a92f3f4b863a84ded5d67766a92b9eb6"
+    },
+    {
+      "number": 29,
+      "patch": "apply/0029-5f86156d7b81-ASoC-Add-simple-TFA9865-driver-Since-TFA9865-and-TFA9864-has-no-DSP-and-container-file-con.patch",
+      "result": "passed",
+      "tree": "fe2dd6f494d4564dc5e63ae07120f4955ea49b1d"
+    },
+    {
+      "number": 30,
+      "patch": "apply/0030-be941be03817-ICELAND-Add-sound-nodes.patch",
+      "result": "passed",
+      "tree": "9370531bdc8eb0f4e8ee0ca859abf7dfc183e1b0"
+    },
+    {
+      "number": 31,
+      "patch": "apply/0031-39708d9ccc23-SM8850-Update-GPU-OPP-table.patch",
+      "result": "passed",
+      "tree": "96cc21104aea44a55f0814a1f6dee0007747ddf4"
+    },
+    {
+      "number": 32,
+      "patch": "apply/0032-089225f217af-arm64-dts-qcom-kaanapali-Add-missing-properties-to-usb-controller.patch",
+      "result": "passed",
+      "tree": "ab748259d0f18e058769279dd3aabd682ba1cc0a"
+    },
+    {
+      "number": 33,
+      "patch": "apply/0033-d629943c0894-ICELAND-Remove-usb-role-switch.patch",
+      "result": "passed",
+      "tree": "31a762e84a38b64c2ff38398ee4a2a7097b77bec"
+    },
+    {
+      "number": 34,
+      "patch": "apply/0034-ed9d01daed04-ICELAND-Reserve-llcc-lpi-mem-to-fix-Gunyah-crash.patch",
+      "result": "passed",
+      "tree": "8ae42f1710ab33b22c059fbfdf78148429de720f"
+    },
+    {
+      "number": 35,
+      "patch": "apply/0035-175302a0a2f9-ICELAND-Reserve-adsp-mhi-mem-and-global-sync-mem-Both-have-XN-2-EL1-EL0-NOEXEC-in-VTTBR.patch",
+      "result": "passed",
+      "tree": "f3a1c6701edf24d6cb7d8266ed72f5314ddb9144"
+    },
+    {
+      "number": 36,
+      "patch": "apply/0036-331d7eefa2aa-drm-msm-dp-Drop-dev-pm-opp-set-rate-0.patch",
+      "result": "passed",
+      "tree": "6d36655f05d89dea517e311d48304a20a2d75c8c"
+    },
+    {
+      "number": 37,
+      "patch": "apply/0037-7e578f0121e1-arm64-dts-qcom-kaanapali-add-cpu-capacity-dmips-mhz-EAS-capacity-hints-cpupm-work.patch",
+      "result": "passed",
+      "tree": "a37bfc8fbf615ea8ebac16fbcd888bd94e9e848b"
+    },
+    {
+      "number": 38,
+      "patch": "apply/0038-4e9b716912e0-arm64-dts-qcom-kaanapali-add-uart17-and-wire-the-OnePlus-Pad-4-pogo-keyboard.patch",
+      "result": "passed",
+      "tree": "95c768893c7b540ac3c9aa2d6d73018f19a16e6e"
+    },
+    {
+      "number": 39,
+      "patch": "apply/0039-a862a8973f65-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+      "result": "passed",
+      "tree": "296a0e45d5beccdb45ac3934f779f01842a226ce"
+    },
+    {
+      "number": 40,
+      "patch": "apply/0040-645096c6bbc1-virt-gunyah-import-Gunyah-hypervisor-drivers-from-android17-6-18.patch",
+      "result": "passed",
+      "tree": "93bceb161cd7e4d17fb2b58f7a2fecb1844cd850"
+    },
+    {
+      "number": 41,
+      "patch": "apply/0041-d552aaff3771-Input-oneplus-pogo-kbd-fix-link-loss-after-attach-and-stuck-re-detection.patch",
+      "result": "passed",
+      "tree": "57a465740c2cb11179e8b14d96408bf464f62738"
+    },
+    {
+      "number": 42,
+      "patch": "apply/0042-fceb74ea1552-Input-oneplus-pogo-kbd-expose-the-keyboard-backlight-as-a-LED-class-device.patch",
+      "result": "passed",
+      "tree": "962b2778355363c0f2963d7a7ed9eceb97cb0973"
+    },
+    {
+      "number": 43,
+      "patch": "apply/0043-91d78aa40296-virt-gunyah-adapt-to-mainline-7-2.patch",
+      "result": "passed",
+      "tree": "7ee1523fef6749d81e6af7c18bcee6535104460e"
+    },
+    {
+      "number": 44,
+      "patch": "apply/0044-56944665c1a3-tools-virt-gunyah-add-VM-smoke-test-and-record-verification-results.patch",
+      "result": "passed",
+      "tree": "95cb35f0cf6f992e609ea08659d48da121455153"
+    },
+    {
+      "number": 45,
+      "patch": "apply/0045-baa5fda60af0-backlight-ktz8869-treat-enable-gpio-defer-as-non-fatal-workaround.patch",
+      "result": "passed",
+      "tree": "780c5a9e86162c7f1057cf228c0c9e497bd926da"
+    },
+    {
+      "number": 46,
+      "patch": "apply/0046-cedbce88b66f-Revert-backlight-ktz8869-treat-enable-gpio-defer-as-non-fatal-workaround.patch",
+      "result": "passed",
+      "tree": "95cb35f0cf6f992e609ea08659d48da121455153"
+    },
+    {
+      "number": 47,
+      "patch": "apply/0047-aa2aab052619-arm64-dts-qcom-kaanapali-drop-duplicate-enable-gpios-from-second-ktz8869-node.patch",
+      "result": "passed",
+      "tree": "74109e802c0e6a05d59fdfbe5f45481c005deb9c"
+    },
+    {
+      "number": 48,
+      "patch": "apply/0048-2a73922c776a-PCI-pwrctrl-default-PCI-PWRCTRL-PWRSEQ-to-y-on-qcom.patch",
+      "result": "passed",
+      "tree": "f2038dd6f357e4ee099923c5f412e14d248457c2"
+    },
+    {
+      "number": 49,
+      "patch": "apply/0049-81b77fb34a63-backlight-ktz8869-fetch-vddio-as-an-optional-regulator.patch",
+      "result": "passed",
+      "tree": "fbf071c5cbd82805be10a4995dd78efa07da8d68"
+    },
+    {
+      "number": 50,
+      "patch": "apply/0050-600503179d80-Revert-backlight-ktz8869-fetch-vddio-as-an-optional-regulator.patch",
+      "result": "passed",
+      "tree": "f2038dd6f357e4ee099923c5f412e14d248457c2"
+    },
+    {
+      "number": 51,
+      "patch": "apply/0051-03be252e7197-firmware-arm-scmi-quirk-skip-P2A-CHANNEL-FREE-ack-for-Qualcomm-CPUCP.patch",
+      "result": "passed",
+      "tree": "8ecfb0a17284a18b5c58ea27c3609ec9c5ecb5b1"
+    },
+    {
+      "number": 52,
+      "patch": "apply/0052-7a8c303db897-arm64-dts-qcom-iceland-RTC-offset-cell-in-SDAM2-for-time-persistence.patch",
+      "result": "passed",
+      "tree": "b8913c9099efb0a20696dbe5a0683cf3390561ae"
+    },
+    {
+      "number": 53,
+      "patch": "apply/0053-af65f2a632d2-media-qcom-iceland-camera-bring-up-Kaanapali-CAMSS-SmartSens-SC-sensors.patch",
+      "result": "passed",
+      "tree": "daee13811ae93416ee84bc5a6f8837e7772d1093"
+    },
+    {
+      "number": 54,
+      "patch": "apply/0054-9e31a5791e78-media-qcom-iceland-camera-follow-up-AF-actuator-flash-CSIPHY-supplies.patch",
+      "result": "passed",
+      "tree": "a0eb572f3a72fb459148483fa9294bb7c6344271"
+    },
+    {
+      "number": 55,
+      "patch": "apply/0055-dfa968065e58-media-i2c-dw9719-DW9714V-SAC-tuning-from-the-vendor-actuator-init.patch",
+      "result": "passed",
+      "tree": "8a0fed8cbc197cf00f838746bf63587c03313a3c"
+    },
+    {
+      "number": 56,
+      "patch": "apply/0056-e585d5621c60-media-qcom-iceland-declare-camera-orientation-fix-mirrored-rear-image.patch",
+      "result": "passed",
+      "tree": "b10a7bacf128f566af4685966a13a78322c38a55"
+    },
+    {
+      "number": 57,
+      "patch": "apply/0057-cb23870f29a2-arm64-dts-qcom-kaanapali-asymmetric-CPU-capacity-from-the-vendor-calibration.patch",
+      "result": "passed",
+      "tree": "8ad1dbfb5de3115cc70fa8e38e05e67c28b3ac22"
+    },
+    {
+      "number": 58,
+      "patch": "apply/0058-a6e51c9ce179-media-qcom-iris-Kaanapali-VPU4-video-codec-support-for-iceland.patch",
+      "result": "passed",
+      "tree": "bf0e4470305ba0418c030b9e07bb27f7f1acf6da"
+    },
+    {
+      "number": 59,
+      "patch": "apply/0059-4f92b7d7df62-remoteproc-qcom-q6v5-quiet-repeated-handover-interrupts.patch",
+      "result": "passed",
+      "tree": "a8a3d05dc9fe882078ddb9d90e777b8a786d0fd4"
+    },
+    {
+      "number": 60,
+      "patch": "apply/0060-2201139167a5-power-supply-qcom-battmgr-compute-power-now-on-kaanapali.patch",
+      "result": "passed",
+      "tree": "56afd13c1207ac097f91aafbdd432508dfb7a0d2"
+    },
+    {
+      "number": 61,
+      "patch": "apply/0061-c0e9662bef2d-drm-msm-dpu-fix-black-screen-after-refresh-rate-modeset-on-dual-DSI.patch",
+      "result": "passed",
+      "tree": "cd21e689ef51a4c13e0948ec820ba6192053f09c"
+    },
+    {
+      "number": 62,
+      "patch": "apply/0062-ce3e266f9e04-arm64-dts-qcom-kaanapali-revert-PCIe-iommu-map-to-1-cell-format.patch",
+      "result": "passed",
+      "tree": "9c55194ffda8af94e9cbc008cfb9557f9003d477"
+    },
+    {
+      "number": 63,
+      "patch": "apply/0063-5f7fdae6d0e5-drm-panel-nt36536-add-50-48-Hz-modes-drop-unreachable-144-Hz.patch",
+      "result": "passed",
+      "tree": "ea3a92958fb4f0b9094a47d91c2197739f6edb4b"
+    },
+    {
+      "number": 64,
+      "patch": "apply/0064-c11a4291b27d-drm-panel-nt36536-restore-the-144-Hz-mode-on-iceland.patch",
+      "result": "passed",
+      "tree": "c2ba221c81052aa6fe0d25ba35f31a8dc04b9eb4"
+    },
+    {
+      "number": 65,
+      "patch": "apply/0065-b84d67fc6afa-Revert-drm-msm-a6xx-Fix-stale-rpmh-votes-after-suspend.patch",
+      "result": "passed",
+      "tree": "05fb55466a4e4f1ed1539080e69e06102548fbf7"
+    },
+    {
+      "number": 66,
+      "patch": "apply/0066-81243488c7b8-soc-qcom-oplus-camres-shared-camera-I2C-bus-manager-AP-SEE.patch",
+      "result": "passed",
+      "tree": "080a295d1897dc25b37af2b72b6c46c2ff816f51"
+    },
+    {
+      "number": 67,
+      "patch": "apply/0067-9f35ddcd2f54-soc-qcom-oplus-camres-restrict-force-sysfs-knobs-to-CAP-SYS-ADMIN.patch",
+      "result": "passed",
+      "tree": "775bff83fd8fe9d90b508150b8522ce4ad640c02"
+    },
+    {
+      "number": 68,
+      "patch": "apply/0068-e5437354cad3-soc-qcom-oplus-camres-event-driven-SNS-receive-path.patch",
+      "result": "passed",
+      "tree": "a3b5c2612e6b5c7feb09d53eb27fdf9acd1dc0c2"
+    },
+    {
+      "number": 69,
+      "patch": "apply/0069-da9dd1f65df5-Input-remove-the-v2-pogo-keyboard-driver-replaced-by-the-v3-series.patch",
+      "result": "passed",
+      "tree": "9f84aa99b68addd0e110df6e342063811c8b8d35"
+    },
+    {
+      "number": 70,
+      "patch": "apply/0070-f9e801c2a0b7-dt-bindings-input-add-OnePlus-pogo-pin-keyboard.patch",
+      "result": "passed",
+      "tree": "a007d08fa867ca73e810f9ddc0af7ab85651e523"
+    },
+    {
+      "number": 71,
+      "patch": "apply/0071-1b3df9532919-Input-add-OnePlus-OPPO-Pad-pogo-pin-keyboard-serdev-driver.patch",
+      "result": "passed",
+      "tree": "08fde98de71f9b37a2bd3541a7c6cae226caee7c"
+    },
+    {
+      "number": 72,
+      "patch": "apply/0072-c624cf890723-arm64-dts-qcom-iceland-pogo-keyboard-node-for-the-v3-binding.patch",
+      "result": "passed",
+      "tree": "90f8b827d24bdd037532ab3b33c331990403f676"
+    },
+    {
+      "number": 73,
+      "patch": "apply/0073-4529d5096a85-soc-qcom-oplus-camres-corrected-SEE-session-bring-up-and-REVOKE-takeover.patch",
+      "result": "passed",
+      "tree": "3e7c7f90f549be4d6f07f242b004431bd7cc746f"
+    },
+    {
+      "number": 74,
+      "patch": "apply/0074-2e439c2338c1-soc-qcom-oplus-camres-self-classify-the-no-handshake-SEE-drop-quiet-mode.patch",
+      "result": "passed",
+      "tree": "2f6efc1e92a7b565de18b6de5a02438c1f19e840"
+    },
+    {
+      "number": 75,
+      "patch": "apply/0075-89ef9e4c6e0b-soc-qcom-oplus-camres-fd-driven-state-machine-exact-boundary-child-hooks.patch",
+      "result": "passed",
+      "tree": "2de66dc1744156caf2930c1afb0274f24f9d817f"
+    },
+    {
+      "number": 76,
+      "patch": "apply/0076-dba210f9568d-soc-qcom-oplus-camres-fix-boot-ordering-AON-subscribe-needs-a-free-bus.patch",
+      "result": "passed",
+      "tree": "2ed92ec1f163d9170d011238e8d473c58d030583"
+    },
+    {
+      "number": 77,
+      "patch": "apply/0077-81e1c6b3677d-soc-qcom-oplus-camres-five-fixes-from-self-review.patch",
+      "result": "passed",
+      "tree": "5fb490485eb5754a763faed2bc466b15c63d3338"
+    },
+    {
+      "number": 78,
+      "patch": "apply/0078-a81556edac54-soc-qcom-oplus-camres-fixes-from-subagent-audit.patch",
+      "result": "passed",
+      "tree": "27ae66484dd9471bb8d5667b55ab5a4a0a6008e0"
+    },
+    {
+      "number": 79,
+      "patch": "apply/0079-7b7e12620161-soc-qcom-oplus-camres-ap-hold-DEINIT-manual-vote-policy-drop-boot-retry.patch",
+      "result": "passed",
+      "tree": "653b7f4c9298e08eafbff7f687118ff6db86d277"
+    },
+    {
+      "number": 80,
+      "patch": "apply/0080-c5cf65eef19e-soc-qcom-oplus-camres-document-the-park-while-CONFIGURING-loop.patch",
+      "result": "passed",
+      "tree": "a0859968d15a67e86939022874f7ebcd4ba965f2"
+    },
+    {
+      "number": 81,
+      "patch": "apply/0081-a434f155340a-soc-qcom-oplus-camres-clear-PM-runtime-error-on-state-recovery.patch",
+      "result": "passed",
+      "tree": "425680f998555341c13da9192460bf5bffc5e793"
+    },
+    {
+      "number": 82,
+      "patch": "apply/0082-4c743c779b1b-soc-qcom-oplus-camres-unified-vote-architecture-protocol-identical-to-v1.patch",
+      "result": "passed",
+      "tree": "87389d504c2245a45f048c94c71f3567b6ecb8de"
+    },
+    {
+      "number": 83,
+      "patch": "apply/0083-14458640b1d9-dt-bindings-media-i2c-dongwoon-dw9719-Document-the-DW9714V.patch",
+      "result": "passed",
+      "tree": "2ae50c02589690beaf55076088a83f0273395507"
+    },
+    {
+      "number": 84,
+      "patch": "apply/0084-e9b66e94bc57-media-i2c-dw9719-Add-DW9714V-support.patch",
+      "result": "passed",
+      "tree": "9c2c4b80517bb65ea24e25f0899e6049d686f1d3"
+    },
+    {
+      "number": 85,
+      "patch": "apply/0085-87b96a2a8dfc-arm64-dts-qcom-kaanapali-oneplus-iceland-Tune-the-rear-AF-actuator.patch",
+      "result": "passed",
+      "tree": "94636ea821610c3e64d44b500b3ec74f679baa3a"
+    },
+    {
+      "number": 86,
+      "patch": "apply/0086-06416a1eae89-virt-gunyah-Add-runtime-protected-share-GuestAccept-ioctls.patch",
+      "result": "passed",
+      "tree": "bca7d288b38b7fbabe1c87922357694fbc99065f"
+    }
+  ]
+}

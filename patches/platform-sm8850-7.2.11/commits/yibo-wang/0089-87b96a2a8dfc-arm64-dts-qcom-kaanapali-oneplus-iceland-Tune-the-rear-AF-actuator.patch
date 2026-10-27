@@ -1,0 +1,66 @@
+From 87b96a2a8dfc1876735522f321eef3de06ab8cf2 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Fri, 16 Oct 2026 02:35:10 -0500
+Subject: [PATCH] arm64: dts: qcom: kaanapali-oneplus-iceland: Tune the rear AF
+ actuator
+
+Program the rear camera's DW9714V with the ringing control settings of
+the vendor firmware. This CamX generation embeds the actuator init in
+the sensor module blob (com.qti.sensormodule.icelandmain.bin); it writes
+CONTROL 0x02, SAC_CFG 0x80 (RING_EN, SAC2) and VCM_FREQ 0x79 (period
+divider 1, period field 0x39), which on this module gives an 11 ms
+ringing control window per move. Expressed in DT that is
+dongwoon,sac-ring-enable, dongwoon,sac-mode SAC2 and a raw VCM_FREQ of
+0x79. Without RING_EN every focus move rings audibly.
+
+Also point the sensor at the actuator through lens-focus so the lens
+subdevice is bound into the camera's media graph.
+
+Signed-off-by: Yibo Wang <2024312277@stu.hit.edu.cn>
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+---
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    | 22 ++++++++++++-------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 0e11ebe17a4aecd2f74c4a32c3f25226ee7e7926..fd3e5d212e599907dadc8fabaff6a6b21c45f96a 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1097,6 +1097,8 @@ camera_rear: camera@36 {
+ 		dovdd-supply = <&vreg_l2f_1p8>;
+ 		afvdd-supply = <&vreg_l16b_2p8>;
+ 
++		lens-focus = <&camera_rear_vcm>;
++
+ 		flash-leds = <&pmh0101_flash_led0>;
+ 
+ 		port {
+@@ -1110,16 +1112,20 @@ cam_rear_ep: endpoint {
+ 	};
+ 
+ 	/*
+-	 * Rear AF actuator, Dongwoon DW9714V (IC INFO 0xfe). On this board
+-	 * it powers up in its register-mapped mode, served by the dw9719
+-	 * driver. Vendor 8-bit address 0x18.
++	 * Rear AF actuator, Dongwoon DW9714V (IC INFO 0xfe), vendor 8-bit
++	 * address 0x18. Ringing control tuning from the vendor actuator init:
++	 * RING_EN + SAC2, VCM_FREQ 0x79.
+ 	 */
+-		camera_rear_vcm: camera-lens@c {
+-			compatible = "dongwoon,dw9714v";
+-			reg = <0x0c>;
++	camera_rear_vcm: camera-lens@c {
++		compatible = "dongwoon,dw9714v";
++		reg = <0x0c>;
+ 
+-			vdd-supply = <&vreg_l16b_2p8>;
+-		};
++		vdd-supply = <&vreg_l16b_2p8>;
++
++		dongwoon,sac-ring-enable;
++		dongwoon,sac-mode = <3>;
++		dongwoon,vcm-prescale = <0x79>;
++	};
+ 
+ 	/* Front 8MP, SmartSens SC820CS */
+ 	camera_front: camera@10 {

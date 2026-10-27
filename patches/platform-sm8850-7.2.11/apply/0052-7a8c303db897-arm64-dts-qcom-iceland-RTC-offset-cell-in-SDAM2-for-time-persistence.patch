@@ -1,0 +1,51 @@
+From d7f574535ba7dd0c5d20d492b2977b9467b2cce7 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Wed, 7 Oct 2026 13:24:02 -0500
+Subject: [PATCH] arm64: dts: qcom: iceland: RTC offset cell in SDAM2 for time
+ persistence
+X-Original-Commit: 7a8c303db897c13e272bd8448d02fd74835f22f2
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-07T13:24:02-05:00
+
+The PMIC RTC counter is owned by TrustZone and cannot be written by
+HLOS (SPMI write_ee mismatch -> EPERM).  The mainline rtc-pm8xxx
+driver stores a UTC offset in an nvmem cell instead (same design as
+Qualcomm's Android time_daemon, which uses the persist partition).
+
+Wire the offset cell to SDAM2 slot 0x7c-0x7f: free of Android HLOS
+cells (0x48-0x7b), verified to persist across reboots on this device
+(A55ADEAD marker test, 2026-10-07).  With this, hwclock -w /
+RTC_SYSTOHC 11-minute mode can store the correction and every boot
+restores the correct wall time.
+---
+ .../boot/dts/qcom/kaanapali-oneplus-iceland.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 92a34d583b68761a901d29b3058180b064a74425..ed2cf9f84a01698b62fe14b554a49e5593478847 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -1024,6 +1024,23 @@ &mdss {
+ 	status = "okay";
+ };
+ 
++/*
++ * HLOS cannot write the PMIC RTC counter (owned by TZ), so the driver
++ * persists a UTC offset in SDAM instead.  Slot 0x7c-0x7f in SDAM2:
++ * free of Android HLOS cells (0x48-0x7b), verified to persist across
++ * reboots (marker test 2026-10-07).
++ */
++&pmk8850_sdam_2 {
++	rtc_offset: rtc-offset@7c {
++		reg = <0x7c 0x4>;
++	};
++};
++
++&pmk8850_rtc {
++	nvmem-cells = <&rtc_offset>;
++	nvmem-cell-names = "offset";
++};
++
+ &mdss_dsi0 {
+ 	vdda-supply = <&vreg_l1d_1p2>;
+ 	qcom,dual-dsi-mode;

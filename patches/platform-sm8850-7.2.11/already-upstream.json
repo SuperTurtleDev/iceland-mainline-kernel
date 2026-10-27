@@ -1,0 +1,34 @@
+[
+  {
+    "original_commit": "e40142cfa314cad72eab4c6ffe88364287e33b78",
+    "original_patch": "commits/supporting/0001-e40142cfa314-remoteproc-qcom-pas-Add-late-attach-support-for-subsystems.patch",
+    "author": "Jingyi Wang",
+    "committer": "map220v",
+    "subject": "remoteproc: qcom: pas: Add late attach support for subsystems",
+    "reason": "Already present in v7.2.11; retain the upstream late-attach implementation, including stop-state and error-unwind fixes."
+  },
+  {
+    "original_commit": "8430ac47e620928023efdcb5b03811f3a220d532",
+    "original_patch": "commits/map220v/0022-8430ac47e620-drm-msm-dpu-Add-missing-rect-offsets-for-Kaanapali-DMA-SSPP.patch",
+    "author": "map220v",
+    "committer": "map220v",
+    "subject": "drm/msm/dpu: Add missing rect offsets for Kaanapali DMA SSPP",
+    "reason": "Already present in v7.2.11; retain upstream Kaanapali DMA rectangle offsets and whitespace."
+  },
+  {
+    "original_commit": "696975ebf0e4edcbb5d8cee1d528ab406af988bf",
+    "original_patch": "commits/supporting/0038-696975ebf0e4-drm-msm-dpu-Drop-sneaky-dev-pm-opp-set-rate-0.patch",
+    "author": "Konrad Dybcio",
+    "committer": "map220v",
+    "subject": "drm/msm/dpu: Drop sneaky dev_pm_opp_set_rate(0)",
+    "reason": "Three-way replay is empty: the DPU OPP change is already present in v7.2.11."
+  },
+  {
+    "original_commit": "bc3e5fc83c9c3c127c48617caa25d5018b62def8",
+    "original_patch": "commits/supporting/0040-bc3e5fc83c9c-drm-msm-dsi-Drop-dev-pm-opp-set-rate-0.patch",
+    "author": "Konrad Dybcio",
+    "committer": "map220v",
+    "subject": "drm/msm/dsi: Drop dev_pm_opp_set_rate(0)",
+    "reason": "Three-way replay is empty: the DSI OPP change is already present in v7.2.11."
+  }
+]

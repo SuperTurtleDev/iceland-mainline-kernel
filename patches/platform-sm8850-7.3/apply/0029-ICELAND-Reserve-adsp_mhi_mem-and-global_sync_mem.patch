@@ -1,0 +1,38 @@
+From 521b8c8697c572ff5e43b37308d22462fecd0065 Mon Sep 17 00:00:00 2001
+From: map220v <map220v300@gmail.com>
+Date: Tue, 14 Jul 2026 06:22:32 +0000
+Subject: [PATCH 29/79] ICELAND: Reserve adsp_mhi_mem and global_sync_mem Both
+ have XN=2(EL1&EL0 NOEXEC) in VTTBR
+
+---
+ arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 6e59cf499386892fc4061ea7e28ead121d231e56..808762fce92b7274413efd9c450992cb1df7f68b 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -178,6 +178,11 @@ aop_tme_uefi_merged_mem: aop-tme-uefi-merged@81c80000 {
+ 			no-map;
+ 		};
+ 
++		adsp_mhi_mem: adsp-mhi@82380000 {
++			reg = <0x0 0x82380000 0x0 0x20000>;
++			no-map;
++		};
++
+ 		soccp_sdi_mem: soccp-sdi@823a0000 {
+ 			reg = <0x0 0x823a0000 0x0 0x40000>;
+ 			no-map;
+@@ -208,6 +213,11 @@ adspslpi_mem: adspslpi@a1400000 {
+ 			no-map;
+ 		};
+ 
++		global_sync_mem: global-sync@d7a00000 {
++			reg = <0x0 0xd7a00000 0x0 0x200000>;
++			no-map;
++		};
++
+ 		/* Merged hyp_ac, tz_reserved, xbl_sc, tz_ac, and qtee regions */
+ 		tz_merged_mem: tz-merged@d8000000 {
+ 			reg = <0x0 0xd8000000 0x0 0x800000>;

@@ -1,0 +1,70 @@
+From 9f35ddcd2f54820994f7c56caf6ec8a64fde9ad8 Mon Sep 17 00:00:00 2001
+From: Yibo Wang <wyibo6109@gmail.com>
+Date: Tue, 13 Oct 2026 01:39:10 -0500
+Subject: [PATCH] soc: qcom: oplus-camres: restrict force sysfs knobs to
+ CAP_SYS_ADMIN
+
+force_start_i2c and force_start_i2c_direct take the camera I2C bus
+away from the SEE; they are debugging/testing knobs, not something
+unprivileged userspace should be able to trigger.  Switch both from
+DEVICE_ATTR_RW (0644) to mode 0600 and check capable(CAP_SYS_ADMIN)
+in the store paths.  ap_holds stays world-readable (0444).
+---
+ drivers/soc/qcom/oplus-camres.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/soc/qcom/oplus-camres.c b/drivers/soc/qcom/oplus-camres.c
+index ebbd73f25fce26c05bb4949f5591ce67ff92da24..dfdd5eef961355f1ae095150a33e9f0f14df2bb8 100644
+--- a/drivers/soc/qcom/oplus-camres.c
++++ b/drivers/soc/qcom/oplus-camres.c
+@@ -40,6 +40,7 @@
+  */
+ 
+ #include <linux/delay.h>
++#include <linux/capability.h>
+ #include <linux/i2c.h>
+ #include <linux/kstrtox.h>
+ #include <linux/module.h>
+@@ -1107,6 +1108,10 @@ static ssize_t force_start_i2c_store(struct device *dev,
+ 	bool val;
+ 	int ret;
+ 
++	/* taking the bus from the SEE is a privileged operation */
++	if (!capable(CAP_SYS_ADMIN))
++		return -EPERM;
++
+ 	ret = kstrtobool(buf, &val);
+ 	if (ret)
+ 		return ret;
+@@ -1116,7 +1121,8 @@ static ssize_t force_start_i2c_store(struct device *dev,
+ 	mutex_unlock(&cr->lock);
+ 	return ret ? ret : count;
+ }
+-static DEVICE_ATTR_RW(force_start_i2c);
++static struct device_attribute dev_attr_force_start_i2c =
++	__ATTR(force_start_i2c, 0600, force_start_i2c_show, force_start_i2c_store);
+ 
+ static ssize_t force_start_i2c_direct_show(struct device *dev,
+ 					   struct device_attribute *attr,
+@@ -1135,6 +1141,10 @@ static ssize_t force_start_i2c_direct_store(struct device *dev,
+ 	bool val;
+ 	int ret;
+ 
++	/* taking the bus from the SEE is a privileged operation */
++	if (!capable(CAP_SYS_ADMIN))
++		return -EPERM;
++
+ 	ret = kstrtobool(buf, &val);
+ 	if (ret)
+ 		return ret;
+@@ -1144,7 +1154,9 @@ static ssize_t force_start_i2c_direct_store(struct device *dev,
+ 	mutex_unlock(&cr->lock);
+ 	return ret ? ret : count;
+ }
+-static DEVICE_ATTR_RW(force_start_i2c_direct);
++static struct device_attribute dev_attr_force_start_i2c_direct =
++	__ATTR(force_start_i2c_direct, 0600,
++	       force_start_i2c_direct_show, force_start_i2c_direct_store);
+ 
+ static ssize_t ap_holds_show(struct device *dev,
+ 			     struct device_attribute *attr, char *buf)

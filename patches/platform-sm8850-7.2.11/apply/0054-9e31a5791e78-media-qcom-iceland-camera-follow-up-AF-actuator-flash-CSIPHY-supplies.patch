@@ -1,0 +1,205 @@
+From 6f968860358e00694d2698cfdaf8af66de141d2b Mon Sep 17 00:00:00 2001
+From: Yibo Wang <2024312277@stu.hit.edu.cn>
+Date: Thu, 8 Oct 2026 08:19:08 -0500
+Subject: [PATCH] media: qcom: iceland camera follow-up: AF actuator, flash,
+ CSIPHY supplies
+X-Original-Commit: 9e31a5791e781329916e3de2ac4c8c24a97752ff
+X-Original-Committer: Yibo Wang <2024312277@stu.hit.edu.cn>
+X-Original-Committer-Date: 2026-10-08T08:19:08-05:00
+
+- dw9719: support the Dongwoon DW9714V (IC INFO 0xfe) found on this
+  board - it powers up in its register-mapped mode with the DW9719
+  register layout, so model it as a new compatible in the existing
+  driver instead of a new one. Exposes the lens as a V4L2 Lens subdev
+  with focus_absolute 0..1023.
+- iceland: rear camera-lens@0c (vendor 8-bit 0x18) with vdd L16B,
+  flash-leds/lens-focus phandles on the rear sensor, pmh0101 flash
+  led-0 on channels 1+4 per the vendor DT.
+- iceland: wire all twelve vdd-csiphyN supplies on the camss node per
+  the vendor canoe-camera.dtsi - PLL 1.2V on L1D, PHY 0/1/3/5 cores on
+  L3I, PHY 2/4 cores on L3D. Kills the dummy-regulator warnings.
+- iceland: keep L2F always-on - it also powers the SE9 camera I2C
+  pull-ups, and a transfer with the rail down wedges the GENI/GPI
+  engine until reboot.
+
+Known follow-ups: dtbs_check not run on the modified binding; dw9719
+SAC defaults inherited, not tuned for this module.
+
+Compile-tested; focus sweep and flash torch verified on the device.
+---
+ .../bindings/media/i2c/dongwoon,dw9719.yaml   |  3 ++
+ .../dts/qcom/kaanapali-oneplus-iceland.dts    | 52 +++++++++++++++++++
+ drivers/media/i2c/dw9719.c                    | 16 ++++++
+ 3 files changed, 71 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+index 8e8d62436e0d0c4f9af9e52262b23881abd37cec..c159e3210cef63e94078972ca6ff8c44e7a28ef1 100644
+--- a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
++++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9719.yaml
+@@ -14,10 +14,13 @@ description:
+   with 100 mA output current sink capability, designed for linear control of
+   voice coil motors (VCM) in camera lenses. This chip provides a Smart Actuator
+   Control (SAC) mode intended for driving voice coil lenses in camera modules.
++  The DW9714V exposes the same register layout in its register-mapped
++  ("advanced") mode.
+ 
+ properties:
+   compatible:
+     enum:
++      - dongwoon,dw9714v
+       - dongwoon,dw9718s
+       - dongwoon,dw9719
+       - dongwoon,dw9761
+diff --git a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+index 6a1282f3dc679d31aeac5ceb102f8b741f5b60a9..976ee9c7a2c75778d2ad89d47e6dc140425a0096 100644
+--- a/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
++++ b/arch/arm64/boot/dts/qcom/kaanapali-oneplus-iceland.dts
+@@ -714,6 +714,12 @@ vreg_l2f_1p8: ldo2 {
+ 			regulator-allow-set-load;
+ 			regulator-allowed-modes = <RPMH_REGULATOR_MODE_LPM
+ 						   RPMH_REGULATOR_MODE_AUTO>;
++			/*
++			 * Also the pull-up rail of the camera I2C bus (SE9); a
++			 * transfer to the AF actuator with this rail down
++			 * wedges the GENI/GPI engine until reboot.
++			 */
++			regulator-always-on;
+ 		};
+ 
+ 		vreg_l3f_0p8: ldo3 {
+@@ -892,6 +898,23 @@ vreg_s4j_0p7: smps4 {
+ };
+ 
+ &camss {
++	/*
++	 * CSIPHY core 0.88 V and PLL 1.2 V rails, per the vendor DT:
++	 * L1D feeds every PLL, L3I the cores of PHY 0/1/3/5, L3D PHY 2/4.
++	 */
++	vdd-csiphy0-0p8-supply = <&vreg_l3i_0p8>;
++	vdd-csiphy0-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy1-0p8-supply = <&vreg_l3i_0p8>;
++	vdd-csiphy1-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy2-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy2-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy3-0p8-supply = <&vreg_l3i_0p8>;
++	vdd-csiphy3-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy4-0p8-supply = <&vreg_l3d_0p8>;
++	vdd-csiphy4-1p2-supply = <&vreg_l1d_1p2>;
++	vdd-csiphy5-0p8-supply = <&vreg_l3i_0p8>;
++	vdd-csiphy5-1p2-supply = <&vreg_l1d_1p2>;
++
+ 	status = "okay";
+ 
+ 	ports {
+@@ -1050,6 +1073,9 @@ camera_rear: camera@36 {
+ 		dovdd-supply = <&vreg_l2f_1p8>;
+ 		afvdd-supply = <&vreg_l16b_2p8>;
+ 
++		flash-leds = <&pmh0101_flash_led0>;
++		lens-focus = <&camera_rear_vcm>;
++
+ 		port {
+ 			cam_rear_ep: endpoint {
+ 				data-lanes = <1 2 3 4>;
+@@ -1060,6 +1086,18 @@ cam_rear_ep: endpoint {
+ 		};
+ 	};
+ 
++	/*
++	 * Rear AF actuator, Dongwoon DW9714V (IC INFO 0xfe). On this board
++	 * it powers up in its register-mapped mode, served by the dw9719
++	 * driver. Vendor 8-bit address 0x18.
++	 */
++	camera_rear_vcm: camera-lens@c {
++		compatible = "dongwoon,dw9714v";
++		reg = <0x0c>;
++
++		vdd-supply = <&vreg_l16b_2p8>;
++	};
++
+ 	/* Front 8MP, SmartSens SC820CS */
+ 	camera_front: camera@10 {
+ 		compatible = "smartsens,sc820cs";
+@@ -1260,6 +1298,20 @@ wifi@0 {
+ 	};
+ };
+ 
++&pmh0101_flash {
++	status = "okay";
++
++	/* rear camera flash; vendor DT drives channels 1+4 */
++	pmh0101_flash_led0: led-0 {
++		function = LED_FUNCTION_FLASH;
++		color = <LED_COLOR_ID_WHITE>;
++		led-sources = <1>, <4>;
++		led-max-microamp = <500000>;
++		flash-max-microamp = <2000000>;
++		flash-max-timeout-us = <1280000>;
++	};
++};
++
+ &pmh0101_gpios {
+ 	key_vol_down_default: key-vol-down-default-state {
+ 		pins = "gpio6";
+diff --git a/drivers/media/i2c/dw9719.c b/drivers/media/i2c/dw9719.c
+index 3b7ba88fd67c044ef9005a0aac6a5d26ab939a90..72ac7a5f56007ef941cf2cdb5c8718ba41c07df1 100644
+--- a/drivers/media/i2c/dw9719.c
++++ b/drivers/media/i2c/dw9719.c
+@@ -45,6 +45,12 @@
+ #define DW9719_INFO			CCI_REG8(0)
+ #define DW9719_ID			0xF1
+ #define DW9761_ID			0xF4
++/*
++ * DW9714V in its register-mapped ("advanced") mode: IC INFO reads
++ * manufacturer 0xF / model 0xE and the CONTROL/VCM/STATUS/MODE/FREQ
++ * registers sit at the DW9719 offsets.
++ */
++#define DW9714V_ID			0xFE
+ 
+ #define DW9719_CONTROL			CCI_REG8(2)
+ #define DW9719_STANDBY			0x00
+@@ -75,6 +81,7 @@
+ #define to_dw9719_device(x) container_of(x, struct dw9719_device, sd)
+ 
+ enum dw9719_model {
++	DW9714V,
+ 	DW9718S,
+ 	DW9719,
+ 	DW9761,
+@@ -153,6 +160,12 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 			return ret;
+ 
+ 		switch (val) {
++		case DW9714V_ID:
++			dw9719->model = DW9714V;
++			dw9719->mode_low_bits = 0x00;
++			dw9719->sac_mode = DW9719_DEFAULT_SAC;
++			dw9719->vcm_freq = DW9719_DEFAULT_VCM_FREQ;
++			break;
+ 		case DW9719_ID:
+ 			dw9719->model = DW9719;
+ 			dw9719->mode_low_bits = 0x00;
+@@ -211,6 +224,7 @@ static int dw9719_power_up(struct dw9719_device *dw9719, bool detect)
+ 		cci_write(dw9719->regmap, DW9761_VCM_PRELOAD,
+ 			  DW9761_DEFAULT_VCM_PRELOAD, &ret);
+ 		fallthrough;
++	case DW9714V:
+ 	case DW9719:
+ 		cci_write(dw9719->regmap, DW9719_CONTROL, DW9719_ENABLE_RINGING, &ret);
+ 		cci_write(dw9719->regmap, DW9719_MODE, dw9719->mode_low_bits |
+@@ -440,6 +454,7 @@ static void dw9719_remove(struct i2c_client *client)
+ }
+ 
+ static const struct i2c_device_id dw9719_id_table[] = {
++	{ .name = "dw9714v", .driver_data = (kernel_ulong_t)DW9714V },
+ 	{ .name = "dw9718s", .driver_data = (kernel_ulong_t)DW9718S },
+ 	{ .name = "dw9719", .driver_data = (kernel_ulong_t)DW9719 },
+ 	{ .name = "dw9761", .driver_data = (kernel_ulong_t)DW9761 },
+@@ -449,6 +464,7 @@ static const struct i2c_device_id dw9719_id_table[] = {
+ MODULE_DEVICE_TABLE(i2c, dw9719_id_table);
+ 
+ static const struct of_device_id dw9719_of_table[] = {
++	{ .compatible = "dongwoon,dw9714v", .data = (const void *)DW9714V },
+ 	{ .compatible = "dongwoon,dw9718s", .data = (const void *)DW9718S },
+ 	{ .compatible = "dongwoon,dw9719", .data = (const void *)DW9719 },
+ 	{ .compatible = "dongwoon,dw9761", .data = (const void *)DW9761 },

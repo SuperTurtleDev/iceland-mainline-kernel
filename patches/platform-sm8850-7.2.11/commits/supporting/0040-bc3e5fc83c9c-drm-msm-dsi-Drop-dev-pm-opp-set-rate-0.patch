@@ -1,0 +1,33 @@
+From bc3e5fc83c9c3c127c48617caa25d5018b62def8 Mon Sep 17 00:00:00 2001
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Date: Tue, 28 Jul 2026 15:20:47 +0200
+Subject: [PATCH] drm/msm/dsi: Drop dev_pm_opp_set_rate(0)
+
+dev_pm_opp_set_rate(0) removes the vote specified in required-opps but
+does not actually park the clock, making it run without the necessary
+power backing. Drop the explicit call to it.
+
+Every call site of ops->link_clk_disable() is followed by
+pm_runtime_put(), so the power vote will be rescinded if deemed safe.
+
+Fixes: 32d3e0feccfe ("drm/msm: dsi: Use OPP API to set clk/perf state")
+Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Signed-off-by: map220v <map220v300@gmail.com>
+---
+ drivers/gpu/drm/msm/dsi/dsi_host.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
+index 3ddcaf5c6161ec73b79e48be6ac5c6acfadc2e7b..768346fd802809dc363b28183c9d817054938c91 100644
+--- a/drivers/gpu/drm/msm/dsi/dsi_host.c
++++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
+@@ -550,8 +550,6 @@ int dsi_link_clk_enable_v2(struct msm_dsi_host *msm_host)
+ 
+ void dsi_link_clk_disable_6g(struct msm_dsi_host *msm_host)
+ {
+-	/* Drop the performance state vote */
+-	dev_pm_opp_set_rate(&msm_host->pdev->dev, 0);
+ 	clk_disable_unprepare(msm_host->esc_clk);
+ 	clk_disable_unprepare(msm_host->pixel_clk);
+ 	clk_disable_unprepare(msm_host->byte_intf_clk);
