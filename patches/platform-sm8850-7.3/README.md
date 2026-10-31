@@ -4,7 +4,7 @@
 
 - Upstream tag: v7.3, commit c03c1a14507dfaf8b856c2608f9ac216021fc222 (fetched from torvalds/linux).
 - map220v iceland-7.3: 8f1ef42eb53ddd65ae909d0de3566186fe5256cf (30 commits).
-- Local branch: iceland-7.3, HEAD aa36d0f611d6dca6b89fa839902ef4c6d8b19751.
+- Original series target on iceland-7.3: aa36d0f611d6dca6b89fa839902ef4c6d8b19751.
 - Final tree: 5f5c0f659a61795cbd3fa2236aa3de19e244318b.
 - series: 79 ordered patches: 30 map220v submissions (including other authors),
   47 carried local submissions, and 2 explicit Linux 7.3 API adaptations.
@@ -18,6 +18,17 @@ For a clean checkout of v7.3, apply patches with git am in the order listed in
 series. manifest.json records authors, committers, original cherry-pick sources
 and checksums; SHA256SUMS validates all patch files. The original iceland-7.2 and
 oneplus-cami2c branches remain at 06416a1eae89a50eaa4fc493ce57639cb65936c8.
+
+The 79-patch archive remains the original v7.3 replay snapshot. Subsequent
+integration is recorded in the linux repository:
+
+- c51f81b3d429: include the GPIO consumer header required by TFA9865 with ACPI disabled.
+- 82df006c5421: use IRQ-safe camres socket callback locking for QRTR hard IRQ delivery.
+- 3ff36e698404: merge official stable tag v7.3.1 without conflicts; parents are
+  82df006c5421 (Iceland) and 79a907609d53 (stable). All 40 stable commits are included.
+
+The archive's replay target and checksums describe the original 79 patches,
+not the subsequent fixes or stable merge.
 
 ## Migration decisions
 
@@ -40,16 +51,39 @@ oneplus-cami2c branches remain at 06416a1eae89a50eaa4fc493ce57639cb65936c8.
 
 ## Configuration and packaging
 
-config.diff lists semantic changes from the original root config. The final
+config.diff lists semantic changes from the Linux 7.2.11 root config at
+kernelmeta commit 9444db5 to the current root config. It is regenerated with
+linux/scripts/diffconfig and is separate from the historical patch checksums. The final
 config is regenerated with the existing amd64 build container's LLVM 21 toolchain:
-CONFIG_LOCALVERSION=-iceland, shared GPIO proxy built-in, and renamed
+CONFIG_LOCALVERSION="", CONFIG_LOCALVERSION_AUTO=y, shared GPIO proxy built-in, and renamed
 CONFIG_HW_RANDOM_QCOM=m retained. Upstream disables QCE through its BROKEN
-dependency; no forced override is added. Kernel olddefconfig drift is zero.
+dependency; no forced override is added. Ubuntu networking options and USB
+peripheral support are retained while unrelated platform drivers are trimmed.
+Macintosh-only options are unavailable on arm64. The current config retains
+ATM/BR2684, ATM_SOLOS and selected ARCNET drivers.
+The PCIe controller is configured only as a Root Complex; local PCI Endpoint
+framework and endpoint-test support are disabled.
+Camera sensors and display panels not named by the Iceland device tree are
+disabled, along with unrelated Cadence CSI, MAX96712 GMSL and I2C IR receiver
+modules. Xilinx and Cadence platform controllers, unrelated Freescale and
+Qualcomm sound cards, and codec drivers without Iceland device-tree consumers
+are also disabled. The active SC1300CS/SC820CS sensors, DW9714V/DW9719 actuators,
+Qualcomm CAMSS/Iris/Venus pipeline, CSOT PPD200UB2/Novatek NT36536 panel, and
+Iceland's SC8280XP sound-card glue, TFA9865 amplifiers and WCD939x codec remain
+enabled. USB, Type-C, USB audio, Bluetooth audio, HDMI audio and the Qualcomm
+LPASS/QDSP6 audio path remain enabled. USB host peripheral drivers are
+modular, including USB mass storage and UAS.
+Kernel olddefconfig drift is zero.
 
-version.env defines kernel release 7.3.0-iceland and Debian version 7.3.0-1.
+version.env defines upstream version 7.3.1 and Debian revision 1. Upstream
+scripts/setlocalversion derives the release from the linux checkout's tag,
+commit count, hash and tracked-file dirty state; no custom board suffix is used.
+Debian Version is <release>-<revision>. The current clean checkout produces
+7.3.1-00082-g3ff36e698404-1; a dirty linux checkout adds -dirty before -1.
 Package identities are stable linux-{image,modules,headers,tools,firmware}-iceland.
 ABI-specific installed paths keep the release. Build verification is recorded
-in logs/verify.log and buildinfo.txt under the build/kernel output directory.
+in logs/verify.log (full build), logs/verify-debs.log (--debs), and buildinfo.txt
+under the build/kernel output directory.
 Hardware runtime behavior still requires testing on the device.
 
 ## Build validation (2026-10-27)

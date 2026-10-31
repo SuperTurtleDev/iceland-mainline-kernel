@@ -10,10 +10,9 @@ import tarfile
 
 meta = Path(__file__).resolve().parent.parent
 out = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else meta.parent.parent / 'build/kernel'
-version = dict(line.split('=', 1) for line in (meta / 'version.env').read_text().splitlines()
-               if line and not line.startswith('#'))
-kver = version['KERNEL_VERSION'] + version['KERNEL_LOCALVERSION']
-ver = version['KERNEL_VERSION'] + '-' + version['DEB_REVISION']
+kver, ver = subprocess.check_output(
+    ['bash', '-ec', 'source "$1"; printf "%s\\n%s\\n" "$KVER" "$VER"',
+     'kernel-version', str(meta / 'scripts/kernel-version.sh')], text=True).splitlines()
 required = {
     'image': {f'boot/vmlinuz-{kver}', f'boot/config-{kver}', f'boot/System.map-{kver}'},
     'modules': {f'usr/lib/modules/{kver}/modules.dep', f'usr/lib/modules/{kver}/updates/charge_boost_lite.ko.zst',

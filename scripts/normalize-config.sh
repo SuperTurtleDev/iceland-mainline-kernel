@@ -12,7 +12,7 @@ bash "${META}/../podman_container/runin.sh" bash -eu -c '
     source /work/src/scripts/kernel-version.sh
     mkdir -p /work/out/config-normalize
     cp /work/src/config /work/out/config-normalize/.config
-    /work/src/linux/scripts/config --file /work/out/config-normalize/.config --set-str LOCALVERSION "$KERNEL_LOCALVERSION" --disable LOCALVERSION_AUTO
+    /work/src/linux/scripts/config --file /work/out/config-normalize/.config --set-str LOCALVERSION "" --enable LOCALVERSION_AUTO
     make -C /work/src/linux ARCH=arm64 LLVM=1 O=/work/out/config-normalize LOCALVERSION= olddefconfig
 '
 cp "${OUT}/config-normalize/.config" "${META}/config"

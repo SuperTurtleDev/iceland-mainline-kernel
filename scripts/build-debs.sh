@@ -46,6 +46,14 @@ command -v dpkg-deb >/dev/null 2>&1 || die "dpkg-deb missing"
 [ -f "${SRC}/firmware/qcom/gen80200_sqe.fw" ] || die "firmware tree missing"
 [ -f "${LIST}" ]                              || die "initrd-modules.txt missing"
 
+# A resumed packaging stage must not relabel binaries from an older checkout.
+[ "$(cat "${O}/include/config/kernel.release")" = "${KVER}" ] \
+    || die "built kernel release differs from current Git state; rebuild first"
+[ "$(cat "${OUT}/kbuild_hdr/include/config/kernel.release")" = "${KVER}" ] \
+    || die "native header tools release differs; rebuild build-hdr-tools first"
+cmp -s "${O}/.config" "${SRC}/config" \
+    || die "built kernel config differs from root config; rebuild first"
+
 export SOURCE_DATE_EPOCH="$(cat "${OUT}/staging/source-date-epoch" 2>/dev/null \
     || git -C "${SRC}/linux" log -1 --format=%ct)"
 

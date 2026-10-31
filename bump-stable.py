@@ -62,7 +62,9 @@ def current_kver():
                 key, value = line.strip().split("=", 1)
                 values[key] = value
     version = values["KERNEL_VERSION"]
-    return version + values["KERNEL_LOCALVERSION"], version
+    kver = sh(HERE, "bash", "-ec",
+              'source scripts/kernel-version.sh; printf "%s" "$KVER"', capture=True)
+    return kver, version
 
 
 def release_tag(version):
@@ -81,9 +83,8 @@ def main():
         die("target must be newer than the current version")
     if new.split(".")[:2] != old.split(".")[:2]:
         die("this script handles stable updates within one series; port major/minor changes explicitly")
-    new_kver = new + kver[len(old):]
     tag_new, tag_old = release_tag(new), release_tag(old)
-    log(f"{kver} -> {new_kver}")
+    log(f"{kver} -> {new} (SCM suffix determined after merge)")
 
     # --- 1. preflight ----------------------------------------------------------
     s = git(LINUX, "status", "--porcelain", capture=True)
@@ -145,6 +146,7 @@ def main():
     with open(version_file, "w") as f:
         f.write(text)
     sh(HERE, "bash", "scripts/normalize-config.sh")
+    new_kver, _ = current_kver()
 
     # --- 6. layer commits --------------------------------------------------------
     git(HERE, "add", "-u", "version.env", "config", "linux")

@@ -5,7 +5,7 @@
 
 ```
 build.sh              构建入口（stage 编排，全部串行、增量）
-config                内核 .config（7.3.0-iceland, clang/LLVM, MODULES=zstd）
+config                内核 .config（Git 自动 release, clang/LLVM, MODULES=zstd）
 linux/                内核源码（gitlink，补丁在 linux 仓库内）
 oot/charge_boost/     域外模块 charge_boost_lite（PD 协商）
 initrd_debug/         debug initrd 根文件树（NCM + telnetd 调试面）
@@ -28,10 +28,18 @@ make-charge-initrd → make-deploy-net-initrd → build-deploy-tools → pack-im
 
 ## 版本与 Debian 包名
 
-版本统一由 `version.env` 定义：当前内核 release 为 `7.3.0-iceland`，
-Debian Version 为 `7.3.0-1`。五个固定包名是 `linux-image-iceland`、
-`linux-modules-iceland`、`linux-headers-iceland`、`linux-tools-iceland` 和
-`linux-firmware-iceland`；例如 `linux-image-iceland_7.3.0-1_arm64.deb`。
+`version.env` 定义上游版本 `7.3.1` 和 Debian revision `1`。配置使用
+`CONFIG_LOCALVERSION=""`、`CONFIG_LOCALVERSION_AUTO=y`，由上游
+`scripts/setlocalversion` 根据 `linux/` 的 tag、提交数、12 位 commit hash
+和已跟踪文件的 dirty 状态自动生成 release，不附加手工 `-sm8850` 或 `-iceland`。
+正好处于干净的上游版本 tag 时不附加 Git 后缀；未跟踪文件不参与 dirty 判定。
+Debian Version 为 `<release>-<revision>`；当前 clean 源码对应
+`7.3.1-00082-g3ff36e698404-1`，dirty 时为 `7.3.1-00082-g3ff36e698404-dirty-1`。
+五个固定包名是 `linux-image-iceland`、`linux-modules-iceland`、
+`linux-headers-iceland`、`linux-tools-iceland` 和 `linux-firmware-iceland`；
+例如 `linux-image-iceland_7.3.1-00082-g3ff36e698404-1_arm64.deb`。
+hash/dirty 仅出现在版本信息与 release 路径中，不进入 `Package` 字段。
+配置、打包脚本或固件变化需递增 Debian revision；dirty 后缀仅描述 `linux/`。
 内核、模块、headers 和 perf 的安装路径仍包含完整 release，防止 ABI 混用。
 modules 包声明对旧 `linux-modules-7.2.11-sm8850` 公共文件的 Replaces；
 旧版内核文件可继续保留，新的五包通过精确版本依赖配套安装。
@@ -40,12 +48,16 @@ modules 包声明对旧 `linux-modules-7.2.11-sm8850` 公共文件的 Replaces�
 `initrd-modules.txt` 使用 `@KVER@`，构建时生成实际路径清单。
 调整配置后运行 `./scripts/normalize-config.sh`，再运行 `./build.sh`；
 构建阶段检测到配置漂移会报错。规范化使用与内核构建相同的容器工具链。
-同一稳定系列的后续更新使用 `./bump-stable.py 7.3.1`，脚本会更新统一版本入口、
+同一稳定系列的后续更新使用 `./bump-stable.py 7.3.2`，脚本会更新统一版本入口、
 规范化配置并提交三层仓库；跨系列移植仍需要单独审核平台补丁。
 
 7.3 迁移保留本地摄像头、Iris VPU4、pogo 键盘、Gunyah 和 SCMI 改动，
 采用 map220v 新版 NT36536 / DSI1 实现。迁移与重放记录见
 `patches/platform-sm8850-7.3/README.md`。
+
+7.3.1 使用双父节点合并提交 `3ff36e698404` 合入官方 stable tag `v7.3.1`。
+第一父节点为 Iceland `82df006c5421`，第二父节点为 stable `79a907609d53`；
+保留平台历史及 TFA9865、camres IRQ 锁修复。
 
 ## 启动协议（两种载荷格式）
 
@@ -70,7 +82,7 @@ bootcfg payload 是 ini 文本，必须以 `cmdline=` 开头（TestBootApp 解�
 | `bootcfg_debug.img` | `[u32]`+ini | debug cmdline（tty0 + ignore_loglevel + initcall_debug） |
 | `initrd_debug.img` | `[u32]`+cpio.zst | debug initrd：全量精选模块 + 固件 + NCM 192.168.42.42 + telnetd:23 + 串口/framebuffer shell |
 | `initrd_charge.img` | `[u32]`+cpio.zst | 充电 initrd：debug 底座 + charge_boost_lite + PD 曲线 |
-| `modules.tar.gz` | tar.gz | `/lib/modules/7.3.0-iceland` 全集（含 charge_boost_lite） |
+| `modules.tar.gz` | tar.gz | `/lib/modules/<release>` 全集（含 charge_boost_lite） |
 | `headers.tar.gz` | tar.gz | OOT 开发包（build-oot 用它编 charge_boost_lite） |
 | `initrd_deploy_net_{release,debug}.cpio.zst` | RAW cpio.zst | 网络部署 initrd（TestBootApp RAM 引导，见下） |
 | `debs/*.deb` | deb | image / modules / headers / tools / firmware-iceland 五包（headers 内 scripts/ 工具与 tools 内 perf 均为 arm64 容器原生编译） |
