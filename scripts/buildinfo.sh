@@ -131,7 +131,7 @@ repo_state() {
     line "config-sha256" "$(sha256sum "${META}/config" | cut -d' ' -f1)"
     line "debian-version" "${VER}"
     for f in \
-        kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
+        kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
         initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst SHA256SUMS; do

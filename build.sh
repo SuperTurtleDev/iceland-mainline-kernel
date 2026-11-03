@@ -11,19 +11,15 @@
 #   scripts/build-hdr-tools.sh     [arm64] kbuild_hdr: aarch64 kernel host
 #                                  tools (for linux-headers) + perf (for
 #                                  linux-tools) + their ${shlibs:Depends}
-#   scripts/pack-headers.sh        headers.tar.gz (OOT dev package)
-#   scripts/build-oot.sh           [arm64] charge_boost against headers.tar.gz
-#                                  + depmod (native aarch64: validates the
-#                                  shipped host tools exactly as the device
-#                                  will run them)
+#   scripts/pack-headers.sh        headers.tar.gz (external module development)
+#   scripts/verify-modules.sh      [arm64] header smoke build + verify the
+#                                  in-tree charging modules; depmod
 #   scripts/build-debs.sh          5 debian packages (image/modules/headers/
 #                                  tools/fw)
 #   scripts/make-initrd.sh         debug initrd (bare .ko subset, modules.order)
-#   scripts/make-charge-initrd.sh  charge initrd = debug base + charge_boost_lite
-#                                  (9V/2A fixed PDO + console telemetry)
 #   scripts/build-deployd.sh         static ARM64 streaming deploy server
 #   scripts/build-deploy-tools.sh     host makeblob/deployclient + ramdeploy and
-#                                  charge (charge/*_charge.bin) file sets
+#                                  RAM boot file set
 #   scripts/make-deploy-net-initrd.sh  TINY net-deploy initrds (TestBootApp RAM boot;
 #                                  rootfs+debs stream over NCM to deployd)
 #                                  ([size]initrd[size]deb..., debs loaded off
@@ -47,7 +43,7 @@ META="${SCRIPTDIR}"
 OUT="${OUT:-${SCRIPTDIR}/../../build/kernel}"
 FROM_STAGE=
 DEBS_ONLY=0
-STAGES=(build-kernel arm64:build-hdr-tools pack-headers arm64:build-oot build-debs build-deployd make-initrd make-charge-initrd make-deploy-net-initrd build-deploy-tools pack-images)
+STAGES=(build-kernel arm64:build-hdr-tools pack-headers arm64:verify-modules build-debs build-deployd make-initrd make-deploy-net-initrd build-deploy-tools pack-images)
 
 # stage_arch / stage_name: "arm64:<name>" runs in the arm64 container
 stage_arch() { case "$1" in arm64:*) echo arm64 ;; *) echo amd64 ;; esac; }

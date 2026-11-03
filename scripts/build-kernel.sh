@@ -74,6 +74,9 @@ if ! make -C "${SRC}/linux" -j"$(nproc)" ARCH=arm64 LLVM=1 O="${O}" Image dtbs m
     tail -80 "${OUT}/logs/kernel-build.log" >&2
     die "kernel build failed"
 fi
+if grep -n 'Warning (' "${OUT}/logs/kernel-build.log"; then
+    die "DTC emitted warnings; all DTB warnings are fatal"
+fi
 
 IMAGE_BIN="${O}/arch/arm64/boot/Image"
 DTB_BIN="${O}/${DTB_REL}"

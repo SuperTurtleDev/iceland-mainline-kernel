@@ -16,8 +16,7 @@
 #  8) buildinfo.txt contains the four repository hashes
 #  9) debs/ contains the five packages, dpkg-deb --info clean, linux-tools
 #     ships /usr/lib/linux-tools-<kver>/perf
-# 10) initrd_charge.img: prefix + inner cpio (debug base + charge_boost_lite)
-# 11) net-deploy initrds: RAW zstd cpio (RAM-flashed) with static deployd
+# 10) net-deploy initrds: RAW zstd cpio (RAM-flashed) with static deployd
 set -euo pipefail
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -109,7 +108,6 @@ def elf_static_aarch64(b):
 
 
 imgs = ["kernel.img", "dtb.img", "initrd_debug.img", "bootcfg_debug.img",
-        "initrd_charge.img",
         "bootcfg/kernel.img", "bootcfg_debug/kernel_debug.img"]
 
 # ---- 1) length prefix ---------------------------------------------------------
@@ -247,7 +245,7 @@ try:
     with tarfile.open(os.path.join(OUT, "modules.tar.gz"), "r:gz") as tf:
         mnames = set(tf.getnames())
     for need in (f"lib/modules/{KVER}/modules.dep",
-                 f"lib/modules/{KVER}/updates/charge_boost_lite.ko.zst"):
+                 f"lib/modules/{KVER}/kernel/drivers/power/supply/oplus-pmic-pps.ko.zst"):
         if need not in mnames:
             ok = False
             detail.append(f"modules.tar.gz missing {need}")
@@ -340,38 +338,7 @@ for n in deb_names:
 check(9, "deb control Package/Version match filenames", ok,
       "; ".join(detail) or "all five identities correct")
 
-# ---- 10) charge initrd --------------------------------------------------------------
-detail = []
-ok = True
-_, cpayload = read_payload(os.path.join(OUT, "initrd_charge.img"))
-with tempfile.TemporaryDirectory() as td:
-    zst, cpio = os.path.join(td, "c.cpio.zst"), os.path.join(td, "c.cpio")
-    with open(zst, "wb") as f:
-        f.write(cpayload)
-    r = subprocess.run(["zstd", "-q", "-d", "-T0", zst, "-o", cpio],
-                       capture_output=True, text=True)
-    entries = {}
-    if r.returncode != 0:
-        ok = False
-        detail.append(f"zstd -d failed: {r.stderr.strip()}")
-    else:
-        with open(cpio, "rb") as f:
-            cdata = f.read()
-        entries = parse_cpio_newc(cdata)
-        for need in ("init", "bin/busybox", "bin/sh", "etc/udhcpd.conf",
-                     "etc/modules.order",
-                     f"lib/modules/{KVER}/updates/charge_boost_lite.ko",
-                     f"lib/modules/{KVER}/modules.dep"):
-            if need not in entries:
-                ok = False
-                detail.append(f"missing {need}")
-        if ok:
-            n_ko = sum(1 for e in entries if e.endswith(".ko"))
-            detail.append(f"{len(entries)} entries, {n_ko} bare .ko incl. charge_boost_lite")
-check(10, "initrd_charge.img: debug base + charge_boost_lite + modules.order",
-      ok, "; ".join(detail))
-
-# ---- 11) net-deploy initrds (RAW, RAM-flashed via TestBootApp) -------------------------
+# ---- 10) net-deploy initrds (RAW, RAM-flashed via TestBootApp) -------------------------
 detail = []
 ok = True
 for rel in ("initrd_deploy_net_release.cpio.zst", "initrd_deploy_net_debug.cpio.zst"):
@@ -418,7 +385,7 @@ for rel in ("initrd_deploy_net_release.cpio.zst", "initrd_deploy_net_debug.cpio.
                 detail.append(f"{rel}: deploy-mode mismatch")
     if ok and not any(rel in d for d in detail):
         detail.append(f"{rel}: raw zstd cpio + static deployd ok")
-check(11, "net-deploy initrds: raw (no prefix), busybox + static deployd + mode",
+check(10, "net-deploy initrds: raw (no prefix), busybox + static deployd + mode",
       ok, "; ".join(detail))
 
 # ---- summary ----------------------------------------------------------------------------

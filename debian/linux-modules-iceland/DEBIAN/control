@@ -4,9 +4,10 @@ Architecture: arm64
 Section: kernel
 Priority: optional
 Maintainer: iceland mainline <iceland@localhost>
-Replaces: fastcharge, linux-modules-7.2.11-sm8850
+Conflicts: fastcharge, iceland-charger, iceland-powerd
+Replaces: fastcharge, iceland-charger, iceland-powerd, linux-modules-7.2.11-sm8850
 Recommends: wireless-regdb
 Description: Linux kernel modules @KVER@ for OnePlus Pad 4 (SM8850)
  All kernel modules for @KVER@ (zstd-compressed), including the
- out-of-tree charge_boost module under updates/.  postinst refreshes the
+ DT-backed PMIC PPS power supply. postinst refreshes the
  depmod metadata.

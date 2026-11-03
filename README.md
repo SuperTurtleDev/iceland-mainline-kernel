@@ -1,15 +1,14 @@
 # sm8850 (OnePlus Pad 4 / iceland) 主线内核构建仓库
 
-内核 + OOT 模块 + initrd + 网络部署工具链的一体化构建。所有阶段经
+内核（含树内充电模块）+ initrd + 网络部署工具链的一体化构建。所有阶段经
 `../podman_container/runin.sh` 在容器内执行，产物落到 `../../build/kernel/`。
 
 ```
 build.sh              构建入口（stage 编排，全部串行、增量）
 config                内核 .config（Git 自动 release, clang/LLVM, MODULES=zstd）
 linux/                内核源码（gitlink，补丁在 linux 仓库内）
-oot/charge_boost/     域外模块 charge_boost_lite（PD 协商）
+linux/drivers/power/supply/oplus-pmic-pps.c  单一标准 PPS power supply
 initrd_debug/         debug initrd 根文件树（NCM + telnetd 调试面）
-initrd_charge/        充电 initrd 的 /init（自定义 PD 曲线状态机）
 initrd-modules.txt    initrd 精选模块/固件清单（debug 319 模块 + 11 固件）
 deploy/               deployd / deployclient / makeblob 源码 + init-net
 debian/               五个 deb 包模板（见下）
@@ -20,9 +19,9 @@ firmware/             设备固件（bluetooth_a 提取 + map220v/iceland-firmwa
 构建：`./build.sh`（或 `OUT=... ./build.sh`）。只生成并验证五个 deb 可用
 `./build.sh --debs`；中断后用 `./build.sh --from <stage>` 从指定阶段继续，
 前置产物必须已完成且与当前源码和配置一致。阶段顺序见 build.sh 头部注释：
-build-kernel → build-hdr-tools（arm64 容器）→ pack-headers → build-oot（arm64
-容器，原生验证 headers 包）→ build-debs → build-deployd → make-initrd →
-make-charge-initrd → make-deploy-net-initrd → build-deploy-tools → pack-images。
+build-kernel → build-hdr-tools（arm64 容器）→ pack-headers → verify-modules（arm64
+容器，原生验证 headers 包及树内充电模块）→ build-debs → build-deployd → make-initrd →
+make-deploy-net-initrd → build-deploy-tools → pack-images。
 内核用 kbuild 原生增量（kbuild 与 kbuild_hdr 两棵树），其余 stage 每次全量重建
 （快且确定）。
 
@@ -33,11 +32,11 @@ make-charge-initrd → make-deploy-net-initrd → build-deploy-tools → pack-im
 `scripts/setlocalversion` 根据 `linux/` 的 tag、提交数、12 位 commit hash
 和已跟踪文件的 dirty 状态自动生成 release，不附加手工 `-sm8850` 或 `-iceland`。
 正好处于干净的上游版本 tag 时不附加 Git 后缀；未跟踪文件不参与 dirty 判定。
-Debian Version 为 `<release>-<revision>`；当前 clean 源码对应
-`7.3.1-00082-g3ff36e698404-1`，dirty 时为 `7.3.1-00082-g3ff36e698404-dirty-1`。
+Debian Version 为 `<release>-<revision>`；实际值由
+`source scripts/kernel-version.sh; printf '%s\n' "$VER"` 查询。
 五个固定包名是 `linux-image-iceland`、`linux-modules-iceland`、
 `linux-headers-iceland`、`linux-tools-iceland` 和 `linux-firmware-iceland`；
-例如 `linux-image-iceland_7.3.1-00082-g3ff36e698404-1_arm64.deb`。
+例如 `linux-image-iceland_<version>_arm64.deb`。
 hash/dirty 仅出现在版本信息与 release 路径中，不进入 `Package` 字段。
 配置、打包脚本或固件变化需递增 Debian revision；dirty 后缀仅描述 `linux/`。
 内核、模块、headers 和 perf 的安装路径仍包含完整 release，防止 ABI 混用。
@@ -81,14 +80,12 @@ bootcfg payload 是 ini 文本，必须以 `cmdline=` 开头（TestBootApp 解�
 | `dtb.img` | `[u32]`+FDT | 刷 dtb 分区 |
 | `bootcfg_debug.img` | `[u32]`+ini | debug cmdline（tty0 + ignore_loglevel + initcall_debug） |
 | `initrd_debug.img` | `[u32]`+cpio.zst | debug initrd：全量精选模块 + 固件 + NCM 192.168.42.42 + telnetd:23 + 串口/framebuffer shell |
-| `initrd_charge.img` | `[u32]`+cpio.zst | 充电 initrd：debug 底座 + charge_boost_lite + PD 曲线 |
-| `modules.tar.gz` | tar.gz | `/lib/modules/<release>` 全集（含 charge_boost_lite） |
-| `headers.tar.gz` | tar.gz | OOT 开发包（build-oot 用它编 charge_boost_lite） |
+| `modules.tar.gz` | tar.gz | `/lib/modules/<release>` 全集（含树内 oplus-pmic-pps） |
+| `headers.tar.gz` | tar.gz | 外部模块开发包（verify-modules 编译独立 smoke 模块） |
 | `initrd_deploy_net_{release,debug}.cpio.zst` | RAW cpio.zst | 网络部署 initrd（TestBootApp RAM 引导，见下） |
 | `debs/*.deb` | deb | image / modules / headers / tools / firmware-iceland 五包（headers 内 scripts/ 工具与 tools 内 perf 均为 arm64 容器原生编译） |
 | `tools/makeblob`, `tools/deployclient` | x86 ELF | 主机端打包/推送 |
 | `ramdeploy/` | RAW 文件集 | RAM 部署四件套 + `ramdeploy.sh` 一键流式部署 |
-| `charge/` | RAW 文件集 | `*_charge.bin` 四件套 + `charge.sh` 一键临时充电启动 |
 
 ## deploy blob 协议
 
@@ -134,13 +131,15 @@ bootcfg payload 是 ini 文本，必须以 `cmdline=` 开头（TestBootApp 解�
    分区定位不依赖 udev：扫 `/sys/class/block/*/uevent` 的 `PARTNAME=<label>`。
 7. release 模式 `reboot -f` 进 Ubuntu 桌面。
 
-## 充电启动（临时）
+早期调试用的 charge-initrd 已退役。当前充电控制由树内
+单一 PPS power supply 执行，DTB 定义设备和默认曲线；
+没有用户态调压 daemon 或 ioctl。构建流程不再生成独立
+charge-initrd 或临时充电启动文件集。
+PPS 保留 sysfs 手动曲线重载接口，启动无需加载服务。
 
-`charge/charge.sh`（设备在 ABL fastboot 时执行）：boot TestBootApp.efi →
-RAM 四件套（`*_charge.bin`）→ continue。initrd 行为：
-0–5%:9V/2A，5–40%:12V/3A，40–80%:9V/3A，80–90%:9V/2A，≥90%:5V；
-charge_boost_lite 全程不卸载，5s 周期控制台遥测（SOC/Vbat/Ibat/Vbus/T），
-NCM + telnet:23 可查。
+`/sys/class/power_supply/oplus-pmic-pps/block_suspend` 默认 `1`：USB 供电在线时
+阻止系统休眠，保持充电策略连续执行。写入 `0` 后允许休眠；休眠前必须成功
+退出 PPS、恢复基础充电，唤醒后再恢复事件驱动策略。
 
 ## 已知事项
 
@@ -148,7 +147,6 @@ NCM + telnet:23 可查。
   重启，不要在写完大分区后再执行任何 fastboot 命令。
 - **ktz8869 背光**：enable GPIO 的 -EPROBE_DEFER 死等已修（linux 仓库
   baa5fda60，defer 视作 NULL 继续）。
-- dmesg 的 `qcom_battmgr: unknown message 0x33` 是 charge_boost_lite 的
-  ICL 设置回包被同 owner 广播到内核态 battmgr 所致，噪音，不影响充电；
-  连带 spurious-complete 竞态见分析（遥测偶发旧值，低危）。
+- 单一 PPS 驱动的实机协商与休眠验证尚待完成。
+  基础充电仍由 Qualcomm battery manager 处理。
 - 设备无 RTC 电池，系统时间不可信（journal 按 boot ID 对齐）。

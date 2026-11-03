@@ -77,16 +77,12 @@ cp -f "${OUT}/kernel.img" "${OUT}/bootcfg_debug/kernel_debug.img"
 log "packing modules.tar.gz"
 [ -d "${MODROOT}/lib/modules/${KVER}" ] || die "modroot missing"
 [ -f "${MODROOT}/lib/modules/${KVER}/modules.dep" ] || die "modules.dep missing in modroot"
-[ -f "${MODROOT}/lib/modules/${KVER}/updates/charge_boost_lite.ko.zst" ] \
-    || die "updates/charge_boost_lite.ko.zst missing; run build-oot.sh first"
+[ -f "${MODROOT}/lib/modules/${KVER}/kernel/drivers/power/supply/oplus-pmic-pps.ko.zst" ] \
+    || die "in-tree PPS module missing; run build-kernel.sh first"
 tar --sort=name --owner=0 --group=0 --numeric-owner \
     --mtime="@${SOURCE_DATE_EPOCH}" \
     -C "${MODROOT}" -c lib \
     | gzip -n > "${OUT}/modules.tar.gz"
-
-# --- charge initrd ------------------------------------------------------------
-[ -f "${OUT}/staging/initrd_charge.cpio.zst" ] || die "missing staging/initrd_charge.cpio.zst (run make-charge-initrd first)"
-prefix_img "${OUT}/staging/initrd_charge.cpio.zst" "${OUT}/initrd_charge.img"
 
 # --- net-deploy initrds (RAW, no prefix: RAM-flashed via TestBootApp) -------------
 for f in initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst; do
@@ -97,7 +93,7 @@ done
 (
     cd "${OUT}"
     sha256sum \
-        kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
+        kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
         bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
         headers.tar.gz modules.tar.gz \
         initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst \
@@ -106,7 +102,7 @@ done
 
 log "artifacts:"
 for f in \
-    kernel.img dtb.img initrd_debug.img bootcfg_debug.img initrd_charge.img \
+    kernel.img dtb.img initrd_debug.img bootcfg_debug.img \
     bootcfg/kernel.img bootcfg_debug/kernel_debug.img \
     headers.tar.gz modules.tar.gz \
     initrd_deploy_net_release.cpio.zst initrd_deploy_net_debug.cpio.zst SHA256SUMS; do

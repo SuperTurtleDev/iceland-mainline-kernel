@@ -10,8 +10,8 @@
 # tree kbuild_hdr (build-hdr-tools.sh): the package is installed on the
 # device, so fixdep/modpost/... must be aarch64, not the build host's.
 #
-# Correctness is proven by scripts/build-oot.sh, which builds the
-# oot/charge_boost module against the unpacked tarball (and nothing else).
+# Correctness is proven by scripts/verify-modules.sh, which builds an
+# independent acceptance module against the unpacked tarball (and nothing else).
 set -euo pipefail
 
 SRC=/work/src

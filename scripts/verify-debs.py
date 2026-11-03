@@ -13,9 +13,12 @@ out = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else meta.parent.parent /
 kver, ver = subprocess.check_output(
     ['bash', '-ec', 'source "$1"; printf "%s\\n%s\\n" "$KVER" "$VER"',
      'kernel-version', str(meta / 'scripts/kernel-version.sh')], text=True).splitlines()
+charger_modules = ('oplus-pmic-pps',)
+charger_prefix = f'usr/lib/modules/{kver}/kernel/drivers/power/supply/'
 required = {
     'image': {f'boot/vmlinuz-{kver}', f'boot/config-{kver}', f'boot/System.map-{kver}'},
-    'modules': {f'usr/lib/modules/{kver}/modules.dep', f'usr/lib/modules/{kver}/updates/charge_boost_lite.ko.zst',
+    'modules': {f'usr/lib/modules/{kver}/modules.dep',
+                *(charger_prefix + module + '.ko.zst' for module in charger_modules),
                 'usr/share/gunyah/gh_vmtest.py', 'usr/share/gunyah/gh_accepttest.py', 'etc/modules-load.d/gunyah.conf'},
     'headers': {f'usr/src/linux-headers-{kver}/' + name for name in
                 ('Makefile', 'Module.symvers', '.config', 'scripts/basic/fixdep', 'scripts/mod/modpost')},
@@ -82,12 +85,16 @@ for kind, needs in required.items():
                 data = f.read()
                 require(data[0x38:0x3c] == b'ARM\x64', f'{pkg}: invalid arm64 Image')
                 require(hashlib.sha256(data).digest() == hashlib.sha256((out / 'kbuild/arch/arm64/boot/Image').read_bytes()).digest(), f'{pkg}: Image differs from build')
-            if kind == 'modules' and name == f'usr/lib/modules/{kver}/updates/charge_boost_lite.ko.zst':
+            if kind == 'modules' and name in {charger_prefix + module + '.ko.zst' for module in charger_modules}:
                 module = subprocess.run(['zstd', '-qd'], input=f.read(), capture_output=True, check=True).stdout
-                require(b'vermagic=' + kver.encode() + b' ' in module, f'{pkg}: OOT vermagic differs')
+                require(b'vermagic=' + kver.encode() + b' ' in module, f'{pkg}: {name} vermagic differs')
     proc.stdout.close()
     require(proc.wait() == 0, f'{pkg}: dpkg-deb extraction failed')
     require(needs <= seen, f'{pkg}: missing {sorted(needs - seen)}')
+    if kind == 'modules':
+        for old in ('charge_boost_lite', 'iceland_charger', 'iceland_pmic'):
+            require(f'usr/lib/modules/{kver}/updates/{old}.ko.zst' not in seen,
+                    f'{pkg}: legacy charging owner {old} is still packaged')
     if kind == 'headers':
         require(f'usr/lib/modules/{kver}/build' in seen, f'{pkg}: missing build symlink')
     if kind in ('headers', 'tools'):
