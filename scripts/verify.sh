@@ -245,7 +245,7 @@ try:
     with tarfile.open(os.path.join(OUT, "modules.tar.gz"), "r:gz") as tf:
         mnames = set(tf.getnames())
     for need in (f"lib/modules/{KVER}/modules.dep",
-                 f"lib/modules/{KVER}/kernel/drivers/power/supply/oplus-pmic-pps.ko.zst"):
+                 f"lib/modules/{KVER}/kernel/drivers/power/supply/oplus-sc8547d/oplus-sc8547d-charger.ko.zst"):
         if need not in mnames:
             ok = False
             detail.append(f"modules.tar.gz missing {need}")

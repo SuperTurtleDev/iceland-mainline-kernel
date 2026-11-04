@@ -42,11 +42,13 @@ if ! make -C "${HDR}" M="${SMOKE}" ARCH=arm64 LLVM=1 modules \
 fi
 [ -f "${SMOKE}/iceland_header_smoke.ko" ] || die "acceptance module missing"
 
-[ -f "${CHARGER_DIR}/oplus-pmic-pps.ko.zst" ] || die "missing in-tree PPS module"
+[ -f "${CHARGER_DIR}/oplus-sc8547d/oplus-sc8547d-charger.ko.zst" ] || die "missing in-tree fast charging module"
+[ -f "${CHARGER_DIR}/oplus-sc8547d/sc8547d.ko.zst" ] || die "missing in-tree SC8547D module"
 depmod -b "${MODROOT}" "${KVER}"
-resolved="$(modprobe -d "${MODROOT}" -S "${KVER}" --resolve-alias 'of:Ncharger-ppsTCoplus,iceland-pmic-pps')"
-[ "${resolved}" = oplus_pmic_pps ] || die "PPS DT alias resolves to '${resolved}'"
-modinfo -F depends "${CHARGER_DIR}/oplus-pmic-pps.ko.zst" | tr ',' '\n' | grep -qx qcom_battmgr \
-    || grep -q '^CONFIG_BATTERY_QCOM_BATTMGR=y$' "${HDR}/.config" \
-    || die "missing battmgr symbol dependency"
-log "in-tree PPS module and DT alias verified"
+resolved="$(modprobe -d "${MODROOT}" -S "${KVER}" --resolve-alias 'of:NchargerTCoplus,sc8547d-fastcharger')"
+[ "${resolved}" = oplus_sc8547d_charger ] || die "fast charger DT alias resolves to '${resolved}'"
+resolved="$(modprobe -d "${MODROOT}" -S "${KVER}" --resolve-alias 'of:Ncharge-pumpTCsouthchip,sc8547d')"
+[ "${resolved}" = sc8547d ] || die "SC8547D DT alias resolves to '${resolved}'"
+modinfo -F depends "${CHARGER_DIR}/oplus-sc8547d/oplus-sc8547d-charger.ko.zst" | tr ',' '\n' | grep -qx sc8547d \
+    || die "missing sc8547d symbol dependency"
+log "in-tree fast charging modules and DT aliases verified"

@@ -77,7 +77,7 @@ cp -f "${OUT}/kernel.img" "${OUT}/bootcfg_debug/kernel_debug.img"
 log "packing modules.tar.gz"
 [ -d "${MODROOT}/lib/modules/${KVER}" ] || die "modroot missing"
 [ -f "${MODROOT}/lib/modules/${KVER}/modules.dep" ] || die "modules.dep missing in modroot"
-[ -f "${MODROOT}/lib/modules/${KVER}/kernel/drivers/power/supply/oplus-pmic-pps.ko.zst" ] \
+[ -f "${MODROOT}/lib/modules/${KVER}/kernel/drivers/power/supply/oplus-sc8547d/oplus-sc8547d-charger.ko.zst" ] \
     || die "in-tree PPS module missing; run build-kernel.sh first"
 tar --sort=name --owner=0 --group=0 --numeric-owner \
     --mtime="@${SOURCE_DATE_EPOCH}" \

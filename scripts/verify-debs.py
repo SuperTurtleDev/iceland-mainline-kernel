@@ -13,7 +13,7 @@ out = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else meta.parent.parent /
 kver, ver = subprocess.check_output(
     ['bash', '-ec', 'source "$1"; printf "%s\\n%s\\n" "$KVER" "$VER"',
      'kernel-version', str(meta / 'scripts/kernel-version.sh')], text=True).splitlines()
-charger_modules = ('oplus-pmic-pps',)
+charger_modules = ('oplus-sc8547d/oplus-sc8547d-charger', 'oplus-sc8547d/sc8547d')
 charger_prefix = f'usr/lib/modules/{kver}/kernel/drivers/power/supply/'
 required = {
     'image': {f'boot/vmlinuz-{kver}', f'boot/config-{kver}', f'boot/System.map-{kver}'},
