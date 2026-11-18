@@ -27,7 +27,8 @@ make-deploy-net-initrd → build-deploy-tools → pack-images。
 
 ## 版本与 Debian 包名
 
-`version.env` 定义上游版本 `7.3.1` 和 Debian revision `1`。配置使用
+构建从 `linux/Makefile` 获取上游版本；`version.env` 中的 `KERNEL_VERSION`
+供稳定版升级脚本记录版本，`DEB_REVISION` 定义 Debian revision。配置使用
 `CONFIG_LOCALVERSION=""`、`CONFIG_LOCALVERSION_AUTO=y`，由上游
 `scripts/setlocalversion` 根据 `linux/` 的 tag、提交数、12 位 commit hash
 和已跟踪文件的 dirty 状态自动生成 release，不附加手工 `-sm8850` 或 `-iceland`。
